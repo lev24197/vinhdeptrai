@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31 14:57:03",
+  "updated_at": "2026-10-31 19:42:00",
   "topics": [
     {
       "stt": 1,
@@ -12,10 +12,10 @@
     {
       "stt": 2,
       "topic": "Văn hóa quán cà phê và Đồ uống (Cafe Culture & Beverages)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/2.txt",
-      "generated_at": null
+      "generated_at": "2026-10-31 19:42"
     },
     {
       "stt": 3,
