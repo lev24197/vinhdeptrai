@@ -1,20 +1,123 @@
 <!DOCTYPE html>
-<html lang="vi" class="light">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anki 1000 Topics — Vocabulary Studio & CMS</title>
+  <title>The Anki Dictionary — 1000 Topics Studio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-    }
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+    :root {
+      --sky-bg: #67B7F7;
+      --cream-bg: #F8F7F2;
+      --ink: #111111;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--sky-bg);
+      background-image:
+        radial-gradient(circle at 15% 12%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.55) 45px, transparent 46px),
+        radial-gradient(circle at 85% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 60px, transparent 61px);
+      color: var(--ink);
+    }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+
+    /* Neo-Brutalism Box & Shadow */
+    .neo-box {
+      border: 3px solid #111111;
+      box-shadow: 5px 5px 0px #111111;
+    }
+    .neo-box-sm {
+      border: 2.5px solid #111111;
+      box-shadow: 3px 3px 0px #111111;
+    }
+    .neo-btn {
+      border: 2.5px solid #111111;
+      box-shadow: 3px 3px 0px #111111;
+      transition: all 0.12s ease;
+    }
+    .neo-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px #111111;
+    }
+    .neo-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #111111;
+    }
+
+    /* Nút bấm phong cách The IELTS Dictionary: [→] Cam + Nền Đen */
+    .tid-cta {
+      display: inline-flex;
+      align-items: stretch;
+      border: 2.5px solid #111111;
+      box-shadow: 3px 3px 0px #111111;
+      font-weight: 800;
+      font-size: 0.8rem;
+      overflow: hidden;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .tid-cta:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0px #111111;
+    }
+    .tid-cta:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #111111;
+    }
+    .tid-cta-arrow {
+      background-color: #FF9F1C;
+      color: #111111;
+      padding: 0.45rem 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 2.5px solid #111111;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .tid-cta-label {
+      background-color: #141414;
+      color: #FFFFFF;
+      padding: 0.45rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Tag số thứ tự [01] Đen */
+    .tid-badge-num {
+      background: #141414;
+      color: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Striped Progress Bar Animation */
+    .progress-stripes {
+      background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.25) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 75%,
+        transparent 75%,
+        transparent
+      );
+      background-size: 24px 24px;
+      animation: moveStripes 1s linear infinite;
+    }
+    @keyframes moveStripes {
+      0% { background-position: 0 0; }
+      100% { background-position: 24px 0; }
+    }
+
+    /* Lật thẻ Flashcard */
     .perspective { perspective: 1000px; }
     .flip-card-inner { transition: transform 0.45s; transform-style: preserve-3d; }
     .flipped { transform: rotateY(180deg); }
@@ -22,1241 +125,275 @@
     .flip-back { transform: rotateY(180deg); }
   </style>
 </head>
-<body class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen font-sans transition-colors">
+<body class="min-h-screen pb-24">
 
-  <!-- TOP HEADER -->
-  <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-30 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+  <!-- ==================== HEADER PHONG CÁCH THE IELTS DICTIONARY ==================== -->
+  <header class="bg-[#F8F7F2] border-b-[3px] border-[#111111] sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Logo -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white font-extrabold text-lg shadow">
-          A+
+        <div class="w-10 h-10 rounded-xl bg-[#4F6D46] border-[2.5px] border-[#111] shadow-[2px_2px_0px_#111] flex items-center justify-center text-white font-display font-extrabold text-xl">
+          D
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <h1 class="text-base sm:text-lg font-extrabold tracking-tight">Anki 1000 Topics Studio</h1>
-            <span id="actionStatusBadge" class="hidden items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-800">
-              <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-              <span id="actionStatusText">Action đang chạy...</span>
-            </span>
-          </div>
-          <p class="text-xs text-slate-500 dark:text-slate-400">
-            Cập nhật: <span id="lastUpdated" class="font-semibold text-slate-700 dark:text-slate-200">Đang tải...</span>
-            <button onclick="loadData(true)" class="ml-2 text-indigo-600 dark:text-indigo-400 hover:underline font-bold">↻ Làm mới</button>
-          </p>
+          <span class="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#2E4028]">The Anki Dictionary</span>
+          <span class="hidden sm:inline-block ml-2 text-xs font-mono-code font-bold bg-[#FFE787] border border-[#111] px-2 py-0.5 rounded">1000 TOPICS</span>
         </div>
       </div>
 
-      <!-- Global Action Toolbar -->
-      <div class="flex flex-wrap items-center gap-2">
-        <div class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
-          <input id="customBatchInput" type="number" min="1" max="30" value="3" class="w-12 px-1.5 py-1 text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded text-center font-bold" />
-          <button onclick="triggerCustomBatch()" class="ml-1.5 bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-md text-xs font-bold transition">
-            ⚡ Tạo tiếp
-          </button>
-        </div>
-
-        <button onclick="downloadSelectedOrAllZip()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg text-xs font-bold transition">
-          📦 Tải ZIP (<span id="zipBtnCount">Tất cả</span>)
+      <!-- Right Pills -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        <button onclick="loadData(true)" class="px-3.5 py-1.5 rounded-full bg-white border-2 border-[#111] shadow-[2px_2px_0px_#111] text-xs font-extrabold flex items-center gap-1.5 hover:bg-amber-100">
+          🌐 VI • <span id="lastUpdated">Đang tải...</span>
         </button>
 
-        <button onclick="downloadSelectedOrAllMerged()" class="bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 text-white px-3 py-2 rounded-lg text-xs font-bold transition">
-          📑 Gộp 1 File TXT
+        <button onclick="toggleConsoleDrawer()" class="px-3.5 py-1.5 rounded-full bg-white border-2 border-[#111] shadow-[2px_2px_0px_#111] text-xs font-extrabold flex items-center gap-1.5 hover:bg-amber-100 relative">
+          🖥️ Nhật ký & Log
+          <span id="errorCountBubble" class="hidden -top-1.5 -right-1.5 absolute bg-red-600 text-white text-[10px] font-mono-code font-extrabold w-5 h-5 rounded-full border-2 border-[#111] items-center justify-center">0</span>
         </button>
 
-        <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-bold border border-slate-200 dark:border-slate-700" title="Đổi giao diện Sáng/Tối">
-          🌓
-        </button>
-
-        <button onclick="openSettings()" class="bg-white dark:bg-slate-800 hover:bg-slate-50 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 px-3 py-2 rounded-lg text-xs font-bold">
-          ⚙️ API & Logs
+        <button onclick="openSettings()" class="px-3.5 py-1.5 rounded-full bg-[#FFE787] border-2 border-[#111] shadow-[2px_2px_0px_#111] text-xs font-extrabold hover:bg-amber-300">
+          ⚙️ Cấu hình API
         </button>
       </div>
-    </div>
-
-    <!-- Navigation Tabs -->
-    <div class="max-w-7xl mx-auto px-4 flex gap-1 overflow-x-auto border-t border-slate-100 dark:border-slate-800 pt-2">
-      <button onclick="switchMainTab('list')" id="mainTab-list" class="px-4 py-2 text-xs font-bold border-b-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 whitespace-nowrap">
-        📋 Quản lý Chủ đề (1000)
-      </button>
-      <button onclick="switchMainTab('grid')" id="mainTab-grid" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 whitespace-nowrap">
-        🟩 Bản đồ Lưới 1000 Ô
-      </button>
-      <button onclick="switchMainTab('corpus')" id="mainTab-corpus" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 whitespace-nowrap">
-        📚 Kho Từ Điển Tổng & Trùng Lặp
-      </button>
-      <button onclick="switchMainTab('audit')" id="mainTab-audit" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 whitespace-nowrap">
-        🛡️ Kiểm Toán Lỗi Định Dạng (QA Audit)
-      </button>
-      <button onclick="switchMainTab('analytics')" id="mainTab-analytics" class="px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 whitespace-nowrap">
-        📊 Biểu Đồ & Nhật Ký Chạy
-      </button>
     </div>
   </header>
 
+  <!-- ==================== THANH BÁO TIẾN TRÌNH ĐANG CHẠY (LIVE ACTIVITY MONITOR) ==================== -->
+  <div id="liveRunnerBanner" class="hidden max-w-7xl mx-auto px-4 mt-4">
+    <div id="liveRunnerBox" class="neo-box bg-[#FFFDF7] p-4 rounded-none relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
+        <div class="flex items-center gap-3">
+          <span id="liveRunnerBadge" class="tid-badge-num bg-blue-600">LIVE RUNNER</span>
+          <h3 id="liveRunnerTitle" class="font-display font-extrabold text-sm sm:text-base uppercase tracking-tight">
+            ĐANG KẾT NỐI GITHUB ACTIONS...
+          </h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="liveRunnerTimer" class="font-mono-code text-xs font-bold bg-slate-200 border border-[#111] px-2 py-1">00:00</span>
+          <a id="liveRunnerGhLink" href="#" target="_blank" class="text-xs font-extrabold underline hover:text-blue-700">Mở GitHub Log ↗</a>
+          <button onclick="toggleConsoleDrawer(true)" class="px-2.5 py-1 bg-[#111] text-white text-xs font-mono-code font-bold">Xem Chi Tiết</button>
+        </div>
+      </div>
+
+      <!-- Thanh tiến trình kẻ sọc chuyển động -->
+      <div class="w-full h-6 bg-slate-200 border-[2.5px] border-[#111] relative overflow-hidden">
+        <div id="liveRunnerBar" class="h-full bg-[#199A5E] progress-stripes transition-all duration-500 flex items-center justify-end pr-2 text-[11px] font-mono-code font-extrabold text-white" style="width: 15%">
+          15%
+        </div>
+      </div>
+
+      <!-- Các bước Step-by-step -->
+      <div id="liveRunnerSteps" class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-[11px] font-mono-code font-bold">
+        <div id="step-1" class="p-1.5 border border-[#111] bg-amber-100">1. Khởi tạo Job</div>
+        <div id="step-2" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">2. Cài đặt Python</div>
+        <div id="step-3" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">3. Gọi Gemini API</div>
+        <div id="step-4" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">4. Xuất 9 cột TSV</div>
+        <div id="step-5" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">5. Commit & Push</div>
+      </div>
+    </div>
+  </div>
+
   <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
 
-    <!-- 6 KPI SUMMARY CARDS -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
-      <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
-        <p class="text-[11px] font-bold uppercase text-slate-400">Tổng chủ đề</p>
-        <p id="statTotal" class="text-2xl font-extrabold mt-1">0</p>
-        <p class="text-[11px] text-slate-400 mt-1">Mục tiêu: 100.000 từ</p>
+    <!-- ==================== BANNER 01: HÔM NAY TẠO GÌ* (MÀU TÍM ĐÊM + MẶT TRĂNG) ==================== -->
+    <section class="neo-box bg-[#2C317A] text-white p-6 sm:p-8 relative overflow-hidden">
+      <!-- Trang trí Mặt Trăng & Ngôi Sao Pixel -->
+      <div class="hidden md:flex w-32 h-32 rounded-full bg-slate-200 border-[3px] border-[#111] shadow-inner absolute right-10 -top-6 items-center justify-center">
+        <div class="w-6 h-6 rounded-full bg-slate-400/70 absolute top-8 left-6"></div>
+        <div class="w-9 h-9 rounded-full bg-slate-400/60 absolute bottom-6 right-7"></div>
+        <div class="w-4 h-4 rounded-full bg-slate-400/80 absolute top-14 right-6"></div>
       </div>
-      <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
-        <p class="text-[11px] font-bold uppercase text-emerald-600">Đã hoàn thành</p>
-        <p id="statCompleted" class="text-2xl font-extrabold text-emerald-600 mt-1">0</p>
-        <p id="statPerfect" class="text-[11px] text-emerald-600/80 mt-1">0 đủ 100 từ</p>
-      </div>
-      <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
-        <p class="text-[11px] font-bold uppercase text-amber-500">Chưa tạo</p>
-        <p id="statPending" class="text-2xl font-extrabold text-amber-500 mt-1">0</p>
-        <p id="statNextTopic" class="text-[11px] text-slate-400 mt-1 truncate">Tiếp: -</p>
-      </div>
-      <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
-        <p class="text-[11px] font-bold uppercase text-rose-500">Thiếu từ (&lt;100)</p>
-        <p id="statIncomplete" class="text-2xl font-extrabold text-rose-500 mt-1">0</p>
-        <p class="text-[11px] text-slate-400 mt-1">Cần chạy bù</p>
-      </div>
-      <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
-        <p class="text-[11px] font-bold uppercase text-indigo-600">Tổng từ đã sinh</p>
-        <p id="statWords" class="text-2xl font-extrabold text-indigo-600 mt-1">0</p>
-        <p id="statAvgWords" class="text-[11px] text-slate-400 mt-1">TB: 0 từ/file</p>
-      </div>
-      <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
-        <p class="text-[11px] font-bold uppercase text-purple-600">Dự kiến xong</p>
-        <p id="statEtaDays" class="text-2xl font-extrabold text-purple-600 mt-1">- ngày</p>
-        <p id="statEtaDate" class="text-[11px] text-slate-400 mt-1">Tốc độ 3 file/ngày</p>
-      </div>
-    </div>
 
-    <!-- PROGRESS BAR -->
-    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
-      <div class="flex justify-between items-center text-xs font-bold mb-2">
-        <span>Tiến trình tổng thể <span id="progressDetailText" class="text-slate-400 font-normal ml-1"></span></span>
-        <span id="progressPercent" class="text-indigo-600 dark:text-indigo-400">0%</span>
-      </div>
-      <div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden flex">
-        <div id="progressBarPerfect" class="bg-emerald-500 h-full transition-all duration-500" style="width: 0%"></div>
-        <div id="progressBarPartial" class="bg-amber-400 h-full transition-all duration-500" style="width: 0%"></div>
-      </div>
-    </div>
+      <div class="relative z-10 max-w-2xl space-y-4">
+        <div class="flex items-center gap-3">
+          <span class="tid-badge-num">01</span>
+          <span class="font-mono-code text-xs uppercase tracking-widest text-amber-300 font-bold">LỘ TRÌNH TỰ ĐỘNG HÓA ANKI</span>
+        </div>
 
-    <!-- ==================== TAB 1: DANH SÁCH CHỦ ĐỀ ==================== -->
-    <section id="tabSection-list" class="space-y-4">
-      <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col lg:flex-row gap-3 justify-between items-stretch lg:items-center">
-        <div class="flex flex-wrap items-center gap-1.5">
-          <button onclick="setFilter('all')" id="btn-all" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white">Tất cả</button>
-          <button onclick="setFilter('completed')" id="btn-completed" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Đã tạo</button>
-          <button onclick="setFilter('pending')" id="btn-pending" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Chưa tạo</button>
-          <button onclick="setFilter('incomplete')" id="btn-incomplete" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-rose-600">Thiếu từ (&lt;100)</button>
-          <button onclick="setFilter('bookmarked')" id="btn-bookmarked" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-amber-600">⭐ Đánh dấu</button>
-          <button onclick="triggerSelectedQueue()" id="btnQueueSelected" class="hidden px-3 py-1.5 rounded-lg text-xs font-bold bg-violet-600 text-white">
-            🚀 Chạy tạo các mục đã tích chọn
+        <h1 class="font-display font-extrabold text-3xl sm:text-5xl uppercase leading-none tracking-tight">
+          HÔM NAY TẠO GÌ<span class="text-[#FF9F1C]">*</span>
+        </h1>
+
+        <p class="text-sm sm:text-base text-indigo-100 font-medium leading-relaxed">
+          Hệ thống tự động sinh <b class="text-[#FFE787]">3 chủ đề mới mỗi ngày</b> (100 danh từ/chủ đề, chuẩn 9 cột Anki TSV). Chủ đề tiếp theo trong hàng đợi:
+          <span id="nextQueueBadge" class="inline-block bg-[#111] text-[#FFE787] font-mono-code font-bold px-2.5 py-0.5 border border-white/40 ml-1">Đang kiểm tra...</span>
+        </p>
+
+        <!-- Cụm nút CTA phong cách TID -->
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <div class="flex items-center bg-white text-[#111] border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] px-2 py-1">
+            <span class="text-xs font-extrabold mr-2">Số lượng:</span>
+            <input id="customBatchInput" type="number" min="1" max="20" value="3" class="w-12 text-center font-mono-code font-extrabold text-sm bg-amber-100 border border-[#111] py-0.5" />
+          </div>
+
+          <button onclick="triggerCustomBatch()" class="tid-cta">
+            <span class="tid-cta-arrow">→</span>
+            <span class="tid-cta-label">Chạy GitHub Action ngay</span>
+          </button>
+
+          <button onclick="generateDirectlyInBrowser()" class="tid-cta" title="Chạy trực tiếp bằng trình duyệt, thấy ngay từng từ được tạo!">
+            <span class="tid-cta-arrow" style="background:#38E54D">⚡</span>
+            <span class="tid-cta-label">Tạo Trực Tiếp Trên Web (Real-time)</span>
           </button>
         </div>
+      </div>
+    </section>
 
-        <div class="flex flex-wrap items-center gap-2">
-          <select id="rangeSelect" onchange="currentPage=1; applyFiltersAndRender()" class="px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs bg-white dark:bg-slate-800 font-semibold">
-            <option value="all">Tất cả STT (1-1000)</option>
-            <option value="1-100">STT 1 – 100</option>
-            <option value="101-200">STT 101 – 200</option>
-            <option value="201-300">STT 201 – 300</option>
-            <option value="301-400">STT 301 – 400</option>
-            <option value="401-500">STT 401 – 500</option>
-            <option value="501-600">STT 501 – 600</option>
-            <option value="601-700">STT 601 – 700</option>
-            <option value="701-800">STT 701 – 800</option>
-            <option value="801-900">STT 801 – 900</option>
-            <option value="901-1000">STT 901 – 1000</option>
-          </select>
-
-          <select id="sortSelect" onchange="applyFiltersAndRender()" class="px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs bg-white dark:bg-slate-800 font-semibold">
-            <option value="stt_asc">STT tăng dần</option>
-            <option value="stt_desc">STT giảm dần</option>
-            <option value="date_desc">Mới tạo gần nhất</option>
-            <option value="words_asc">Số từ (Ít → Nhiều)</option>
-          </select>
-
-          <input
-            type="text"
-            id="searchInput"
-            oninput="currentPage=1; applyFiltersAndRender()"
-            placeholder="Tìm STT hoặc tên chủ đề..."
-            class="w-full sm:w-60 px-3 py-1.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
+    <!-- ==================== 5 THẺ MÀU PHONG CÁCH LISTENING / READING / SPEAKING / WRITING / VOCAB ==================== -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <!-- Card 1: Blue (Tổng chủ đề) -->
+      <div onclick="setFilterAndScroll('all')" class="neo-box bg-[#3F6AE4] text-white p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span id="cardTotalBadge" class="tid-badge-num">1000</span>
+            <span class="font-mono-code text-xs font-bold uppercase tracking-wider text-blue-100">CHỦ ĐỀ</span>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight drop-shadow-[2px_2px_0px_#111]">
+            MASTER LIST
+          </h2>
+          <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+            Toàn bộ danh sách chủ đề tiếng Việt từ file Excel gốc của bạn.
+          </p>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <span class="text-xs font-mono-code font-bold underline">Xem tất cả →</span>
+          <span class="text-3xl select-none">🦖</span>
         </div>
       </div>
 
-      <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-2xs">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-800 text-[11px] font-bold uppercase text-slate-500">
-                <th class="py-3 px-3 w-10 text-center">
-                  <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAllPage(this.checked)" class="rounded" />
-                </th>
-                <th class="py-3 px-2 w-10">⭐</th>
-                <th class="py-3 px-3 w-20">STT</th>
-                <th class="py-3 px-4">Tên chủ đề</th>
-                <th class="py-3 px-4 w-36">Trạng thái</th>
-                <th class="py-3 px-4 w-40">Số lượng từ</th>
-                <th class="py-3 px-4 w-36">Ngày tạo</th>
-                <th class="py-3 px-4 text-right w-60">Thao tác</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody" class="divide-y divide-slate-200 dark:divide-slate-800 text-xs"></tbody>
-          </table>
-        </div>
-
-        <div class="px-4 py-3 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-          <div class="flex items-center gap-2 text-slate-500">
-            <span>Hiển thị</span>
-            <select id="pageSizeSelect" onchange="currentPage=1; applyFiltersAndRender()" class="border border-slate-300 dark:border-slate-700 rounded px-2 py-1 bg-white dark:bg-slate-800 font-bold">
-              <option value="50">50</option>
-              <option value="100">100</option>
-              <option value="250">250</option>
-              <option value="1000">1000</option>
-            </select>
-            <span id="showingCountText"></span>
+      <!-- Card 2: Green (Đã tạo đủ 100 từ) -->
+      <div onclick="setFilterAndScroll('completed')" class="neo-box bg-[#169C64] text-white p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span id="cardCompletedBadge" class="tid-badge-num">0 DONE</span>
+            <span class="font-mono-code text-xs font-bold uppercase tracking-wider text-emerald-100">ĐÃ TẠO</span>
           </div>
-          <div class="flex items-center gap-1" id="paginationControls"></div>
+          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight drop-shadow-[2px_2px_0px_#111]">
+            COMPLETED
+          </h2>
+          <p id="cardPerfectText" class="text-xs text-emerald-100 mt-2 leading-relaxed">
+            0 chủ đề đạt chuẩn 100 danh từ, sẵn sàng xuất sang Anki.
+          </p>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <span class="text-xs font-mono-code font-bold underline">Lọc đã xong →</span>
+          <span class="text-3xl select-none">🎓</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Yellow (Chưa tạo / Hàng đợi) -->
+      <div onclick="setFilterAndScroll('pending')" class="neo-box bg-[#F7B32B] text-[#111] p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span id="cardPendingBadge" class="tid-badge-num">0 QUEUE</span>
+            <span class="font-mono-code text-xs font-bold uppercase tracking-wider">CHỜ TẠO</span>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight text-white drop-shadow-[2px_2px_0px_#111]">
+            PENDING
+          </h2>
+          <p id="cardEtaText" class="text-xs font-semibold text-slate-900 mt-2 leading-relaxed">
+            Dự kiến hoàn thành sau - ngày với tốc độ 3 chủ đề/ngày.
+          </p>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <span class="text-xs font-mono-code font-extrabold underline">Xem hàng đợi →</span>
+          <span class="text-3xl select-none">⏳</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Red-Orange (Lỗi hoặc Thiếu từ <100) -->
+      <div onclick="setFilterAndScroll('issues')" class="neo-box bg-[#F05332] text-white p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span id="cardIssueBadge" class="tid-badge-num">0 LỖI</span>
+            <span class="font-mono-code text-xs font-bold uppercase tracking-wider text-orange-100">KIỂM TRA</span>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight drop-shadow-[2px_2px_0px_#111]">
+            QA & RETRY
+          </h2>
+          <p class="text-xs text-orange-100 mt-2 leading-relaxed">
+            Các chủ đề bị lỗi API hoặc thiếu từ (&lt;100 từ) cần chạy bù.
+          </p>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <span class="text-xs font-mono-code font-bold underline">Kiểm tra ngay →</span>
+          <span class="text-3xl select-none">🛠️</span>
+        </div>
+      </div>
+
+      <!-- Card 5: Purple (Tổng kho từ vựng) -->
+      <div onclick="switchMainTab('corpus')" class="neo-box bg-[#8C43F6] text-white p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span id="cardWordsBadge" class="tid-badge-num">0 TỪ</span>
+            <span class="font-mono-code text-xs font-bold uppercase tracking-wider text-purple-100">KHO TỪ</span>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight drop-shadow-[2px_2px_0px_#111]">
+            VOCAB BANK
+          </h2>
+          <p class="text-xs text-purple-100 mt-2 leading-relaxed">
+            Mở rộng vốn từ theo chủ đề, tra cứu trùng lặp và tải gói MP3.
+          </p>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <span class="text-xs font-mono-code font-bold underline">Mở Từ điển →</span>
+          <span class="text-3xl select-none">📚</span>
         </div>
       </div>
     </section>
 
-    <!-- ==================== TAB 2: BẢN ĐỒ LƯỚI 1000 Ô ==================== -->
-    <section id="tabSection-grid" class="hidden bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
-      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4">
-        <h2 class="font-bold text-sm">Bản đồ trực quan 1.000 chủ đề (Bấm vào ô để mở hoặc chạy tạo)</h2>
-        <span id="gridHoverInfo" class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Rê chuột vào ô bất kỳ để xem chi tiết</span>
-      </div>
-      <div id="topicGridMap" class="grid grid-cols-10 sm:grid-cols-20 md:grid-cols-25 lg:grid-cols-40 gap-1.5"></div>
-    </section>
+    <!-- ==================== BANNER 02: TIẾN ĐỘ TỔNG & XUẤT FILE (MÀU XANH BẦU TRỜI + KHỦNG LONG PIXEL) ==================== -->
+    <section class="neo-box bg-[#8DD2FF] p-6 relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="space-y-3 flex-1">
+          <div class="flex items-center gap-2.5">
+            <span class="tid-badge-num">02</span>
+            <span class="font-mono-code text-xs font-extrabold uppercase tracking-wider">TIẾN ĐỘ XÂY DỰNG KHO 100.000 DANH TỪ</span>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl uppercase tracking-tight">
+            TIẾN TRÌNH TỔNG THỂ: <span id="bigProgressPercent" class="text-[#169C64]">0%</span><span class="text-[#FF9F1C]">*</span>
+          </h2>
 
-    <!-- ==================== TAB 3: KHO TỪ ĐIỂN TỔNG & PHÂN TÍCH TRÙNG LẶP ==================== -->
-    <section id="tabSection-corpus" class="hidden space-y-4">
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h2 class="font-bold text-base">Kho Từ Điển Tổng Hợp & Kiểm Tra Trùng Lặp (Global Corpus)</h2>
-          <p class="text-xs text-slate-500 mt-1">Quét toàn bộ các file <code>.txt</code> đã hoàn thành để tra cứu từ vựng xuyên chủ đề và thống kê độ trùng lặp.</p>
-        </div>
-        <button onclick="buildGlobalCorpus()" id="btnBuildCorpus" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-xs shrink-0">
-          🔍 Quét & Xây dựng Từ điển Tổng ngay
-        </button>
-      </div>
+          <!-- Thanh tiến độ Neo-Brutalist -->
+          <div class="w-full h-7 bg-white border-[3px] border-[#111] shadow-[3px_3px_0px_#111] flex overflow-hidden">
+            <div id="barPerfect" class="bg-[#169C64] h-full transition-all duration-500 flex items-center justify-center text-[11px] font-mono-code font-extrabold text-white" style="width: 0%"></div>
+            <div id="barPartial" class="bg-[#F7B32B] h-full transition-all duration-500" style="width: 0%"></div>
+          </div>
 
-      <div id="corpusStatsBox" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-          <p class="text-xs text-slate-400 font-bold uppercase">Tổng lượt từ đã quét</p>
-          <p id="corpusTotalWords" class="text-2xl font-extrabold mt-1">0</p>
+          <div class="flex flex-wrap gap-3 pt-2">
+            <button onclick="downloadSelectedOrAllZip()" class="tid-cta">
+              <span class="tid-cta-arrow">📦</span>
+              <span class="tid-cta-label">Tải ZIP (<span id="zipBtnCount">Tất cả đã tạo</span>)</span>
+            </button>
+            <button onclick="downloadSelectedOrAllMerged()" class="tid-cta">
+              <span class="tid-cta-arrow">📑</span>
+              <span class="tid-cta-label">Gộp 1 File Anki (.TXT)</span>
+            </button>
+          </div>
         </div>
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-          <p class="text-xs text-emerald-600 font-bold uppercase">Số từ vựng Độc nhất (Unique)</p>
-          <p id="corpusUniqueWords" class="text-2xl font-extrabold text-emerald-600 mt-1">0</p>
-        </div>
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-          <p class="text-xs text-amber-500 font-bold uppercase">Số từ xuất hiện ở &ge; 2 chủ đề</p>
-          <p id="corpusDuplicateWords" class="text-2xl font-extrabold text-amber-500 mt-1">0</p>
-        </div>
-      </div>
 
-      <div id="corpusTableContainer" class="hidden bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between gap-2">
-          <input type="text" id="corpusSearchInput" oninput="renderCorpusTable()" placeholder="Tra cứu từ tiếng Anh hoặc nghĩa tiếng Việt trong toàn bộ kho..." class="w-full sm:w-96 px-3.5 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-xs bg-white dark:bg-slate-800" />
-          <label class="flex items-center gap-2 text-xs font-semibold cursor-pointer">
-            <input type="checkbox" id="corpusOnlyDup" onchange="renderCorpusTable()" class="rounded" />
-            Chỉ hiện các từ bị trùng lặp (&ge; 2 chủ đề)
-          </label>
-        </div>
-        <div class="overflow-x-auto max-h-[500px]">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-[11px] font-bold uppercase">
-                <th class="p-2.5">Từ vựng</th>
-                <th class="p-2.5">IPA</th>
-                <th class="p-2.5">Nghĩa Tiếng Việt</th>
-                <th class="p-2.5">Số lần xuất hiện</th>
-                <th class="p-2.5">Xuất hiện tại các chủ đề</th>
-              </tr>
-            </thead>
-            <tbody id="corpusTableBody" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
-          </table>
+        <!-- Hộp thoại Khủng Long Pixel như trong ảnh 1 -->
+        <div class="flex items-center gap-4 self-end lg:self-center">
+          <div class="bg-white border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111] p-3.5 max-w-[230px] text-xs font-bold leading-snug relative">
+            Học từ vựng thông minh hơn, tự động tạo đủ 9 trường chuẩn Anki mỗi ngày!
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== TAB 4: KIỂM TOÁN CHẤT LƯỢNG (QA AUDIT) ==================== -->
-    <section id="tabSection-audit" class="hidden space-y-4">
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <!-- ==================== HAI CỘT ĐUA TOP (03) & NHẬT KÝ LỖI NHANH (04) ==================== -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Cột 03: Bảng Xếp Hạng Chủ Đề Mới Tạo (Phong cách ĐUA TOP Vàng Kem) -->
+      <div class="neo-box bg-[#FFF0B3] p-6 flex flex-col justify-between">
         <div>
-          <h2 class="font-bold text-base">Kiểm Toán Định Dạng Chuẩn Anki 9 Trường (Automated QA Audit)</h2>
-          <p class="text-xs text-slate-500 mt-1">Tự động kiểm tra từng dòng trong mọi file <code>.txt</code>: Đủ 9 cột Tab, đúng công thức khuyết chữ <code>g________t</code>, IPA có <code>/.../</code>, cột 6=cột 7, và 2 câu ví dụ có <code>&lt;br&gt;</code>.</p>
-        </div>
-        <button onclick="runQualityAudit()" id="btnRunAudit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-xs shrink-0">
-          🛡️ Chạy Kiểm Toán Toàn Bộ File
-        </button>
-      </div>
-
-      <div id="auditResultContainer" class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5">
-        <p class="text-xs text-slate-400 text-center py-6">Bấm "Chạy Kiểm Toán Toàn Bộ File" để bắt đầu quét lỗi định dạng.</p>
-      </div>
-    </section>
-
-    <!-- ==================== TAB 5: BIỂU ĐỒ & NHẬT KÝ ACTIONS ==================== -->
-    <section id="tabSection-analytics" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
-        <h3 class="font-bold text-sm mb-4">Thống kê số chủ đề tạo theo ngày</h3>
-        <canvas id="dailyChart" height="180"></canvas>
-      </div>
-
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="font-bold text-sm">Lịch sử chạy GitHub Actions gần đây</h3>
-          <button onclick="fetchWorkflowRunsHistory()" class="text-xs text-indigo-600 font-bold hover:underline">↻ Tải lại</button>
-        </div>
-        <div id="workflowHistoryList" class="space-y-2.5 text-xs">
-          <p class="text-slate-400">Hãy cấu hình GitHub API để xem lịch sử chạy trực tiếp.</p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ==================== MODAL STUDIO: XEM, SỬA LIVE, LUYỆN TẬP & TẢI AUDIO ==================== -->
-  <div id="previewModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs hidden items-center justify-center p-2 sm:p-5 z-50">
-    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-6xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
-      <!-- Modal Header -->
-      <div class="px-5 py-3.5 bg-slate-50 dark:bg-slate-800/70 border-b border-slate-200 dark:border-slate-800 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-        <div>
-          <div class="flex items-center gap-2">
-            <span id="previewSttBadge" class="px-2.5 py-0.5 rounded-md bg-indigo-600 text-white font-bold text-xs">#1</span>
-            <h3 id="previewTitle" class="font-extrabold text-base">Tên chủ đề</h3>
-          </div>
-          <p class="text-[11px] text-slate-500 mt-0.5">Bạn có thể bấm trực tiếp vào bất kỳ ô chữ nào trong bảng để sửa nội dung và lưu thẳng lên GitHub.</p>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-1.5">
-          <div class="bg-slate-200 dark:bg-slate-800 p-1 rounded-lg flex text-xs font-bold">
-            <button onclick="switchModalTab('table')" id="modalTab-table" class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 shadow-2xs">✏️ Bảng & Sửa Live</button>
-            <button onclick="switchModalTab('flashcard')" id="modalTab-flashcard" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300">🎴 Lật Thẻ</button>
-            <button onclick="switchModalTab('quiz')" id="modalTab-quiz" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300">⌨️ Gõ Từ (Cloze Quiz)</button>
-            <button onclick="switchModalTab('raw')" id="modalTab-raw" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300">📄 Raw TSV</button>
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="tid-badge-num">03</span>
+            <span class="font-mono-code text-xs font-extrabold uppercase">SÀN TIẾN ĐỘ • CHỦ ĐỀ MỚI NHẤT</span>
           </div>
 
-          <button onclick="saveEditedFileToGitHub()" id="btnSaveGitHub" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold shadow-2xs">
-            💾 Lưu lên GitHub
-          </button>
-          <button onclick="downloadTopicAudioPack()" id="btnAudioPack" class="px-3 py-1.5 bg-violet-600 hover:bg-violet-700 text-white rounded-lg text-xs font-bold shadow-2xs" title="Tải 100 file .mp3 của chủ đề này để chép vào collection.media của Anki">
-            🔊 Tải 100 MP3
-          </button>
-          <a id="previewDownloadBtn" href="#" download class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold">
-            ⬇ .TXT
-          </a>
-          <button onclick="closePreview()" class="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 font-bold text-lg flex items-center justify-center">&times;</button>
-        </div>
-      </div>
-
-      <!-- Search inside modal -->
-      <div id="modalSearchBar" class="px-5 py-2 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-4">
-        <input type="text" id="modalWordSearch" oninput="renderModalWords()" placeholder="Lọc nhanh từ vựng, nghĩa hoặc câu ví dụ..." class="w-full sm:w-80 px-3 py-1 border border-slate-300 dark:border-slate-700 rounded-lg text-xs bg-white dark:bg-slate-800" />
-        <span id="modalWordCountInfo" class="text-xs font-bold text-slate-500">100 từ</span>
-      </div>
-
-      <!-- MODAL VIEW 1: LIVE EDITABLE TABLE -->
-      <div id="modalViewTable" class="p-4 overflow-y-auto flex-1">
-        <table class="w-full text-left border-collapse text-xs">
-          <thead>
-            <tr class="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-[11px] font-bold uppercase text-slate-500">
-              <th class="p-2 w-8">#</th>
-              <th class="p-2">1. Từ vựng (Sửa được)</th>
-              <th class="p-2">2. Khuyết chữ</th>
-              <th class="p-2">3. IPA</th>
-              <th class="p-2">5. Định nghĩa EN</th>
-              <th class="p-2">6&7. Nghĩa VI</th>
-              <th class="p-2">8. Số nhiều</th>
-              <th class="p-2">9. Hai câu ví dụ (&lt;br&gt;)</th>
-            </tr>
-          </thead>
-          <tbody id="previewBody" class="divide-y divide-slate-200 dark:divide-slate-800"></tbody>
-        </table>
-      </div>
-
-      <!-- MODAL VIEW 2: FLASHCARD -->
-      <div id="modalViewFlashcard" class="hidden p-6 overflow-y-auto flex-1 flex-col items-center justify-center bg-slate-50 dark:bg-slate-950">
-        <div class="w-full max-w-xl">
-          <div class="flex justify-between items-center mb-3 text-xs font-bold text-slate-500">
-            <span id="fcProgress">Thẻ 1 / 100</span>
-            <span>Phím Space: Lật thẻ • Mũi tên Trái/Phải: Chuyển từ</span>
-          </div>
-          <div onclick="toggleFlipCard()" class="perspective cursor-pointer select-none">
-            <div id="flashcardBox" class="flip-card-inner relative w-full h-80 rounded-2xl shadow-lg">
-              <div class="flip-face absolute inset-0 bg-white dark:bg-slate-900 rounded-2xl border-2 border-indigo-200 dark:border-indigo-900 p-8 flex flex-col items-center justify-center text-center">
-                <p id="fcCloze" class="text-3xl font-mono font-extrabold tracking-wider text-indigo-600 mb-4"></p>
-                <p id="fcDef" class="text-sm text-slate-600 dark:text-slate-300 max-w-md"></p>
-                <p id="fcViFront" class="mt-5 text-xs font-bold text-emerald-600"></p>
-              </div>
-              <div class="flip-face flip-back absolute inset-0 bg-indigo-950 text-white rounded-2xl p-8 flex flex-col justify-between">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <div class="flex items-center gap-3">
-                      <h4 id="fcWord" class="text-2xl font-extrabold"></h4>
-                      <button onclick="event.stopPropagation(); speakCurrentCard()" class="px-2.5 py-1 rounded-full bg-indigo-800 hover:bg-indigo-700 text-xs">🔊 Nghe</button>
-                    </div>
-                    <p class="text-xs text-indigo-300 mt-1">IPA: <span id="fcIpa" class="font-mono text-white"></span> • Số nhiều: <span id="fcPlural" class="text-emerald-300 font-bold"></span></p>
-                  </div>
-                  <span id="fcSoundTag" class="text-[10px] font-mono bg-indigo-900 px-2 py-1 rounded"></span>
-                </div>
-                <div class="my-auto">
-                  <p id="fcViBack" class="text-lg font-bold text-emerald-400 mb-2"></p>
-                  <div id="fcExamples" class="text-xs text-indigo-100 space-y-1 bg-indigo-900/60 p-3 rounded-xl border border-indigo-800"></div>
-                </div>
-                <div class="text-[10px] text-indigo-400 text-center">Bấm vào thẻ để lật lại</div>
-              </div>
-            </div>
-          </div>
-          <div class="flex justify-between mt-5">
-            <button onclick="changeFlashcard(-1)" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold">← Trước</button>
-            <button onclick="toggleFlipCard()" class="px-6 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold">🔄 Lật thẻ</button>
-            <button onclick="changeFlashcard(1)" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold">Tiếp →</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- MODAL VIEW 3: CLOZE TYPING QUIZ (LUYỆN GÕ TỪ KHUYẾT CHỮ) -->
-      <div id="modalViewQuiz" class="hidden p-6 overflow-y-auto flex-1 flex-col items-center justify-center bg-slate-50 dark:bg-slate-950">
-        <div class="w-full max-w-xl bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-          <div class="flex justify-between items-center text-xs font-bold text-slate-400">
-            <span id="quizProgressText">Câu 1 / 100</span>
-            <span class="text-emerald-600">Điểm: <span id="quizScoreText">0</span></span>
-          </div>
-          <div class="text-center py-4 space-y-2">
-            <p class="text-xs font-bold uppercase text-indigo-500">Nhìn gợi ý và gõ lại danh từ tiếng Anh đầy đủ</p>
-            <p id="quizClozeHint" class="text-3xl font-mono font-extrabold tracking-widest text-slate-800 dark:text-white">g________t</p>
-            <p id="quizMeaningVi" class="text-base font-bold text-emerald-600">chính phủ</p>
-            <p id="quizDefEn" class="text-xs text-slate-500 max-w-md mx-auto"></p>
-          </div>
-          <div class="flex gap-2">
-            <input type="text" id="quizUserInput" onkeydown="if(event.key==='Enter') checkQuizAnswer()" placeholder="Gõ từ tiếng Anh vào đây rồi bấm Enter..." class="flex-1 px-4 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl text-sm font-bold bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-            <button onclick="checkQuizAnswer()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold">Kiểm tra</button>
-          </div>
-          <div id="quizFeedback" class="hidden p-3 rounded-xl text-xs font-bold text-center"></div>
-          <div class="flex justify-between pt-2">
-            <button onclick="speakQuizWord()" class="text-xs text-indigo-600 font-bold hover:underline">🔊 Nghe gợi ý phát âm</button>
-            <button onclick="nextQuizQuestion()" class="text-xs text-slate-600 dark:text-slate-300 font-bold hover:underline">Bỏ qua / Câu tiếp theo →</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- MODAL VIEW 4: RAW TSV -->
-      <div id="modalViewRaw" class="hidden p-5 flex-1 flex-col">
-        <textarea id="rawTsvTextarea" class="w-full h-full p-4 font-mono text-xs bg-slate-950 text-emerald-400 rounded-xl border border-slate-800"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL CẤU HÌNH API -->
-  <div id="settingsModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs hidden items-center justify-center p-4 z-50">
-    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800">
-      <h3 class="font-bold text-base mb-1">Cấu hình GitHub API</h3>
-      <p class="text-xs text-slate-500 mb-4">Cần thiết để bấm nút Tạo ngay, Lưu chỉnh sửa từ trực tiếp lên GitHub và xem Log chạy.</p>
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="block font-bold mb-1">GitHub Owner</label>
-          <input id="ghOwner" type="text" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800" />
-        </div>
-        <div>
-          <label class="block font-bold mb-1">Tên Repository</label>
-          <input id="ghRepo" type="text" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800" />
-        </div>
-        <div>
-          <label class="block font-bold mb-1">Branch</label>
-          <input id="ghBranch" type="text" value="main" class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800" />
-        </div>
-        <div>
-          <label class="block font-bold mb-1">Personal Access Token (PAT)</label>
-          <input id="ghToken" type="password" placeholder="ghp_..." class="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800" />
-        </div>
-      </div>
-      <div class="flex justify-end gap-2 mt-6">
-        <button onclick="closeSettings()" class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold">Đóng</button>
-        <button onclick="saveSettings()" class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-bold">Lưu cấu hình</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    let allTopics = [];
-    let filteredTopics = [];
-    let selectedStts = new Set();
-    let bookmarkedStts = new Set(JSON.parse(localStorage.getItem('anki_bookmarks') || '[]'));
-    let currentFilter = 'all';
-    let currentPage = 1;
-
-    // Modal state
-    let activeStt = null;
-    let activeTopicName = '';
-    let currentModalWords = [];
-    let currentFcIndex = 0;
-    let quizIndex = 0;
-    let quizScore = 0;
-
-    // Global Corpus state
-    let globalCorpusList = [];
-    let dailyChartInstance = null;
-
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('anki_theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    }
-    if (localStorage.getItem('anki_theme') === 'dark') document.documentElement.classList.add('dark');
-
-    function autoDetectGitHubRepo() {
-      if (!localStorage.getItem('gh_owner') && location.hostname.endsWith('github.io')) {
-        const owner = location.hostname.split('.')[0];
-        const repo = location.pathname.split('/').filter(Boolean)[0] || '';
-        if (owner) localStorage.setItem('gh_owner', owner);
-        if (repo) localStorage.setItem('gh_repo', repo);
-      }
-    }
-
-    async function loadData(checkAction = false) {
-      autoDetectGitHubRepo();
-      try {
-        const res = await fetch('./status.json?t=' + Date.now());
-        if (!res.ok) throw new Error('Chưa có status.json');
-        const data = await res.json();
-        allTopics = data.topics || [];
-        document.getElementById('lastUpdated').innerText = data.updated_at || 'Chưa đồng bộ';
-        updateStatsAndProgress();
-        renderGridMap();
-        applyFiltersAndRender();
-        if (checkAction) checkGitHubActionStatus();
-      } catch (e) {
-        document.getElementById('lastUpdated').innerText = 'Đang chờ chạy Action lần đầu...';
-      }
-    }
-
-    function switchMainTab(tab) {
-      ['list', 'grid', 'corpus', 'audit', 'analytics'].forEach(t => {
-        document.getElementById('tabSection-' + t).classList.toggle('hidden', t !== tab);
-        document.getElementById('mainTab-' + t).className = t === tab
-          ? 'px-4 py-2 text-xs font-bold border-b-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 whitespace-nowrap'
-          : 'px-4 py-2 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 whitespace-nowrap';
-      });
-      if (tab === 'analytics') {
-        renderAnalyticsChart();
-        fetchWorkflowRunsHistory();
-      }
-    }
-
-    function updateStatsAndProgress() {
-      const total = allTopics.length || 1000;
-      const completedList = allTopics.filter(t => t.status === 'completed');
-      const completed = completedList.length;
-      const perfect = completedList.filter(t => (t.word_count || 0) >= 100).length;
-      const incomplete = completedList.filter(t => (t.word_count || 0) > 0 && (t.word_count || 0) < 100).length;
-      const pendingList = allTopics.filter(t => t.status !== 'completed');
-      const pending = pendingList.length;
-      const totalWords = allTopics.reduce((s, t) => s + (t.word_count || 0), 0);
-      const avg = completed > 0 ? Math.round(totalWords / completed) : 0;
-
-      const daysLeft = Math.ceil(pending / 3);
-      const eta = new Date();
-      eta.setDate(eta.getDate() + daysLeft);
-
-      document.getElementById('statTotal').innerText = total.toLocaleString();
-      document.getElementById('statCompleted').innerText = completed.toLocaleString();
-      document.getElementById('statPerfect').innerText = `${perfect} đủ 100 từ`;
-      document.getElementById('statPending').innerText = pending.toLocaleString();
-      document.getElementById('statNextTopic').innerText = pendingList[0] ? `Tiếp: #${pendingList[0].stt} ${pendingList[0].topic}` : 'Hoàn tất!';
-      document.getElementById('statIncomplete').innerText = incomplete.toLocaleString();
-      document.getElementById('statWords').innerText = totalWords.toLocaleString();
-      document.getElementById('statAvgWords').innerText = `TB: ${avg} từ/file`;
-      document.getElementById('statEtaDays').innerText = pending > 0 ? `${daysLeft} ngày` : 'Xong!';
-      document.getElementById('statEtaDate').innerText = pending > 0 ? `Xong: ${eta.toLocaleDateString('vi-VN')}` : '100%';
-
-      const pct = total > 0 ? ((completed / total) * 100).toFixed(1) : 0;
-      document.getElementById('progressPercent').innerText = `${pct}% (${totalWords.toLocaleString()} từ)`;
-      document.getElementById('progressDetailText').innerText = `(${completed}/${total} chủ đề)`;
-      document.getElementById('progressBarPerfect').style.width = `${(perfect / total) * 100}%`;
-      document.getElementById('progressBarPartial').style.width = `${(incomplete / total) * 100}%`;
-    }
-
-    function toggleBookmark(stt) {
-      if (bookmarkedStts.has(stt)) bookmarkedStts.delete(stt);
-      else bookmarkedStts.add(stt);
-      localStorage.setItem('anki_bookmarks', JSON.stringify([...bookmarkedStts]));
-      applyFiltersAndRender();
-    }
-
-    function toggleSelectRow(stt, checked) {
-      if (checked) selectedStts.add(stt);
-      else selectedStts.delete(stt);
-      updateSelectionUI();
-    }
-
-    function toggleSelectAllPage(checked) {
-      const pageSize = parseInt(document.getElementById('pageSizeSelect').value, 10);
-      const start = (currentPage - 1) * pageSize;
-      const pageItems = filteredTopics.slice(start, start + pageSize);
-      pageItems.forEach(t => {
-        if (checked) selectedStts.add(t.stt);
-        else selectedStts.delete(t.stt);
-      });
-      updateSelectionUI();
-      renderTable();
-    }
-
-    function updateSelectionUI() {
-      const count = selectedStts.size;
-      document.getElementById('zipBtnCount').innerText = count > 0 ? `${count} đã chọn` : 'Tất cả';
-      document.getElementById('btnQueueSelected').classList.toggle('hidden', count === 0);
-      document.getElementById('btnQueueSelected').innerText = `🚀 Tạo ${count} chủ đề đã chọn`;
-    }
-
-    function setFilter(f) {
-      currentFilter = f;
-      currentPage = 1;
-      ['all', 'completed', 'pending', 'incomplete', 'bookmarked'].forEach(k => {
-        const btn = document.getElementById('btn-' + k);
-        btn.className = k === f
-          ? 'px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white'
-          : 'px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300';
-      });
-      applyFiltersAndRender();
-    }
-
-    function applyFiltersAndRender() {
-      const q = document.getElementById('searchInput').value.toLowerCase().trim();
-      const rangeVal = document.getElementById('rangeSelect').value;
-      const sortVal = document.getElementById('sortSelect').value;
-
-      let minStt = 1, maxStt = 999999;
-      if (rangeVal !== 'all') [minStt, maxStt] = rangeVal.split('-').map(Number);
-
-      filteredTopics = allTopics.filter(t => {
-        if (t.stt < minStt || t.stt > maxStt) return false;
-        if (currentFilter === 'completed' && t.status !== 'completed') return false;
-        if (currentFilter === 'pending' && t.status === 'completed') return false;
-        if (currentFilter === 'incomplete' && !(t.status === 'completed' && (t.word_count || 0) < 100)) return false;
-        if (currentFilter === 'bookmarked' && !bookmarkedStts.has(t.stt)) return false;
-        if (q && !String(t.stt).includes(q) && !t.topic.toLowerCase().includes(q)) return false;
-        return true;
-      });
-
-      filteredTopics.sort((a, b) => {
-        if (sortVal === 'stt_asc') return a.stt - b.stt;
-        if (sortVal === 'stt_desc') return b.stt - a.stt;
-        if (sortVal === 'words_asc') return (a.word_count || 0) - (b.word_count || 0);
-        if (sortVal === 'date_desc') return (b.generated_at || '').localeCompare(a.generated_at || '');
-        return a.stt - b.stt;
-      });
-
-      renderTable();
-    }
-
-    function renderTable() {
-      const tbody = document.getElementById('tableBody');
-      const pageSize = parseInt(document.getElementById('pageSizeSelect').value, 10);
-      const total = filteredTopics.length;
-      const totalPages = Math.max(1, Math.ceil(total / pageSize));
-      if (currentPage > totalPages) currentPage = totalPages;
-
-      const start = (currentPage - 1) * pageSize;
-      const items = filteredTopics.slice(start, start + pageSize);
-      document.getElementById('showingCountText').innerText = `(${total > 0 ? start + 1 : 0}–${Math.min(start + pageSize, total)} / ${total})`;
-
-      tbody.innerHTML = items.map(t => {
-        const isDone = t.status === 'completed';
-        const wc = t.word_count || 0;
-        const safeTopic = t.topic.replace(/'/g, "\\'");
-        const isStarred = bookmarkedStts.has(t.stt);
-        const isChecked = selectedStts.has(t.stt);
-
-        let badge = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-500">Chưa tạo</span>`;
-        if (isDone && wc >= 100) badge = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">✓ Đủ 100 từ</span>`;
-        else if (isDone && wc < 100) badge = `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800">⚠ ${wc}/100 từ</span>`;
-
-        const actions = isDone
-          ? `<div class="flex items-center justify-end gap-1.5">
-               <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 font-bold">👁 Studio & Học</button>
-               <a href="./output/${t.stt}.txt" download="${t.stt}.txt" class="px-2 py-1 rounded bg-emerald-50 dark:bg-emerald-950 text-emerald-600 font-bold">⬇</a>
-               <button onclick="triggerWorkflow('1', '${t.stt}')" class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-500" title="Chạy tạo lại">↻</button>
-             </div>`
-          : `<button onclick="triggerWorkflow('1', '${t.stt}')" class="px-3 py-1 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-bold">⚡ Tạo ngay</button>`;
-
-        return `
-          <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-            <td class="py-2.5 px-3 text-center">
-              <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSelectRow(${t.stt}, this.checked)" class="rounded" />
-            </td>
-            <td class="py-2.5 px-2">
-              <button onclick="toggleBookmark(${t.stt})" class="text-sm">${isStarred ? '⭐' : '☆'}</button>
-            </td>
-            <td class="py-2.5 px-3 font-bold text-slate-500">#${t.stt}</td>
-            <td class="py-2.5 px-4 font-bold">${t.topic}</td>
-            <td class="py-2.5 px-4">${badge}</td>
-            <td class="py-2.5 px-4 font-bold">${wc} / 100</td>
-            <td class="py-2.5 px-4 text-slate-400">${t.generated_at || '-'}</td>
-            <td class="py-2.5 px-4 text-right">${actions}</td>
-          </tr>
-        `;
-      }).join('');
-
-      renderPagination(totalPages);
-    }
-
-    function renderPagination(totalPages) {
-      const c = document.getElementById('paginationControls');
-      if (totalPages <= 1) { c.innerHTML = ''; return; }
-      let html = '';
-      for (let p = 1; p <= totalPages; p++) {
-        if (p === 1 || p === totalPages || Math.abs(p - currentPage) <= 2) {
-          const active = p === currentPage ? 'bg-indigo-600 text-white' : 'bg-white dark:bg-slate-800';
-          html += `<button onclick="currentPage=${p}; applyFiltersAndRender()" class="px-2.5 py-1 rounded border border-slate-300 dark:border-slate-700 font-bold ${active}">${p}</button>`;
-        }
-      }
-      c.innerHTML = html;
-    }
-
-    function renderGridMap() {
-      const container = document.getElementById('topicGridMap');
-      container.innerHTML = allTopics.map(t => {
-        const isDone = t.status === 'completed';
-        const wc = t.word_count || 0;
-        let cls = 'bg-slate-200 dark:bg-slate-800 text-slate-500';
-        if (isDone && wc >= 100) cls = 'bg-emerald-500 text-white';
-        else if (isDone && wc < 100) cls = 'bg-amber-400 text-slate-900';
-        const safe = t.topic.replace(/'/g, "\\'");
-        const act = isDone ? `previewFile(${t.stt}, '${safe}')` : `triggerWorkflow('1', '${t.stt}')`;
-        return `<button onclick="${act}" onmouseenter="document.getElementById('gridHoverInfo').innerText='#${t.stt}: ${safe} (${wc}/100 từ)'" class="h-7 rounded text-[10px] font-bold ${cls}">${t.stt}</button>`;
-      }).join('');
-    }
-
-    // ==================== STUDIO: XEM, SỬA TRỰC TIẾP, QUIZ & MP3 PACK ====================
-    function makeClozeJS(word) {
-      return word.trim().split(/\s+/).map(p => p.length <= 2 ? p : p[0] + '_'.repeat(p.length - 2) + p[p.length - 1]).join(' ');
-    }
-
-    function makeSoundJS(word) {
-      return `[sound:${word.trim().toLowerCase().replace(/\s+/g, '_')}.mp3]`;
-    }
-
-    async function previewFile(stt, topic) {
-      activeStt = stt;
-      activeTopicName = topic;
-      document.getElementById('previewSttBadge').innerText = `#${stt}`;
-      document.getElementById('previewTitle').innerText = topic;
-      document.getElementById('previewDownloadBtn').href = `./output/${stt}.txt`;
-      document.getElementById('previewDownloadBtn').setAttribute('download', `${stt}.txt`);
-      switchModalTab('table');
-
-      document.getElementById('previewModal').classList.remove('hidden');
-      document.getElementById('previewModal').classList.add('flex');
-
-      const res = await fetch(`./output/${stt}.txt?t=` + Date.now());
-      const rawText = await res.text();
-      document.getElementById('rawTsvTextarea').value = rawText;
-
-      const lines = rawText.split('\n').filter(l => l.trim());
-      currentModalWords = lines.map((line, idx) => {
-        const cols = line.split('\t');
-        return {
-          index: idx,
-          word: cols[0] || '',
-          cloze: cols[1] || '',
-          ipa: cols[2] || '',
-          sound: cols[3] || '',
-          definition: cols[4] || '',
-          vi: cols[5] || '',
-          plural: cols[7] || '',
-          examples: cols[8] || ''
-        };
-      });
-
-      currentFcIndex = 0;
-      quizIndex = 0;
-      quizScore = 0;
-      renderModalWords();
-      renderFlashcard();
-      loadQuizQuestion();
-    }
-
-    function renderModalWords() {
-      const q = document.getElementById('modalWordSearch').value.toLowerCase().trim();
-      const filtered = currentModalWords.filter(w => !q || w.word.toLowerCase().includes(q) || w.vi.toLowerCase().includes(q));
-      document.getElementById('modalWordCountInfo').innerText = `${filtered.length} / ${currentModalWords.length} từ`;
-
-      document.getElementById('previewBody').innerHTML = filtered.map(item => `
-        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 align-top">
-          <td class="p-2 font-bold text-slate-400">${item.index + 1}</td>
-          <td class="p-2">
-            <div class="flex items-center gap-1">
-              <button onclick="speakWord('${item.word.replace(/'/g, "\\'")}')" class="text-indigo-600 font-bold">🔊</button>
-              <input value="${item.word}" onchange="updateWordCell(${item.index}, 'word', this.value)" class="font-bold bg-transparent border-b border-transparent focus:border-indigo-500 focus:outline-none w-32" />
-            </div>
-          </td>
-          <td class="p-2 font-mono text-slate-500" id="clozeCell-${item.index}">${item.cloze}</td>
-          <td class="p-2"><input value="${item.ipa}" onchange="updateWordCell(${item.index}, 'ipa', this.value)" class="font-mono text-indigo-600 bg-transparent border-b border-transparent focus:border-indigo-500 w-28" /></td>
-          <td class="p-2"><input value="${item.definition}" onchange="updateWordCell(${item.index}, 'definition', this.value)" class="bg-transparent border-b border-transparent focus:border-indigo-500 w-full" /></td>
-          <td class="p-2"><input value="${item.vi}" onchange="updateWordCell(${item.index}, 'vi', this.value)" class="font-bold text-emerald-600 bg-transparent border-b border-transparent focus:border-indigo-500 w-36" /></td>
-          <td class="p-2"><input value="${item.plural}" onchange="updateWordCell(${item.index}, 'plural', this.value)" class="bg-transparent border-b border-transparent focus:border-indigo-500 w-28" /></td>
-          <td class="p-2"><input value="${item.examples.replace(/"/g, '&quot;')}" onchange="updateWordCell(${item.index}, 'examples', this.value)" class="bg-transparent border-b border-transparent focus:border-indigo-500 w-full" /></td>
-        </tr>
-      `).join('');
-    }
-
-    function updateWordCell(idx, field, val) {
-      const item = currentModalWords[idx];
-      item[field] = val.trim();
-      if (field === 'word') {
-        item.cloze = makeClozeJS(item.word);
-        item.sound = makeSoundJS(item.word);
-        const c = document.getElementById(`clozeCell-${idx}`);
-        if (c) c.innerText = item.cloze;
-      }
-      syncModalWordsToRawTsv();
-    }
-
-    function syncModalWordsToRawTsv() {
-      const lines = currentModalWords.map(item =>
-        [item.word, item.cloze, item.ipa, item.sound, item.definition, item.vi, item.vi, item.plural, item.examples].join('\t')
-      );
-      document.getElementById('rawTsvTextarea').value = lines.join('\n') + '\n';
-    }
-
-    async function saveEditedFileToGitHub() {
-      const owner = localStorage.getItem('gh_owner');
-      const repo = localStorage.getItem('gh_repo');
-      const branch = localStorage.getItem('gh_branch') || 'main';
-      const token = localStorage.getItem('gh_token');
-      if (!owner || !repo || !token) { alert('Hãy cấu hình GitHub Token trước!'); openSettings(); return; }
-
-      const btn = document.getElementById('btnSaveGitHub');
-      btn.innerText = '⏳ Đang lưu...';
-      const path = `output/${activeStt}.txt`;
-      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-
-      try {
-        const getRes = await fetch(apiUrl + `?ref=${branch}`, { headers: { 'Authorization': `Bearer ${token}` } });
-        const fileData = await getRes.json();
-        const contentText = document.getElementById('rawTsvTextarea').value;
-        const base64Content = btoa(unescape(encodeURIComponent(contentText)));
-
-        const putRes = await fetch(apiUrl, {
-          method: 'PUT',
-          headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: `Update ${path} via Web Studio`,
-            content: base64Content,
-            sha: fileData.sha,
-            branch: branch
-          })
-        });
-
-        if (putRes.ok) alert(`Đã lưu thành công file output/${activeStt}.txt lên GitHub!`);
-        else alert('Lỗi khi lưu: ' + (await putRes.text()));
-      } catch (e) {
-        alert('Không thể kết nối GitHub API: ' + e.message);
-      }
-      btn.innerText = '💾 Lưu lên GitHub';
-    }
-
-    // Tải 100 file MP3 đóng gói ZIP cho Anki collection.media
-    async function downloadTopicAudioPack() {
-      const btn = document.getElementById('btnAudioPack');
-      btn.innerText = '⏳ Đang tạo MP3...';
-      const zip = new JSZip();
-
-      for (let i = 0; i < currentModalWords.length; i++) {
-        const w = currentModalWords[i].word.trim();
-        const fileName = w.toLowerCase().replace(/\s+/g, '_') + '.mp3';
-        try {
-          // Sử dụng Google Translate TTS endpoint qua proxy hoặc Dictionary API
-          const dictRes = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(w)}`);
-          if (dictRes.ok) {
-            const dJson = await dictRes.json();
-            let audioUrl = '';
-            for (const p of (dJson[0]?.phonetics || [])) {
-              if (p.audio) { audioUrl = p.audio; break; }
-            }
-            if (audioUrl) {
-              const mp3Res = await fetch(audioUrl);
-              if (mp3Res.ok) zip.file(fileName, await mp3Res.blob());
-            }
-          }
-        } catch (e) {}
-      }
-
-      const blob = await zip.generateAsync({ type: 'blob' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `audio_topic_${activeStt}.zip`;
-      a.click();
-      btn.innerText = '🔊 Tải 100 MP3';
-    }
-
-    // ==================== CLOZE QUIZ ====================
-    function loadQuizQuestion() {
-      if (!currentModalWords.length) return;
-      const item = currentModalWords[quizIndex];
-      document.getElementById('quizProgressText').innerText = `Câu ${quizIndex + 1} / ${currentModalWords.length}`;
-      document.getElementById('quizScoreText').innerText = quizScore;
-      document.getElementById('quizClozeHint').innerText = item.cloze;
-      document.getElementById('quizMeaningVi').innerText = item.vi;
-      document.getElementById('quizDefEn').innerText = item.definition;
-      document.getElementById('quizUserInput').value = '';
-      document.getElementById('quizFeedback').classList.add('hidden');
-    }
-
-    function checkQuizAnswer() {
-      const item = currentModalWords[quizIndex];
-      const userAns = document.getElementById('quizUserInput').value.trim().toLowerCase();
-      const fb = document.getElementById('quizFeedback');
-      fb.classList.remove('hidden');
-
-      if (userAns === item.word.toLowerCase()) {
-        quizScore++;
-        document.getElementById('quizScoreText').innerText = quizScore;
-        fb.className = 'p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
-        fb.innerText = `🎉 Chính xác! "${item.word}" (${item.ipa})`;
-        speakWord(item.word);
-        setTimeout(nextQuizQuestion, 1200);
-      } else {
-        fb.className = 'p-3 rounded-xl text-xs font-bold text-center bg-rose-100 text-rose-800';
-        fb.innerText = `Chưa đúng! Đáp án chuẩn là: "${item.word}"`;
-      }
-    }
-
-    function nextQuizQuestion() {
-      quizIndex = (quizIndex + 1) % currentModalWords.length;
-      loadQuizQuestion();
-    }
-
-    function speakQuizWord() {
-      if (currentModalWords[quizIndex]) speakWord(currentModalWords[quizIndex].word);
-    }
-
-    // ==================== KHO TỪ ĐIỂN TỔNG (GLOBAL CORPUS) ====================
-    async function buildGlobalCorpus() {
-      const completed = allTopics.filter(t => t.status === 'completed');
-      const btn = document.getElementById('btnBuildCorpus');
-      btn.innerText = `⏳ Đang quét ${completed.length} file...`;
-
-      const wordMap = new Map();
-      let totalScanned = 0;
-
-      for (const t of completed) {
-        try {
-          const res = await fetch(`./output/${t.stt}.txt?t=` + Date.now());
-          if (!res.ok) continue;
-          const lines = (await res.text()).split('\n').filter(l => l.trim());
-          lines.forEach(line => {
-            const cols = line.split('\t');
-            const w = (cols[0] || '').trim().toLowerCase();
-            if (!w) return;
-            totalScanned++;
-            if (!wordMap.has(w)) {
-              wordMap.set(w, { word: w, ipa: cols[2] || '', vi: cols[5] || '', count: 1, topics: [`#${t.stt} ${t.topic}`] });
-            } else {
-              const entry = wordMap.get(w);
-              entry.count++;
-              entry.topics.push(`#${t.stt} ${t.topic}`);
-            }
-          });
-        } catch (e) {}
-      }
-
-      globalCorpusList = Array.from(wordMap.values()).sort((a, b) => b.count - a.count);
-      const dupCount = globalCorpusList.filter(x => x.count > 1).length;
-
-      document.getElementById('corpusTotalWords').innerText = totalScanned.toLocaleString();
-      document.getElementById('corpusUniqueWords').innerText = globalCorpusList.length.toLocaleString();
-      document.getElementById('corpusDuplicateWords').innerText = dupCount.toLocaleString();
-      document.getElementById('corpusStatsBox').classList.remove('hidden');
-      document.getElementById('corpusTableContainer').classList.remove('hidden');
-      btn.innerText = '↻ Quét lại Kho Từ Điển';
-      renderCorpusTable();
-    }
-
-    function renderCorpusTable() {
-      const q = document.getElementById('corpusSearchInput').value.toLowerCase().trim();
-      const onlyDup = document.getElementById('corpusOnlyDup').checked;
-      const filtered = globalCorpusList.filter(item => {
-        if (onlyDup && item.count < 2) return false;
-        if (q && !item.word.includes(q) && !item.vi.toLowerCase().includes(q)) return false;
-        return true;
-      }).slice(0, 300);
-
-      document.getElementById('corpusTableBody').innerHTML = filtered.map(item => `
-        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-          <td class="p-2.5 font-bold text-indigo-600">${item.word}</td>
-          <td class="p-2.5 font-mono text-slate-500">${item.ipa}</td>
-          <td class="p-2.5 font-semibold text-emerald-600">${item.vi}</td>
-          <td class="p-2.5 font-extrabold">${item.count} lần</td>
-          <td class="p-2.5 text-slate-500">${item.topics.join(', ')}</td>
-        </tr>
-      `).join('');
-    }
-
-    // ==================== KIỂM TOÁN CHẤT LƯỢNG (QA AUDIT) ====================
-    async function runQualityAudit() {
-      const completed = allTopics.filter(t => t.status === 'completed');
-      const btn = document.getElementById('btnRunAudit');
-      btn.innerText = '⏳ Đang kiểm toán...';
-      const issues = [];
-
-      for (const t of completed) {
-        try {
-          const res = await fetch(`./output/${t.stt}.txt?t=` + Date.now());
-          if (!res.ok) continue;
-          const lines = (await res.text()).split('\n').filter(l => l.trim());
-          if (lines.length !== 100) {
-            issues.push({ stt: t.stt, topic: t.topic, msg: `Số dòng hiện tại là ${lines.length}/100` });
-          }
-          lines.forEach((line, idx) => {
-            const cols = line.split('\t');
-            if (cols.length !== 9) {
-              issues.push({ stt: t.stt, topic: t.topic, msg: `Dòng ${idx + 1}: Có ${cols.length} cột (Chuẩn là 9 cột Tab)` });
-            } else {
-              if (!cols[2].startsWith('/') || !cols[2].endsWith('/')) {
-                issues.push({ stt: t.stt, topic: t.topic, msg: `Dòng ${idx + 1} (${cols[0]}): IPA thiếu dấu /.../` });
-              }
-              if (!cols[8].includes('<br>')) {
-                issues.push({ stt: t.stt, topic: t.topic, msg: `Dòng ${idx + 1} (${cols[0]}): Câu ví dụ thiếu thẻ <br>` });
-              }
-            }
-          });
-        } catch (e) {}
-      }
-
-      const box = document.getElementById('auditResultContainer');
-      if (issues.length === 0) {
-        box.innerHTML = `<div class="p-6 text-center text-emerald-600 font-bold">✅ Tuyệt vời! Toàn bộ ${completed.length} file đã tạo đều đạt chuẩn 100% định dạng Anki 9 cột!</div>`;
-      } else {
-        box.innerHTML = `
-          <p class="font-bold text-rose-600 text-xs mb-3">Phát hiện ${issues.length} vấn đề cần lưu ý:</p>
-          <div class="space-y-2 max-h-96 overflow-y-auto text-xs">
-            ${issues.map(i => `
-              <div class="p-2.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 flex justify-between items-center">
-                <span><b>#${i.stt} (${i.topic})</b>: ${i.msg}</span>
-                <button onclick="previewFile(${i.stt}, '${i.topic.replace(/'/g, "\\'")}')" class="text-indigo-600 font-bold hover:underline">Mở sửa ngay →</button>
-              </div>
-            `).join('')}
-          </div>
-        `;
-      }
-      btn.innerText = '🛡️ Chạy Kiểm Toán Toàn Bộ File';
-    }
-
-    // ==================== BIỂU ĐỒ & LOGS ====================
-    function renderAnalyticsChart() {
-      const dateCount = {};
-      allTopics.forEach(t => {
-        if (t.status === 'completed' && t.generated_at) {
-          const day = t.generated_at.split(' ')[0];
-          dateCount[day] = (dateCount[day] || 0) + 1;
-        }
-      });
-      const labels = Object.keys(dateCount).sort();
-      const values = labels.map(d => dateCount[d]);
-
-      const ctx = document.getElementById('dailyChart').getContext('2d');
-      if (dailyChartInstance) dailyChartInstance.destroy();
-      dailyChartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels.length ? labels : ['Hôm nay'],
-          datasets: [{ label: 'Số chủ đề đã tạo', data: values.length ? values : [0], backgroundColor: '#4f46e5', borderRadius: 6 }]
-        }
-      });
-    }
-
-    async function fetchWorkflowRunsHistory() {
-      const owner = localStorage.getItem('gh_owner');
-      const repo = localStorage.getItem('gh_repo');
-      const token = localStorage.getItem('gh_token');
-      const container = document.getElementById('workflowHistoryList');
-      if (!owner || !repo || !token) return;
-
-      try {
-        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/actions/runs?per_page=6`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const data = await res.json();
-        container.innerHTML = (data.workflow_runs || []).map(run => {
-          const color = run.conclusion === 'success' ? 'text-emerald-600' : (run.status === 'in_progress' ? 'text-blue-600' : 'text-rose-600');
-          return `
-            <div class="p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex justify-between items-center">
-              <div>
-                <p class="font-bold">${run.display_title || run.name}</p>
-                <p class="text-[11px] text-slate-400">${new Date(run.created_at).toLocaleString('vi-VN')}</p>
-              </div>
-              <div class="flex items-center gap-3">
-                <span class="font-bold uppercase ${color}">${run.conclusion || run.status}</span>
-                <a href="${run.html_url}" target="_blank" class="text-indigo-600 hover:underline font-bold">Xem Log ↗</a>
-              </div>
-            </div>
-          `;
-        }).join('');
-      } catch (e) {}
-    }
-
-    // ==================== FLASHCARD, AUDIO & DOWNLOADS ====================
-    function switchModalTab(tab) {
-      ['table', 'flashcard', 'quiz', 'raw'].forEach(t => {
-        const el = document.getElementById('modalView' + t.charAt(0).toUpperCase() + t.slice(1));
-        el.classList.toggle('hidden', t !== tab);
-        if (t !== 'table') el.classList.toggle('flex', t === tab);
-        document.getElementById('modalTab-' + t).className = t === tab
-          ? 'px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 shadow-2xs'
-          : 'px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300';
-      });
-      document.getElementById('modalSearchBar').classList.toggle('hidden', tab !== 'table');
-    }
-
-    function renderFlashcard() {
-      if (!currentModalWords.length) return;
-      const item = currentModalWords[currentFcIndex];
-      document.getElementById('flashcardBox').classList.remove('flipped');
-      document.getElementById('fcProgress').innerText = `Thẻ ${currentFcIndex + 1} / ${currentModalWords.length}`;
-      document.getElementById('fcCloze').innerText = item.cloze;
-      document.getElementById('fcDef').innerText = item.definition;
-      document.getElementById('fcViFront').innerText = `Gợi ý: ${item.vi}`;
-      document.getElementById('fcWord').innerText = item.word;
-      document.getElementById('fcIpa').innerText = item.ipa;
-      document.getElementById('fcPlural').innerText = item.plural;
-      document.getElementById('fcSoundTag').innerText = item.sound;
-      document.getElementById('fcViBack').innerText = item.vi;
-      document.getElementById('fcExamples').innerHTML = item.examples;
-    }
-
-    function toggleFlipCard() { document.getElementById('flashcardBox').classList.toggle('flipped'); }
-    function changeFlashcard(d) {
-      currentFcIndex = (currentFcIndex + d + currentModalWords.length) % currentModalWords.length;
-      renderFlashcard();
-    }
-    function speakWord(w) {
-      if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(w);
-      u.lang = 'en-US';
-      window.speechSynthesis.speak(u);
-    }
-    function speakCurrentCard() { if (currentModalWords[currentFcIndex]) speakWord(currentModalWords[currentFcIndex].word); }
-    function closePreview() {
-      document.getElementById('previewModal').classList.add('hidden');
-      document.getElementById('previewModal').classList.remove('flex');
-    }
-
-    async function downloadSelectedOrAllZip() {
-      const targets = selectedStts.size > 0
-        ? allTopics.filter(t => selectedStts.has(t.stt) && t.status === 'completed')
-        : allTopics.filter(t => t.status === 'completed');
-      if (!targets.length) { alert('Chưa có file hoàn thành nào để tải!'); return; }
-      const zip = new JSZip();
-      for (const t of targets) {
-        const res = await fetch(`./output/${t.stt}.txt?t=` + Date.now());
-        if (res.ok) zip.file(`${t.stt}.txt`, await res.text());
-      }
-      const blob = await zip.generateAsync({ type: 'blob' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `anki_${targets.length}_files.zip`;
-      a.click();
-    }
-
-    async function downloadSelectedOrAllMerged() {
-      const targets = selectedStts.size > 0
-        ? allTopics.filter(t => selectedStts.has(t.stt) && t.status === 'completed')
-        : allTopics.filter(t => t.status === 'completed');
-      if (!targets.length) { alert('Chưa có file hoàn thành nào!'); return; }
-      const chunks = [];
-      for (const t of targets) {
-        const res = await fetch(`./output/${t.stt}.txt?t=` + Date.now());
-        if (res.ok) chunks.push((await res.text()).trim());
-      }
-      const blob = new Blob([chunks.join('\n') + '\n'], { type: 'text/plain;charset=utf-8' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `anki_merged_${targets.length}_topics.txt`;
-      a.click();
-    }
-
-    function openSettings() {
-      document.getElementById('ghOwner').value = localStorage.getItem('gh_owner') || '';
-      document.getElementById('ghRepo').value = localStorage.getItem('gh_repo') || '';
-      document.getElementById('ghBranch').value = localStorage.getItem('gh_branch') || 'main';
-      document.getElementById('ghToken').value = localStorage.getItem('gh_token') || '';
-      document.getElementById('settingsModal').classList.remove('hidden');
-      document.getElementById('settingsModal').classList.add('flex');
-    }
-    function closeSettings() {
-      document.getElementById('settingsModal').classList.add('hidden');
-      document.getElementById('settingsModal').classList.remove('flex');
-    }
-    function saveSettings() {
-      localStorage.setItem('gh_owner', document.getElementById('ghOwner').value.trim());
-      localStorage.setItem('gh_repo', document.getElementById('ghRepo').value.trim());
-      localStorage.setItem('gh_branch', document.getElementById('ghBranch').value.trim() || 'main');
-      localStorage.setItem('gh_token', document.getElementById('ghToken').value.trim());
-      closeSettings();
-      alert('Đã lưu cấu hình!');
-    }
-
-    function triggerCustomBatch() {
-      triggerWorkflow(String(document.getElementById('customBatchInput').value || '3'), '');
-    }
-
-    async function triggerSelectedQueue() {
-      for (const stt of selectedStts) {
-        await triggerWorkflow('1', String(stt), true);
-      }
-      alert(`Đã gửi lệnh xếp hàng tạo ${selectedStts.size} chủ đề!`);
-    }
-
-    async function triggerWorkflow(batchSize, targetStt, silent = false) {
-      const owner = localStorage.getItem('gh_owner');
-      const repo = localStorage.getItem('gh_repo');
-      const branch = localStorage.getItem('gh_branch') || 'main';
-      const token = localStorage.getItem('gh_token');
-      if (!owner || !repo || !token) { openSettings(); return; }
-
-      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/actions/workflows/generate_anki.yml/dispatches`, {
-        method: 'POST',
-        headers: { 'Accept': 'application/vnd.github+json', 'Authorization': `Bearer ${token}` },
-        body: JSON.stringify({ ref: branch, inputs: { batch_size: String(batchSize), target_stt: String(targetStt) } })
-      });
-      if (res.status === 204 && !silent) {
-        alert('Đã gửi lệnh chạy GitHub Actions thành công!');
-        setTimeout(checkGitHubActionStatus, 3000);
-      }
-    }
-
-    async function checkGitHubActionStatus() {
-      const owner = localStorage.getItem('gh_owner');
-      const repo = localStorage.getItem('gh_repo');
-      const token = localStorage.getItem('gh_token');
-      if (!owner || !repo || !token) return;
-      try {
-        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/actions/runs?per_page=1`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const data = await res.json();
-        const run = data.workflow_runs?.[0];
-        const badge = document.getElementById('actionStatusBadge');
-        if (run && (run.status === 'in_progress' || run.status === 'queued')) {
-          badge.classList.remove('hidden');
-          badge.classList.add('inline-flex');
-          setTimeout(checkGitHubActionStatus, 8000);
-        } else if (!badge.classList.contains('hidden')) {
-          badge.classList.add('hidden');
-          loadData();
-        }
-      } catch (e) {}
-    }
-
-    loadData(true);
-  </script>
-</body>
-</html>
+          <div class="bg-white border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111] p-4 space-y-2.5">
+            <p class="font-mono-code text-xs font-extrabold uppercase tracking-wider border-b-2 border-[#111] pb-1.5">
+              CÁC CHỦ ĐỀ VỪA HOÀN THÀNH GẦN ĐÂY
+            </p>
+            <div id="recentCompletedList" class="space-y-2 t
