@@ -1,1 +1,49 @@
+name: Auto Generate Anki Topics
 
+on:
+  schedule:
+    # Chạy tự động lúc 00:00 UTC (tức 07:00 sáng giờ Việt Nam) mỗi ngày
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: 'Số lượng chủ đề muốn tạo'
+        required: false
+        default: '3'
+      target_stt:
+        description: 'STT chủ đề cụ thể muốn tạo (để trống nếu muốn tạo tự động theo thứ tự)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Anki Generator
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          BATCH_SIZE: ${{ github.event.inputs.batch_size || '3' }}
+          TARGET_STT: ${{ github.event.inputs.target_stt || '' }}
+        run: python generate.py
+
+      - name: Commit and Push generated files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add output/ status.json
+          git diff --staged --quiet || git commit -m "Auto-update Anki files and status.json"
+          git push
