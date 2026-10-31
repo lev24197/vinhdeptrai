@@ -1,1 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anki 1000 Topics Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Anki Vocabulary Generator Dashboard</h1>
+        <p class="text-sm text-slate-500 mt-1">Cập nhật lần cuối: <span id="lastUpdated" class="font-medium text-slate-700">Đang tải...</span></p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <button onclick="triggerWorkflow('3', '')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium shadow-sm transition">
+          ⚡ Tạo ngay 3 chủ đề tiếp theo
+        </button>
+        <button onclick="openSettings()" class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-4 py-2.5 rounded-lg text-sm font-medium transition">
+          ⚙️ Cấu hình GitHub API
+        </button>
+      </div>
+    </div>
 
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Tổng chủ đề</p>
+        <p id="statTotal" class="text-3xl font-bold text-slate-900 mt-2">0</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-wider text-emerald-600">Đã tạo</p>
+        <p id="statCompleted" class="text-3xl font-bold text-emerald-600 mt-2">0</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-wider text-amber-500">Chưa tạo</p>
+        <p id="statPending" class="text-3xl font-bold text-amber-500 mt-2">0</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Tổng số từ vựng</p>
+        <p id="statWords" class="text-3xl font-bold text-indigo-600 mt-2">0</p>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm mb-6">
+      <div class="flex justify-between text-sm font-medium mb-2">
+        <span>Tiến độ hoàn thành</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden">
+        <div id="progressBar" class="bg-indigo-600 h-full transition-all duration-500" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Filter & Search -->
+    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 flex flex-col sm:flex-row gap-4 justify-between items-center">
+      <div class="flex gap-2 w-full sm:w-auto">
+        <button onclick="setFilter('all')" id="btn-all" class="px-4 py-2 rounded-lg text-sm font-medium bg-slate-900 text-white">Tất cả</button>
+        <button onclick="setFilter('completed')" id="btn-completed" class="px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-600 hover:bg-slate-200">Đã tạo</button>
+        <button onclick="setFilter('pending')" id="btn-pending" class="px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-600 hover:bg-slate-200">Chưa tạo</button>
+      </div>
+      <input
+        type="text"
+        id="searchInput"
+        oninput="renderTable()"
+        placeholder="Tìm theo STT hoặc tên chủ đề..."
+        class="w-full sm:w-80 px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase text-slate-500">
+              <th class="py-3.5 px-4">STT</th>
+              <th class="py-3.5 px-4">Tên chủ đề</th>
+              <th class="py-3.5 px-4">Trạng thái</th>
+              <th class="py-3.5 px-4">Số lượng từ</th>
+              <th class="py-3.5 px-4">Thời gian tạo</th>
+              <th class="py-3.5 px-4 text-right">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody" class="divide-y divide-slate-200 text-sm"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Xem trước File Anki -->
+  <div id="previewModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-xl max-w-5xl w-full max-h-[85vh] flex flex-col overflow-hidden shadow-xl">
+      <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+        <h3 id="previewTitle" class="font-bold text-lg">Xem trước từ vựng</h3>
+        <button onclick="closePreview()" class="text-slate-400 hover:text-slate-600 text-xl">&times;</button>
+      </div>
+      <div class="p-6 overflow-y-auto flex-1">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="bg-slate-100 border-b">
+              <th class="p-2">#</th>
+              <th class="p-2">Từ vựng</th>
+              <th class="p-2">Gợi ý</th>
+              <th class="p-2">IPA</th>
+              <th class="p-2">Nghĩa Tiếng Việt</th>
+              <th class="p-2">Số nhiều</th>
+            </tr>
+          </thead>
+          <tbody id="previewBody" class="divide-y"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Cấu hình GitHub Token -->
+  <div id="settingsModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-xl">
+      <h3 class="font-bold text-lg mb-4">Cấu hình GitHub (Để bấm nút Tạo ngay)</h3>
+      <div class="space-y-4 text-sm">
+        <div>
+          <label class="block font-medium mb-1">GitHub Username / Owner</label>
+          <input id="ghOwner" type="text" placeholder="Ví dụ: letuanvinh" class="w-full px-3 py-2 border rounded-lg" />
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Tên Repository</label>
+          <input id="ghRepo" type="text" placeholder="Ví dụ: anki-generator" class="w-full px-3 py-2 border rounded-lg" />
+        </div>
+        <div>
+          <label class="block font-medium mb-1">GitHub Personal Access Token (PAT)</label>
+          <input id="ghToken" type="password" placeholder="ghp_xxxxxxxxxxxx" class="w-full px-3 py-2 border rounded-lg" />
+          <p class="text-xs text-slate-400 mt-1">Token chỉ lưu cục bộ trên trình duyệt của bạn (cần quyền <code>repo</code> hoặc <code>workflow</code>).</p>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 mt-6">
+        <button onclick="closeSettings()" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-600 text-sm">Đóng</button>
+        <button onclick="saveSettings()" class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium">Lưu cấu hình</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allTopics = [];
+    let currentFilter = 'all';
+
+    async function loadData() {
+      try {
+        const res = await fetch('./status.json?t=' + Date.now());
+        const data = await res.json();
+        allTopics = data.topics || [];
+        document.getElementById('lastUpdated').innerText = data.updated_at || 'Chưa có';
+        updateStats();
+        renderTable();
+      } catch (e) {
+        document.getElementById('lastUpdated').innerText = 'Chưa khởi tạo status.json (Hãy chạy Action lần đầu)';
+      }
+    }
+
+    function updateStats() {
+      const total = allTopics.length;
+      const completed = allTopics.filter(t => t.status === 'completed').length;
+      const pending = total - completed;
+      const words = allTopics.reduce((acc, t) => acc + (t.word_count || 0), 0);
+      const percent = total > 0 ? ((completed / total) * 100).toFixed(1) : 0;
+
+      document.getElementById('statTotal').innerText = total;
+      document.getElementById('statCompleted').innerText = completed;
+      document.getElementById('statPending').innerText = pending;
+      document.getElementById('statWords').innerText = words.toLocaleString();
+      document.getElementById('progressPercent').innerText = percent + '%';
+      document.getElementById('progressBar').style.width = percent + '%';
+    }
+
+    function setFilter(f) {
+      currentFilter = f;
+      ['all', 'completed', 'pending'].forEach(k => {
+        const btn = document.getElementById('btn-' + k);
+        btn.className = k === f
+          ? 'px-4 py-2 rounded-lg text-sm font-medium bg-slate-900 text-white'
+          : 'px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 text-slate-600 hover:bg-slate-200';
+      });
+      renderTable();
+    }
+
+    function renderTable() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      const tbody = document.getElementById('tableBody');
+      const filtered = allTopics.filter(t => {
+        if (currentFilter !== 'all' && t.status !== currentFilter) return false;
+        if (q && !String(t.stt).includes(q) && !t.topic.toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      tbody.innerHTML = filtered.map(t => {
+        const isDone = t.status === 'completed';
+        const badge = isDone
+          ? `<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">Đã tạo</span>`
+          : `<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700">Chưa tạo</span>`;
+
+        const actions = isDone
+          ? `<button onclick="previewFile(${t.stt}, '${t.topic.replace(/'/g, "\\'")}')" class="text-indigo-600 hover:underline mr-3 font-medium">Xem từ</button>
+             <a href="./output/${t.stt}.txt" download="${t.stt}.txt" class="text-emerald-600 hover:underline font-medium">Tải file</a>`
+          : `<button onclick="triggerWorkflow('1', '${t.stt}')" class="text-indigo-600 hover:underline font-medium">⚡ Tạo ngay</button>`;
+
+        return `
+          <tr class="hover:bg-slate-50">
+            <td class="py-3 px-4 font-semibold text-slate-700">#${t.stt}</td>
+            <td class="py-3 px-4 font-medium text-slate-900">${t.topic}</td>
+            <td class="py-3 px-4">${badge}</td>
+            <td class="py-3 px-4">${t.word_count || 0} / 100</td>
+            <td class="py-3 px-4 text-slate-500">${t.generated_at || '-'}</td>
+            <td class="py-3 px-4 text-right">${actions}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function previewFile(stt, topic) {
+      document.getElementById('previewTitle').innerText = `Chủ đề #${stt}: ${topic}`;
+      const tbody = document.getElementById('previewBody');
+      tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center">Đang tải dữ liệu...</td></tr>';
+      document.getElementById('previewModal').classList.remove('hidden');
+      document.getElementById('previewModal').classList.add('flex');
+
+      const res = await fetch(`./output/${stt}.txt?t=` + Date.now());
+      const text = await res.text();
+      const lines = text.split('\n').filter(l => l.trim());
+      tbody.innerHTML = lines.map((line, idx) => {
+        const cols = line.split('\t');
+        return `
+          <tr class="hover:bg-slate-50">
+            <td class="p-2 text-slate-400">${idx + 1}</td>
+            <td class="p-2 font-bold text-slate-800">${cols[0] || ''}</td>
+            <td class="p-2 font-mono text-slate-500">${cols[1] || ''}</td>
+            <td class="p-2 text-slate-600">${cols[2] || ''}</td>
+            <td class="p-2 text-emerald-700 font-medium">${cols[5] || ''}</td>
+            <td class="p-2 text-slate-500">${cols[7] || ''}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function closePreview() {
+      document.getElementById('previewModal').classList.add('hidden');
+      document.getElementById('previewModal').classList.remove('flex');
+    }
+
+    function openSettings() {
+      document.getElementById('ghOwner').value = localStorage.getItem('gh_owner') || '';
+      document.getElementById('ghRepo').value = localStorage.getItem('gh_repo') || '';
+      document.getElementById('ghToken').value = localStorage.getItem('gh_token') || '';
+      document.getElementById('settingsModal').classList.remove('hidden');
+      document.getElementById('settingsModal').classList.add('flex');
+    }
+
+    function closeSettings() {
+      document.getElementById('settingsModal').classList.add('hidden');
+      document.getElementById('settingsModal').classList.remove('flex');
+    }
+
+    function saveSettings() {
+      localStorage.setItem('gh_owner', document.getElementById('ghOwner').value.trim());
+      localStorage.setItem('gh_repo', document.getElementById('ghRepo').value.trim());
+      localStorage.setItem('gh_token', document.getElementById('ghToken').value.trim());
+      closeSettings();
+      alert('Đã lưu cấu hình GitHub!');
+    }
+
+    async function triggerWorkflow(batchSize, targetStt) {
+      const owner = localStorage.getItem('gh_owner');
+      const repo = localStorage.getItem('gh_repo');
+      const token = localStorage.getItem('gh_token');
+
+      if (!owner || !repo || !token) {
+        alert('Vui lòng bấm "⚙️ Cấu hình GitHub API" và điền thông tin trước khi dùng nút Tạo ngay!');
+        openSettings();
+        return;
+      }
+
+      const url = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/generate_anki.yml/dispatches`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/vnd.github+json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          ref: 'main',
+          inputs: {
+            batch_size: String(batchSize),
+            target_stt: String(targetStt)
+          }
+        })
+      });
+
+      if (res.status === 204) {
+        alert('Đã gửi lệnh tạo thành công! GitHub Actions đang chạy ngầm (mất khoảng 1-2 phút để hoàn tất và cập nhật lên web).');
+      } else {
+        const err = await res.text();
+        alert('Lỗi khi gọi GitHub API: ' + err);
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
