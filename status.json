@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01 09:40:14",
+  "updated_at": "2026-11-01 10:28:51",
   "topics": [
     {
       "stt": 1,
@@ -794,10 +794,11 @@
     {
       "stt": 90,
       "topic": "Vật liệu xây dựng (Construction Materials)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/90.txt",
-      "generated_at": null
+      "generated_at": "2026-11-01 10:28",
+      "last_error": null
     },
     {
       "stt": 91,
