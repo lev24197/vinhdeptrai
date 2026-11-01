@@ -82,7 +82,12 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
         f"- 'plural': plural noun form.\n"
         f"- 'example_1' and 'example_2': two distinct, complete example sentences in English (do not number them)."
     )
-    models_to_try = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
+    models_to_try = [
+        "gemini-3.1-flash-lite-preview",
+        "gemini-3-flash-preview",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+    ]
     for model_name in models_to_try:
         try:
             response = client.models.generate_content(
@@ -99,7 +104,7 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
                 return parsed.items
         except Exception as e:
             append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} gặp lỗi tạm thời: {str(e)}. Đang thử lại...", stt)
-            time.sleep(5)
+            time.sleep(6)
     raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} sau khi thử các model.")
 
 def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
