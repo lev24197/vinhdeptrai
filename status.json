@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01 10:37:11",
+  "updated_at": "2026-11-01 12:16:28",
   "topics": [
     {
       "stt": 1,
@@ -715,26 +715,29 @@
     {
       "stt": 80,
       "topic": "Cửa hàng thời trang và Khu mua sắm (Fashion Stores & Shopping Areas)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/80.txt",
-      "generated_at": null
+      "generated_at": "2026-11-01 12:05",
+      "last_error": null
     },
     {
       "stt": 81,
       "topic": "Các công trình công cộng trong thành phố (Public City Structures)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/81.txt",
-      "generated_at": null
+      "generated_at": "2026-11-01 12:09",
+      "last_error": null
     },
     {
       "stt": 82,
       "topic": "Tiền tệ và Ngân hàng (Currency & Banking)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/82.txt",
-      "generated_at": null
+      "generated_at": "2026-11-01 12:16",
+      "last_error": null
     },
     {
       "stt": 83,
@@ -1158,7 +1161,7 @@
       "stt": 135,
       "topic": "Đồ cổ và Trang trí (Antiques & Decors)",
       "status": "completed",
-      "word_count": 82,
+      "word_count": 100,
       "file_path": "output/135.txt",
       "generated_at": "2026-11-01 10:37",
       "last_error": null
