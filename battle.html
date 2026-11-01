@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Võ Đài Pixel RPG • The Anki Dictionary</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      background-color: #070913;
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(30, 27, 75, 0.6) 0%, transparent 60%),
+        linear-gradient(to bottom, #070913 0%, #0F111E 100%);
+      color: #F8FAFC;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .pixel-frame {
+      box-shadow: 0 0 0 3px #111, 0 0 0 6px #FFE787, 0 10px 25px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body class="h-screen max-h-screen w-screen overflow-hidden flex flex-col justify-between font-sans">
+
+  <!-- ==================== 1. THANH TOP BAR HUD (COMPACT & BOLD) ==================== -->
+  <header class="h-12 bg-[#10121F] border-b-2 border-[#111] px-3 sm:px-4 flex items-center justify-between shrink-0 shadow-md">
+    <!-- Nút về từ điển & Chọn hầm ngục -->
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="neo-btn px-2.5 py-1 bg-white hover:bg-slate-100 text-[#111] text-xs font-display font-extrabold flex items-center gap-1">
+        <span>⬅️</span> <span class="hidden sm:inline">Về Từ Điển</span>
+      </a>
+      <button onclick="openTopicSelectModal()" class="neo-btn px-2.5 py-1 bg-[#FF9F1C] text-[#111] text-xs font-display font-extrabold flex items-center gap-1 hover:bg-amber-400">
+        <span>🏰</span> <span class="hidden md:inline">Đổi Hầm Ngục</span>
+      </button>
+    </div>
+
+    <!-- Thông tin Dungeon & Wave hiện tại -->
+    <div class="flex items-center gap-2 text-center">
+      <span id="dungeonTopicBadge" class="font-display font-extrabold text-xs sm:text-sm text-[#FFE787] uppercase truncate max-w-[180px] sm:max-w-xs">
+        🏰 ĐANG TẢI HẦM NGỤC...
+      </span>
+      <span id="quizPlayBadge" class="tid-badge-num bg-[#DC2626] text-white text-[10px] sm:text-xs">
+        ẢI 1/10
+      </span>
+    </div>
+
+    <!-- Thông tin nhân vật RPG & Vàng -->
+    <div class="flex items-center gap-2">
+      <div id="battleHeroHud" class="flex items-center gap-2 bg-[#1B1E32] border border-slate-700 px-2.5 py-1 rounded">
+        <span id="hudHeroAvatar" class="text-sm">🦁</span>
+        <span id="hudHeroClass" class="text-xs font-mono-code font-bold text-amber-300 hidden sm:inline">Lv.1</span>
+        <span class="text-xs font-mono-code font-bold text-red-400">❤️ <span id="hudHeroHp">100/100</span></span>
+        <span class="text-xs font-mono-code font-bold text-blue-400 hidden sm:inline">🔮 <span id="hudHeroMp">40/40</span></span>
+        <span class="text-xs font-mono-code font-bold text-yellow-400">🪙 <span id="hudHeroGold">100</span></span>
+      </div>
+      <button onclick="toggleAudioMute()" id="btnAudioMute" class="neo-btn w-8 h-8 bg-[#111] text-white text-xs font-bold flex items-center justify-center hover:bg-slate-800" title="Bật/Tắt Âm thanh">
+        🔊
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== 2. KHU VỰC SÂN ĐẤU CANVAS PIXEL RPG ==================== -->
+  <main class="flex-1 flex flex-col justify-between p-2 sm:p-3 overflow-hidden max-w-5xl mx-auto w-full">
+    
+    <!-- Khung Canvas Battle Arena -->
+    <div class="relative w-full overflow-hidden neo-box bg-[#0B0D17] border-[2.5px] border-[#111] shadow-[3px_3px_0px_#FFE787] flex-1 max-h-[42vh] flex items-center justify-center">
+      <canvas id="pixelBattleCanvas" class="w-full h-full object-contain block" width="800" height="260"></canvas>
+      
+      <!-- Cảnh báo Trùm Cuối (Popup ẩn) -->
+      <div id="bossWarningBanner" class="hidden absolute top-4 left-1/2 -translate-x-1/2 bg-red-600 border-2 border-white text-white px-4 py-1.5 font-display font-extrabold text-xs uppercase tracking-wider shadow-lg animate-pulse">
+        ⚠️ CẢNH BÁO: TRÙM CUỐI HẮC LONG XUẤT HIỆN! ⚠️
+      </div>
+    </div>
+
+    <!-- Thanh thao tác Kỹ Năng & Vật Phẩm Tác Chiến -->
+    <div class="flex flex-wrap items-center justify-between gap-2 bg-[#FFE787] text-[#111] border-2 border-[#111] px-3 py-1.5 my-1 shadow-[2px_2px_0px_#111] shrink-0">
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button id="battleBtnSkill" type="button" class="neo-btn px-3 py-1 bg-[#141414] text-white text-[11px] sm:text-xs font-display font-extrabold flex items-center gap-1 hover:bg-slate-800">
+          <span id="battleSkillLabel">⚔️ Cuồng Trảm (20 MP)</span>
+        </button>
+        <button id="battleBtnHpPotion" type="button" class="neo-btn px-2.5 py-1 bg-red-600 text-white text-[11px] sm:text-xs font-display font-extrabold flex items-center gap-1 hover:bg-red-700" title="Hồi phục +50 HP">
+          <span>🧪 Máu (<span id="battleHpPotionCount">0</span>)</span>
+        </button>
+        <button id="battleBtnMpPotion" type="button" class="neo-btn px-2.5 py-1 bg-blue-600 text-white text-[11px] sm:text-xs font-display font-extrabold flex items-center gap-1 hover:bg-blue-700" title="Hồi phục +40 MP">
+          <span>🔮 MP (<span id="battleMpPotionCount">0</span>)</span>
+        </button>
+        <button onclick="useHintScrollInQuiz()" id="battleBtnHint" type="button" class="neo-btn px-2.5 py-1 bg-white text-[#111] text-[11px] sm:text-xs font-display font-extrabold flex items-center gap-1 hover:bg-slate-100" title="Loại bỏ 2 đáp án sai">
+          <span>📜 Gợi Ý (<span id="quizHintScrollCount">0</span>)</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1 font-mono-code font-extrabold text-xs text-amber-900">
+          <span>🔥 Combo:</span>
+          <b id="quizStreakCount" class="text-base text-red-600">0</b>
+          <span id="quizComboMultiplier" class="hidden text-[10px] bg-red-600 text-white px-1 rounded font-bold">x1.5</span>
+        </div>
+        <div class="font-mono-code text-xs font-bold hidden sm:inline text-slate-800">
+          ĐIỂM: <span id="quizCurrentScore" class="font-display font-extrabold text-sm text-[#111]">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 3. KHU VỰC CÂU HỎI & 4 LỰA CHỌN TRẮC NGHIỆM ==================== -->
+    <div class="neo-box bg-white text-[#111] p-3 sm:p-4 space-y-2.5 flex-col justify-between shrink-0 shadow-[4px_4px_0px_#111]">
+      
+      <!-- Hàng trên: Phụ đề, Từ vựng chính & Nút nghe phát âm -->
+      <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
+        <div class="flex items-center gap-2">
+          <span id="quizQuestionLevelBadge" class="tid-badge-num bg-[#169C64] text-white text-[10px]">A2-B2 GIAO TIẾP</span>
+          <span id="quizPromptSubtitle" class="text-xs font-bold text-slate-500 uppercase">Dịch từ vựng sau:</span>
+        </div>
+        <button onclick="speakCurrentQuizPrompt()" class="neo-btn px-2 py-0.5 bg-[#FFE787] text-[#111] text-xs font-extrabold flex items-center gap-1 hover:bg-amber-300">
+          🔊 <span class="hidden sm:inline">Phát âm</span>
+        </button>
+      </div>
+
+      <!-- Từ vựng hiển thị nổi bật -->
+      <div class="text-center py-1">
+        <div class="flex items-center justify-center gap-2">
+          <h2 id="quizPromptMain" class="font-display font-extrabold text-2xl sm:text-4xl text-[#111] tracking-tight">
+            Word
+          </h2>
+          <span id="quizPromptIpa" class="font-mono-code text-xs sm:text-sm font-bold text-slate-500">/ipa/</span>
+        </div>
+        <p id="quizPromptHint" class="text-xs text-slate-500 italic max-w-md mx-auto truncate mt-0.5"></p>
+      </div>
+
+      <!-- 4 Nút Lựa Chọn Trắc Nghiệm 2x2 Cực Rõ Nét -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="quizOptionsContainer">
+        <!-- 4 Lựa chọn A, B, C, D được render tự động -->
+      </div>
+
+      <!-- Hộp giải thích khi trả lời xong -->
+      <div id="quizExplainBox" class="hidden bg-amber-50 border-2 border-[#111] p-2 text-xs flex items-center justify-between gap-2">
+        <div id="quizFeedbackStatus" class="font-bold flex items-center gap-1">
+          <!-- Đúng / Sai -->
+        </div>
+        <button id="quizNextBtn" onclick="nextQuizCard()" class="neo-btn px-4 py-1.5 bg-[#141414] text-white font-display font-extrabold text-xs uppercase hover:bg-slate-800">
+          CÂU TIẾP THEO ➔
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== MODAL CHỌN HẦM NGỤC / CHỦ ĐỀ ==================== -->
+  <div id="topicSelectModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4 z-50">
+    <div class="neo-box bg-[#F8F7F2] text-[#111] max-w-xl w-full p-5 space-y-4 max-h-[85vh] flex flex-col justify-between">
+      <div class="flex items-center justify-between border-b-2 border-[#111] pb-2">
+        <div class="flex items-center gap-2">
+          <span class="tid-badge-num bg-[#FF9F1C]">CHỌN ẢI</span>
+          <h3 class="font-display font-extrabold text-base uppercase">CHỌN HẦM NGỤC TỪ VỰNG MUỐN CHINH PHỤC</h3>
+        </div>
+        <button onclick="closeTopicSelectModal()" class="neo-btn w-7 h-7 bg-white font-bold flex items-center justify-center text-xs hover:bg-red-500 hover:text-white">✕</button>
+      </div>
+
+      <div class="space-y-2">
+        <input type="text" id="modalTopicSearch" oninput="filterTopicModalList()" placeholder="🔍 Tìm tên hầm ngục (chủ đề)..." class="neo-box-sm w-full px-3 py-1.5 text-xs bg-white font-bold" />
+        <div id="modalTopicGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[300px] overflow-y-auto pr-1">
+          <!-- Sẽ được nạp danh sách chủ đề hoàn thành -->
+        </div>
+      </div>
+
+      <div class="pt-2 border-t-2 border-[#111] flex justify-between items-center">
+        <span class="text-xs text-slate-500 font-bold" id="modalTopicCountLabel">0 hầm ngục khả dụng</span>
+        <button onclick="closeTopicSelectModal()" class="neo-btn px-4 py-1.5 bg-white text-xs font-extrabold">ĐÓNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL CHIẾN THẮNG / TỔNG KẾT DUNGEON ==================== -->
+  <div id="battleVictoryModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center p-4 z-50">
+    <div class="neo-box bg-[#FFE787] text-[#111] max-w-md w-full p-6 text-center space-y-4 border-4 border-[#111] shadow-[8px_8px_0px_#111]">
+      <div class="text-6xl animate-bounce">🏆</div>
+      <span class="tid-badge-num bg-[#111] text-[#FFE787] px-3 py-1 text-sm">DUNGEON CLEARED!</span>
+      <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight">HẦM NGỤC ĐÃ ĐƯỢC CHINH PHỤC!</h2>
+      <p class="text-xs font-semibold text-slate-800">
+        Bạn đã tiêu diệt toàn bộ quái vật và đánh bại Trùm Cuối thành công rực rỡ!
+      </p>
+
+      <!-- Phần thưởng nhận được -->
+      <div class="grid grid-cols-3 gap-2 bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111]">
+        <div>
+          <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Kinh nghiệm</div>
+          <div class="font-display font-extrabold text-base text-[#199A5E]">+100 EXP</div>
+        </div>
+        <div>
+          <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Kho Vàng</div>
+          <div class="font-display font-extrabold text-base text-yellow-600">+35 🪙</div>
+        </div>
+        <div>
+          <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Kim Cương</div>
+          <div class="font-display font-extrabold text-base text-blue-600">+2 💎</div>
+        </div>
+      </div>
+
+      <div class="flex gap-2 justify-center pt-2">
+        <button onclick="restartCurrentDungeon()" class="neo-btn px-5 py-2.5 bg-[#141414] text-white font-display font-extrabold text-xs uppercase hover:bg-slate-800">
+          ⚔️ ĐÁNH TIẾP LƯỢT MỚI
+        </button>
+        <a href="index.html" class="neo-btn px-4 py-2.5 bg-white text-[#111] font-display font-extrabold text-xs uppercase hover:bg-slate-100 flex items-center">
+          ⬅️ VỀ TỪ ĐIỂN
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Các script ẩn để quiz.js chạy tương thích -->
+  <div class="hidden">
+    <div id="quizView-setup"></div>
+    <div id="quizView-play"></div>
+    <div id="quizView-result"></div>
+    <div id="quizPlayProgressBar"></div>
+    <div id="quizPlayTopicName"></div>
+    <span id="quizPlayerBadge"></span>
+    <span id="quizExpWordTitle"></span>
+    <span id="quizExpIpa"></span>
+    <span id="quizExpPlural"></span>
+    <span id="quizExpDef"></span>
+    <span id="quizExpVi"></span>
+    <div id="quizExpExamples"></div>
+  </div>
+
+  <!-- ==================== CÁC MODULE JAVASCRIPT ==================== -->
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/quiz.js"></script>
+
+  <script>
+    let activeDungeonStt = null;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1. Khởi tạo tài khoản Supabase / Local
+      if (typeof initAuthSystem === 'function') await initAuthSystem();
+      
+      // 2. Nạp cơ sở dữ liệu từ status.json
+      await loadData(false);
+
+      // 3. Khởi tạo sân đấu Battle Canvas
+      BattleEngine.init('pixelBattleCanvas');
+
+      // 4. Lấy STT từ URL param ?stt=... hoặc chọn chủ đề completed đầu tiên
+      const params = new URLSearchParams(window.location.search);
+      const urlStt = parseInt(params.get('stt'), 10);
+
+      const completed = allTopics.filter(t => t.status === 'completed');
+      if (urlStt && completed.some(t => t.stt === urlStt)) {
+        activeDungeonStt = urlStt;
+      } else if (completed.length > 0) {
+        activeDungeonStt = completed[0].stt;
+      }
+
+      startDungeonSession(activeDungeonStt);
+      updateTopHud();
+    });
+
+    function updateTopHud() {
+      if (typeof currentRpgUser !== 'undefined' && currentRpgUser) {
+        document.getElementById('hudHeroAvatar').innerText = currentRpgUser.avatar || '🦁';
+        document.getElementById('hudHeroClass').innerText = `Lv.${currentRpgUser.level || 1}`;
+        document.getElementById('hudHeroHp').innerText = `${currentRpgUser.hp}/${currentRpgUser.max_hp}`;
+        document.getElementById('hudHeroMp').innerText = `${currentRpgUser.mp}/${currentRpgUser.max_mp}`;
+        document.getElementById('hudHeroGold').innerText = currentRpgUser.gold || 0;
+      }
+    }
+
+    async function startDungeonSession(stt) {
+      if (!stt) {
+        const completed = allTopics.filter(t => t.status === 'completed');
+        if (completed.length > 0) stt = completed[0].stt;
+        else return;
+      }
+
+      activeDungeonStt = stt;
+      const topicObj = allTopics.find(t => t.stt === stt) || { topic: `Chủ đề #${stt}` };
+      const badge = document.getElementById('dungeonTopicBadge');
+      if (badge) badge.innerText = `🏰 #${stt} ${topicObj.topic}`;
+
+      quizSelectedStts = new Set([stt]);
+      quizTargetQuestionCount = 10;
+      quizGameMode = 'rpg';
+
+      await startQuizSession();
+      updateTopHud();
+    }
+
+    // Khi quái vật chết -> Tự động chuyển tiếp câu hỏi mượt mà sau hiệu ứng nổ
+    window.onMonsterSlainCallback = function() {
+      setTimeout(() => {
+        if (quizCurrentIdx < quizQuestions.length - 1) {
+          nextQuizCard();
+        } else {
+          // Trùm cuối bị tiêu diệt -> Mở popup vinh danh
+          showDungeonVictory();
+        }
+      }, 700);
+    };
+
+    function showDungeonVictory() {
+      BattleEngine.stopBattle();
+      if (typeof addXP === 'function') addXP(100, 'Chinh phục Dungeon');
+      if (typeof addCoins === 'function') addCoins(35, 'Thưởng Rương Boss');
+      if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
+
+      const modal = document.getElementById('battleVictoryModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+      updateTopHud();
+    }
+
+    function restartCurrentDungeon() {
+      const modal = document.getElementById('battleVictoryModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+      startDungeonSession(activeDungeonStt);
+    }
+
+    // Modal chọn Hầm ngục
+    function openTopicSelectModal() {
+      const modal = document.getElementById('topicSelectModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      renderTopicModalList();
+    }
+
+    function closeTopicSelectModal() {
+      const modal = document.getElementById('topicSelectModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function renderTopicModalList() {
+      const container = document.getElementById('modalTopicGrid');
+      if (!container) return;
+      const completed = allTopics.filter(t => t.status === 'completed');
+      const q = (document.getElementById('modalTopicSearch')?.value || '').toLowerCase().trim();
+
+      const filtered = completed.filter(t => !q || t.topic.toLowerCase().includes(q) || String(t.stt).includes(q));
+      document.getElementById('modalTopicCountLabel').innerText = `${filtered.length} hầm ngục khả dụng`;
+
+      container.innerHTML = filtered.map(t => `
+        <button onclick="selectDungeonFromModal(${t.stt})" class="neo-btn p-2.5 text-left bg-white hover:bg-[#FFE787] flex items-center justify-between gap-2 transition ${t.stt === activeDungeonStt ? 'bg-[#FFE787] border-[#111]' : ''}">
+          <div class="truncate">
+            <span class="font-mono-code text-[10px] font-extrabold bg-[#111] text-white px-1 py-0.5 rounded">#${t.stt}</span>
+            <span class="text-xs font-bold ml-1">${t.topic}</span>
+          </div>
+          <span class="text-[10px] font-mono-code font-bold text-slate-500 shrink-0">100 từ</span>
+        </button>
+      `).join('');
+    }
+
+    function filterTopicModalList() {
+      renderTopicModalList();
+    }
+
+    function selectDungeonFromModal(stt) {
+      closeTopicSelectModal();
+      startDungeonSession(stt);
+    }
+
+    function toggleAudioMute() {
+      BattleEngine.soundMuted = !BattleEngine.soundMuted;
+      document.getElementById('btnAudioMute').innerText = BattleEngine.soundMuted ? '🔇' : '🔊';
+    }
+  </script>
+</body>
+</html>

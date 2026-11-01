@@ -162,6 +162,7 @@ function renderTable() {
     let actions = '';
     if (isDone) {
       actions = `
+        <a href="battle.html?stt=${t.stt}" class="px-2 py-1 bg-[#FF9F1C] text-[#111] hover:bg-amber-400 rounded text-xs font-extrabold shadow-sm inline-block" title="Vào đánh quái cày cấp với chủ đề này">⚔️ Đấu Quái</a>
         <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-[#141414] text-white hover:bg-slate-800 rounded text-xs font-bold shadow-sm">Xem / Sửa</button>
         <button onclick="downloadSingleFile(${t.stt})" class="px-2 py-1 bg-[#3F6AE4] text-white hover:bg-blue-600 rounded text-xs font-bold">⬇ .TXT</button>
         <button onclick="triggerWorkflow('1', '${t.stt}')" class="px-2 py-1 bg-white hover:bg-amber-100 border border-[#111] rounded text-[11px] font-bold" title="Tạo lại chủ đề này">↻ Tạo lại</button>
