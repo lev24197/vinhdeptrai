@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01 11:08:08",
+  "updated_at": "2026-11-01 11:13:31",
   "topics": [
     {
       "stt": 1,
@@ -706,10 +706,11 @@
     {
       "stt": 79,
       "topic": "Hạ tầng giao thông đô thị (Urban Traffic Infrastructure)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/79.txt",
-      "generated_at": null
+      "generated_at": "2026-11-01 11:13",
+      "last_error": null
     },
     {
       "stt": 80,
