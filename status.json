@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-31 19:42:00",
+  "updated_at": "2026-11-01 09:12:49",
   "topics": [
     {
       "stt": 1,
@@ -7,623 +7,701 @@
       "status": "completed",
       "word_count": 100,
       "file_path": "output/1.txt",
-      "generated_at": "2026-10-31 14:57"
+      "generated_at": "2026-10-31 14:57",
+      "last_error": null
     },
     {
       "stt": 2,
       "topic": "Văn hóa quán cà phê và Đồ uống (Cafe Culture & Beverages)",
       "status": "completed",
-      "word_count": 100,
+      "word_count": 102,
       "file_path": "output/2.txt",
-      "generated_at": "2026-10-31 19:42"
+      "generated_at": "2026-10-31 19:42",
+      "last_error": null
     },
     {
       "stt": 3,
       "topic": "Ẩm thực và Các loại lẩu (Culinary Arts & Hotpots)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 102,
       "file_path": "output/3.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 4,
       "topic": "Gia đình và Người thân (Family & Relatives)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 102,
       "file_path": "output/4.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 5,
       "topic": "Các bộ phận trên cơ thể người (Human Body Parts)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 102,
       "file_path": "output/5.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 6,
       "topic": "Đồ nội thất và Vật dụng gia đình (Furniture & Household Items)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/6.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 7,
       "topic": "Các loại bệnh và Triệu chứng y khoa (Diseases & Medical Symptoms)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/7.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 8,
       "topic": "Các tổ chức tình nguyện và Từ thiện (Volunteer & Charity Organizations)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/8.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 9,
       "topic": "Ngành nghề và Chức danh công việc (Professions & Job Titles)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/9.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 10,
       "topic": "Tính cách và Cảm xúc con người (Personality Traits & Emotions)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/10.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 11,
       "topic": "Tín ngưỡng và Tôn giáo (Beliefs & Religions)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/11.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 12,
       "topic": "Pháp luật và Các loại tội phạm (Law & Crimes)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/12.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 13,
       "topic": "Dụng cụ vệ sinh và Chăm sóc cá nhân (Hygiene & Personal Care Items)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/13.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 14,
       "topic": "Văn hóa và Phong tục tập quán (Cultures & Customs)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/14.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 15,
       "topic": "Chính phủ và Các cơ quan nhà nước (Government & State Agencies)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/15.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 16,
       "topic": "Dụng cụ và Trang thiết bị y tế (Medical Tools & Equipment)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/16.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 17,
       "topic": "Báo chí và Phương tiện truyền thông (Media & Broadcasting)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/17.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 18,
       "topic": "Các giai đoạn trong cuộc đời (Stages of Life)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/18.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 19,
       "topic": "Vật dụng và Thiết bị nhà bếp (Kitchen Appliances & Utensils)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/19.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 20,
       "topic": "Phòng ngủ và Giấc ngủ (Bedrooms & Sleep)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/20.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 21,
       "topic": "Sự kiện, Lễ hội và Tiệc tùng (Events, Festivals & Parties)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/21.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 22,
       "topic": "Các môn Thể thao đồng đội (Team Sports)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/22.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 23,
       "topic": "Dụng cụ tập thể hình (Gym & Fitness Equipment)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/23.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 24,
       "topic": "Đồ chơi và Trò chơi truyền thống (Toys & Traditional Games)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/24.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 25,
       "topic": "Các loại hình nghệ thuật biểu diễn (Performing Arts)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/25.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 26,
       "topic": "Địa lý tự nhiên và Địa hình (Physical Geography & Topography)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/26.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 27,
       "topic": "Trường đại học và Đời sống sinh viên (University & Student Life)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/27.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 28,
       "topic": "Các loại nhạc cụ (Musical Instruments)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/28.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 29,
       "topic": "Thuật ngữ âm nhạc và Bản nhạc (Music Theory & Sheet Music)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/29.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 30,
       "topic": "Trò chơi điện tử trên PC và Mobile (PC & Mobile Video Games)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/30.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 31,
       "topic": "Khóa luận và Nghiên cứu khoa học (Theses & Academic Research)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/31.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 32,
       "topic": "Văn phòng phẩm và Dụng cụ học tập (Stationery & School Supplies)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/32.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 33,
       "topic": "Các kỳ thi ngôn ngữ và Chứng chỉ (Language Exams & Certificates)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/33.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 34,
       "topic": "Câu lạc bộ và Các ban chuyên môn sinh viên (Clubs & Student Departments)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/34.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 35,
       "topic": "Nhiếp ảnh và Thiết bị quay chụp (Photography & Camera Gear)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/35.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 36,
       "topic": "Điện ảnh và Phim trường (Cinema & Movie Sets)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/36.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 37,
       "topic": "Hội họa và Mỹ thuật (Painting & Fine Arts)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/37.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 38,
       "topic": "Ký túc xá và Không gian lưu trú sinh viên (Dormitories & Student Housing)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/38.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 39,
       "topic": "Các môn học hàn lâm (Academic Subjects)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/39.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 40,
       "topic": "Trang thiết bị phòng thí nghiệm (Laboratory Equipment)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/40.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 41,
       "topic": "Sách và Các thể loại văn học (Books & Literary Genres)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/41.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 42,
       "topic": "Buổi hòa nhạc và Sân khấu biểu diễn (Concerts & Stages)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/42.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 43,
       "topic": "Lịch sử và Di tích lịch sử (History & Historical Monuments)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/43.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 44,
       "topic": "Thư viện và Tài liệu học thuật (Libraries & Academic Resources)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/44.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 45,
       "topic": "Thể thao mạo hiểm (Extreme Sports)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/45.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 46,
       "topic": "Ngôn ngữ học và Từ vựng học (Linguistics & Lexicology)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/46.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 47,
       "topic": "Đồ thủ công mỹ nghệ (Handicrafts)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/47.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 48,
       "topic": "Truyện tranh và Phim hoạt hình (Comics & Animation)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/48.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 49,
       "topic": "Giải thưởng và Danh hiệu học thuật (Academic Awards & Titles)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/49.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 50,
       "topic": "Nhạc kịch và Sân khấu kịch (Musicals & Theater)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/50.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 51,
       "topic": "Khám phá vùng đồi núi (Mountain Exploration)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/51.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 52,
       "topic": "Hiện tượng thời tiết và Khí hậu (Weather Phenomena & Climate)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/52.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 53,
       "topic": "Thực vật và Rừng (Flora & Forests)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/53.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 54,
       "topic": "Động vật hoang dã (Wild Fauna)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/54.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 55,
       "topic": "Đại dương và Bờ biển (Oceans & Coastlines)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/55.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 56,
       "topic": "Thảm họa thiên nhiên (Natural Disasters)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/56.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 57,
       "topic": "Côn trùng và Vi sinh vật (Insects & Microorganisms)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/57.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 58,
       "topic": "Vũ trụ và Hệ mặt trời (Space & Solar System)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/58.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 59,
       "topic": "Các loại khoáng sản và Đá (Minerals & Rocks)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/59.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 60,
       "topic": "Bảo vệ môi trường và Rác thải (Environmental Protection & Waste)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/60.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 61,
       "topic": "Linh kiện máy tính (Computer Hardware components)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/61.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 62,
       "topic": "Phần mềm và Ứng dụng di động (Software & Mobile Apps)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/62.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 63,
       "topic": "Mạng Internet và Mạng xã hội (Internet & Social Media)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/63.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 64,
       "topic": "Trí tuệ nhân tạo và Robot (Artificial Intelligence & Robotics)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/64.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 65,
       "topic": "Đồ điện tử dân dụng (Consumer Electronics)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/65.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 66,
       "topic": "Nguyên tố và Phản ứng hóa học (Chemical Elements & Reactions)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/66.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 67,
       "topic": "Sinh học và Di truyền (Biology & Genetics)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/67.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 68,
       "topic": "Các phát minh khoa học (Scientific Inventions)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/68.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 69,
       "topic": "Công nghệ sinh học (Biotechnology)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/69.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 70,
       "topic": "Hệ thống đơn vị đo lường (Systems of Measurement)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/70.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 71,
       "topic": "Vật lý và Các lực tự nhiên (Physics & Natural Forces)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/71.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 72,
       "topic": "Các nguồn năng lượng (Energy Sources)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/72.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 73,
       "topic": "Nông nghiệp và Trồng trọt (Agriculture & Farming)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/73.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 74,
       "topic": "Hệ sinh thái (Ecosystems)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/74.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 75,
       "topic": "Thiết bị viễn thông (Telecommunication Devices)",
       "status": "completed",
-      "word_count": 0,
+      "word_count": 100,
       "file_path": "output/75.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": null
     },
     {
       "stt": 76,
       "topic": "Thương mại điện tử và Mua sắm trực tuyến (E-commerce & Online Shopping)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/76.txt",
-      "generated_at": null
+      "generated_at": null,
+      "last_error": "Không thể gọi Gemini API cho chủ đề #76 sau khi thử các model."
     },
     {
       "stt": 77,
       "topic": "Ứng dụng gọi xe và Dịch vụ giao hàng (Ride-hailing & Delivery Services)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/77.txt",
-      "generated_at": null
+      "generated_at": "2026-11-01 09:09",
+      "last_error": null
     },
     {
       "stt": 78,
       "topic": "Phương tiện giao thông đường bộ (Road Vehicles)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/78.txt",
-      "generated_at": null
+      "generated_at": "2026-11-01 09:12",
+      "last_error": null
     },
     {
       "stt": 79,
