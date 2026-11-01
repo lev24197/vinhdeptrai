@@ -73,15 +73,19 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
 
     if mode == "advanced":
         mode_instruction = (
-            f"CATEGORY: ADVANCED & ACADEMIC NOUNS (CEFR C1-C2 level, IELTS 7.5+, formal, journalistic & professional English).\n"
-            f"- Select sophisticated, nuanced, analytical concepts, phenomena, or domain-specific nouns related to the topic.\n"
-            f"- AVOID basic conversational or elementary words.\n"
-            f"- Ensure words are practically useful in high-level writing, discussions, and professional contexts (no archaic or obsolete words)."
+            f"CATEGORY: ADVANCED SPECIALIZED & TECHNICAL NOUNS DIRECTLY BELONGING TO '{topic_vi}' (C1-C2 level, domain-specific terminology).\n"
+            f"STRICT REQUIREMENTS FOR ADVANCED NOUNS:\n"
+            f"1. EVERY SINGLE WORD MUST BE A CONCRETE, TECHNICAL, OR DOMAIN-SPECIFIC NOUN (single noun or standard compound noun) that physically or specifically belongs to '{topic_vi}'.\n"
+            f"   - Name actual physical structures, specialized components, technical installations, distinct facilities, dedicated tools, materials, or distinct specialized sub-types of '{topic_vi}'.\n"
+            f"2. ABSOLUTELY FORBIDDEN - DO NOT GENERATE GENERIC ABSTRACT ESSAY WORDS:\n"
+            f"   - NEVER include general academic meta-words or abstract qualities such as: 'paradigm', 'efficacy', 'amelioration', 'prognosis', 'disbursement', 'constraint', 'resilience', 'sustainability', 'governance', 'policy', 'framework', 'incentive', 'stakeholder', 'trajectory', 'optimization', 'vulnerability', 'scalability', 'interoperability', 'modality', 'feasibility', etc.\n"
+            f"3. NO ADJECTIVES, NO VERBS, NO VAGUE ESSAY WORDS: Must be 100% authentic nouns representing real, tangible or technical elements of '{topic_vi}' that an engineer, technician, or field specialist in this topic would work with.\n"
+            f"4. The word must be strictly relevant and deeply anchored in the real-world context of '{topic_vi}'."
         )
     else:
         mode_instruction = (
             f"CATEGORY: PRACTICAL CONVERSATIONAL NOUNS (CEFR A2-B2 level, daily communication & spoken English).\n"
-            f"- Select natural, highly useful, and frequent nouns that native speakers actually use in daily conversations and real-life scenarios related to this topic.\n"
+            f"- Select natural, highly useful, and frequent concrete nouns that native speakers actually use in daily conversations and real-life scenarios related to '{topic_vi}'.\n"
             f"- AVOID overly simplistic or childish words (unless fundamental), focusing on solid practical communicative nouns."
         )
 
