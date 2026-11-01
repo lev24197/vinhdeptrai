@@ -1070,8 +1070,12 @@ const BattleEngine = {
   onMonsterDeathComplete: function() {
     RetroAudio.playVictory();
     // Báo cho giao diện biết quái đã chết để chuyển tiếp câu hỏi hoặc qua wave
-    if (typeof onMonsterSlainCallback === 'function') {
+    if (typeof window.onMonsterSlainCallback === 'function') {
+      window.onMonsterSlainCallback();
+    } else if (typeof onMonsterSlainCallback === 'function') {
       onMonsterSlainCallback();
+    } else if (typeof nextQuizCard === 'function') {
+      setTimeout(() => { nextQuizCard(); }, 600);
     }
   },
 

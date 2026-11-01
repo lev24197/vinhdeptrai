@@ -210,8 +210,11 @@
     </div>
   </div>
 
-  <!-- Các script ẩn để quiz.js chạy tương thích -->
+  <!-- Các thẻ ẩn để quiz.js chạy tương thích tuyệt đối mà không cần DOM ngoài -->
   <div class="hidden">
+    <select id="quizLevelSelect"><option value="all" selected>All</option></select>
+    <select id="quizModeSelect"><option value="mixed" selected>Mixed</option></select>
+    <select id="quizEngineModeSelect"><option value="rpg" selected>RPG</option></select>
     <div id="quizView-setup"></div>
     <div id="quizView-play"></div>
     <div id="quizView-result"></div>
@@ -235,12 +238,18 @@
   <script>
     let activeDungeonStt = null;
 
-    document.addEventListener('DOMContentLoaded', async () => {
+    async function bootBattlePage() {
       // 1. Khởi tạo tài khoản Supabase / Local
-      if (typeof initAuthSystem === 'function') await initAuthSystem();
+      if (typeof initAuthSystem === 'function') {
+        try { await initAuthSystem(); } catch (e) { console.warn('Auth init warn:', e); }
+      }
       
       // 2. Nạp cơ sở dữ liệu từ status.json
-      await loadData(false);
+      try {
+        await loadData(false);
+      } catch (e) {
+        console.error('Lỗi nạp status.json:', e);
+      }
 
       // 3. Khởi tạo sân đấu Battle Canvas
       BattleEngine.init('pixelBattleCanvas');
@@ -249,36 +258,50 @@
       const params = new URLSearchParams(window.location.search);
       const urlStt = parseInt(params.get('stt'), 10);
 
-      const completed = allTopics.filter(t => t.status === 'completed');
+      const completed = (allTopics || []).filter(t => t.status === 'completed');
       if (urlStt && completed.some(t => t.stt === urlStt)) {
         activeDungeonStt = urlStt;
       } else if (completed.length > 0) {
         activeDungeonStt = completed[0].stt;
+      } else {
+        activeDungeonStt = 1; // Fallback chủ đề 1
       }
 
-      startDungeonSession(activeDungeonStt);
+      await startDungeonSession(activeDungeonStt);
       updateTopHud();
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bootBattlePage);
+    } else {
+      bootBattlePage();
+    }
 
     function updateTopHud() {
-      if (typeof currentRpgUser !== 'undefined' && currentRpgUser) {
-        document.getElementById('hudHeroAvatar').innerText = currentRpgUser.avatar || '🦁';
-        document.getElementById('hudHeroClass').innerText = `Lv.${currentRpgUser.level || 1}`;
-        document.getElementById('hudHeroHp').innerText = `${currentRpgUser.hp}/${currentRpgUser.max_hp}`;
-        document.getElementById('hudHeroMp').innerText = `${currentRpgUser.mp}/${currentRpgUser.max_mp}`;
-        document.getElementById('hudHeroGold').innerText = currentRpgUser.gold || 0;
+      const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : (typeof currentAccount !== 'undefined' ? currentAccount : null);
+      if (user) {
+        const avatarEl = document.getElementById('hudHeroAvatar');
+        if (avatarEl) avatarEl.innerText = user.avatar || '🦁';
+        const classEl = document.getElementById('hudHeroClass');
+        if (classEl) classEl.innerText = `Lv.${user.level || 1}`;
+        const hpEl = document.getElementById('hudHeroHp');
+        if (hpEl) hpEl.innerText = `${user.hp || 100}/${user.max_hp || 100}`;
+        const mpEl = document.getElementById('hudHeroMp');
+        if (mpEl) mpEl.innerText = `${user.mp || 40}/${user.max_mp || 40}`;
+        const goldEl = document.getElementById('hudHeroGold');
+        if (goldEl) goldEl.innerText = user.gold || 0;
       }
     }
 
     async function startDungeonSession(stt) {
       if (!stt) {
-        const completed = allTopics.filter(t => t.status === 'completed');
+        const completed = (allTopics || []).filter(t => t.status === 'completed');
         if (completed.length > 0) stt = completed[0].stt;
-        else return;
+        else stt = 1;
       }
 
       activeDungeonStt = stt;
-      const topicObj = allTopics.find(t => t.stt === stt) || { topic: `Chủ đề #${stt}` };
+      const topicObj = (allTopics || []).find(t => t.stt === stt) || { topic: `Chủ đề #${stt}` };
       const badge = document.getElementById('dungeonTopicBadge');
       if (badge) badge.innerText = `🏰 #${stt} ${topicObj.topic}`;
 
@@ -286,7 +309,12 @@
       quizTargetQuestionCount = 10;
       quizGameMode = 'rpg';
 
-      await startQuizSession();
+      try {
+        await startQuizSession();
+      } catch (err) {
+        console.error('Lỗi khi nạp chủ đề hầm ngục:', err);
+        alert('Lỗi nạp bài học hầm ngục: ' + err.message);
+      }
       updateTopHud();
     }
 
@@ -345,17 +373,23 @@
     function renderTopicModalList() {
       const container = document.getElementById('modalTopicGrid');
       if (!container) return;
-      const completed = allTopics.filter(t => t.status === 'completed');
+      const completed = (allTopics || []).filter(t => t.status === 'completed');
       const q = (document.getElementById('modalTopicSearch')?.value || '').toLowerCase().trim();
 
       const filtered = completed.filter(t => !q || t.topic.toLowerCase().includes(q) || String(t.stt).includes(q));
-      document.getElementById('modalTopicCountLabel').innerText = `${filtered.length} hầm ngục khả dụng`;
+      const countLabel = document.getElementById('modalTopicCountLabel');
+      if (countLabel) countLabel.innerText = `${filtered.length} hầm ngục khả dụng`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full p-4 text-center text-xs font-bold text-slate-500">Không tìm thấy chủ đề nào</div>`;
+        return;
+      }
 
       container.innerHTML = filtered.map(t => `
-        <button onclick="selectDungeonFromModal(${t.stt})" class="neo-btn p-2.5 text-left bg-white hover:bg-[#FFE787] flex items-center justify-between gap-2 transition ${t.stt === activeDungeonStt ? 'bg-[#FFE787] border-[#111]' : ''}">
+        <button type="button" onclick="selectDungeonFromModal(${t.stt})" class="neo-btn p-2.5 text-left bg-white hover:bg-[#FFE787] flex items-center justify-between gap-2 transition cursor-pointer ${t.stt === activeDungeonStt ? '!bg-[#FFE787] border-[#111]' : ''}">
           <div class="truncate">
-            <span class="font-mono-code text-[10px] font-extrabold bg-[#111] text-white px-1 py-0.5 rounded">#${t.stt}</span>
-            <span class="text-xs font-bold ml-1">${t.topic}</span>
+            <span class="font-mono-code text-[10px] font-extrabold bg-[#111] text-white px-1.5 py-0.5 rounded">#${t.stt}</span>
+            <span class="text-xs font-bold ml-1 text-[#111]">${t.topic}</span>
           </div>
           <span class="text-[10px] font-mono-code font-bold text-slate-500 shrink-0">100 từ</span>
         </button>
