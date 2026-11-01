@@ -1,0 +1,126 @@
+:root {
+  --sky-bg: #67B7F7;
+  --cream-bg: #F8F7F2;
+  --ink: #111111;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--sky-bg);
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.55) 45px, transparent 46px),
+    radial-gradient(circle at 85% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 60px, transparent 61px);
+  color: var(--ink);
+}
+
+.font-display { font-family: 'Space Grotesk', sans-serif; }
+.font-mono-code { font-family: 'JetBrains Mono', monospace; }
+
+/* Neo-Brutalism Box & Shadow */
+.neo-box {
+  border: 3px solid #111111;
+  box-shadow: 5px 5px 0px #111111;
+}
+
+.neo-box-sm {
+  border: 2.5px solid #111111;
+  box-shadow: 3px 3px 0px #111111;
+}
+
+.neo-btn {
+  border: 2.5px solid #111111;
+  box-shadow: 3px 3px 0px #111111;
+  transition: all 0.12s ease;
+}
+
+.neo-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #111111;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #111111;
+}
+
+/* Nút bấm phong cách The IELTS Dictionary: [→] Cam + Nền Đen */
+.tid-cta {
+  display: inline-flex;
+  align-items: stretch;
+  border: 2.5px solid #111111;
+  box-shadow: 3px 3px 0px #111111;
+  font-weight: 800;
+  font-size: 0.8rem;
+  overflow: hidden;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.tid-cta:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px #111111;
+}
+
+.tid-cta:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #111111;
+}
+
+.tid-cta-arrow {
+  background-color: #FF9F1C;
+  color: #111111;
+  padding: 0.45rem 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2.5px solid #111111;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tid-cta-label {
+  background-color: #141414;
+  color: #FFFFFF;
+  padding: 0.45rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Tag số thứ tự [01] Đen */
+.tid-badge-num {
+  background: #141414;
+  color: #FFFFFF;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+
+/* Striped Progress Bar Animation */
+.progress-stripes {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.25) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.25) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 24px 24px;
+  animation: moveStripes 1s linear infinite;
+}
+
+@keyframes moveStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 24px 0; }
+}
+
+/* Lật thẻ Flashcard */
+.perspective { perspective: 1000px; }
+.flip-card-inner { transition: transform 0.45s; transform-style: preserve-3d; }
+.flipped { transform: rotateY(180deg); }
+.flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-back { transform: rotateY(180deg); }
