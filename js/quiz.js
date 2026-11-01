@@ -298,6 +298,9 @@ async function startQuizSession() {
   document.getElementById('quizView-result').classList.add('hidden');
   document.getElementById('quizView-play').classList.remove('hidden');
 
+  updateQuizHintButtonUI();
+  updateQuizPlayerBadgeUI();
+
   renderCurrentQuizCard();
   const anchor = document.getElementById('workspaceAnchor');
   if (anchor) anchor.scrollIntoView({ behavior: 'smooth' });
@@ -411,6 +414,10 @@ function chooseQuizOption(idx) {
     document.getElementById('quizCurrentScore').innerText = quizScore;
     document.getElementById('quizStreakCount').innerText = quizStreak;
 
+    // Gamification Integration: Cộng XP và Vàng tức thì vào tài khoản
+    if (typeof addXP === 'function') addXP(points, 'Trả lời đúng trắc nghiệm');
+    if (typeof addCoins === 'function') addCoins(Math.max(1, Math.round(2 * multiplier)), 'Thưởng câu đúng');
+
     feedback.innerHTML = `
       <span class="text-[#169C64] flex items-center gap-1.5">
         <span class="text-xl">🎉</span> CHÍNH XÁC! (+${points} điểm ${multiplier > 1 ? `• COMBO x${multiplier} 🔥` : ''})
@@ -477,6 +484,16 @@ function showQuizResults() {
   const totalAnswered = quizCurrentIdx;
   const totalCorrect = totalAnswered - quizMistakes.length;
   const accuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+
+  // Gamification Integration: Ghi nhận kết quả vào tài khoản
+  if (typeof recordQuizFinishToAccount === 'function') {
+    recordQuizFinishToAccount({
+      totalAnswered,
+      totalCorrect,
+      maxStreak: quizMaxStreak,
+      mistakes: quizMistakes
+    });
+  }
 
   let rank = 'ANKI TITAN';
   let emoji = '🏆';
@@ -603,3 +620,46 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
+
+// Gamification Inventory Items in Quiz
+function useHintScrollInQuiz() {
+  if (quizIsAnswered) return;
+  if (!currentAccount || !currentAccount.inventory?.hint_scroll) {
+    alert('Bạn không có Cuộn Giấy Gợi Ý! Hãy vào 🛍️ Cửa Hàng để mua nhé.');
+    return;
+  }
+  currentAccount.inventory.hint_scroll--;
+  saveCurrentAccount();
+  updateQuizHintButtonUI();
+
+  const q = quizQuestions[quizCurrentIdx];
+  const wrongIndices = [];
+  q.options.forEach((opt, idx) => {
+    if (!opt.isCorrect) wrongIndices.push(idx);
+  });
+  const toDisable = wrongIndices.sort(() => 0.5 - Math.random()).slice(0, 2);
+  toDisable.forEach(idx => {
+    const btn = document.getElementById('quizOptBtn-' + idx);
+    if (btn) {
+      btn.classList.add('opacity-30', 'pointer-events-none', 'line-through');
+    }
+  });
+  if (typeof showToastAlert === 'function') {
+    showToastAlert('📜 Cuộn Giấy Gợi Ý đã loại bỏ 2 đáp án sai!');
+  }
+}
+
+function updateQuizHintButtonUI() {
+  const countSpan = document.getElementById('quizHintScrollCount');
+  if (countSpan && currentAccount) {
+    countSpan.innerText = currentAccount.inventory?.hint_scroll || 0;
+  }
+}
+
+function updateQuizPlayerBadgeUI() {
+  const badge = document.getElementById('quizPlayerBadge');
+  if (badge && currentAccount) {
+    badge.innerHTML = `${currentAccount.avatar || '🦁'} Lv.${currentAccount.level} ${currentAccount.username}`;
+  }
+}
+

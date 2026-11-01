@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -25,7 +25,8 @@
         </div>
       </div>
 
-      <!-- Right Pills -->
+      <!-- Right Pills & User Profile Widget -->
+      <div id="headerUserWidget" class="flex items-center"></div>
       <div class="flex flex-wrap items-center gap-2.5">
         <button onclick="loadData(true)" class="px-3.5 py-1.5 rounded-full bg-white border-2 border-[#111] shadow-[2px_2px_0px_#111] text-xs font-extrabold flex items-center gap-1.5 hover:bg-amber-100">
           🌐 VI • <span id="lastUpdated">Đang tải...</span>
@@ -600,6 +601,8 @@
           </div>
 
           <div class="flex items-center gap-2">
+            <span id="quizPlayerBadge" class="hidden sm:inline-flex items-center gap-1 bg-[#2C317A] text-white px-2.5 py-1 rounded font-mono-code font-bold text-xs border border-slate-600">🦁 Lv.1</span>
+            <button type="button" onclick="useHintScrollInQuiz()" id="quizBtnUseHint" class="px-2.5 py-1 bg-[#FFE787] text-[#111] hover:bg-amber-300 font-mono-code font-bold text-xs border border-[#111] flex items-center gap-1" title="Dùng 1 Cuộn Giấy Gợi Ý để loại bỏ 2 đáp án sai">📜 Gợi Ý (<span id="quizHintScrollCount">0</span>)</button>
             <div id="quizStreakContainer" class="flex items-center gap-1.5 bg-slate-800 border border-slate-600 px-3 py-1 font-mono-code text-xs font-extrabold">
               <span id="quizStreakFlame" class="text-base">🔥</span>
               <span>Streak: <b id="quizStreakCount" class="text-[#FFE787]">0</b></span>
@@ -701,6 +704,14 @@
               <div id="quizResultCorrectRatio" class="font-display font-extrabold text-2xl text-[#3F6AE4]">0/0</div>
             </div>
           </div>
+        </div>
+
+        <!-- Phần thưởng Gamification -->
+        <div class="bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111] flex flex-wrap items-center justify-between gap-2 text-xs font-bold">
+          <span class="flex items-center gap-1.5 text-amber-900">
+            <span>🎁</span> Thưởng hoàn thành bài: <b class="text-[#199A5E]">+40 XP</b> & <b class="text-yellow-600">+15 🪙</b>
+          </span>
+          <button onclick="openAccountCenter('profile')" class="underline text-blue-700 hover:text-blue-900 font-extrabold">Xem Hồ Sơ & Cấp Độ ➔</button>
         </div>
 
         <!-- Khu vực ÔN LẠI TỪ BỊ SAI (NẾU CÓ) -->
@@ -888,6 +899,244 @@
     </div>
   </div>
 
+  <!-- ==================== MODAL TRUNG TÂM TÀI KHOẢN & GAMIFICATION (ACCOUNT HUB) ==================== -->
+  <div id="accountCenterModal" class="fixed inset-0 bg-black/75 hidden items-center justify-center p-3 sm:p-4 z-50 overflow-y-auto">
+    <div class="neo-box bg-[#F8F7F2] max-w-2xl w-full p-4 sm:p-6 my-auto max-h-[92vh] flex flex-col justify-between overflow-hidden">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-3 border-b-2 border-[#111] shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="tid-badge-num bg-[#FF9F1C] text-[#111]">GAMIFICATION HUB</span>
+          <h3 class="font-display font-extrabold text-base sm:text-lg uppercase tracking-tight">HỒ SƠ NGƯỜI HỌC & TÀI KHOẢN</h3>
+        </div>
+        <button onclick="closeAccountCenter()" class="neo-btn w-8 h-8 bg-white font-mono-code font-extrabold flex items-center justify-center text-sm hover:bg-red-500 hover:text-white">✕</button>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex flex-wrap gap-1.5 py-3 border-b-2 border-[#111] bg-slate-100 -mx-4 sm:-mx-6 px-4 sm:px-6 shrink-0">
+        <button onclick="switchAccountModalTab('profile')" id="accTabBtn-profile" class="neo-btn px-3 py-1.5 bg-[#141414] text-white text-xs font-display font-extrabold uppercase">
+          🏆 [01] Hồ Sơ & Cấp Độ
+        </button>
+        <button onclick="switchAccountModalTab('badges')" id="accTabBtn-badges" class="neo-btn px-3 py-1.5 bg-white text-[#141414] text-xs font-display font-extrabold uppercase">
+          🎖️ [02] Huy Hiệu
+        </button>
+        <button onclick="switchAccountModalTab('shop')" id="accTabBtn-shop" class="neo-btn px-3 py-1.5 bg-white text-[#141414] text-xs font-display font-extrabold uppercase">
+          🛍️ [03] Cửa Hàng
+        </button>
+        <button onclick="switchAccountModalTab('switch')" id="accTabBtn-switch" class="neo-btn px-3 py-1.5 bg-white text-[#141414] text-xs font-display font-extrabold uppercase">
+          👥 [04] Đổi / Tạo Tài Khoản
+        </button>
+        <button onclick="switchAccountModalTab('backup')" id="accTabBtn-backup" class="neo-btn px-3 py-1.5 bg-white text-[#141414] text-xs font-display font-extrabold uppercase">
+          💾 [05] Sao Lưu & Đám Mây
+        </button>
+      </div>
+
+      <!-- Tab Contents (Scrollable Area) -->
+      <div class="overflow-y-auto py-4 space-y-4 flex-1 pr-1">
+
+        <!-- TAB 1: PROFILE & RPG STATS -->
+        <div id="accTabPane-profile" class="space-y-4">
+          <!-- Learner Passport Card -->
+          <div class="neo-box bg-[#FFE787] p-4 sm:p-5 relative overflow-hidden border-[2.5px] border-[#111]">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+              <div class="w-20 h-20 rounded-2xl bg-white border-2 border-[#111] shadow-[3px_3px_0px_#111] flex items-center justify-center text-4xl shrink-0">
+                <span id="accHeroAvatar">🦁</span>
+              </div>
+              <div class="flex-1 text-center sm:text-left space-y-1">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <h2 id="accHeroUsername" class="font-display font-extrabold text-xl text-[#111]">Vinh Đẹp Trai</h2>
+                    <div id="accHeroTitle" class="text-xs font-bold text-amber-900">🐣 Tân Binh Anki</div>
+                  </div>
+                  <span id="accHeroLevel" class="self-center sm:self-start font-mono-code text-xs font-extrabold bg-[#111] text-white px-2.5 py-1 rounded">Level 1</span>
+                </div>
+
+                <!-- XP Bar -->
+                <div class="pt-2">
+                  <div class="flex justify-between text-[11px] font-mono-code font-bold mb-1">
+                    <span>Tiến trình kinh nghiệm</span>
+                    <span id="accHeroXpText">0 / 100 XP (0%)</span>
+                  </div>
+                  <div class="w-full h-3.5 bg-white border-2 border-[#111] overflow-hidden">
+                    <div id="accHeroXpBar" class="h-full bg-[#199A5E] progress-stripes transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 Chỉ số thống kê học tập -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="neo-box-sm bg-white p-3 text-center">
+              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Chuỗi Ngày Streak</div>
+              <div id="accStatStreak" class="font-display font-extrabold text-base text-amber-600 mt-0.5">1 Ngày 🔥</div>
+            </div>
+            <div class="neo-box-sm bg-white p-3 text-center">
+              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Kho Vàng 🪙</div>
+              <div id="accStatCoins" class="font-display font-extrabold text-base text-yellow-600 mt-0.5">100 🪙</div>
+            </div>
+            <div class="neo-box-sm bg-white p-3 text-center">
+              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Bài Quiz Đã Làm</div>
+              <div id="accStatQuizzes" class="font-display font-extrabold text-base text-[#111] mt-0.5">0</div>
+            </div>
+            <div class="neo-box-sm bg-white p-3 text-center">
+              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Độ Chính Xác</div>
+              <div id="accStatAccuracy" class="font-display font-extrabold text-base text-[#169C64] mt-0.5">0%</div>
+            </div>
+            <div class="neo-box-sm bg-white p-3 text-center">
+              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Kỷ Lục Combo Đúng</div>
+              <div id="accStatMaxCombo" class="font-display font-extrabold text-base text-blue-600 mt-0.5">0</div>
+            </div>
+            <div class="neo-box-sm bg-white p-3 text-center">
+              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Từ Cần Ôn Lại</div>
+              <div id="accStatMistakes" class="font-display font-extrabold text-base text-red-600 mt-0.5">0 từ</div>
+            </div>
+          </div>
+
+          <!-- Chỉnh sửa hồ sơ nhanh -->
+          <div class="neo-box-sm bg-white p-4 space-y-3">
+            <h4 class="font-display font-extrabold text-xs uppercase text-[#111]">✏️ CHỈNH SỬA TÊN & AVATAR HỒ SƠ</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Tên hiển thị</label>
+                <input id="editAccUsernameInput" type="text" placeholder="Tên của bạn" class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Avatar đại diện</label>
+                <select id="editAccAvatarSelect" class="neo-box-sm w-full px-2 py-1.5 text-xs bg-slate-50 font-bold">
+                  <option value="🦁">🦁 Sư Tử</option>
+                  <option value="🐯">🐯 Hổ Dũng Mãnh</option>
+                  <option value="⚡">⚡ Tia Chớp</option>
+                  <option value="🧙‍♂️">🧙‍♂️ Pháp Sư</option>
+                  <option value="👑">👑 Hoàng Đế</option>
+                  <option value="🚀">🚀 Tàu Vũ Trụ</option>
+                  <option value="🦊">🦊 Cáo Tinh Anh</option>
+                  <option value="🥋">🥋 Samurai</option>
+                  <option value="💎">💎 Kim Cương</option>
+                  <option value="🐉">🐉 Rồng Thần</option>
+                  <option value="🦅">🦅 Đại Bàng</option>
+                  <option value="🦄">🦄 Kỳ Lân</option>
+                  <option value="🤖">🤖 Người Máy</option>
+                  <option value="🏆">🏆 Chiến Thắng</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Mã PIN bảo vệ (Tùy chọn)</label>
+                <input id="editAccPinInput" type="password" maxlength="6" placeholder="Để trống nếu không đặt" class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
+              </div>
+            </div>
+            <div class="flex justify-end">
+              <button onclick="handleUpdateProfileForm()" class="neo-btn px-4 py-1.5 bg-[#FFE787] text-[#111] text-xs font-extrabold hover:bg-amber-300">
+                Lưu Thay Đổi
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: BADGES & ACHIEVEMENTS -->
+        <div id="accTabPane-badges" class="hidden space-y-3">
+          <p class="text-xs text-slate-600 font-semibold">
+            Hoàn thành các mốc thử thách trắc nghiệm, duy trì chuỗi học và nâng cấp để mở khóa trọn bộ 12 Huy hiệu danh giá!
+          </p>
+          <div id="accBadgeGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[380px] overflow-y-auto pr-1">
+            <!-- Render via JS -->
+          </div>
+        </div>
+
+        <!-- TAB 3: SHOP -->
+        <div id="accTabPane-shop" class="hidden space-y-3">
+          <div class="bg-amber-100 border border-[#111] p-3 text-xs font-bold text-amber-900 flex items-center justify-between">
+            <span>Dùng Vàng 🪙 kiếm được từ các bài Quiz để mua các vật phẩm trợ chiến!</span>
+            <span class="font-mono-code font-extrabold text-sm">Cửa Hàng Vật Phẩm Anki</span>
+          </div>
+          <div id="accShopGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Render via JS -->
+          </div>
+        </div>
+
+        <!-- TAB 4: SWITCH / CREATE ACCOUNT -->
+        <div id="accTabPane-switch" class="hidden space-y-4">
+          <div class="space-y-2">
+            <h4 class="font-display font-extrabold text-xs uppercase text-[#111]">DANH SÁCH TÀI KHOẢN TRÊN THIẾT BỊ:</h4>
+            <div id="accAllAccountsList" class="space-y-2 max-h-[160px] overflow-y-auto pr-1">
+              <!-- Render via JS -->
+            </div>
+          </div>
+
+          <!-- Tạo tài khoản mới -->
+          <div class="neo-box-sm bg-white p-4 space-y-3 border-2 border-[#111]">
+            <h4 class="font-display font-extrabold text-xs uppercase text-[#111]">➕ TẠO HỒ SƠ NGƯỜI HỌC MỚI:</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Tên người học *</label>
+                <input id="newAccUsernameInput" type="text" placeholder="Nhập tên..." class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Chọn Avatar</label>
+                <select id="newAccAvatarSelect" class="neo-box-sm w-full px-2 py-1.5 text-xs bg-slate-50 font-bold">
+                  <option value="🦁">🦁 Sư Tử</option>
+                  <option value="🐯">🐯 Hổ Dũng Mãnh</option>
+                  <option value="⚡">⚡ Tia Chớp</option>
+                  <option value="🧙‍♂️">🧙‍♂️ Pháp Sư</option>
+                  <option value="👑">👑 Hoàng Đế</option>
+                  <option value="🚀">🚀 Tàu Vũ Trụ</option>
+                  <option value="🦊">🦊 Cáo Tinh Anh</option>
+                  <option value="🥋">🥋 Samurai</option>
+                  <option value="💎">💎 Kim Cương</option>
+                  <option value="🐉">🐉 Rồng Thần</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Mã PIN (Tùy chọn)</label>
+                <input id="newAccPinInput" type="password" maxlength="6" placeholder="Mã PIN 4 số" class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
+              </div>
+            </div>
+            <div class="flex justify-end pt-1">
+              <button onclick="handleCreateNewAccountForm()" class="neo-btn px-4 py-2 bg-[#141414] text-white text-xs font-extrabold hover:bg-slate-800">
+                Tạo Hồ Sơ Mới
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 5: BACKUP & CLOUD SYNC -->
+        <div id="accTabPane-backup" class="hidden space-y-4">
+          <div class="neo-box-sm bg-white p-4 space-y-3">
+            <h4 class="font-display font-extrabold text-xs uppercase text-[#111]">💾 SAO LƯU DỮ LIỆU CỤC BỘ (JSON FILE):</h4>
+            <p class="text-xs text-slate-600">Xuất file sao lưu chứa toàn bộ cấp độ, số vàng, chuỗi ngày streak và ngân hàng từ sai để lưu trên máy hoặc chuyển sang thiết bị khác.</p>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="exportAccountDataJson()" class="neo-btn px-4 py-2 bg-[#FFE787] text-[#111] text-xs font-extrabold flex items-center gap-1.5 hover:bg-amber-300">
+                📥 Tải Về File Sao Lưu (.json)
+              </button>
+              <label class="neo-btn px-4 py-2 bg-white text-[#111] text-xs font-extrabold flex items-center gap-1.5 cursor-pointer hover:bg-slate-100">
+                📤 Phục Hồi Từ File (.json)
+                <input type="file" accept=".json" onchange="importAccountDataJson(this.files[0])" class="hidden" />
+              </label>
+            </div>
+          </div>
+
+          <div class="neo-box-sm bg-white p-4 space-y-3">
+            <h4 class="font-display font-extrabold text-xs uppercase text-[#111]">☁️ ĐỒNG BỘ ĐÁM MÂY (GITHUB GIST):</h4>
+            <p class="text-xs text-slate-600">Tự động đồng bộ và lưu trữ bí mật dữ liệu người học lên GitHub cá nhân của bạn thông qua GitHub Token đã cài trong Cấu hình API.</p>
+            <div>
+              <button onclick="syncToGitHubGist()" id="btnGistSyncUpload" class="neo-btn px-4 py-2 bg-[#141414] text-white text-xs font-extrabold flex items-center gap-1.5 hover:bg-slate-800">
+                ☁️ Đồng Bộ Lên Đám Mây (Gist)
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="pt-3 border-t-2 border-[#111] flex justify-between items-center shrink-0">
+        <span class="text-[11px] font-mono-code font-bold text-slate-500">The Anki Dictionary • Gamification Engine v1.0</span>
+        <button onclick="closeAccountCenter()" class="neo-btn px-4 py-1.5 bg-white text-xs font-extrabold">ĐÓNG</button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ==================== MODAL CẤU HÌNH GITHUB & GEMINI API ==================== -->
   <div id="settingsModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
     <div class="neo-box bg-[#F8F7F2] max-w-md w-full p-6">
@@ -932,6 +1181,7 @@
   <script src="js/studio.js"></script>
   <script src="js/corpus.js"></script>
   <script src="js/actions.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

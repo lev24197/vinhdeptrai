@@ -25,10 +25,12 @@ function openRandomCompletedStudy() {
 
 // Tự động khởi chạy nạp dữ liệu khi tải trang
 document.addEventListener('DOMContentLoaded', () => {
+  if (typeof initAuthSystem === 'function') initAuthSystem();
   loadData(true);
 });
 
 // Fallback nếu DOMContentLoaded đã kích hoạt trước đó
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  if (typeof initAuthSystem === 'function') initAuthSystem();
   loadData(true);
 }
