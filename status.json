@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01 09:15:01",
+  "updated_at": "2026-11-01 09:28:07",
   "topics": [
     {
       "stt": 1,
@@ -679,11 +679,11 @@
     {
       "stt": 76,
       "topic": "Thương mại điện tử và Mua sắm trực tuyến (E-commerce & Online Shopping)",
-      "status": "failed",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/76.txt",
-      "generated_at": null,
-      "last_error": "Không thể gọi Gemini API cho chủ đề #76 sau khi thử các model."
+      "generated_at": "2026-11-01 09:28",
+      "last_error": null
     },
     {
       "stt": 77,
