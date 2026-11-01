@@ -174,7 +174,7 @@ async function generateSingleInBrowser(stt, topicVi) {
       const needed = 50 - collectedConv.length;
       if (needed <= 0) break;
       const askCount = Math.min(35, needed + 5);
-      const prompt = `Generate a JSON array of ${askCount} practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English) related to the topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
+      const prompt = `Generate a JSON array of ${askCount} practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English, strictly NO adjectives, NO verbs) related to the topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
         method: 'POST',
@@ -207,9 +207,9 @@ async function generateSingleInBrowser(stt, topicVi) {
       const askCount = Math.min(35, needed + 5);
       const prompt = `Generate a JSON array of ${askCount} advanced, technical, and domain-specific English nouns (single or standard compound nouns, CEFR C1-C2 level) directly and physically belonging to the topic: "${topicVi}".
 CRITICAL REQUIREMENTS:
-1. Every word MUST be a concrete, technical, or specialized NOUN representing real physical structures, specialized components, equipment, materials, facilities, or distinct sub-types in this specific domain ("${topicVi}").
+1. Every word MUST be a specialized, technical, or domain-specific NOUN (single noun or compound noun) representing real tangible objects, specialized components, equipment, tools, materials, distinct sub-types, professional roles, or distinct concepts belonging to "${topicVi}".
 2. STRICTLY FORBIDDEN - DO NOT use generic academic essay meta-words or abstract qualities such as: 'paradigm', 'efficacy', 'amelioration', 'prognosis', 'disbursement', 'constraint', 'resilience', 'sustainability', 'governance', 'policy', 'framework', 'incentive', 'stakeholder', 'trajectory', 'optimization', 'vulnerability', 'scalability', 'interoperability', 'modality', 'feasibility'.
-3. NO adjectives, NO verbs. Must be 100% authentic domain nouns an engineer, field technician, or domain specialist would use.
+3. STRICTLY NO adjectives, NO verbs. Must be 100% authentic domain nouns that an expert or specialist in this specific field works with.
 Exclude already used words: ${[...seen].join(', ') || 'None'}.
 Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
