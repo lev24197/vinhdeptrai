@@ -68,11 +68,27 @@ def make_sound(word: str) -> str:
 def clean_field(text: str) -> str:
     return str(text).replace("\t", " ").replace("\n", " ").replace("\r", " ").strip()
 
-def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt: int) -> list[NounItem]:
+def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt: int, mode: str = "conversational") -> list[NounItem]:
     exclude_str = ", ".join(exclude_words) if exclude_words else "None"
+
+    if mode == "advanced":
+        mode_instruction = (
+            f"CATEGORY: ADVANCED & ACADEMIC NOUNS (CEFR C1-C2 level, IELTS 7.5+, formal, journalistic & professional English).\n"
+            f"- Select sophisticated, nuanced, analytical concepts, phenomena, or domain-specific nouns related to the topic.\n"
+            f"- AVOID basic conversational or elementary words.\n"
+            f"- Ensure words are practically useful in high-level writing, discussions, and professional contexts (no archaic or obsolete words)."
+        )
+    else:
+        mode_instruction = (
+            f"CATEGORY: PRACTICAL CONVERSATIONAL NOUNS (CEFR A2-B2 level, daily communication & spoken English).\n"
+            f"- Select natural, highly useful, and frequent nouns that native speakers actually use in daily conversations and real-life scenarios related to this topic.\n"
+            f"- AVOID overly simplistic or childish words (unless fundamental), focusing on solid practical communicative nouns."
+        )
+
     prompt = (
-        f"Generate exactly {count} common and useful English nouns (single words or standard compound nouns) "
+        f"Generate exactly {count} distinct English nouns (single words or standard compound nouns) "
         f"related to the Vietnamese topic: '{topic_vi}'.\n"
+        f"{mode_instruction}\n"
         f"Do NOT include any of these already generated words: {exclude_str}.\n"
         f"Requirements:\n"
         f"- 'word': lowercase singular noun.\n"
@@ -80,7 +96,7 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
         f"- 'definition': concise English definition.\n"
         f"- 'meaning_vi': accurate Vietnamese translation matching the topic context.\n"
         f"- 'plural': plural noun form.\n"
-        f"- 'example_1' and 'example_2': two distinct, complete example sentences in English (do not number them)."
+        f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
     )
     models_to_try = [
         "gemini-3.1-flash-lite-preview",
@@ -103,29 +119,54 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
             if parsed and parsed.items:
                 return parsed.items
         except Exception as e:
-            append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} gặp lỗi tạm thời: {str(e)}. Đang thử lại...", stt)
+            append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} ({mode}) gặp lỗi tạm thời: {str(e)}. Đang thử lại...", stt)
             time.sleep(6)
-    raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} sau khi thử các model.")
+    raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} ({mode}) sau khi thử các model.")
 
 def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
-    collected: list[NounItem] = []
     seen = set()
-    for attempt in range(1, 5):
-        needed = 100 - len(collected)
+    conversational_nouns: list[NounItem] = []
+    advanced_nouns: list[NounItem] = []
+
+    # --- PHẦN 1: 50 DANH TỪ GIAO TIẾP THÔNG DỤNG (A2 - B2) ---
+    append_run_log("INFO", "START_CONV", f"Bắt đầu tạo 50 từ giao tiếp thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
+    for attempt in range(1, 4):
+        needed = 50 - len(conversational_nouns)
         if needed <= 0:
             break
-        ask_count = min(55, needed + 5)
-        append_run_log("INFO", f"BATCH_{attempt}", f"Đang xin {ask_count} từ cho chủ đề #{stt} ({topic_vi}) - Hiện có: {len(collected)}/100", stt)
-        batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt)
+        ask_count = min(35, needed + 5)
+        append_run_log("INFO", f"CONV_BATCH_{attempt}", f"Đang xin {ask_count} từ giao tiếp (#{stt}) - Đã có: {len(conversational_nouns)}/50", stt)
+        batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode="conversational")
         for item in batch:
             w = item.word.strip().lower()
             if w and w not in seen:
                 seen.add(w)
-                collected.append(item)
-                if len(collected) == 100:
+                conversational_nouns.append(item)
+                if len(conversational_nouns) == 50:
                     break
         time.sleep(2)
-    return collected[:100]
+
+    # --- PHẦN 2: 50 DANH TỪ NÂNG CAO THÔNG DỤNG (C1 - C2 / IELTS 7.5+) ---
+    append_run_log("INFO", "START_ADV", f"Bắt đầu tạo 50 từ nâng cao thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
+    for attempt in range(1, 4):
+        needed = 50 - len(advanced_nouns)
+        if needed <= 0:
+            break
+        ask_count = min(35, needed + 5)
+        append_run_log("INFO", f"ADV_BATCH_{attempt}", f"Đang xin {ask_count} từ nâng cao (#{stt}) - Đã có: {len(advanced_nouns)}/50", stt)
+        batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode="advanced")
+        for item in batch:
+            w = item.word.strip().lower()
+            if w and w not in seen:
+                seen.add(w)
+                advanced_nouns.append(item)
+                if len(advanced_nouns) == 50:
+                    break
+        time.sleep(2)
+
+    total_nouns = conversational_nouns[:50] + advanced_nouns[:50]
+    append_run_log("SUCCESS", "COLLECT_DONE", f"Chủ đề #{stt}: Hoàn tất {len(conversational_nouns[:50])} từ giao tiếp + {len(advanced_nouns[:50])} từ nâng cao (Tổng: {len(total_nouns)} từ).", stt)
+    return total_nouns
 
 def load_and_sync_status() -> dict:
     df = pd.read_excel(EXCEL_FILE)

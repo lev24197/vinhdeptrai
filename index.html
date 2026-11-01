@@ -1295,17 +1295,18 @@
       logToConsole('INFO', 'WEB_GEN', `Bắt đầu tạo trực tiếp chủ đề #${stt} (${topicVi}) ngay trên trình duyệt...`);
 
       try {
-        const collected = [];
+        const collectedConv = [];
+        const collectedAdv = [];
         const seen = new Set();
 
-        for (let batchNum = 1; batchNum <= 2; batchNum++) {
-          const needed = 100 - collected.length;
+        // 1. Thu thập 50 danh từ giao tiếp thông dụng (A2-B2)
+        showLiveRunner(`⚡ [1/2] ĐANG TẠO 50 DANH TỪ GIAO TIẾP CHO "${topicVi.toUpperCase()}"...`, 35, 3);
+        logToConsole('INFO', 'WEB_GEN_CONV', `Đang xin 50 danh từ giao tiếp thông dụng (A2-B2)...`);
+        for (let attempt = 1; attempt <= 2; attempt++) {
+          const needed = 50 - collectedConv.length;
           if (needed <= 0) break;
-          const askCount = Math.min(55, needed + 5);
-          showLiveRunner(`⚡ ĐANG GỌI GEMINI API (ĐỢT ${batchNum}/2 - XIN ${askCount} TỪ CHO CHỦ ĐỀ "${topicVi.toUpperCase()}")...`, batchNum === 1 ? 40 : 70, 3);
-          logToConsole('INFO', `GEMINI_BATCH_${batchNum}`, `Đang yêu cầu Gemini trả về ${askCount} danh từ (Hiện có: ${collected.length}/100)...`);
-
-          const prompt = `Generate a JSON array of ${askCount} common English singular nouns related to the Vietnamese topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
+          const askCount = Math.min(35, needed + 5);
+          const prompt = `Generate a JSON array of ${askCount} practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English) related to the topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
           const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
             method: 'POST',
@@ -1315,26 +1316,52 @@
               generationConfig: { responseMimeType: 'application/json', temperature: 0.4 }
             })
           });
-
-          if (!res.ok) {
-            const errBody = await res.text();
-            throw new Error(`Gemini API trả về HTTP ${res.status}: ${errBody}`);
-          }
-
+          if (!res.ok) throw new Error(`Gemini API trả về HTTP ${res.status}: ${await res.text()}`);
           const data = await res.json();
-          const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text || '[]';
-          const items = JSON.parse(rawJson);
-
+          const items = JSON.parse(data.candidates?.[0]?.content?.parts?.[0]?.text || '[]');
           for (const item of items) {
             const w = String(item.word || '').trim().toLowerCase();
             if (w && !seen.has(w)) {
               seen.add(w);
-              collected.push(item);
-              if (collected.length === 100) break;
+              collectedConv.push(item);
+              if (collectedConv.length === 50) break;
             }
           }
-          logToConsole('SUCCESS', `BATCH_${batchNum}_OK`, `Đã thu thập được ${collected.length}/100 danh từ.`);
         }
+        logToConsole('SUCCESS', 'CONV_OK', `Đã thu thập được ${collectedConv.length}/50 từ giao tiếp.`);
+
+        // 2. Thu thập 50 danh từ nâng cao thông dụng (C1-C2 / IELTS 7.5+)
+        showLiveRunner(`⚡ [2/2] ĐANG TẠO 50 DANH TỪ NÂNG CAO CHO "${topicVi.toUpperCase()}"...`, 70, 3);
+        logToConsole('INFO', 'WEB_GEN_ADV', `Đang xin 50 danh từ nâng cao thông dụng (C1-C2 / IELTS 7.5+)...`);
+        for (let attempt = 1; attempt <= 2; attempt++) {
+          const needed = 50 - collectedAdv.length;
+          if (needed <= 0) break;
+          const askCount = Math.min(35, needed + 5);
+          const prompt = `Generate a JSON array of ${askCount} advanced, academic & high-level English singular nouns (CEFR C1-C2 level, IELTS 7.5+, formal, journalistic & professional English) related to the topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
+
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }],
+              generationConfig: { responseMimeType: 'application/json', temperature: 0.4 }
+            })
+          });
+          if (!res.ok) throw new Error(`Gemini API trả về HTTP ${res.status}: ${await res.text()}`);
+          const data = await res.json();
+          const items = JSON.parse(data.candidates?.[0]?.content?.parts?.[0]?.text || '[]');
+          for (const item of items) {
+            const w = String(item.word || '').trim().toLowerCase();
+            if (w && !seen.has(w)) {
+              seen.add(w);
+              collectedAdv.push(item);
+              if (collectedAdv.length === 50) break;
+            }
+          }
+        }
+        logToConsole('SUCCESS', 'ADV_OK', `Đã thu thập được ${collectedAdv.length}/50 từ nâng cao.`);
+
+        const collected = [...collectedConv.slice(0, 50), ...collectedAdv.slice(0, 50)];
 
         showLiveRunner(`ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ${collected.length} TỪ VỰNG...`, 85, 4);
         const lines = collected.map(item => {
