@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01 10:37:11",
+  "updated_at": "2026-11-01 11:08:08",
   "topics": [
     {
       "stt": 1,
@@ -1157,9 +1157,9 @@
       "stt": 135,
       "topic": "Đồ cổ và Trang trí (Antiques & Decors)",
       "status": "completed",
-      "word_count": 82,
+      "word_count": 100,
       "file_path": "output/135.txt",
-      "generated_at": "2026-11-01 10:37",
+      "generated_at": "2026-11-01 11:08",
       "last_error": null
     },
     {
