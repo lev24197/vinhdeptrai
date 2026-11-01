@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01 09:30:05",
+  "updated_at": "2026-11-01 09:40:14",
   "topics": [
     {
       "stt": 1,
@@ -890,10 +890,11 @@
     {
       "stt": 102,
       "topic": "Rau củ quả (Vegetables)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/102.txt",
-      "generated_at": null
+      "generated_at": "2026-11-01 09:40",
+      "last_error": null
     },
     {
       "stt": 103,
