@@ -525,8 +525,19 @@
         </div>
 
         <!-- Bảng điều khiển cấu hình trận đấu -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <!-- Cột 1: Số câu hỏi -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Cột 1: Chế độ thi đấu -->
+          <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
+            <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
+              <span>🎮</span> Chế độ thi đấu:
+            </label>
+            <select id="quizEngineModeSelect" class="w-full neo-box-sm px-3 py-2 text-xs font-bold bg-[#FFE787]">
+              <option value="rpg">🎮 Săn Quái Pixel RPG (Khuyên dùng)</option>
+              <option value="classic">📝 Trắc Nghiệm Cổ Điển</option>
+            </select>
+          </div>
+
+          <!-- Cột 2: Số câu hỏi -->
           <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
             <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
               <span>🔢</span> Số lượng câu hỏi:
@@ -538,27 +549,27 @@
             </div>
           </div>
 
-          <!-- Cột 2: Cấp độ từ -->
+          <!-- Cột 3: Cấp độ từ -->
           <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
             <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
               <span>🎯</span> Cấp độ từ muốn ôn:
             </label>
             <select id="quizLevelSelect" onchange="updateQuizWordsCountBadge()" class="w-full neo-box-sm px-3 py-2 text-xs font-bold bg-[#F8F7F2]">
               <option value="all">🟢 Toàn bộ (Cả Giao tiếp & Nâng cao)</option>
-              <option value="conversational">💬 Chỉ 50 từ Giao tiếp thông dụng (A2-B2)</option>
-              <option value="advanced">⚡ Chỉ 50 từ Nâng cao học thuật (C1-C2)</option>
+              <option value="conversational">💬 Chỉ 50 từ Giao tiếp (A2-B2)</option>
+              <option value="advanced">⚡ Chỉ 50 từ Nâng cao (C1-C2)</option>
             </select>
           </div>
 
-          <!-- Cột 3: Định dạng câu hỏi -->
+          <!-- Cột 4: Định dạng câu hỏi -->
           <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
             <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
               <span>🔄</span> Dạng câu hỏi:
             </label>
             <select id="quizModeSelect" class="w-full neo-box-sm px-3 py-2 text-xs font-bold bg-[#F8F7F2]">
               <option value="mixed">🔄 Trộn ngẫu nhiên (EN ➔ VI & VI ➔ EN)</option>
-              <option value="en_to_vi">🇬🇧 Từ tiếng Anh ➔ Chọn nghĩa tiếng Việt</option>
-              <option value="vi_to_en">🇻🇳 Nghĩa tiếng Việt ➔ Chọn từ tiếng Anh</option>
+              <option value="en_to_vi">🇬🇧 Từ tiếng Anh ➔ Nghĩa tiếng Việt</option>
+              <option value="vi_to_en">🇻🇳 Nghĩa tiếng Việt ➔ Từ tiếng Anh</option>
             </select>
           </div>
         </div>
@@ -624,6 +635,33 @@
         <!-- Thanh tiến trình câu hỏi sọc động -->
         <div class="w-full h-4 bg-slate-200 border-2 border-[#111] overflow-hidden">
           <div id="quizPlayProgressBar" class="h-full bg-[#169C64] progress-stripes transition-all duration-300" style="width: 10%"></div>
+        </div>
+
+        <!-- SÂN ĐẤU CANVAS PIXEL RPG (BATTLE ARENA) -->
+        <div id="pixelBattleArenaContainer" class="space-y-2">
+          <!-- Canvas 800x260 retro pixel art -->
+          <div class="relative w-full overflow-hidden neo-box bg-[#11131F] border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111]">
+            <canvas id="pixelBattleCanvas" class="w-full h-auto block max-h-[300px] object-contain" width="800" height="260"></canvas>
+          </div>
+
+          <!-- Thanh thao tác Kỹ Năng & Túi Đồ Tác Chiến -->
+          <div class="flex flex-wrap items-center justify-between gap-2 bg-[#FFE787] border-2 border-[#111] p-2.5 shadow-[2px_2px_0px_#111]">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs font-mono-code font-extrabold uppercase text-amber-900 hidden sm:inline">⚡ Tác Chiến:</span>
+              <button id="battleBtnSkill" type="button" class="neo-btn px-3 py-1.5 bg-[#141414] text-white text-xs font-display font-extrabold flex items-center gap-1.5 hover:bg-slate-800">
+                <span id="battleSkillLabel">⚔️ Cuồng Trảm (20 MP)</span>
+              </button>
+              <button id="battleBtnHpPotion" type="button" class="neo-btn px-3 py-1.5 bg-red-600 text-white text-xs font-display font-extrabold flex items-center gap-1.5 hover:bg-red-700" title="Hồi phục 50 HP máu">
+                <span>🧪 Bình Máu (<span id="battleHpPotionCount">0</span>)</span>
+              </button>
+              <button id="battleBtnMpPotion" type="button" class="neo-btn px-3 py-1.5 bg-blue-600 text-white text-xs font-display font-extrabold flex items-center gap-1.5 hover:bg-blue-700" title="Hồi phục 40 MP năng lượng">
+                <span>🔮 Bình MP (<span id="battleMpPotionCount">0</span>)</span>
+              </button>
+            </div>
+            <div class="flex items-center gap-1.5 text-[11px] font-mono-code font-bold text-slate-700">
+              <span>💡 Chọn đáp án đúng = Xuất chiêu tấn công quái vật!</span>
+            </div>
+          </div>
         </div>
 
         <!-- Thẻ câu hỏi trung tâm -->
@@ -1253,6 +1291,7 @@
     <!-- ==================== CAC MODULE JAVASCRIPT ==================== -->
   <script src="js/data.js"></script>
   <script src="js/dashboard.js"></script>
+  <script src="js/battle.js"></script>
   <script src="js/quiz.js"></script>
   <script src="js/studio.js"></script>
   <script src="js/corpus.js"></script>
