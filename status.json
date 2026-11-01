@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01 09:28:07",
+  "updated_at": "2026-11-01 09:30:05",
   "topics": [
     {
       "stt": 1,
@@ -682,7 +682,7 @@
       "status": "completed",
       "word_count": 100,
       "file_path": "output/76.txt",
-      "generated_at": "2026-11-01 09:28",
+      "generated_at": "2026-11-01 09:30",
       "last_error": null
     },
     {
