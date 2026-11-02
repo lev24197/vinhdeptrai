@@ -1,3 +1,4 @@
+﻿import html
 import os
 import json
 import time
@@ -135,12 +136,12 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
 
     # --- PHẦN 1: 50 DANH TỪ GIAO TIẾP THÔNG DỤNG (A2 - B2) ---
     append_run_log("INFO", "START_CONV", f"Bắt đầu tạo 50 từ giao tiếp thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
-    for attempt in range(1, 4):
+    conv_attempt = 0
+    while len(conversational_nouns) < 50 and conv_attempt < 6:
+        conv_attempt += 1
         needed = 50 - len(conversational_nouns)
-        if needed <= 0:
-            break
-        ask_count = min(35, needed + 5)
-        append_run_log("INFO", f"CONV_BATCH_{attempt}", f"Đang xin {ask_count} từ giao tiếp (#{stt}) - Đã có: {len(conversational_nouns)}/50", stt)
+        ask_count = min(40, max(needed + 5, 15))
+        append_run_log("INFO", f"CONV_BATCH_{conv_attempt}", f"Đang xin {ask_count} từ giao tiếp (#{stt}) - Đã có: {len(conversational_nouns)}/50", stt)
         batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode="conversational")
         for item in batch:
             w = item.word.strip().lower()
@@ -153,12 +154,12 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
 
     # --- PHẦN 2: 50 DANH TỪ NÂNG CAO THÔNG DỤNG (C1 - C2 / IELTS 7.5+) ---
     append_run_log("INFO", "START_ADV", f"Bắt đầu tạo 50 từ nâng cao thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
-    for attempt in range(1, 4):
+    adv_attempt = 0
+    while len(advanced_nouns) < 50 and adv_attempt < 6:
+        adv_attempt += 1
         needed = 50 - len(advanced_nouns)
-        if needed <= 0:
-            break
-        ask_count = min(35, needed + 5)
-        append_run_log("INFO", f"ADV_BATCH_{attempt}", f"Đang xin {ask_count} từ nâng cao (#{stt}) - Đã có: {len(advanced_nouns)}/50", stt)
+        ask_count = min(40, max(needed + 5, 15))
+        append_run_log("INFO", f"ADV_BATCH_{adv_attempt}", f"Đang xin {ask_count} từ nâng cao (#{stt}) - Đã có: {len(advanced_nouns)}/50", stt)
         batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode="advanced")
         for item in batch:
             w = item.word.strip().lower()
@@ -170,7 +171,30 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
         time.sleep(2)
 
     total_nouns = conversational_nouns[:50] + advanced_nouns[:50]
-    append_run_log("SUCCESS", "COLLECT_DONE", f"Chủ đề #{stt}: Hoàn tất {len(conversational_nouns[:50])} từ giao tiếp + {len(advanced_nouns[:50])} từ nâng cao (Tổng: {len(total_nouns)} từ).", stt)
+
+    # --- PHẦN 3: BẢO HIỂM CHẮC CHẮN ĐẠT ĐỦ 100 TỪ (SAFETY TOP-UP LOOP) ---
+    topup_attempt = 0
+    while len(total_nouns) < 100 and topup_attempt < 6:
+        topup_attempt += 1
+        needed = 100 - len(total_nouns)
+        ask_count = min(35, max(needed + 5, 12))
+        append_run_log("WARNING", f"TOPUP_BATCH_{topup_attempt}", f"Chủ đề #{stt}: Bù đắp {needed} từ còn thiếu để đạt chuẩn 100 từ (Đang có: {len(total_nouns)}/100)...", stt)
+        mode = "advanced" if len(advanced_nouns) < 50 else "conversational"
+        batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode=mode)
+        for item in batch:
+            w = item.word.strip().lower()
+            if w and w not in seen:
+                seen.add(w)
+                total_nouns.append(item)
+                if len(total_nouns) == 100:
+                    break
+        time.sleep(2)
+
+    total_nouns = total_nouns[:100]
+    if len(total_nouns) < 100:
+        raise ValueError(f"Chủ đề #{stt} ({topic_vi}) chỉ tạo được {len(total_nouns)}/100 từ sau nhiều lần thử lại!")
+
+    append_run_log("SUCCESS", "COLLECT_DONE", f"Chủ đề #{stt}: Hoàn tất đủ 100 từ chuẩn (50 giao tiếp + 50 nâng cao).", stt)
     return total_nouns
 
 def load_and_sync_status() -> dict:
@@ -193,7 +217,7 @@ def load_and_sync_status() -> dict:
 
     for _, row in df.iterrows():
         stt = str(int(row[col_stt])) if pd.notna(row[col_stt]) else ""
-        topic_name = str(row[col_topic]).strip() if pd.notna(row[col_topic]) else ""
+        topic_name = html.unescape(str(row[col_topic]).strip()) if pd.notna(row[col_topic]) else ""
         if not stt or not topic_name:
             continue
 
@@ -212,10 +236,14 @@ def load_and_sync_status() -> dict:
         if os.path.exists(file_path):
             with open(file_path, "r", encoding="utf-8") as tf:
                 lines = [line for line in tf.read().splitlines() if line.strip()]
-            if len(lines) > 0:
+            if len(lines) >= 100:
                 entry["status"] = "completed"
                 entry["word_count"] = len(lines)
                 entry["last_error"] = None
+            elif len(lines) > 0:
+                entry["status"] = "incomplete"
+                entry["word_count"] = len(lines)
+                entry["last_error"] = f"Thiếu từ ({len(lines)}/100 từ)"
 
         synced_topics.append(entry)
 
@@ -241,7 +269,10 @@ def main():
     if TARGET_STT:
         targets = [t for t in status_data["topics"] if str(t["stt"]) == TARGET_STT]
     else:
-        targets = [t for t in status_data["topics"] if t["status"] != "completed"][:BATCH_SIZE]
+        # Ưu tiên các chủ đề bị thiếu từ (< 100 từ) chạy trước để sửa lỗi ngay lập tức
+        incomplete = [t for t in status_data["topics"] if 0 < t.get("word_count", 0) < 100]
+        pending = [t for t in status_data["topics"] if t.get("status") not in ("completed", "incomplete")]
+        targets = (incomplete + pending)[:BATCH_SIZE]
 
     if not targets:
         append_run_log("INFO", "QUEUE", "Không có chủ đề nào cần tạo thêm.")

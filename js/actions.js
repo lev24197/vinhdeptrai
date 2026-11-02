@@ -1,4 +1,4 @@
-// ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
+﻿// ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
 
 function showLiveRunner(title, pct, stepIndex, isError = false) {
   const banner = document.getElementById('liveRunnerBanner');
@@ -170,10 +170,10 @@ async function generateSingleInBrowser(stt, topicVi) {
     // 1. Thu thập 50 danh từ giao tiếp thông dụng (A2-B2)
     showLiveRunner(`⚡ [1/2] ĐANG TẠO 50 DANH TỪ GIAO TIẾP CHO "${topicVi.toUpperCase()}"...`, 35, 3);
     logToConsole('INFO', 'WEB_GEN_CONV', `Đang xin 50 danh từ giao tiếp thông dụng (A2-B2)...`);
-    for (let attempt = 1; attempt <= 2; attempt++) {
+    for (let attempt = 1; attempt <= 5 && collectedConv.length < 50; attempt++) {
       const needed = 50 - collectedConv.length;
       if (needed <= 0) break;
-      const askCount = Math.min(35, needed + 5);
+      const askCount = Math.min(40, Math.max(needed + 5, 15));
       const prompt = `Generate a JSON array of ${askCount} practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English, strictly NO adjectives, NO verbs) related to the topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
@@ -201,10 +201,10 @@ async function generateSingleInBrowser(stt, topicVi) {
     // 2. Thu thập 50 danh từ nâng cao chuyên ngành (C1-C2 / Thuật ngữ chuyên môn bám sát chủ đề)
     showLiveRunner(`⚡ [2/2] ĐANG TẠO 50 DANH TỪ KỸ THUẬT NÂNG CAO CHO "${topicVi.toUpperCase()}"...`, 70, 3);
     logToConsole('INFO', 'WEB_GEN_ADV', `Đang xin 50 danh từ kỹ thuật nâng cao chuyên ngành (C1-C2) bám sát thực tế...`);
-    for (let attempt = 1; attempt <= 2; attempt++) {
+    for (let attempt = 1; attempt <= 5 && collectedAdv.length < 50; attempt++) {
       const needed = 50 - collectedAdv.length;
       if (needed <= 0) break;
-      const askCount = Math.min(35, needed + 5);
+      const askCount = Math.min(40, Math.max(needed + 5, 15));
       const prompt = `Generate a JSON array of ${askCount} advanced, technical, and domain-specific English nouns (single or standard compound nouns, CEFR C1-C2 level) directly and physically belonging to the topic: "${topicVi}".
 CRITICAL REQUIREMENTS:
 1. Every word MUST be a specialized, technical, or domain-specific NOUN (single noun or compound noun) representing real tangible objects, specialized components, equipment, tools, materials, distinct sub-types, professional roles, or distinct concepts belonging to "${topicVi}".
