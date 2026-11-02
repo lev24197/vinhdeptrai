@@ -134,10 +134,23 @@ const BattleEngine = {
     }
   },
 
+  getActiveTopicStt: function() {
+    if (typeof activeDungeonStt !== 'undefined' && activeDungeonStt) return activeDungeonStt;
+    if (typeof window.activeDungeonStt !== 'undefined' && window.activeDungeonStt) return window.activeDungeonStt;
+    if (typeof currentQuizWord !== 'undefined' && currentQuizWord?.stt) return currentQuizWord.stt;
+    if (typeof quizSelectedStts !== 'undefined' && quizSelectedStts?.size > 0) return Array.from(quizSelectedStts)[0];
+    return 1;
+  },
+
   spawnMonster: function(waveNum, totalWaves) {
     const bossPhaseTurns = Math.min(4, Math.max(3, Math.floor(totalWaves * 0.3))); // Ví dụ: 3 lượt cho 10 câu, 4 lượt cho 15 câu
     const bossStartWave = Math.max(2, totalWaves - bossPhaseTurns + 1); // Bắt đầu chạm trán Boss từ wave này
     const isBossPhase = waveNum >= bossStartWave;
+
+    const currentStt = this.getActiveTopicStt();
+    const monsterSpec = (typeof getDungeonMonstersForTopic === 'function') 
+      ? getDungeonMonstersForTopic(currentStt, waveNum, totalWaves) 
+      : null;
 
     // 1. NẾU ĐANG TRONG GIAI ĐOẠN ĐÁNH TRÙM CUỐI (MULTI-TURN BOSS BATTLE)
     if (isBossPhase) {
@@ -165,18 +178,18 @@ const BattleEngine = {
         return;
       }
 
-      // Lần đầu triệu hồi Trùm Cuối Hắc Long!
-      const template = this.MONSTER_ROSTER[this.MONSTER_ROSTER.length - 1];
+      // Lần đầu triệu hồi Trùm Cuối độc nhất của chủ đề!
       this.triggerBossAlert();
 
-      // Cân bằng máu Trùm Cuối: Tính toán dựa trên lực chiến thực tế của Hiệp Sĩ
+      // Cân bằng máu Trùm Cuối: Tính toán dựa trên Topic Tier và lực chiến thực tế của Hiệp Sĩ
       const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
       const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { atk: 40 };
       const playerAtk = Math.max(35, stats.atk || 40);
-      const expectedHit = playerAtk * 1.15;
+      const expectedHit = playerAtk * 1.25;
       
-      // Máu Boss đủ dày để cần 3-4 cú đánh chuẩn xác liên tiếp, KHÔNG BAO GIỜ BỊ 1-SHOT!
-      const calculatedHp = Math.round(expectedHit * (bossPhaseTurns * 1.15) + (waveNum * 30));
+      // Máu Boss đủ dày kết hợp baseHp của Boss trong 100 chủ đề, cần 3-5 cú đánh chuẩn xác, KHÔNG BAO GIỜ BỊ 1-SHOT!
+      const baseHpSpec = monsterSpec?.baseHp || 750;
+      const calculatedHp = Math.max(baseHpSpec, Math.round(expectedHit * (bossPhaseTurns * 1.35) + (waveNum * 35)));
 
       this.monster = {
         x: 650,
@@ -185,9 +198,14 @@ const BattleEngine = {
         hp: calculatedHp,
         maxHp: calculatedHp,
         ghostHp: calculatedHp,
-        name: template.name,
-        type: 'dragon',
-        color: template.color,
+        name: monsterSpec?.name || "TRÙM CUỐI: HẮC LONG MA VƯƠNG",
+        title: monsterSpec?.title || "Chúa Tể Hầm Ngục",
+        type: monsterSpec?.type || 'dragon',
+        color: monsterSpec?.color || '#EF4444',
+        atk: monsterSpec?.atk || (45 + Math.round(waveNum * 1.5)),
+        def: monsterSpec?.def || (25 + Math.round(waveNum * 1.0)),
+        skillName: monsterSpec?.skillName || "Hơi Thở Hắc Long",
+        roars: monsterSpec?.roars || ["Ngươi không thể vượt qua ta!"],
         isBoss: true,
         state: 'spawn',
         animTimer: 0,
@@ -200,7 +218,8 @@ const BattleEngine = {
         enraged: false
       };
 
-      // Hiệu ứng triệu hồi rồng ma quái chấn động
+      // Hiệu ứng triệu hồi rồng ma quái chấn động theo màu sắc của Boss
+      const bColor = this.monster.color || '#EF4444';
       for (let i = 0; i < 40; i++) {
         this.particles.push({
           x: this.monster.x + (Math.random() - 0.5) * 60,
@@ -208,7 +227,7 @@ const BattleEngine = {
           vx: (Math.random() - 0.5) * 140,
           vy: -80 - Math.random() * 90,
           size: 4,
-          color: i % 2 === 0 ? '#EF4444' : '#F59E0B',
+          color: i % 2 === 0 ? bColor : '#F59E0B',
           life: 0.8
         });
       }
@@ -221,11 +240,7 @@ const BattleEngine = {
       return;
     }
 
-    // 2. CÁC ẢI QUÁI THƯỜNG TRƯỚC TRÙM CUỐI (WAVE 1 ĐẾN WAVE N-3)
-    const idx = Math.min(this.MONSTER_ROSTER.length - 2, Math.floor(((waveNum - 1) / Math.max(1, bossStartWave - 1)) * (this.MONSTER_ROSTER.length - 2)));
-    const template = this.MONSTER_ROSTER[idx];
-
-    // Quái thường được cân bằng để chết gọn trong 1 đòn đánh chính xác, tạo nhịp độ càn quét đã tay!
+    // 2. CÁC ẢI QUÁI THƯỜNG TRƯỚC TRÙM CUỐI (THEMATIC MINIONS)
     const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
     const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { atk: 40 };
     const playerAtk = Math.max(35, stats.atk || 40);
@@ -238,9 +253,11 @@ const BattleEngine = {
       hp: calculatedHp,
       maxHp: calculatedHp,
       ghostHp: calculatedHp,
-      name: template.name,
-      type: template.type,
-      color: template.color,
+      name: monsterSpec?.name || "Quái Vật Hầm Ngục",
+      type: monsterSpec?.type || 'minion',
+      color: monsterSpec?.color || '#22C55E',
+      atk: monsterSpec?.atk || 20,
+      def: monsterSpec?.def || 10,
       isBoss: false,
       state: 'spawn',
       animTimer: 0,
@@ -261,7 +278,7 @@ const BattleEngine = {
         vx: (Math.random() - 0.5) * 80,
         vy: -40 - Math.random() * 60,
         size: 3,
-        color: template.color,
+        color: this.monster.color,
         life: 0.6
       });
     }
@@ -451,51 +468,244 @@ const BattleEngine = {
     ctx.restore();
   },
 
-  // ==================== BỐI CẢNH DUNGEON SỐNG ĐỘNG ====================
+  // ==================== BỐI CẢNH 100 HẦM NGỤC THEMATIC THEO CHỦ ĐỀ ====================
   drawEpicDungeon: function(ctx) {
-    // Tường vòm đá tối
-    ctx.fillStyle = '#0B0D17';
+    const stt = this.getActiveTopicStt();
+    const theme = (typeof getDungeonThemeForTopic === 'function') ? getDungeonThemeForTopic(stt) : {
+      wallColor: '#0B0D17', floorColor: '#121422', accentColor: '#FFE787', biome: 'stone_dungeon'
+    };
+
+    // 1. Tường hậu cảnh với dải màu Biome đặc thù
+    ctx.fillStyle = theme.wallColor || '#0B0D17';
     ctx.fillRect(0, 0, this.width, this.height);
 
-    // Hàng gạch rêu phong
-    ctx.fillStyle = '#16192B';
-    for (let y = 0; y < 140; y += 22) {
-      const offset = (y / 22) % 2 === 0 ? 0 : 28;
-      for (let x = -offset; x < this.width; x += 56) {
-        ctx.fillRect(x + 2, y + 2, 52, 18);
-        ctx.fillStyle = '#22263D';
-        ctx.fillRect(x + 2, y + 2, 52, 2); // Viền gạch trên
-        ctx.fillStyle = '#16192B';
-      }
-    }
+    // 2. Kiến trúc & Họa tiết độc nhất theo từng Biome
+    const biome = theme.biome || 'stone_dungeon';
+    this.drawBiomeArchitecture(ctx, biome, theme);
 
-    // Cột trụ đá hai bên đấu trường
-    this.drawStonePillar(ctx, 30);
-    this.drawStonePillar(ctx, 740);
-
-    // 2 Ngọn đuốc rực sáng bập bùng
-    this.drawTorch(ctx, 130, 48);
-    this.drawTorch(ctx, 670, 48);
-
-    // Biểu tượng Dungeon ngục tối ở giữa
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
-    ctx.beginPath();
-    ctx.arc(this.width / 2, 70, 36, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Sàn đá ngục tối với hiệu ứng bóng gương
-    ctx.fillStyle = '#121422';
+    // 3. Sàn đấu trường Thematic
+    ctx.fillStyle = theme.floorColor || '#121422';
     ctx.fillRect(0, 140, this.width, this.height - 140);
-    ctx.fillStyle = '#FF9F1C'; // Chỉ kẻ vàng ranh giới đấu trường
-    ctx.fillRect(0, 140, this.width, 3);
+    ctx.fillStyle = theme.accentColor || '#FF9F1C';
+    ctx.fillRect(0, 140, this.width, 3); // Kẻ chỉ ranh giới sàn
 
     // Lưới phối cảnh sàn đấu
-    ctx.fillStyle = '#1B1E33';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
     for (let x = 0; x < this.width; x += 40) {
       ctx.fillRect(x, 143, 2, this.height - 143);
     }
     for (let y = 143; y < this.height; y += 24) {
-      ctx.fillRect(0, y, this.width, 2);
+      ctx.fillRect(0, y, this.width, 1);
+    }
+
+    // 4. Hiệu ứng hạt môi trường riêng của từng chủ đề
+    this.drawBiomeAmbientEffects(ctx, theme);
+  },
+
+  drawBiomeArchitecture: function(ctx, biome, theme) {
+    const timer = this.hero ? this.hero.animTimer : 0;
+    const accent = theme.accentColor || '#FFE787';
+
+    if (biome === 'catwalk_fashion') {
+      // Sàn diễn thời trang: Vệt sáng spotlight chiếu từ trên trần xuống
+      ctx.fillStyle = 'rgba(244, 63, 94, 0.12)';
+      ctx.beginPath();
+      ctx.moveTo(180, 0); ctx.lineTo(120, 140); ctx.lineTo(260, 140); ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(620, 0); ctx.lineTo(540, 140); ctx.lineTo(700, 140); ctx.closePath();
+      ctx.fill();
+      // Ma-nơ-canh bóng mờ hai bên cánh gà
+      ctx.fillStyle = '#261233';
+      ctx.fillRect(50, 40, 16, 95); ctx.beginPath(); ctx.arc(58, 32, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.fillRect(734, 40, 16, 95); ctx.beginPath(); ctx.arc(742, 32, 10, 0, Math.PI * 2); ctx.fill();
+    } else if (biome === 'cozy_cafe') {
+      // Quán cà phê: Kệ gỗ cổ điển & thùng chứa hạt cafe đồng
+      ctx.fillStyle = '#1B0F09';
+      ctx.fillRect(20, 30, 110, 8); ctx.fillRect(20, 65, 110, 8); ctx.fillRect(20, 100, 110, 8);
+      ctx.fillRect(670, 30, 110, 8); ctx.fillRect(670, 65, 110, 8); ctx.fillRect(670, 100, 110, 8);
+      ctx.fillStyle = '#D97706';
+      ctx.fillRect(40, 18, 14, 12); ctx.fillRect(80, 18, 18, 12);
+      ctx.fillRect(690, 52, 22, 13); ctx.fillRect(740, 52, 16, 13);
+    } else if (biome === 'magma_hotpot') {
+      // Lò nung & vạc lẩu Tứ Xuyên: Khe nứt dung nham đỏ
+      ctx.fillStyle = 'rgba(239, 68, 68, 0.18)';
+      ctx.beginPath(); ctx.arc(this.width / 2, 120, 70, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#DC2626';
+      ctx.fillRect(100, 20, 24, 30); ctx.fillRect(680, 20, 24, 30);
+      ctx.fillStyle = '#F59E0B';
+      ctx.fillRect(108, 25, 8, 20); ctx.fillRect(688, 25, 8, 20);
+    } else if (biome === 'medical_bio_lab') {
+      // Phòng lab / Bệnh viện: Đường điện tim ECG phát sáng neon
+      ctx.strokeStyle = '#10B981';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let x = 0; x < this.width; x += 10) {
+        let y = 65;
+        const pulseX = (x + timer * 80) % 200;
+        if (pulseX > 80 && pulseX < 120) {
+          y += Math.sin((pulseX - 80) / 40 * Math.PI * 2) * 28;
+        }
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+      ctx.fillRect(this.width / 2 - 8, 40, 16, 50);
+      ctx.fillRect(this.width / 2 - 25, 57, 50, 16);
+    } else if (biome === 'sacred_cathedral') {
+      // Giáo đường: Cửa sổ hoa hồng kính màu (Stained Glass)
+      const cx = this.width / 2, cy = 60;
+      ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(cx, cy, 42, 0, Math.PI * 2); ctx.stroke();
+      const colors = ['#EF4444', '#3B82F6', '#10B981', '#F59E0B', '#8B5CF6'];
+      for (let a = 0; a < 8; a++) {
+        const rad = (a / 8) * Math.PI * 2;
+        ctx.fillStyle = colors[a % colors.length];
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, 38, rad, rad + (Math.PI / 4));
+        ctx.closePath();
+        ctx.fill();
+      }
+    } else if (biome === 'iron_foundry') {
+      // Xưởng đúc sắt & bánh răng cơ khí quay
+      ctx.strokeStyle = '#78350F'; ctx.lineWidth = 4;
+      const angle = timer * 0.8;
+      ctx.save();
+      ctx.translate(110, 65); ctx.rotate(angle);
+      ctx.strokeRect(-24, -24, 48, 48); ctx.strokeRect(-18, -18, 36, 36);
+      ctx.restore();
+      ctx.save();
+      ctx.translate(690, 65); ctx.rotate(-angle);
+      ctx.strokeRect(-28, -28, 56, 56);
+      ctx.restore();
+    } else if (biome === 'abyssal_ocean') {
+      // Đáy đại dương xanh thẳm: Cột san hô phát sáng & bong bóng nổi
+      ctx.fillStyle = '#0E3B5C';
+      ctx.fillRect(40, 50, 24, 90); ctx.fillRect(736, 50, 24, 90);
+      ctx.fillStyle = '#06B6D4';
+      ctx.beginPath(); ctx.arc(52, 45, 18, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(748, 45, 18, 0, Math.PI * 2); ctx.fill();
+    } else if (biome === 'grand_symphony') {
+      // Nhà hát giao hưởng: Ống đàn đại dương cầm (Pipe Organ) bằng đồng
+      for (let i = 0; i < 9; i++) {
+        const pipeH = 35 + Math.abs(i - 4) * 12;
+        ctx.fillStyle = '#B45309';
+        ctx.fillRect(this.width / 2 - 70 + i * 16, 140 - pipeH, 12, pipeH);
+        ctx.fillStyle = '#F59E0B';
+        ctx.fillRect(this.width / 2 - 70 + i * 16 + 2, 140 - pipeH, 4, pipeH);
+      }
+    } else if (biome === 'alpine_peaks') {
+      // Đỉnh núi tuyết phủ dưới trăng
+      ctx.fillStyle = '#F8FAFC';
+      ctx.beginPath();
+      ctx.moveTo(80, 140); ctx.lineTo(190, 30); ctx.lineTo(300, 140); ctx.closePath(); ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(500, 140); ctx.lineTo(620, 20); ctx.lineTo(740, 140); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#FEF08A';
+      ctx.beginPath(); ctx.arc(this.width / 2, 42, 22, 0, Math.PI * 2); ctx.fill();
+    } else if (biome === 'cyber_arcade_city') {
+      // Thành phố Synthwave 8-bit: Lưới neon phối cảnh & skyline tòa nhà
+      ctx.fillStyle = '#161B22';
+      ctx.fillRect(60, 40, 45, 100); ctx.fillRect(130, 20, 55, 120);
+      ctx.fillRect(615, 25, 50, 115); ctx.fillRect(690, 45, 60, 95);
+      ctx.fillStyle = '#38BDF8';
+      for (let y = 30; y < 130; y += 18) {
+        ctx.fillRect(145, y, 8, 8); ctx.fillRect(165, y, 8, 8);
+        ctx.fillRect(630, y, 8, 8); ctx.fillRect(710, y, 8, 8);
+      }
+    } else if (biome === 'deep_cosmos') {
+      // Không gian vũ trụ: Vòng xoáy Tinh vân & Hành tinh có vành đai
+      const grad = ctx.createRadialGradient(240, 65, 5, 240, 65, 90);
+      grad.addColorStop(0, 'rgba(139, 92, 246, 0.4)');
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(240, 65, 90, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#FCD34D';
+      ctx.beginPath(); ctx.arc(650, 50, 26, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.ellipse(650, 50, 48, 10, -0.25, 0, Math.PI * 2); ctx.stroke();
+    } else if (biome === 'quantum_agi_datacenter') {
+      // Trung tâm AGI Lượng Tử: Dãy máy chủ & dòng code Matrix xanh
+      ctx.fillStyle = '#061822';
+      ctx.fillRect(30, 20, 90, 120); ctx.fillRect(680, 20, 90, 120);
+      ctx.fillStyle = '#06B6D4';
+      for (let y = 30; y < 135; y += 14) {
+        ctx.fillRect(45, y, 6, 6); ctx.fillRect(70, y, 6, 6); ctx.fillRect(95, y, 6, 6);
+        ctx.fillRect(695, y, 6, 6); ctx.fillRect(720, y, 6, 6); ctx.fillRect(745, y, 6, 6);
+      }
+    } else if (biome === 'gold_bullion_vault') {
+      // Hầm kho vàng: Cửa két khổng lồ & thỏi vàng
+      ctx.fillStyle = '#3E2A0A';
+      ctx.beginPath(); ctx.arc(this.width / 2, 70, 55, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.arc(this.width / 2, 70, 48, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = '#FACC15';
+      ctx.fillRect(60, 115, 36, 12); ctx.fillRect(75, 103, 36, 12);
+      ctx.fillRect(700, 115, 36, 12); ctx.fillRect(685, 103, 36, 12);
+    } else {
+      // Bối cảnh Ngục tối cổ (Mặc định cho các hầm ngục đá)
+      this.drawStonePillar(ctx, 30);
+      this.drawStonePillar(ctx, 740);
+      this.drawTorch(ctx, 130, 48);
+      this.drawTorch(ctx, 670, 48);
+    }
+  },
+
+  drawBiomeAmbientEffects: function(ctx, theme) {
+    const timer = this.hero ? this.hero.animTimer : 0;
+    const effect = theme.effect || 'ambient_sparks';
+    const pColor = theme.particleColor || '#F59E0B';
+
+    if (effect === 'snowfall') {
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      for (let i = 0; i < 25; i++) {
+        const sx = ((i * 37) + timer * 20) % this.width;
+        const sy = ((i * 29) + timer * 45) % 140;
+        ctx.fillRect(sx, sy, 2.5, 2.5);
+      }
+    } else if (effect === 'ocean_bubbles') {
+      ctx.strokeStyle = 'rgba(34, 211, 238, 0.5)';
+      ctx.lineWidth = 1.5;
+      for (let i = 0; i < 18; i++) {
+        const bx = (i * 48 + Math.sin(timer + i) * 15) % this.width;
+        const by = 140 - ((timer * 35 + i * 20) % 130);
+        ctx.beginPath(); ctx.arc(bx, by, 3 + (i % 4), 0, Math.PI * 2); ctx.stroke();
+      }
+    } else if (effect === 'shooting_stars') {
+      ctx.fillStyle = '#FFFFFF';
+      for (let i = 0; i < 30; i++) {
+        const starX = (i * 31) % this.width;
+        const starY = (i * 17) % 130;
+        const twinkle = Math.abs(Math.sin(timer * 2 + i));
+        ctx.globalAlpha = twinkle * 0.8;
+        ctx.fillRect(starX, starY, 2, 2);
+      }
+      ctx.globalAlpha = 1.0;
+    } else if (effect === 'music_notes') {
+      ctx.fillStyle = pColor;
+      ctx.font = 'bold 14px serif';
+      const notes = ['♪', '♫', '♩', '♬'];
+      for (let i = 0; i < 6; i++) {
+        const nx = (180 + i * 85 + Math.sin(timer + i) * 20) % this.width;
+        const ny = 120 - ((timer * 25 + i * 30) % 110);
+        ctx.fillText(notes[i % notes.length], nx, ny);
+      }
+    } else if (effect === 'binary_rain') {
+      ctx.fillStyle = 'rgba(6, 182, 212, 0.5)';
+      ctx.font = '10px monospace';
+      for (let i = 0; i < 15; i++) {
+        const cx = (i * 54) % this.width;
+        const cy = ((timer * 40 + i * 25) % 120);
+        ctx.fillText((i % 2 === 0 ? '1' : '0'), cx, cy + 10);
+      }
+    } else {
+      ctx.fillStyle = pColor;
+      for (let i = 0; i < 12; i++) {
+        const px = (120 + i * 55 + Math.sin(timer * 2 + i) * 12) % this.width;
+        const py = 120 - ((timer * 20 + i * 25) % 100);
+        ctx.fillRect(px, py, 2, 2);
+      }
     }
   },
 
@@ -1014,16 +1224,42 @@ const BattleEngine = {
       ctx.filter = 'brightness(3) contrast(1.5)';
     }
 
-    if (m.type === 'dragon') {
+    if (m.type === 'fashion_queen') {
+      this.drawFashionQueenBoss(ctx, m.color);
+    } else if (m.type === 'barista_dragon') {
+      this.drawBaristaDragonBoss(ctx, m.color);
+    } else if (m.type === 'hotpot_behemoth') {
+      this.drawHotpotBehemothBoss(ctx, m.color);
+    } else if (m.type === 'anatomical_titan') {
+      this.drawAnatomicalTitanBoss(ctx, m.color);
+    } else if (m.type === 'plague_titan') {
+      this.drawPlagueTitanBoss(ctx, m.color);
+    } else if (m.type === 'living_wardrobe') {
+      this.drawLivingWardrobeBoss(ctx, m.color);
+    } else if (m.type === 'cyber_overlord' || m.type === 'quantum_agi_god') {
+      this.drawCyberOverlordBoss(ctx, m.color);
+    } else if (m.type === 'abyssal_kraken') {
+      this.drawAbyssalKrakenBoss(ctx, m.color);
+    } else if (m.type === 'cosmic_destroyer') {
+      this.drawCosmicDestroyerBoss(ctx, m.color);
+    } else if (m.type === 'midas_gold_dragon') {
+      this.drawMidasGoldDragonBoss(ctx, m.color);
+    } else if (m.type === 'omni_carrier_titan') {
+      this.drawOmniCarrierTitanBoss(ctx, m.color);
+    } else if (m.isBoss) {
       this.drawDragonBoss(ctx);
-    } else if (m.type === 'golem') {
+    } else if (m.type === 'golem' || m.type === 'ancient_golem') {
       this.drawGolemSprite(ctx);
     } else if (m.type === 'skeleton') {
       this.drawSkeletonSprite(ctx);
     } else if (m.type === 'bat') {
       this.drawBatSprite(ctx);
+    } else if (m.type === 'thread_wisp' || m.type === 'neural_wisp' || m.type === 'rage_wisp') {
+      this.drawWispSprite(ctx, m.color);
+    } else if (m.type === 'button_beetle' || m.type === 'chili_fiend' || m.type === 'bean_imp') {
+      this.drawBeetleImpSprite(ctx, m.color);
     } else {
-      this.drawSlimeSprite(ctx, m.color);
+      this.drawThematicMinionSprite(ctx, m);
     }
 
     ctx.restore();
@@ -1157,6 +1393,288 @@ const BattleEngine = {
     ctx.beginPath();
     ctx.arc(-26, -24, 7 + Math.random() * 4, 0, Math.PI * 2);
     ctx.fill();
+  },
+
+  // ==================== BỘ RENDERER QUÁI & BOSS THEMATIC 100 CHỦ ĐỀ ====================
+  drawFashionQueenBoss: function(ctx, color) {
+    // Váy dạ hội lộng lẫy màu đỏ mận / hồng cánh sen
+    ctx.fillStyle = color || '#F43F5E';
+    ctx.beginPath();
+    ctx.moveTo(0, -30);
+    ctx.lineTo(-38, 42);
+    ctx.lineTo(38, 42);
+    ctx.closePath();
+    ctx.fill();
+
+    // Thắt lưng hoàng kim
+    ctx.fillStyle = '#F59E0B';
+    ctx.fillRect(-18, -6, 36, 6);
+
+    // Gương mặt thanh tú & vương miện lấp lánh
+    ctx.fillStyle = '#FFF1F2';
+    ctx.beginPath(); ctx.arc(0, -42, 14, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#E11D48'; // Môi son đỏ
+    ctx.fillRect(-3, -35, 6, 3);
+    ctx.fillStyle = '#111'; // Mắt sắc sảo
+    ctx.fillRect(-6, -44, 3, 4); ctx.fillRect(3, -44, 3, 4);
+
+    // Vương miện hoàng gia
+    ctx.fillStyle = '#FBBF24';
+    ctx.beginPath();
+    ctx.moveTo(-14, -54); ctx.lineTo(-14, -66); ctx.lineTo(-7, -58);
+    ctx.lineTo(0, -70); ctx.lineTo(7, -58); ctx.lineTo(14, -66); ctx.lineTo(14, -54);
+    ctx.closePath(); ctx.fill();
+
+    // Quyền trượng kim khâu dài & dải ruy băng lụa xoắn quanh
+    ctx.strokeStyle = '#FDE047'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(26, -65); ctx.lineTo(26, 40); ctx.stroke();
+    ctx.fillStyle = '#E11D48';
+    ctx.beginPath(); ctx.arc(26, -65, 6, 0, Math.PI * 2); ctx.fill();
+  },
+
+  drawBaristaDragonBoss: function(ctx, color) {
+    // Rồng cà phê rang đậm (Dark Roast)
+    ctx.fillStyle = '#451A03';
+    ctx.beginPath(); ctx.ellipse(0, 4, 46, 34, 0, 0, Math.PI * 2); ctx.fill();
+
+    // Sừng hạt cà phê xoắn cong
+    ctx.fillStyle = '#78350F';
+    ctx.beginPath();
+    ctx.moveTo(-16, -20); ctx.quadraticCurveTo(-45, -55, -25, -65); ctx.lineTo(-10, -30);
+    ctx.moveTo(16, -20); ctx.quadraticCurveTo(45, -55, 25, -65); ctx.lineTo(10, -30);
+    ctx.fill();
+
+    // Hơi cà phê bốc khói ngun ngút từ mũi
+    ctx.fillStyle = 'rgba(254, 243, 199, 0.7)';
+    const steamY = Math.sin(this.monster.animTimer * 3) * 6;
+    ctx.beginPath();
+    ctx.arc(-26, -24 + steamY, 8, 0, Math.PI * 2);
+    ctx.arc(-34, -36 + steamY, 12, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Mắt cà phê hổ phách
+    ctx.fillStyle = '#F59E0B';
+    ctx.fillRect(-12, -32, 6, 5); ctx.fillRect(6, -32, 6, 5);
+  },
+
+  drawHotpotBehemothBoss: function(ctx, color) {
+    // Nồi lẩu đồng khổng lồ
+    ctx.fillStyle = '#9A3412';
+    ctx.beginPath(); ctx.arc(0, 10, 44, 0, Math.PI); ctx.fill();
+    ctx.fillStyle = '#78350F';
+    ctx.fillRect(-48, 6, 96, 6);
+
+    // Nước lẩu ớt đỏ sủi bọt cuồn cuộn
+    ctx.fillStyle = '#DC2626';
+    ctx.fillRect(-40, 2, 80, 8);
+    // Bọt ớt sôi
+    ctx.fillStyle = '#F97316';
+    ctx.beginPath();
+    ctx.arc(-20, 2, 5 + Math.random() * 3, 0, Math.PI * 2);
+    ctx.arc(15, 2, 6 + Math.random() * 3, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Mắt nham thạch & sừng ớt hiểm
+    ctx.fillStyle = '#FEF08A';
+    ctx.fillRect(-16, -14, 8, 7); ctx.fillRect(8, -14, 8, 7);
+    ctx.fillStyle = '#EF4444'; // Sừng ớt nhọn
+    ctx.beginPath(); ctx.moveTo(-28, -8); ctx.lineTo(-40, -42); ctx.lineTo(-18, -15); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(28, -8); ctx.lineTo(40, -42); ctx.lineTo(18, -15); ctx.fill();
+  },
+
+  drawAnatomicalTitanBoss: function(ctx, color) {
+    // Khung xương Titan ngà voi cổ đại
+    ctx.fillStyle = '#F1F5F9';
+    // Hộp sọ khổng lồ
+    ctx.fillRect(-20, -56, 40, 30);
+    // Hốc mắt đen sâu hoắm
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(-14, -46, 10, 11); ctx.fillRect(4, -46, 10, 11);
+    ctx.fillStyle = '#EF4444'; // Đồng tử đỏ rực
+    ctx.fillRect(-10, -42, 4, 5); ctx.fillRect(8, -42, 4, 5);
+
+    // Khung xương sườn xếp lớp
+    ctx.fillStyle = '#CBD5E1';
+    for (let r = 0; r < 5; r++) {
+      ctx.fillRect(-32 + r * 2, -22 + r * 11, 64 - r * 4, 5);
+    }
+    // Trái tim ma pháp đỏ phát sáng bên trong lồng ngực
+    ctx.fillStyle = '#DC2626';
+    const beat = 1 + Math.sin(this.monster.animTimer * 4) * 0.2;
+    ctx.beginPath(); ctx.arc(0, -6, 10 * beat, 0, Math.PI * 2); ctx.fill();
+  },
+
+  drawPlagueTitanBoss: function(ctx, color) {
+    // Thân khí độc xanh lục bay lượn
+    ctx.fillStyle = color || '#10B981';
+    ctx.beginPath(); ctx.ellipse(0, 12, 38, 28, 0, 0, Math.PI * 2); ctx.fill();
+
+    // Mặt nạ bác sĩ dịch hạch mỏ quạ (Plague Doctor Mask)
+    ctx.fillStyle = '#1E293B';
+    ctx.fillRect(-18, -36, 36, 26);
+    // Chiếc mỏ quạ nhọn dài hướng sang trái
+    ctx.fillStyle = '#F8FAFC';
+    ctx.beginPath();
+    ctx.moveTo(-16, -26); ctx.lineTo(-54, -14); ctx.lineTo(-16, -18);
+    ctx.closePath(); ctx.fill();
+
+    // Mắt kính bảo hộ đỏ tròn
+    ctx.fillStyle = '#EF4444';
+    ctx.beginPath(); ctx.arc(-4, -28, 6, 0, Math.PI * 2); ctx.fill();
+
+    // Ống nghiệm hóa chất sau lưng
+    ctx.fillStyle = '#34D399';
+    ctx.fillRect(18, -35, 8, 30);
+  },
+
+  drawLivingWardrobeBoss: function(ctx, color) {
+    // Tủ gỗ khổng lồ há miệng Mimic
+    ctx.fillStyle = '#78350F';
+    ctx.fillRect(-34, -48, 68, 86);
+    ctx.strokeStyle = '#451A03'; ctx.lineWidth = 3;
+    ctx.strokeRect(-34, -48, 68, 86);
+
+    // Cửa tủ mở toác để lộ miệng đầy răng nhọn
+    ctx.fillStyle = '#18072B';
+    ctx.fillRect(-22, -32, 44, 54);
+    // Hàng răng nanh sắc lẹm
+    ctx.fillStyle = '#F8FAFC';
+    for (let t = 0; t < 6; t++) {
+      ctx.beginPath(); ctx.moveTo(-22 + t * 7, -32); ctx.lineTo(-18 + t * 7, -22); ctx.lineTo(-15 + t * 7, -32); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(-22 + t * 7, 22); ctx.lineTo(-18 + t * 7, 12); ctx.lineTo(-15 + t * 7, 22); ctx.fill();
+    }
+    // Mắt ác quỷ vàng trên đỉnh tủ
+    ctx.fillStyle = '#FBBF24';
+    ctx.beginPath(); ctx.arc(0, -40, 7, 0, Math.PI * 2); ctx.fill();
+  },
+
+  drawCyberOverlordBoss: function(ctx, color) {
+    // Đầu máy tính đa giác 8-bit lơ lửng
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(-28, -38, 56, 52);
+    ctx.strokeStyle = color || '#38BDF8'; ctx.lineWidth = 3;
+    ctx.strokeRect(-28, -38, 56, 52);
+
+    // Mắt kính Visor neon quét laser
+    ctx.fillStyle = color || '#06B6D4';
+    const laserX = Math.sin(this.monster.animTimer * 3) * 16;
+    ctx.fillRect(-22, -26, 44, 10);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(-6 + laserX, -26, 12, 10);
+
+    // Vành đai chip bán dẫn xoay quanh đầu
+    ctx.strokeStyle = '#A855F7'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.ellipse(0, -12, 48, 14, Math.sin(this.monster.animTimer) * 0.4, 0, Math.PI * 2);
+    ctx.stroke();
+  },
+
+  drawAbyssalKrakenBoss: function(ctx, color) {
+    // Đầu quái vật bạch tuộc đại dương
+    ctx.fillStyle = color || '#0891B2';
+    ctx.beginPath(); ctx.ellipse(0, -20, 36, 40, 0, 0, Math.PI * 2); ctx.fill();
+
+    // Mắt vàng đại dương phát sáng
+    ctx.fillStyle = '#FEF08A';
+    ctx.beginPath(); ctx.arc(-14, -18, 9, 0, Math.PI * 2); ctx.arc(14, -18, 9, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(-15, -20, 3, 6); ctx.fillRect(13, -20, 3, 6);
+
+    // 6 xúc tu ngọ nguậy uốn lượn bên dưới
+    ctx.strokeStyle = '#06B6D4'; ctx.lineWidth = 6;
+    for (let i = 0; i < 6; i++) {
+      const tentX = -30 + i * 12;
+      const wave = Math.sin(this.monster.animTimer * 2 + i) * 12;
+      ctx.beginPath();
+      ctx.moveTo(tentX, 10);
+      ctx.quadraticCurveTo(tentX + wave, 35, tentX + wave * 1.5, 55);
+      ctx.stroke();
+    }
+  },
+
+  drawCosmicDestroyerBoss: function(ctx, color) {
+    // Quả cầu Hư Không Vũ Trụ (Black Hole Singularity)
+    ctx.fillStyle = '#05030A';
+    ctx.beginPath(); ctx.arc(0, 0, 34, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = color || '#8B5CF6'; ctx.lineWidth = 4;
+    ctx.stroke();
+
+    // Vành đai bồi tụ thiên thạch phát sáng xoay tròn
+    ctx.strokeStyle = '#C4B5FD'; ctx.lineWidth = 3;
+    ctx.save();
+    ctx.rotate(this.monster.animTimer * 0.6);
+    ctx.beginPath(); ctx.ellipse(0, 0, 58, 16, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+
+    // Mắt thần trung tâm phát sáng tím rực
+    ctx.fillStyle = '#E9D5FF';
+    ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill();
+  },
+
+  drawMidasGoldDragonBoss: function(ctx, color) {
+    // Rồng Vàng Midas dát vàng nguyên khối 24K
+    ctx.fillStyle = '#EAB308';
+    ctx.beginPath(); ctx.ellipse(0, 4, 46, 32, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#FEF08A'; ctx.lineWidth = 2; ctx.stroke();
+
+    // Cánh dát vàng lấp lánh
+    const wingFlap = Math.sin(this.monster.animTimer * 2) * 12;
+    ctx.fillStyle = '#FACC15';
+    ctx.beginPath();
+    ctx.moveTo(-18, -14); ctx.lineTo(-65, -50 + wingFlap); ctx.lineTo(-46, 16); ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(18, -14); ctx.lineTo(65, -50 + wingFlap); ctx.lineTo(46, 16); ctx.fill();
+
+    // Mắt kim cương xanh lam
+    ctx.fillStyle = '#38BDF8';
+    ctx.fillRect(-14, -36, 7, 6); ctx.fillRect(7, -36, 7, 6);
+  },
+
+  drawOmniCarrierTitanBoss: function(ctx, color) {
+    // Rồng Siêu Trọng Container Cơ Giới
+    ctx.fillStyle = '#1E293B';
+    ctx.fillRect(-40, -28, 80, 56);
+    // Các thùng container đỏ, xanh, vàng gắn trên mình
+    ctx.fillStyle = '#DC2626'; ctx.fillRect(-35, -24, 22, 18);
+    ctx.fillStyle = '#2563EB'; ctx.fillRect(-10, -24, 22, 18);
+    ctx.fillStyle = '#F59E0B'; ctx.fillRect(15, -24, 22, 18);
+
+    // Đầu cơ giới với mắt đèn pha xenon kép
+    ctx.fillStyle = '#334155'; ctx.fillRect(-22, -52, 44, 26);
+    ctx.fillStyle = '#FEF08A';
+    ctx.beginPath(); ctx.arc(-10, -40, 6, 0, Math.PI * 2); ctx.arc(10, -40, 6, 0, Math.PI * 2); ctx.fill();
+  },
+
+  drawWispSprite: function(ctx, color) {
+    // Quái đốm sáng linh hồn (Wisp)
+    const bob = Math.sin(this.monster.animTimer * 3) * 4;
+    ctx.fillStyle = color || '#A855F7';
+    ctx.beginPath(); ctx.arc(0, bob, 16, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath(); ctx.arc(0, bob, 8, 0, Math.PI * 2); ctx.fill();
+  },
+
+  drawBeetleImpSprite: function(ctx, color) {
+    // Quái bọ gai / tiểu quỷ
+    ctx.fillStyle = color || '#DC2626';
+    ctx.beginPath(); ctx.ellipse(0, 6, 18, 14, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#1E293B';
+    ctx.fillRect(-6, -12, 12, 10);
+    // Càng nhọn
+    ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(-6, -12); ctx.lineTo(-14, -20); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(6, -12); ctx.lineTo(14, -20); ctx.stroke();
+  },
+
+  drawThematicMinionSprite: function(ctx, m) {
+    // Minion Thematic đại diện với lõi nguyên tố xoay
+    const col = m.color || '#10B981';
+    ctx.fillStyle = col;
+    ctx.beginPath(); ctx.arc(0, 0, 18, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath(); ctx.arc(-5, -4, 4, 0, Math.PI * 2); ctx.arc(5, -4, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(-6, -5, 2, 3); ctx.fillRect(4, -5, 2, 3);
   },
 
   drawMonsterBar: function(ctx, x, y) {
@@ -1342,15 +1860,29 @@ const BattleEngine = {
     const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { atk: 35, crit: 5 };
 
     const isCrit = (this.pendingStreak >= 3) || (Math.random() * 100 < (stats.crit || 5));
-    let baseDmg = (stats.atk || 35) + Math.floor(Math.random() * 15);
+    let skillMultiplier = 1.0;
 
     const userClass = (typeof currentRpgUser !== 'undefined' && currentRpgUser?.rpg_class) ? currentRpgUser.rpg_class : 'warrior';
     if (userClass === 'mage' && this.pendingWord?.level === 'advanced') {
-      baseDmg = Math.round(baseDmg * 1.8);
+      skillMultiplier *= 1.8;
       this.addFloatDamage(this.monster.x, this.monster.y - 35, '⚡ MA PHÁP C1-C2 x1.8!', '#8C43F6', true);
     }
+    if (this.pendingBerserk) {
+      skillMultiplier *= 2.2;
+      this.pendingBerserk = false;
+      this.addFloatDamage(this.hero.x, this.hero.y - 30, '🔥 CUỒNG TRẢM X2.2!', '#EF4444', true);
+    }
 
-    const finalDmg = isCrit ? Math.round(baseDmg * 1.8) : baseDmg;
+    // Tính toán sát thương hiệp sĩ dựa trên công thức công - thủ (DEF Mitigation)
+    let finalDmg = 0;
+    if (typeof calculateCombatDamage === 'function') {
+      finalDmg = calculateCombatDamage(stats.atk || 35, this.monster.def || 10, isCrit, skillMultiplier);
+    } else {
+      const baseDmg = (stats.atk || 35) + Math.floor(Math.random() * 15);
+      const reduced = Math.max(15, Math.round((isCrit ? baseDmg * 1.8 : baseDmg) * skillMultiplier) - Math.floor((this.monster.def || 10) / 3));
+      finalDmg = reduced;
+    }
+
     this.monster.hp = Math.max(0, this.monster.hp - finalDmg);
     this.monster.flashWhite = 0.4;
     this.screenShake = isCrit ? 1.5 : 0.7;
@@ -1392,10 +1924,13 @@ const BattleEngine = {
         // Trùm còn máu -> Kích hoạt phản ứng Boss
         if (this.monster.hp <= this.monster.maxHp * 0.5 && !this.monster.enraged) {
           this.monster.enraged = true;
-          this.addFloatDamage(this.monster.x, this.monster.y - 35, '🔥 HẮC LONG CUỒNG NỘ (ENRAGED)!', '#EF4444', true);
+          this.addFloatDamage(this.monster.x, this.monster.y - 35, `🔥 ${this.monster.name} CUỒNG NỘ!`, '#EF4444', true);
           this.screenShake = 2.0;
         } else {
-          this.addFloatDamage(this.monster.x, this.monster.y - 35, '🐉 RỒNG GẦM RÚ TÁC CHIẾN!', '#F59E0B', false);
+          const roar = (this.monster.roars && this.monster.roars.length > 0)
+            ? this.monster.roars[Math.floor(Math.random() * this.monster.roars.length)]
+            : `${this.monster.name} GẦM THÉT QUYẾT CHIẾN!`;
+          this.addFloatDamage(this.monster.x, this.monster.y - 35, `💬 ${roar}`, '#F59E0B', false);
         }
         if (typeof window.onBossTurnComplete === 'function') {
           window.onBossTurnComplete();
@@ -1412,7 +1947,7 @@ const BattleEngine = {
 
   onMonsterStrikeConnect: function() {
     const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
-    const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { dodge: 5 };
+    const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { dodge: 5, def: 10 };
 
     // 1. Kiểm tra Né Đòn (Dodge)
     if (Math.random() * 100 < (stats.dodge || 5)) {
@@ -1433,14 +1968,21 @@ const BattleEngine = {
       return;
     }
 
-    const monsterDmg = this.monster.isBoss ? (32 + Math.floor(Math.random() * 12)) : (15 + Math.floor(Math.random() * 10));
+    // 3. Quái vật / Boss xuất chiêu với ATK riêng, giảm trừ bởi Giáp phòng thủ DEF của Hiệp sĩ
+    const monsterRawAtk = this.monster.atk || (this.monster.isBoss ? 45 : 20);
+    const heroDef = stats.def || 10;
+    const monsterDmg = Math.max(8, Math.round(monsterRawAtk + (Math.random() * 8) - (heroDef / 2.5)));
+
     this.hero.hp = Math.max(0, this.hero.hp - monsterDmg);
     this.hero.flashWhite = 0.4;
     this.screenShake = this.monster.isBoss ? 2.0 : 1.2;
 
     RetroAudio.playHeroHurt();
     this.createHitSparks(this.hero.x, this.hero.y, this.monster.isBoss);
-    const hitLabel = this.monster.isBoss ? `🔥 HẮC LONG PHUN LỬA! -${monsterDmg} HP` : `PHẢN ĐÒN! -${monsterDmg} HP`;
+
+    const hitLabel = this.monster.isBoss 
+      ? `🔥 ${this.monster.skillName || 'CHIÊU THỨC BÁ ĐẠO'}! -${monsterDmg} HP` 
+      : `💥 PHẢN ĐÒN! -${monsterDmg} HP`;
     this.addFloatDamage(this.hero.x, this.hero.y - 20, hitLabel, '#EF4444', true);
 
     if (typeof currentRpgUser !== 'undefined' && currentRpgUser) {

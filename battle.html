@@ -181,18 +181,48 @@
           <!-- Nạp động bằng renderLobbyTopicsList() -->
         </div>
 
-        <!-- Thẻ Xem Trước Ải Đang Chọn & Phần Thưởng -->
-        <div id="lobbySelectedTopicPreviewCard" class="bg-[#181B2E] border border-amber-500/50 p-2.5 rounded space-y-1 text-xs shrink-0">
+        <!-- Thẻ Xem Trước Ải Đang Chọn & Chi Tiết Boss Độc Nhất + Quái Thường -->
+        <div id="lobbySelectedTopicPreviewCard" class="bg-[#181B2E] border-2 border-amber-500/60 p-2.5 rounded space-y-1.5 text-xs shrink-0 shadow-sm">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-1.5 truncate">
-              <span class="text-amber-400 font-extrabold">🏰 ẢI ĐANG CHỌN:</span>
-              <span id="lobbyPreviewTopicTitle" class="font-display font-extrabold text-white truncate">Chủ đề #1</span>
+              <span class="text-amber-400 font-extrabold text-[11px]">🏰 ẢI:</span>
+              <span id="lobbyPreviewTopicTitle" class="font-display font-extrabold text-white text-xs sm:text-sm truncate">Chủ đề #1</span>
             </div>
-            <span id="lobbyPreviewWordCountBadge" class="text-[10px] font-mono-code bg-emerald-950 text-emerald-300 border border-emerald-700 px-1.5 py-0.2 rounded font-bold shrink-0">100 Từ Vựng</span>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <span id="lobbyPreviewBiomeBadge" class="text-[10px] font-mono-code bg-indigo-950 text-indigo-300 border border-indigo-700 px-1.5 py-0.2 rounded font-bold">🏛️ Hầm Ngục</span>
+              <span id="lobbyPreviewTierBadge" class="text-[10px] font-mono-code bg-emerald-950 text-emerald-300 border border-emerald-700 px-1.5 py-0.2 rounded font-bold">Tier 1: Tân Binh</span>
+            </div>
           </div>
-          <div class="text-[11px] text-slate-400 flex items-center justify-between">
-            <span>Canh giữ: <b id="lobbyPreviewMonsterCount" class="text-amber-300">7 Quái Thường</b> + <b class="text-red-400">👑 TRÙM CUỐI HẮC LONG</b></span>
-            <span>Thưởng: <b class="text-emerald-400">+100 EXP</b> • <b class="text-yellow-400">+35 🪙</b> • <b class="text-blue-400">+2 💎</b></span>
+
+          <!-- Chi tiết Trùm Cuối Độc Nhất -->
+          <div class="bg-[#10121F] border border-red-900/60 p-2 rounded flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">👑</span>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span id="lobbyPreviewBossName" class="font-display font-extrabold text-red-400 text-xs tracking-tight">TRÙM CUỐI</span>
+                  <span id="lobbyPreviewBossTitle" class="text-[10px] text-slate-400 italic hidden sm:inline">- Chúa Tể Hầm Ngục</span>
+                </div>
+                <div class="text-[10px] font-mono-code text-slate-300 flex items-center gap-2">
+                  <span>❤️ Máu: <b id="lobbyPreviewBossHp" class="text-red-300">750 HP</b></span>
+                  <span>⚔️ Công: <b id="lobbyPreviewBossAtk" class="text-amber-300">45</b></span>
+                  <span>🛡️ Thủ: <b id="lobbyPreviewBossDef" class="text-blue-300">25</b></span>
+                </div>
+              </div>
+            </div>
+            <div class="text-[10px] font-mono-code text-right text-amber-300/90 hidden md:block">
+              <div id="lobbyPreviewBossSkill" class="truncate max-w-[200px]">⚡ Tuyệt kỹ đặc thù</div>
+              <div class="text-emerald-400 font-bold">Thưởng: +100 EXP • +35 🪙 • +2 💎</div>
+            </div>
+          </div>
+
+          <!-- Minions roster -->
+          <div class="text-[11px] text-slate-400 flex items-center justify-between flex-wrap gap-1">
+            <div class="truncate">
+              <span>Quái thường: </span>
+              <span id="lobbyPreviewMinionNames" class="text-amber-200 font-mono-code text-[10px]">Minion 1, Minion 2</span>
+            </div>
+            <span class="text-[10px] font-mono-code text-slate-400 md:hidden">Thưởng: <b class="text-emerald-400">+100 EXP</b> • <b class="text-yellow-400">+35 🪙</b></span>
           </div>
         </div>
 
@@ -662,6 +692,7 @@
   <script src="js/equipment_data.js"></script>
   <script src="js/inventory.js"></script>
   <script src="js/shop.js"></script>
+  <script src="js/dungeon_data_100.js"></script>
   <script src="js/battle.js"></script>
   <script src="js/quiz.js"></script>
 
@@ -920,10 +951,53 @@
       const titleEl = document.getElementById('lobbyPreviewTopicTitle');
       if (titleEl) titleEl.innerText = `#${selectedLobbyStt} - ${topicObj.topic}`;
 
-      const monsterCountEl = document.getElementById('lobbyPreviewMonsterCount');
-      if (monsterCountEl) {
-        const regularCount = Math.max(1, selectedLobbyQCount - 3);
-        monsterCountEl.innerText = `${regularCount} Quái Thường`;
+      const dungeon = (typeof window.DUNGEON_DATA_100 !== 'undefined' && window.DUNGEON_DATA_100) 
+        ? window.DUNGEON_DATA_100[selectedLobbyStt] 
+        : null;
+
+      if (dungeon) {
+        const biomeBadge = document.getElementById('lobbyPreviewBiomeBadge');
+        if (biomeBadge) {
+          const biomeIcons = {
+            fashion_catwalk: '👗 Sàn Catwalk', cozy_cafe: '☕ Quán Cà Phê', magma_hotpot: '🍲 Núi Lửa Lẩu',
+            medical_bio_lab: '🧬 Viện Sinh Học', sacred_cathedral: '⛪ Thánh Đường', clockwork_foundry: '⚙️ Xưởng Cơ Giới',
+            abyssal_ocean: '🌊 Đại Dương Sâu', concert_symphony: '🎻 Nhà Hát Giao Hưởng', alpine_peaks: '🏔️ Đỉnh Băng Giá',
+            cyber_arcade: '👾 Cyber Hư Không', celestial_cosmos: '🌌 Vũ Trụ Hư Không', quantum_supercomputer: '🤖 Siêu Máy Tính',
+            treasury_vault: '💰 Kho Báu Midas', ancient_ruins: '🏛️ Cổ Thành Phế Tích'
+          };
+          biomeBadge.innerText = biomeIcons[dungeon.biome] || '🏛️ Hầm Ngục';
+        }
+
+        const tierBadge = document.getElementById('lobbyPreviewTierBadge');
+        if (tierBadge) tierBadge.innerText = dungeon.tierName || `Tier ${dungeon.tier || 1}`;
+
+        const bossNameEl = document.getElementById('lobbyPreviewBossName');
+        if (bossNameEl) {
+          bossNameEl.innerText = dungeon.boss?.name || 'TRÙM CUỐI';
+          bossNameEl.style.color = dungeon.boss?.color || '#EF4444';
+        }
+
+        const bossTitleEl = document.getElementById('lobbyPreviewBossTitle');
+        if (bossTitleEl) bossTitleEl.innerText = `- ${dungeon.boss?.title || 'Chúa Tể'}`;
+
+        const bossHpEl = document.getElementById('lobbyPreviewBossHp');
+        if (bossHpEl) bossHpEl.innerText = `${dungeon.boss?.baseHp || 750} HP`;
+
+        const bossAtkEl = document.getElementById('lobbyPreviewBossAtk');
+        if (bossAtkEl) bossAtkEl.innerText = `${dungeon.boss?.atk || 45}`;
+
+        const bossDefEl = document.getElementById('lobbyPreviewBossDef');
+        if (bossDefEl) bossDefEl.innerText = `${dungeon.boss?.def || 25}`;
+
+        const bossSkillEl = document.getElementById('lobbyPreviewBossSkill');
+        if (bossSkillEl) bossSkillEl.innerText = `⚡ ${dungeon.boss?.skillName || 'Tuyệt kỹ Trùm'}`;
+
+        const minionsEl = document.getElementById('lobbyPreviewMinionNames');
+        if (minionsEl && dungeon.minions) {
+          const regularCount = Math.max(1, selectedLobbyQCount - 3);
+          const minionNames = dungeon.minions.map(m => m.name).join(' • ');
+          minionsEl.innerText = `[${regularCount} Lượt] ${minionNames}`;
+        }
       }
     }
 

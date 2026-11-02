@@ -217,6 +217,9 @@ async function startQuizSession() {
   }
 
   const sttList = Array.from(quizSelectedStts);
+  if (sttList.length > 0) {
+    window.activeDungeonStt = sttList[0];
+  }
   const levelFilter = document.getElementById('quizLevelSelect')?.value || 'all';
   const mode = document.getElementById('quizModeSelect')?.value || 'mixed';
 
