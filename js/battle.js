@@ -101,12 +101,16 @@ const BattleEngine = {
     const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : {
       hp: 120, max_hp: 120, mp: 50, max_mp: 50, rpg_class: 'warrior', display_name: 'Hiệp Sĩ Anki'
     };
+    if (typeof ensureUserEquipmentInitialized === 'function') {
+      ensureUserEquipmentInitialized(user);
+    }
+    const totalStats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { hp: 120, mp: 50 };
 
-    this.hero.hp = user.hp || 100;
-    this.hero.maxHp = user.max_hp || 100;
+    this.hero.hp = totalStats.hp || user.hp || 100;
+    this.hero.maxHp = totalStats.hp || user.max_hp || 100;
     this.hero.ghostHp = this.hero.hp;
-    this.hero.mp = user.mp || 40;
-    this.hero.maxMp = user.max_mp || 40;
+    this.hero.mp = totalStats.mp || user.mp || 40;
+    this.hero.maxMp = totalStats.mp || user.max_mp || 40;
     this.hero.state = 'idle';
     this.hero.lungeX = 0;
     this.hero.flashWhite = 0;
@@ -495,142 +499,346 @@ const BattleEngine = {
   },
 
   drawHeroSpriteOnly: function(ctx) {
-    const userClass = (typeof currentRpgUser !== 'undefined' && currentRpgUser?.rpg_class) ? currentRpgUser.rpg_class : 'warrior';
+    const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+    const userClass = user?.rpg_class || 'warrior';
     const isAttacking = (this.hero.state === 'slashing');
 
-    if (userClass === 'mage') {
-      this.drawMageSprite(ctx, isAttacking);
-    } else if (userClass === 'ranger') {
-      this.drawRangerSprite(ctx, isAttacking);
-    } else if (userClass === 'assassin') {
-      this.drawAssassinSprite(ctx, isAttacking);
-    } else {
-      this.drawWarriorSprite(ctx, isAttacking);
-    }
+    // Nạp dữ liệu các trang bị đang mặc từ catalog
+    const eq = user?.equipped || {};
+    const weaponId = eq.weapon || user?.equipped_weapon;
+    const helmetId = eq.helmet;
+    const armorId = eq.armor || user?.equipped_armor;
+    const bootsId = eq.boots;
+    const glovesId = eq.gloves;
+
+    const getItem = (id) => (typeof getRpgEquipmentById === 'function' ? getRpgEquipmentById(id) : null);
+    const weapon = getItem(weaponId);
+    const helmet = getItem(helmetId);
+    const armor = getItem(armorId);
+    const boots = getItem(bootsId);
+    const gloves = getItem(glovesId);
+
+    // 1. Vẽ Hào Quang Hộ Thể (Legendary / Epic Aura)
+    this.drawHeroAura(ctx, weapon, armor, helmet);
+
+    // 2. Vẽ Chân & Ủng (Boots)
+    this.drawHeroBoots(ctx, boots, userClass);
+
+    // 3. Vẽ Thân & Áo Giáp / Áo Choàng (Armor & Cape)
+    this.drawHeroArmor(ctx, armor, userClass);
+
+    // 4. Vẽ Đầu & Mũ / Nón / Vương Miện (Head & Helmet)
+    this.drawHeroHead(ctx, helmet, userClass);
+
+    // 5. Vẽ Tay & Vũ Khí (Weapon & Gauntlets)
+    this.drawHeroWeapon(ctx, weapon, gloves, userClass, isAttacking);
   },
 
-  drawWarriorSprite: function(ctx, isSlashing) {
-    // Áo giáp hiệp sĩ bạc
-    ctx.fillStyle = '#CBD5E1';
-    ctx.fillRect(-12, -12, 24, 26);
-    ctx.fillStyle = '#475569';
+  drawHeroAura: function(ctx, weapon, armor, helmet) {
+    const isLegendary = (weapon?.tier === 'legendary' || armor?.tier === 'legendary' || helmet?.tier === 'legendary');
+    const particleType = weapon?.visual?.particle || armor?.visual?.particle || (isLegendary ? 'holy' : null);
+    if (!particleType) return;
+
+    ctx.save();
+    const t = this.hero.animTimer;
+    if (particleType === 'holy' || particleType === 'lightning') {
+      // Vòng tròn ánh sáng / sét vàng xoay quanh
+      ctx.strokeStyle = particleType === 'holy' ? 'rgba(250, 204, 21, 0.45)' : 'rgba(56, 189, 248, 0.5)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(0, 10, 28 + Math.sin(t * 3) * 3, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Đốm sáng bay lên
+      for (let i = 0; i < 3; i++) {
+        const py = ((t * 40 + i * 25) % 65) - 35;
+        const px = Math.sin(t * 2 + i) * 18;
+        ctx.fillStyle = particleType === 'holy' ? '#FEF08A' : '#7DD3FC';
+        ctx.fillRect(px, -py, 3, 3);
+      }
+    } else if (particleType === 'fire') {
+      // Đốm lửa đỏ bay quanh
+      for (let i = 0; i < 4; i++) {
+        const py = ((t * 45 + i * 20) % 60) - 30;
+        const px = Math.sin(t * 3 + i * 1.5) * 16;
+        ctx.fillStyle = i % 2 === 0 ? '#EF4444' : '#F59E0B';
+        ctx.fillRect(px, -py, 3, 3);
+      }
+    } else if (particleType === 'shadow') {
+      // Khói tím hắc ám xoay dưới chân
+      ctx.fillStyle = 'rgba(147, 51, 234, 0.25)';
+      ctx.beginPath();
+      ctx.arc(0, 20, 24 + Math.sin(t * 2) * 4, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (particleType === 'ice') {
+      // Tinh thể tuyết lam xoay
+      for (let i = 0; i < 3; i++) {
+        const angle = t * 2 + (i * Math.PI * 2) / 3;
+        const px = Math.cos(angle) * 22;
+        const py = Math.sin(angle) * 12 + 10;
+        ctx.fillStyle = '#BAE6FD';
+        ctx.fillRect(px, py, 4, 4);
+      }
+    }
+    ctx.restore();
+  },
+
+  drawHeroBoots: function(ctx, boots, userClass) {
+    const bootColor = boots?.visual?.bootColor || (userClass === 'warrior' ? '#475569' : userClass === 'mage' ? '#1E3A8A' : userClass === 'ranger' ? '#854D0E' : '#334155');
+    
+    // Chân trái & Chân phải
+    ctx.fillStyle = bootColor;
     ctx.fillRect(-10, 14, 8, 18);
     ctx.fillRect(2, 14, 8, 18);
 
-    // Mũ sắt hiệp sĩ có mào hoàng kim
-    ctx.fillStyle = '#94A3B8';
-    ctx.fillRect(-10, -32, 20, 20);
-    ctx.fillStyle = '#F59E0B';
-    ctx.fillRect(-3, -40, 6, 8); // Mào lông mũ
+    // Đế giày màu đậm hơn
     ctx.fillStyle = '#0F172A';
-    ctx.fillRect(-6, -22, 12, 4); // Khe mắt
+    ctx.fillRect(-11, 29, 9, 3);
+    ctx.fillRect(2, 29, 9, 3);
 
-    // Thanh kiếm sáng (Vung kiếm khi chém)
-    ctx.save();
-    if (isSlashing) {
-      ctx.translate(14, -8);
-      ctx.rotate(Math.PI / 4); // Chém gập xuống
+    // Nếu là ủng có cánh Hermes
+    if (boots?.id === 'bt_mercury_winged') {
+      ctx.fillStyle = '#F8FAFC';
+      ctx.beginPath();
+      ctx.moveTo(-12, 18);
+      ctx.lineTo(-18, 14);
+      ctx.lineTo(-12, 22);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(10, 18);
+      ctx.lineTo(16, 14);
+      ctx.lineTo(10, 22);
+      ctx.closePath();
+      ctx.fill();
     }
-    ctx.fillStyle = '#F8FAFC';
-    ctx.fillRect(14, -30, 5, 34);
-    ctx.fillStyle = '#F59E0B';
-    ctx.fillRect(10, 4, 13, 5); // Chuôi kiếm
+  },
+
+  drawHeroArmor: function(ctx, armor, userClass) {
+    const armorColor = armor?.visual?.armorColor || (userClass === 'warrior' ? '#CBD5E1' : userClass === 'mage' ? '#7C3AED' : userClass === 'ranger' ? '#15803D' : '#0F172A');
+    const shoulderColor = armor?.visual?.shoulderColor || (userClass === 'warrior' ? '#94A3B8' : userClass === 'mage' ? '#5B21B6' : userClass === 'ranger' ? '#166534' : '#1E293B');
+    const capeColor = armor?.visual?.capeColor || (userClass === 'mage' ? '#9333EA' : userClass === 'assassin' ? '#DC2626' : null);
+
+    // 1. Áo choàng bay phía sau (nếu có)
+    if (capeColor) {
+      const wave = Math.sin(this.hero.animTimer * 3) * 3;
+      ctx.fillStyle = capeColor;
+      ctx.beginPath();
+      ctx.moveTo(-12, -8);
+      ctx.lineTo(-20 + wave, 28);
+      ctx.lineTo(-6, 26);
+      ctx.lineTo(-6, -8);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // 2. Thân áo giáp / Áo choàng
+    if (userClass === 'mage') {
+      // Kiểu áo thụng pháp sư
+      ctx.fillStyle = armorColor;
+      ctx.beginPath();
+      ctx.moveTo(0, -12);
+      ctx.lineTo(-15, 30);
+      ctx.lineTo(15, 30);
+      ctx.closePath();
+      ctx.fill();
+      // Đai lưng ma pháp
+      ctx.fillStyle = '#F59E0B';
+      ctx.fillRect(-10, 8, 20, 4);
+    } else {
+      // Giáp ngực chuẩn
+      ctx.fillStyle = armorColor;
+      ctx.fillRect(-12, -12, 24, 26);
+
+      // Chi tiết giáp ngực (viền nổi)
+      ctx.fillStyle = shoulderColor;
+      ctx.fillRect(-8, -8, 16, 6);
+      ctx.fillRect(-10, 10, 20, 4); // Thắt lưng
+
+      // Giáp vai (Shoulderpads)
+      ctx.fillStyle = shoulderColor;
+      ctx.fillRect(-15, -12, 5, 8);
+      ctx.fillRect(10, -12, 5, 8);
+    }
+  },
+
+  drawHeroHead: function(ctx, helmet, userClass) {
+    const helmType = helmet?.visual?.helmType || (userClass === 'warrior' ? 'knight_helm' : userClass === 'mage' ? 'wizard_hat' : userClass === 'ranger' ? 'hunter_beret' : 'shadow_mask');
+    const helmColor = helmet?.visual?.helmColor || (userClass === 'warrior' ? '#94A3B8' : userClass === 'mage' ? '#4338CA' : userClass === 'ranger' ? '#166534' : '#0F172A');
+    const crestColor = helmet?.visual?.crestColor || (userClass === 'warrior' ? '#F59E0B' : userClass === 'mage' ? '#FBBF24' : '#EF4444');
+
+    // 1. Khuôn mặt cơ bản
+    ctx.fillStyle = '#FED7AA';
+    ctx.fillRect(-9, -24, 18, 14);
+
+    // Mắt
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(-6, -18, 3, 3);
+    ctx.fillRect(3, -18, 3, 3);
+
+    // 2. Vẽ loại Mũ / Nón theo trang bị
+    if (helmType === 'knight_helm') {
+      // Mũ giáp sắt hiệp sĩ
+      ctx.fillStyle = helmColor;
+      ctx.fillRect(-11, -34, 22, 22);
+      // Mào lông / Cánh mào
+      ctx.fillStyle = crestColor;
+      ctx.fillRect(-3, -42, 6, 9);
+      // Khe nhìn mắt
+      ctx.fillStyle = '#0F172A';
+      ctx.fillRect(-7, -24, 14, 4);
+      ctx.fillStyle = '#38BDF8'; // Ánh mắt le lói
+      ctx.fillRect(-4, -23, 2, 2);
+      ctx.fillRect(2, -23, 2, 2);
+    } else if (helmType === 'wizard_hat') {
+      // Nón chóp phù thủy
+      ctx.fillStyle = helmColor;
+      ctx.beginPath();
+      ctx.moveTo(0, -45);
+      ctx.lineTo(-16, -18);
+      ctx.lineTo(16, -18);
+      ctx.closePath();
+      ctx.fill();
+      // Vành nón
+      ctx.fillStyle = crestColor;
+      ctx.fillRect(-18, -18, 36, 4);
+      // Ngôi sao vàng trên nón
+      ctx.fillStyle = '#FEF08A';
+      ctx.fillRect(-2, -32, 4, 4);
+    } else if (helmType === 'crown') {
+      // Vương miện hoàng gia lộng lẫy
+      ctx.fillStyle = helmColor;
+      ctx.beginPath();
+      ctx.moveTo(-10, -26);
+      ctx.lineTo(-10, -36);
+      ctx.lineTo(-5, -30);
+      ctx.lineTo(0, -38);
+      ctx.lineTo(5, -30);
+      ctx.lineTo(10, -36);
+      ctx.lineTo(10, -26);
+      ctx.closePath();
+      ctx.fill();
+      // Ngọc đính
+      ctx.fillStyle = crestColor;
+      ctx.fillRect(-2, -32, 4, 4);
+    } else if (helmType === 'hood' || helmType === 'shadow_mask') {
+      // Mũ trùm ninja / sát thủ che mặt
+      ctx.fillStyle = helmColor;
+      ctx.fillRect(-10, -32, 20, 20);
+      // Khăn che mũi miệng
+      ctx.fillStyle = crestColor;
+      ctx.fillRect(-9, -15, 18, 6);
+    } else {
+      // Băng đô / Mũ da / Mũ nồi thợ săn
+      ctx.fillStyle = helmColor;
+      ctx.fillRect(-10, -30, 20, 8);
+      if (crestColor) {
+        ctx.fillStyle = crestColor;
+        ctx.fillRect(-14, -38, 5, 12); // Lông vũ cắm bên mũ
+      }
+    }
+  },
+
+  drawHeroWeapon: function(ctx, weapon, gloves, userClass, isAttacking) {
+    const weaponType = weapon?.visual?.weaponType || (userClass === 'mage' ? 'staff' : userClass === 'ranger' ? 'bow' : userClass === 'assassin' ? 'dagger' : 'sword');
+    const bladeColor = weapon?.visual?.bladeColor || (weaponType === 'staff' ? '#0284C7' : weaponType === 'bow' ? '#92400E' : '#F8FAFC');
+    const glowColor = weapon?.visual?.glowColor || null;
+    const bladeLength = weapon?.visual?.bladeLength || 30;
+    const gloveColor = gloves?.visual?.gloveColor || '#F59E0B';
+
+    ctx.save();
+
+    if (weaponType === 'sword') {
+      // ==================== VẼ KIẾM CHIẾN BINH ====================
+      if (isAttacking) {
+        ctx.translate(14, -8);
+        ctx.rotate(Math.PI / 4); // Chém gập xuống
+      }
+      // Hào quang vũ khí nếu có
+      if (glowColor) {
+        ctx.shadowColor = glowColor;
+        ctx.shadowBlur = 10;
+      }
+      // Lưỡi kiếm
+      ctx.fillStyle = bladeColor;
+      ctx.fillRect(14, -bladeLength, 5, bladeLength);
+      // Chuôi kiếm & Khớp tay cầm
+      ctx.fillStyle = gloveColor;
+      ctx.fillRect(10, 0, 13, 5); // Thanh chắn
+      ctx.fillStyle = '#78350F';
+      ctx.fillRect(14, 5, 5, 7);  // Cán kiếm
+
+    } else if (weaponType === 'staff') {
+      // ==================== VẼ GẬY PHÁP SƯ ====================
+      ctx.fillStyle = '#78350F';
+      ctx.fillRect(15, -22, 5, bladeLength + 15);
+      // Viên ngọc ma thuật đỉnh gậy
+      const orbSize = isAttacking ? 12 : 8;
+      if (glowColor || bladeColor) {
+        ctx.shadowColor = glowColor || bladeColor;
+        ctx.shadowBlur = 14;
+      }
+      ctx.fillStyle = bladeColor;
+      ctx.beginPath();
+      ctx.arc(17.5, -26, orbSize, 0, Math.PI * 2);
+      ctx.fill();
+
+    } else if (weaponType === 'bow') {
+      // ==================== VẼ CUNG XẠ THỦ ====================
+      if (glowColor) {
+        ctx.shadowColor = glowColor;
+        ctx.shadowBlur = 8;
+      }
+      ctx.strokeStyle = bladeColor;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(18, 2, 18, -Math.PI / 2, Math.PI / 2);
+      ctx.stroke();
+
+      // Dây cung
+      ctx.strokeStyle = '#F8FAFC';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(18, -16);
+      ctx.lineTo(18, 20);
+      ctx.stroke();
+
+      // Nếu đang giương cung bắn: hiện mũi tên ánh sáng
+      if (isAttacking) {
+        ctx.fillStyle = '#FEF08A';
+        ctx.fillRect(6, 1, 24, 2);
+        ctx.fillStyle = '#EF4444';
+        ctx.fillRect(28, 0, 4, 4);
+      }
+
+    } else if (weaponType === 'dagger') {
+      // ==================== VẼ SONG ĐAO SÁT THỦ ====================
+      if (glowColor) {
+        ctx.shadowColor = glowColor;
+        ctx.shadowBlur = 8;
+      }
+      // Dao tay phải
+      ctx.fillStyle = bladeColor;
+      ctx.fillRect(14, -6, bladeLength - 4, 4);
+      ctx.fillStyle = gloveColor;
+      ctx.fillRect(11, -7, 3, 6);
+
+      // Dao tay trái
+      ctx.fillStyle = bladeColor;
+      ctx.fillRect(-24, 6, bladeLength - 6, 4);
+      ctx.fillStyle = gloveColor;
+      ctx.fillRect(-13, 5, 3, 6);
+    }
+
     ctx.restore();
 
-    // Khiên xanh bảo vệ
-    ctx.fillStyle = '#2563EB';
-    ctx.fillRect(-22, -6, 10, 22);
-    ctx.fillStyle = '#F59E0B';
-    ctx.fillRect(-19, 2, 4, 6);
-  },
-
-  drawMageSprite: function(ctx, isAttacking) {
-    // Áo choàng pháp sư tím thẫm
-    ctx.fillStyle = '#7C3AED';
-    ctx.beginPath();
-    ctx.moveTo(0, -12);
-    ctx.lineTo(-16, 32);
-    ctx.lineTo(16, 32);
-    ctx.closePath();
-    ctx.fill();
-
-    // Nón chóp phù thủy
-    ctx.fillStyle = '#5B21B6';
-    ctx.beginPath();
-    ctx.moveTo(0, -42);
-    ctx.lineTo(-16, -16);
-    ctx.lineTo(16, -16);
-    ctx.closePath();
-    ctx.fill();
-    ctx.fillStyle = '#F59E0B';
-    ctx.fillRect(-18, -16, 36, 4);
-
-    // Khuôn mặt
-    ctx.fillStyle = '#FED7AA';
-    ctx.fillRect(-8, -14, 16, 12);
-    ctx.fillStyle = '#1E1B4B';
-    ctx.fillRect(-5, -9, 3, 3);
-    ctx.fillRect(2, -9, 3, 3);
-
-    // Gậy ma thuật phát sáng cầu pha lê
-    ctx.fillStyle = '#854D0E';
-    ctx.fillRect(16, -20, 5, 50);
-    const orbGlow = isAttacking ? 12 : 7;
-    ctx.fillStyle = '#38BDF8';
-    ctx.beginPath();
-    ctx.arc(18, -25, orbGlow, 0, Math.PI * 2);
-    ctx.fill();
-  },
-
-  drawRangerSprite: function(ctx, isAttacking) {
-    ctx.fillStyle = '#15803D';
-    ctx.fillRect(-12, -10, 24, 24);
-    ctx.fillStyle = '#854D0E';
-    ctx.fillRect(-10, 14, 8, 18);
-    ctx.fillRect(2, 14, 8, 18);
-
-    ctx.fillStyle = '#166534';
-    ctx.fillRect(-10, -28, 20, 18);
-    ctx.fillStyle = '#EF4444';
-    ctx.fillRect(-15, -36, 6, 12); // Lông vũ
-
-    // Cung gỗ
-    ctx.strokeStyle = '#92400E';
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.arc(18, 2, 18, -Math.PI / 2, Math.PI / 2);
-    ctx.stroke();
-
-    ctx.strokeStyle = '#F8FAFC';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(18, -16);
-    ctx.lineTo(18, 20);
-    ctx.stroke();
-  },
-
-  drawAssassinSprite: function(ctx, isAttacking) {
-    ctx.fillStyle = '#0F172A';
-    ctx.fillRect(-12, -10, 24, 24);
-    ctx.fillStyle = '#334155';
-    ctx.fillRect(-10, 14, 8, 18);
-    ctx.fillRect(2, 14, 8, 18);
-
-    ctx.fillStyle = '#1E293B';
-    ctx.fillRect(-10, -28, 20, 18);
-    ctx.fillStyle = '#EF4444'; // Khăn quàng đỏ bay phấp phới
-    ctx.fillRect(-20, -4, 10, 18);
-
-    ctx.fillStyle = '#F8FAFC';
-    ctx.fillRect(-6, -18, 12, 4);
-    ctx.fillStyle = '#EF4444';
-    ctx.fillRect(-4, -18, 3, 3);
-    ctx.fillRect(2, -18, 3, 3);
-
-    // Song đoản đao
-    ctx.fillStyle = '#CBD5E1';
-    ctx.fillRect(14, -6, 16, 4);
-    ctx.fillRect(-26, 6, 14, 4);
+    // Khiên phụ bên tay trái (chỉ hiển thị với Kiếm Sĩ)
+    if (userClass === 'warrior' && weaponType === 'sword') {
+      ctx.fillStyle = '#2563EB';
+      ctx.fillRect(-22, -6, 10, 22);
+      ctx.fillStyle = '#F59E0B';
+      ctx.fillRect(-19, 2, 4, 6);
+    }
   },
 
   drawHeroBars: function(ctx, x, y) {
@@ -960,8 +1168,11 @@ const BattleEngine = {
   },
 
   onHeroStrikeConnect: function() {
-    const isCrit = (this.pendingStreak >= 3);
-    let baseDmg = 35 + Math.floor(Math.random() * 15);
+    const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+    const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { atk: 35, crit: 5 };
+
+    const isCrit = (this.pendingStreak >= 3) || (Math.random() * 100 < (stats.crit || 5));
+    let baseDmg = (stats.atk || 35) + Math.floor(Math.random() * 15);
 
     const userClass = (typeof currentRpgUser !== 'undefined' && currentRpgUser?.rpg_class) ? currentRpgUser.rpg_class : 'warrior';
     if (userClass === 'mage' && this.pendingWord?.level === 'advanced') {
@@ -969,10 +1180,19 @@ const BattleEngine = {
       this.addFloatDamage(this.monster.x, this.monster.y - 35, '⚡ MA PHÁP C1-C2 x1.8!', '#8C43F6', true);
     }
 
-    const finalDmg = isCrit ? Math.round(baseDmg * 1.7) : baseDmg;
+    const finalDmg = isCrit ? Math.round(baseDmg * 1.8) : baseDmg;
     this.monster.hp = Math.max(0, this.monster.hp - finalDmg);
     this.monster.flashWhite = 0.4;
     this.screenShake = isCrit ? 1.5 : 0.7;
+
+    // Hiệu ứng Hút máu (Vampiric) nếu có
+    const eq = user?.equipped || {};
+    const weaponItem = (typeof getRpgEquipmentById === 'function') ? getRpgEquipmentById(eq.weapon) : null;
+    if (weaponItem?.passive?.type === 'vampiric' && this.hero.hp < this.hero.maxHp) {
+      const heal = Math.min(12, weaponItem.passive.val || 5);
+      this.hero.hp = Math.min(this.hero.maxHp, this.hero.hp + heal);
+      this.addFloatDamage(this.hero.x, this.hero.y - 20, `+${heal} HP HÚT MÁU!`, '#10B981', false);
+    }
 
     // Thêm vết chém xé gió hình lưỡi liềm
     this.slashes.push({
@@ -1003,6 +1223,28 @@ const BattleEngine = {
   },
 
   onMonsterStrikeConnect: function() {
+    const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+    const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { dodge: 5 };
+
+    // 1. Kiểm tra Né Đòn (Dodge)
+    if (Math.random() * 100 < (stats.dodge || 5)) {
+      this.addFloatDamage(this.hero.x, this.hero.y - 20, '💨 NÉ ĐÒN THẦN SẦU (DODGE)!', '#38BDF8', true);
+      this.hero.state = 'idle';
+      this.updateBattleUI();
+      return;
+    }
+
+    // 2. Kiểm tra Bùa Khiên Hộ Mệnh (Shield Charm)
+    if (user?.inventory?.shield_charm > 0) {
+      user.inventory.shield_charm--;
+      if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
+      this.addFloatDamage(this.hero.x, this.hero.y - 20, '🛡️ KHIÊN HỘ MỆNH CHẶN ĐÒN!', '#F59E0B', true);
+      RetroAudio.playHit();
+      this.hero.state = 'idle';
+      this.updateBattleUI();
+      return;
+    }
+
     const monsterDmg = this.monster.isBoss ? 35 : (15 + Math.floor(Math.random() * 12));
     this.hero.hp = Math.max(0, this.hero.hp - monsterDmg);
     this.hero.flashWhite = 0.4;

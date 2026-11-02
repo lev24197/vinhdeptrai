@@ -11,6 +11,7 @@ let quizTargetQuestionCount = 10;
 let quizIsAnswered = false;
 let currentQuizWord = null;
 let quizGameMode = 'rpg';
+let quizQuestionStartTime = Date.now();
 
 // Web Audio Synthesizer (Chạy mượt tức thì không cần nạp file MP3 ngoài)
 let audioCtx = null;
@@ -333,6 +334,7 @@ function renderCurrentQuizCard() {
   }
 
   quizIsAnswered = false;
+  quizQuestionStartTime = Date.now();
   const q = quizQuestions[quizCurrentIdx];
   currentQuizWord = q.target;
 
@@ -440,9 +442,13 @@ function chooseQuizOption(idx) {
     quizStreak++;
     if (quizStreak > quizMaxStreak) quizMaxStreak = quizStreak;
 
+    const responseTimeSec = (Date.now() - (quizQuestionStartTime || Date.now())) / 1000;
+    const isFastReflex = (responseTimeSec <= 2.5);
+
     let multiplier = 1.0;
     if (quizStreak >= 5) multiplier = 2.0;
     else if (quizStreak >= 3) multiplier = 1.5;
+    if (isFastReflex) multiplier += 0.5;
 
     const points = Math.round(10 * multiplier);
     quizScore += points;
@@ -463,7 +469,7 @@ function chooseQuizOption(idx) {
     if (feedback) {
       feedback.innerHTML = `
         <span class="text-[#169C64] flex items-center gap-1.5 font-bold">
-          <span class="text-base sm:text-xl">🎉</span> CHÍNH XÁC! (+${points} điểm ${multiplier > 1 ? `• COMBO x${multiplier} 🔥` : ''})
+          <span class="text-base sm:text-xl">🎉</span> CHÍNH XÁC! (+${points} điểm ${multiplier > 1 ? `• COMBO x${multiplier.toFixed(1)} 🔥` : ''} ${isFastReflex ? '⚡ PHẢN XẠ NHANH!' : ''})
         </span>
       `;
     }

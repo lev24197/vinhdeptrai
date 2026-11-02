@@ -297,6 +297,15 @@ async function loadProfileFromSupabase(userId) {
         ...data,
         is_cloud: true
       };
+      // Giải nén cấu trúc trang bị từ JSONB inventory nếu có
+      if (data.inventory && typeof data.inventory === 'object') {
+        if (data.inventory.equipped) currentRpgUser.equipped = data.inventory.equipped;
+        if (data.inventory.equipment_inventory) currentRpgUser.equipment_inventory = data.inventory.equipment_inventory;
+        if (data.inventory.equipment_enhances) currentRpgUser.equipment_enhances = data.inventory.equipment_enhances;
+        if (typeof data.inventory.dust !== 'undefined') currentRpgUser.dust = data.inventory.dust;
+        if (typeof data.inventory.enhance_stones !== 'undefined') currentRpgUser.enhance_stones = data.inventory.enhance_stones;
+        if (typeof data.inventory.gacha_pity !== 'undefined') currentRpgUser.gacha_pity = data.inventory.gacha_pity;
+      }
       saveLocalProfileCache();
     } else {
       // Tạo hồ sơ khởi điểm nếu chưa có
@@ -335,9 +344,17 @@ async function saveCurrentRpgUser() {
         gems: currentRpgUser.gems,
         streak: currentRpgUser.streak,
         last_active_date: currentRpgUser.last_active_date,
-        equipped_weapon: currentRpgUser.equipped_weapon,
-        equipped_armor: currentRpgUser.equipped_armor,
-        inventory: currentRpgUser.inventory,
+        equipped_weapon: currentRpgUser.equipped_weapon || 'Vũ Khí Cơ Bản',
+        equipped_armor: currentRpgUser.equipped_armor || 'Giáp Cơ Bản',
+        inventory: {
+          ...(typeof currentRpgUser.inventory === 'object' ? currentRpgUser.inventory : {}),
+          equipped: currentRpgUser.equipped,
+          equipment_inventory: currentRpgUser.equipment_inventory,
+          equipment_enhances: currentRpgUser.equipment_enhances,
+          dust: currentRpgUser.dust,
+          enhance_stones: currentRpgUser.enhance_stones,
+          gacha_pity: currentRpgUser.gacha_pity
+        },
         unlocked_dungeons: currentRpgUser.unlocked_dungeons,
         badges: currentRpgUser.badges,
         stats: currentRpgUser.stats,
@@ -370,6 +387,14 @@ function addXP(amount, reason = '') {
   // Bonus lớp Sát Thủ: +35% EXP
   if (currentRpgUser.rpg_class === 'assassin') {
     multiplier *= 1.35;
+  }
+
+  // Bonus trang bị & Set đồ
+  if (typeof calculatePlayerTotalStats === 'function') {
+    const stats = calculatePlayerTotalStats(currentRpgUser);
+    if (stats.expBonus) {
+      multiplier *= (1 + stats.expBonus / 100);
+    }
   }
 
   const finalXp = Math.round(amount * multiplier);
@@ -405,6 +430,14 @@ function addCoins(amount, reason = '') {
   if (!currentRpgUser) return;
   let mult = 1;
   if (currentRpgUser.rpg_class === 'assassin') mult = 1.35;
+
+  if (typeof calculatePlayerTotalStats === 'function') {
+    const stats = calculatePlayerTotalStats(currentRpgUser);
+    if (stats.goldBonus) {
+      mult *= (1 + stats.goldBonus / 100);
+    }
+  }
+
   currentRpgUser.gold = (currentRpgUser.gold || 0) + Math.round(amount * mult);
   checkBadges();
   saveCurrentRpgUser();
@@ -679,8 +712,10 @@ function renderAccountCenterModal() {
   setTxt('accStatCoins', `${currentRpgUser.gold || 0} 🪙`);
   setTxt('accStatGems', `${currentRpgUser.gems || 0} 💎`);
   setTxt('accStatMonsters', `${currentRpgUser.stats?.monsters_slain || 0} 👾`);
-  setTxt('accStatWeapon', currentRpgUser.equipped_weapon || 'Tập Sự Kiếm');
-  setTxt('accStatArmor', currentRpgUser.equipped_armor || 'Áo Vải Tân Thủ');
+  const weaponItem = (typeof getRpgEquipmentById === 'function') ? getRpgEquipmentById(currentRpgUser.equipped?.weapon) : null;
+  const armorItem = (typeof getRpgEquipmentById === 'function') ? getRpgEquipmentById(currentRpgUser.equipped?.armor) : null;
+  setTxt('accStatWeapon', weaponItem ? weaponItem.name : (currentRpgUser.equipped_weapon || 'Tập Sự Kiếm'));
+  setTxt('accStatArmor', armorItem ? armorItem.name : (currentRpgUser.equipped_armor || 'Áo Vải Tân Thủ'));
 
   // Input sửa tên
   const editName = document.getElementById('editAccUsernameInput');
