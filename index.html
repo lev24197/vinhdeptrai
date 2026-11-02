@@ -48,6 +48,41 @@
     </div>
   </header>
 
+  <!-- ==================== THANH TIá»†N ÃCH THá»Š TRáº¤N RPG TRÃŠN HEADER ==================== -->
+  <div class="bg-[#11131F] text-white border-b-2 border-[#111] px-4 py-1.5 sticky top-[57px] z-30">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <span class="text-amber-400 font-mono-code font-extrabold hidden md:inline">âš¡ TIá»†N ÃCH THá»Š TRáº¤N:</span>
+        <button onclick="if(typeof openInventoryModal==='function') openInventoryModal()" class="px-2.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold border border-slate-600 flex items-center gap-1" title="Má»Ÿ TÃºi Äá»“ [PhÃ­m B]">
+          <span>ðŸŽ’</span> <span>TÃºi Äá»“ [B]</span>
+        </button>
+        <button onclick="if(typeof openShopModal==='function') openShopModal('forge')" class="px-2.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold border border-slate-600 flex items-center gap-1" title="Má»Ÿ LÃ² RÃ¨n [PhÃ­m S]">
+          <span>ðŸ”¨</span> <span>LÃ² RÃ¨n [S]</span>
+        </button>
+        <button onclick="if(typeof openShopModal==='function') openShopModal('gacha')" class="px-2.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold border border-slate-600 flex items-center gap-1" title="Má»Ÿ RÆ°Æ¡ng BÃ¡u May Máº¯n">
+          <span>ðŸŽ</span> <span>RÆ°Æ¡ng BÃ¡u</span>
+        </button>
+        <button onclick="if(typeof openShopModal==='function') openShopModal('goods')" class="px-2.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold border border-slate-600 flex items-center gap-1" title="Quáº§y DÆ°á»£c Pháº©m">
+          <span>ðŸ§ª</span> <span>DÆ°á»£c Pháº©m</span>
+        </button>
+      </div>
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <button onclick="if(typeof GamificationQuests!=='undefined') GamificationQuests.openModal()" class="px-2.5 py-0.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 rounded font-bold border border-amber-500 flex items-center gap-1" title="Má»Ÿ Nhiá»‡m Vá»¥ NgÃ y & ThÃ nh Tá»±u [PhÃ­m Q]">
+          <span>ðŸ“œ</span> <span>Nhiá»‡m Vá»¥ [Q]</span>
+        </button>
+        <button onclick="if(typeof GamificationSkills!=='undefined') GamificationSkills.openModal()" class="px-2.5 py-0.5 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 rounded font-bold border border-purple-500 flex items-center gap-1" title="Má»Ÿ Báº£ng Ká»¹ NÄƒng Há»‡ PhÃ¡i [PhÃ­m K]">
+          <span>âš¡</span> <span>Ká»¹ NÄƒng [K]</span>
+        </button>
+        <button onclick="if(typeof GamificationPets!=='undefined') GamificationPets.openModal()" class="px-2.5 py-0.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 rounded font-bold border border-emerald-500 flex items-center gap-1" title="Tráº¡i Linh ThÃº Äá»“ng HÃ nh [PhÃ­m P]">
+          <span>ðŸ¾</span> <span>Linh ThÃº [P]</span>
+        </button>
+        <button onclick="if(typeof GamificationTower!=='undefined') GamificationTower.openModal()" class="px-2.5 py-0.5 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 rounded font-bold border border-blue-500 flex items-center gap-1" title="Thá»­ ThÃ¡ch ThÃ¡p VÃ´ Táº­n Babel [PhÃ­m T]">
+          <span>ðŸ°</span> <span>ThÃ¡p Babel [T]</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- ==================== THANH BÁO TIẾN TRÌNH ĐANG CHẠY (LIVE ACTIVITY MONITOR) ==================== -->
   <div id="liveRunnerBanner" class="hidden max-w-7xl mx-auto px-4 mt-4">
     <div id="liveRunnerBox" class="neo-box bg-[#FFFDF7] p-4 rounded-none relative overflow-hidden">
@@ -454,6 +489,7 @@
         </button>
       </div>
 
+            <div id="corpusStatsBanner" class="hidden"></div>
       <div id="corpusTableContainer" class="hidden space-y-3">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <input type="text" id="corpusSearchInput" oninput="renderCorpusTable()" placeholder="Tra cứu từ tiếng Anh hoặc nghĩa tiếng Việt..." class="neo-box-sm w-full sm:w-96 px-3 py-2 text-xs bg-white font-bold" />
@@ -1303,6 +1339,233 @@
     </div>
   </div>
 
+  <!-- ==================== MODAL TÚI ĐỒ & TRANG BỊ PAPERDOLL ==================== -->
+  <div id="rpgInventoryModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center p-2 sm:p-4 z-50">
+    <div class="neo-box bg-[#F8F7F2] text-[#111] max-w-4xl w-full p-3 sm:p-5 space-y-3 max-h-[92vh] flex flex-col justify-between overflow-hidden shadow-[6px_6px_0px_#FFE787]">
+      
+      <!-- Header Túi Đồ & Tài Nguyên -->
+      <div class="flex items-center justify-between border-b-2 border-[#111] pb-2">
+        <div class="flex items-center gap-2">
+          <span class="tid-badge-num bg-[#10B981] text-white">PAPERDOLL</span>
+          <h3 class="font-display font-extrabold text-sm sm:text-base uppercase">🎒 KHO ĐỒ & PHÒNG THAY ĐỒ TRANG BỊ</h3>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 text-xs font-mono-code font-bold bg-white px-2 py-1 border border-[#111]">
+            <span>🪙 <b id="invUserGold" class="text-yellow-600">0</b></span>
+            <span>💎 <b id="invUserGems" class="text-blue-600">0</b></span>
+            <span>🔮 <b id="invUserDust" class="text-purple-600">0</b> Bụi</span>
+            <span>🔷 <b id="invUserStones" class="text-emerald-600">0</b> Đá</span>
+          </div>
+          <button onclick="closeInventoryModal()" class="neo-btn w-7 h-7 bg-white font-bold flex items-center justify-center text-xs hover:bg-red-500 hover:text-white">✕</button>
+        </div>
+      </div>
+
+      <!-- Khung Nội Dung 2 Cột: Paperdoll bên trái + Kho đồ bên phải -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-3 flex-1 overflow-y-auto pr-1">
+        
+        <!-- Cột Trái: Paperdoll 6 Ô Trang Bị + Tổng Chỉ Số (5/12) -->
+        <div class="md:col-span-5 space-y-2.5 bg-white border-2 border-[#111] p-3 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b pb-1 mb-2 border-slate-200">
+              <span class="text-xs font-display font-extrabold uppercase text-[#111]">TRANG BỊ ĐANG MẶC</span>
+              <span class="text-[10px] font-mono-code text-slate-500 font-bold">Bấm để tháo</span>
+            </div>
+
+            <!-- 6 Ô Paperdoll -->
+            <div class="grid grid-cols-2 gap-2">
+              <div id="paperdollSlot-weapon"></div>
+              <div id="paperdollSlot-helmet"></div>
+              <div id="paperdollSlot-armor"></div>
+              <div id="paperdollSlot-gloves"></div>
+              <div id="paperdollSlot-boots"></div>
+              <div id="paperdollSlot-accessory"></div>
+            </div>
+
+            <!-- Set Bonus kích hoạt -->
+            <div id="invActiveSetBonuses" class="hidden mt-2 space-y-1"></div>
+          </div>
+
+          <!-- Bảng Tổng Hợp Chỉ Số Thực Chiến -->
+          <div class="bg-[#FFE787]/40 border-2 border-[#111] p-2 space-y-1 text-xs font-mono-code">
+            <div class="text-[10px] uppercase font-extrabold text-amber-900 border-b border-amber-300 pb-0.5">TỔNG LỰC CHIẾN CỦA HIỆP SĨ:</div>
+            <div class="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px] font-bold text-slate-800">
+              <div>Sát thương: <b id="statValAtk" class="text-red-600">0</b></div>
+              <div>Máu (HP): <b id="statValHp" class="text-emerald-700">0</b></div>
+              <div>Năng lượng: <b id="statValMp" class="text-blue-700">0</b></div>
+              <div>Bạo kích: <b id="statValCrit" class="text-red-500">0%</b></div>
+              <div>Né đòn: <b id="statValDodge" class="text-sky-600">0%</b></div>
+              <div>Thưởng EXP: <b id="statValExpBonus" class="text-purple-600">+0%</b></div>
+              <div class="col-span-2">Thưởng Vàng: <b id="statValGoldBonus" class="text-yellow-600">+0%</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột Phải: Lưới 40 Ô Vật Phẩm + Thẻ So Sánh (7/12) -->
+        <div class="md:col-span-7 space-y-2 flex flex-col justify-between overflow-hidden">
+          
+          <!-- Bộ Lọc Danh Mục -->
+          <div class="flex items-center justify-between gap-1 flex-wrap pb-1 border-b border-slate-200">
+            <div class="flex items-center gap-1 flex-wrap">
+              <button id="invFilterBtn-all" onclick="setInventoryFilter('all')" class="inv-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-[#111] text-white">Tất Cả</button>
+              <button id="invFilterBtn-weapon" onclick="setInventoryFilter('weapon')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Vũ Khí</button>
+              <button id="invFilterBtn-helmet" onclick="setInventoryFilter('helmet')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Mũ</button>
+              <button id="invFilterBtn-armor" onclick="setInventoryFilter('armor')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Giáp</button>
+              <button id="invFilterBtn-gloves" onclick="setInventoryFilter('gloves')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Găng</button>
+              <button id="invFilterBtn-boots" onclick="setInventoryFilter('boots')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Ủng</button>
+              <button id="invFilterBtn-accessory" onclick="setInventoryFilter('accessory')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Nhẫn</button>
+            </div>
+            <span id="invItemsCountLabel" class="text-xs font-mono-code font-bold text-slate-500">0 / 40 ô</span>
+          </div>
+
+          <!-- Lưới 40 Ô Đồ Trong Kho -->
+          <div id="invItemsGridContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-[220px] overflow-y-auto p-1 bg-slate-100 border border-slate-300">
+            <!-- Sẽ được nạp tự động bằng renderInventoryGrid() -->
+          </div>
+
+          <!-- Thẻ Chi Tiết & So Sánh Chỉ Số Món Đang Chọn -->
+          <div id="invItemInspectCard">
+            <!-- Sẽ được fill bằng renderItemComparisonCard() -->
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Nút Đóng Footer -->
+      <div class="pt-2 border-t-2 border-[#111] flex justify-between items-center text-xs">
+        <span class="text-slate-500 font-semibold italic">💡 Nhấp vào món đồ để so sánh chỉ số và bấm [Trang Bị] để thay đổi ngoại hình</span>
+        <button onclick="closeInventoryModal()" class="neo-btn px-4 py-1.5 bg-white text-xs font-extrabold hover:bg-slate-100">ĐÓNG</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL CỬA HÀNG, GACHA & LÒ RÈN ==================== -->
+  <div id="rpgShopModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center p-2 sm:p-4 z-50">
+    <div class="neo-box bg-[#F8F7F2] text-[#111] max-w-3xl w-full p-4 space-y-3 max-h-[92vh] flex flex-col justify-between overflow-hidden shadow-[6px_6px_0px_#FF9F1C]">
+      
+      <!-- Header Shop & Tabs -->
+      <div class="flex items-center justify-between border-b-2 border-[#111] pb-2">
+        <div class="flex items-center gap-2">
+          <span class="tid-badge-num bg-[#FF9F1C] text-[#111]">SHOP & FORGE</span>
+          <h3 class="font-display font-extrabold text-sm sm:text-base uppercase">🛍️ TIỆM THƯƠNG NHÂN & LÒ RÈN HUYỀN THOẠI</h3>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 text-xs font-mono-code font-bold bg-white px-2 py-1 border border-[#111]">
+            <span>🪙 <b id="shopUserGold" class="text-yellow-600">0</b></span>
+            <span>💎 <b id="shopUserGems" class="text-blue-600">0</b></span>
+            <span>🔷 <b id="shopUserStones" class="text-emerald-600">0</b> Đá</span>
+          </div>
+          <button onclick="closeShopModal()" class="neo-btn w-7 h-7 bg-white font-bold flex items-center justify-center text-xs hover:bg-red-500 hover:text-white">✕</button>
+        </div>
+      </div>
+
+      <!-- Thanh chọn Tab: Hàng Tiêu Hao | Rương Báu Gacha | Lò Rèn -->
+      <div class="flex items-center gap-2 border-b-2 border-[#111] pb-2">
+        <button id="shopTabBtn-goods" onclick="switchShopTab('goods')" class="px-4 py-2 bg-[#111] text-white font-display font-extrabold text-xs uppercase border-2 border-[#111]">
+          🧪 Quầy Dược Phẩm & Bùa
+        </button>
+        <button id="shopTabBtn-gacha" onclick="switchShopTab('gacha')" class="px-4 py-2 bg-white text-[#111] font-display font-extrabold text-xs uppercase border-2 border-[#111] hover:bg-slate-100">
+          🎁 Rương Báu Gacha
+        </button>
+        <button id="shopTabBtn-forge" onclick="switchShopTab('forge')" class="px-4 py-2 bg-white text-[#111] font-display font-extrabold text-xs uppercase border-2 border-[#111] hover:bg-slate-100">
+          🔨 Lò Rèn Cường Hóa (+1..+10)
+        </button>
+      </div>
+
+      <!-- Nội dung Tab 1: Quầy Dược Phẩm & Bùa -->
+      <div id="shopSection-goods" class="space-y-3 overflow-y-auto max-h-[380px] pr-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5" id="shopGoodsContainer">
+          <!-- Sẽ được fill bằng renderShopGoodsList() -->
+        </div>
+      </div>
+
+      <!-- Nội dung Tab 2: Rương Báu May Mắn Gacha -->
+      <div id="shopSection-gacha" class="hidden space-y-3 overflow-y-auto max-h-[380px] pr-1">
+        <!-- Banner Bảo Hiểm May Mắn (Pity Counter) -->
+        <div class="p-2.5 bg-[#FFE787] border-2 border-[#111] text-xs font-bold flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="text-base">🛡️</span>
+            <span>Bảo Hiểm May Mắn: <b id="gachaPityBadge" class="text-red-600">0/10</b></span>
+          </div>
+          <span class="text-[11px] text-slate-700 italic">Mỗi lần mở không ra đồ Huyền Thoại sẽ tích điểm!</span>
+        </div>
+
+        <!-- 3 Rương Báu -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <!-- Rương Gỗ (100 Vàng) -->
+          <div class="neo-box bg-white p-4 text-center space-y-2 border-2 border-[#111] flex flex-col justify-between">
+            <div>
+              <div class="text-4xl animate-bounce">🪵</div>
+              <h4 class="font-display font-extrabold text-sm uppercase text-[#111]">RƯƠNG GỖ RỪNG SÂU</h4>
+              <p class="text-[11px] text-slate-500">Chứa dược phẩm, vật phẩm tăng tốc và cơ hội rơi trang bị Hiếm.</p>
+            </div>
+            <button onclick="openMysteryChest('wood')" class="neo-btn py-2 bg-[#141414] text-white font-display font-extrabold text-xs uppercase hover:bg-slate-800">
+              Mở: 100 🪙 Vàng
+            </button>
+          </div>
+
+          <!-- Rương Bạc (350 Vàng) -->
+          <div class="neo-box bg-slate-50 p-4 text-center space-y-2 border-2 border-blue-500 shadow-[3px_3px_0px_#2563EB] flex flex-col justify-between">
+            <div>
+              <div class="text-4xl animate-pulse">🥈</div>
+              <h4 class="font-display font-extrabold text-sm uppercase text-blue-700">RƯƠNG BẠC HẦM NGỤC</h4>
+              <p class="text-[11px] text-slate-600 font-semibold">Tỷ lệ cao nổ Trang Bị Hiếm (Xanh Lam) và Sử Thi (Tím)!</p>
+            </div>
+            <button onclick="openMysteryChest('silver')" class="neo-btn py-2 bg-blue-600 text-white font-display font-extrabold text-xs uppercase hover:bg-blue-700">
+              Mở: 350 🪙 Vàng
+            </button>
+          </div>
+
+          <!-- Rương Hoàng Kim (5 Kim Cương) -->
+          <div class="neo-box bg-amber-50 p-4 text-center space-y-2 border-2 border-yellow-500 shadow-[3px_3px_0px_#D97706] flex flex-col justify-between">
+            <div>
+              <div class="text-4xl animate-bounce">👑</div>
+              <h4 class="font-display font-extrabold text-sm uppercase text-yellow-800">RƯƠNG HOÀNG KIM HẮC LONG</h4>
+              <p class="text-[11px] text-amber-900 font-bold">100% nổ Trang Bị Sử Thi hoặc Thần Binh Huyền Thoại dát vàng!</p>
+            </div>
+            <button onclick="openMysteryChest('gold')" class="neo-btn py-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-[#111] font-display font-extrabold text-xs uppercase hover:from-amber-600 hover:to-yellow-600">
+              Mở: 5 💎 Kim Cương
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nội dung Tab 3: Lò Rèn Cường Hóa (+1..+10) -->
+      <div id="shopSection-forge" class="hidden space-y-3 overflow-y-auto max-h-[380px] pr-1">
+        <div class="flex items-center gap-2 bg-white p-2.5 border border-[#111]">
+          <label class="text-xs font-mono-code font-bold uppercase">Chọn ô trang bị muốn đập đồ:</label>
+          <select id="forgeSlotSelect" onchange="renderForgeView()" class="neo-box-sm px-2.5 py-1 text-xs font-bold bg-[#FFE787]">
+            <option value="weapon">⚔️ Vũ Khí Chính</option>
+            <option value="helmet">🪖 Mũ / Nón</option>
+            <option value="armor">🥋 Áo Giáp</option>
+            <option value="gloves">🧤 Găng Tay</option>
+            <option value="boots">👢 Ủng Giày</option>
+          </select>
+        </div>
+
+        <div id="forgeItemContainer">
+          <!-- Sẽ được fill bằng renderForgeView() -->
+        </div>
+      </div>
+
+      <!-- Footer Modal Shop -->
+      <div class="pt-2 border-t-2 border-[#111] flex justify-between items-center text-xs">
+        <span class="text-slate-500 font-semibold italic">Đá cường hóa kiếm được khi hạ gục quái vật hoặc mua tại Quầy Dược Phẩm</span>
+        <button onclick="closeShopModal()" class="neo-btn px-4 py-1.5 bg-white text-xs font-extrabold hover:bg-slate-100">ĐÓNG</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL REVEAL TRANG BỊ MỞ RƯƠNG ==================== -->
+  <div id="gachaRevealModal" class="fixed inset-0 bg-black/90 hidden items-center justify-center p-4 z-50">
+    <div id="gachaRevealCard" class="neo-box max-w-md w-full p-6 text-center space-y-3 border-4 border-[#111] shadow-[8px_8px_0px_#FFE787]">
+      <!-- Sẽ được fill bằng triggerGachaRevealModal() -->
+    </div>
+  </div>
+
+  <!-- Các thẻ ẩn để quiz.js chạy tương thích tuyệt đối mà không cần DOM ngoài -->
     <!-- ==================== CAC MODULE JAVASCRIPT ==================== -->
   <script src="js/data.js"></script>
   <script src="js/dashboard.js"></script>
@@ -1321,6 +1584,46 @@
   <script src="js/actions.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    // PhÃ­m táº¯t Ä‘iá»u hÆ°á»›ng nhanh Tiá»‡n Ã­ch RPG trÃªn trang Index
+    window.addEventListener('keydown', (e) => {
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+      const k = e.key.toLowerCase();
+      if (k === 'b') {
+        const invModal = document.getElementById('rpgInventoryModal');
+        if (invModal && !invModal.classList.contains('hidden')) closeInventoryModal();
+        else if (typeof openInventoryModal === 'function') openInventoryModal();
+      } else if (k === 's') {
+        const shopModal = document.getElementById('rpgShopModal');
+        if (shopModal && !shopModal.classList.contains('hidden')) closeShopModal();
+        else if (typeof openShopModal === 'function') openShopModal('forge');
+      } else if (k === 'q') {
+        if (typeof GamificationQuests !== 'undefined') {
+          const qModal = document.getElementById('rpgQuestsModal');
+          if (qModal && !qModal.classList.contains('hidden')) GamificationQuests.closeModal();
+          else GamificationQuests.openModal();
+        }
+      } else if (k === 'k') {
+        if (typeof GamificationSkills !== 'undefined') {
+          const skModal = document.getElementById('rpgSkillTreeModal');
+          if (skModal && !skModal.classList.contains('hidden')) GamificationSkills.closeModal();
+          else GamificationSkills.openModal();
+        }
+      } else if (k === 'p') {
+        if (typeof GamificationPets !== 'undefined') {
+          const pModal = document.getElementById('rpgPetModal');
+          if (pModal && !pModal.classList.contains('hidden')) GamificationPets.closeModal();
+          else GamificationPets.openModal();
+        }
+      } else if (k === 't') {
+        if (typeof GamificationTower !== 'undefined') {
+          const tModal = document.getElementById('rpgTowerModal');
+          if (tModal && !tModal.classList.contains('hidden')) GamificationTower.closeModal();
+          else GamificationTower.openModal();
+        }
+      }
+    });
+  </script>
 </body>
 </html>
 

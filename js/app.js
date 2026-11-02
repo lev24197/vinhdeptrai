@@ -23,14 +23,18 @@ function openRandomCompletedStudy() {
   if (anchor) anchor.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Tự động khởi chạy nạp dữ liệu khi tải trang
-document.addEventListener('DOMContentLoaded', () => {
+// Đảm bảo chỉ khởi chạy nạp dữ liệu đúng 1 lần duy nhất
+let appInitialized = false;
+function bootstrapApp() {
+  if (appInitialized) return;
+  appInitialized = true;
   if (typeof initAuthSystem === 'function') initAuthSystem();
-  loadData(true);
-});
+  if (typeof loadData === 'function') loadData(true);
+}
+
+document.addEventListener('DOMContentLoaded', bootstrapApp);
 
 // Fallback nếu DOMContentLoaded đã kích hoạt trước đó
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  if (typeof initAuthSystem === 'function') initAuthSystem();
-  loadData(true);
+  bootstrapApp();
 }

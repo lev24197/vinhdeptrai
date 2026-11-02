@@ -1,4 +1,4 @@
-// ==================== ĐẤU TRƯỜNG TRẮC NGHIỆM ANKI (QUIZ ARENA) ====================
+﻿// ==================== ĐẤU TRƯỜNG TRẮC NGHIỆM ANKI (QUIZ ARENA) ====================
 let quizSelectedStts = new Set();
 let quizWordsCache = {}; // stt -> array of words
 let quizQuestions = [];
@@ -473,6 +473,7 @@ function chooseQuizOption(idx) {
     // Gamification Integration: Cộng XP và Vàng tức thì vào tài khoản
     if (typeof addXP === 'function') addXP(points, 'Trả lời đúng trắc nghiệm');
     if (typeof addCoins === 'function') addCoins(Math.max(1, Math.round(2 * multiplier)), 'Thưởng câu đúng');
+    if (typeof GamificationQuests !== 'undefined') { GamificationQuests.trackProgress('quiz_correct', 1); if (quizStreak >= 5) GamificationQuests.trackProgress('streak_combo', quizStreak); }
 
     // Battle Engine Integration: Hiệp sĩ tấn công quái vật!
     if (quizGameMode === 'rpg' && typeof BattleEngine !== 'undefined') {
@@ -584,6 +585,7 @@ function showQuizResults() {
       maxStreak: quizMaxStreak,
       mistakes: quizMistakes
     });
+  if (typeof GamificationQuests !== 'undefined') { GamificationQuests.trackProgress('quiz_finish', 1); }
   }
 
   let rank = 'ANKI TITAN';

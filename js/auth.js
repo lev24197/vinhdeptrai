@@ -654,6 +654,7 @@ function updateHeaderUserWidget() {
       <span class="text-xs" title="${isCloud ? 'Đã kết nối Supabase Cloud' : 'Chế độ Local Offline'}">${isCloud ? '☁️' : '💻'}</span>
       <span class="w-6 h-6 rounded-full bg-amber-200 border border-[#111] flex items-center justify-center text-sm">${currentRpgUser.avatar || '🦁'}</span>
       <span class="font-display font-extrabold text-xs hidden md:inline truncate max-w-[90px]">${currentRpgUser.display_name}</span>
+        ${currentRpgUser.equipped_title ? `<span class="hidden lg:inline text-[10px] font-mono-code font-extrabold bg-[#FFE787] text-[#111] px-1.5 py-0.5 rounded border border-[#111]">[${currentRpgUser.equipped_title}]</span>` : ""}
       <span class="font-mono-code text-[11px] bg-[#141414] text-white px-1.5 py-0.5 rounded font-bold">${cls.icon} Lv.${currentRpgUser.level}</span>
       <span class="font-mono-code text-xs font-bold text-amber-600 flex items-center gap-0.5">🔥 ${currentRpgUser.streak || 1}</span>
       <span class="font-mono-code text-xs font-bold text-yellow-600 flex items-center gap-0.5">🪙 ${currentRpgUser.gold || 0}</span>
