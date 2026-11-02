@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02 12:16:01",
+  "updated_at": "2026-11-02 21:29:26",
   "topics": [
     {
       "stt": 1,
@@ -778,11 +778,11 @@
     {
       "stt": 87,
       "topic": "Du lịch, Nhà nghỉ và Khách sạn (Tourism & Accommodations)",
-      "status": "failed",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/87.txt",
-      "generated_at": null,
-      "last_error": "Chủ đề #87 (Du lịch, Nhà nghỉ và Khách sạn (Tourism & Accommodations)) chỉ tạo được 99/100 từ sau nhiều lần thử lại!"
+      "generated_at": "2026-11-02 21:19",
+      "last_error": null
     },
     {
       "stt": 88,
@@ -800,7 +800,7 @@
       "word_count": 0,
       "file_path": "output/89.txt",
       "generated_at": null,
-      "last_error": "Chủ đề #89 (Tiếp thị và Chiến dịch quảng cáo (Marketing & Advertising Campaigns)) chỉ tạo được 88/100 từ sau nhiều lần thử lại!"
+      "last_error": "Chủ đề #89 (Tiếp thị và Chiến dịch quảng cáo (Marketing & Advertising Campaigns)) chỉ tạo được 82/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 90,
@@ -814,10 +814,10 @@
     {
       "stt": 91,
       "topic": "Chợ truyền thống và Siêu thị (Traditional Markets & Supermarkets)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/91.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-02 21:29",
       "last_error": null
     },
     {
