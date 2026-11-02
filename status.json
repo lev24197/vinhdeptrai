@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01 12:16:28",
+  "updated_at": "2026-11-02 07:44:02",
   "topics": [
     {
       "stt": 1,
@@ -742,10 +742,11 @@
     {
       "stt": 83,
       "topic": "Kế toán và Quản lý tài chính (Accounting & Financial Management)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 78,
       "file_path": "output/83.txt",
-      "generated_at": null
+      "generated_at": "2026-11-02 07:44",
+      "last_error": null
     },
     {
       "stt": 84,
