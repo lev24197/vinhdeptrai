@@ -325,6 +325,16 @@ async function startQuizSession() {
 
 function renderCurrentQuizCard() {
   if (quizCurrentIdx >= quizQuestions.length) {
+    if (quizGameMode === 'rpg' && typeof BattleEngine !== 'undefined' && BattleEngine.monster?.isBoss && BattleEngine.monster.hp > 0) {
+      // Hiệp sĩ tung tuyệt kỹ kết liễu trảm rồng trọn vẹn
+      BattleEngine.hero.state = 'dashing';
+      BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 30, '⚡ TUYỆT KỸ KẾT LIỄU: TRẢM MA ĐẠI PHÁ!', '#FFE787', true);
+      setTimeout(() => {
+        BattleEngine.monster.hp = 0;
+        BattleEngine.triggerMonsterDeathExplosion();
+      }, 600);
+      return;
+    }
     if (typeof showDungeonVictory === 'function') {
       showDungeonVictory();
     } else {

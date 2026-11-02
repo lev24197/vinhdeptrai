@@ -135,19 +135,101 @@ const BattleEngine = {
   },
 
   spawnMonster: function(waveNum, totalWaves) {
-    const isFinalBoss = waveNum >= totalWaves;
-    let template;
+    const bossPhaseTurns = Math.min(4, Math.max(3, Math.floor(totalWaves * 0.3))); // Ví dụ: 3 lượt cho 10 câu, 4 lượt cho 15 câu
+    const bossStartWave = Math.max(2, totalWaves - bossPhaseTurns + 1); // Bắt đầu chạm trán Boss từ wave này
+    const isBossPhase = waveNum >= bossStartWave;
 
-    if (isFinalBoss) {
-      template = this.MONSTER_ROSTER[this.MONSTER_ROSTER.length - 1];
+    // 1. NẾU ĐANG TRONG GIAI ĐOẠN ĐÁNH TRÙM CUỐI (MULTI-TURN BOSS BATTLE)
+    if (isBossPhase) {
+      // Nếu Boss đã được triệu hồi và chưa chết -> GIỮ NGUYÊN BOSS, TIẾP TỤC BÀO MÁU QUA NHIỀU CÂU HỎI!
+      if (this.monster && this.monster.isBoss && this.monster.hp > 0 && this.monster.state !== 'dead') {
+        this.monster.wave = waveNum;
+        this.monster.totalWaves = totalWaves;
+        this.addFloatDamage(this.monster.x, this.monster.y - 45, `👑 HIỆP TIẾP THEO: ${waveNum}/${totalWaves}!`, '#FDE047', false);
+        
+        // Hiệu ứng khói lửa quanh rồng khi bị thương
+        if (this.monster.enraged) {
+          for (let i = 0; i < 15; i++) {
+            this.particles.push({
+              x: this.monster.x + (Math.random() - 0.5) * 60,
+              y: this.monster.y + (Math.random() - 0.5) * 50,
+              vx: (Math.random() - 0.5) * 90,
+              vy: -60 - Math.random() * 70,
+              size: 3,
+              color: '#EF4444',
+              life: 0.6
+            });
+          }
+        }
+        this.updateBattleUI();
+        return;
+      }
+
+      // Lần đầu triệu hồi Trùm Cuối Hắc Long!
+      const template = this.MONSTER_ROSTER[this.MONSTER_ROSTER.length - 1];
       this.triggerBossAlert();
-    } else {
-      const idx = Math.min(this.MONSTER_ROSTER.length - 2, Math.floor(((waveNum - 1) / Math.max(1, totalWaves - 1)) * (this.MONSTER_ROSTER.length - 1)));
-      template = this.MONSTER_ROSTER[idx];
+
+      // Cân bằng máu Trùm Cuối: Tính toán dựa trên lực chiến thực tế của Hiệp Sĩ
+      const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+      const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { atk: 40 };
+      const playerAtk = Math.max(35, stats.atk || 40);
+      const expectedHit = playerAtk * 1.15;
+      
+      // Máu Boss đủ dày để cần 3-4 cú đánh chuẩn xác liên tiếp, KHÔNG BAO GIỜ BỊ 1-SHOT!
+      const calculatedHp = Math.round(expectedHit * (bossPhaseTurns * 1.15) + (waveNum * 30));
+
+      this.monster = {
+        x: 650,
+        y: 150,
+        baseY: 150,
+        hp: calculatedHp,
+        maxHp: calculatedHp,
+        ghostHp: calculatedHp,
+        name: template.name,
+        type: 'dragon',
+        color: template.color,
+        isBoss: true,
+        state: 'spawn',
+        animTimer: 0,
+        lungeX: 0,
+        flashWhite: 0.8,
+        wave: waveNum,
+        totalWaves: totalWaves,
+        deathTimer: 0,
+        scale: 1.45,
+        enraged: false
+      };
+
+      // Hiệu ứng triệu hồi rồng ma quái chấn động
+      for (let i = 0; i < 40; i++) {
+        this.particles.push({
+          x: this.monster.x + (Math.random() - 0.5) * 60,
+          y: this.monster.y + (Math.random() - 0.5) * 50,
+          vx: (Math.random() - 0.5) * 140,
+          vy: -80 - Math.random() * 90,
+          size: 4,
+          color: i % 2 === 0 ? '#EF4444' : '#F59E0B',
+          life: 0.8
+        });
+      }
+
+      setTimeout(() => {
+        if (this.monster.state === 'spawn') this.monster.state = 'idle';
+      }, 500);
+
+      this.updateBattleUI();
+      return;
     }
 
-    const scale = 1 + (waveNum * 0.08);
-    const calculatedHp = Math.round(template.baseHp * scale);
+    // 2. CÁC ẢI QUÁI THƯỜNG TRƯỚC TRÙM CUỐI (WAVE 1 ĐẾN WAVE N-3)
+    const idx = Math.min(this.MONSTER_ROSTER.length - 2, Math.floor(((waveNum - 1) / Math.max(1, bossStartWave - 1)) * (this.MONSTER_ROSTER.length - 2)));
+    const template = this.MONSTER_ROSTER[idx];
+
+    // Quái thường được cân bằng để chết gọn trong 1 đòn đánh chính xác, tạo nhịp độ càn quét đã tay!
+    const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+    const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { atk: 40 };
+    const playerAtk = Math.max(35, stats.atk || 40);
+    const calculatedHp = Math.max(25, Math.round(playerAtk * 0.95));
 
     this.monster = {
       x: 650,
@@ -159,15 +241,16 @@ const BattleEngine = {
       name: template.name,
       type: template.type,
       color: template.color,
-      isBoss: template.isBoss,
-      state: 'spawn', // Xuất hiện với hiệu ứng dịch chuyển
+      isBoss: false,
+      state: 'spawn',
       animTimer: 0,
       lungeX: 0,
       flashWhite: 0.5,
       wave: waveNum,
       totalWaves: totalWaves,
       deathTimer: 0,
-      scale: template.isBoss ? 1.3 : 1.0
+      scale: 1.0,
+      enraged: false
     };
 
     // Hiệu ứng hạt xuất hiện quái vật
@@ -496,6 +579,43 @@ const BattleEngine = {
 
     // Vẽ thanh máu HP & MP cao cấp có vạch trễ (Ghost Bar)
     this.drawHeroBars(ctx, x, y - 60);
+  },
+
+  // ==================== VẼ PREVIEW HIỆP SĨ TRONG SẢNH LOBBY ====================
+  renderHeroPreview: function(canvasId = 'lobbyHeroPreviewCanvas') {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2 + 15;
+
+    // Hào quang tỏa sáng dưới chân đài vinh danh
+    const grad = ctx.createRadialGradient(cx, cy + 18, 5, cx, cy + 18, 55);
+    grad.addColorStop(0, 'rgba(255, 231, 135, 0.4)');
+    grad.addColorStop(1, 'rgba(255, 231, 135, 0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(cx, cy + 18, 55, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Bục đá vinh danh (Pedestal Podium)
+    ctx.fillStyle = '#1E2238';
+    ctx.beginPath();
+    ctx.ellipse(cx, cy + 26, 44, 11, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#FFE787';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Vẽ toàn bộ Paperdoll nhân vật với tỷ lệ phóng to 1.45x
+    ctx.save();
+    ctx.translate(cx, cy - 8);
+    ctx.scale(1.45, 1.45);
+    this.drawHeroSpriteOnly(ctx);
+    ctx.restore();
   },
 
   drawHeroSpriteOnly: function(ctx) {
@@ -1041,27 +1161,77 @@ const BattleEngine = {
 
   drawMonsterBar: function(ctx, x, y) {
     const m = this.monster;
+    if (!m) return;
     const hpPct = Math.max(0, Math.min(1, m.hp / m.maxHp));
     const ghostPct = Math.max(0, Math.min(1, m.ghostHp / m.maxHp));
-    const width = m.isBoss ? 130 : 90;
 
-    // Nền thanh máu quái
+    // 1. NẾU LÀ TRÙM CUỐI (BOSS): VẼ THANH MÁU HOÀNG GIA ĐẲNG CẤP TRÊN ĐẦU MÀN HÌNH
+    if (m.isBoss) {
+      const topBarW = 380;
+      const topBarH = 26;
+      const topBarX = (this.width - topBarW) / 2;
+      const topBarY = 10;
+
+      // Nền khung bóng mờ & viền vàng hoàng kim
+      ctx.fillStyle = 'rgba(11, 13, 23, 0.92)';
+      ctx.fillRect(topBarX - 4, topBarY - 4, topBarW + 8, topBarH + 20);
+      ctx.strokeStyle = m.enraged ? '#EF4444' : '#FFE787';
+      ctx.lineWidth = 2.5;
+      ctx.strokeRect(topBarX - 4, topBarY - 4, topBarW + 8, topBarH + 20);
+
+      // Nhãn tên Boss & Trạng thái Cuồng nộ
+      ctx.font = 'bold 11px monospace';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = m.enraged ? '#EF4444' : '#FDE047';
+      ctx.fillText(m.enraged ? `🔥 [CUỒNG BẠO] ${m.name}` : `👑 [TRÙM CUỐI] ${m.name}`, topBarX + 2, topBarY + 8);
+
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#94A3B8';
+      ctx.fillText(`HIỆP ${m.wave}/${m.totalWaves}`, topBarX + topBarW - 2, topBarY + 8);
+
+      // Khung chứa thanh máu
+      const innerY = topBarY + 12;
+      ctx.fillStyle = '#0F172A';
+      ctx.fillRect(topBarX, innerY, topBarW, 14);
+
+      // Thanh máu ma Ghost Bar (vàng cam mượt mà)
+      ctx.fillStyle = '#F59E0B';
+      ctx.fillRect(topBarX, innerY, topBarW * ghostPct, 14);
+
+      // Thanh máu chính (Đỏ rực / Đỏ bão lửa khi cuồng nộ)
+      ctx.fillStyle = m.enraged ? '#DC2626' : '#EF4444';
+      ctx.fillRect(topBarX, innerY, topBarW * hpPct, 14);
+
+      // Chữ số máu chi tiết (Ví dụ: 850 / 1200 HP • 71%)
+      ctx.font = 'bold 10px monospace';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.textAlign = 'center';
+      ctx.fillText(`${m.hp} / ${m.maxHp} HP (${Math.round(hpPct * 100)}%)`, topBarX + topBarW / 2, innerY + 11);
+
+      // Thanh mini phụ trên đỉnh đầu rồng
+      const miniW = 120;
+      ctx.fillStyle = '#0F172A';
+      ctx.fillRect(x - (miniW / 2) - 2, y, miniW + 4, 7);
+      ctx.fillStyle = m.enraged ? '#DC2626' : '#EF4444';
+      ctx.fillRect(x - (miniW / 2), y + 1, miniW * hpPct, 5);
+      return;
+    }
+
+    // 2. THANH MÁU QUÁI VẬT THƯỜNG
+    const width = 90;
     ctx.fillStyle = '#0F172A';
     ctx.fillRect(x - (width / 2) - 2, y, width + 4, 9);
 
-    // Thanh Ghost Bar
     ctx.fillStyle = '#FDE047';
     ctx.fillRect(x - (width / 2), y + 1, width * ghostPct, 7);
 
-    // Thanh máu quái
-    ctx.fillStyle = m.isBoss ? '#DC2626' : '#EAB308';
+    ctx.fillStyle = '#EAB308';
     ctx.fillRect(x - (width / 2), y + 1, width * hpPct, 7);
 
-    // Tên quái
     ctx.font = 'bold 11px monospace';
-    ctx.fillStyle = m.isBoss ? '#FCA5A5' : '#FEF08A';
+    ctx.fillStyle = '#FEF08A';
     ctx.textAlign = 'center';
-    ctx.fillText(m.isBoss ? `⚠️ BOSS: ${m.name}` : `[WAVE ${m.wave}/${m.totalWaves}] ${m.name}`, x, y - 4);
+    ctx.fillText(`[ẢI ${m.wave}/${m.totalWaves}] ${m.name}`, x, y - 4);
   },
 
   // ==================== CÁC HIỆU ỨNG CHIẾN ĐẤU (SLASHES, PROJECTILES, PARTICLES) ====================
@@ -1215,8 +1385,26 @@ const BattleEngine = {
     this.hero.state = 'retracting';
 
     // KIỂM TRA NẾU QUÁI HẾT MÁU -> NỔ TUNG PIXEL SHATTER!
-    if (this.monster.hp <= 0) {
-      this.triggerMonsterDeathExplosion();
+    if (this.monster.isBoss) {
+      if (this.monster.hp <= 0) {
+        this.triggerMonsterDeathExplosion();
+      } else {
+        // Trùm còn máu -> Kích hoạt phản ứng Boss
+        if (this.monster.hp <= this.monster.maxHp * 0.5 && !this.monster.enraged) {
+          this.monster.enraged = true;
+          this.addFloatDamage(this.monster.x, this.monster.y - 35, '🔥 HẮC LONG CUỒNG NỘ (ENRAGED)!', '#EF4444', true);
+          this.screenShake = 2.0;
+        } else {
+          this.addFloatDamage(this.monster.x, this.monster.y - 35, '🐉 RỒNG GẦM RÚ TÁC CHIẾN!', '#F59E0B', false);
+        }
+        if (typeof window.onBossTurnComplete === 'function') {
+          window.onBossTurnComplete();
+        }
+      }
+    } else {
+      if (this.monster.hp <= 0) {
+        this.triggerMonsterDeathExplosion();
+      }
     }
 
     this.updateBattleUI();
@@ -1245,14 +1433,15 @@ const BattleEngine = {
       return;
     }
 
-    const monsterDmg = this.monster.isBoss ? 35 : (15 + Math.floor(Math.random() * 12));
+    const monsterDmg = this.monster.isBoss ? (32 + Math.floor(Math.random() * 12)) : (15 + Math.floor(Math.random() * 10));
     this.hero.hp = Math.max(0, this.hero.hp - monsterDmg);
     this.hero.flashWhite = 0.4;
-    this.screenShake = 1.2;
+    this.screenShake = this.monster.isBoss ? 2.0 : 1.2;
 
     RetroAudio.playHeroHurt();
-    this.createHitSparks(this.hero.x, this.hero.y, false);
-    this.addFloatDamage(this.hero.x, this.hero.y - 20, `PHẢN ĐÒN! -${monsterDmg} HP`, '#EF4444', true);
+    this.createHitSparks(this.hero.x, this.hero.y, this.monster.isBoss);
+    const hitLabel = this.monster.isBoss ? `🔥 HẮC LONG PHUN LỬA! -${monsterDmg} HP` : `PHẢN ĐÒN! -${monsterDmg} HP`;
+    this.addFloatDamage(this.hero.x, this.hero.y - 20, hitLabel, '#EF4444', true);
 
     if (typeof currentRpgUser !== 'undefined' && currentRpgUser) {
       currentRpgUser.hp = this.hero.hp;
