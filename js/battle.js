@@ -1,4 +1,4 @@
-// ==================== ĐỘNG CƠ ĐẤU THEO LƯỢT PIXEL RPG NÂNG CẤP (ADVANCED PIXEL BATTLE ENGINE) ====================
+﻿// ==================== ĐỘNG CƠ ĐẤU THEO LƯỢT PIXEL RPG NÂNG CẤP (ADVANCED PIXEL BATTLE ENGINE) ====================
 // Thiết kế chuyên biệt cho battle.html: Đồ họa Canvas Pixel Art mượt mà,
 // Hoạt ảnh vung kiếm/bắn tên/phóng phép, Vết chém xé gió, Quái vật nổ tung khi chết,
 // Thanh máu trễ (Ghost Bar) chuẩn game đối kháng, và Âm thanh 8-bit bùng nổ.
@@ -444,6 +444,11 @@ const BattleEngine = {
 
     // Hiệp sĩ
     this.drawHero(ctx);
+
+    // Linh thú đồng hành trợ chiến (Module 5)
+    if (typeof GamificationPets !== 'undefined' && typeof GamificationPets.drawPetOnCanvas === 'function') {
+      GamificationPets.drawPetOnCanvas(ctx, this.hero.x + (this.hero.lungeX || 0), this.hero.y, this.hero.animTimer);
+    }
 
     // Quái vật
     if (this.monster.state !== 'dead') {
@@ -1848,6 +1853,22 @@ const BattleEngine = {
       // 2. CHỌN SAI: ĐÒN ĐÁNH BỊ HỤT (MISS), QUÁI PHẢN ĐÒN
       this.addFloatDamage(this.hero.x, this.hero.y - 25, 'MISS!', '#94A3B8', false);
 
+      // Kiểm tra quái vật có đang bị Đóng Băng (Frozen) không
+      if (this.monster && this.monster.frozen) {
+        this.monster.frozen = false;
+        this.addFloatDamage(this.monster.x, this.monster.y - 35, '❄️ BĂNG TAN! QUÁI MẤT LƯỢT', '#38BDF8', true);
+        RetroAudio.playHit();
+        return;
+      }
+
+      // Kiểm tra Hồ Ly Băng (Pet frost_kitsune) đóng băng quái cứu nguy
+      const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+      if (user?.equipped_pet === 'frost_kitsune' && Math.random() < 0.15) {
+        this.addFloatDamage(this.monster.x, this.monster.y - 35, '🦊 HỒ LY ĐÓNG BĂNG! CỨU NGUY', '#C084FC', true);
+        RetroAudio.playHit();
+        return;
+      }
+
       setTimeout(() => {
         this.monster.state = 'attacking';
         RetroAudio.playMonsterAttack();
@@ -1872,6 +1893,22 @@ const BattleEngine = {
       this.pendingBerserk = false;
       this.addFloatDamage(this.hero.x, this.hero.y - 30, '🔥 CUỒNG TRẢM X2.2!', '#EF4444', true);
     }
+    if (this.pendingMeteorStrike) {
+      skillMultiplier *= 3.0;
+      this.pendingMeteorStrike = false;
+      this.addFloatDamage(this.hero.x, this.hero.y - 30, '☄️ HỎA CẦU X3.0!', '#8B5CF6', true);
+    }
+    if (this.pendingCrit35) {
+      isCrit = true;
+      skillMultiplier *= 3.5;
+      this.pendingCrit35 = false;
+      this.addFloatDamage(this.hero.x, this.hero.y - 30, '🩸 ÁM SÁT BẠO KÍCH X3.5!', '#F59E0B', true);
+    }
+    if (this.pendingArrowBarrage) {
+      skillMultiplier *= 1.8;
+      this.pendingArrowBarrage = false;
+      this.addFloatDamage(this.hero.x, this.hero.y - 30, '🎯 MƯA TÊN XUYÊN GIÁP!', '#10B981', true);
+    }
 
     // Tính toán sát thương hiệp sĩ dựa trên công thức công - thủ (DEF Mitigation)
     let finalDmg = 0;
@@ -1886,6 +1923,30 @@ const BattleEngine = {
     this.monster.hp = Math.max(0, this.monster.hp - finalDmg);
     this.monster.flashWhite = 0.4;
     this.screenShake = isCrit ? 1.5 : 0.7;
+
+    // Linh thú Tiểu Hỏa Long phụ chiến (Baby Drake Assist)
+    if (user?.equipped_pet === 'baby_drake') {
+      const assistDmg = 20;
+      this.monster.hp = Math.max(0, this.monster.hp - assistDmg);
+      this.addFloatDamage(this.monster.x, this.monster.y - 45, `🐲 RỒNG CON KHÈ LỬA! -${assistDmg} HP`, '#EF4444', false);
+    }
+
+    // Pháp Sư Passive 1 (Minh Triết Cổ Đại): hồi 12 MP khi đúng từ C1-C2
+    if (user?.rpg_class === 'mage' && user?.skills_unlocked?.passive_1 && this.pendingWord?.level === 'advanced') {
+      this.hero.mp = Math.min(this.hero.maxMp, this.hero.mp + 12);
+      this.addFloatDamage(this.hero.x, this.hero.y - 25, '+12 MP MINH TRIẾT!', '#8B5CF6', false);
+    }
+
+    // Cập nhật tiến độ Nhiệm vụ & Thành tựu
+    if (typeof GamificationQuests !== 'undefined') {
+      GamificationQuests.trackProgress('word_correct', 1);
+      if (this.pendingStreak >= 5) {
+        GamificationQuests.trackProgress('combo_streak', this.pendingStreak);
+      }
+      if (this.pendingWord?.level === 'advanced') {
+        GamificationQuests.trackProgress('c1_c2_word', 1);
+      }
+    }
 
     // Hiệu ứng Hút máu (Vampiric) nếu có
     const eq = user?.equipped || {};
@@ -1949,7 +2010,16 @@ const BattleEngine = {
     const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
     const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { dodge: 5, def: 10 };
 
-    // 1. Kiểm tra Né Đòn (Dodge)
+    // 1. Kiểm tra Bóng Ma Hư Không (Assassin Active 1 - 100% Dodge)
+    if (this.pendingAbsoluteDodge) {
+      this.pendingAbsoluteDodge = false;
+      this.addFloatDamage(this.hero.x, this.hero.y - 20, '💨 BÓNG MA HƯ KHÔNG (100% NÉ)!', '#38BDF8', true);
+      this.hero.state = 'idle';
+      this.updateBattleUI();
+      return;
+    }
+
+    // 2. Kiểm tra Né Đòn thông thường (Dodge)
     if (Math.random() * 100 < (stats.dodge || 5)) {
       this.addFloatDamage(this.hero.x, this.hero.y - 20, '💨 NÉ ĐÒN THẦN SẦU (DODGE)!', '#38BDF8', true);
       this.hero.state = 'idle';
@@ -1957,7 +2027,7 @@ const BattleEngine = {
       return;
     }
 
-    // 2. Kiểm tra Bùa Khiên Hộ Mệnh (Shield Charm)
+    // 3. Kiểm tra Bùa Khiên Hộ Mệnh (Shield Charm)
     if (user?.inventory?.shield_charm > 0) {
       user.inventory.shield_charm--;
       if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
@@ -1968,10 +2038,19 @@ const BattleEngine = {
       return;
     }
 
-    // 3. Quái vật / Boss xuất chiêu với ATK riêng, giảm trừ bởi Giáp phòng thủ DEF của Hiệp sĩ
+    // 4. Quái vật / Boss xuất chiêu với ATK riêng, giảm trừ bởi Giáp phòng thủ DEF của Hiệp sĩ
     const monsterRawAtk = this.monster.atk || (this.monster.isBoss ? 45 : 20);
     const heroDef = stats.def || 10;
-    const monsterDmg = Math.max(8, Math.round(monsterRawAtk + (Math.random() * 8) - (heroDef / 2.5)));
+    let monsterDmg = Math.max(8, Math.round(monsterRawAtk + (Math.random() * 8) - (heroDef / 2.5)));
+
+    // 5. Kiểm tra Khiên Phản Đòn (Warrior Active 2 - Reflect Shield)
+    if (this.pendingReflectShield) {
+      this.pendingReflectShield = false;
+      monsterDmg = Math.round(monsterDmg * 0.2); // Giảm 80% sát thương nhận vào
+      const reflectedDmg = monsterRawAtk;
+      this.monster.hp = Math.max(0, this.monster.hp - reflectedDmg);
+      this.addFloatDamage(this.monster.x, this.monster.y - 30, `🛡️ PHẢN ĐÒN! -${reflectedDmg} HP`, '#F59E0B', true);
+    }
 
     this.hero.hp = Math.max(0, this.hero.hp - monsterDmg);
     this.hero.flashWhite = 0.4;
@@ -1984,6 +2063,13 @@ const BattleEngine = {
       ? `🔥 ${this.monster.skillName || 'CHIÊU THỨC BÁ ĐẠO'}! -${monsterDmg} HP` 
       : `💥 PHẢN ĐÒN! -${monsterDmg} HP`;
     this.addFloatDamage(this.hero.x, this.hero.y - 20, hitLabel, '#EF4444', true);
+
+    // 6. Kiểm tra Bất Tử Chiến Ý (Warrior Passive 2 - Last Stand)
+    if (this.hero.hp <= 0 && user?.rpg_class === 'warrior' && user?.skills_unlocked?.passive_2 && !this.lastStandUsed) {
+      this.lastStandUsed = true;
+      this.hero.hp = 1;
+      this.addFloatDamage(this.hero.x, this.hero.y - 35, '❤️‍🔥 BẤT TỬ CHIẾN Ý! GIỮ LẠI 1 HP', '#EF4444', true);
+    }
 
     if (typeof currentRpgUser !== 'undefined' && currentRpgUser) {
       currentRpgUser.hp = this.hero.hp;
@@ -2005,6 +2091,11 @@ const BattleEngine = {
     RetroAudio.playExplosion();
 
     this.addFloatDamage(this.monster.x, this.monster.y - 45, '🏆 QUÁI VẬT BỊ TIÊU DIỆT!', '#10B981', true);
+
+    // Ghi nhận tiến độ Diệt Boss cho Nhiệm Vụ & Thành Tựu
+    if (this.monster.isBoss && typeof GamificationQuests !== 'undefined') {
+      GamificationQuests.trackProgress('slay_boss', 1);
+    }
 
     // Nổ tung thành 60+ mảnh pixel quái vật bay tứ phía
     const colors = [this.monster.color, '#FFFFFF', '#F59E0B', '#EF4444'];
@@ -2148,6 +2239,7 @@ const BattleEngine = {
 
     user.inventory.health_potion--;
     this.hero.hp = Math.min(this.hero.maxHp, this.hero.hp + 50);
+    if (typeof GamificationQuests !== 'undefined') GamificationQuests.trackProgress('use_potion', 1);
     user.hp = this.hero.hp;
     if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
 
@@ -2166,6 +2258,7 @@ const BattleEngine = {
 
     user.inventory.mana_potion--;
     this.hero.mp = Math.min(this.hero.maxMp, this.hero.mp + 40);
+    if (typeof GamificationQuests !== 'undefined') GamificationQuests.trackProgress('use_potion', 1);
     user.mp = this.hero.mp;
     if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
 
@@ -2198,7 +2291,19 @@ const BattleEngine = {
 
   bindActionEvents: function() {
     const btnSkill = document.getElementById('battleBtnSkill');
-    if (btnSkill) btnSkill.onclick = () => this.useClassSkillInBattle();
+    if (btnSkill) {
+      btnSkill.onclick = () => {
+        if (typeof GamificationSkills !== 'undefined') GamificationSkills.castCombatSkill(1);
+        else this.useClassSkillInBattle();
+      };
+    }
+
+    const btnSkill2 = document.getElementById('battleBtnSkill2');
+    if (btnSkill2) {
+      btnSkill2.onclick = () => {
+        if (typeof GamificationSkills !== 'undefined') GamificationSkills.castCombatSkill(2);
+      };
+    }
 
     const btnHp = document.getElementById('battleBtnHpPotion');
     if (btnHp) btnHp.onclick = () => this.useHealthPotionInBattle();
@@ -2217,13 +2322,34 @@ const BattleEngine = {
     const mpCount = document.getElementById('battleMpPotionCount');
     if (mpCount) mpCount.innerText = inv.mana_potion || 0;
 
-    const skillLabel = document.getElementById('battleSkillLabel');
-    if (skillLabel && user) {
+    // Cập nhật nhãn Skill 1 & Skill 2 từ GamificationSkills
+    if (typeof GamificationSkills !== 'undefined' && user) {
       const cls = user.rpg_class || 'warrior';
-      if (cls === 'mage') skillLabel.innerText = '✨ Hỏa Cầu (25 MP)';
-      else if (cls === 'ranger') skillLabel.innerText = '🏹 Mắt Đại Bàng (15 MP)';
-      else if (cls === 'assassin') skillLabel.innerText = '🥷 Đoạt Mệnh (20 MP)';
-      else skillLabel.innerText = '⚔️ Cuồng Trảm (20 MP)';
+      const cData = GamificationSkills.CLASS_SKILLS[cls] || GamificationSkills.CLASS_SKILLS.warrior;
+      const s1 = cData.active_1;
+      const s2 = cData.active_2;
+
+      const skill1Label = document.getElementById('battleSkillLabel');
+      if (skill1Label) {
+        skill1Label.innerText = `${s1.icon} ${s1.name} (${s1.mp} MP) [1]`;
+      }
+
+      const skill2Label = document.getElementById('battleSkill2Label');
+      if (skill2Label) {
+        const isUnlocked2 = user.skills_unlocked?.active_2;
+        skill2Label.innerText = isUnlocked2 
+          ? `${s2.icon} ${s2.name} (${s2.mp} MP) [2]` 
+          : `🔒 ${s2.name} [2]`;
+      }
+    } else {
+      const skillLabel = document.getElementById('battleSkillLabel');
+      if (skillLabel && user) {
+        const cls = user.rpg_class || 'warrior';
+        if (cls === 'mage') skillLabel.innerText = '✨ Hỏa Cầu (25 MP) [1]';
+        else if (cls === 'ranger') skillLabel.innerText = '🏹 Mắt Đại Bàng (15 MP) [1]';
+        else if (cls === 'assassin') skillLabel.innerText = '🥷 Đoạt Mệnh (20 MP) [1]';
+        else skillLabel.innerText = '⚔️ Cuồng Trảm (20 MP) [1]';
+      }
     }
 
     // Cập nhật thanh máu trên top bar nếu có
@@ -2241,6 +2367,44 @@ const RetroAudio = {
     if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
     if (this.ctx.state === 'suspended') this.ctx.resume();
     return this.ctx;
+  },
+
+  playCoin: function() {
+    try {
+      const ctx = this.getCtx();
+      [987.77, 1318.51].forEach((freq, idx) => {
+        const t = ctx.currentTime + idx * 0.08;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, t);
+        gain.gain.setValueAtTime(0.25, t);
+        gain.gain.linearRampToValueAtTime(0.01, t + 0.18);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.18);
+      });
+    } catch (e) {}
+  },
+
+  playFanfare: function() {
+    try {
+      const ctx = this.getCtx();
+      [523.25, 659.25, 783.99, 1046.50, 1318.51].forEach((freq, idx) => {
+        const t = ctx.currentTime + idx * 0.09;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, t);
+        gain.gain.setValueAtTime(0.28, t);
+        gain.gain.exponentialRampToValueAtTime(0.01, t + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.35);
+      });
+    } catch (e) {}
   },
 
   playSlash: function() {

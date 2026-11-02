@@ -1,4 +1,4 @@
-// ==================== HỆ THỐNG TÚI ĐỒ & TRANG BỊ PAPERDOLL (INVENTORY SYSTEM) ====================
+﻿// ==================== HỆ THỐNG TÚI ĐỒ & TRANG BỊ PAPERDOLL (INVENTORY SYSTEM) ====================
 
 let currentInventoryFilter = 'all';
 let selectedInventoryItem = null;
@@ -111,6 +111,65 @@ function calculatePlayerTotalStats(user) {
       if (s.setKey === 'shadow') base.dodge += (s.tier >= 4 ? 20 : 10);
       if (s.setKey === 'anki_god') { base.atk += 50; base.hp += 180; base.crit += 15; }
     });
+  }
+
+  // Cá»™ng thÃªm chá»‰ sá»‘ CÆ°á»ng HÃ³a tá»« LÃ² RÃ¨n (+15% stats má»—i cáº¥p cÆ°á»ng hÃ³a)
+  if (user.equipment_enhances) {
+    Object.keys(eq).forEach(slot => {
+      const enhLvl = user.equipment_enhances[slot] || 0;
+      if (enhLvl > 0 && eq[slot]) {
+        const item = (typeof getRpgEquipmentById === 'function') ? getRpgEquipmentById(eq[slot]) : null;
+        if (item && item.stats) {
+          const mult = enhLvl * 0.15;
+          if (item.stats.atk) base.atk += Math.round(item.stats.atk * mult);
+          if (item.stats.hp) base.hp += Math.round(item.stats.hp * mult);
+          if (item.stats.mp) base.mp += Math.round(item.stats.mp * mult);
+          if (item.stats.crit) base.crit += Math.round(item.stats.crit * mult);
+          if (item.stats.dodge) base.dodge += Math.round(item.stats.dodge * mult);
+        }
+      }
+    });
+  }
+
+  // Cá»™ng thÃªm ThiÃªn phÃº Bá»‹ Äá»™ng tá»« Báº£ng Ká»¹ NÄƒng Há»‡ PhÃ¡i (GamificationSkills)
+  const skills = user.skills_unlocked || {};
+  const uClass = user.rpg_class || 'warrior';
+  if (uClass === 'warrior') {
+    if (skills.passive_1) {
+      base.hp += 30; // +30 Max HP
+      base.def = (base.def || 0) + 15; // +15 GiÃ¡p phÃ²ng thá»§
+    }
+  } else if (uClass === 'mage') {
+    if (skills.passive_2) {
+      base.mp += 25; // +25 Max MP
+      base.atk += 15; // +15 ATK phÃ©p
+    }
+  } else if (uClass === 'ranger') {
+    if (skills.passive_1) {
+      base.crit += 15; // +15% Báº¡o kÃ­ch
+    }
+    if (skills.passive_2) {
+      base.goldBonus += 30; // +30% VÃ ng rÆ¡i
+    }
+  } else if (uClass === 'assassin') {
+    if (skills.passive_2) {
+      base.dodge += 15; // +15% NÃ© Ä‘Ã²n
+    }
+  }
+
+  // Cá»™ng thÃªm Buff tá»« Báº¡n Äá»“ng HÃ nh Linh ThÃº (GamificationPets)
+  const petId = user.equipped_pet || (user.pets ? 'wise_owl' : null);
+  if (petId) {
+    if (petId === 'wise_owl') {
+      base.expBonus += 25; // +25% EXP há»c tá»« vá»±ng
+    } else if (petId === 'baby_drake') {
+      base.atk += 10; // +10 ATK trá»±c tiáº¿p
+    } else if (petId === 'fortune_cat') {
+      base.goldBonus += 35; // +35% VÃ ng rÆ¡i
+    } else if (petId === 'frost_kitsune') {
+      base.dodge += 5; // +5% NÃ© Ä‘Ã²n ma thuáº­t
+      base.def = (base.def || 0) + 10;
+    }
   }
 
   return base;

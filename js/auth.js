@@ -1,4 +1,4 @@
-// ==================== HỆ THỐNG TÀI KHOẢN CLOUD SUPABASE & ĐỘNG CƠ RPG PIXEL ====================
+﻿// ==================== HỆ THỐNG TÀI KHOẢN CLOUD SUPABASE & ĐỘNG CƠ RPG PIXEL ====================
 // Module quản lý: Đăng nhập / Đăng ký Supabase Cloud, Nhân vật RPG, Cấp độ, Máu (HP), Năng lượng (MP),
 // Vàng 🪙, Kim cương 💎, Trang bị, và Đồng bộ dữ liệu đám mây thời gian thực.
 
@@ -305,6 +305,15 @@ async function loadProfileFromSupabase(userId) {
         if (typeof data.inventory.dust !== 'undefined') currentRpgUser.dust = data.inventory.dust;
         if (typeof data.inventory.enhance_stones !== 'undefined') currentRpgUser.enhance_stones = data.inventory.enhance_stones;
         if (typeof data.inventory.gacha_pity !== 'undefined') currentRpgUser.gacha_pity = data.inventory.gacha_pity;
+        if (data.inventory.daily_quests) currentRpgUser.daily_quests = data.inventory.daily_quests;
+        if (data.inventory.achievements) currentRpgUser.achievements = data.inventory.achievements;
+        if (data.inventory.equipped_title) currentRpgUser.equipped_title = data.inventory.equipped_title;
+        if (data.inventory.unlocked_titles) currentRpgUser.unlocked_titles = data.inventory.unlocked_titles;
+        if (typeof data.inventory.skill_points !== 'undefined') currentRpgUser.skill_points = data.inventory.skill_points;
+        if (data.inventory.skills_unlocked) currentRpgUser.skills_unlocked = data.inventory.skills_unlocked;
+        if (data.inventory.pets) currentRpgUser.pets = data.inventory.pets;
+        if (data.inventory.equipped_pet) currentRpgUser.equipped_pet = data.inventory.equipped_pet;
+        if (data.inventory.tower_records) currentRpgUser.tower_records = data.inventory.tower_records;
       }
       saveLocalProfileCache();
     } else {
@@ -353,7 +362,16 @@ async function saveCurrentRpgUser() {
           equipment_enhances: currentRpgUser.equipment_enhances,
           dust: currentRpgUser.dust,
           enhance_stones: currentRpgUser.enhance_stones,
-          gacha_pity: currentRpgUser.gacha_pity
+          gacha_pity: currentRpgUser.gacha_pity,
+          daily_quests: currentRpgUser.daily_quests,
+          achievements: currentRpgUser.achievements,
+          equipped_title: currentRpgUser.equipped_title,
+          unlocked_titles: currentRpgUser.unlocked_titles,
+          skill_points: currentRpgUser.skill_points,
+          skills_unlocked: currentRpgUser.skills_unlocked,
+          pets: currentRpgUser.pets,
+          equipped_pet: currentRpgUser.equipped_pet,
+          tower_records: currentRpgUser.tower_records
         },
         unlocked_dungeons: currentRpgUser.unlocked_dungeons,
         badges: currentRpgUser.badges,

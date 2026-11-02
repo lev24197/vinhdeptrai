@@ -1,4 +1,4 @@
-// ==================== HỆ THỐNG CỬA HÀNG, GACHA RƯƠNG BÁU & LÒ RÈN (SHOP & FORGE) ====================
+﻿// ==================== HỆ THỐNG CỬA HÀNG, GACHA RƯƠNG BÁU & LÒ RÈN (SHOP & FORGE) ====================
 
 const RPG_SHOP_GOODS = [
   { id: 'health_potion', name: 'Bình Máu Siêu Cấp', icon: '🧪', cost: 25, type: 'gold', desc: 'Hồi phục +50 HP ngay lập tức trong hoặc ngoài trận đấu.' },
@@ -171,6 +171,11 @@ function openMysteryChest(chestType) {
 
   // Hiệu ứng mở rương kịch tính
   triggerGachaRevealModal(rolledItem, chestTitle);
+
+  if (typeof GamificationQuests !== 'undefined') {
+    GamificationQuests.trackProgress('open_chest', 1);
+    GamificationQuests.trackProgress('gacha_drop', 1, { tier: rolledItem.tier });
+  }
 }
 
 function rollGachaItem(chestType, isGuaranteedLegendary) {
@@ -357,8 +362,15 @@ function performItemEnhance(slot) {
 
   playAnvilHammerSound();
 
+  if (typeof GamificationQuests !== 'undefined') {
+    GamificationQuests.trackProgress('forge_enhance', 1);
+  }
+
   if (isSuccess) {
     user.equipment_enhances[slot] = nextLvl;
+    if (typeof GamificationQuests !== 'undefined') {
+      GamificationQuests.trackProgress('enhance_level', nextLvl, { level: nextLvl });
+    }
     if (typeof showToastAlert === 'function') {
       showToastAlert(`🔥 CHÚC MỪNG! Đập đồ thành công rực rỡ lên +${nextLvl}!`);
     }
