@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03 13:07:15",
+  "updated_at": "2026-11-03 14:29:08",
   "topics": [
     {
       "stt": 1,
@@ -841,28 +841,28 @@
     {
       "stt": 94,
       "topic": "Phương tiện giao thông công cộng (Public Transportation)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/94.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #94 (Phương tiện giao thông công cộng (Public Transportation)) chỉ tạo được 68/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 95,
       "topic": "Quản trị kinh doanh doanh nghiệp (Business Administration)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/95.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #95 (Quản trị kinh doanh doanh nghiệp (Business Administration)) chỉ tạo được 87/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 96,
       "topic": "Phụ tùng ô tô và Xe máy (Auto & Motorcycle Parts)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/96.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-03 14:29",
       "last_error": null
     },
     {
