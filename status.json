@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03 14:29:08",
+  "updated_at": "2026-11-03 14:53:52",
   "topics": [
     {
       "stt": 1,
@@ -841,11 +841,11 @@
     {
       "stt": 94,
       "topic": "Phương tiện giao thông công cộng (Public Transportation)",
-      "status": "failed",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/94.txt",
-      "generated_at": null,
-      "last_error": "Chủ đề #94 (Phương tiện giao thông công cộng (Public Transportation)) chỉ tạo được 68/100 từ sau nhiều lần thử lại!"
+      "generated_at": "2026-11-03 14:53",
+      "last_error": null
     },
     {
       "stt": 95,
