@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02 21:41:55",
+  "updated_at": "2026-11-03 13:07:15",
   "topics": [
     {
       "stt": 1,
@@ -796,11 +796,11 @@
     {
       "stt": 89,
       "topic": "Tiếp thị và Chiến dịch quảng cáo (Marketing & Advertising Campaigns)",
-      "status": "failed",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/89.txt",
-      "generated_at": null,
-      "last_error": "Chủ đề #89 (Tiếp thị và Chiến dịch quảng cáo (Marketing & Advertising Campaigns)) chỉ tạo được 82/100 từ sau nhiều lần thử lại!"
+      "generated_at": "2026-11-03 12:54",
+      "last_error": null
     },
     {
       "stt": 90,
@@ -823,19 +823,19 @@
     {
       "stt": 92,
       "topic": "Hợp đồng và Văn bản pháp lý (Contracts & Legal Documents)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/92.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-03 13:03",
       "last_error": null
     },
     {
       "stt": 93,
       "topic": "Thuế và Các loại bảo hiểm (Taxes & Insurance)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/93.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-03 13:07",
       "last_error": null
     },
     {
