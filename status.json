@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03 14:53:52",
+  "updated_at": "2026-11-04 12:34:18",
   "topics": [
     {
       "stt": 1,
@@ -854,7 +854,7 @@
       "word_count": 0,
       "file_path": "output/95.txt",
       "generated_at": null,
-      "last_error": "Chủ đề #95 (Quản trị kinh doanh doanh nghiệp (Business Administration)) chỉ tạo được 87/100 từ sau nhiều lần thử lại!"
+      "last_error": "Chủ đề #95 (Quản trị kinh doanh doanh nghiệp (Business Administration)) chỉ tạo được 81/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 96,
@@ -868,19 +868,19 @@
     {
       "stt": 97,
       "topic": "Quán ăn và Dịch vụ ăn uống (Restaurants & Food Service)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/97.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-04 12:33",
       "last_error": null
     },
     {
       "stt": 98,
       "topic": "Hoạt động Xuất - Nhập khẩu (Import & Export Activities)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/98.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-04 12:34",
       "last_error": null
     },
     {
