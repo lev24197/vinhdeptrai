@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04 12:34:18",
+  "updated_at": "2026-11-05 12:52:13",
   "topics": [
     {
       "stt": 1,
@@ -886,20 +886,20 @@
     {
       "stt": 99,
       "topic": "Công viên và Không gian xanh (Parks & Green Spaces)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/99.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-05 12:50",
       "last_error": null
     },
     {
       "stt": 100,
       "topic": "Logistics và Chuỗi cung ứng (Logistics & Supply Chain)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/100.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #100 (Logistics và Chuỗi cung ứng (Logistics & Supply Chain)) chỉ tạo được 94/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 101,
