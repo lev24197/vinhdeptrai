@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05 15:09:04",
+  "updated_at": "2026-11-06 12:43:53",
   "topics": [
     {
       "stt": 1,
@@ -854,7 +854,7 @@
       "word_count": 0,
       "file_path": "output/95.txt",
       "generated_at": null,
-      "last_error": "Chủ đề #95 (Quản trị kinh doanh doanh nghiệp (Business Administration)) chỉ tạo được 75/100 từ sau nhiều lần thử lại!"
+      "last_error": "Không thể gọi Gemini API cho chủ đề #95 (conversational) sau khi thử các model."
     },
     {
       "stt": 96,
@@ -899,16 +899,16 @@
       "word_count": 0,
       "file_path": "output/100.txt",
       "generated_at": null,
-      "last_error": "Chủ đề #100 (Logistics và Chuỗi cung ứng (Logistics & Supply Chain)) chỉ tạo được 94/100 từ sau nhiều lần thử lại!"
+      "last_error": "Không thể gọi Gemini API cho chủ đề #100 (conversational) sau khi thử các model."
     },
     {
       "stt": 101,
       "topic": "Trái cây (Fruits)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/101.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Không thể gọi Gemini API cho chủ đề #101 (conversational) sau khi thử các model."
     },
     {
       "stt": 102,
