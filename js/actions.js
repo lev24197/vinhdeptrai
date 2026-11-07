@@ -145,6 +145,56 @@ async function generateDirectlyInBrowser() {
   await generateSingleInBrowser(pending.stt, pending.topic);
 }
 
+// Hàm gọi Gemini API đa model với cơ chế Fallback tự động & bóc tách JSON an toàn
+async function callGeminiApiWithFallback(prompt, geminiKey) {
+  const models = [
+    'gemini-1.5-flash',
+    'gemini-2.0-flash',
+    'gemini-2.5-flash',
+    'gemini-1.5-pro',
+    'gemini-1.5-flash-8b'
+  ];
+
+  let lastError = null;
+  for (const model of models) {
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { responseMimeType: 'application/json', temperature: 0.35 }
+        })
+      });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        lastError = new Error(`Model ${model} trả về HTTP ${res.status}: ${errText}`);
+        continue;
+      }
+
+      const data = await res.json();
+      const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!rawText) {
+        lastError = new Error(`Model ${model} không trả về nội dung (finishReason: ${data.candidates?.[0]?.finishReason || 'UNKNOWN'})`);
+        continue;
+      }
+
+      // Xử lý bóc tách JSON an toàn (kể cả khi model trả về ```json ... ```)
+      let cleaned = rawText.trim().replace(/^```json/i, '').replace(/^```/, '').replace(/```$/, '').trim();
+      const firstBracket = cleaned.indexOf('[');
+      const lastBracket = cleaned.lastIndexOf(']');
+      if (firstBracket !== -1 && lastBracket !== -1 && lastBracket > firstBracket) {
+        cleaned = cleaned.substring(firstBracket, lastBracket + 1);
+      }
+      return JSON.parse(cleaned);
+    } catch (e) {
+      lastError = e;
+    }
+  }
+  throw lastError || new Error('Không thể kết nối đến các Gemini model. Vui lòng kiểm tra lại API Key.');
+}
+
 async function generateSingleInBrowser(stt, topicVi) {
   const geminiKey = localStorage.getItem('gemini_api_key');
   const owner = localStorage.getItem('gh_owner');
@@ -176,17 +226,7 @@ async function generateSingleInBrowser(stt, topicVi) {
       const askCount = Math.min(55, Math.max(needed + 5, 15));
       const prompt = `Generate a JSON array of ${askCount} practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English, strictly NO adjectives, NO verbs) related to the topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: 'application/json', temperature: 0.35 }
-        })
-      });
-      if (!res.ok) throw new Error(`Gemini API trả về HTTP ${res.status}: ${await res.text()}`);
-      const data = await res.json();
-      const items = JSON.parse(data.candidates?.[0]?.content?.parts?.[0]?.text || '[]');
+      const items = await callGeminiApiWithFallback(prompt, geminiKey);
       for (const item of items) {
         const w = String(item.word || '').trim().toLowerCase();
         if (w && !seen.has(w)) {
@@ -213,17 +253,7 @@ CRITICAL REQUIREMENTS:
 Exclude already used words: ${[...seen].join(', ') || 'None'}.
 Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: 'application/json', temperature: 0.35 }
-        })
-      });
-      if (!res.ok) throw new Error(`Gemini API trả về HTTP ${res.status}: ${await res.text()}`);
-      const data = await res.json();
-      const items = JSON.parse(data.candidates?.[0]?.content?.parts?.[0]?.text || '[]');
+      const items = await callGeminiApiWithFallback(prompt, geminiKey);
       for (const item of items) {
         const w = String(item.word || '').trim().toLowerCase();
         if (w && !seen.has(w)) {
@@ -254,17 +284,45 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
 
     const tsvContent = lines.join('\n') + '\n';
 
-    // Nếu có cấu hình GitHub Token thì đẩy thẳng file lên Repo
+    // Nếu có cấu hình GitHub Token thì đẩy thẳng file lên Repo và cập nhật status.json
     if (owner && repo && ghToken) {
-      showLiveRunner(`ĐANG LƯU FILE output/${stt}.txt LÊN GITHUB...`, 95, 5);
+      showLiveRunner(`ĐANG LƯU FILE output/${stt}.txt LÊN GITHUB...`, 92, 5);
       await pushFileToGitHub(`output/${stt}.txt`, tsvContent, `Generate topic #${stt} (${topicVi}) via Web Studio`);
       logToConsole('SUCCESS', 'GITHUB_COMMIT', `Đã lưu output/${stt}.txt (${lines.length} từ) lên GitHub!`);
+
+      // Tự động đồng bộ status.json lên GitHub
+      try {
+        showLiveRunner(`ĐANG CẬP NHẬT status.json LÊN GITHUB...`, 97, 5);
+        const statusRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/status.json?ref=${branch}`, {
+          headers: { 'Authorization': `Bearer ${ghToken}` }
+        });
+        if (statusRes.ok) {
+          const statusFileObj = await statusRes.json();
+          const currentStatusData = JSON.parse(decodeURIComponent(escape(atob(statusFileObj.content))));
+          const topItem = currentStatusData.topics?.find(t => t.stt === Number(stt));
+          if (topItem) {
+            topItem.status = 'completed';
+            topItem.word_count = lines.length;
+            topItem.file_path = `output/${stt}.txt`;
+            topItem.generated_at = new Date().toISOString().replace('T', ' ').substring(0, 16);
+            topItem.last_error = null;
+          }
+          currentStatusData.updated_at = new Date().toISOString().replace('T', ' ').substring(0, 19);
+          const updatedStatusStr = JSON.stringify(currentStatusData, null, 2);
+          await pushFileToGitHub('status.json', updatedStatusStr, `Update status.json for topic #${stt} via Web Studio`);
+          logToConsole('SUCCESS', 'GITHUB_STATUS', `Đã cập nhật status.json trên GitHub thành công!`);
+        }
+      } catch (stErr) {
+        console.warn('Lỗi đồng bộ status.json:', stErr);
+      }
     } else {
+      // Khi không có GitHub Token: Tải file về máy để người dùng không bị mất dữ liệu
       const blob = new Blob([tsvContent], { type: 'text/plain;charset=utf-8' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = `${stt}.txt`;
       a.click();
+      logToConsole('WARNING', 'NO_GH_TOKEN', `Đã tải ${stt}.txt về máy. Để tự động lưu lên GitHub Pages, bạn cần nhập GitHub Token vào mục ⚙️ Cấu hình API.`);
     }
 
     // Cập nhật UI ngay lập tức

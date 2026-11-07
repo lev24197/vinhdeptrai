@@ -105,11 +105,13 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
         f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
     )
     models_to_try = [
+        "gemini-1.5-flash",
+        "gemini-2.0-flash",
         "gemini-2.5-flash",
-        "gemini-3-flash-preview",
-        "gemini-3.1-flash-lite-preview",
+        "gemini-1.5-pro",
         "gemini-2.5-flash-lite",
     ]
+    err_history = []
     for model_name in models_to_try:
         try:
             response = client.models.generate_content(
@@ -125,9 +127,12 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
             if parsed and parsed.items:
                 return parsed.items
         except Exception as e:
-            append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} ({mode}) gặp lỗi tạm thời: {str(e)}. Đang thử lại...", stt)
+            err_msg = f"{model_name}: {str(e)}"
+            err_history.append(err_msg)
+            append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} ({mode}) lỗi: {str(e)[:120]}. Đang thử model tiếp theo...", stt)
             time.sleep(1)
-    raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} ({mode}) sau khi thử các model.")
+    combined_err = " | ".join(err_history)
+    raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} ({mode}). Chi tiết lỗi: {combined_err}")
 
 def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     seen = set()
