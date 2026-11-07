@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07 16:36:26",
+  "updated_at": "2026-11-07 16:45:14",
   "topics": [
     {
       "stt": 1,
@@ -922,10 +922,10 @@
     {
       "stt": 103,
       "topic": "Thịt và Gia cầm (Meat & Poultry)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/103.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-07 16:45",
       "last_error": null
     },
     {
