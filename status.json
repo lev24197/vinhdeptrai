@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07 22:58:51",
+  "updated_at": "2026-11-07 16:36:26",
   "topics": [
     {
       "stt": 1,
@@ -850,11 +850,11 @@
     {
       "stt": 95,
       "topic": "Quản trị kinh doanh doanh nghiệp (Business Administration)",
-      "status": "failed",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 85,
       "file_path": "output/95.txt",
-      "generated_at": null,
-      "last_error": "Chủ đề #95 (Quản trị kinh doanh doanh nghiệp (Business Administration)) chỉ tạo được 98/100 từ sau nhiều lần thử lại!"
+      "generated_at": "2026-11-07 16:36",
+      "last_error": null
     },
     {
       "stt": 96,
