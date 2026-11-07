@@ -2,7 +2,59 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Headless E2E Verification & Audit Exception Trap -->
+  <script>
+    window.__PAGE_ERRORS__ = window.__PAGE_ERRORS__ || [];
+    window.addEventListener('error', function(e) {
+      var errObj = {
+        type: 'uncaught_error',
+        message: e.message || String(e),
+        filename: e.filename || '',
+        lineno: e.lineno || 0,
+        colno: e.colno || 0,
+        timestamp: Date.now()
+      };
+      window.__PAGE_ERRORS__.push(errObj);
+      if (window.parent && window.parent !== window) {
+        try {
+          window.parent.postMessage({
+            type: 'PAGE_ERROR_DISPATCH',
+            source: 'battle',
+            error: errObj
+          }, '*');
+        } catch (_) {}
+      }
+    });
+    window.addEventListener('unhandledrejection', function(e) {
+      var reasonMsg = (e.reason && (e.reason.message || e.reason.stack)) ? String(e.reason.message || e.reason) : String(e.reason);
+      var errObj = {
+        type: 'unhandled_rejection',
+        message: reasonMsg,
+        timestamp: Date.now()
+      };
+      window.__PAGE_ERRORS__.push(errObj);
+      if (window.parent && window.parent !== window) {
+        try {
+          window.parent.postMessage({
+            type: 'PAGE_ERROR_DISPATCH',
+            source: 'battle',
+            error: errObj
+          }, '*');
+        } catch (_) {}
+      }
+    });
+    window.addEventListener('load', function() {
+      if (window.parent && window.parent !== window) {
+        try {
+          window.parent.postMessage({
+            type: 'PAGE_LOAD_DISPATCH',
+            source: 'battle'
+          }, '*');
+        } catch (_) {}
+      }
+    });
+  </script>
   <title>Võ Đài Pixel RPG • The Anki Dictionary</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -499,6 +551,11 @@
               <span class="text-[10px] font-mono-code text-slate-500 font-bold">Bấm để tháo</span>
             </div>
 
+            <!-- Paperdoll Visual Hero Sprite Canvas (5-Slot Visual Layer Preview) -->
+            <div class="flex justify-center mb-2">
+              <canvas id="invHeroPaperdollCanvas" width="160" height="90" class="neo-box-sm bg-[#181B2E] rounded block"></canvas>
+            </div>
+
             <!-- 6 Ô Paperdoll -->
             <div class="grid grid-cols-2 gap-2">
               <div id="paperdollSlot-weapon"></div>
@@ -541,6 +598,7 @@
               <button id="invFilterBtn-gloves" onclick="setInventoryFilter('gloves')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Găng</button>
               <button id="invFilterBtn-boots" onclick="setInventoryFilter('boots')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Ủng</button>
               <button id="invFilterBtn-accessory" onclick="setInventoryFilter('accessory')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Nhẫn</button>
+              <button id="invFilterBtn-consumable" onclick="setInventoryFilter('consumable')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">🧪 Tiêu Hao</button>
             </div>
             <span id="invItemsCountLabel" class="text-xs font-mono-code font-bold text-slate-500">0 / 40 ô</span>
           </div>
@@ -669,6 +727,7 @@
             <option value="armor">🥋 Áo Giáp</option>
             <option value="gloves">🧤 Găng Tay</option>
             <option value="boots">👢 Ủng Giày</option>
+            <option value="accessory">💍 Phụ Kiện / Nhẫn</option>
           </select>
         </div>
 
@@ -887,7 +946,7 @@
       container.innerHTML = slots.map(s => {
         const itemId = eq[s.slot];
         const item = getItem(itemId);
-        const enh = user?.enhancements?.[s.slot] || 0;
+        const enh = user?.equipment_enhances?.[s.slot] ?? user?.enhancements?.[s.slot] ?? 0;
         const enhLabel = enh > 0 ? `+${enh}` : '';
 
         if (!item) {
@@ -1004,11 +1063,44 @@
         const biomeBadge = document.getElementById('lobbyPreviewBiomeBadge');
         if (biomeBadge) {
           const biomeIcons = {
-            fashion_catwalk: '👗 Sàn Catwalk', cozy_cafe: '☕ Quán Cà Phê', magma_hotpot: '🍲 Núi Lửa Lẩu',
-            medical_bio_lab: '🧬 Viện Sinh Học', sacred_cathedral: '⛪ Thánh Đường', clockwork_foundry: '⚙️ Xưởng Cơ Giới',
-            abyssal_ocean: '🌊 Đại Dương Sâu', concert_symphony: '🎻 Nhà Hát Giao Hưởng', alpine_peaks: '🏔️ Đỉnh Băng Giá',
-            cyber_arcade: '👾 Cyber Hư Không', celestial_cosmos: '🌌 Vũ Trụ Hư Không', quantum_supercomputer: '🤖 Siêu Máy Tính',
-            treasury_vault: '💰 Kho Báu Midas', ancient_ruins: '🏛️ Cổ Thành Phế Tích'
+            abyssal_ocean: '🌊 Đại Dương Sâu',
+            alpine_peaks: '🏔️ Đỉnh Băng Giá',
+            ancestral_manor: '🏰 Trang Viên Cổ Tộc',
+            ancient_ruins: '🏛️ Cổ Thành Phế Tích',
+            beast_savanna: '🦁 Thảo Nguyên Dã Thú',
+            broadcast_studio: '📡 Phim Trường Truyền Hình',
+            carnival_night: '🎪 Lễ Hội Đêm Bí Ẩn',
+            catwalk_fashion: '👗 Sàn Diễn Catwalk',
+            colosseum_arena: '⚔️ Đấu Trường La Mã',
+            cozy_cafe: '☕ Quán Cà Phê Ấm Cúng',
+            crystal_cavern: '💎 Hang Pha Lê Huyền Ảo',
+            cyber_arcade_city: '👾 Thành Phố Cyber Hư Không',
+            deep_cosmos: '🌌 Vũ Trụ Thâm Uyên',
+            global_freight_terminal: '🚢 Cảng Logistics Toàn Cầu',
+            gold_bullion_vault: '💰 Kho Vàng Hoàng Kim Midas',
+            grand_symphony: '🎻 Nhà Hát Đại Giao Hưởng',
+            haunted_mansion: '👻 Lâu Đài Ma Ám',
+            high_tribunal: '⚖️ Tòa Án Tối Cao',
+            infinite_library: '📚 Thư Viện Vô Tận',
+            iron_foundry: '⚙️ Xưởng Đúc Cơ Giới Thép',
+            magma_hotpot: '🍲 Núi Lửa Lẩu Nóng',
+            medical_bio_lab: '🧬 Viện Sinh Học Phân Tử',
+            metropolis_freeway: '🏎️ Xa Lộ Cao Tốc Đô Thị',
+            mirror_psyche: '🪞 Cung Điện Gương Tâm Trí',
+            primeval_forest: '🌲 Rừng Nguyên Sinh Cổ Đại',
+            quantum_agi_datacenter: '🤖 Trung Tâm Dữ Liệu Quantum AGI',
+            sacred_cathedral: '⛪ Thánh Đường Thần Thánh',
+            skyport_terminal: '✈️ Sân Bay Trên Không',
+            storm_caldera: '🌩️ Hõm Núi Lôi Bão',
+            toxic_reactor: '☢️ Lò Phản Ứng Độc Tố',
+            // Legacy / alternate key aliases
+            fashion_catwalk: '👗 Sàn Diễn Catwalk',
+            clockwork_foundry: '⚙️ Xưởng Đúc Cơ Giới Thép',
+            concert_symphony: '🎻 Nhà Hát Đại Giao Hưởng',
+            cyber_arcade: '👾 Thành Phố Cyber Hư Không',
+            celestial_cosmos: '🌌 Vũ Trụ Thâm Uyên',
+            quantum_supercomputer: '🤖 Trung Tâm Dữ Liệu Quantum AGI',
+            treasury_vault: '💰 Kho Vàng Hoàng Kim Midas'
           };
           biomeBadge.innerText = biomeIcons[dungeon.biome] || '🏛️ Hầm Ngục';
         }
@@ -1169,10 +1261,30 @@
     // Khi quái vật chết -> Tự động chuyển tiếp câu hỏi mượt mà sau hiệu ứng nổ
     window.onMonsterSlainCallback = function() {
       setTimeout(() => {
-        if (quizCurrentIdx < quizQuestions.length - 1) {
+        const isBossDefeated = (typeof BattleEngine !== 'undefined' && BattleEngine.monster?.isBoss && BattleEngine.monster.hp <= 0);
+        const isLastQuestion = (quizCurrentIdx >= quizQuestions.length - 1);
+
+        if (isBossDefeated && typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.trackProgress === 'function') {
+          GamificationQuests.trackProgress('boss_slain', 1);
+          GamificationQuests.trackProgress('slay_boss', 1);
+        }
+
+        if (!isBossDefeated && !isLastQuestion) {
           nextQuizCard();
         } else {
-          // Trùm cuối bị tiêu diệt -> Mở popup vinh danh
+          // 1. Kiểm tra chế độ Tháp Thách Thức Babel (Endless Tower)
+          if (window.GamificationTower && window.GamificationTower.activeMode === 'tower') {
+            window.GamificationTower.onFloorCleared();
+            return;
+          }
+
+          // 2. Kiểm tra chế độ Boss Rush (5 Boss Sinh Tồn Liên Hoàn)
+          if (window.GamificationTower && window.GamificationTower.activeMode === 'boss_rush') {
+            window.GamificationTower.onBossRushCleared();
+            return;
+          }
+
+          // 3. Chế độ Hầm ngục tiêu chuẩn (Standard 100 Dungeons) -> Popup vinh danh
           showDungeonVictory();
         }
       }, 700);
@@ -1191,23 +1303,62 @@
     };
 
     function triggerHeroFinishingBlow() {
-      if (typeof BattleEngine !== 'undefined' && BattleEngine.monster?.isBoss && BattleEngine.monster.hp > 0) {
+      if (typeof BattleEngine === 'undefined' || !BattleEngine.monster?.isBoss || BattleEngine.monster.hp <= 0) return;
+      const isQuizExhausted = (typeof quizQuestions !== 'undefined' && typeof quizCurrentIdx !== 'undefined' && quizCurrentIdx >= quizQuestions.length - 1);
+      if (typeof BattleEngine.triggerHeroFinishingBlow === 'function') {
+        return BattleEngine.triggerHeroFinishingBlow(isQuizExhausted);
+      }
+
+      const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+      const stats = (typeof calculatePlayerTotalStats === 'function') ? calculatePlayerTotalStats(user) : { atk: 35 };
+      const boss = BattleEngine.monster;
+      const thresholdHp = Math.max(Math.round(boss.maxHp * 0.20), Math.round((stats.atk || 35) * 2.5));
+
+      if (boss.hp <= thresholdHp || isQuizExhausted) {
         BattleEngine.hero.state = 'dashing';
-        BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 30, '⚡ TUYỆT KỸ KẾT LIỄU: TRẢM MA ĐẠI PHÁ!', '#FFE787', true);
+        BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 30, `⚡ TUYỆT KỸ KẾT LIỄU: TRẢM MA ĐẠI PHÁ! -${boss.hp} HP`, '#FFE787', true);
+        boss.hp = 0;
         setTimeout(() => {
-          BattleEngine.monster.hp = 0;
           BattleEngine.triggerMonsterDeathExplosion();
         }, 600);
+      } else {
+        const finishingDmg = Math.round((stats.atk || 35) * 1.8);
+        boss.hp = Math.max(1, boss.hp - finishingDmg);
+        boss.flashWhite = 0.4;
+        BattleEngine.screenShake = 1.5;
+        BattleEngine.addFloatDamage(boss.x, boss.y - 30, `💥 TRẢM MA: -${finishingDmg} HP (CÒN ${boss.hp} HP)!`, '#EF4444', true);
+        BattleEngine.updateBattleUI();
+
+        setTimeout(() => {
+          BattleEngine.addFloatDamage(boss.x, boss.y - 45, '🔥 BOSS NỔI ĐIÊN PHẢN CÔNG!', '#EF4444', true);
+          BattleEngine.monster.state = 'attacking';
+          if (typeof RetroAudio !== 'undefined') RetroAudio.playMonsterAttack();
+        }, 800);
       }
     }
+    window.triggerHeroFinishingBlow = triggerHeroFinishingBlow;
+    window.showDungeonVictory = showDungeonVictory;
 
     function showDungeonVictory() {
+      // Safety guard: Never show standard dungeon victory popup during Tower or Boss Rush
+      if (window.GamificationTower && window.GamificationTower.activeMode === 'tower') {
+        window.GamificationTower.onFloorCleared();
+        return;
+      }
+      if (window.GamificationTower && window.GamificationTower.activeMode === 'boss_rush') {
+        window.GamificationTower.onBossRushCleared();
+        return;
+      }
+
       BattleEngine.stopBattle();
       if (typeof addXP === 'function') addXP(100, 'Chinh phục Dungeon');
       if (typeof addCoins === 'function') addCoins(35, 'Thưởng Rương Boss');
       if (typeof currentRpgUser !== 'undefined' && currentRpgUser) {
         currentRpgUser.gems = (currentRpgUser.gems || 0) + 2;
         currentRpgUser.enhance_stones = (currentRpgUser.enhance_stones || 0) + 1;
+      }
+      if (typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.trackProgress === 'function') {
+        GamificationQuests.trackProgress('dungeon_clear', 1);
       }
       if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
 

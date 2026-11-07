@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Challenger M6_2 Empirical Adversarial Suite</title>
+</head>
+<body style="background: #0B0D17; color: #FFF; font-family: monospace; padding: 20px;">
+  <h1>⚔️ Challenger M6_2 Empirical Adversarial Suite</h1>
+  <div id="status">Running empirical challenge tests...</div>
+  <pre id="output"></pre>
+  <div id="results-json" style="display:none;"></div>
+
+  <!-- Mock browser blocking dialogs for automated headless tests -->
+  <script>
+    window.alert = function(msg) {};
+    window.confirm = function(msg) { return true; };
+    window.prompt = function(msg) { return null; };
+  </script>
+
+  <!-- Production Game Modules -->
+  <script src="../js/data.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/equipment_data.js"></script>
+  <script src="../js/inventory.js"></script>
+  <script src="../js/shop.js"></script>
+  <script src="../js/dungeon_data_100.js"></script>
+  <script src="../js/gamification_quests.js"></script>
+  <script src="../js/gamification_skills.js"></script>
+  <script src="../js/gamification_pets.js"></script>
+  <script src="../js/gamification_tower.js"></script>
+  <script src="../js/battle.js"></script>
+  <script src="../js/quiz.js"></script>
+
+  <!-- Empirical Challenge Script -->
+  <script src="challenger_m6_2_empirical.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      try {
+        const results = window.runChallengerM62Tests();
+        const jsonEl = document.getElementById('results-json');
+        jsonEl.textContent = JSON.stringify(results);
+
+        const statusEl = document.getElementById('status');
+        statusEl.textContent = results.failed === 0 
+          ? `PASSED: ${results.passed}/${results.total} tests passed in ${results.duration}ms`
+          : `FAILED: ${results.failed}/${results.total} failed`;
+
+        const outEl = document.getElementById('output');
+        outEl.textContent = results.results.map(r => `[${r.status}] ${r.suite} :: ${r.desc} ${r.error ? '-> ' + r.error : ''}`).join('\n');
+      } catch (e) {
+        document.getElementById('status').textContent = 'ERROR: ' + e.message;
+        document.getElementById('output').textContent = e.stack;
+      }
+    });
+  </script>
+</body>
+</html>

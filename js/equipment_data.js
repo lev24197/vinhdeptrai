@@ -1034,3 +1034,26 @@ function calculateActiveSetBonuses(equippedIds) {
 
   return activeBonuses;
 }
+
+// Xuất global cho toàn bộ hệ thống
+if (typeof window !== 'undefined') {
+  window.RPG_TIERS = RPG_TIERS;
+  window.RPG_SET_BONUSES = RPG_SET_BONUSES;
+  window.RPG_EQUIPMENT_CATALOG = RPG_EQUIPMENT_CATALOG;
+  window.getRpgEquipmentById = getRpgEquipmentById;
+  window.getRpgEquipmentBySlot = getRpgEquipmentBySlot;
+  window.getRpgEquipmentByClass = getRpgEquipmentByClass;
+  window.calculateActiveSetBonuses = calculateActiveSetBonuses;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    RPG_TIERS,
+    RPG_SET_BONUSES,
+    RPG_EQUIPMENT_CATALOG,
+    getRpgEquipmentById,
+    getRpgEquipmentBySlot,
+    getRpgEquipmentByClass,
+    calculateActiveSetBonuses
+  };
+}

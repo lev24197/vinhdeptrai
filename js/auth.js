@@ -1,4 +1,4 @@
-﻿// ==================== HỆ THỐNG TÀI KHOẢN CLOUD SUPABASE & ĐỘNG CƠ RPG PIXEL ====================
+// ==================== HỆ THỐNG TÀI KHOẢN CLOUD SUPABASE & ĐỘNG CƠ RPG PIXEL ====================
 // Module quản lý: Đăng nhập / Đăng ký Supabase Cloud, Nhân vật RPG, Cấp độ, Máu (HP), Năng lượng (MP),
 // Vàng 🪙, Kim cương 💎, Trang bị, và Đồng bộ dữ liệu đám mây thời gian thực.
 
@@ -9,6 +9,30 @@ const LOCAL_PROFILE_KEY = 'anki_rpg_local_profile';
 let supabaseClient = null;
 let currentSession = null;
 let currentRpgUser = null; // Dữ liệu nhân vật hiện tại
+
+if (typeof window !== 'undefined') {
+  try {
+    Object.defineProperty(window, 'supabaseClient', {
+      get() { return supabaseClient; },
+      set(val) { supabaseClient = val; },
+      configurable: true
+    });
+    Object.defineProperty(window, 'currentSession', {
+      get() { return currentSession; },
+      set(val) { currentSession = val; },
+      configurable: true
+    });
+    Object.defineProperty(window, 'currentRpgUser', {
+      get() { return currentRpgUser; },
+      set(val) { currentRpgUser = val; },
+      configurable: true
+    });
+  } catch (e) {
+    window.currentRpgUser = currentRpgUser;
+    window.supabaseClient = supabaseClient;
+    window.currentSession = currentSession;
+  }
+}
 
 // Cấu hình 4 Lớp Nhân Vật Pixel RPG
 const RPG_CLASSES = {
@@ -122,6 +146,27 @@ async function initAuthSystem() {
   updateHeaderUserWidget();
 }
 
+// Đảm bảo thuộc tính user.dust luôn chuẩn hóa và ánh xạ 2 chiều với user.magic_dust
+function ensureDustProperty(user) {
+  if (!user) return;
+  if (typeof user.dust === 'undefined') {
+    user.dust = (typeof user.magic_dust !== 'undefined') ? Number(user.magic_dust) : 20;
+  }
+  try {
+    const desc = Object.getOwnPropertyDescriptor(user, 'magic_dust');
+    if (!desc || desc.configurable) {
+      Object.defineProperty(user, 'magic_dust', {
+        get() { return this.dust || 0; },
+        set(val) { this.dust = Math.max(0, parseInt(val, 10) || 0); },
+        configurable: true,
+        enumerable: false
+      });
+    }
+  } catch (e) {
+    user.magic_dust = user.dust;
+  }
+}
+
 // Tải hoặc khởi tạo nhân vật trong LocalStorage nếu chưa nối Supabase
 function loadLocalProfileFallback() {
   try {
@@ -135,11 +180,39 @@ function loadLocalProfileFallback() {
   } catch (e) {
     currentRpgUser = createDefaultRpgCharacter('Vinh Đẹp Trai', 'warrior', '🦁');
   }
+
+  // Chuẩn hóa profile khi nạp từ LocalStorage
+  if (currentRpgUser) {
+    ensureDustProperty(currentRpgUser);
+    if (typeof currentRpgUser.skill_points === 'undefined') currentRpgUser.skill_points = 0;
+    if (typeof currentRpgUser.enhance_stones === 'undefined') currentRpgUser.enhance_stones = 5;
+    if (typeof currentRpgUser.gacha_pity === 'undefined') currentRpgUser.gacha_pity = 0;
+    if (!Array.isArray(currentRpgUser.unlocked_dungeons) || currentRpgUser.unlocked_dungeons.length === 0) {
+      currentRpgUser.unlocked_dungeons = [1];
+    }
+    if (!Array.isArray(currentRpgUser.unlocked_titles) || currentRpgUser.unlocked_titles.length === 0) {
+      currentRpgUser.unlocked_titles = ['Tân Binh Anki'];
+    }
+    if (!currentRpgUser.equipped_title) currentRpgUser.equipped_title = 'Tân Binh Anki';
+    if (!currentRpgUser.stats) {
+      currentRpgUser.stats = { monsters_slain: 0, bosses_slain: 0, dungeons_cleared: 0, perfect_quizzes: 0, total_turns: 0, quizzes_played: 0, total_correct: 0, max_combo: 0 };
+    }
+    if (currentRpgUser.inventory) {
+      if (typeof currentRpgUser.inventory.health_potions !== 'undefined') {
+        currentRpgUser.inventory.health_potion = (currentRpgUser.inventory.health_potion || 0) + (currentRpgUser.inventory.health_potions || 0);
+        delete currentRpgUser.inventory.health_potions;
+      }
+      if (typeof currentRpgUser.inventory.double_xp_potion !== 'undefined') {
+        currentRpgUser.inventory.double_xp = (currentRpgUser.inventory.double_xp || 0) + (currentRpgUser.inventory.double_xp_potion || 0);
+        delete currentRpgUser.inventory.double_xp_potion;
+      }
+    }
+  }
 }
 
 function createDefaultRpgCharacter(name, rpgClass = 'warrior', avatar = '🦁') {
   const cls = RPG_CLASSES[rpgClass] || RPG_CLASSES.warrior;
-  return {
+  const user = {
     id: 'local_' + Date.now(),
     is_cloud: false,
     display_name: name || 'Hiệp Sĩ Anki',
@@ -153,10 +226,16 @@ function createDefaultRpgCharacter(name, rpgClass = 'warrior', avatar = '🦁') 
     max_mp: cls.baseMp,
     gold: 100,
     gems: 10,
+    dust: 20,
+    enhance_stones: 5,
+    gacha_pity: 0,
+    skill_points: 0,
     streak: 1,
     last_active_date: getTodayStr(),
     equipped_weapon: 'Tập Sự Kiếm',
     equipped_armor: 'Áo Vải Tân Thủ',
+    equipped_title: 'Tân Binh Anki',
+    unlocked_titles: ['Tân Binh Anki'],
     inventory: {
       health_potion: 3,
       mana_potion: 2,
@@ -164,11 +243,20 @@ function createDefaultRpgCharacter(name, rpgClass = 'warrior', avatar = '🦁') 
       double_xp: 0,
       hint_scroll: 2
     },
+    equipment_enhances: {
+      weapon: 0,
+      helmet: 0,
+      armor: 0,
+      gloves: 0,
+      boots: 0
+    },
     unlocked_dungeons: [1],
     badges: ['first_login'],
     stats: {
       monsters_slain: 0,
       bosses_slain: 0,
+      dungeons_cleared: 0,
+      perfect_quizzes: 0,
       total_turns: 0,
       quizzes_played: 0,
       total_correct: 0,
@@ -176,6 +264,8 @@ function createDefaultRpgCharacter(name, rpgClass = 'warrior', avatar = '🦁') 
     },
     mistake_bank: []
   };
+  ensureDustProperty(user);
+  return user;
 }
 
 function getTodayStr() {
@@ -280,55 +370,217 @@ async function ensureProfileCreated(userId, email, displayName, avatar, rpgClass
         gold: 100,
         gems: 10,
         streak: 1,
-        inventory: { health_potion: 3, mana_potion: 2, streak_freeze: 1, double_xp: 0, hint_scroll: 2 }
+        inventory: {
+          health_potion: 3,
+          mana_potion: 2,
+          streak_freeze: 1,
+          double_xp: 0,
+          hint_scroll: 2,
+          dust: 20,
+          enhance_stones: 5,
+          gacha_pity: 0
+        },
+        unlocked_dungeons: [1],
+        badges: ['first_login'],
+        stats: {
+          monsters_slain: 0,
+          bosses_slain: 0,
+          dungeons_cleared: 0,
+          perfect_quizzes: 0,
+          total_turns: 0,
+          quizzes_played: 0,
+          total_correct: 0,
+          max_combo: 0
+        }
       });
     }
   } catch (e) {}
 }
 
-async function loadProfileFromSupabase(userId) {
-  if (!supabaseClient) return;
+function unpackSupabaseProfileRow(profileData) {
+  if (!profileData) return null;
+  const user = {
+    ...profileData,
+    is_cloud: true
+  };
+
+  // Giải nén cấu trúc trang bị từ JSONB inventory nếu có
+  if (profileData.inventory && typeof profileData.inventory === 'object') {
+    const inv = profileData.inventory;
+    if (inv.equipped) user.equipped = inv.equipped;
+    if (inv.equipment_inventory) user.equipment_inventory = inv.equipment_inventory;
+    if (inv.equipment_enhances) user.equipment_enhances = inv.equipment_enhances;
+    if (typeof inv.dust !== 'undefined') user.dust = inv.dust;
+    else if (typeof inv.magic_dust !== 'undefined') user.dust = inv.magic_dust;
+    if (typeof inv.enhance_stones !== 'undefined') user.enhance_stones = inv.enhance_stones;
+    if (typeof inv.gacha_pity !== 'undefined') user.gacha_pity = inv.gacha_pity;
+    if (inv.daily_quests) user.daily_quests = inv.daily_quests;
+    if (inv.quests) user.quests = inv.quests;
+    if (inv.weekly_quests) user.weekly_quests = inv.weekly_quests;
+
+    if (!user.quests) user.quests = {};
+    if (user.quests.daily && !user.daily_quests) user.daily_quests = user.quests.daily;
+    if (user.daily_quests && !user.quests.daily) user.quests.daily = user.daily_quests;
+    if (user.quests.weekly && !user.weekly_quests) user.weekly_quests = user.quests.weekly;
+    if (user.weekly_quests && !user.quests.weekly) user.quests.weekly = user.weekly_quests;
+    if (inv.achievements) user.achievements = inv.achievements;
+    if (inv.equipped_title) user.equipped_title = inv.equipped_title;
+    if (inv.unlocked_titles) user.unlocked_titles = inv.unlocked_titles;
+    if (typeof inv.skill_points !== 'undefined') user.skill_points = inv.skill_points;
+    if (inv.skills_unlocked) user.skills_unlocked = inv.skills_unlocked;
+    if (inv.pets) user.pets = inv.pets;
+    if (inv.equipped_pet) user.equipped_pet = inv.equipped_pet;
+    if (inv.tower_records) user.tower_records = inv.tower_records;
+
+    // Chuẩn hóa inventory: health_potions -> health_potion, double_xp_potion -> double_xp
+    if (typeof inv.health_potions !== 'undefined') {
+      inv.health_potion = (inv.health_potion || 0) + (inv.health_potions || 0);
+      delete inv.health_potions;
+    }
+    if (typeof inv.double_xp_potion !== 'undefined') {
+      inv.double_xp = (inv.double_xp || 0) + (inv.double_xp_potion || 0);
+      delete inv.double_xp_potion;
+    }
+  }
+
+  // Đảm bảo user.dust được chuẩn hóa
+  if (typeof user.dust === 'undefined') {
+    if (typeof user.magic_dust !== 'undefined') user.dust = user.magic_dust;
+    else user.dust = 20;
+  }
+  ensureDustProperty(user);
+  return user;
+}
+
+async function loadProfileFromSupabase(userIdOrRow) {
+  if (userIdOrRow && typeof userIdOrRow === 'object') {
+    const unpacked = unpackSupabaseProfileRow(userIdOrRow);
+    currentRpgUser = unpacked;
+    return unpacked;
+  }
+  if (!supabaseClient) return null;
   try {
-    const { data, error } = await supabaseClient.from('profiles').select('*').eq('id', userId).single();
+    const previousGuestUser = currentRpgUser;
+    const { data, error } = await supabaseClient.from('profiles').select('*').eq('id', userIdOrRow).single();
     if (error && error.code !== 'PGRST116') throw error;
 
-    if (data) {
-      currentRpgUser = {
-        ...data,
-        is_cloud: true
-      };
-      // Giải nén cấu trúc trang bị từ JSONB inventory nếu có
-      if (data.inventory && typeof data.inventory === 'object') {
-        if (data.inventory.equipped) currentRpgUser.equipped = data.inventory.equipped;
-        if (data.inventory.equipment_inventory) currentRpgUser.equipment_inventory = data.inventory.equipment_inventory;
-        if (data.inventory.equipment_enhances) currentRpgUser.equipment_enhances = data.inventory.equipment_enhances;
-        if (typeof data.inventory.dust !== 'undefined') currentRpgUser.dust = data.inventory.dust;
-        if (typeof data.inventory.enhance_stones !== 'undefined') currentRpgUser.enhance_stones = data.inventory.enhance_stones;
-        if (typeof data.inventory.gacha_pity !== 'undefined') currentRpgUser.gacha_pity = data.inventory.gacha_pity;
-        if (data.inventory.daily_quests) currentRpgUser.daily_quests = data.inventory.daily_quests;
-        if (data.inventory.achievements) currentRpgUser.achievements = data.inventory.achievements;
-        if (data.inventory.equipped_title) currentRpgUser.equipped_title = data.inventory.equipped_title;
-        if (data.inventory.unlocked_titles) currentRpgUser.unlocked_titles = data.inventory.unlocked_titles;
-        if (typeof data.inventory.skill_points !== 'undefined') currentRpgUser.skill_points = data.inventory.skill_points;
-        if (data.inventory.skills_unlocked) currentRpgUser.skills_unlocked = data.inventory.skills_unlocked;
-        if (data.inventory.pets) currentRpgUser.pets = data.inventory.pets;
-        if (data.inventory.equipped_pet) currentRpgUser.equipped_pet = data.inventory.equipped_pet;
-        if (data.inventory.tower_records) currentRpgUser.tower_records = data.inventory.tower_records;
-      }
-      saveLocalProfileCache();
-    } else {
+    let profileData = data;
+    if (!profileData) {
       // Tạo hồ sơ khởi điểm nếu chưa có
-      await ensureProfileCreated(userId, currentSession.user.email, 'Hiệp Sĩ Anki', '🦁', 'warrior');
-      const { data: newData } = await supabaseClient.from('profiles').select('*').eq('id', userId).single();
-      if (newData) {
-        currentRpgUser = { ...newData, is_cloud: true };
-        saveLocalProfileCache();
+      await ensureProfileCreated(
+        userIdOrRow,
+        currentSession?.user?.email,
+        previousGuestUser?.display_name || 'Hiệp Sĩ Anki',
+        previousGuestUser?.avatar || '🦁',
+        previousGuestUser?.rpg_class || 'warrior'
+      );
+      const { data: newData } = await supabaseClient.from('profiles').select('*').eq('id', userIdOrRow).single();
+      profileData = newData;
+    }
+
+    if (profileData) {
+      currentRpgUser = unpackSupabaseProfileRow(profileData);
+
+      // Nâng cấp & Merge tiến trình Guest nếu tài khoản Cloud là tài khoản mới
+      if (previousGuestUser && !previousGuestUser.is_cloud) {
+        const isBrandNewCloud = (
+          (currentRpgUser.level <= 1) &&
+          ((currentRpgUser.xp || 0) === 0) &&
+          (!currentRpgUser.stats || (currentRpgUser.stats.monsters_slain || 0) === 0)
+        );
+        if (isBrandNewCloud) {
+          console.info('Hợp nhất tiến trình Guest vào tài khoản Cloud mới...');
+          currentRpgUser.level = Math.max(currentRpgUser.level || 1, previousGuestUser.level || 1);
+          currentRpgUser.xp = Math.max(currentRpgUser.xp || 0, previousGuestUser.xp || 0);
+          currentRpgUser.gold = Math.max(currentRpgUser.gold || 0, previousGuestUser.gold || 0);
+          currentRpgUser.gems = Math.max(currentRpgUser.gems || 0, previousGuestUser.gems || 0);
+          currentRpgUser.dust = Math.max(currentRpgUser.dust || 0, previousGuestUser.dust || 0);
+          currentRpgUser.enhance_stones = Math.max(currentRpgUser.enhance_stones || 0, previousGuestUser.enhance_stones || 0);
+          currentRpgUser.skill_points = Math.max(currentRpgUser.skill_points || 0, previousGuestUser.skill_points || 0);
+          currentRpgUser.streak = Math.max(currentRpgUser.streak || 1, previousGuestUser.streak || 1);
+
+          // Merge unlocked_dungeons
+          const mergedDungeons = Array.from(new Set([
+            ...(Array.isArray(currentRpgUser.unlocked_dungeons) ? currentRpgUser.unlocked_dungeons : [1]),
+            ...(Array.isArray(previousGuestUser.unlocked_dungeons) ? previousGuestUser.unlocked_dungeons : [1])
+          ])).sort((a, b) => a - b);
+          currentRpgUser.unlocked_dungeons = mergedDungeons;
+
+          // Merge badges
+          const mergedBadges = Array.from(new Set([
+            ...(Array.isArray(currentRpgUser.badges) ? currentRpgUser.badges : ['first_login']),
+            ...(Array.isArray(previousGuestUser.badges) ? previousGuestUser.badges : [])
+          ]));
+          currentRpgUser.badges = mergedBadges;
+
+          // Merge titles
+          if (Array.isArray(previousGuestUser.unlocked_titles) && previousGuestUser.unlocked_titles.length > 0) {
+            currentRpgUser.unlocked_titles = Array.from(new Set([
+              ...(Array.isArray(currentRpgUser.unlocked_titles) ? currentRpgUser.unlocked_titles : ['Tân Binh Anki']),
+              ...previousGuestUser.unlocked_titles
+            ]));
+          }
+
+          // Merge stats
+          if (previousGuestUser.stats) {
+            currentRpgUser.stats = currentRpgUser.stats || {};
+            for (const key of Object.keys(previousGuestUser.stats)) {
+              currentRpgUser.stats[key] = Math.max(currentRpgUser.stats[key] || 0, previousGuestUser.stats[key] || 0);
+            }
+          }
+
+          // Merge equipment inventory if cloud was empty
+          if (previousGuestUser.equipment_inventory && (!currentRpgUser.equipment_inventory || currentRpgUser.equipment_inventory.length === 0)) {
+            currentRpgUser.equipment_inventory = previousGuestUser.equipment_inventory;
+          }
+          if (previousGuestUser.equipped && !currentRpgUser.equipped) {
+            currentRpgUser.equipped = previousGuestUser.equipped;
+          }
+          if (previousGuestUser.equipment_enhances) {
+            currentRpgUser.equipment_enhances = { ...(currentRpgUser.equipment_enhances || {}), ...previousGuestUser.equipment_enhances };
+          }
+
+          // Merge consumable items
+          if (previousGuestUser.inventory) {
+            currentRpgUser.inventory = currentRpgUser.inventory || {};
+            for (const k of ['health_potion', 'mana_potion', 'streak_freeze', 'double_xp', 'hint_scroll']) {
+              if (typeof previousGuestUser.inventory[k] !== 'undefined') {
+                currentRpgUser.inventory[k] = Math.max(currentRpgUser.inventory[k] || 0, previousGuestUser.inventory[k] || 0);
+              }
+            }
+          }
+          if (previousGuestUser.max_hp && previousGuestUser.max_hp > (currentRpgUser.max_hp || 0)) {
+            currentRpgUser.max_hp = previousGuestUser.max_hp;
+            currentRpgUser.hp = currentRpgUser.max_hp;
+          }
+          if (previousGuestUser.max_mp && previousGuestUser.max_mp > (currentRpgUser.max_mp || 0)) {
+            currentRpgUser.max_mp = previousGuestUser.max_mp;
+            currentRpgUser.mp = currentRpgUser.max_mp;
+          }
+        }
       }
+
+      // Đảm bảo unlocked_dungeons và unlocked_titles hợp lệ
+      if (!Array.isArray(currentRpgUser.unlocked_dungeons) || currentRpgUser.unlocked_dungeons.length === 0) {
+        currentRpgUser.unlocked_dungeons = [1];
+      }
+      if (!Array.isArray(currentRpgUser.unlocked_titles) || currentRpgUser.unlocked_titles.length === 0) {
+        currentRpgUser.unlocked_titles = ['Tân Binh Anki'];
+      }
+      if (!currentRpgUser.equipped_title) {
+        currentRpgUser.equipped_title = 'Tân Binh Anki';
+      }
+
+      saveLocalProfileCache();
+      // Đẩy ngược lại lên cloud để đồng bộ dữ liệu merge
+      saveCurrentRpgUser();
+      return currentRpgUser;
     }
   } catch (e) {
     console.error('Lỗi khi nạp Profile từ Supabase:', e);
     loadLocalProfileFallback();
   }
+  return currentRpgUser;
 }
 
 // Đồng bộ hồ sơ (vừa lưu LocalStorage vừa đẩy lên Supabase Cloud)
@@ -360,23 +612,26 @@ async function saveCurrentRpgUser() {
           equipped: currentRpgUser.equipped,
           equipment_inventory: currentRpgUser.equipment_inventory,
           equipment_enhances: currentRpgUser.equipment_enhances,
-          dust: currentRpgUser.dust,
-          enhance_stones: currentRpgUser.enhance_stones,
-          gacha_pity: currentRpgUser.gacha_pity,
+          dust: currentRpgUser.dust || 0,
+          magic_dust: currentRpgUser.dust || 0,
+          enhance_stones: currentRpgUser.enhance_stones || 0,
+          gacha_pity: currentRpgUser.gacha_pity || 0,
           daily_quests: currentRpgUser.daily_quests,
+          quests: currentRpgUser.quests,
+          weekly_quests: currentRpgUser.weekly_quests || currentRpgUser.quests?.weekly,
           achievements: currentRpgUser.achievements,
-          equipped_title: currentRpgUser.equipped_title,
-          unlocked_titles: currentRpgUser.unlocked_titles,
-          skill_points: currentRpgUser.skill_points,
+          equipped_title: currentRpgUser.equipped_title || 'Tân Binh Anki',
+          unlocked_titles: currentRpgUser.unlocked_titles || ['Tân Binh Anki'],
+          skill_points: currentRpgUser.skill_points || 0,
           skills_unlocked: currentRpgUser.skills_unlocked,
           pets: currentRpgUser.pets,
           equipped_pet: currentRpgUser.equipped_pet,
           tower_records: currentRpgUser.tower_records
         },
-        unlocked_dungeons: currentRpgUser.unlocked_dungeons,
-        badges: currentRpgUser.badges,
-        stats: currentRpgUser.stats,
-        mistake_bank: currentRpgUser.mistake_bank,
+        unlocked_dungeons: currentRpgUser.unlocked_dungeons || [1],
+        badges: currentRpgUser.badges || ['first_login'],
+        stats: currentRpgUser.stats || {},
+        mistake_bank: currentRpgUser.mistake_bank || [],
         updated_at: new Date().toISOString()
       };
       await supabaseClient.from('profiles').update(updateData).eq('id', currentSession.user.id);
@@ -431,6 +686,11 @@ function addXP(amount, reason = '') {
     currentRpgUser.mp = currentRpgUser.max_mp;
     currentRpgUser.gold += 50; // Thưởng 50 Vàng
     currentRpgUser.gems += 2;  // Thưởng 2 Kim Cương
+    currentRpgUser.skill_points = (currentRpgUser.skill_points || 0) + 1; // Thưởng 1 Điểm Kỹ Năng!
+
+    if (typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.trackProgress === 'function') {
+      GamificationQuests.trackProgress('level_up', currentRpgUser.level);
+    }
     needed = getXpForLevel(currentRpgUser.level);
   }
 
@@ -456,7 +716,12 @@ function addCoins(amount, reason = '') {
     }
   }
 
-  currentRpgUser.gold = (currentRpgUser.gold || 0) + Math.round(amount * mult);
+  const earned = Math.round(amount * mult);
+  currentRpgUser.gold = (currentRpgUser.gold || 0) + earned;
+  if (typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.trackProgress === 'function') {
+    GamificationQuests.trackProgress('gold_balance', currentRpgUser.gold);
+    GamificationQuests.trackProgress('gold_earned', earned);
+  }
   checkBadges();
   saveCurrentRpgUser();
 }
@@ -509,8 +774,8 @@ function checkBadges() {
     if (!unlocked.has(id) && condition) {
       unlocked.add(id);
       newlyUnlocked.push(BADGES_CONFIG[id]);
-      if (BADGES_CONFIG[id].rewardXp) currentRpgUser.xp += BADGES_CONFIG[id].rewardXp;
-      if (BADGES_CONFIG[id].rewardGold) currentRpgUser.gold += BADGES_CONFIG[id].rewardGold;
+      if (BADGES_CONFIG[id]?.rewardXp) currentRpgUser.xp += BADGES_CONFIG[id].rewardXp;
+      if (BADGES_CONFIG[id]?.rewardGold) currentRpgUser.gold += BADGES_CONFIG[id].rewardGold;
     }
   };
 
@@ -519,6 +784,8 @@ function checkBadges() {
   testBadge('streak_7', currentRpgUser.streak >= 7);
   testBadge('combo_5', stats.max_combo >= 5);
   testBadge('combo_10', stats.max_combo >= 10);
+  testBadge('perfect_quiz', (stats.perfect_quizzes || 0) >= 1 || (stats.perfect_dungeons || 0) >= 1);
+  testBadge('boss_slayer', (stats.bosses_slain || 0) >= 1);
   testBadge('level_5', currentRpgUser.level >= 5);
 
   currentRpgUser.badges = Array.from(unlocked);
@@ -535,12 +802,24 @@ function recordQuizFinishToAccount(quizData) {
   if (!currentRpgUser.stats) currentRpgUser.stats = {};
   const s = currentRpgUser.stats;
   s.quizzes_played = (s.quizzes_played || 0) + 1;
-  s.total_turns = (s.total_turns || 0) + quizData.totalAnswered;
-  s.total_correct = (s.total_correct || 0) + quizData.totalCorrect;
-  s.max_combo = Math.max(s.max_combo || 0, quizData.maxStreak || 0);
+  s.total_turns = (s.total_turns || 0) + (quizData?.totalAnswered || 0);
+  s.total_correct = (s.total_correct || 0) + (quizData?.totalCorrect || 0);
+  s.max_combo = Math.max(s.max_combo || 0, quizData?.maxStreak || 0);
 
-  if (quizData.totalCorrect > 0) {
+  if (quizData?.totalCorrect > 0) {
     s.monsters_slain = (s.monsters_slain || 0) + quizData.totalCorrect;
+  }
+
+  if (quizData?.bossSlain || quizData?.isBoss) {
+    s.bosses_slain = (s.bosses_slain || 0) + 1;
+    if (typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.trackProgress === 'function') {
+      GamificationQuests.trackProgress('slay_boss', 1);
+      GamificationQuests.trackProgress('slay_boss_1', 1);
+    }
+  }
+
+  if (quizData?.damageTaken === 0 || quizData?.perfect || (quizData?.totalAnswered > 0 && quizData?.totalCorrect === quizData?.totalAnswered)) {
+    s.perfect_quizzes = (s.perfect_quizzes || 0) + 1;
   }
 
   // Thưởng hoàn thành
@@ -548,7 +827,7 @@ function recordQuizFinishToAccount(quizData) {
   addCoins(15, 'Tiền thưởng ải');
 
   // Lưu từ sai vào Ngân hàng Quái Báo Thù
-  if (quizData.mistakes && quizData.mistakes.length > 0) {
+  if (quizData?.mistakes && quizData.mistakes.length > 0) {
     if (!currentRpgUser.mistake_bank) currentRpgUser.mistake_bank = [];
     quizData.mistakes.forEach(m => {
       const exist = currentRpgUser.mistake_bank.find(w => w.word.toLowerCase() === m.word.toLowerCase());
@@ -572,10 +851,68 @@ function recordQuizFinishToAccount(quizData) {
   saveCurrentRpgUser();
 }
 
+/**
+ * Ghi nhận chiến công vượt ải Hầm ngục
+ */
+window.recordDungeonCleared = function(stt) {
+  if (!currentRpgUser) return;
+  if (!Array.isArray(currentRpgUser.unlocked_dungeons)) {
+    currentRpgUser.unlocked_dungeons = [1];
+  }
+  const nextDungeon = parseInt(stt, 10) + 1;
+  if (nextDungeon <= 100 && !currentRpgUser.unlocked_dungeons.includes(nextDungeon)) {
+    currentRpgUser.unlocked_dungeons.push(nextDungeon);
+    currentRpgUser.unlocked_dungeons.sort((a, b) => a - b);
+  }
+  if (!currentRpgUser.stats) currentRpgUser.stats = {};
+  currentRpgUser.stats.dungeons_cleared = (currentRpgUser.stats.dungeons_cleared || 0) + 1;
+  checkBadges();
+  saveCurrentRpgUser();
+  if (typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.trackProgress === 'function') {
+    GamificationQuests.trackProgress('dungeon_clear', 1);
+  }
+};
+
+/**
+ * Ghi nhận tiêu diệt Boss
+ */
+window.recordBossSlain = function(bossData) {
+  if (!currentRpgUser) return;
+  if (!currentRpgUser.stats) currentRpgUser.stats = {};
+  currentRpgUser.stats.bosses_slain = (currentRpgUser.stats.bosses_slain || 0) + 1;
+  checkBadges();
+  saveCurrentRpgUser();
+  if (typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.trackProgress === 'function') {
+    GamificationQuests.trackProgress('slay_boss', 1);
+    GamificationQuests.trackProgress('slay_boss_1', 1);
+  }
+};
+
+/**
+ * Mở khóa danh hiệu mới
+ */
+window.unlockTitle = function(titleName) {
+  if (!currentRpgUser || !titleName) return;
+  if (!Array.isArray(currentRpgUser.unlocked_titles)) {
+    currentRpgUser.unlocked_titles = ['Tân Binh Anki'];
+  }
+  if (!currentRpgUser.unlocked_titles.includes(titleName)) {
+    currentRpgUser.unlocked_titles.push(titleName);
+    saveCurrentRpgUser();
+    if (typeof showToastAlert === 'function') {
+      showToastAlert(`🎖️ Đã mở khóa Danh hiệu mới: [${titleName}]!`);
+    }
+  }
+};
+
 // 4. MUA & DÙNG VẬT PHẨM TRANG BỊ
 function buyShopItem(itemKey) {
   if (!currentRpgUser) return;
-  const item = SHOP_ITEMS[itemKey];
+  let key = itemKey;
+  if (key === 'double_xp_potion' && !SHOP_ITEMS['double_xp_potion'] && SHOP_ITEMS['double_xp']) {
+    key = 'double_xp';
+  }
+  const item = SHOP_ITEMS[key];
   if (!item) return;
 
   if (currentRpgUser.gold < item.cost) {
@@ -585,7 +922,7 @@ function buyShopItem(itemKey) {
 
   currentRpgUser.gold -= item.cost;
   if (!currentRpgUser.inventory) currentRpgUser.inventory = {};
-  currentRpgUser.inventory[itemKey] = (currentRpgUser.inventory[itemKey] || 0) + 1;
+  currentRpgUser.inventory[key] = (currentRpgUser.inventory[key] || 0) + 1;
 
   saveCurrentRpgUser();
   renderAccountCenterModal();
@@ -594,22 +931,44 @@ function buyShopItem(itemKey) {
 
 function useShopItem(itemKey) {
   if (!currentRpgUser) return;
-  const count = currentRpgUser.inventory?.[itemKey] || 0;
+  if (!currentRpgUser.inventory) currentRpgUser.inventory = {};
+
+  // Hỗ trợ fallback health_potions (số nhiều) -> health_potion (số ít)
+  if (currentRpgUser.inventory.health_potions) {
+    currentRpgUser.inventory.health_potion = (currentRpgUser.inventory.health_potion || 0) + (currentRpgUser.inventory.health_potions || 0);
+    delete currentRpgUser.inventory.health_potions;
+  }
+
+  // Hỗ trợ alias double_xp vs double_xp_potion & health_potion
+  let effectiveKey = itemKey;
+  if (itemKey === 'health_potion' || itemKey === 'health_potions') {
+    effectiveKey = 'health_potion';
+  } else if (itemKey === 'double_xp' || itemKey === 'double_xp_potion') {
+    if ((currentRpgUser.inventory['double_xp'] || 0) > 0) {
+      effectiveKey = 'double_xp';
+    } else if ((currentRpgUser.inventory['double_xp_potion'] || 0) > 0) {
+      effectiveKey = 'double_xp_potion';
+    } else {
+      effectiveKey = 'double_xp';
+    }
+  }
+
+  const count = currentRpgUser.inventory?.[effectiveKey] || 0;
   if (count <= 0) {
     alert('Bạn chưa sở hữu vật phẩm này!');
     return;
   }
 
-  if (itemKey === 'health_potion') {
-    currentRpgUser.inventory[itemKey]--;
+  if (itemKey === 'health_potion' || itemKey === 'health_potions') {
+    currentRpgUser.inventory[effectiveKey]--;
     currentRpgUser.hp = Math.min(currentRpgUser.max_hp, currentRpgUser.hp + 50);
     showToastAlert('🧪 Đã hồi phục +50 HP máu!');
   } else if (itemKey === 'mana_potion') {
-    currentRpgUser.inventory[itemKey]--;
+    currentRpgUser.inventory[effectiveKey]--;
     currentRpgUser.mp = Math.min(currentRpgUser.max_mp, currentRpgUser.mp + 40);
     showToastAlert('🔮 Đã hồi phục +40 MP năng lượng!');
-  } else if (itemKey === 'double_xp') {
-    currentRpgUser.inventory[itemKey]--;
+  } else if (itemKey === 'double_xp' || itemKey === 'double_xp_potion') {
+    currentRpgUser.inventory[effectiveKey]--;
     const currentEnd = Math.max(Date.now(), currentRpgUser.double_xp_until || 0);
     currentRpgUser.double_xp_until = currentEnd + (30 * 60 * 1000);
     showToastAlert('✨ Đã kích hoạt x2 EXP trong 30 phút!');
@@ -730,6 +1089,8 @@ function renderAccountCenterModal() {
   setTxt('accStatStreak', `${currentRpgUser.streak || 1} Ngày 🔥`);
   setTxt('accStatCoins', `${currentRpgUser.gold || 0} 🪙`);
   setTxt('accStatGems', `${currentRpgUser.gems || 0} 💎`);
+  setTxt('accStatDust', `${currentRpgUser.dust || 0} 🌌`);
+  setTxt('accStatStones', `${currentRpgUser.enhance_stones || 0} 🪨`);
   setTxt('accStatMonsters', `${currentRpgUser.stats?.monsters_slain || 0} 👾`);
   const weaponItem = (typeof getRpgEquipmentById === 'function') ? getRpgEquipmentById(currentRpgUser.equipped?.weapon) : null;
   const armorItem = (typeof getRpgEquipmentById === 'function') ? getRpgEquipmentById(currentRpgUser.equipped?.armor) : null;
@@ -861,4 +1222,15 @@ function handleUpdateProfileForm() {
   saveCurrentRpgUser();
   renderAccountCenterModal();
   showToastAlert('✅ Đã cập nhật thông tin nhân vật thành công!');
+}
+
+if (typeof window !== 'undefined') {
+  window.loadProfileFromSupabase = loadProfileFromSupabase;
+  window.unpackSupabaseProfileRow = unpackSupabaseProfileRow;
+  window.saveCurrentRpgUser = saveCurrentRpgUser;
+}
+if (typeof global !== 'undefined') {
+  global.loadProfileFromSupabase = loadProfileFromSupabase;
+  global.unpackSupabaseProfileRow = unpackSupabaseProfileRow;
+  global.saveCurrentRpgUser = saveCurrentRpgUser;
 }

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Milestone 2 Adversarial Stress Test Harness - Challenger 2</title>
+  <script src="../js/gamification_skills.js"></script>
+  <script src="../js/gamification_pets.js"></script>
+  <script src="../js/gamification_tower.js"></script>
+</head>
+<body>
+  <h1>Milestone 2 Adversarial Stress Test Suite (Challenger 2)</h1>
+  <div id="results"></div>
+  <script id="test-output-json" type="application/json"></script>
+
+  <script>
+    (function() {
+      // Mock alert, confirm, and UI callbacks for headless testing
+      window.alert = function() {};
+      window.confirm = function() { return true; };
+      window.addXP = function(amount, reason) {};
+      window.saveCurrentRpgUser = function() {};
+
+      const results = {
+        total: 0,
+        passed: 0,
+        failed: 0,
+        tests: []
+      };
+
+      function test(name, fn) {
+        results.total++;
+        try {
+          fn();
+          results.passed++;
+          results.tests.push({ name, passed: true });
+        } catch (err) {
+          results.failed++;
+          results.tests.push({ name, passed: false, error: err.message || String(err) });
+        }
+      }
+
+      function assert(condition, msg) {
+        if (!condition) throw new Error(msg || 'Assertion failed');
+      }
+
+      function assertEqual(actual, expected, msg) {
+        if (actual !== expected) throw new Error(`${msg}: expected ${expected}, got ${actual}`);
+      }
+
+      // =========================================================================
+      // SUITE 1: Tower of Babel 50+ Floors (Scales 1..100 & Mutation Resistance)
+      // =========================================================================
+
+      test('T1.1: Consecutive Floor Scaling 1..100 without monster reset (Anti-Compound Mutation)', () => {
+        // Prepare shared monster object
+        window.BattleEngine = {
+          monster: { maxHp: 100, hp: 100, atk: 25, def: 10 },
+          updateBattleUI: function() {},
+          triggerBossAlert: function() {}
+        };
+
+        // Progress sequentially through floors 1 to 100 on the EXACT SAME monster object
+        for (let f = 1; f <= 100; f++) {
+          GamificationTower.scaleMonsterForTower(f);
+          const m = BattleEngine.monster;
+          const expectedMult = +(1 + (f - 1) * 0.12).toFixed(2);
+          const expectedHp = Math.round(100 * expectedMult);
+          const expectedAtk = Math.round(25 * expectedMult);
+          const expectedDef = Math.round(10 * expectedMult);
+
+          // Assert base stats are strictly preserved and never mutated
+          assertEqual(m.baseHp, 100, `Floor ${f}: baseHp must remain 100`);
+          assertEqual(m.baseAtk, 25, `Floor ${f}: baseAtk must remain 25`);
+          assertEqual(m.baseDef, 10, `Floor ${f}: baseDef must remain 10`);
+
+          // Assert scaled stats match exact linear multiplier
+          assertEqual(m.maxHp, expectedHp, `Floor ${f}: maxHp must match non-compounding formula`);
+          assertEqual(m.atk, expectedAtk, `Floor ${f}: atk must match non-compounding formula`);
+          assertEqual(m.def, expectedDef, `Floor ${f}: def must match non-compounding formula`);
+          assertEqual(m.hp, m.maxHp, `Floor ${f}: current hp must equal maxHp`);
+          assertEqual(m.ghostHp, m.maxHp, `Floor ${f}: ghostHp must equal maxHp`);
+        }
+
+        // At floor 100, multiplier is 1 + 99 * 0.12 = 12.88
+        assertEqual(BattleEngine.monster.maxHp, 1288, 'Floor 100 maxHp is exactly 1288 (100 * 12.88)');
+        assertEqual(BattleEngine.monster.atk, 322, 'Floor 100 atk is exactly 322 (25 * 12.88)');
+        assertEqual(BattleEngine.monster.def, 129, 'Floor 100 def is exactly 129 (10 * 12.88)');
+      });
+
+      test('T1.2: Arbitrary/Reverse/Random Order Floor Scaling (Idempotence & Drift Test)', () => {
+        window.BattleEngine = {
+          monster: { maxHp: 200, hp: 200, atk: 50, def: 20 },
+          updateBattleUI: function() {},
+          triggerBossAlert: function() {}
+        };
+
+        // Chaotic jumps
+        const jumpSequence = [100, 1, 50, 10, 80, 5, 100, 1];
+        jumpSequence.forEach(f => {
+          GamificationTower.scaleMonsterForTower(f);
+          const m = BattleEngine.monster;
+          const mult = +(1 + (f - 1) * 0.12).toFixed(2);
+          assertEqual(m.baseHp, 200, `Jump to floor ${f}: baseHp preserved`);
+          assertEqual(m.maxHp, Math.round(200 * mult), `Jump to floor ${f}: maxHp calculated idempotently`);
+          assertEqual(m.atk, Math.round(50 * mult), `Jump to floor ${f}: atk calculated idempotently`);
+        });
+
+        // Returning to floor 1 after floor 100 gives exactly base stats
+        GamificationTower.scaleMonsterForTower(1);
+        assertEqual(BattleEngine.monster.maxHp, 200, 'Return to floor 1 gives base 200 HP');
+        assertEqual(BattleEngine.monster.atk, 50, 'Return to floor 1 gives base 50 ATK');
+      });
+
+      test('T1.3: Elite Boss Floor Flagging across all 100 floors', () => {
+        let bossAlertTriggered = 0;
+        window.BattleEngine = {
+          monster: { maxHp: 100, atk: 20, def: 10 },
+          updateBattleUI: function() {},
+          triggerBossAlert: function() { bossAlertTriggered++; }
+        };
+
+        for (let f = 1; f <= 100; f++) {
+          // Provide fresh monster state per floor to test flagging
+          BattleEngine.monster = { maxHp: 100, atk: 20, def: 10, isBoss: false, scale: 1.0 };
+          GamificationTower.scaleMonsterForTower(f);
+          const m = BattleEngine.monster;
+
+          if (f % 5 === 0) {
+            assertEqual(m.isBoss, true, `Floor ${f} must be flagged as Boss`);
+            assertEqual(m.scale, 1.35, `Floor ${f} Boss scale must be 1.35`);
+            assert(m.name.includes(`[TRÙM TẦNG ${f}]`), `Floor ${f} name must contain TRÙM TẦNG ${f}`);
+          } else {
+            assertEqual(m.isBoss, false, `Floor ${f} must not be flagged as Boss`);
+            assert(m.name.includes(`[TẦNG ${f}]`), `Floor ${f} name must contain [TẦNG ${f}]`);
+          }
+        }
+        assertEqual(bossAlertTriggered, 20, 'Exactly 20 Elite Boss alerts triggered across 100 floors (100 / 5 = 20)');
+      });
+
+      test('T1.4: Adversarial Input Resilience for scaleMonsterForTower', () => {
+        window.BattleEngine = {
+          monster: {},
+          updateBattleUI: function() {},
+          triggerBossAlert: function() {}
+        };
+
+        // Missing stats on monster should fall back safely to 100 HP, 25 ATK, 10 DEF
+        GamificationTower.scaleMonsterForTower(1);
+        assertEqual(BattleEngine.monster.baseHp, 100, 'Default baseHp fallback is 100');
+        assertEqual(BattleEngine.monster.baseAtk, 25, 'Default baseAtk fallback is 25');
+        assertEqual(BattleEngine.monster.baseDef, 10, 'Default baseDef fallback is 10');
+
+        // Invalid floor numbers should fall back safely to floor 1
+        GamificationTower.scaleMonsterForTower(0);
+        assertEqual(BattleEngine.monster.maxHp, 100, 'Floor 0 clamped to floor 1');
+
+        GamificationTower.scaleMonsterForTower(-99);
+        assertEqual(BattleEngine.monster.maxHp, 100, 'Negative floor clamped to floor 1');
+
+        GamificationTower.scaleMonsterForTower('50');
+        assertEqual(BattleEngine.monster.maxHp, 688, 'String "50" properly parsed');
+
+        GamificationTower.scaleMonsterForTower(NaN);
+        assertEqual(BattleEngine.monster.maxHp, 100, 'NaN floor clamped to floor 1');
+
+        // Graceful return if BattleEngine is undefined or null
+        const originalEngine = window.BattleEngine;
+        window.BattleEngine = undefined;
+        try {
+          GamificationTower.scaleMonsterForTower(10);
+          assert(true, 'No error when BattleEngine is undefined');
+        } finally {
+          window.BattleEngine = originalEngine;
+        }
+      });
+
+      // =========================================================================
+      // SUITE 2: 10 Floor Boss Modifiers (Parameters and Runtime Effects)
+      // =========================================================================
+
+      test('T2.1: Schema & Parameter Completeness for all 10 Modifiers', () => {
+        assert(Array.isArray(GamificationTower.FLOOR_MODIFIERS), 'FLOOR_MODIFIERS is array');
+        assertEqual(GamificationTower.FLOOR_MODIFIERS.length, 10, 'Exactly 10 Floor Modifiers defined');
+
+        const expectedModifiers = {
+          iron_reflect: { param: 'reflectPercent', expectedVal: 0.20 },
+          flame_aura: { param: 'burnDmgPerTurn', expectedVal: 10 },
+          divine_shield: { param: 'shieldAbsorb', expectedVal: 100 },
+          vampiric_bite: { param: 'vampHealPercent', expectedVal: 0.25 },
+          speed_blitz: { param: 'timerReductionSec', expectedVal: 2 },
+          armor_pierce: { param: 'ignoreDefPercent', expectedVal: 0.30 },
+          toxic_cloud: { param: 'healingReductionPercent', expectedVal: 0.50 },
+          storm_surge: { param: 'paralyzeChance', expectedVal: 0.25 },
+          frost_chill: { param: 'comboSlowdown', expectedVal: true },
+          cosmic_surge: { param: 'atkGainPerTurnPercent', expectedVal: 0.10 }
+        };
+
+        const hexColorRegex = /^#[0-9A-Fa-f]{6}$/;
+
+        Object.keys(expectedModifiers).forEach(modId => {
+          const mod = GamificationTower.FLOOR_MODIFIERS.find(m => m.id === modId);
+          assert(Boolean(mod), `Modifier ${modId} exists in FLOOR_MODIFIERS`);
+          assert(typeof mod.name === 'string' && mod.name.length > 0, `${modId} has non-empty name`);
+          assert(typeof mod.icon === 'string' && mod.icon.length > 0, `${modId} has icon`);
+          assert(typeof mod.desc === 'string' && mod.desc.length > 0, `${modId} has non-empty desc`);
+          assert(hexColorRegex.test(mod.color), `${modId} has valid hex color (${mod.color})`);
+
+          const check = expectedModifiers[modId];
+          assertEqual(mod[check.param], check.expectedVal, `${modId} execution param ${check.param} matches expected value`);
+        });
+      });
+
+      test('T2.2: Distribution & Cycling Coverage across 100 floors', () => {
+        const counts = {};
+        GamificationTower.FLOOR_MODIFIERS.forEach(m => counts[m.id] = 0);
+
+        for (let f = 1; f <= 100; f++) {
+          const mod = GamificationTower.getFloorModifier(f);
+          assert(Boolean(mod), `Floor ${f} gets valid modifier`);
+          counts[mod.id]++;
+
+          // Periodicity test: floor f and floor f + 10 must have identical modifier
+          const modPlus10 = GamificationTower.getFloorModifier(f + 10);
+          assertEqual(modPlus10.id, mod.id, `Floor ${f} and Floor ${f+10} have identical modifier`);
+        }
+
+        // Each of the 10 modifiers must be visited exactly 10 times in 100 floors
+        Object.keys(counts).forEach(modId => {
+          assertEqual(counts[modId], 10, `Modifier ${modId} appears exactly 10 times in 100 floors`);
+        });
+
+        // Edge case floor values
+        assertEqual(GamificationTower.getFloorModifier(0).id, 'iron_reflect', 'Floor 0 clamped to floor 1');
+        assertEqual(GamificationTower.getFloorModifier(-5).id, 'iron_reflect', 'Floor -5 clamped to floor 1');
+        assertEqual(GamificationTower.getFloorModifier(null).id, 'iron_reflect', 'Floor null clamped to floor 1');
+      });
+
+      test('T2.3: Runtime Divine Shield Mechanic Activation', () => {
+        window.BattleEngine = {
+          monster: { maxHp: 100, atk: 25, def: 10 },
+          updateBattleUI: function() {},
+          triggerBossAlert: function() {}
+        };
+
+        // Floor 3 maps to index (3 - 1) % 10 = 2 -> divine_shield
+        const mod3 = GamificationTower.getFloorModifier(3);
+        assertEqual(mod3.id, 'divine_shield', 'Floor 3 is divine_shield');
+
+        GamificationTower.scaleMonsterForTower(3);
+        assertEqual(BattleEngine.monster.shield, 100, 'divine_shield grants 100 shield');
+        assertEqual(BattleEngine.monster.maxShield, 100, 'divine_shield maxShield is 100');
+        assertEqual(BattleEngine.monster.floorModifier.id, 'divine_shield', 'floorModifier assigned');
+      });
+
+      // =========================================================================
+      // SUITE 3: Floor Rewards Calculation & Economy Scaling (Gold, EXP, Stones, Gems)
+      // =========================================================================
+
+      test('T3.1: Monotonicity and Scaling Bounds for Floors 1 to 100', () => {
+        let prevGold = 0;
+        let prevExp = 0;
+
+        for (let f = 1; f <= 100; f++) {
+          const r = GamificationTower.calculateFloorReward(f);
+
+          // Strictly monotonic Gold and EXP
+          assert(r.gold > prevGold, `Floor ${f} Gold (${r.gold}) must be strictly greater than floor ${f-1} (${prevGold})`);
+          assert(r.exp > prevExp, `Floor ${f} EXP (${r.exp}) must be strictly greater than floor ${f-1} (${prevExp})`);
+          prevGold = r.gold;
+          prevExp = r.exp;
+
+          // Enhance Stones: only on multiples of 5, scaling monotonically
+          if (f % 5 === 0) {
+            assertEqual(r.enhanceStones, f / 5, `Floor ${f} enhance stones must be ${f / 5}`);
+          } else {
+            assertEqual(r.enhanceStones, 0, `Floor ${f} enhance stones must be 0`);
+          }
+
+          // Gems: only on multiples of 10, scaling monotonically
+          if (f % 10 === 0) {
+            assertEqual(r.gems, (f / 10) * 2, `Floor ${f} gems must be ${(f / 10) * 2}`);
+          } else {
+            assertEqual(r.gems, 0, `Floor ${f} gems must be 0`);
+          }
+        }
+
+        // Terminal bounds at floor 100
+        const r100 = GamificationTower.calculateFloorReward(100);
+        assertEqual(r100.gold, 1500, 'Floor 100 gold is 1500');
+        assertEqual(r100.exp, 2500, 'Floor 100 exp is 2500');
+        assertEqual(r100.enhanceStones, 20, 'Floor 100 enhance stones is 20');
+        assertEqual(r100.gems, 20, 'Floor 100 gems is 20');
+      });
+
+      test('T3.2: Cumulative 100-Floor Full Economy Clearance Simulation', () => {
+        const user = {
+          gold: 0,
+          gems: 0,
+          enhance_stones: 0,
+          tower_records: { max_floor: 1, best_streak: 0, boss_rush_wins: 0, claimed_floor_rewards: [] }
+        };
+        window.currentRpgUser = user;
+
+        let totalExpAwarded = 0;
+        window.addXP = function(amount) {
+          totalExpAwarded += amount;
+        };
+
+        // Clear floors 1 to 100 in sequence
+        for (let f = 1; f <= 100; f++) {
+          GamificationTower.onFloorCleared(f);
+        }
+
+        // Expected cumulative math:
+        // Gold: 50+60+70+80+90+100+110 + 15 * sum(8..100) = 560 + 15 * 5022 = 75,890
+        assertEqual(user.gold, 75890, 'Cumulative Gold from 100 floors is exactly 75,890');
+
+        // EXP: 65+80+95+110 + 25 * sum(5..100) = 350 + 25 * 5040 = 126,350
+        assertEqual(totalExpAwarded, 126350, 'Cumulative EXP from 100 floors is exactly 126,350');
+
+        // Enhance Stones: sum(1..20) = 210
+        assertEqual(user.enhance_stones, 210, 'Cumulative Enhance Stones from 100 floors is exactly 210');
+
+        // Gems: 2 * sum(1..10) = 110
+        assertEqual(user.gems, 110, 'Cumulative Gems from 100 floors is exactly 110');
+
+        // Max floor record updated
+        assertEqual(user.tower_records.max_floor, 100, 'max_floor record updated to 100');
+      });
+
+      test('T3.3: User Profile State Retention & Non-Decreasing Max Floor Record', () => {
+        const user = {
+          gold: 500,
+          gems: 20,
+          enhance_stones: 5,
+          tower_records: { max_floor: 50 }
+        };
+        window.currentRpgUser = user;
+
+        // Clearing an earlier floor (e.g. 10) must award floor 10 loot but NOT decrease max_floor
+        GamificationTower.onFloorCleared(10);
+        assertEqual(user.tower_records.max_floor, 50, 'max_floor retains 50 when clearing lower floor');
+        assertEqual(user.gold, 650, 'Gold increased by 150 (500 + 150 = 650)');
+        assertEqual(user.gems, 22, 'Gems increased by 2 (20 + 2 = 22)');
+        assertEqual(user.enhance_stones, 7, 'Enhance stones increased by 2 (5 + 2 = 7)');
+      });
+
+      // =========================================================================
+      // SUITE 4: Boss Rush Mode (5-Boss Gauntlet Runner, Transitions & Rewards)
+      // =========================================================================
+
+      test('T4.1: Gauntlet State Machine Progression (Boss 1 to 5)', () => {
+        const user = { gold: 0, gems: 0, enhance_stones: 0 };
+        window.currentRpgUser = user;
+        GamificationTower.ensureInitialized(user);
+
+        // Start Boss Rush
+        GamificationTower.startBossRush();
+        assertEqual(GamificationTower.activeMode, 'boss_rush', 'activeMode is boss_rush');
+        assertEqual(GamificationTower.bossRushState.currentBossIdx, 1, 'Initial boss is 1');
+        assertEqual(GamificationTower.bossRushState.totalBosses, 5, 'Total bosses is 5');
+        assertEqual(GamificationTower.bossRushState.preservedHeroHp, null, 'preservedHeroHp is null at start');
+
+        // Simulate boss 1 to 4 clears
+        for (let b = 1; b <= 4; b++) {
+          window.BattleEngine = { hero: { hp: 120 - b * 15 } };
+          GamificationTower.onBossRushCleared();
+          assertEqual(GamificationTower.bossRushState.currentBossIdx, b + 1, `Advances to boss ${b + 1}`);
+          assertEqual(GamificationTower.bossRushState.preservedHeroHp, 120 - b * 15, `Preserves Hero HP (${120 - b * 15})`);
+        }
+
+        // Defeat final Boss 5 (Gauntlet Victory)
+        window.BattleEngine = { hero: { hp: 30 } };
+        GamificationTower.onBossRushCleared();
+
+        // Check Victory Loot
+        assertEqual(user.tower_records.boss_rush_wins, 1, 'boss_rush_wins recorded');
+        assertEqual(user.gold, 500, 'Awarded +500 Gold');
+        assertEqual(user.gems, 10, 'Awarded +10 Gems');
+        assertEqual(user.enhance_stones, 5, 'Awarded +5 Enhance Stones');
+      });
+
+      test('T4.2: Hero HP Preservation (No Auto-Heal Rule)', () => {
+        window.BattleEngine = {
+          monster: { maxHp: 600, atk: 45, def: 20 },
+          hero: { hp: 150, maxHp: 150 },
+          updateBattleUI: function() {}
+        };
+
+        GamificationTower.startBossRush();
+
+        // Wave 1: Hero takes heavy damage and finishes with 42 HP
+        BattleEngine.hero.hp = 42;
+        GamificationTower.onBossRushCleared(); // advances to Boss 2
+
+        assertEqual(GamificationTower.bossRushState.preservedHeroHp, 42, 'Preserved hero HP is 42');
+
+        // Spawning boss 2 should reinstate exactly 42 HP onto hero without auto-healing
+        BattleEngine.hero.hp = 150; // Simulate temporary engine reset
+        GamificationTower.scaleBossRushEncounter(2);
+        assertEqual(BattleEngine.hero.hp, 42, 'Hero HP restored to 42 without auto-healing');
+
+        // Wave 2: Hero finishes with 15 HP
+        BattleEngine.hero.hp = 15;
+        GamificationTower.onBossRushCleared(); // advances to Boss 3
+        assertEqual(GamificationTower.bossRushState.preservedHeroHp, 15, 'Preserved hero HP is 15');
+
+        BattleEngine.hero.hp = 150;
+        GamificationTower.scaleBossRushEncounter(3);
+        assertEqual(BattleEngine.hero.hp, 15, 'Hero HP restored to 15 without auto-healing');
+      });
+
+      test('T4.3: Boss Stat Scaling and Modifier Selection across 5 Bosses', () => {
+        const expectedBossModifiers = [
+          { bossNum: 1, mult: 1.20, modId: 'divine_shield' },
+          { bossNum: 2, mult: 1.45, modId: 'armor_pierce' },
+          { bossNum: 3, mult: 1.70, modId: 'frost_chill' },
+          { bossNum: 4, mult: 1.95, modId: 'flame_aura' },
+          { bossNum: 5, mult: 2.20, modId: 'speed_blitz' }
+        ];
+
+        expectedBossModifiers.forEach(({ bossNum, mult, modId }) => {
+          // Fresh monster per encounter
+          window.BattleEngine = {
+            monster: { maxHp: 600, atk: 45, def: 20 },
+            hero: { hp: 100 },
+            updateBattleUI: function() {}
+          };
+
+          GamificationTower.scaleBossRushEncounter(bossNum);
+          const m = BattleEngine.monster;
+          assertEqual(m.isBoss, true, `Boss ${bossNum} is marked as Boss`);
+          assertEqual(m.scale, 1.4, `Boss ${bossNum} scale is 1.4`);
+          assertEqual(m.maxHp, Math.round(600 * mult), `Boss ${bossNum} maxHp scales by multiplier ${mult}`);
+          assertEqual(m.atk, Math.round(45 * mult), `Boss ${bossNum} atk scales by multiplier ${mult}`);
+          assertEqual(m.def, Math.round(20 * mult), `Boss ${bossNum} def scales by multiplier ${mult}`);
+          assertEqual(m.floorModifier.id, modId, `Boss ${bossNum} modifier is ${modId}`);
+          assert(m.name.includes(`[BOSS ${bossNum}/5]`), `Boss ${bossNum} name contains [BOSS ${bossNum}/5]`);
+        });
+      });
+
+      test('T4.4: Multiple Consecutive Gauntlet Completions Cumulative Tracking', () => {
+        const user = { gold: 100, gems: 5, enhance_stones: 2 };
+        window.currentRpgUser = user;
+        GamificationTower.ensureInitialized(user);
+
+        // Run 1 complete
+        for (let b = 1; b <= 5; b++) {
+          window.BattleEngine = { hero: { hp: 50 } };
+          GamificationTower.bossRushState.currentBossIdx = b;
+          if (b === 5) GamificationTower.onBossRushCleared();
+        }
+        assertEqual(user.tower_records.boss_rush_wins, 1, 'Run 1: boss_rush_wins is 1');
+        assertEqual(user.gold, 600, 'Run 1: gold is 600');
+        assertEqual(user.gems, 15, 'Run 1: gems is 15');
+        assertEqual(user.enhance_stones, 7, 'Run 1: enhance_stones is 7');
+
+        // Run 2 complete
+        GamificationTower.startBossRush();
+        for (let b = 1; b <= 5; b++) {
+          window.BattleEngine = { hero: { hp: 50 } };
+          GamificationTower.bossRushState.currentBossIdx = b;
+          if (b === 5) GamificationTower.onBossRushCleared();
+        }
+        assertEqual(user.tower_records.boss_rush_wins, 2, 'Run 2: boss_rush_wins is 2');
+        assertEqual(user.gold, 1100, 'Run 2: gold is 1100');
+        assertEqual(user.gems, 25, 'Run 2: gems is 25');
+        assertEqual(user.enhance_stones, 12, 'Run 2: enhance_stones is 12');
+      });
+
+      // =========================================================================
+      // SUITE 5: Extended Adversarial Stress & Edge Cases
+      // =========================================================================
+
+      test('T5.1: Null and Undefined User Safety on Floor & Boss Rush Clear', () => {
+        window.currentRpgUser = null;
+        try {
+          const r = GamificationTower.onFloorCleared(1);
+          assert(Boolean(r), 'onFloorCleared returns reward object even when currentRpgUser is null');
+          assertEqual(r.gold, 50, 'Floor 1 gold is 50');
+
+          GamificationTower.onBossRushCleared();
+          assert(true, 'onBossRushCleared handles null currentRpgUser without throwing');
+        } catch (e) {
+          throw new Error('Null user crashed tower clear: ' + e.message);
+        }
+      });
+
+      test('T5.2: Roguelike Boon Application and Stat Capping', () => {
+        window.BattleEngine = {
+          hero: { maxHp: 100, hp: 100, def: 10, atk: 35, mp: 20, maxMp: 50, crit: 5, vampiricHeal: 0 }
+        };
+
+        // Apply boon_giant_heart (+40 maxHp, heal to full)
+        GamificationTower.applyBoonEffect('boon_giant_heart');
+        assertEqual(BattleEngine.hero.maxHp, 140, 'maxHp increased to 140');
+        assertEqual(BattleEngine.hero.hp, 140, 'hp healed to 140');
+
+        // Apply boon_iron_skin (+25 def)
+        GamificationTower.applyBoonEffect('boon_iron_skin');
+        assertEqual(BattleEngine.hero.def, 35, 'def increased to 35');
+
+        // Apply boon_berserk (*1.4 atk)
+        GamificationTower.applyBoonEffect('boon_berserk');
+        assertEqual(BattleEngine.hero.atk, 49, 'atk increased to 49 (35 * 1.4)');
+
+        // Apply boon_crit_frenzy multiple times - must cap at 75%
+        GamificationTower.applyBoonEffect('boon_crit_frenzy');
+        assertEqual(BattleEngine.hero.crit, 30, 'crit increased to 30%');
+        GamificationTower.applyBoonEffect('boon_crit_frenzy');
+        assertEqual(BattleEngine.hero.crit, 55, 'crit increased to 55%');
+        GamificationTower.applyBoonEffect('boon_crit_frenzy');
+        assertEqual(BattleEngine.hero.crit, 75, 'crit capped at 75%');
+        GamificationTower.applyBoonEffect('boon_crit_frenzy');
+        assertEqual(BattleEngine.hero.crit, 75, 'crit remains capped at 75%');
+
+        // Apply boon_mana_surge - must cap at maxMp
+        GamificationTower.applyBoonEffect('boon_mana_surge');
+        assertEqual(BattleEngine.hero.mp, 40, 'mp increased to 40');
+        GamificationTower.applyBoonEffect('boon_mana_surge');
+        assertEqual(BattleEngine.hero.mp, 50, 'mp capped at maxMp (50)');
+      });
+
+      test('T5.3: Extreme Floor Scaling (Floors 200 and 500)', () => {
+        window.BattleEngine = {
+          monster: { maxHp: 100, atk: 25, def: 10 },
+          updateBattleUI: function() {},
+          triggerBossAlert: function() {}
+        };
+
+        // Floor 200
+        GamificationTower.scaleMonsterForTower(200);
+        // Mult = 1 + 199 * 0.12 = 24.88
+        assertEqual(BattleEngine.monster.maxHp, 2488, 'Floor 200 HP is 2488');
+        assertEqual(BattleEngine.monster.atk, 622, 'Floor 200 ATK is 622');
+
+        // Floor 500
+        GamificationTower.scaleMonsterForTower(500);
+        // Mult = 1 + 499 * 0.12 = 60.88
+        assertEqual(BattleEngine.monster.maxHp, 6088, 'Floor 500 HP is 6088');
+        assertEqual(BattleEngine.monster.atk, 1522, 'Floor 500 ATK is 1522');
+      });
+
+      // Output results
+      const jsonEl = document.getElementById('test-output-json');
+      jsonEl.textContent = JSON.stringify(results, null, 2);
+
+      const div = document.getElementById('results');
+      div.innerHTML = `<h2>Passed: ${results.passed}/${results.total} (${results.failed === 0 ? 'SUCCESS' : 'FAILED'})</h2>`;
+    })();
+  </script>
+</body>
+</html>

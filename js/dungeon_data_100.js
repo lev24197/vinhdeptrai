@@ -43,7 +43,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  224,
                             "archetype":  "turbo_highway_wyrm",
                             "baseHp":  3139,
-                            "title":  "Bá Chủ Thống Trị Phương tiện giao thông đường bộ"
+                            "title":  "Bá Chủ Thống Trị Phương tiện giao thông đường bộ",
+                            "element":  "cyber",
+                            "exp":  396,
+                            "gold":  174
                         },
                "background":  {
                                   "effect":  "headlights",
@@ -59,7 +62,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  78,
                "tier":  4,
                "biome":  "metropolis_freeway",
-               "topicName":  "Phương tiện giao thông đường bộ (Road Vehicles)"
+               "topicName":  "Phương tiện giao thông đường bộ (Road Vehicles)",
+               "element":  "cyber",
+               "exp":  792,
+               "gold":  348
            },
     "10":  {
                "minions":  [
@@ -101,7 +107,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  66,
                             "archetype":  "ego_shadow",
                             "baseHp":  941,
-                            "title":  "Bản Sao Hắc Ám Của Cảm Xúc"
+                            "title":  "Bản Sao Hắc Ám Của Cảm Xúc",
+                            "element":  "dark",
+                            "exp":  73,
+                            "gold":  32
                         },
                "background":  {
                                   "effect":  "psyche_shards",
@@ -117,7 +126,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  10,
                "tier":  1,
                "biome":  "mirror_psyche",
-               "topicName":  "Tính cách và Cảm xúc con người (Personality Traits \u0026 Emotions)"
+               "topicName":  "Tính cách và Cảm xúc con người (Personality Traits \u0026 Emotions)",
+               "element":  "dark",
+               "exp":  146,
+               "gold":  63
            },
     "63":  {
                "minions":  [
@@ -159,7 +171,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  189,
                             "archetype":  "cyber_overlord",
                             "baseHp":  2654,
-                            "title":  "Bá Chủ Thống Trị Mạng Internet và Mạng xã hội"
+                            "title":  "Bá Chủ Thống Trị Mạng Internet và Mạng xã hội",
+                            "element":  "cyber",
+                            "exp":  324,
+                            "gold":  142
                         },
                "background":  {
                                   "effect":  "digital_glitch",
@@ -175,7 +190,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  63,
                "tier":  3,
                "biome":  "cyber_arcade_city",
-               "topicName":  "Mạng Internet và Mạng xã hội (Internet \u0026 Social Media)"
+               "topicName":  "Mạng Internet và Mạng xã hội (Internet \u0026 Social Media)",
+               "element":  "cyber",
+               "exp":  649,
+               "gold":  285
            },
     "30":  {
                "minions":  [
@@ -217,7 +235,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  112,
                             "archetype":  "cyber_overlord",
                             "baseHp":  1587,
-                            "title":  "Bá Chủ Thống Trị Trò chơi điện tử trên PC và Mobile"
+                            "title":  "Bá Chủ Thống Trị Trò chơi điện tử trên PC và Mobile",
+                            "element":  "cyber",
+                            "exp":  168,
+                            "gold":  74
                         },
                "background":  {
                                   "effect":  "digital_glitch",
@@ -233,7 +254,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  30,
                "tier":  2,
                "biome":  "cyber_arcade_city",
-               "topicName":  "Trò chơi điện tử trên PC và Mobile (PC \u0026 Mobile Video Games)"
+               "topicName":  "Trò chơi điện tử trên PC và Mobile (PC \u0026 Mobile Video Games)",
+               "element":  "cyber",
+               "exp":  336,
+               "gold":  147
            },
     "87":  {
                "minions":  [
@@ -275,7 +299,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  245,
                             "archetype":  "skyline_zephyr_behemoth",
                             "baseHp":  3430,
-                            "title":  "Bá Chủ Thống Trị Du lịch, Nhà nghỉ và Khách sạn"
+                            "title":  "Bá Chủ Thống Trị Du lịch, Nhà nghỉ và Khách sạn",
+                            "element":  "lightning",
+                            "exp":  438,
+                            "gold":  193
                         },
                "background":  {
                                   "effect":  "beacon_lights",
@@ -291,7 +318,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  87,
                "tier":  4,
                "biome":  "skyport_terminal",
-               "topicName":  "Du lịch, Nhà nghỉ và Khách sạn (Tourism \u0026 Accommodations)"
+               "topicName":  "Du lịch, Nhà nghỉ và Khách sạn (Tourism \u0026 Accommodations)",
+               "element":  "lightning",
+               "exp":  877,
+               "gold":  386
            },
     "49":  {
                "minions":  [
@@ -333,7 +363,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  157,
                             "archetype":  "cathedral_archon",
                             "baseHp":  2202,
-                            "title":  "Bá Chủ Thống Trị Giải thưởng và Danh hiệu học thuật"
+                            "title":  "Bá Chủ Thống Trị Giải thưởng và Danh hiệu học thuật",
+                            "element":  "holy",
+                            "exp":  258,
+                            "gold":  114
                         },
                "background":  {
                                   "effect":  "holy_radiance",
@@ -349,7 +382,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  49,
                "tier":  2,
                "biome":  "sacred_cathedral",
-               "topicName":  "Giải thưởng và Danh hiệu học thuật (Academic Awards \u0026 Titles)"
+               "topicName":  "Giải thưởng và Danh hiệu học thuật (Academic Awards \u0026 Titles)",
+               "element":  "holy",
+               "exp":  516,
+               "gold":  227
            },
     "62":  {
                "minions":  [
@@ -391,7 +427,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  187,
                             "archetype":  "cyber_overlord",
                             "baseHp":  2622,
-                            "title":  "Bá Chủ Thống Trị Phần mềm và Ứng dụng di động"
+                            "title":  "Bá Chủ Thống Trị Phần mềm và Ứng dụng di động",
+                            "element":  "cyber",
+                            "exp":  320,
+                            "gold":  140
                         },
                "background":  {
                                   "effect":  "digital_glitch",
@@ -407,7 +446,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  62,
                "tier":  3,
                "biome":  "cyber_arcade_city",
-               "topicName":  "Phần mềm và Ứng dụng di động (Software \u0026 Mobile Apps)"
+               "topicName":  "Phần mềm và Ứng dụng di động (Software \u0026 Mobile Apps)",
+               "element":  "cyber",
+               "exp":  640,
+               "gold":  281
            },
     "22":  {
                "minions":  [
@@ -449,7 +491,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  94,
                             "archetype":  "gladiator_champion",
                             "baseHp":  1329,
-                            "title":  "Bá Chủ Thống Trị Các môn Thể thao đồng đội"
+                            "title":  "Bá Chủ Thống Trị Các môn Thể thao đồng đội",
+                            "element":  "fire",
+                            "exp":  130,
+                            "gold":  56
                         },
                "background":  {
                                   "effect":  "wind_gusts",
@@ -465,7 +510,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  22,
                "tier":  1,
                "biome":  "colosseum_arena",
-               "topicName":  "Các môn Thể thao đồng đội (Team Sports)"
+               "topicName":  "Các môn Thể thao đồng đội (Team Sports)",
+               "element":  "fire",
+               "exp":  260,
+               "gold":  113
            },
     "13":  {
                "minions":  [
@@ -507,7 +555,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  73,
                             "archetype":  "abyssal_kraken",
                             "baseHp":  1038,
-                            "title":  "Bá Chủ Thống Trị Dụng cụ vệ sinh và Chăm sóc cá nhân"
+                            "title":  "Bá Chủ Thống Trị Dụng cụ vệ sinh và Chăm sóc cá nhân",
+                            "element":  "water",
+                            "exp":  87,
+                            "gold":  38
                         },
                "background":  {
                                   "effect":  "ocean_bubbles",
@@ -523,7 +574,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  13,
                "tier":  1,
                "biome":  "abyssal_ocean",
-               "topicName":  "Dụng cụ vệ sinh và Chăm sóc cá nhân (Hygiene \u0026 Personal Care Items)"
+               "topicName":  "Dụng cụ vệ sinh và Chăm sóc cá nhân (Hygiene \u0026 Personal Care Items)",
+               "element":  "water",
+               "exp":  174,
+               "gold":  75
            },
     "47":  {
                "minions":  [
@@ -565,7 +619,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  152,
                             "archetype":  "ancient_golem",
                             "baseHp":  2137,
-                            "title":  "Bá Chủ Thống Trị Đồ thủ công mỹ nghệ"
+                            "title":  "Bá Chủ Thống Trị Đồ thủ công mỹ nghệ",
+                            "element":  "nature",
+                            "exp":  248,
+                            "gold":  109
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -581,7 +638,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  47,
                "tier":  2,
                "biome":  "ancient_ruins",
-               "topicName":  "Đồ thủ công mỹ nghệ (Handicrafts)"
+               "topicName":  "Đồ thủ công mỹ nghệ (Handicrafts)",
+               "element":  "nature",
+               "exp":  497,
+               "gold":  218
            },
     "71":  {
                "minions":  [
@@ -623,7 +683,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  208,
                             "archetype":  "cosmic_destroyer",
                             "baseHp":  2913,
-                            "title":  "Bá Chủ Thống Trị Vật lý và Các lực tự nhiên"
+                            "title":  "Bá Chủ Thống Trị Vật lý và Các lực tự nhiên",
+                            "element":  "cosmic",
+                            "exp":  362,
+                            "gold":  160
                         },
                "background":  {
                                   "effect":  "shooting_stars",
@@ -639,7 +702,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  71,
                "tier":  3,
                "biome":  "deep_cosmos",
-               "topicName":  "Vật lý và Các lực tự nhiên (Physics \u0026 Natural Forces)"
+               "topicName":  "Vật lý và Các lực tự nhiên (Physics \u0026 Natural Forces)",
+               "element":  "cosmic",
+               "exp":  725,
+               "gold":  319
            },
     "77":  {
                "minions":  [
@@ -681,7 +747,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  222,
                             "archetype":  "cyber_overlord",
                             "baseHp":  3107,
-                            "title":  "Bá Chủ Thống Trị Ứng dụng gọi xe và Dịch vụ giao hàng"
+                            "title":  "Bá Chủ Thống Trị Ứng dụng gọi xe và Dịch vụ giao hàng",
+                            "element":  "cyber",
+                            "exp":  391,
+                            "gold":  172
                         },
                "background":  {
                                   "effect":  "digital_glitch",
@@ -697,7 +766,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  77,
                "tier":  4,
                "biome":  "cyber_arcade_city",
-               "topicName":  "Ứng dụng gọi xe và Dịch vụ giao hàng (Ride-hailing \u0026 Delivery Services)"
+               "topicName":  "Ứng dụng gọi xe và Dịch vụ giao hàng (Ride-hailing \u0026 Delivery Services)",
+               "element":  "cyber",
+               "exp":  782,
+               "gold":  344
            },
     "73":  {
                "minions":  [
@@ -739,7 +811,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  212,
                             "archetype":  "ancient_dryad",
                             "baseHp":  2977,
-                            "title":  "Bá Chủ Thống Trị Nông nghiệp và Trồng trọt"
+                            "title":  "Bá Chủ Thống Trị Nông nghiệp và Trồng trọt",
+                            "element":  "nature",
+                            "exp":  372,
+                            "gold":  164
                         },
                "background":  {
                                   "effect":  "spores_fireflies",
@@ -755,7 +830,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  73,
                "tier":  3,
                "biome":  "primeval_forest",
-               "topicName":  "Nông nghiệp và Trồng trọt (Agriculture \u0026 Farming)"
+               "topicName":  "Nông nghiệp và Trồng trọt (Agriculture \u0026 Farming)",
+               "element":  "nature",
+               "exp":  744,
+               "gold":  327
            },
     "91":  {
                "minions":  [
@@ -797,7 +875,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  254,
                             "archetype":  "chaos_jester",
                             "baseHp":  3559,
-                            "title":  "Bá Chủ Thống Trị Chợ truyền thống và Siêu thị"
+                            "title":  "Bá Chủ Thống Trị Chợ truyền thống và Siêu thị",
+                            "element":  "dark",
+                            "exp":  458,
+                            "gold":  202
                         },
                "background":  {
                                   "effect":  "confetti",
@@ -813,7 +894,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  91,
                "tier":  4,
                "biome":  "carnival_night",
-               "topicName":  "Chợ truyền thống và Siêu thị (Traditional Markets \u0026 Supermarkets)"
+               "topicName":  "Chợ truyền thống và Siêu thị (Traditional Markets \u0026 Supermarkets)",
+               "element":  "dark",
+               "exp":  915,
+               "gold":  403
            },
     "3":  {
               "minions":  [
@@ -855,7 +939,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  50,
                            "archetype":  "hotpot_behemoth",
                            "baseHp":  715,
-                           "title":  "Thần Thú Nồi Lẩu Địa Ngục"
+                           "title":  "Thần Thú Nồi Lẩu Địa Ngục",
+                           "element":  "fire",
+                           "exp":  40,
+                           "gold":  16
                        },
               "background":  {
                                  "effect":  "embers",
@@ -871,7 +958,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  3,
               "tier":  1,
               "biome":  "magma_hotpot",
-              "topicName":  "Ẩm thực và Các loại lẩu (Culinary Arts \u0026 Hotpots)"
+              "topicName":  "Ẩm thực và Các loại lẩu (Culinary Arts \u0026 Hotpots)",
+              "element":  "fire",
+              "exp":  79,
+              "gold":  33
           },
     "8":  {
               "minions":  [
@@ -913,7 +1003,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  61,
                            "archetype":  "cathedral_archon",
                            "baseHp":  876,
-                           "title":  "Kẻ Thử Thách Lòng Trắc Ẩn"
+                           "title":  "Kẻ Thử Thách Lòng Trắc Ẩn",
+                           "element":  "holy",
+                           "exp":  63,
+                           "gold":  27
                        },
               "background":  {
                                  "effect":  "holy_radiance",
@@ -929,7 +1022,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  8,
               "tier":  1,
               "biome":  "sacred_cathedral",
-              "topicName":  "Các tổ chức tình nguyện và Từ thiện (Volunteer \u0026 Charity Organizations)"
+              "topicName":  "Các tổ chức tình nguyện và Từ thiện (Volunteer \u0026 Charity Organizations)",
+              "element":  "holy",
+              "exp":  126,
+              "gold":  54
           },
     "12":  {
                "minions":  [
@@ -971,7 +1067,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  71,
                             "archetype":  "iron_judge",
                             "baseHp":  1006,
-                            "title":  "Bá Chủ Thống Trị Pháp luật và Các loại tội phạm"
+                            "title":  "Bá Chủ Thống Trị Pháp luật và Các loại tội phạm",
+                            "element":  "holy",
+                            "exp":  82,
+                            "gold":  36
                         },
                "background":  {
                                   "effect":  "verdict_aura",
@@ -987,7 +1086,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  12,
                "tier":  1,
                "biome":  "high_tribunal",
-               "topicName":  "Pháp luật và Các loại tội phạm (Law \u0026 Crimes)"
+               "topicName":  "Pháp luật và Các loại tội phạm (Law \u0026 Crimes)",
+               "element":  "holy",
+               "exp":  164,
+               "gold":  71
            },
     "65":  {
                "minions":  [
@@ -1029,7 +1131,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  194,
                             "archetype":  "cyber_overlord",
                             "baseHp":  2719,
-                            "title":  "Bá Chủ Thống Trị Đồ điện tử dân dụng"
+                            "title":  "Bá Chủ Thống Trị Đồ điện tử dân dụng",
+                            "element":  "cyber",
+                            "exp":  334,
+                            "gold":  147
                         },
                "background":  {
                                   "effect":  "digital_glitch",
@@ -1045,7 +1150,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  65,
                "tier":  3,
                "biome":  "cyber_arcade_city",
-               "topicName":  "Đồ điện tử dân dụng (Consumer Electronics)"
+               "topicName":  "Đồ điện tử dân dụng (Consumer Electronics)",
+               "element":  "cyber",
+               "exp":  668,
+               "gold":  294
            },
     "40":  {
                "minions":  [
@@ -1087,7 +1195,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  136,
                             "archetype":  "plague_titan",
                             "baseHp":  1911,
-                            "title":  "Bá Chủ Thống Trị Trang thiết bị phòng thí nghiệm"
+                            "title":  "Bá Chủ Thống Trị Trang thiết bị phòng thí nghiệm",
+                            "element":  "nature",
+                            "exp":  215,
+                            "gold":  94
                         },
                "background":  {
                                   "effect":  "ecg_pulse",
@@ -1103,7 +1214,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  40,
                "tier":  2,
                "biome":  "medical_bio_lab",
-               "topicName":  "Trang thiết bị phòng thí nghiệm (Laboratory Equipment)"
+               "topicName":  "Trang thiết bị phòng thí nghiệm (Laboratory Equipment)",
+               "element":  "nature",
+               "exp":  430,
+               "gold":  189
            },
     "14":  {
                "minions":  [
@@ -1145,7 +1259,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  75,
                             "archetype":  "ancient_golem",
                             "baseHp":  1070,
-                            "title":  "Bá Chủ Thống Trị Văn hóa và Phong tục tập quán"
+                            "title":  "Bá Chủ Thống Trị Văn hóa và Phong tục tập quán",
+                            "element":  "nature",
+                            "exp":  92,
+                            "gold":  40
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -1161,7 +1278,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  14,
                "tier":  1,
                "biome":  "ancient_ruins",
-               "topicName":  "Văn hóa và Phong tục tập quán (Cultures \u0026 Customs)"
+               "topicName":  "Văn hóa và Phong tục tập quán (Cultures \u0026 Customs)",
+               "element":  "nature",
+               "exp":  184,
+               "gold":  80
            },
     "26":  {
                "minions":  [
@@ -1203,7 +1323,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  103,
                             "archetype":  "avalanche_behemoth",
                             "baseHp":  1458,
-                            "title":  "Bá Chủ Thống Trị Địa lý tự nhiên và Địa hình"
+                            "title":  "Bá Chủ Thống Trị Địa lý tự nhiên và Địa hình",
+                            "element":  "lightning",
+                            "exp":  149,
+                            "gold":  65
                         },
                "background":  {
                                   "effect":  "snowfall",
@@ -1219,7 +1342,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  26,
                "tier":  2,
                "biome":  "alpine_peaks",
-               "topicName":  "Địa lý tự nhiên và Địa hình (Physical Geography \u0026 Topography)"
+               "topicName":  "Địa lý tự nhiên và Địa hình (Physical Geography \u0026 Topography)",
+               "element":  "lightning",
+               "exp":  298,
+               "gold":  130
            },
     "17":  {
                "minions":  [
@@ -1261,7 +1387,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  82,
                             "archetype":  "broadcast_overlord",
                             "baseHp":  1167,
-                            "title":  "Bá Chủ Thống Trị Báo chí và Phương tiện truyền thông"
+                            "title":  "Bá Chủ Thống Trị Báo chí và Phương tiện truyền thông",
+                            "element":  "cyber",
+                            "exp":  106,
+                            "gold":  46
                         },
                "background":  {
                                   "effect":  "crt_static",
@@ -1277,7 +1406,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  17,
                "tier":  1,
                "biome":  "broadcast_studio",
-               "topicName":  "Báo chí và Phương tiện truyền thông (Media \u0026 Broadcasting)"
+               "topicName":  "Báo chí và Phương tiện truyền thông (Media \u0026 Broadcasting)",
+               "element":  "cyber",
+               "exp":  212,
+               "gold":  92
            },
     "28":  {
                "minions":  [
@@ -1319,7 +1451,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  108,
                             "archetype":  "virtuoso_maestro",
                             "baseHp":  1523,
-                            "title":  "Bá Chủ Thống Trị Các loại nhạc cụ"
+                            "title":  "Bá Chủ Thống Trị Các loại nhạc cụ",
+                            "element":  "cosmic",
+                            "exp":  158,
+                            "gold":  69
                         },
                "background":  {
                                   "effect":  "music_notes",
@@ -1335,7 +1470,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  28,
                "tier":  2,
                "biome":  "grand_symphony",
-               "topicName":  "Các loại nhạc cụ (Musical Instruments)"
+               "topicName":  "Các loại nhạc cụ (Musical Instruments)",
+               "element":  "cosmic",
+               "exp":  316,
+               "gold":  138
            },
     "99":  {
                "minions":  [
@@ -1377,7 +1515,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  273,
                             "archetype":  "ancient_dryad",
                             "baseHp":  3818,
-                            "title":  "Bá Chủ Thống Trị Công viên và Không gian xanh"
+                            "title":  "Bá Chủ Thống Trị Công viên và Không gian xanh",
+                            "element":  "nature",
+                            "exp":  496,
+                            "gold":  218
                         },
                "background":  {
                                   "effect":  "spores_fireflies",
@@ -1393,7 +1534,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  99,
                "tier":  4,
                "biome":  "primeval_forest",
-               "topicName":  "Công viên và Không gian xanh (Parks \u0026 Green Spaces)"
+               "topicName":  "Công viên và Không gian xanh (Parks \u0026 Green Spaces)",
+               "element":  "nature",
+               "exp":  991,
+               "gold":  437
            },
     "76":  {
                "minions":  [
@@ -1435,7 +1579,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  219,
                             "archetype":  "cyber_overlord",
                             "baseHp":  3074,
-                            "title":  "Bá Chủ Thống Trị Thương mại điện tử và Mua sắm trực tuyến"
+                            "title":  "Bá Chủ Thống Trị Thương mại điện tử và Mua sắm trực tuyến",
+                            "element":  "cyber",
+                            "exp":  386,
+                            "gold":  170
                         },
                "background":  {
                                   "effect":  "digital_glitch",
@@ -1451,7 +1598,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  76,
                "tier":  4,
                "biome":  "cyber_arcade_city",
-               "topicName":  "Thương mại điện tử và Mua sắm trực tuyến (E-commerce \u0026 Online Shopping)"
+               "topicName":  "Thương mại điện tử và Mua sắm trực tuyến (E-commerce \u0026 Online Shopping)",
+               "element":  "cyber",
+               "exp":  772,
+               "gold":  340
            },
     "36":  {
                "minions":  [
@@ -1493,7 +1643,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  126,
                             "archetype":  "broadcast_overlord",
                             "baseHp":  1781,
-                            "title":  "Bá Chủ Thống Trị Điện ảnh và Phim trường"
+                            "title":  "Bá Chủ Thống Trị Điện ảnh và Phim trường",
+                            "element":  "cyber",
+                            "exp":  196,
+                            "gold":  86
                         },
                "background":  {
                                   "effect":  "crt_static",
@@ -1509,7 +1662,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  36,
                "tier":  2,
                "biome":  "broadcast_studio",
-               "topicName":  "Điện ảnh và Phim trường (Cinema \u0026 Movie Sets)"
+               "topicName":  "Điện ảnh và Phim trường (Cinema \u0026 Movie Sets)",
+               "element":  "cyber",
+               "exp":  392,
+               "gold":  172
            },
     "4":  {
               "minions":  [
@@ -1551,7 +1707,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  52,
                            "archetype":  "patriarch_phantom",
                            "baseHp":  747,
-                           "title":  "Linh Hồn Gia Tộc Bất Diệt"
+                           "title":  "Linh Hồn Gia Tộc Bất Diệt",
+                           "element":  "dark",
+                           "exp":  44,
+                           "gold":  19
                        },
               "background":  {
                                  "effect":  "clock_tick",
@@ -1567,7 +1726,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  4,
               "tier":  1,
               "biome":  "ancestral_manor",
-              "topicName":  "Gia đình và Người thân (Family \u0026 Relatives)"
+              "topicName":  "Gia đình và Người thân (Family \u0026 Relatives)",
+              "element":  "dark",
+              "exp":  88,
+              "gold":  38
           },
     "50":  {
                "minions":  [
@@ -1609,7 +1771,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  159,
                             "archetype":  "virtuoso_maestro",
                             "baseHp":  2234,
-                            "title":  "Bá Chủ Thống Trị Nhạc kịch và Sân khấu kịch"
+                            "title":  "Bá Chủ Thống Trị Nhạc kịch và Sân khấu kịch",
+                            "element":  "cosmic",
+                            "exp":  263,
+                            "gold":  116
                         },
                "background":  {
                                   "effect":  "music_notes",
@@ -1625,7 +1790,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  50,
                "tier":  2,
                "biome":  "grand_symphony",
-               "topicName":  "Nhạc kịch và Sân khấu kịch (Musicals \u0026 Theater)"
+               "topicName":  "Nhạc kịch và Sân khấu kịch (Musicals \u0026 Theater)",
+               "element":  "cosmic",
+               "exp":  526,
+               "gold":  231
            },
     "45":  {
                "minions":  [
@@ -1667,7 +1835,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  147,
                             "archetype":  "gladiator_champion",
                             "baseHp":  2072,
-                            "title":  "Bá Chủ Thống Trị Thể thao mạo hiểm"
+                            "title":  "Bá Chủ Thống Trị Thể thao mạo hiểm",
+                            "element":  "fire",
+                            "exp":  239,
+                            "gold":  105
                         },
                "background":  {
                                   "effect":  "wind_gusts",
@@ -1683,7 +1854,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  45,
                "tier":  2,
                "biome":  "colosseum_arena",
-               "topicName":  "Thể thao mạo hiểm (Extreme Sports)"
+               "topicName":  "Thể thao mạo hiểm (Extreme Sports)",
+               "element":  "fire",
+               "exp":  478,
+               "gold":  210
            },
     "60":  {
                "minions":  [
@@ -1725,7 +1899,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  182,
                             "archetype":  "mutagen_horror",
                             "baseHp":  2557,
-                            "title":  "Bá Chủ Thống Trị Bảo vệ môi trường và Rác thải"
+                            "title":  "Bá Chủ Thống Trị Bảo vệ môi trường và Rác thải",
+                            "element":  "dark",
+                            "exp":  310,
+                            "gold":  136
                         },
                "background":  {
                                   "effect":  "toxic_smoke",
@@ -1741,7 +1918,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  60,
                "tier":  3,
                "biome":  "toxic_reactor",
-               "topicName":  "Bảo vệ môi trường và Rác thải (Environmental Protection \u0026 Waste)"
+               "topicName":  "Bảo vệ môi trường và Rác thải (Environmental Protection \u0026 Waste)",
+               "element":  "dark",
+               "exp":  620,
+               "gold":  273
            },
     "38":  {
                "minions":  [
@@ -1783,7 +1963,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  131,
                             "archetype":  "scholar_lich",
                             "baseHp":  1846,
-                            "title":  "Bá Chủ Thống Trị Ký túc xá và Không gian lưu trú sinh viên"
+                            "title":  "Bá Chủ Thống Trị Ký túc xá và Không gian lưu trú sinh viên",
+                            "element":  "dark",
+                            "exp":  206,
+                            "gold":  90
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -1799,7 +1982,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  38,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Ký túc xá và Không gian lưu trú sinh viên (Dormitories \u0026 Student Housing)"
+               "topicName":  "Ký túc xá và Không gian lưu trú sinh viên (Dormitories \u0026 Student Housing)",
+               "element":  "dark",
+               "exp":  412,
+               "gold":  180
            },
     "83":  {
                "minions":  [
@@ -1841,7 +2027,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  236,
                             "archetype":  "midas_gold_dragon",
                             "baseHp":  3301,
-                            "title":  "Bá Chủ Thống Trị Kế toán và Quản lý tài chính"
+                            "title":  "Bá Chủ Thống Trị Kế toán và Quản lý tài chính",
+                            "element":  "holy",
+                            "exp":  420,
+                            "gold":  184
                         },
                "background":  {
                                   "effect":  "gold_sparkle",
@@ -1857,7 +2046,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  83,
                "tier":  4,
                "biome":  "gold_bullion_vault",
-               "topicName":  "Kế toán và Quản lý tài chính (Accounting \u0026 Financial Management)"
+               "topicName":  "Kế toán và Quản lý tài chính (Accounting \u0026 Financial Management)",
+               "element":  "holy",
+               "exp":  839,
+               "gold":  369
            },
     "85":  {
                "minions":  [
@@ -1899,7 +2091,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  240,
                             "archetype":  "skyline_zephyr_behemoth",
                             "baseHp":  3365,
-                            "title":  "Bá Chủ Thống Trị Sân bay và Hàng không"
+                            "title":  "Bá Chủ Thống Trị Sân bay và Hàng không",
+                            "element":  "lightning",
+                            "exp":  429,
+                            "gold":  189
                         },
                "background":  {
                                   "effect":  "beacon_lights",
@@ -1915,7 +2110,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  85,
                "tier":  4,
                "biome":  "skyport_terminal",
-               "topicName":  "Sân bay và Hàng không (Airports \u0026 Aviation)"
+               "topicName":  "Sân bay và Hàng không (Airports \u0026 Aviation)",
+               "element":  "lightning",
+               "exp":  858,
+               "gold":  378
            },
     "96":  {
                "minions":  [
@@ -1957,7 +2155,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  266,
                             "archetype":  "turbo_highway_wyrm",
                             "baseHp":  3721,
-                            "title":  "Bá Chủ Thống Trị Phụ tùng ô tô và Xe máy"
+                            "title":  "Bá Chủ Thống Trị Phụ tùng ô tô và Xe máy",
+                            "element":  "cyber",
+                            "exp":  481,
+                            "gold":  212
                         },
                "background":  {
                                   "effect":  "headlights",
@@ -1973,7 +2174,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  96,
                "tier":  4,
                "biome":  "metropolis_freeway",
-               "topicName":  "Phụ tùng ô tô và Xe máy (Auto \u0026 Motorcycle Parts)"
+               "topicName":  "Phụ tùng ô tô và Xe máy (Auto \u0026 Motorcycle Parts)",
+               "element":  "cyber",
+               "exp":  962,
+               "gold":  424
            },
     "82":  {
                "minions":  [
@@ -2015,7 +2219,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  233,
                             "archetype":  "midas_gold_dragon",
                             "baseHp":  3268,
-                            "title":  "Bá Chủ Thống Trị Tiền tệ và Ngân hàng"
+                            "title":  "Bá Chủ Thống Trị Tiền tệ và Ngân hàng",
+                            "element":  "holy",
+                            "exp":  415,
+                            "gold":  182
                         },
                "background":  {
                                   "effect":  "gold_sparkle",
@@ -2031,7 +2238,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  82,
                "tier":  4,
                "biome":  "gold_bullion_vault",
-               "topicName":  "Tiền tệ và Ngân hàng (Currency \u0026 Banking)"
+               "topicName":  "Tiền tệ và Ngân hàng (Currency \u0026 Banking)",
+               "element":  "holy",
+               "exp":  830,
+               "gold":  365
            },
     "23":  {
                "minions":  [
@@ -2073,7 +2283,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  96,
                             "archetype":  "ancient_golem",
                             "baseHp":  1361,
-                            "title":  "Bá Chủ Thống Trị Dụng cụ tập thể hình"
+                            "title":  "Bá Chủ Thống Trị Dụng cụ tập thể hình",
+                            "element":  "nature",
+                            "exp":  134,
+                            "gold":  58
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -2089,7 +2302,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  23,
                "tier":  1,
                "biome":  "ancient_ruins",
-               "topicName":  "Dụng cụ tập thể hình (Gym \u0026 Fitness Equipment)"
+               "topicName":  "Dụng cụ tập thể hình (Gym \u0026 Fitness Equipment)",
+               "element":  "nature",
+               "exp":  269,
+               "gold":  117
            },
     "51":  {
                "minions":  [
@@ -2131,7 +2347,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  161,
                             "archetype":  "avalanche_behemoth",
                             "baseHp":  2266,
-                            "title":  "Bá Chủ Thống Trị Khám phá vùng đồi núi"
+                            "title":  "Bá Chủ Thống Trị Khám phá vùng đồi núi",
+                            "element":  "lightning",
+                            "exp":  268,
+                            "gold":  118
                         },
                "background":  {
                                   "effect":  "snowfall",
@@ -2147,7 +2366,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  51,
                "tier":  3,
                "biome":  "alpine_peaks",
-               "topicName":  "Khám phá vùng đồi núi (Mountain Exploration)"
+               "topicName":  "Khám phá vùng đồi núi (Mountain Exploration)",
+               "element":  "lightning",
+               "exp":  535,
+               "gold":  235
            },
     "92":  {
                "minions":  [
@@ -2189,7 +2411,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  256,
                             "archetype":  "iron_judge",
                             "baseHp":  3591,
-                            "title":  "Bá Chủ Thống Trị Hợp đồng và Văn bản pháp lý"
+                            "title":  "Bá Chủ Thống Trị Hợp đồng và Văn bản pháp lý",
+                            "element":  "holy",
+                            "exp":  462,
+                            "gold":  204
                         },
                "background":  {
                                   "effect":  "verdict_aura",
@@ -2205,7 +2430,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  92,
                "tier":  4,
                "biome":  "high_tribunal",
-               "topicName":  "Hợp đồng và Văn bản pháp lý (Contracts \u0026 Legal Documents)"
+               "topicName":  "Hợp đồng và Văn bản pháp lý (Contracts \u0026 Legal Documents)",
+               "element":  "holy",
+               "exp":  924,
+               "gold":  407
            },
     "20":  {
                "minions":  [
@@ -2247,7 +2475,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  89,
                             "archetype":  "ancient_golem",
                             "baseHp":  1264,
-                            "title":  "Bá Chủ Thống Trị Phòng ngủ và Giấc ngủ"
+                            "title":  "Bá Chủ Thống Trị Phòng ngủ và Giấc ngủ",
+                            "element":  "nature",
+                            "exp":  120,
+                            "gold":  52
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -2263,7 +2494,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  20,
                "tier":  1,
                "biome":  "ancient_ruins",
-               "topicName":  "Phòng ngủ và Giấc ngủ (Bedrooms \u0026 Sleep)"
+               "topicName":  "Phòng ngủ và Giấc ngủ (Bedrooms \u0026 Sleep)",
+               "element":  "nature",
+               "exp":  240,
+               "gold":  105
            },
     "59":  {
                "minions":  [
@@ -2305,7 +2539,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  180,
                             "archetype":  "geode_colossus",
                             "baseHp":  2525,
-                            "title":  "Bá Chủ Thống Trị Các loại khoáng sản và Đá"
+                            "title":  "Bá Chủ Thống Trị Các loại khoáng sản và Đá",
+                            "element":  "nature",
+                            "exp":  306,
+                            "gold":  134
                         },
                "background":  {
                                   "effect":  "crystal_sparkle",
@@ -2321,7 +2558,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  59,
                "tier":  3,
                "biome":  "crystal_cavern",
-               "topicName":  "Các loại khoáng sản và Đá (Minerals \u0026 Rocks)"
+               "topicName":  "Các loại khoáng sản và Đá (Minerals \u0026 Rocks)",
+               "element":  "nature",
+               "exp":  611,
+               "gold":  269
            },
     "86":  {
                "minions":  [
@@ -2363,7 +2603,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  242,
                             "archetype":  "abyssal_kraken",
                             "baseHp":  3397,
-                            "title":  "Bá Chủ Thống Trị Cảng biển và Ngành hàng hải"
+                            "title":  "Bá Chủ Thống Trị Cảng biển và Ngành hàng hải",
+                            "element":  "water",
+                            "exp":  434,
+                            "gold":  191
                         },
                "background":  {
                                   "effect":  "ocean_bubbles",
@@ -2379,7 +2622,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  86,
                "tier":  4,
                "biome":  "abyssal_ocean",
-               "topicName":  "Cảng biển và Ngành hàng hải (Seaports \u0026 Maritime Industry)"
+               "topicName":  "Cảng biển và Ngành hàng hải (Seaports \u0026 Maritime Industry)",
+               "element":  "water",
+               "exp":  868,
+               "gold":  382
            },
     "69":  {
                "minions":  [
@@ -2421,7 +2667,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  203,
                             "archetype":  "plague_titan",
                             "baseHp":  2848,
-                            "title":  "Bá Chủ Thống Trị Công nghệ sinh học"
+                            "title":  "Bá Chủ Thống Trị Công nghệ sinh học",
+                            "element":  "nature",
+                            "exp":  353,
+                            "gold":  156
                         },
                "background":  {
                                   "effect":  "ecg_pulse",
@@ -2437,7 +2686,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  69,
                "tier":  3,
                "biome":  "medical_bio_lab",
-               "topicName":  "Công nghệ sinh học (Biotechnology)"
+               "topicName":  "Công nghệ sinh học (Biotechnology)",
+               "element":  "nature",
+               "exp":  706,
+               "gold":  311
            },
     "54":  {
                "minions":  [
@@ -2479,7 +2731,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  168,
                             "archetype":  "apex_beast_king",
                             "baseHp":  2363,
-                            "title":  "Bá Chủ Thống Trị Động vật hoang dã"
+                            "title":  "Bá Chủ Thống Trị Động vật hoang dã",
+                            "element":  "nature",
+                            "exp":  282,
+                            "gold":  124
                         },
                "background":  {
                                   "effect":  "heat_haze",
@@ -2495,7 +2750,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  54,
                "tier":  3,
                "biome":  "beast_savanna",
-               "topicName":  "Động vật hoang dã (Wild Fauna)"
+               "topicName":  "Động vật hoang dã (Wild Fauna)",
+               "element":  "nature",
+               "exp":  564,
+               "gold":  248
            },
     "66":  {
                "minions":  [
@@ -2537,7 +2795,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  196,
                             "archetype":  "mutagen_horror",
                             "baseHp":  2751,
-                            "title":  "Bá Chủ Thống Trị Nguyên tố và Phản ứng hóa học"
+                            "title":  "Bá Chủ Thống Trị Nguyên tố và Phản ứng hóa học",
+                            "element":  "dark",
+                            "exp":  339,
+                            "gold":  149
                         },
                "background":  {
                                   "effect":  "toxic_smoke",
@@ -2553,7 +2814,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  66,
                "tier":  3,
                "biome":  "toxic_reactor",
-               "topicName":  "Nguyên tố và Phản ứng hóa học (Chemical Elements \u0026 Reactions)"
+               "topicName":  "Nguyên tố và Phản ứng hóa học (Chemical Elements \u0026 Reactions)",
+               "element":  "dark",
+               "exp":  678,
+               "gold":  298
            },
     "57":  {
                "minions":  [
@@ -2595,7 +2859,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  175,
                             "archetype":  "apex_beast_king",
                             "baseHp":  2460,
-                            "title":  "Bá Chủ Thống Trị Côn trùng và Vi sinh vật"
+                            "title":  "Bá Chủ Thống Trị Côn trùng và Vi sinh vật",
+                            "element":  "nature",
+                            "exp":  296,
+                            "gold":  130
                         },
                "background":  {
                                   "effect":  "heat_haze",
@@ -2611,7 +2878,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  57,
                "tier":  3,
                "biome":  "beast_savanna",
-               "topicName":  "Côn trùng và Vi sinh vật (Insects \u0026 Microorganisms)"
+               "topicName":  "Côn trùng và Vi sinh vật (Insects \u0026 Microorganisms)",
+               "element":  "nature",
+               "exp":  592,
+               "gold":  260
            },
     "43":  {
                "minions":  [
@@ -2653,7 +2923,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  143,
                             "archetype":  "ancient_golem",
                             "baseHp":  2008,
-                            "title":  "Bá Chủ Thống Trị Lịch sử và Di tích lịch sử"
+                            "title":  "Bá Chủ Thống Trị Lịch sử và Di tích lịch sử",
+                            "element":  "nature",
+                            "exp":  230,
+                            "gold":  100
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -2669,7 +2942,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  43,
                "tier":  2,
                "biome":  "ancient_ruins",
-               "topicName":  "Lịch sử và Di tích lịch sử (History \u0026 Historical Monuments)"
+               "topicName":  "Lịch sử và Di tích lịch sử (History \u0026 Historical Monuments)",
+               "element":  "nature",
+               "exp":  459,
+               "gold":  201
            },
     "95":  {
                "minions":  [
@@ -2711,7 +2987,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  263,
                             "archetype":  "ancient_golem",
                             "baseHp":  3688,
-                            "title":  "Bá Chủ Thống Trị Quản trị kinh doanh doanh nghiệp"
+                            "title":  "Bá Chủ Thống Trị Quản trị kinh doanh doanh nghiệp",
+                            "element":  "nature",
+                            "exp":  476,
+                            "gold":  210
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -2727,7 +3006,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  95,
                "tier":  4,
                "biome":  "ancient_ruins",
-               "topicName":  "Quản trị kinh doanh doanh nghiệp (Business Administration)"
+               "topicName":  "Quản trị kinh doanh doanh nghiệp (Business Administration)",
+               "element":  "nature",
+               "exp":  953,
+               "gold":  420
            },
     "80":  {
                "minions":  [
@@ -2769,7 +3051,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  229,
                             "archetype":  "ancient_golem",
                             "baseHp":  3204,
-                            "title":  "Bá Chủ Thống Trị Cửa hàng thời trang và Khu mua sắm"
+                            "title":  "Bá Chủ Thống Trị Cửa hàng thời trang và Khu mua sắm",
+                            "element":  "nature",
+                            "exp":  405,
+                            "gold":  178
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -2785,7 +3070,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  80,
                "tier":  4,
                "biome":  "ancient_ruins",
-               "topicName":  "Cửa hàng thời trang và Khu mua sắm (Fashion Stores \u0026 Shopping Areas)"
+               "topicName":  "Cửa hàng thời trang và Khu mua sắm (Fashion Stores \u0026 Shopping Areas)",
+               "element":  "nature",
+               "exp":  810,
+               "gold":  357
            },
     "35":  {
                "minions":  [
@@ -2827,7 +3115,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  124,
                             "archetype":  "broadcast_overlord",
                             "baseHp":  1749,
-                            "title":  "Bá Chủ Thống Trị Nhiếp ảnh và Thiết bị quay chụp"
+                            "title":  "Bá Chủ Thống Trị Nhiếp ảnh và Thiết bị quay chụp",
+                            "element":  "cyber",
+                            "exp":  192,
+                            "gold":  84
                         },
                "background":  {
                                   "effect":  "crt_static",
@@ -2843,7 +3134,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  35,
                "tier":  2,
                "biome":  "broadcast_studio",
-               "topicName":  "Nhiếp ảnh và Thiết bị quay chụp (Photography \u0026 Camera Gear)"
+               "topicName":  "Nhiếp ảnh và Thiết bị quay chụp (Photography \u0026 Camera Gear)",
+               "element":  "cyber",
+               "exp":  383,
+               "gold":  168
            },
     "41":  {
                "minions":  [
@@ -2885,7 +3179,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  138,
                             "archetype":  "scholar_lich",
                             "baseHp":  1943,
-                            "title":  "Bá Chủ Thống Trị Sách và Các thể loại văn học"
+                            "title":  "Bá Chủ Thống Trị Sách và Các thể loại văn học",
+                            "element":  "dark",
+                            "exp":  220,
+                            "gold":  96
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -2901,7 +3198,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  41,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Sách và Các thể loại văn học (Books \u0026 Literary Genres)"
+               "topicName":  "Sách và Các thể loại văn học (Books \u0026 Literary Genres)",
+               "element":  "dark",
+               "exp":  440,
+               "gold":  193
            },
     "5":  {
               "minions":  [
@@ -2943,7 +3243,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  54,
                            "archetype":  "anatomical_titan",
                            "baseHp":  779,
-                           "title":  "Hóa Thân 206 Khúc Xương Cổ"
+                           "title":  "Hóa Thân 206 Khúc Xương Cổ",
+                           "element":  "nature",
+                           "exp":  49,
+                           "gold":  21
                        },
               "background":  {
                                  "effect":  "pulse_beat",
@@ -2959,7 +3262,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  5,
               "tier":  1,
               "biome":  "medical_bio_lab",
-              "topicName":  "Các bộ phận trên cơ thể người (Human Body Parts)"
+              "topicName":  "Các bộ phận trên cơ thể người (Human Body Parts)",
+              "element":  "nature",
+              "exp":  98,
+              "gold":  42
           },
     "34":  {
                "minions":  [
@@ -3001,7 +3307,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  122,
                             "archetype":  "scholar_lich",
                             "baseHp":  1717,
-                            "title":  "Bá Chủ Thống Trị Câu lạc bộ và Các ban chuyên môn sinh viên"
+                            "title":  "Bá Chủ Thống Trị Câu lạc bộ và Các ban chuyên môn sinh viên",
+                            "element":  "dark",
+                            "exp":  187,
+                            "gold":  82
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -3017,7 +3326,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  34,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Câu lạc bộ và Các ban chuyên môn sinh viên (Clubs \u0026 Student Departments)"
+               "topicName":  "Câu lạc bộ và Các ban chuyên môn sinh viên (Clubs \u0026 Student Departments)",
+               "element":  "dark",
+               "exp":  374,
+               "gold":  164
            },
     "6":  {
               "minions":  [
@@ -3059,7 +3371,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  57,
                            "archetype":  "living_wardrobe",
                            "baseHp":  812,
-                           "title":  "Cự Quái Nội Thất Nuốt Chửng"
+                           "title":  "Cự Quái Nội Thất Nuốt Chửng",
+                           "element":  "dark",
+                           "exp":  54,
+                           "gold":  23
                        },
               "background":  {
                                  "effect":  "creaking_wood",
@@ -3075,7 +3390,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  6,
               "tier":  1,
               "biome":  "haunted_mansion",
-              "topicName":  "Đồ nội thất và Vật dụng gia đình (Furniture \u0026 Household Items)"
+              "topicName":  "Đồ nội thất và Vật dụng gia đình (Furniture \u0026 Household Items)",
+              "element":  "dark",
+              "exp":  108,
+              "gold":  46
           },
     "53":  {
                "minions":  [
@@ -3117,7 +3435,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  166,
                             "archetype":  "ancient_dryad",
                             "baseHp":  2331,
-                            "title":  "Bá Chủ Thống Trị Thực vật và Rừng"
+                            "title":  "Bá Chủ Thống Trị Thực vật và Rừng",
+                            "element":  "nature",
+                            "exp":  277,
+                            "gold":  122
                         },
                "background":  {
                                   "effect":  "spores_fireflies",
@@ -3133,7 +3454,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  53,
                "tier":  3,
                "biome":  "primeval_forest",
-               "topicName":  "Thực vật và Rừng (Flora \u0026 Forests)"
+               "topicName":  "Thực vật và Rừng (Flora \u0026 Forests)",
+               "element":  "nature",
+               "exp":  554,
+               "gold":  243
            },
     "2":  {
               "minions":  [
@@ -3175,7 +3499,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  47,
                            "archetype":  "barista_dragon",
                            "baseHp":  682,
-                           "title":  "Hắc Long Espresso Sôi Sục"
+                           "title":  "Hắc Long Espresso Sôi Sục",
+                           "element":  "water",
+                           "exp":  35,
+                           "gold":  14
                        },
               "background":  {
                                  "effect":  "coffee_aroma",
@@ -3191,7 +3518,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  2,
               "tier":  1,
               "biome":  "cozy_cafe",
-              "topicName":  "Văn hóa quán cà phê và Đồ uống (Cafe Culture \u0026 Beverages)"
+              "topicName":  "Văn hóa quán cà phê và Đồ uống (Cafe Culture \u0026 Beverages)",
+              "element":  "water",
+              "exp":  70,
+              "gold":  29
           },
     "44":  {
                "minions":  [
@@ -3233,7 +3563,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  145,
                             "archetype":  "scholar_lich",
                             "baseHp":  2040,
-                            "title":  "Bá Chủ Thống Trị Thư viện và Tài liệu học thuật"
+                            "title":  "Bá Chủ Thống Trị Thư viện và Tài liệu học thuật",
+                            "element":  "dark",
+                            "exp":  234,
+                            "gold":  103
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -3249,7 +3582,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  44,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Thư viện và Tài liệu học thuật (Libraries \u0026 Academic Resources)"
+               "topicName":  "Thư viện và Tài liệu học thuật (Libraries \u0026 Academic Resources)",
+               "element":  "dark",
+               "exp":  468,
+               "gold":  206
            },
     "98":  {
                "minions":  [
@@ -3291,7 +3627,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  270,
                             "archetype":  "ancient_golem",
                             "baseHp":  3785,
-                            "title":  "Bá Chủ Thống Trị Hoạt động Xuất - Nhập khẩu"
+                            "title":  "Bá Chủ Thống Trị Hoạt động Xuất - Nhập khẩu",
+                            "element":  "nature",
+                            "exp":  491,
+                            "gold":  216
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -3307,7 +3646,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  98,
                "tier":  4,
                "biome":  "ancient_ruins",
-               "topicName":  "Hoạt động Xuất - Nhập khẩu (Import \u0026 Export Activities)"
+               "topicName":  "Hoạt động Xuất - Nhập khẩu (Import \u0026 Export Activities)",
+               "element":  "nature",
+               "exp":  982,
+               "gold":  432
            },
     "72":  {
                "minions":  [
@@ -3349,7 +3691,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  210,
                             "archetype":  "geode_colossus",
                             "baseHp":  2945,
-                            "title":  "Bá Chủ Thống Trị Các nguồn năng lượng"
+                            "title":  "Bá Chủ Thống Trị Các nguồn năng lượng",
+                            "element":  "nature",
+                            "exp":  367,
+                            "gold":  162
                         },
                "background":  {
                                   "effect":  "crystal_sparkle",
@@ -3365,7 +3710,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  72,
                "tier":  3,
                "biome":  "crystal_cavern",
-               "topicName":  "Các nguồn năng lượng (Energy Sources)"
+               "topicName":  "Các nguồn năng lượng (Energy Sources)",
+               "element":  "nature",
+               "exp":  734,
+               "gold":  323
            },
     "11":  {
                "minions":  [
@@ -3407,7 +3755,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  68,
                             "archetype":  "cathedral_archon",
                             "baseHp":  973,
-                            "title":  "Bá Chủ Thống Trị Tín ngưỡng và Tôn giáo"
+                            "title":  "Bá Chủ Thống Trị Tín ngưỡng và Tôn giáo",
+                            "element":  "holy",
+                            "exp":  78,
+                            "gold":  34
                         },
                "background":  {
                                   "effect":  "holy_radiance",
@@ -3423,7 +3774,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  11,
                "tier":  1,
                "biome":  "sacred_cathedral",
-               "topicName":  "Tín ngưỡng và Tôn giáo (Beliefs \u0026 Religions)"
+               "topicName":  "Tín ngưỡng và Tôn giáo (Beliefs \u0026 Religions)",
+               "element":  "holy",
+               "exp":  155,
+               "gold":  67
            },
     "70":  {
                "minions":  [
@@ -3465,7 +3819,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  205,
                             "archetype":  "quantum_agi_god",
                             "baseHp":  2880,
-                            "title":  "Bá Chủ Thống Trị Hệ thống đơn vị đo lường"
+                            "title":  "Bá Chủ Thống Trị Hệ thống đơn vị đo lường",
+                            "element":  "cyber",
+                            "exp":  358,
+                            "gold":  158
                         },
                "background":  {
                                   "effect":  "binary_rain",
@@ -3481,7 +3838,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  70,
                "tier":  3,
                "biome":  "quantum_agi_datacenter",
-               "topicName":  "Hệ thống đơn vị đo lường (Systems of Measurement)"
+               "topicName":  "Hệ thống đơn vị đo lường (Systems of Measurement)",
+               "element":  "cyber",
+               "exp":  716,
+               "gold":  315
            },
     "68":  {
                "minions":  [
@@ -3523,7 +3883,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  201,
                             "archetype":  "quantum_agi_god",
                             "baseHp":  2816,
-                            "title":  "Bá Chủ Thống Trị Các phát minh khoa học"
+                            "title":  "Bá Chủ Thống Trị Các phát minh khoa học",
+                            "element":  "cyber",
+                            "exp":  348,
+                            "gold":  153
                         },
                "background":  {
                                   "effect":  "binary_rain",
@@ -3539,7 +3902,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  68,
                "tier":  3,
                "biome":  "quantum_agi_datacenter",
-               "topicName":  "Các phát minh khoa học (Scientific Inventions)"
+               "topicName":  "Các phát minh khoa học (Scientific Inventions)",
+               "element":  "cyber",
+               "exp":  696,
+               "gold":  306
            },
     "1":  {
               "minions":  [
@@ -3581,7 +3947,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  45,
                            "archetype":  "fashion_queen",
                            "baseHp":  650,
-                           "title":  "Chúa Tể Thời Trang Cao Cấp"
+                           "title":  "Chúa Tể Thời Trang Cao Cấp",
+                           "element":  "holy",
+                           "exp":  30,
+                           "gold":  12
                        },
               "background":  {
                                  "effect":  "glitter",
@@ -3597,7 +3966,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  1,
               "tier":  1,
               "biome":  "catwalk_fashion",
-              "topicName":  "Quần áo và Phụ kiện thời trang (Clothing \u0026 Fashion Accessories)"
+              "topicName":  "Quần áo và Phụ kiện thời trang (Clothing \u0026 Fashion Accessories)",
+              "element":  "holy",
+              "exp":  60,
+              "gold":  25
           },
     "58":  {
                "minions":  [
@@ -3639,7 +4011,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  177,
                             "archetype":  "cosmic_destroyer",
                             "baseHp":  2492,
-                            "title":  "Bá Chủ Thống Trị Vũ trụ và Hệ mặt trời"
+                            "title":  "Bá Chủ Thống Trị Vũ trụ và Hệ mặt trời",
+                            "element":  "cosmic",
+                            "exp":  301,
+                            "gold":  132
                         },
                "background":  {
                                   "effect":  "shooting_stars",
@@ -3655,7 +4030,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  58,
                "tier":  3,
                "biome":  "deep_cosmos",
-               "topicName":  "Vũ trụ và Hệ mặt trời (Space \u0026 Solar System)"
+               "topicName":  "Vũ trụ và Hệ mặt trời (Space \u0026 Solar System)",
+               "element":  "cosmic",
+               "exp":  602,
+               "gold":  264
            },
     "55":  {
                "minions":  [
@@ -3697,7 +4075,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  170,
                             "archetype":  "abyssal_kraken",
                             "baseHp":  2395,
-                            "title":  "Bá Chủ Thống Trị Đại dương và Bờ biển"
+                            "title":  "Bá Chủ Thống Trị Đại dương và Bờ biển",
+                            "element":  "water",
+                            "exp":  286,
+                            "gold":  126
                         },
                "background":  {
                                   "effect":  "ocean_bubbles",
@@ -3713,7 +4094,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  55,
                "tier":  3,
                "biome":  "abyssal_ocean",
-               "topicName":  "Đại dương và Bờ biển (Oceans \u0026 Coastlines)"
+               "topicName":  "Đại dương và Bờ biển (Oceans \u0026 Coastlines)",
+               "element":  "water",
+               "exp":  573,
+               "gold":  252
            },
     "33":  {
                "minions":  [
@@ -3755,7 +4139,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  119,
                             "archetype":  "scholar_lich",
                             "baseHp":  1684,
-                            "title":  "Bá Chủ Thống Trị Các kỳ thi ngôn ngữ và Chứng chỉ"
+                            "title":  "Bá Chủ Thống Trị Các kỳ thi ngôn ngữ và Chứng chỉ",
+                            "element":  "dark",
+                            "exp":  182,
+                            "gold":  80
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -3771,7 +4158,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  33,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Các kỳ thi ngôn ngữ và Chứng chỉ (Language Exams \u0026 Certificates)"
+               "topicName":  "Các kỳ thi ngôn ngữ và Chứng chỉ (Language Exams \u0026 Certificates)",
+               "element":  "dark",
+               "exp":  364,
+               "gold":  159
            },
     "88":  {
                "minions":  [
@@ -3813,7 +4203,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  247,
                             "archetype":  "avalanche_behemoth",
                             "baseHp":  3462,
-                            "title":  "Bá Chủ Thống Trị Hành lý và Phụ kiện dã ngoại"
+                            "title":  "Bá Chủ Thống Trị Hành lý và Phụ kiện dã ngoại",
+                            "element":  "lightning",
+                            "exp":  443,
+                            "gold":  195
                         },
                "background":  {
                                   "effect":  "snowfall",
@@ -3829,7 +4222,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  88,
                "tier":  4,
                "biome":  "alpine_peaks",
-               "topicName":  "Hành lý và Phụ kiện dã ngoại (Luggage \u0026 Travel Accessories)"
+               "topicName":  "Hành lý và Phụ kiện dã ngoại (Luggage \u0026 Travel Accessories)",
+               "element":  "lightning",
+               "exp":  886,
+               "gold":  390
            },
     "67":  {
                "minions":  [
@@ -3871,7 +4267,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  198,
                             "archetype":  "plague_titan",
                             "baseHp":  2783,
-                            "title":  "Bá Chủ Thống Trị Sinh học và Di truyền"
+                            "title":  "Bá Chủ Thống Trị Sinh học và Di truyền",
+                            "element":  "nature",
+                            "exp":  344,
+                            "gold":  151
                         },
                "background":  {
                                   "effect":  "ecg_pulse",
@@ -3887,7 +4286,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  67,
                "tier":  3,
                "biome":  "medical_bio_lab",
-               "topicName":  "Sinh học và Di truyền (Biology \u0026 Genetics)"
+               "topicName":  "Sinh học và Di truyền (Biology \u0026 Genetics)",
+               "element":  "nature",
+               "exp":  687,
+               "gold":  302
            },
     "27":  {
                "minions":  [
@@ -3929,7 +4331,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  105,
                             "archetype":  "scholar_lich",
                             "baseHp":  1490,
-                            "title":  "Bá Chủ Thống Trị Trường đại học và Đời sống sinh viên"
+                            "title":  "Bá Chủ Thống Trị Trường đại học và Đời sống sinh viên",
+                            "element":  "dark",
+                            "exp":  154,
+                            "gold":  67
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -3945,7 +4350,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  27,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Trường đại học và Đời sống sinh viên (University \u0026 Student Life)"
+               "topicName":  "Trường đại học và Đời sống sinh viên (University \u0026 Student Life)",
+               "element":  "dark",
+               "exp":  307,
+               "gold":  134
            },
     "16":  {
                "minions":  [
@@ -3987,7 +4395,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  80,
                             "archetype":  "plague_titan",
                             "baseHp":  1135,
-                            "title":  "Bá Chủ Thống Trị Dụng cụ và Trang thiết bị y tế"
+                            "title":  "Bá Chủ Thống Trị Dụng cụ và Trang thiết bị y tế",
+                            "element":  "nature",
+                            "exp":  101,
+                            "gold":  44
                         },
                "background":  {
                                   "effect":  "ecg_pulse",
@@ -4003,7 +4414,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  16,
                "tier":  1,
                "biome":  "medical_bio_lab",
-               "topicName":  "Dụng cụ và Trang thiết bị y tế (Medical Tools \u0026 Equipment)"
+               "topicName":  "Dụng cụ và Trang thiết bị y tế (Medical Tools \u0026 Equipment)",
+               "element":  "nature",
+               "exp":  202,
+               "gold":  88
            },
     "64":  {
                "minions":  [
@@ -4045,7 +4459,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  191,
                             "archetype":  "quantum_agi_god",
                             "baseHp":  2686,
-                            "title":  "Bá Chủ Thống Trị Trí tuệ nhân tạo và Robot"
+                            "title":  "Bá Chủ Thống Trị Trí tuệ nhân tạo và Robot",
+                            "element":  "cyber",
+                            "exp":  329,
+                            "gold":  145
                         },
                "background":  {
                                   "effect":  "binary_rain",
@@ -4061,7 +4478,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  64,
                "tier":  3,
                "biome":  "quantum_agi_datacenter",
-               "topicName":  "Trí tuệ nhân tạo và Robot (Artificial Intelligence \u0026 Robotics)"
+               "topicName":  "Trí tuệ nhân tạo và Robot (Artificial Intelligence \u0026 Robotics)",
+               "element":  "cyber",
+               "exp":  658,
+               "gold":  290
            },
     "24":  {
                "minions":  [
@@ -4103,7 +4523,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  98,
                             "archetype":  "chaos_jester",
                             "baseHp":  1393,
-                            "title":  "Bá Chủ Thống Trị Đồ chơi và Trò chơi truyền thống"
+                            "title":  "Bá Chủ Thống Trị Đồ chơi và Trò chơi truyền thống",
+                            "element":  "dark",
+                            "exp":  139,
+                            "gold":  61
                         },
                "background":  {
                                   "effect":  "confetti",
@@ -4119,7 +4542,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  24,
                "tier":  1,
                "biome":  "carnival_night",
-               "topicName":  "Đồ chơi và Trò chơi truyền thống (Toys \u0026 Traditional Games)"
+               "topicName":  "Đồ chơi và Trò chơi truyền thống (Toys \u0026 Traditional Games)",
+               "element":  "dark",
+               "exp":  278,
+               "gold":  122
            },
     "19":  {
                "minions":  [
@@ -4161,7 +4587,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  87,
                             "archetype":  "ancient_golem",
                             "baseHp":  1232,
-                            "title":  "Bá Chủ Thống Trị Vật dụng và Thiết bị nhà bếp"
+                            "title":  "Bá Chủ Thống Trị Vật dụng và Thiết bị nhà bếp",
+                            "element":  "nature",
+                            "exp":  116,
+                            "gold":  50
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -4177,7 +4606,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  19,
                "tier":  1,
                "biome":  "ancient_ruins",
-               "topicName":  "Vật dụng và Thiết bị nhà bếp (Kitchen Appliances \u0026 Utensils)"
+               "topicName":  "Vật dụng và Thiết bị nhà bếp (Kitchen Appliances \u0026 Utensils)",
+               "element":  "nature",
+               "exp":  231,
+               "gold":  101
            },
     "29":  {
                "minions":  [
@@ -4219,7 +4651,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  110,
                             "archetype":  "virtuoso_maestro",
                             "baseHp":  1555,
-                            "title":  "Bá Chủ Thống Trị Thuật ngữ âm nhạc và Bản nhạc"
+                            "title":  "Bá Chủ Thống Trị Thuật ngữ âm nhạc và Bản nhạc",
+                            "element":  "cosmic",
+                            "exp":  163,
+                            "gold":  72
                         },
                "background":  {
                                   "effect":  "music_notes",
@@ -4235,7 +4670,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  29,
                "tier":  2,
                "biome":  "grand_symphony",
-               "topicName":  "Thuật ngữ âm nhạc và Bản nhạc (Music Theory \u0026 Sheet Music)"
+               "topicName":  "Thuật ngữ âm nhạc và Bản nhạc (Music Theory \u0026 Sheet Music)",
+               "element":  "cosmic",
+               "exp":  326,
+               "gold":  143
            },
     "61":  {
                "minions":  [
@@ -4277,7 +4715,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  184,
                             "archetype":  "cyber_overlord",
                             "baseHp":  2589,
-                            "title":  "Bá Chủ Thống Trị Linh kiện máy tính"
+                            "title":  "Bá Chủ Thống Trị Linh kiện máy tính",
+                            "element":  "cyber",
+                            "exp":  315,
+                            "gold":  138
                         },
                "background":  {
                                   "effect":  "digital_glitch",
@@ -4293,7 +4734,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  61,
                "tier":  3,
                "biome":  "cyber_arcade_city",
-               "topicName":  "Linh kiện máy tính (Computer Hardware components)"
+               "topicName":  "Linh kiện máy tính (Computer Hardware components)",
+               "element":  "cyber",
+               "exp":  630,
+               "gold":  277
            },
     "94":  {
                "minions":  [
@@ -4335,7 +4779,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  261,
                             "archetype":  "turbo_highway_wyrm",
                             "baseHp":  3656,
-                            "title":  "Bá Chủ Thống Trị Phương tiện giao thông công cộng"
+                            "title":  "Bá Chủ Thống Trị Phương tiện giao thông công cộng",
+                            "element":  "cyber",
+                            "exp":  472,
+                            "gold":  208
                         },
                "background":  {
                                   "effect":  "headlights",
@@ -4351,7 +4798,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  94,
                "tier":  4,
                "biome":  "metropolis_freeway",
-               "topicName":  "Phương tiện giao thông công cộng (Public Transportation)"
+               "topicName":  "Phương tiện giao thông công cộng (Public Transportation)",
+               "element":  "cyber",
+               "exp":  944,
+               "gold":  416
            },
     "97":  {
                "minions":  [
@@ -4393,7 +4843,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  268,
                             "archetype":  "ancient_golem",
                             "baseHp":  3753,
-                            "title":  "Bá Chủ Thống Trị Quán ăn và Dịch vụ ăn uống"
+                            "title":  "Bá Chủ Thống Trị Quán ăn và Dịch vụ ăn uống",
+                            "element":  "nature",
+                            "exp":  486,
+                            "gold":  214
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -4409,7 +4862,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  97,
                "tier":  4,
                "biome":  "ancient_ruins",
-               "topicName":  "Quán ăn và Dịch vụ ăn uống (Restaurants \u0026 Food Service)"
+               "topicName":  "Quán ăn và Dịch vụ ăn uống (Restaurants \u0026 Food Service)",
+               "element":  "nature",
+               "exp":  972,
+               "gold":  428
            },
     "9":  {
               "minions":  [
@@ -4451,7 +4907,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  64,
                            "archetype":  "foundry_juggernaut",
                            "baseHp":  909,
-                           "title":  "Chúa Tể Dây Chuyền Sản Xuất"
+                           "title":  "Chúa Tể Dây Chuyền Sản Xuất",
+                           "element":  "fire",
+                           "exp":  68,
+                           "gold":  30
                        },
               "background":  {
                                  "effect":  "sparks",
@@ -4467,7 +4926,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  9,
               "tier":  1,
               "biome":  "iron_foundry",
-              "topicName":  "Ngành nghề và Chức danh công việc (Professions \u0026 Job Titles)"
+              "topicName":  "Ngành nghề và Chức danh công việc (Professions \u0026 Job Titles)",
+              "element":  "fire",
+              "exp":  136,
+              "gold":  59
           },
     "74":  {
                "minions":  [
@@ -4509,7 +4971,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  215,
                             "archetype":  "ancient_dryad",
                             "baseHp":  3010,
-                            "title":  "Bá Chủ Thống Trị Hệ sinh thái"
+                            "title":  "Bá Chủ Thống Trị Hệ sinh thái",
+                            "element":  "nature",
+                            "exp":  377,
+                            "gold":  166
                         },
                "background":  {
                                   "effect":  "spores_fireflies",
@@ -4525,7 +4990,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  74,
                "tier":  3,
                "biome":  "primeval_forest",
-               "topicName":  "Hệ sinh thái (Ecosystems)"
+               "topicName":  "Hệ sinh thái (Ecosystems)",
+               "element":  "nature",
+               "exp":  754,
+               "gold":  332
            },
     "37":  {
                "minions":  [
@@ -4567,7 +5035,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  129,
                             "archetype":  "ancient_golem",
                             "baseHp":  1814,
-                            "title":  "Bá Chủ Thống Trị Hội họa và Mỹ thuật"
+                            "title":  "Bá Chủ Thống Trị Hội họa và Mỹ thuật",
+                            "element":  "nature",
+                            "exp":  201,
+                            "gold":  88
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -4583,7 +5054,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  37,
                "tier":  2,
                "biome":  "ancient_ruins",
-               "topicName":  "Hội họa và Mỹ thuật (Painting \u0026 Fine Arts)"
+               "topicName":  "Hội họa và Mỹ thuật (Painting \u0026 Fine Arts)",
+               "element":  "nature",
+               "exp":  402,
+               "gold":  176
            },
     "7":  {
               "minions":  [
@@ -4625,7 +5099,10 @@ window.DUNGEON_DATA_100 = {
                            "atk":  59,
                            "archetype":  "plague_titan",
                            "baseHp":  844,
-                           "title":  "Nguồn Cội Đại Dịch Vô Tận"
+                           "title":  "Nguồn Cội Đại Dịch Vô Tận",
+                           "element":  "nature",
+                           "exp":  58,
+                           "gold":  25
                        },
               "background":  {
                                  "effect":  "ecg_pulse",
@@ -4641,7 +5118,10 @@ window.DUNGEON_DATA_100 = {
               "stt":  7,
               "tier":  1,
               "biome":  "medical_bio_lab",
-              "topicName":  "Các loại bệnh và Triệu chứng y khoa (Diseases \u0026 Medical Symptoms)"
+              "topicName":  "Các loại bệnh và Triệu chứng y khoa (Diseases \u0026 Medical Symptoms)",
+              "element":  "nature",
+              "exp":  117,
+              "gold":  50
           },
     "52":  {
                "minions":  [
@@ -4683,7 +5163,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  163,
                             "archetype":  "calamity_dragon",
                             "baseHp":  2298,
-                            "title":  "Bá Chủ Thống Trị Hiện tượng thời tiết và Khí hậu"
+                            "title":  "Bá Chủ Thống Trị Hiện tượng thời tiết và Khí hậu",
+                            "element":  "lightning",
+                            "exp":  272,
+                            "gold":  120
                         },
                "background":  {
                                   "effect":  "lightning_flashes",
@@ -4699,7 +5182,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  52,
                "tier":  3,
                "biome":  "storm_caldera",
-               "topicName":  "Hiện tượng thời tiết và Khí hậu (Weather Phenomena \u0026 Climate)"
+               "topicName":  "Hiện tượng thời tiết và Khí hậu (Weather Phenomena \u0026 Climate)",
+               "element":  "lightning",
+               "exp":  544,
+               "gold":  239
            },
     "81":  {
                "minions":  [
@@ -4741,7 +5227,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  231,
                             "archetype":  "turbo_highway_wyrm",
                             "baseHp":  3236,
-                            "title":  "Bá Chủ Thống Trị Các công trình công cộng trong thành phố"
+                            "title":  "Bá Chủ Thống Trị Các công trình công cộng trong thành phố",
+                            "element":  "cyber",
+                            "exp":  410,
+                            "gold":  180
                         },
                "background":  {
                                   "effect":  "headlights",
@@ -4757,7 +5246,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  81,
                "tier":  4,
                "biome":  "metropolis_freeway",
-               "topicName":  "Các công trình công cộng trong thành phố (Public City Structures)"
+               "topicName":  "Các công trình công cộng trong thành phố (Public City Structures)",
+               "element":  "cyber",
+               "exp":  820,
+               "gold":  361
            },
     "39":  {
                "minions":  [
@@ -4799,7 +5291,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  133,
                             "archetype":  "scholar_lich",
                             "baseHp":  1878,
-                            "title":  "Bá Chủ Thống Trị Các môn học hàn lâm"
+                            "title":  "Bá Chủ Thống Trị Các môn học hàn lâm",
+                            "element":  "dark",
+                            "exp":  210,
+                            "gold":  92
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -4815,7 +5310,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  39,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Các môn học hàn lâm (Academic Subjects)"
+               "topicName":  "Các môn học hàn lâm (Academic Subjects)",
+               "element":  "dark",
+               "exp":  421,
+               "gold":  185
            },
     "48":  {
                "minions":  [
@@ -4857,7 +5355,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  154,
                             "archetype":  "broadcast_overlord",
                             "baseHp":  2169,
-                            "title":  "Bá Chủ Thống Trị Truyện tranh và Phim hoạt hình"
+                            "title":  "Bá Chủ Thống Trị Truyện tranh và Phim hoạt hình",
+                            "element":  "cyber",
+                            "exp":  253,
+                            "gold":  111
                         },
                "background":  {
                                   "effect":  "crt_static",
@@ -4873,7 +5374,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  48,
                "tier":  2,
                "biome":  "broadcast_studio",
-               "topicName":  "Truyện tranh và Phim hoạt hình (Comics \u0026 Animation)"
+               "topicName":  "Truyện tranh và Phim hoạt hình (Comics \u0026 Animation)",
+               "element":  "cyber",
+               "exp":  506,
+               "gold":  222
            },
     "93":  {
                "minions":  [
@@ -4915,7 +5419,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  259,
                             "archetype":  "iron_judge",
                             "baseHp":  3624,
-                            "title":  "Bá Chủ Thống Trị Thuế và Các loại bảo hiểm"
+                            "title":  "Bá Chủ Thống Trị Thuế và Các loại bảo hiểm",
+                            "element":  "holy",
+                            "exp":  467,
+                            "gold":  206
                         },
                "background":  {
                                   "effect":  "verdict_aura",
@@ -4931,7 +5438,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  93,
                "tier":  4,
                "biome":  "high_tribunal",
-               "topicName":  "Thuế và Các loại bảo hiểm (Taxes \u0026 Insurance)"
+               "topicName":  "Thuế và Các loại bảo hiểm (Taxes \u0026 Insurance)",
+               "element":  "holy",
+               "exp":  934,
+               "gold":  411
            },
     "90":  {
                "minions":  [
@@ -4973,7 +5483,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  252,
                             "archetype":  "ancient_golem",
                             "baseHp":  3527,
-                            "title":  "Bá Chủ Thống Trị Vật liệu xây dựng"
+                            "title":  "Bá Chủ Thống Trị Vật liệu xây dựng",
+                            "element":  "nature",
+                            "exp":  453,
+                            "gold":  200
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -4989,7 +5502,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  90,
                "tier":  4,
                "biome":  "ancient_ruins",
-               "topicName":  "Vật liệu xây dựng (Construction Materials)"
+               "topicName":  "Vật liệu xây dựng (Construction Materials)",
+               "element":  "nature",
+               "exp":  906,
+               "gold":  399
            },
     "21":  {
                "minions":  [
@@ -5031,7 +5547,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  91,
                             "archetype":  "chaos_jester",
                             "baseHp":  1296,
-                            "title":  "Bá Chủ Thống Trị Sự kiện, Lễ hội và Tiệc tùng"
+                            "title":  "Bá Chủ Thống Trị Sự kiện, Lễ hội và Tiệc tùng",
+                            "element":  "dark",
+                            "exp":  125,
+                            "gold":  54
                         },
                "background":  {
                                   "effect":  "confetti",
@@ -5047,7 +5566,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  21,
                "tier":  1,
                "biome":  "carnival_night",
-               "topicName":  "Sự kiện, Lễ hội và Tiệc tùng (Events, Festivals \u0026 Parties)"
+               "topicName":  "Sự kiện, Lễ hội và Tiệc tùng (Events, Festivals \u0026 Parties)",
+               "element":  "dark",
+               "exp":  250,
+               "gold":  109
            },
     "56":  {
                "minions":  [
@@ -5089,7 +5611,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  173,
                             "archetype":  "calamity_dragon",
                             "baseHp":  2428,
-                            "title":  "Bá Chủ Thống Trị Thảm họa thiên nhiên"
+                            "title":  "Bá Chủ Thống Trị Thảm họa thiên nhiên",
+                            "element":  "lightning",
+                            "exp":  291,
+                            "gold":  128
                         },
                "background":  {
                                   "effect":  "lightning_flashes",
@@ -5105,7 +5630,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  56,
                "tier":  3,
                "biome":  "storm_caldera",
-               "topicName":  "Thảm họa thiên nhiên (Natural Disasters)"
+               "topicName":  "Thảm họa thiên nhiên (Natural Disasters)",
+               "element":  "lightning",
+               "exp":  582,
+               "gold":  256
            },
     "46":  {
                "minions":  [
@@ -5147,7 +5675,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  150,
                             "archetype":  "ancient_golem",
                             "baseHp":  2105,
-                            "title":  "Bá Chủ Thống Trị Ngôn ngữ học và Từ vựng học"
+                            "title":  "Bá Chủ Thống Trị Ngôn ngữ học và Từ vựng học",
+                            "element":  "nature",
+                            "exp":  244,
+                            "gold":  107
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -5163,7 +5694,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  46,
                "tier":  2,
                "biome":  "ancient_ruins",
-               "topicName":  "Ngôn ngữ học và Từ vựng học (Linguistics \u0026 Lexicology)"
+               "topicName":  "Ngôn ngữ học và Từ vựng học (Linguistics \u0026 Lexicology)",
+               "element":  "nature",
+               "exp":  488,
+               "gold":  214
            },
     "75":  {
                "minions":  [
@@ -5205,7 +5739,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  217,
                             "archetype":  "quantum_agi_god",
                             "baseHp":  3042,
-                            "title":  "Bá Chủ Thống Trị Thiết bị viễn thông"
+                            "title":  "Bá Chủ Thống Trị Thiết bị viễn thông",
+                            "element":  "cyber",
+                            "exp":  382,
+                            "gold":  168
                         },
                "background":  {
                                   "effect":  "binary_rain",
@@ -5221,7 +5758,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  75,
                "tier":  3,
                "biome":  "quantum_agi_datacenter",
-               "topicName":  "Thiết bị viễn thông (Telecommunication Devices)"
+               "topicName":  "Thiết bị viễn thông (Telecommunication Devices)",
+               "element":  "cyber",
+               "exp":  763,
+               "gold":  336
            },
     "79":  {
                "minions":  [
@@ -5263,7 +5803,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  226,
                             "archetype":  "turbo_highway_wyrm",
                             "baseHp":  3171,
-                            "title":  "Bá Chủ Thống Trị Hạ tầng giao thông đô thị"
+                            "title":  "Bá Chủ Thống Trị Hạ tầng giao thông đô thị",
+                            "element":  "cyber",
+                            "exp":  400,
+                            "gold":  176
                         },
                "background":  {
                                   "effect":  "headlights",
@@ -5279,7 +5822,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  79,
                "tier":  4,
                "biome":  "metropolis_freeway",
-               "topicName":  "Hạ tầng giao thông đô thị (Urban Traffic Infrastructure)"
+               "topicName":  "Hạ tầng giao thông đô thị (Urban Traffic Infrastructure)",
+               "element":  "cyber",
+               "exp":  801,
+               "gold":  353
            },
     "84":  {
                "minions":  [
@@ -5321,7 +5867,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  238,
                             "archetype":  "skyline_zephyr_behemoth",
                             "baseHp":  3333,
-                            "title":  "Bá Chủ Thống Trị Kiến trúc và Bất động sản"
+                            "title":  "Bá Chủ Thống Trị Kiến trúc và Bất động sản",
+                            "element":  "lightning",
+                            "exp":  424,
+                            "gold":  187
                         },
                "background":  {
                                   "effect":  "beacon_lights",
@@ -5337,7 +5886,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  84,
                "tier":  4,
                "biome":  "skyport_terminal",
-               "topicName":  "Kiến trúc và Bất động sản (Architecture \u0026 Real Estate)"
+               "topicName":  "Kiến trúc và Bất động sản (Architecture \u0026 Real Estate)",
+               "element":  "lightning",
+               "exp":  848,
+               "gold":  374
            },
     "32":  {
                "minions":  [
@@ -5379,7 +5931,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  117,
                             "archetype":  "scholar_lich",
                             "baseHp":  1652,
-                            "title":  "Bá Chủ Thống Trị Văn phòng phẩm và Dụng cụ học tập"
+                            "title":  "Bá Chủ Thống Trị Văn phòng phẩm và Dụng cụ học tập",
+                            "element":  "dark",
+                            "exp":  177,
+                            "gold":  78
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -5395,7 +5950,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  32,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Văn phòng phẩm và Dụng cụ học tập (Stationery \u0026 School Supplies)"
+               "topicName":  "Văn phòng phẩm và Dụng cụ học tập (Stationery \u0026 School Supplies)",
+               "element":  "dark",
+               "exp":  354,
+               "gold":  155
            },
     "89":  {
                "minions":  [
@@ -5437,7 +5995,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  249,
                             "archetype":  "broadcast_overlord",
                             "baseHp":  3494,
-                            "title":  "Bá Chủ Thống Trị Tiếp thị và Chiến dịch quảng cáo"
+                            "title":  "Bá Chủ Thống Trị Tiếp thị và Chiến dịch quảng cáo",
+                            "element":  "cyber",
+                            "exp":  448,
+                            "gold":  198
                         },
                "background":  {
                                   "effect":  "crt_static",
@@ -5453,7 +6014,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  89,
                "tier":  4,
                "biome":  "broadcast_studio",
-               "topicName":  "Tiếp thị và Chiến dịch quảng cáo (Marketing \u0026 Advertising Campaigns)"
+               "topicName":  "Tiếp thị và Chiến dịch quảng cáo (Marketing \u0026 Advertising Campaigns)",
+               "element":  "cyber",
+               "exp":  896,
+               "gold":  395
            },
     "31":  {
                "minions":  [
@@ -5495,7 +6059,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  115,
                             "archetype":  "scholar_lich",
                             "baseHp":  1620,
-                            "title":  "Bá Chủ Thống Trị Khóa luận và Nghiên cứu khoa học"
+                            "title":  "Bá Chủ Thống Trị Khóa luận và Nghiên cứu khoa học",
+                            "element":  "dark",
+                            "exp":  172,
+                            "gold":  76
                         },
                "background":  {
                                   "effect":  "magic_pages",
@@ -5511,7 +6078,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  31,
                "tier":  2,
                "biome":  "infinite_library",
-               "topicName":  "Khóa luận và Nghiên cứu khoa học (Theses \u0026 Academic Research)"
+               "topicName":  "Khóa luận và Nghiên cứu khoa học (Theses \u0026 Academic Research)",
+               "element":  "dark",
+               "exp":  345,
+               "gold":  151
            },
     "15":  {
                "minions":  [
@@ -5553,7 +6123,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  78,
                             "archetype":  "iron_judge",
                             "baseHp":  1103,
-                            "title":  "Bá Chủ Thống Trị Chính phủ và Các cơ quan nhà nước"
+                            "title":  "Bá Chủ Thống Trị Chính phủ và Các cơ quan nhà nước",
+                            "element":  "holy",
+                            "exp":  96,
+                            "gold":  42
                         },
                "background":  {
                                   "effect":  "verdict_aura",
@@ -5569,7 +6142,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  15,
                "tier":  1,
                "biome":  "high_tribunal",
-               "topicName":  "Chính phủ và Các cơ quan nhà nước (Government \u0026 State Agencies)"
+               "topicName":  "Chính phủ và Các cơ quan nhà nước (Government \u0026 State Agencies)",
+               "element":  "holy",
+               "exp":  193,
+               "gold":  84
            },
     "25":  {
                "minions":  [
@@ -5611,7 +6187,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  101,
                             "archetype":  "virtuoso_maestro",
                             "baseHp":  1426,
-                            "title":  "Bá Chủ Thống Trị Các loại hình nghệ thuật biểu diễn"
+                            "title":  "Bá Chủ Thống Trị Các loại hình nghệ thuật biểu diễn",
+                            "element":  "cosmic",
+                            "exp":  144,
+                            "gold":  63
                         },
                "background":  {
                                   "effect":  "music_notes",
@@ -5627,7 +6206,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  25,
                "tier":  1,
                "biome":  "grand_symphony",
-               "topicName":  "Các loại hình nghệ thuật biểu diễn (Performing Arts)"
+               "topicName":  "Các loại hình nghệ thuật biểu diễn (Performing Arts)",
+               "element":  "cosmic",
+               "exp":  288,
+               "gold":  126
            },
     "18":  {
                "minions":  [
@@ -5669,7 +6251,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  84,
                             "archetype":  "ancient_golem",
                             "baseHp":  1199,
-                            "title":  "Bá Chủ Thống Trị Các giai đoạn trong cuộc đời"
+                            "title":  "Bá Chủ Thống Trị Các giai đoạn trong cuộc đời",
+                            "element":  "nature",
+                            "exp":  111,
+                            "gold":  48
                         },
                "background":  {
                                   "effect":  "ambient_sparks",
@@ -5685,7 +6270,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  18,
                "tier":  1,
                "biome":  "ancient_ruins",
-               "topicName":  "Các giai đoạn trong cuộc đời (Stages of Life)"
+               "topicName":  "Các giai đoạn trong cuộc đời (Stages of Life)",
+               "element":  "nature",
+               "exp":  222,
+               "gold":  96
            },
     "42":  {
                "minions":  [
@@ -5727,7 +6315,10 @@ window.DUNGEON_DATA_100 = {
                             "atk":  140,
                             "archetype":  "virtuoso_maestro",
                             "baseHp":  1975,
-                            "title":  "Bá Chủ Thống Trị Buổi hòa nhạc và Sân khấu biểu diễn"
+                            "title":  "Bá Chủ Thống Trị Buổi hòa nhạc và Sân khấu biểu diễn",
+                            "element":  "cosmic",
+                            "exp":  225,
+                            "gold":  98
                         },
                "background":  {
                                   "effect":  "music_notes",
@@ -5743,7 +6334,10 @@ window.DUNGEON_DATA_100 = {
                "stt":  42,
                "tier":  2,
                "biome":  "grand_symphony",
-               "topicName":  "Buổi hòa nhạc và Sân khấu biểu diễn (Concerts \u0026 Stages)"
+               "topicName":  "Buổi hòa nhạc và Sân khấu biểu diễn (Concerts \u0026 Stages)",
+               "element":  "cosmic",
+               "exp":  450,
+               "gold":  197
            },
     "100":  {
                 "minions":  [
@@ -5785,7 +6379,10 @@ window.DUNGEON_DATA_100 = {
                              "atk":  275,
                              "archetype":  "omni_carrier_titan",
                              "baseHp":  3850,
-                             "title":  "Bá Chủ Tối Thượng Chuỗi Cung Ứng Toàn Cầu"
+                             "title":  "Bá Chủ Tối Thượng Chuỗi Cung Ứng Toàn Cầu",
+                             "element":  "cyber",
+                             "exp":  500,
+                             "gold":  220
                          },
                 "background":  {
                                    "effect":  "crane_lasers",
@@ -5801,12 +6398,63 @@ window.DUNGEON_DATA_100 = {
                 "stt":  100,
                 "tier":  4,
                 "biome":  "global_freight_terminal",
-                "topicName":  "Logistics và Chuỗi cung ứng (Logistics \u0026 Supply Chain)"
+                "topicName":  "Logistics và Chuỗi cung ứng (Logistics \u0026 Supply Chain)",
+                "element":  "cyber",
+                "exp":  1000,
+                "gold":  441
             }
 };
 
 /**
- * Lấy bối cảnh sân đấu (Background Palette & Props) theo STT chủ đề
+ * ==================== HỆ THỐNG NGUYÊN TỐ & BẢNG KHẮC CHẾ CANONICAL ====================
+ * 8 Hệ nguyên tố chuẩn: fire | water | nature | lightning | holy | dark | cyber | cosmic
+ */
+window.CANONICAL_ELEMENTS = ['fire', 'water', 'nature', 'lightning', 'holy', 'dark', 'cyber', 'cosmic'];
+
+window.ELEMENT_NAMES = {
+  fire: 'Hỏa',
+  water: 'Thủy',
+  nature: 'Tự Nhiên',
+  lightning: 'Lôi',
+  holy: 'Thánh',
+  dark: 'Ám',
+  cyber: 'Công Nghệ',
+  cosmic: 'Vũ Trụ'
+};
+
+window.ELEMENT_ICONS = {
+  fire: '🔥',
+  water: '💧',
+  nature: '🌿',
+  lightning: '⚡',
+  holy: '✨',
+  dark: '🌑',
+  cyber: '🤖',
+  cosmic: '🌌'
+};
+
+// Bảng quan hệ tương khắc: attacker -> defender -> multiplier
+window.ELEMENTAL_MATCHUPS = {
+  fire: { nature: 1.5, water: 0.7, dark: 1.2 },
+  water: { fire: 1.5, lightning: 0.7, nature: 0.8 },
+  nature: { water: 1.5, fire: 0.7, cyber: 1.2 },
+  lightning: { water: 1.5, cyber: 1.3, nature: 0.8 },
+  holy: { dark: 1.6, cosmic: 0.8 },
+  dark: { holy: 1.2, nature: 1.2, cosmic: 0.8 },
+  cyber: { lightning: 0.8, dark: 1.3, holy: 1.1 },
+  cosmic: { dark: 1.4, holy: 1.2, cyber: 1.3, fire: 1.1, water: 1.1 }
+};
+
+window.calculateElementalMultiplier = function(attackerElement, defenderElement) {
+  if (!attackerElement || !defenderElement) return 1.0;
+  const atk = String(attackerElement).toLowerCase();
+  const def = String(defenderElement).toLowerCase();
+  if (atk === def) return 1.0;
+  return window.ELEMENTAL_MATCHUPS[atk]?.[def] || 1.0;
+};
+
+/**
+ * Lấy bối cảnh sân đấu (Background Palette, Props & Element) theo STT chủ đề
  */
 window.getDungeonThemeForTopic = function(stt) {
   const d = window.DUNGEON_DATA_100?.[stt];
@@ -5815,6 +6463,11 @@ window.getDungeonThemeForTopic = function(stt) {
       stt: stt,
       topicName: d.cleanVi || d.topicName,
       biome: d.biome,
+      element: d.element || 'fire',
+      elementIcon: window.ELEMENT_ICONS[d.element] || '🔥',
+      elementName: window.ELEMENT_NAMES[d.element] || 'Hỏa',
+      exp: d.exp || 100,
+      gold: d.gold || 35,
       ...d.background
     };
   }
@@ -5823,6 +6476,11 @@ window.getDungeonThemeForTopic = function(stt) {
     stt: stt || 1,
     topicName: "Hầm Ngục Bí Hiểm",
     biome: "stone_dungeon",
+    element: "fire",
+    elementIcon: "🔥",
+    elementName: "Hỏa",
+    exp: 100,
+    gold: 35,
     wallColor: "#0B0D17",
     floorColor: "#121422",
     accentColor: "#FFE787",
@@ -5850,9 +6508,13 @@ window.getDungeonMonstersForTopic = function(stt, waveNum, totalWaves) {
         title: d.boss.title,
         type: d.boss.archetype || "dragon",
         color: d.boss.color || "#EF4444",
+        element: d.boss.element || d.element || "fire",
+        elementIcon: window.ELEMENT_ICONS[d.boss.element || d.element] || "🔥",
         baseHp: d.boss.baseHp,
         atk: d.boss.atk,
         def: d.boss.def,
+        exp: d.boss.exp || Math.round((d.exp || 100) * 0.5),
+        gold: d.boss.gold || Math.round((d.gold || 35) * 0.5),
         skillName: d.boss.skillName,
         roars: d.boss.roars,
         tier: d.tier
@@ -5864,9 +6526,13 @@ window.getDungeonMonstersForTopic = function(stt, waveNum, totalWaves) {
       title: "Chúa Tể Ngục Tối",
       type: "dragon",
       color: "#EF4444",
+      element: "fire",
+      elementIcon: "🔥",
       baseHp: 1200,
       atk: 60,
       def: 35,
+      exp: 50,
+      gold: 20,
       skillName: "Hơi Thở Hắc Long",
       roars: ["Grrrr! Ngươi không thể vượt qua ta!"],
       tier: 1
@@ -5882,6 +6548,8 @@ window.getDungeonMonstersForTopic = function(stt, waveNum, totalWaves) {
       name: m.name,
       type: m.type || "minion",
       color: m.color || d.background?.accentColor || "#10B981",
+      element: d.element || "fire",
+      elementIcon: window.ELEMENT_ICONS[d.element] || "🔥",
       baseHp: m.hp,
       atk: m.atk,
       def: m.def,
@@ -5894,6 +6562,8 @@ window.getDungeonMonstersForTopic = function(stt, waveNum, totalWaves) {
     name: "Quái Vật Hầm Ngục",
     type: "slime",
     color: "#22C55E",
+    element: "nature",
+    elementIcon: "🌿",
     baseHp: 80,
     atk: 25,
     def: 12,
@@ -5904,12 +6574,315 @@ window.getDungeonMonstersForTopic = function(stt, waveNum, totalWaves) {
 /**
  * Tính toán sát thương chiến đấu có xét đến chỉ số DEF của đối phương
  */
-window.calculateCombatDamage = function(attackerAtk, defenderDef, isCrit, skillMultiplier = 1.0) {
-  const rawDmg = (attackerAtk || 35) * (skillMultiplier || 1.0) + Math.floor(Math.random() * 12);
+window.calculateCombatDamage = function(attackerAtk, defenderDef, isCrit, skillMultiplier = 1.0, attackerElement = null, defenderElement = null) {
+  const elemMult = window.calculateElementalMultiplier(attackerElement, defenderElement);
+  const rawDmg = (attackerAtk || 35) * (skillMultiplier || 1.0) * elemMult + Math.floor(Math.random() * 12);
   const defMitigation = Math.floor((defenderDef || 10) / 3);
-  let netDmg = Math.max(15, rawDmg - defMitigation);
+  let netDmg = Math.max(15, Math.round(rawDmg - defMitigation));
   if (isCrit) {
     netDmg = Math.round(netDmg * 1.8);
   }
   return netDmg;
 };
+
+/**
+ * ==================== KHO TỪ VỰNG DỰ PHÒNG THIẾT YẾU CHO CHỦ ĐỀ 87 - 100 ====================
+ * Cung cấp từ vựng chuẩn Oxford/CEFR nếu file output/{stt}.txt chưa kịp tạo hoặc lỗi mạng.
+ */
+window.FALLBACK_VOCABULARY_CORPUS = {
+  87: [ // Du lịch và Lưu trú (Tourism & Accommodations)
+    { word: "hotel", cloze: "h___l", ipa: "/hoʊˈtel/", def: "An establishment providing accommodation, meals, and other services for travelers.", vi: "khách sạn", pl: "hotels", ex: "1. We booked a room at a seaside hotel. <br>2. The hotel offers complimentary breakfast." },
+    { word: "resort", cloze: "r____t", ipa: "/rɪˈzɔːrt/", def: "A place that is a popular destination for vacations or recreation.", vi: "khu nghỉ dưỡng", pl: "resorts", ex: "1. The luxury mountain resort features hot springs. <br>2. Families love visiting this beach resort." },
+    { word: "concierge", cloze: "c_______e", ipa: "/koʊn.siˈerʒ/", def: "A hotel employee whose job is to assist guests with bookings and advice.", vi: "nhân viên hỗ trợ khách", pl: "concierges", ex: "1. The concierge recommended a wonderful local bistro. <br>2. Ask the concierge to arrange airport transport." },
+    { word: "itinerary", cloze: "i_______y", ipa: "/aɪˈtɪn.ə.rer.i/", def: "A planned route or journey with scheduled stops and activities.", vi: "lịch trình chuyến đi", pl: "itineraries", ex: "1. Review the detailed flight itinerary before departure. <br>2. Our itinerary includes three UNESCO World Heritage sites." },
+    { word: "reservation", cloze: "r_________n", ipa: "/ˌrez.ɚˈveɪ.ʃən/", def: "An arrangement by which accommodations or tickets are secured in advance.", vi: "việc đặt phòng, đặt chỗ", pl: "reservations", ex: "1. I confirmed our dinner reservation online. <br>2. You must make hotel reservations well ahead of peak season." },
+    { word: "hospitality", cloze: "h_________y", ipa: "/ˌhɑː.spɪˈtæl.ə.t̬i/", def: "The friendly and generous reception and entertainment of guests.", vi: "lòng hiếu khách", pl: "hospitalities", ex: "1. Vietnamese hospitality always charms international visitors. <br>2. The staff was praised for exceptional hospitality." },
+    { word: "amenity", cloze: "a_____y", ipa: "/əˈmen.ə.t̬i/", def: "A desirable or useful feature or facility of a building or place.", vi: "tiện nghi khách sạn", pl: "amenities", ex: "1. Room amenities include high-speed Wi-Fi and an espresso machine. <br>2. The resort has outstanding spa amenities." },
+    { word: "suite", cloze: "s___e", ipa: "/swiːt/", def: "A set of connected rooms, especially in a hotel.", vi: "phòng thượng hạng", pl: "suites", ex: "1. The presidential suite overlooks the entire bay. <br>2. We were upgraded to an executive suite." },
+    { word: "excursion", cloze: "e_______n", ipa: "/ɪkˈskɝː.ʒən/", def: "A short journey or trip, especially one taken as a leisure activity.", vi: "chuyến dã ngoại, tham quan", pl: "excursions", ex: "1. We joined a morning snorkeling excursion to the coral reef. <br>2. Day excursions are available at the lobby desk." },
+    { word: "guesthouse", cloze: "g________e", ipa: "/ˈɡest.haʊs/", def: "A private house that offers accommodation to paying guests.", vi: "nhà khách", pl: "guesthouses", ex: "1. The cozy family guesthouse was surrounded by pine trees. <br>2. Guesthouses provide a warm and affordable travel experience." },
+    { word: "sightseeing", cloze: "s_________g", ipa: "/ˈsaɪtˌsiː.ɪŋ/", def: "The activity of visiting places of interest in a particular location.", vi: "hoạt động ngắm cảnh", pl: "sightseeings", ex: "1. We spent the sunny afternoon sightseeing downtown. <br>2. Hop-on hop-off buses are convenient for city sightseeing." },
+    { word: "check-in", cloze: "c_____-_n", ipa: "/ˈtʃek.ɪn/", def: "The act of reporting one's arrival at a hotel or airport.", vi: "thủ tục nhận phòng", pl: "check-ins", ex: "1. Hotel check-in begins at two o'clock in the afternoon. <br>2. Complete your mobile check-in to skip the queue." }
+  ],
+  88: [ // Hành lý và Phụ kiện du lịch (Luggage & Travel Accessories)
+    { word: "suitcase", cloze: "s______e", ipa: "/ˈsuːt.keɪs/", def: "A large case with a handle used for carrying clothes while traveling.", vi: "va li", pl: "suitcases", ex: "1. He packed a sturdy hardshell suitcase for the trip. <br>2. Never leave your suitcase unattended at the airport terminal." },
+    { word: "backpack", cloze: "b______k", ipa: "/ˈbæk.pæk/", def: "A bag with shoulder straps that allow it to be carried on one's back.", vi: "ba lô", pl: "backpacks", ex: "1. Her ergonomic backpack has a dedicated padded laptop compartment. <br>2. A waterproof backpack is essential for rainforest trekking." },
+    { word: "duffel bag", cloze: "d____l b_g", ipa: "/ˈdʌf.əl ˌbæɡ/", def: "A cylindrical canvas bag closed by a drawstring or zipper.", vi: "túi du lịch thể thao", pl: "duffel bags", ex: "1. He threw his gym gear into the duffel bag. <br>2. The leather duffel bag easily fits inside the overhead bin." },
+    { word: "toiletries", cloze: "t________s", ipa: "/ˈtɔɪ.lə.triz/", def: "Articles used in washing and taking care of one's body.", vi: "đồ dùng vệ sinh cá nhân", pl: "toiletries", ex: "1. Keep your travel-sized toiletries in a clear zip pouch. <br>2. The hotel provides eco-friendly herbal toiletries." },
+    { word: "luggage tag", cloze: "l_____e t_g", ipa: "/ˈlʌɡ.ɪdʒ ˌtæɡ/", def: "A label attached to a piece of baggage to identify its owner.", vi: "thẻ hành lý", pl: "luggage tags", ex: "1. Write your current contact number on the luggage tag. <br>2. A brightly colored luggage tag helps spot your bag on the carousel." },
+    { word: "compass", cloze: "c_____s", ipa: "/ˈkʌm.pəs/", def: "An instrument containing a magnetized pointer showing north direction.", vi: "la bàn", pl: "compasses", ex: "1. The hiker consulted his magnetic compass to stay on trail. <br>2. Even with GPS, carry an analog compass in wilderness areas." },
+    { word: "passport holder", cloze: "p______t h____r", ipa: "/ˈpæs.pɔːrt ˌhoʊl.dɚ/", def: "A protective wallet or cover for travel documents.", vi: "ví đựng hộ chiếu", pl: "passport holders", ex: "1. An RFID-blocking passport holder protects your credit cards. <br>2. Keep your boarding pass inside the passport holder." },
+    { word: "power adapter", cloze: "p___r a_____r", ipa: "/ˈpaʊ.ɚ əˌdæp.tɚ/", def: "A device that adapts one electrical voltage or plug shape to another.", vi: "đầu chuyển đổi nguồn điện", pl: "power adapters", ex: "1. Pack a universal power adapter when traveling internationally. <br>2. The adapter works with European and British wall sockets." },
+    { word: "neck pillow", cloze: "n__k p____w", ipa: "/ˈnek ˌpɪl.oʊ/", def: "A U-shaped cushion designed to support the neck during sleep on planes.", vi: "gối cổ du lịch", pl: "neck pillows", ex: "1. A memory foam neck pillow prevents soreness on long-haul flights. <br>2. Inflatable neck pillows save valuable luggage space." },
+    { word: "padlock", cloze: "p_____k", ipa: "/ˈpæd.lɑːk/", def: "A detachable lock hanging by a curved bar through an opening.", vi: "ổ khóa hành lý", pl: "padlocks", ex: "1. TSA-approved padlocks can be inspected without being destroyed. <br>2. Secure the zippers with a heavy-duty combination padlock." },
+    { word: "trolley", cloze: "t_____y", ipa: "/ˈtrɑː.li/", def: "A wheeled cart used to transport heavy luggage easily.", vi: "xe đẩy hành lý", pl: "trolleys", ex: "1. Collect a luggage trolley near the baggage claim carousel. <br>2. Push the trolley straight toward the customs inspection counter." },
+    { word: "luggage scale", cloze: "l_____e s___e", ipa: "/ˈlʌɡ.ɪdʒ ˌskeɪl/", def: "A portable device used to weigh luggage before arriving at the airport.", vi: "cân hành lý cầm tay", pl: "luggage scales", ex: "1. Weigh your suitcase with the digital luggage scale to avoid excess baggage fees. <br>2. The compact luggage scale easily slips into your pocket." }
+  ],
+  89: [ // Chiến dịch tiếp thị và Quảng cáo (Marketing & Advertising Campaigns)
+    { word: "campaign", cloze: "c______n", ipa: "/kæmˈpeɪn/", def: "An organized course of action to promote a product or service.", vi: "chiến dịch quảng cáo", pl: "campaigns", ex: "1. The summer marketing campaign boosted product sales by 40%. <br>2. We launched a viral campaign across social channels." },
+    { word: "billboard", cloze: "b_______d", ipa: "/ˈbɪl.bɔːrd/", def: "A large outdoor advertising sign located along highways.", vi: "biển quảng cáo ngoài trời", pl: "billboards", ex: "1. The illuminated billboard caught the attention of morning commuters. <br>2. Digital billboards display rotating interactive advertisements." },
+    { word: "branding", cloze: "b______g", ipa: "/ˈbræn.dɪŋ/", def: "The process of creating a strong and positive perception of a company.", vi: "xây dựng thương hiệu", pl: "brandings", ex: "1. Consistent visual branding reinforces customer loyalty. <br>2. Rebranding the company attracted a younger demographic." },
+    { word: "target audience", cloze: "t____t a______e", ipa: "/ˈtɑːr.ɡɪt ˌɑː.di.əns/", def: "A specific group of consumers most likely to purchase a product.", vi: "khách hàng mục tiêu", pl: "target audiences", ex: "1. University students form our core target audience. <br>2. Tailor your promotional message directly to the target audience." },
+    { word: "slogan", cloze: "s____n", ipa: "/ˈsloʊ.ɡən/", def: "A short, memorable catchphrase used in advertising campaigns.", vi: "khẩu hiệu quảng cáo", pl: "slogans", ex: "1. The brand slogan is instantly recognized worldwide. <br>2. Crafting a catchy advertising slogan requires deep market insight." },
+    { word: "promotion", cloze: "p_______n", ipa: "/prəˈmoʊ.ʃən/", def: "Publicity given to a product through discounts or special events.", vi: "chương trình khuyến mãi", pl: "promotions", ex: "1. Our flash-sale promotion runs throughout the holiday weekend. <br>2. Cross-channel promotions expand brand reach dramatically." },
+    { word: "influencer", cloze: "i________r", ipa: "/ˈɪn.flu.ən.sɚ/", def: "A person with the ability to influence potential buyers through social media.", vi: "người có sức ảnh hưởng", pl: "influencers", ex: "1. We partnered with a top tech influencer to unbox our flagship gadget. <br>2. Micro-influencers often deliver higher audience engagement rates." },
+    { word: "commercial", cloze: "c________l", ipa: "/kəˈmɝː.ʃəl/", def: "A television or radio advertisement.", vi: "quảng cáo truyền hình/radio", pl: "commercials", ex: "1. The hilarious Super Bowl commercial went viral within hours. <br>2. Prime-time television commercials command substantial advertising budgets." },
+    { word: "conversion rate", cloze: "c________n r__e", ipa: "/kənˈvɝː.ʒən ˌreɪt/", def: "The percentage of users who take a desired action on a campaign.", vi: "tỷ lệ chuyển đổi mua hàng", pl: "conversion rates", ex: "1. Optimizing the checkout flow improved our website conversion rate. <br>2. A clear call-to-action significantly lifts email conversion rates." },
+    { word: "sponsorship", cloze: "s_________p", ipa: "/ˈspɑːn.sɚ.ʃɪp/", def: "Financial support for an event or organization in exchange for advertising.", vi: "sự tài trợ thương hiệu", pl: "sponsorships", ex: "1. The corporate sponsorship of the marathon boosted brand visibility. <br>2. They negotiated a multi-year stadium naming rights sponsorship." },
+    { word: "engagement", cloze: "e________t", ipa: "/ɪnˈɡeɪdʒ.mənt/", def: "The degree of active involvement, interaction, and attention from users.", vi: "mức độ tương tác", pl: "engagements", ex: "1. Interactive video polls generate higher social engagement. <br>2. Measuring customer engagement metrics guides our content strategy." },
+    { word: "analytics", cloze: "a_______s", ipa: "/ˌæn.əlˈɪt̬.ɪks/", def: "Information resulting from the systematic analysis of marketing data.", vi: "dữ liệu phân tích tiếp thị", pl: "analytics", ex: "1. Check Google Analytics to track organic traffic acquisition. <br>2. Real-time advertising analytics inform instantaneous bidding adjustments." }
+  ],
+  91: [ // Chợ truyền thống và Siêu thị (Traditional Markets & Supermarkets)
+    { word: "aisle", cloze: "a___e", ipa: "/aɪl/", def: "A passage between rows of shelves in a supermarket.", vi: "lối đi giữa các quầy hàng", pl: "aisles", ex: "1. Canned vegetables are located in aisle four. <br>2. Keep the supermarket aisles clear for shopping carts." },
+    { word: "cashier", cloze: "c_____r", ipa: "/kæʃˈɪr/", def: "A person handling payments and receipts in a store or market.", vi: "nhân viên thu ngân", pl: "cashiers", ex: "1. The friendly cashier scanned our groceries quickly. <br>2. You can pay with cash or credit card at the cashier counter." },
+    { word: "groceries", cloze: "g_______s", ipa: "/ˈɡroʊ.sɚ.iz/", def: "Food and other household commodities sold by a grocer.", vi: "hàng tạp hóa và thực phẩm", pl: "groceries", ex: "1. We buy fresh organic groceries every Saturday morning. <br>2. Unpack the refrigerated groceries as soon as you get home." },
+    { word: "market stall", cloze: "m____t s___l", ipa: "/ˈmɑːr.kɪt ˌstɑːl/", def: "A stand, booth, or compartment in a market for displaying goods.", vi: "quầy hàng, sạp chợ", pl: "market stalls", ex: "1. The vendor displayed tropical fruits on her market stall. <br>2. Traditional market stalls offer aromatic herbs and spices." },
+    { word: "vendor", cloze: "v____r", ipa: "/ˈven.dɚ/", def: "A person or company offering items for sale, especially in the street.", vi: "tiểu thương, người bán hàng", pl: "vendors", ex: "1. Street vendors prepare crispy Vietnamese banh mi on the corner. <br>2. Local market vendors greet regular customers with generous smiles." },
+    { word: "fresh produce", cloze: "f___h p_____e", ipa: "/ˌfreʃ ˈproʊ.duːs/", def: "Agricultural food products, especially fresh vegetables and fruits.", vi: "nông sản tươi sống", pl: "fresh produces", ex: "1. The supermarket sources fresh produce directly from local farms. <br>2. High quality fresh produce is delivered daily at dawn." },
+    { word: "receipt", cloze: "r_____t", ipa: "/rɪˈsiːt/", def: "A printed statement acknowledging that money or goods have been received.", vi: "hóa đơn mua hàng", pl: "receipts", ex: "1. Always retain your store receipt in case you need an exchange. <br>2. The electronic cash register printed a detailed itemized receipt." },
+    { word: "discount", cloze: "d______t", ipa: "/ˈdɪs.kaʊnt/", def: "A deduction from the usual cost of something.", vi: "chiết khấu, giảm giá", pl: "discounts", ex: "1. Members enjoy a ten percent discount on dairy products. <br>2. Look for clearance tags to get the best seasonal discounts." },
+    { word: "bargain", cloze: "b_____n", ipa: "/ˈbɑːr.ɡɪn/", def: "A thing bought or offered for sale more cheaply than is usual.", vi: "món hời, mặc cả", pl: "bargains", ex: "1. Buying fresh seafood in bulk is always a great bargain. <br>2. Shoppers enjoy bargaining with vendors at night markets." },
+    { word: "shopping cart", cloze: "s______g c__t", ipa: "/ˈʃɑː.pɪŋ ˌkɑːrt/", def: "A wheeled vehicle supplied by a store for customers to collect goods.", vi: "xe đẩy mua hàng", pl: "shopping carts", ex: "1. Fill your shopping cart with healthy vegetables and fruits. <br>2. Return the shopping cart to the designated corral in the parking lot." },
+    { word: "basket", cloze: "b____t", ipa: "/ˈbæs.kət/", def: "A container used for carrying items when purchasing small quantities.", vi: "giỏ xách mua sắm", pl: "baskets", ex: "1. Grab a hand basket if you only need a few essentials. <br>2. The woven bamboo basket was brimming with fresh herbs." },
+    { word: "supermarket shelf", cloze: "s_________t s___f", ipa: "/ˈsuː.pɚˌmɑːr.kɪt ˌʃelf/", def: "A flat board attached horizontally inside a store displaying products.", vi: "kệ hàng siêu thị", pl: "supermarket shelves", ex: "1. Workers restock supermarket shelves during early morning shifts. <br>2. Prime eye-level supermarket shelves showcase premium brands." }
+  ],
+  92: [ // Hợp đồng và Văn bản pháp lý (Contracts & Legal Documents)
+    { word: "contract", cloze: "c______t", ipa: "/ˈkɑːn.trækt/", def: "A written or spoken agreement that is intended to be enforceable by law.", vi: "hợp đồng kinh tế", pl: "contracts", ex: "1. Both parties signed the employment contract yesterday. <br>2. Read the fine print thoroughly before endorsing any legal contract." },
+    { word: "clause", cloze: "c____e", ipa: "/klɑːz/", def: "A particular and separate article, stipulation, or condition in a contract.", vi: "điều khoản hợp đồng", pl: "clauses", ex: "1. The confidentiality clause protects proprietary corporate algorithms. <br>2. Review the termination clause carefully with your corporate counsel." },
+    { word: "amendment", cloze: "a_______t", ipa: "/əˈmend.mənt/", def: "A minor change or addition designed to improve a text or piece of legislation.", vi: "sự sửa đổi, bổ sung", pl: "amendments", ex: "1. The partners agreed to attach an amendment to the existing lease. <br>2. Any official amendment requires written mutual consent." },
+    { word: "stipulation", cloze: "s__________n", ipa: "/ˌstɪp.jəˈleɪ.ʃən/", def: "A condition or requirement that is specified or demanded as part of an agreement.", vi: "quy định bắt buộc", pl: "stipulations", ex: "1. The contract contains strict stipulations regarding delivery schedules. <br>2. Failure to comply with key stipulations will trigger penalties." },
+    { word: "liability", cloze: "l________y", ipa: "/ˌlaɪ.əˈbɪl.ə.t̬i/", def: "The state of being legally responsible for something.", vi: "trách nhiệm pháp lý", pl: "liabilities", ex: "1. The insurance policy limits product liability for damages. <br>2. Corporate directors must understand their personal fiduciary liability." },
+    { word: "signatory", cloze: "s_______y", ipa: "/ˈsɪɡ.nə.tɔːr.i/", def: "A party that has signed an official document or treaty.", vi: "bên ký kết hợp đồng", pl: "signatories", ex: "1. Authorized signatories from both enterprises attended the signing ceremony. <br>2. The treaty was ratified by all thirty European signatories." },
+    { word: "notary", cloze: "n____y", ipa: "/ˈnoʊ.t̬ɚ.i/", def: "A person authorized to perform certain legal formalities, especially certifying deeds.", vi: "công chứng viên", pl: "notaries", ex: "1. Have the deed of sale verified and stamped by a public notary. <br>2. The notary authenticated all original passport copies." },
+    { word: "breach of contract", cloze: "b____h _f c______t", ipa: "/ˌbriːtʃ əv ˈkɑːn.trækt/", def: "An act of breaking the terms of a legally binding contract.", vi: "sự vi phạm hợp đồng", pl: "breaches of contract", ex: "1. Failing to deliver the shipment on time constitutes a material breach of contract. <br>2. The plaintiff sued the supplier for breach of contract." },
+    { word: "warranty", cloze: "w______y", ipa: "/ˈwɔːr.ən.t̬i/", def: "A written guarantee issued to the purchaser of an article by its manufacturer.", vi: "cam kết bảo hành", pl: "warranties", ex: "1. The laptop comes with a comprehensive three-year manufacturer warranty. <br>2. Extended warranty covers accidental drops and electrical damage." },
+    { word: "arbitration", cloze: "a_________n", ipa: "/ˌɑːr.bəˈtreɪ.ʃən/", def: "The use of an independent arbitrator to settle an official dispute.", vi: "sự phân xử trọng tài", pl: "arbitrations", ex: "1. The international dispute was resolved via commercial arbitration in Singapore. <br>2. Arbitration clauses prevent costly and prolonged courtroom battles." },
+    { word: "addendum", cloze: "a______m", ipa: "/əˈden.dəm/", def: "An item of additional material added at the end of a book or document.", vi: "phụ lục bổ sung", pl: "addenda", ex: "1. The pricing adjustments are detailed in Addendum B. <br>2. Sign the addendum to formalize the extended completion deadline." },
+    { word: "enforceability", cloze: "e____________y", ipa: "/ɪnˌfɔːr.səˈbɪl.ə.t̬i/", def: "The property of being enforceable by law.", vi: "hiệu lực thi hành pháp lý", pl: "enforceabilities", ex: "1. The lawyer affirmed the legal enforceability of the signed nondisclosure agreement. <br>2. Ensure cross-border enforceability before entering international partnerships." }
+  ],
+  93: [ // Thuế và Bảo hiểm (Taxes & Insurance)
+    { word: "premium", cloze: "p_____m", ipa: "/ˈpriː.mi.əm/", def: "An amount paid periodically to an insurer for coverage under an insurance policy.", vi: "phí đóng bảo hiểm", pl: "premiums", ex: "1. Monthly health insurance premiums are deducted directly from salary. <br>2. Safe drivers receive substantial discounts on car insurance premiums." },
+    { word: "policy", cloze: "p____y", ipa: "/ˈpɑː.lə.si/", def: "A document detailing an insurance contract between policyholder and insurer.", vi: "hợp đồng bảo hiểm", pl: "policies", ex: "1. Read your homeowner insurance policy to check flood coverage. <br>2. The comprehensive travel policy covers lost baggage and medical emergencies." },
+    { word: "deductible", cloze: "d________e", ipa: "/dɪˈdʌk.tə.bəl/", def: "The amount you pay for covered healthcare or damage before insurance starts to pay.", vi: "mức khấu trừ miễn bồi thường", pl: "deductibles", ex: "1. Choosing a higher deductible lowers your annual insurance premium. <br>2. He paid a two-hundred-dollar deductible for windshield repairs." },
+    { word: "income tax", cloze: "i____e t_x", ipa: "/ˈɪn.kʌm ˌtæks/", def: "Tax levied by a government directly on personal or corporate income.", vi: "thuế thu nhập", pl: "income taxes", ex: "1. Progressive income tax rates increase with higher earnings brackets. <br>2. File your annual income tax declaration before the deadline." },
+    { word: "tariff", cloze: "t____f", ipa: "/ˈter.ɪf/", def: "A tax or duty to be paid on a particular class of imports or exports.", vi: "thuế quan xuất nhập khẩu", pl: "tariffs", ex: "1. New tariffs were imposed on imported steel and electronics. <br>2. Customs tariffs protect domestic agricultural producers." },
+    { word: "deduction", cloze: "d_______n", ipa: "/dɪˈdʌk.ʃən/", def: "An allowable reduction of gross income that reduces tax liability.", vi: "khoản giảm trừ thuế", pl: "deductions", ex: "1. Charitable donations qualify for significant tax deductions. <br>2. Keep receipts for all business expenses to maximize allowable tax deductions." },
+    { word: "tax exemption", cloze: "t_x e_______n", ipa: "/ˈtæks ɪɡˌzemp.ʃən/", def: "The reduction or complete removal of an obligation to make a compulsory payment.", vi: "sự miễn trừ thuế", pl: "tax exemptions", ex: "1. Renewable energy projects were granted a five-year corporate tax exemption. <br>2. Non-profit educational foundations enjoy complete tax exemption status." },
+    { word: "tax audit", cloze: "t_x a___t", ipa: "/ˈtæks ˌɑː.dɪt/", def: "An official examination of an individual or organization's accounts by tax authorities.", vi: "kiểm toán thuế", pl: "tax audits", ex: "1. The tax office conducted a routine audit of the corporate accounts. <br>2. Accurate electronic bookkeeping ensures a smooth tax audit." },
+    { word: "insurance claim", cloze: "i_______e c___m", ipa: "/ɪnˈʃʊr.əns ˌkleɪm/", def: "A formal request by a policyholder to the insurer for coverage or compensation.", vi: "yêu cầu bồi thường bảo hiểm", pl: "insurance claims", ex: "1. Submit your medical receipts to file an official insurance claim. <br>2. The insurer processed and approved the flood damage claim within 48 hours." },
+    { word: "coverage", cloze: "c______e", ipa: "/ˈkʌv.ɚ.ɪdʒ/", def: "The amount of risk or liability that is covered for an individual or entity by insurance.", vi: "phạm vi bồi thường bảo hiểm", pl: "coverages", ex: "1. Comprehensive vehicle coverage protects against collision, theft, and natural disasters. <br>2. Verify if international travel insurance includes emergency evacuation coverage." },
+    { word: "tax revenue", cloze: "t_x r_____e", ipa: "/ˈtæks ˌrev.ə.nuː/", def: "The income that is collected by governments through taxation.", vi: "nguồn thu ngân sách từ thuế", pl: "tax revenues", ex: "1. National tax revenues fund public schools, hospitals, and transportation networks. <br>2. Economic growth directly drives robust tax revenue collection." },
+    { word: "underwriter", cloze: "u_________r", ipa: "/ˈʌn.dɚˌraɪ.t̬ɚ/", def: "A person or company that evaluates and assumes risk in return for fee.", vi: "chuyên viên thẩm định rủi ro", pl: "underwriters", ex: "1. The life insurance underwriter reviewed the applicant's medical examination history. <br>2. Experienced underwriters balance competitive pricing against claim probabilities." }
+  ],
+  94: [ // Giao thông công cộng (Public Transportation)
+    { word: "subway", cloze: "s____y", ipa: "/ˈsʌb.weɪ/", def: "An underground electric railway system in a city.", vi: "tàu điện ngầm", pl: "subways", ex: "1. The metro subway connects the city center directly to the airport. <br>2. Taking the subway avoids morning highway gridlock." },
+    { word: "tramway", cloze: "t_____y", ipa: "/ˈtræm.weɪ/", def: "A track for electric streetcars or light rail vehicles.", vi: "hệ thống xe điện mặt đất", pl: "tramways", ex: "1. The historic electric tramway glides smoothly through old town boulevards. <br>2. Modern low-floor tramways provide easy access for wheelchairs." },
+    { word: "commuter", cloze: "c______r", ipa: "/kəˈmjuː.t̬ɚ/", def: "A person who travels some distance to work on a regular basis.", vi: "người đi làm bằng phương tiện công cộng", pl: "commuters", ex: "1. Thousands of suburban commuters board the morning express train. <br>2. Transit agencies introduced monthly discount passes for daily commuters." },
+    { word: "transfer", cloze: "t______r", ipa: "/trænsˈfɝː/", def: "A change from one public transportation vehicle or line to another.", vi: "sự đổi tuyến xe/tàu", pl: "transfers", ex: "1. Passengers can transfer between the Red and Blue metro lines without extra fare. <br>2. The bus announcement indicated a direct transfer to the regional rail." },
+    { word: "timetable", cloze: "t_______e", ipa: "/ˈtaɪmˌteɪ.bəl/", def: "A chart showing departure and arrival times of buses, trains, or aircraft.", vi: "bảng giờ tàu xe", pl: "timetables", ex: "1. Check the digital transit timetable on the mobile app. <br>2. Weekend train timetables operate on a slightly reduced frequency." },
+    { word: "transit fare", cloze: "t_____t f__e", ipa: "/ˈtræn.zɪt ˌfer/", def: "The money a passenger on public transportation has to pay.", vi: "giá vé tàu xe công cộng", pl: "transit fares", ex: "1. Tap your contactless card on the validator to pay the bus fare. <br>2. Transit fares are subsidized to encourage environmentally friendly commuting." },
+    { word: "turnstile", cloze: "t_______e", ipa: "/ˈtɝːn.staɪl/", def: "A mechanical gate consisting of revolving horizontal arms that admits one person.", vi: "cửa xoay soát vé", pl: "turnstiles", ex: "1. Scan your smart QR ticket at the metro turnstile to enter the platform. <br>2. Wide accessible turnstiles accommodate travelers with bulky luggage." },
+    { word: "terminal", cloze: "t______l", ipa: "/ˈtɝː.mə.nəl/", def: "A station where transportation routes end or start.", vi: "nhà ga đầu cuối", pl: "terminals", ex: "1. The central bus terminal has connections to twenty surrounding provinces. <br>2. The final subway train arrived at the northern terminus terminal." },
+    { word: "conductor", cloze: "c_______r", ipa: "/kənˈdʌk.tɚ/", def: "An official who checks and collects fares on a train or bus.", vi: "người soát vé tàu xe", pl: "conductors", ex: "1. The courteous train conductor inspected passenger seat reservations. <br>2. Show your validated ticket whenever the conductor passes through your carriage." },
+    { word: "express route", cloze: "e_____s r___e", ipa: "/ɪkˈspres ˌruːt/", def: "A transit service that makes very few stops to reach destination quickly.", vi: "tuyến xe tốc hành", pl: "express routes", ex: "1. The airport express route cuts travel time in half during rush hour. <br>2. Commuter express routes operate exclusively along high-occupancy vehicle lanes." },
+    { word: "bus stop", cloze: "b_s s__p", ipa: "/ˈbʌs ˌstɑːp/", def: "A designated place where public buses stop for passengers to board or leave.", vi: "trạm dừng xe buýt", pl: "bus stops", ex: "1. A covered shelter and electronic timetable monitor are installed at the bus stop. <br>2. Wait patiently behind the yellow safety line at the bus stop." },
+    { word: "train platform", cloze: "t___n p______m", ipa: "/ˈtreɪn ˌplæt.fɔːrm/", def: "A raised level surface beside a railway track used by passengers.", vi: "sân ga chờ tàu", pl: "train platforms", ex: "1. The high-speed bullet train will depart from platform three. <br>2. Mind the gap between the train platform and the carriage door." }
+  ],
+  95: [ // Quản trị kinh doanh (Business Administration)
+    { word: "executive", cloze: "e_______e", ipa: "/ɪɡˈzek.jə.t̬ɪv/", def: "A person with senior managerial responsibility in a business organization.", vi: "giám đốc điều hành", pl: "executives", ex: "1. The chief executive officer presented quarterly profit benchmarks. <br>2. Senior corporate executives convened an urgent emergency strategy summit." },
+    { word: "dividend", cloze: "d______d", ipa: "/ˈdɪv.ə.dend/", def: "A sum of money paid regularly by a company to its shareholders out of profits.", vi: "cổ tức chi trả cho cổ đông", pl: "dividends", ex: "1. The board declared an attractive annual cash dividend of two dollars per share. <br>2. Reinvesting stock dividends accelerates long-term wealth compounding." },
+    { word: "shareholder", cloze: "s_________r", ipa: "/ˈʃerˌhoʊl.dɚ/", def: "An owner of shares in an enterprise or business corporation.", vi: "cổ đông sở hữu cổ phần", pl: "shareholders", ex: "1. Institutional shareholders voted overwhelmingly in favor of the new sustainability resolution. <br>2. The annual general meeting gives small retail shareholders a direct voice." },
+    { word: "turnover", cloze: "t______r", ipa: "/ˈtɝːnˌoʊ.vɚ/", def: "The amount of money taken by a business in a particular period.", vi: "doanh số luân chuyển", pl: "turnovers", ex: "1. Annual corporate turnover exceeded one billion dollars for the first time. <br>2. Rapid inventory turnover indicates strong consumer demand for retail products." },
+    { word: "strategy", cloze: "s______y", ipa: "/ˈstræt̬.ə.dʒi/", def: "A plan of action or policy designed to achieve a major or overall aim.", vi: "chiến lược kinh doanh", pl: "strategies", ex: "1. The company adopted an aggressive omnichannel expansion strategy. <br>2. Align your technological roadmap with overarching business strategy." },
+    { word: "merger", cloze: "m____r", ipa: "/ˈmɝː.dʒɚ/", def: "A combination of two things, especially companies, into one single entity.", vi: "sự sáp nhập doanh nghiệp", pl: "mergers", ex: "1. The equal merger created the country's largest telecommunications conglomerate. <br>2. Regulatory antitrust commissions scrutinized the proposed corporate merger." },
+    { word: "acquisition", cloze: "a_________n", ipa: "/ˌæk.wəˈzɪʃ.ən/", def: "An asset or object bought or obtained, typically by a corporation taking over another.", vi: "thương vụ mua lại doanh nghiệp", pl: "acquisitions", ex: "1. The cross-border acquisition expanded their European distribution network. <br>2. They completed a strategic acquisition of an artificial intelligence startup." },
+    { word: "subsidiary", cloze: "s________y", ipa: "/səbˈsɪd.i.er.i/", def: "A company controlled by a holding or parent company.", vi: "công ty con", pl: "subsidiaries", ex: "1. The Japanese parent corporation established a software subsidiary in Hanoi. <br>2. Wholly-owned subsidiaries enjoy autonomy while leveraging parent company capital." },
+    { word: "overhead", cloze: "o______d", ipa: "/ˈoʊ.vɚ.hed/", def: "Regular and necessary costs of running a business, such as rent, heating, or salaries.", vi: "chi phí vận hành doanh nghiệp", pl: "overheads", ex: "1. Remote work models substantially reduce commercial office overhead expenses. <br>2. Streamline administrative processes to keep operational overhead lean." },
+    { word: "synergy", cloze: "s____y", ipa: "/ˈsɪn.ɚ.dʒi/", def: "The interaction or cooperation of two organizations to produce a combined effect greater than the sum.", vi: "tính hiệp đồng phát triển", pl: "synergies", ex: "1. Combining logistics fleets created remarkable cost-saving operational synergies. <br>2. Cross-selling products unlocked unprecedented sales synergies across business units." },
+    { word: "governance", cloze: "g________e", ipa: "/ˈɡʌv.ɚ.nəns/", def: "The action or manner of governing, especially transparent corporate steering.", vi: "quản trị doanh nghiệp", pl: "governances", ex: "1. Robust corporate governance standards safeguard minority shareholder interests. <br>2. The audit committee enforces strict ethical compliance and risk governance." },
+    { word: "boardroom", cloze: "b_______m", ipa: "/ˈbɔːrd.ruːm/", def: "A room in which the board of directors of an enterprise holds meetings.", vi: "phòng họp hội đồng quản trị", pl: "boardrooms", ex: "1. Historic strategic decisions were deliberated in the corporate boardroom. <br>2. The boardroom features encrypted videoconferencing for international directors." }
+  ],
+  96: [ // Phụ tùng ô tô và xe máy (Auto & Motorcycle Parts)
+    { word: "carburetor", cloze: "c________r", ipa: "/ˈkɑːr.bjə.reɪ.t̬ɚ/", def: "A device in an internal combustion engine for mixing air with a liquid fuel.", vi: "bộ chế hòa khí", pl: "carburetors", ex: "1. Vintage motorcycle mechanics carefully tune the brass carburetor jets. <br>2. Clean the carburetor fuel bowl to resolve engine sputtering." },
+    { word: "transmission", cloze: "t__________n", ipa: "/trænzˈmɪʃ.ən/", def: "The mechanism by which power is transmitted from an engine to wheels.", vi: "hộp số xe hơi, hệ truyền động", pl: "transmissions", ex: "1. Automatic dual-clutch transmissions offer lightning-fast gear changes. <br>2. Check transmission fluid levels every thirty thousand kilometers." },
+    { word: "radiator", cloze: "r______r", ipa: "/ˈreɪ.di.eɪ.t̬ɚ/", def: "An engine-cooling device in a motor vehicle consisting of a bank of tubes.", vi: "bộ tản nhiệt, két nước làm mát", pl: "radiators", ex: "1. Coolant circulating through the aluminum radiator prevents engine overheating. <br>2. A cracked radiator hose can cause rapid coolant loss on highways." },
+    { word: "spark plug", cloze: "s___k p__g", ipa: "/ˈspɑːrk ˌplʌɡ/", def: "A device for firing the explosive mixture in an internal combustion engine.", vi: "bu-gi đánh lửa", pl: "spark plugs", ex: "1. Replace worn iridium spark plugs to restore optimal engine fuel efficiency. <br>2. The ignition coil sends high electrical voltage directly to each spark plug." },
+    { word: "clutch", cloze: "c____h", ipa: "/klʌtʃ/", def: "A mechanism for connecting and disconnecting the engine from the transmission system.", vi: "côn, bộ ly hợp", pl: "clutches", ex: "1. Pull the motorcycle clutch lever smoothly before changing gears. <br>2. A slipping clutch plate requires immediate mechanical replacement." },
+    { word: "chassis", cloze: "c_____s", ipa: "/ˈʃæs.i/", def: "The base frame of a motor vehicle or other wheeled conveyance.", vi: "khung gầm xe", pl: "chassis", ex: "1. Lightweight carbon fiber chassis enhances supercar cornering agility. <br>2. Inspect the steel chassis frame for rust damage before purchasing a used truck." },
+    { word: "piston", cloze: "p____n", ipa: "/ˈpɪs.tən/", def: "A disc or cylinder fitting closely inside a tube moving up and down against fluid.", vi: "pít-tông động cơ", pl: "pistons", ex: "1. Forged aluminum pistons withstand immense combustion chamber pressures. <br>2. The four-cylinder engine houses four synchronously reciprocating pistons." },
+    { word: "exhaust pipe", cloze: "e_____t p__e", ipa: "/ɪɡˈzɑːst ˌpaɪp/", def: "A pipe through which exhaust gases are released from an engine.", vi: "ống xả khí thải", pl: "exhaust pipes", ex: "1. Stainless steel exhaust pipes resist corrosive road salt and weathering. <br>2. The catalytic converter filters harmful toxic emissions in the exhaust pipe." },
+    { word: "alternator", cloze: "a________r", ipa: "/ˈɑːl.tɚ.neɪ.t̬ɚ/", def: "A generator that produces an alternating current in a vehicle.", vi: "máy phát điện xe hơi", pl: "alternators", ex: "1. The vehicle alternator recharges the battery while the engine runs. <br>2. Dimming dashboard headlights often signal a failing alternator belt." },
+    { word: "suspension", cloze: "s________n", ipa: "/səˈspen.ʃən/", def: "The system of springs and shock absorbers connecting vehicle wheels to chassis.", vi: "hệ thống giảm xóc", pl: "suspensions", ex: "1. Adaptive air suspension automatically absorbs rough pavement bumps. <br>2. Stiff sport suspension ensures razor-sharp handling on racetrack curves." },
+    { word: "brake caliper", cloze: "b___e c_____r", ipa: "/ˈbreɪk ˌkæl.ə.pɚ/", def: "A device that squeezes brake pads against the rotor to slow down a vehicle.", vi: "cùm phanh đĩa", pl: "brake calipers", ex: "1. Bright red Brembo brake calipers clamp down on cross-drilled ceramic rotors. <br>2. Bleed air bubbles from the hydraulic brake caliper lines." },
+    { word: "crankshaft", cloze: "c________t", ipa: "/ˈkræŋk.ʃæft/", def: "A shaft driven by a crank mechanism converting reciprocating to rotational motion.", vi: "trục khuỷu động cơ", pl: "crankshafts", ex: "1. The heavy forged steel crankshaft rotates up to eight thousand RPM. <br>2. High performance engine bearings support the spinning crankshaft journals." }
+  ],
+  97: [ // Nhà hàng và Dịch vụ ăn uống (Restaurants & Food Service)
+    { word: "menu", cloze: "m__u", ipa: "/ˈmen.juː/", def: "A list of the food and drink available in a restaurant.", vi: "thực đơn món ăn", pl: "menus", ex: "1. The waiter handed us the seasonal farm-to-table tasting menu. <br>2. QR code digital menus are convenient for ordering and contactless payment." },
+    { word: "appetizer", cloze: "a_______r", ipa: "/ˈæp.ə.taɪ.zɚ/", def: "A small dish of food served before the main course of a meal.", vi: "món khai vị", pl: "appetizers", ex: "1. We ordered crispy spring rolls as our starter appetizer. <br>2. A light citrus salad makes a refreshing appetizer before rich roasted meats." },
+    { word: "entree", cloze: "e____e", ipa: "/ˈɑːn.treɪ/", def: "The main course of a meal in a restaurant.", vi: "món ăn chính", pl: "entrees", ex: "1. For the entree, she chose pan-seared Chilean sea bass with asparagus. <br>2. All gourmet entrees include your choice of roasted root vegetables." },
+    { word: "dessert", cloze: "d_____t", ipa: "/dɪˈzɝːt/", def: "The sweet course eaten at the end of a meal.", vi: "món tráng miệng", pl: "desserts", ex: "1. Leave room for warm chocolate lava cake for dessert! <br>2. The pastry chef artfully decorates each artisanal dessert plate." },
+    { word: "sommelier", cloze: "s_______r", ipa: "/sʌm.əlˈjeɪ/", def: "A trained wine professional who assists guests with beverage pairing.", vi: "chuyên gia rượu vang", pl: "sommeliers", ex: "1. The certified sommelier recommended a crisp Pinot Grigio to accompany oysters. <br>2. Consult the restaurant sommelier when choosing vintage celebration wines." },
+    { word: "table reservation", cloze: "t___e r_________n", ipa: "/ˈteɪ.bəl ˌrez.ɚˈveɪ.ʃən/", def: "An arrangement securing a dining table for a customer in advance.", vi: "việc đặt bàn trước", pl: "table reservations", ex: "1. Michelin-starred bistros require making a table reservation months ahead. <br>2. We booked a romantic window table reservation overlooking the river." },
+    { word: "patron", cloze: "p____n", ipa: "/ˈpeɪ.trən/", def: "A customer, especially a regular one, of a restaurant or store.", vi: "thực khách, khách quen", pl: "patrons", ex: "1. Loyal restaurant patrons appreciate generous portions and authentic recipes. <br>2. The chef stepped out from the open kitchen to greet dining patrons." },
+    { word: "banquet", cloze: "b_____t", ipa: "/ˈbæŋ.kwət/", def: "An elaborate and formal evening meal for many people, celebrating an event.", vi: "yến tiệc sang trọng", pl: "banquets", ex: "1. The annual company anniversary banquet was hosted in the grand ballroom. <br>2. Eight-course imperial banquets showcase regional culinary heritage." },
+    { word: "culinary", cloze: "c______y", ipa: "/ˈkʌl.ə.ner.i/", def: "Relating to cooking or kitchens.", vi: "thuộc về ẩm thực", pl: "culinaries", ex: "1. He graduated with top honors from a prestigious Parisian culinary institute. <br>2. Vietnam is celebrated globally for its vibrant culinary traditions." },
+    { word: "gratuity", cloze: "g______y", ipa: "/ɡrəˈtuː.ə.t̬i/", def: "A tip given to a waiter or server in recognition of service.", vi: "tiền boa cho nhân viên phục vụ", pl: "gratuities", ex: "1. A discretionary eighteen percent gratuity was added for large parties. <br>2. Customers frequently leave generous gratuities for exceptional table service." },
+    { word: "beverage", cloze: "b______e", ipa: "/ˈbev.ɚ.ɪdʒ/", def: "A drink, especially one other than water.", vi: "đồ uống giải khát", pl: "beverages", ex: "1. The beverage menu includes freshly squeezed juices and craft sodas. <br>2. Alcoholic beverages are served only to patrons over legal age." },
+    { word: "cutlery", cloze: "c_____y", ipa: "/ˈkʌt.lɚ.i/", def: "Knives, forks, and spoons used for eating or serving food.", vi: "bộ dao kéo nĩa muỗng", pl: "cutleries", ex: "1. Elegant polished silver cutlery was placed beside fine porcelain plates. <br>2. The restaurant replaced single-use plastics with compostable wooden cutlery." }
+  ],
+  98: [ // Hoạt động xuất nhập khẩu (Import & Export Activities)
+    { word: "customs declaration", cloze: "c_____s d_________n", ipa: "/ˈkʌs.təmz ˌdek.ləˈreɪ.ʃən/", def: "An official document listing and giving details of goods that are being imported.", vi: "tờ khai hải quan", pl: "customs declarations", ex: "1. The logistics agent submitted the electronic customs declaration form. <br>2. Accurate tariff classifications on the customs declaration prevent cargo delays." },
+    { word: "quota", cloze: "q___a", ipa: "/ˈkwoʊ.t̬ə/", def: "A limited quantity of a particular good that can be produced, exported, or imported.", vi: "hạn ngạch thương mại", pl: "quotas", ex: "1. The government established an annual textile export quota for European markets. <br>2. Rice exporters competed eagerly for preferential tariff quota allocations." },
+    { word: "embargo", cloze: "e_____o", ipa: "/ɪmˈbɑːr.ɡoʊ/", def: "An official ban on trade or other commercial activity with a particular country.", vi: "lệnh cấm vận thương mại", pl: "embargoes", ex: "1. The international community lifted economic embargoes following peace treaties. <br>2. Strict maritime trade embargoes halt merchant shipping in disputed zones." },
+    { word: "consignee", cloze: "c_______e", ipa: "/ˌkɑːn.saɪˈniː/", def: "The person or company to whom goods are to be delivered.", vi: "người nhận hàng nhập khẩu", pl: "consignees", ex: "1. The warehouse supervisor signed the delivery confirmation as the consignee. <br>2. Goods remain under customs bonded custody until claimed by the consignee." },
+    { word: "freight forwarding", cloze: "f_____t f________g", ipa: "/ˈfreɪt ˌfɔːr.wɚ.dɪŋ/", def: "The coordination and shipment of goods from one place to another.", vi: "dịch vụ giao nhận vận tải", pl: "freight forwardings", ex: "1. International freight forwarding handles multimodal sea and air transport. <br>2. The freight forwarding company booked fifty dry-van containers." },
+    { word: "cargo manifest", cloze: "c___o m______t", ipa: "/ˈkɑːr.ɡoʊ ˌmæn.ə.fest/", def: "A document detailing the cargo, passengers, and crew of a ship or aircraft.", vi: "bản lược khai hàng hóa", pl: "cargo manifests", ex: "1. The ship captain presented the cargo manifest to port customs inspectors. <br>2. The automated customs database cross-references manifests against invoices." },
+    { word: "bill of lading", cloze: "b__l _f l____g", ipa: "/ˌbɪl əv ˈleɪ.dɪŋ/", def: "A detailed list of a shipment of goods in the form of a receipt given by carrier.", vi: "vận đơn đường biển", pl: "bills of lading", ex: "1. The ocean bill of lading serves as legal title to the cargo containers. <br>2. Bank letters of credit release payments only upon receipt of the clean bill of lading." },
+    { word: "customs clearance", cloze: "c_____s c_______e", ipa: "/ˈkʌs.təmz ˌklɪr.əns/", def: "The act of passing goods through customs so that they can enter the country.", vi: "thủ tục thông quan hàng hóa", pl: "customs clearances", ex: "1. Electronic documentation enabled fast customs clearance in under two hours. <br>2. Perishable fruit shipments receive expedited green-channel customs clearance." },
+    { word: "import duty", cloze: "i____t d__y", ipa: "/ˈɪm.pɔːrt ˌduː.t̬i/", def: "A tax collected on goods imported into a territory from abroad.", vi: "thuế nhập khẩu", pl: "import duties", ex: "1. Luxury cars are subject to substantial import duties and consumption taxes. <br>2. Free trade agreements eliminate import duties on thousands of agricultural goods." },
+    { word: "bonded warehouse", cloze: "b____d w_______e", ipa: "/ˌbɑːn.dɪd ˈwer.haʊs/", def: "A warehouse where goods may be stored without paying import duty until removed.", vi: "kho ngoại quan", pl: "bonded warehouses", ex: "1. Imported wine matures inside temperature-controlled bonded warehouses. <br>2. Goods stored in a bonded warehouse can be re-exported duty-free." },
+    { word: "certificate of origin", cloze: "c_________e _f o____n", ipa: "/sɚˌtɪf.ə.kət əv ˈɔːr.ə.dʒɪn/", def: "An official trade document certifying that products were produced in a particular country.", vi: "chứng nhận xuất xứ hàng hóa (C/O)", pl: "certificates of origin", ex: "1. Exporters require a verified Form E certificate of origin to claim zero tariffs. <br>2. The Chamber of Commerce issues certified digital certificates of origin." },
+    { word: "incoterms", cloze: "i_______s", ipa: "/ˈɪn.koʊˌtɝːmz/", def: "A series of pre-defined commercial trade terms published by ICC.", vi: "điều kiện thương mại quốc tế Incoterms", pl: "incoterms", ex: "1. The purchase contract adopted FOB Hai Phong port Incoterms standards. <br>2. Understanding Incoterms clarifies liability for maritime insurance and shipping fees." }
+  ],
+  99: [ // Công viên và Mảng xanh đô thị (Parks & Green Spaces)
+    { word: "botanical garden", cloze: "b_______l g____n", ipa: "/bəˈtæn.ɪ.kəl ˌɡɑːr.dən/", def: "An establishment where plants are cultivated for scientific study and display.", vi: "vườn bách thảo", pl: "botanical gardens", ex: "1. The city botanical garden preserves rare indigenous orchid species. <br>2. Visitors enjoy peaceful afternoon walks along the botanical garden paths." },
+    { word: "arboretum", cloze: "a_______m", ipa: "/ˌɑːr.bəˈriː.t̬əm/", def: "A botanical garden devoted to trees and woody plants.", vi: "vườn ươm cây gỗ", pl: "arboretums", ex: "1. The national arboretum showcases towering century-old redwood trees. <br>2. Horticulture students identify deciduous species at the university arboretum." },
+    { word: "canopy", cloze: "c____y", ipa: "/ˈkæn.ə.pi/", def: "The high, continuous layer of foliage formed by the crowns of trees.", vi: "tán lá rừng cây", pl: "canopies", ex: "1. The dense green tree canopy shields park visitors from summer sun. <br>2. Birds and tropical butterflies thrive high in the forest canopy." },
+    { word: "pavilion", cloze: "p______n", ipa: "/pəˈvɪl.jən/", def: "A light open building used for shelter or recreation in a park or garden.", vi: "nhà vọng cảnh, chòi nghỉ ngơi", pl: "pavilions", ex: "1. Families gather under the park pavilion for shade during afternoon picnics. <br>2. The lakeside pavilion offers panoramic views of blooming water lilies." },
+    { word: "urban greenery", cloze: "u___n g_____y", ipa: "/ˌɝː.bən ˈɡriː.nɚ.i/", def: "Green spaces, trees, and grass within an urban or metropolitan area.", vi: "mảng xanh đô thị", pl: "urban greeneries", ex: "1. Investing in urban greenery cools down city surface temperatures. <br>2. Rooftop gardens add precious urban greenery to concrete high-rises." },
+    { word: "conservatory", cloze: "c___________y", ipa: "/kənˈsɝː.və.tɔːr.i/", def: "A greenhouse, especially one attached to a park for public display of plants.", vi: "nhà kính bảo tồn thực vật", pl: "conservatories", ex: "1. The glass conservatory maintains controlled humidity for tropical ferns. <br>2. Colorful exotic flowers blossom year-round inside the heated conservatory." },
+    { word: "fountain", cloze: "f_____n", ipa: "/ˈfaʊn.tən/", def: "An ornamental structure in a pool or lake from which jets of water are pumped.", vi: "đài phun nước", pl: "fountains", ex: "1. Children laughed and played around the park's musical water fountain. <br>2. The illuminated marble fountain becomes a picturesque night gathering spot." },
+    { word: "biodiversity", cloze: "b___________y", ipa: "/ˌbaɪ.oʊ.daɪˈvɝː.sə.t̬i/", def: "The variety of plant and animal life in a particular habitat.", vi: "đa dạng sinh học", pl: "biodiversities", ex: "1. Urban wetlands foster rich wildlife and avian biodiversity. <br>2. City planners protect native flora to sustain healthy ecological biodiversity." },
+    { word: "promenade", cloze: "p_______e", ipa: "/ˌprɑː.məˈneɪd/", def: "A paved public walk, typically one along a waterfront or park.", vi: "đường đi dạo rợp bóng cây", pl: "promenades", ex: "1. Senior citizens take refreshing morning strolls along the riverside promenade. <br>2. The tree-lined promenade is dotted with park benches and flower beds." },
+    { word: "horticulture", cloze: "h__________e", ipa: "/ˈhɔːr.t̬ə.kʌl.tʃɚ/", def: "The art or practice of garden cultivation and management.", vi: "nghệ thuật làm vườn và trồng cây", pl: "horticultures", ex: "1. Master gardeners demonstrate advanced bonsai horticulture techniques. <br>2. The park's horticulture team prunes decorative shrubbery every spring." },
+    { word: "meadow", cloze: "m____w", ipa: "/ˈmed.oʊ/", def: "A piece of grassland, especially one used for hay or wildflowers.", vi: "đồng cỏ hoa dại", pl: "meadows", ex: "1. Wild poppies bloom brilliantly across the open park meadow. <br>2. We spread out our picnic blanket on the sunlit meadow grass." },
+    { word: "foliage", cloze: "f_____e", ipa: "/ˈfoʊ.li.ɪdʒ/", def: "Plant leaves collectively.", vi: "tán lá cây", pl: "foliages", ex: "1. Tourists flock to northern mountain parks to admire autumn golden foliage. <br>2. Glossy evergreen foliage keeps city avenues vibrant through chilly winters." }
+  ],
+  100: [ // Logistics và Chuỗi cung ứng (Logistics & Supply Chain)
+    { word: "warehouse", cloze: "w_______e", ipa: "/ˈwer.haʊs/", def: "A large building where raw materials or manufactured goods are stored.", vi: "nhà kho lưu trữ hàng hóa", pl: "warehouses", ex: "1. Automated guided vehicles navigate the smart e-commerce warehouse aisles. <br>2. The distribution warehouse operates continuously twenty-four hours a day." },
+    { word: "inventory management", cloze: "i_______y m________t", ipa: "/ˈɪn.vən.tɔːr.i ˌmæn.ədʒ.mənt/", def: "The supervision of non-capitalized assets and stock items.", vi: "quản trị hàng tồn kho", pl: "inventory managements", ex: "1. Real-time barcode tracking streamlines inventory management accuracy. <br>2. Good inventory management prevents costly out-of-stock and overstock scenarios." },
+    { word: "procurement", cloze: "p_________t", ipa: "/prəˈkjʊr.mənt/", def: "The action of obtaining or purchasing goods or services for business operations.", vi: "hoạt động thu mua vật tư", pl: "procurements", ex: "1. The procurement department negotiates bulk volume discounts with raw material suppliers. <br>2. Sustainable procurement policies prioritize ethically sourced components." },
+    { word: "distribution center", cloze: "d__________n c____r", ipa: "/ˌdɪs.trəˈbjuː.ʃən ˌsen.t̬ɚ/", def: "A specialized warehouse designed to store and redistribute products to retailers.", vi: "trung tâm phân phối hàng", pl: "distribution centers", ex: "1. The regional distribution center dispatches over five hundred freight trucks daily. <br>2. Locating the distribution center near the highway intersection slashes transit times." },
+    { word: "container", cloze: "c_______r", ipa: "/kənˈteɪ.nɚ/", def: "A large metal box of standard design for shipping goods by sea, rail, or truck.", vi: "thùng công-ten-nơ vận tải", pl: "containers", ex: "1. The gantry crane loaded thousands of shipping containers onto the mega cargo vessel. <br>2. Forty-foot refrigerated containers preserve export fruit freshness." },
+    { word: "pallet", cloze: "p____t", ipa: "/ˈpæl.ət/", def: "A portable platform on which goods can be moved, stacked, and stored.", vi: "tấm kê hàng ba-lét", pl: "pallets", ex: "1. Forklifts hoist wooden pallets loaded with packaged goods onto high racks. <br>2. Plastic pallets are sanitized easily for food and pharmaceutical transport." },
+    { word: "fulfillment center", cloze: "f_________t c____r", ipa: "/fʊlˈfɪl.mənt ˌsen.t̬ɚ/", def: "A location where third-party logistics providers fulfill customer orders.", vi: "trung tâm xử lý hoàn tất đơn hàng", pl: "fulfillment centers", ex: "1. Robots pick and package retail goods inside the automated fulfillment center. <br>2. Same-day delivery relies on strategically positioned urban fulfillment centers." },
+    { word: "tracking number", cloze: "t______g n____r", ipa: "/ˈtræk.ɪŋ ˌnʌm.bɚ/", def: "A unique number assigned to a package for tracking its shipping progress.", vi: "mã vận đơn theo dõi lộ trình", pl: "tracking numbers", ex: "1. Enter your parcel tracking number online to check estimated delivery times. <br>2. The courier sent an automated SMS containing the shipment tracking number." },
+    { word: "depot", cloze: "d___t", ipa: "/ˈdiː.poʊ/", def: "A place for the storage of large quantities of equipment, food, or goods.", vi: "trạm tập kết hàng hóa", pl: "depots", ex: "1. Delivery vans return to the central freight depot at dusk for refueling. <br>2. The railway container depot is equipped with automated rail-mounted gantry cranes." },
+    { word: "freight carrier", cloze: "f_____t c_____r", ipa: "/ˈfreɪt ˌker.i.ɚ/", def: "A commercial company that specializes in transporting cargo and goods.", vi: "hãng vận tải hàng hóa", pl: "freight carriers", ex: "1. Ocean freight carriers operate colossal container vessels across the Pacific. <br>2. Contracting reliable freight carriers guarantees on-time supply chain delivery." },
+    { word: "intermodal transport", cloze: "i________l t_______t", ipa: "/ˌɪn.t̬ɚˈmoʊ.dəl ˌtræn.spɔːrt/", def: "The movement of freight in a container using multiple modes of transportation.", vi: "vận tải đa phương thức", pl: "intermodal transports", ex: "1. Intermodal transport seamlessly combines cargo ships, freight trains, and trucks. <br>2. Standardized shipping containers are the backbone of intermodal transport." },
+    { word: "supply chain resilience", cloze: "s____y c___n r_________e", ipa: "/səˈplaɪ ˌtʃeɪn rɪˈzɪl.jəns/", def: "The ability of a supply chain to anticipate, resist, and recover from disruptions.", vi: "khả năng chống chịu của chuỗi cung ứng", pl: "supply chain resiliences", ex: "1. Dual-sourcing raw materials enhances corporate supply chain resilience. <br>2. The crisis emphasized the critical importance of global supply chain resilience." }
+  ]
+};
+
+/**
+ * Tạo danh sách từ vựng dự phòng chuẩn cho bất kỳ chủ đề nào (đặc biệt là 87-100)
+ */
+window.generateFallbackVocabulary = function(stt) {
+  const d = window.DUNGEON_DATA_100?.[stt] || {};
+  const topicName = d.cleanVi || d.topicName || `Chủ đề #${stt}`;
+
+  // 1. Kiểm tra từ vựng biên soạn chất lượng cao
+  if (window.FALLBACK_VOCABULARY_CORPUS && window.FALLBACK_VOCABULARY_CORPUS[stt]) {
+    return window.FALLBACK_VOCABULARY_CORPUS[stt].map((item, idx) => ({
+      stt: stt,
+      topicName: topicName,
+      word: item.word,
+      cloze: item.cloze,
+      ipa: item.ipa,
+      sound: `[sound:${item.word.replace(/\s+/g, '_')}.mp3]`,
+      definition: item.def,
+      meaningVi: item.vi,
+      plural: item.pl,
+      examples: item.ex,
+      level: idx < 6 ? 'conversational' : 'advanced'
+    }));
+  }
+
+  // 2. Dự phòng tổng quát thông minh theo tên chủ đề nếu không có trong corpus
+  const genericWords = [
+    { w: "concept", c: "c_____t", ipa: "/ˈkɑːn.sept/", def: `A fundamental principle or abstract idea relating to ${d.cleanEn || topicName}.`, vi: `khái niệm then chốt (${topicName})`, pl: "concepts", ex: `1. Mastering this key concept is essential. <br>2. The lecture introduced the core concept of ${d.cleanEn || topicName}.` },
+    { w: "structure", c: "s_______e", ipa: "/ˈstrʌk.tʃɚ/", def: `The arrangement of and relations between the parts of ${d.cleanEn || topicName}.`, vi: `cấu trúc tổ chức (${topicName})`, pl: "structures", ex: `1. The overall structure must be carefully organized. <br>2. We studied the structural elements of ${d.cleanEn || topicName}.` },
+    { w: "operation", c: "o_______n", ipa: "/ˌɑː.pəˈreɪ.ʃən/", def: `The active process or manner of functioning in ${d.cleanEn || topicName}.`, vi: `hoạt động vận hành (${topicName})`, pl: "operations", ex: `1. Smooth day-to-day operations are vital. <br>2. Operations commenced according to schedule.` },
+    { w: "standard", c: "s______d", ipa: "/ˈstæn.dɚd/", def: `A level of quality or attainment accepted as a norm in ${d.cleanEn || topicName}.`, vi: `tiêu chuẩn chất lượng (${topicName})`, pl: "standards", ex: `1. All procedures strictly comply with international standards. <br>2. Maintaining high industry standards protects consumers.` },
+    { w: "component", c: "c_______t", ipa: "/kəmˈpoʊ.nənt/", def: `A part or element of a larger whole in ${d.cleanEn || topicName}.`, vi: `thành phần cấu thành (${topicName})`, pl: "components", ex: `1. Each individual component was thoroughly tested. <br>2. The hardware component arrived on time.` },
+    { w: "management", c: "m________t", ipa: "/ˈmæn.ədʒ.mənt/", def: `The process of dealing with or controlling things in ${d.cleanEn || topicName}.`, vi: `công tác quản lý (${topicName})`, pl: "managements", ex: `1. Effective project management guarantees success. <br>2. The leadership team updated their management guidelines.` },
+    { w: "capacity", c: "c______y", ipa: "/kəˈpæs.ə.t̬i/", def: `The maximum amount that something can contain or produce in ${d.cleanEn || topicName}.`, vi: `dung lượng, năng lực (${topicName})`, pl: "capacities", ex: `1. The facility is operating at maximum production capacity. <br>2. Expanding storage capacity prevents bottlenecks.` },
+    { w: "efficiency", c: "e________y", ipa: "/ɪˈfɪʃ.ən.si/", def: `The state or quality of being efficient in ${d.cleanEn || topicName}.`, vi: `hiệu suất công việc (${topicName})`, pl: "efficiencies", ex: `1. Automation significantly improved operational efficiency. <br>2. Energy efficiency reduces overhead costs.` }
+  ];
+
+  return genericWords.map((item, idx) => ({
+    stt: stt,
+    topicName: topicName,
+    word: item.w,
+    cloze: item.c,
+    ipa: item.ipa,
+    sound: `[sound:${item.w}.mp3]`,
+    definition: item.def,
+    meaningVi: item.vi,
+    plural: item.pl,
+    examples: item.ex,
+    level: idx < 4 ? 'conversational' : 'advanced'
+  }));
+};
+
+/**
+ * Tạo nội dung file TSV hợp lệ từ từ vựng dự phòng để nạp cho SmartFetch
+ */
+window.generateFallbackTsv = function(stt) {
+  const words = window.generateFallbackVocabulary(stt);
+  if (!words || !words.length) return '';
+  return words.map(w => [
+    w.word,
+    w.cloze,
+    w.ipa,
+    w.sound,
+    w.definition,
+    w.meaningVi,
+    w.meaningVi,
+    w.plural,
+    w.examples
+  ].join('\t')).join('\n');
+};
+
+/**
+ * Đảm bảo kho từ vựng quizWordsCache có sẵn dữ liệu của chủ đề mà không bị rỗng
+ */
+window.ensureTopicVocabularyFallback = function(stt) {
+  if (typeof window.quizWordsCache === 'object' && window.quizWordsCache) {
+    if (!window.quizWordsCache[stt] || window.quizWordsCache[stt].length === 0) {
+      window.quizWordsCache[stt] = window.generateFallbackVocabulary(stt);
+    }
+  }
+  return window.generateFallbackVocabulary(stt);
+};
+
+// Tự động bảo vệ smartFetch để nạp TSV dự phòng nếu file vật lý output/{stt}.txt không tồn tại
+(function() {
+  if (typeof window !== 'undefined') {
+    const origSmartFetch = window.smartFetch;
+    window.smartFetch = async function(relativePath) {
+      if (typeof origSmartFetch === 'function') {
+        try {
+          const res = await origSmartFetch(relativePath);
+          if (res && res.ok) return res;
+        } catch (e) {
+          // Fallback bên dưới
+        }
+      }
+      const match = String(relativePath).match(/output\/(\d+)\.txt/);
+      if (match && typeof window.generateFallbackTsv === 'function') {
+        const stt = parseInt(match[1], 10);
+        const tsv = window.generateFallbackTsv(stt);
+        if (tsv && typeof Response !== 'undefined') {
+          return new Response(tsv, {
+            status: 200,
+            statusText: 'OK',
+            headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+          });
+        }
+      }
+      throw new Error(`Không thể nạp dữ liệu từ local lẫn fallback (${relativePath})`);
+    };
+  }
+})();
+

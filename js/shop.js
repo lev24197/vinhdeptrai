@@ -1,4 +1,4 @@
-﻿// ==================== HỆ THỐNG CỬA HÀNG, GACHA RƯƠNG BÁU & LÒ RÈN (SHOP & FORGE) ====================
+// ==================== HỆ THỐNG CỬA HÀNG, GACHA RƯƠNG BÁU & LÒ RÈN (SHOP & FORGE) ====================
 
 const RPG_SHOP_GOODS = [
   { id: 'health_potion', name: 'Bình Máu Siêu Cấp', icon: '🧪', cost: 25, type: 'gold', desc: 'Hồi phục +50 HP ngay lập tức trong hoặc ngoài trận đấu.' },
@@ -129,12 +129,18 @@ function openMysteryChest(chestType) {
 
   let costType = 'gold';
   let cost = 100;
-  let chestTitle = 'Rương Gỗ Rừng Sâu';
+  let chestTitle = 'Rương Đồng Cổ Điển';
 
-  if (chestType === 'silver') {
+  const type = String(chestType || 'wood').toLowerCase();
+  if (type === 'bronze' || type === 'wood') {
+    costType = 'gold';
+    cost = 100;
+    chestTitle = (type === 'bronze') ? 'Rương Đồng Cổ Điển' : 'Rương Gỗ Rừng Sâu';
+  } else if (type === 'silver') {
+    costType = 'gold';
     cost = 350;
     chestTitle = 'Rương Bạc Hầm Ngục';
-  } else if (chestType === 'gold') {
+  } else if (type === 'gold') {
     costType = 'gems';
     cost = 5;
     chestTitle = 'Rương Hoàng Kim Hắc Long';
@@ -155,8 +161,9 @@ function openMysteryChest(chestType) {
 
   user.gacha_pity = (user.gacha_pity || 0) + 1;
 
-  // Thuật toán quay thưởng theo Pool trang bị
-  const rolledItem = rollGachaItem(chestType, user.gacha_pity >= 10);
+  // Thuật toán quay thưởng theo Pool trang bị (Unified 10-pull pity counter)
+  const isGuaranteed = (user.gacha_pity >= 10);
+  const rolledItem = rollGachaItem(type, isGuaranteed);
   if (rolledItem.tier === 'legendary') {
     user.gacha_pity = 0; // Reset bảo hiểm
   }
@@ -172,31 +179,33 @@ function openMysteryChest(chestType) {
   // Hiệu ứng mở rương kịch tính
   triggerGachaRevealModal(rolledItem, chestTitle);
 
-  if (typeof GamificationQuests !== 'undefined') {
-    GamificationQuests.trackProgress('open_chest', 1);
-    GamificationQuests.trackProgress('gacha_drop', 1, { tier: rolledItem.tier });
+  const quests = (typeof window !== 'undefined' && window.GamificationQuests) ? window.GamificationQuests : ((typeof GamificationQuests !== 'undefined') ? GamificationQuests : null);
+  if (quests && typeof quests.trackProgress === 'function') {
+    quests.trackProgress('open_chest', 1);
+    quests.trackProgress('gacha_drop', 1, { tier: rolledItem.tier });
   }
 }
 
 function rollGachaItem(chestType, isGuaranteedLegendary) {
   if (isGuaranteedLegendary) {
     const legendaries = RPG_EQUIPMENT_CATALOG.filter(i => i.tier === 'legendary');
-    return legendaries[Math.floor(Math.random() * legendaries.length)];
+    return legendaries[Math.floor(Math.random() * legendaries.length)] || RPG_EQUIPMENT_CATALOG[0];
   }
 
+  const type = String(chestType || 'wood').toLowerCase();
   const rand = Math.random() * 100;
   let targetTier = 'common';
 
-  if (chestType === 'gold') {
+  if (type === 'gold') {
     // Rương Hoàng Kim: 65% Sử Thi, 35% Huyền Thoại
     targetTier = rand < 35 ? 'legendary' : 'epic';
-  } else if (chestType === 'silver') {
+  } else if (type === 'silver') {
     // Rương Bạc: 12% Huyền Thoại, 45% Sử Thi, 43% Quý Hiếm
     if (rand < 12) targetTier = 'legendary';
     else if (rand < 57) targetTier = 'epic';
     else targetTier = 'rare';
   } else {
-    // Rương Gỗ: 3% Huyền Thoại, 12% Sử Thi, 35% Quý Hiếm, 50% Tinh Luyện/Thường
+    // Rương Đồng/Gỗ: 3% Huyền Thoại, 12% Sử Thi, 35% Quý Hiếm, 50% Tinh Luyện/Thường
     if (rand < 3) targetTier = 'legendary';
     else if (rand < 15) targetTier = 'epic';
     else if (rand < 50) targetTier = 'rare';
@@ -298,8 +307,20 @@ function renderForgeView() {
   const costGold = (nextLevel) * 75;
   const costStones = Math.ceil(nextLevel / 3);
 
+  const slotIcons = {
+    weapon: '🗡️',
+    helmet: '🪖',
+    armor: '🥋',
+    gloves: '🧤',
+    boots: '👢',
+    accessory: '💍'
+  };
+  const slotIcon = slotIcons[selectedForgeSlot] || '⚔️';
+  const successRate = nextLevel <= 3 ? 1.0 : (nextLevel <= 6 ? 0.85 : (nextLevel <= 8 ? 0.70 : 0.50));
+  const successPercent = Math.round(successRate * 100);
+
   container.innerHTML = `
-    <div class="p-4 bg-white border-2 border-[#111] shadow-[3px_3px_0px_#111] space-y-3">
+    <div class="p-4 bg-white border-2 border-[#111] shadow-[3px_3px_0px_#111] space-y-3 relative overflow-hidden">
       <div class="flex items-center justify-between border-b pb-2 border-slate-200">
         <div>
           <span class="text-xs font-mono-code font-extrabold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
@@ -307,7 +328,7 @@ function renderForgeView() {
           </span>
           <h4 class="font-display font-extrabold text-base text-[#111] mt-1">${item.name} (+${currentEnhanceLevel})</h4>
         </div>
-        <div class="text-3xl">${selectedForgeSlot === 'weapon' ? '🗡️' : selectedForgeSlot === 'helmet' ? '🪖' : '🛡️'}</div>
+        <div class="text-3xl">${slotIcon}</div>
       </div>
 
       <div class="grid grid-cols-2 gap-2 bg-slate-50 p-2.5 border border-slate-200 text-xs font-mono-code">
@@ -318,9 +339,9 @@ function renderForgeView() {
       ${!isMax ? `
         <div class="bg-amber-50 p-2.5 border border-amber-300 text-xs font-bold flex items-center justify-between">
           <span>Chi phí lên +${nextLevel}:</span>
-          <span class="text-yellow-700">${costGold} 🪙 Vàng + ${costStones} 💎 Đá Cường Hóa</span>
+          <span class="text-yellow-700">${costGold} 🪙 Vàng + ${costStones} 💎 Đá Cường Hóa <span class="text-emerald-700 ml-1 font-extrabold">(Tỉ lệ: ${successPercent}%)</span></span>
         </div>
-        <button type="button" onclick="performItemEnhance('${selectedForgeSlot}')" class="neo-btn w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-display font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[3px_3px_0px_#111]">
+        <button type="button" onclick="performItemEnhance('${selectedForgeSlot}')" class="neo-btn w-full py-2.5 bg-red-600 hover:bg-red-700 text-white font-display font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[3px_3px_0px_#111] cursor-pointer">
           <span>🔨 ĐẬP ĐỒ LÊN +${nextLevel}</span>
         </button>
       ` : `
@@ -330,6 +351,55 @@ function renderForgeView() {
       `}
     </div>
   `;
+}
+
+// Hiệu ứng hạt bụi sao pixel tỏa sáng khi cường hóa đồ (Pixel Sparkles FX)
+function triggerForgeSparklesAnimation(container, isSuccess) {
+  if (!container) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center';
+  overlay.style.zIndex = '50';
+
+  const colors = isSuccess ? ['#F59E0B', '#FBBF24', '#10B981', '#38BDF8', '#FFFFFF'] : ['#94A3B8', '#64748B', '#EF4444'];
+  const numParticles = isSuccess ? 24 : 12;
+
+  for (let i = 0; i < numParticles; i++) {
+    const p = document.createElement('div');
+    const size = Math.floor(Math.random() * 6) + 4;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    p.style.position = 'absolute';
+    p.style.boxShadow = isSuccess ? '0 0 6px rgba(251, 191, 36, 0.8)' : '0 0 4px rgba(239, 68, 68, 0.5)';
+    
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * 80 + 20;
+    const tx = Math.cos(angle) * dist;
+    const ty = Math.sin(angle) * dist - (isSuccess ? 40 : 0);
+
+    p.style.transition = 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+    p.style.transform = 'translate(0, 0) scale(1)';
+    p.style.opacity = '1';
+
+    overlay.appendChild(p);
+
+    setTimeout(() => {
+      p.style.transform = `translate(${tx}px, ${ty}px) scale(0)`;
+      p.style.opacity = '0';
+    }, 20);
+  }
+
+  const badge = document.createElement('div');
+  badge.className = `font-display font-black text-xs uppercase px-3 py-1 rounded shadow-lg border-2 border-[#111] animate-bounce ${isSuccess ? 'bg-[#FFE787] text-[#111]' : 'bg-red-500 text-white'}`;
+  badge.innerText = isSuccess ? '✨ THÀNH CÔNG RỰC RỠ! ✨' : '💥 THẤT BẠI!';
+  overlay.appendChild(badge);
+
+  container.style.position = 'relative';
+  container.appendChild(overlay);
+
+  setTimeout(() => {
+    overlay.remove();
+  }, 1200);
 }
 
 function performItemEnhance(slot) {
@@ -356,20 +426,23 @@ function performItemEnhance(slot) {
   user.gold -= costGold;
   user.enhance_stones -= costStones;
 
-  // Tỉ lệ thành công: 100% cho 1-3, 85% cho 4-6, 70% cho 7-9, 50% cho 10
+  // Tỉ lệ thành công: 100% cho 1-3, 85% cho 4-6, 70% cho 7-8, 50% cho 9-10
   const rate = nextLvl <= 3 ? 1.0 : (nextLvl <= 6 ? 0.85 : (nextLvl <= 8 ? 0.70 : 0.50));
   const isSuccess = Math.random() < rate;
 
   playAnvilHammerSound();
 
-  if (typeof GamificationQuests !== 'undefined') {
-    GamificationQuests.trackProgress('forge_enhance', 1);
+  const quests = (typeof window !== 'undefined' && window.GamificationQuests) ? window.GamificationQuests : ((typeof GamificationQuests !== 'undefined') ? GamificationQuests : null);
+  if (quests && typeof quests.trackProgress === 'function') {
+    quests.trackProgress('forge_enhance', 1);
   }
+
+  const container = document.getElementById('forgeItemContainer');
 
   if (isSuccess) {
     user.equipment_enhances[slot] = nextLvl;
-    if (typeof GamificationQuests !== 'undefined') {
-      GamificationQuests.trackProgress('enhance_level', nextLvl, { level: nextLvl });
+    if (quests && typeof quests.trackProgress === 'function') {
+      quests.trackProgress('enhance_level', nextLvl, { level: nextLvl });
     }
     if (typeof showToastAlert === 'function') {
       showToastAlert(`🔥 CHÚC MỪNG! Đập đồ thành công rực rỡ lên +${nextLvl}!`);
@@ -385,6 +458,8 @@ function performItemEnhance(slot) {
   renderShopTopCurrencies();
   renderForgeView();
   if (typeof updateTopHud === 'function') updateTopHud();
+
+  triggerForgeSparklesAnimation(container, isSuccess);
 }
 
 // ==================== TỔNG HỢP ÂM THANH GACHA & SHOP ====================
@@ -449,4 +524,30 @@ function playGachaFanfareSound(tier) {
       });
     }
   } catch (e) {}
+}
+
+// Xuất global cho toàn bộ hệ thống
+if (typeof window !== 'undefined') {
+  window.openMysteryChest = openMysteryChest;
+  window.rollGachaItem = rollGachaItem;
+  window.performItemEnhance = performItemEnhance;
+  window.renderForgeView = renderForgeView;
+  window.renderGachaChestsView = renderGachaChestsView;
+  window.openShopModal = openShopModal;
+  window.closeShopModal = closeShopModal;
+  window.switchShopTab = switchShopTab;
+  window.buyShopGoodItem = buyShopGoodItem;
+  window.triggerForgeSparklesAnimation = triggerForgeSparklesAnimation;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    openMysteryChest,
+    rollGachaItem,
+    performItemEnhance,
+    renderForgeView,
+    renderGachaChestsView,
+    buyShopGoodItem,
+    triggerForgeSparklesAnimation
+  };
 }

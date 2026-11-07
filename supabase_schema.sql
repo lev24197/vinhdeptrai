@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   last_active_date DATE DEFAULT CURRENT_DATE,
   equipped_weapon TEXT DEFAULT 'Tập Sự Kiếm',
   equipped_armor TEXT DEFAULT 'Áo Vải Tân Thủ',
-  inventory JSONB DEFAULT '{"streak_freeze": 1, "double_xp": 0, "hint_scroll": 2, "health_potions": 3}'::jsonb,
+  inventory JSONB DEFAULT '{"streak_freeze": 1, "double_xp": 0, "hint_scroll": 2, "health_potion": 3, "dust": 20, "enhance_stones": 5, "gacha_pity": 0}'::jsonb,
   unlocked_dungeons JSONB DEFAULT '[1]'::jsonb,
   badges JSONB DEFAULT '["first_login"]'::jsonb,
   stats JSONB DEFAULT '{"monsters_slain": 0, "bosses_slain": 0, "total_turns": 0, "quizzes_played": 0, "total_correct": 0, "max_combo": 0}'::jsonb,

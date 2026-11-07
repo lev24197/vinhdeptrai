@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Challenger M1 Stress Test Runner</title>
+</head>
+<body style="background:#111; color:#eee; font-family:sans-serif; padding:20px;">
+  <h1>Challenger M1 Adversarial Stress Test</h1>
+  <div id="status">INITIALIZING...</div>
+  <pre id="output"></pre>
+  <div id="results-json" style="display:none;"></div>
+  <div id="test-done" style="display:none;">NO</div>
+
+  <!-- Load dependencies in order -->
+  <script src="../js/data.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/equipment_data.js"></script>
+  <script src="../js/inventory.js"></script>
+  <script src="../js/shop.js"></script>
+  <script src="../js/dungeon_data_100.js"></script>
+  <script src="../js/gamification_quests.js"></script>
+  <script src="../js/gamification_skills.js"></script>
+  <script src="../js/gamification_pets.js"></script>
+  <script src="../js/gamification_tower.js"></script>
+  <script src="../js/battle.js"></script>
+  <script src="../js/quiz.js"></script>
+  
+  <!-- Stress Test Suite -->
+  <script src="stress_m1_challenger.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('status').innerText = 'RUNNING...';
+      try {
+        const results = await window.runAllChallengerTests();
+        document.getElementById('status').innerText = results.failed === 0 ? 'ALL_PASSED' : 'HAS_FAILURES';
+        document.getElementById('output').innerText = JSON.stringify(results, null, 2);
+        document.getElementById('results-json').innerText = JSON.stringify(results);
+        document.getElementById('test-done').innerText = 'YES';
+      } catch (err) {
+        document.getElementById('status').innerText = 'ERROR: ' + err.message;
+        document.getElementById('output').innerText = err.stack || err.message;
+        document.getElementById('test-done').innerText = 'ERROR';
+      }
+    });
+  </script>
+</body>
+</html>

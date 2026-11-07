@@ -1,4 +1,4 @@
-﻿// ==================== HỆ THỐNG TÚI ĐỒ & TRANG BỊ PAPERDOLL (INVENTORY SYSTEM) ====================
+// ==================== HỆ THỐNG TÚI ĐỒ & TRANG BỊ PAPERDOLL (INVENTORY SYSTEM) ====================
 
 let currentInventoryFilter = 'all';
 let selectedInventoryItem = null;
@@ -26,6 +26,21 @@ function ensureUserEquipmentInitialized(user) {
   if (typeof user.dust === 'undefined') user.dust = 20;
   if (typeof user.enhance_stones === 'undefined') user.enhance_stones = 5;
   if (typeof user.gacha_pity === 'undefined') user.gacha_pity = 0;
+
+  if (!user.equipment_enhances) {
+    user.equipment_enhances = {
+      weapon: 0,
+      helmet: 0,
+      armor: 0,
+      gloves: 0,
+      boots: 0,
+      accessory: 0
+    };
+  } else {
+    ['weapon', 'helmet', 'armor', 'gloves', 'boots', 'accessory'].forEach(s => {
+      if (typeof user.equipment_enhances[s] === 'undefined') user.equipment_enhances[s] = 0;
+    });
+  }
 
   // Nếu người chơi chưa có bất kỳ trang bị nào, tặng ngay bộ đồ khởi đầu theo hệ phái
   const hasAnyGear = Object.values(user.equipped).some(Boolean) || user.equipment_inventory.length > 0;
@@ -76,6 +91,7 @@ function calculatePlayerTotalStats(user) {
     atk: 25 + ((user?.level || 1) - 1) * 4,
     hp: (user?.max_hp || 100),
     mp: (user?.max_mp || 40),
+    def: 0,
     crit: (user?.rpg_class === 'assassin' ? 12 : 5),
     dodge: (user?.rpg_class === 'assassin' ? 10 : (user?.rpg_class === 'ranger' ? 8 : 4)),
     expBonus: (user?.rpg_class === 'mage' ? 10 : 0),
@@ -94,6 +110,7 @@ function calculatePlayerTotalStats(user) {
       if (item.stats.atk) base.atk += item.stats.atk;
       if (item.stats.hp) base.hp += item.stats.hp;
       if (item.stats.mp) base.mp += item.stats.mp;
+      if (item.stats.def) base.def += item.stats.def;
       if (item.stats.crit) base.crit += item.stats.crit;
       if (item.stats.dodge) base.dodge += item.stats.dodge;
       if (item.stats.expBonus) base.expBonus += item.stats.expBonus;
@@ -107,9 +124,16 @@ function calculatePlayerTotalStats(user) {
     activeSets.forEach(s => {
       if (s.setKey === 'oxford') base.expBonus += (s.tier >= 4 ? 50 : 25);
       if (s.setKey === 'dragon') base.atk += (s.tier >= 4 ? 35 : 15);
-      if (s.setKey === 'chrono') { base.crit += 10; base.goldBonus += 25; }
+      if (s.setKey === 'chrono') {
+        base.crit += (s.tier >= 4 ? 25 : 10);
+        base.goldBonus += (s.tier >= 4 ? 50 : 25);
+      }
       if (s.setKey === 'shadow') base.dodge += (s.tier >= 4 ? 20 : 10);
-      if (s.setKey === 'anki_god') { base.atk += 50; base.hp += 180; base.crit += 15; }
+      if (s.setKey === 'anki_god') {
+        base.atk += (s.tier >= 4 ? 80 : 40);
+        base.hp += (s.tier >= 4 ? 300 : 150);
+        base.crit += (s.tier >= 4 ? 20 : 10);
+      }
     });
   }
 
@@ -124,6 +148,7 @@ function calculatePlayerTotalStats(user) {
           if (item.stats.atk) base.atk += Math.round(item.stats.atk * mult);
           if (item.stats.hp) base.hp += Math.round(item.stats.hp * mult);
           if (item.stats.mp) base.mp += Math.round(item.stats.mp * mult);
+          if (item.stats.def) base.def = (base.def || 0) + Math.round(item.stats.def * mult);
           if (item.stats.crit) base.crit += Math.round(item.stats.crit * mult);
           if (item.stats.dodge) base.dodge += Math.round(item.stats.dodge * mult);
         }
@@ -164,15 +189,64 @@ function calculatePlayerTotalStats(user) {
       base.expBonus += 25; // +25% EXP há»c tá»« vá»±ng
     } else if (petId === 'baby_drake') {
       base.atk += 10; // +10 ATK trá»±c tiáº¿p
-    } else if (petId === 'fortune_cat') {
-      base.goldBonus += 35; // +35% VÃ ng rÆ¡i
-    } else if (petId === 'frost_kitsune') {
-      base.dodge += 5; // +5% NÃ© Ä‘Ã²n ma thuáº­t
+    } else if (petId === 'fortune_cat' || petId === 'golden_shiba') {
+      base.goldBonus += 35; // +35% Vàng rơi
+    } else if (petId === 'frost_kitsune' || petId === 'shadow_panther') {
+      base.dodge += 5; // +5% Né đòn ma thuật
       base.def = (base.def || 0) + 10;
     }
   }
 
+  // Giới hạn trần Crit (tối đa 75%) và Dodge (tối đa 60%) theo luật cân bằng game
+  base.crit = Math.max(0, Math.min(75, base.crit));
+  base.dodge = Math.max(0, Math.min(60, base.dodge));
+
   return base;
+}
+
+// Helper tổng hợp các đặc quyền chiến đấu & ngoại chiến của các Bộ Trang Bị kích hoạt
+function getActiveSetPerks(user) {
+  if (!user) user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+  const eq = user?.equipped || {};
+  const equippedIds = Object.values(eq).filter(Boolean);
+  const activeSets = (typeof calculateActiveSetBonuses === 'function') ? calculateActiveSetBonuses(equippedIds) : [];
+  const perks = {
+    oxfordExpBonus: 0,
+    oxfordMpCostReduction: 0,
+    oxfordEliminateWrong: false,
+    dragonBurn: false,
+    dragonFlameWave: false,
+    chronoFastAnswerBonus: false,
+    chronoTimeFreezeCrit: false,
+    shadowWrongDodge: false,
+    shadowStealthHeal: 0,
+    ankiGodDamageBonus: 0,
+    ankiGodImmuneWrong: false
+  };
+
+  activeSets.forEach(s => {
+    if (s.setKey === 'oxford') {
+      perks.oxfordExpBonus = (s.tier >= 4 ? 50 : 25);
+      if (s.tier >= 4) {
+        perks.oxfordMpCostReduction = 25;
+        perks.oxfordEliminateWrong = true;
+      }
+    } else if (s.setKey === 'dragon') {
+      perks.dragonBurn = true;
+      if (s.tier >= 4) perks.dragonFlameWave = true;
+    } else if (s.setKey === 'chrono') {
+      perks.chronoFastAnswerBonus = true;
+      if (s.tier >= 4) perks.chronoTimeFreezeCrit = true;
+    } else if (s.setKey === 'shadow') {
+      perks.shadowWrongDodge = true;
+      if (s.tier >= 4) perks.shadowStealthHeal = 25;
+    } else if (s.setKey === 'anki_god') {
+      perks.ankiGodDamageBonus = (s.tier >= 4 ? 60 : 30);
+      if (s.tier >= 4) perks.ankiGodImmuneWrong = true;
+    }
+  });
+
+  return perks;
 }
 
 // Thao tác Trang Bị một món đồ vào người
@@ -274,6 +348,10 @@ function salvageRpgItem(itemId) {
   user.dust = (user.dust || 0) + (item.salvageDust || 10);
   user.gold = (user.gold || 0) + (item.sellPrice || 20);
 
+  if (typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.trackProgress === 'function') {
+    GamificationQuests.trackProgress('salvage_item', 1);
+  }
+
   if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
 
   selectedInventoryItem = null;
@@ -317,6 +395,241 @@ function setInventoryFilter(filter) {
   renderInventoryGrid();
 }
 
+// Danh mục vật phẩm tiêu hao trong kho đồ
+const RPG_CONSUMABLES_CATALOG = [
+  {
+    id: 'health_potion',
+    name: 'Bình Máu Siêu Cấp',
+    icon: '🧪',
+    desc: 'Hồi phục ngay +50 HP khi hiệp sĩ bị thương trong hoặc ngoài trận.',
+    type: 'heal_hp',
+    healAmount: 50,
+    color: '#EF4444'
+  },
+  {
+    id: 'mana_potion',
+    name: 'Bình Năng Lượng MP',
+    icon: '🔮',
+    desc: 'Hồi phục ngay +40 MP để thi triển tuyệt kỹ diệt quái.',
+    type: 'restore_mp',
+    manaAmount: 40,
+    color: '#3B82F6'
+  },
+  {
+    id: 'double_xp',
+    name: 'Thuốc x2 Kinh Nghiệm',
+    icon: '✨',
+    desc: 'Nhân đôi toàn bộ EXP nhận được khi học và chiến đấu trong 30 phút.',
+    type: 'buff_double_xp',
+    durationMinutes: 30,
+    color: '#F59E0B'
+  },
+  {
+    id: 'hint_scroll',
+    name: 'Cuộn Giấy Khai Sáng',
+    icon: '📜',
+    desc: 'Loại bỏ ngay 2 đáp án sai trong câu hỏi trắc nghiệm hiểm hóc.',
+    type: 'hint',
+    color: '#10B981'
+  },
+  {
+    id: 'pet_snacks',
+    name: 'Bánh Thưởng Linh Thú',
+    icon: '🍖',
+    desc: 'Thức ăn thơm ngon tăng ngay +25 Thân Thiết cho Linh Thú đồng hành.',
+    type: 'pet_food',
+    affinityGain: 25,
+    color: '#EC4899'
+  }
+];
+
+// Hàm sử dụng vật phẩm tiêu hao (Consumables Usage)
+function useConsumableItem(itemId, user) {
+  if (!user) user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+  if (!user) return { success: false, reason: 'no_user' };
+
+  if (!user.inventory) user.inventory = {};
+
+  let actualKey = itemId;
+  if (itemId === 'health_potion' && typeof user.inventory.health_potion === 'undefined' && typeof user.inventory.health_potions !== 'undefined') {
+    actualKey = 'health_potions';
+  } else if (itemId === 'double_xp' && typeof user.inventory.double_xp === 'undefined' && typeof user.inventory.double_xp_potion !== 'undefined') {
+    actualKey = 'double_xp_potion';
+  }
+
+  const count = user.inventory[actualKey] || 0;
+  if (count <= 0) {
+    if (typeof showToastAlert === 'function') {
+      showToastAlert('❌ Bạn đã hết vật phẩm này trong túi đồ!');
+    } else if (typeof alert === 'function') {
+      alert('Bạn đã hết vật phẩm này!');
+    }
+    return { success: false, reason: 'out_of_stock' };
+  }
+
+  let used = false;
+  let successMsg = '';
+
+  if (itemId === 'health_potion') {
+    const maxHp = user.max_hp || 100;
+    if (user.hp >= maxHp) {
+      if (typeof showToastAlert === 'function') showToastAlert('❤️ Máu của bạn đã đầy (100%), không cần dùng Bình Máu!');
+      return { success: false, reason: 'already_full' };
+    }
+    user.hp = Math.min(maxHp, (user.hp || 0) + 50);
+    if (typeof BattleEngine !== 'undefined' && BattleEngine.active && BattleEngine.hero) {
+      BattleEngine.hero.hp = Math.min(BattleEngine.hero.maxHp || maxHp, (BattleEngine.hero.hp || 0) + 50);
+      if (typeof BattleEngine.updateBattleUI === 'function') BattleEngine.updateBattleUI();
+    }
+    used = true;
+    successMsg = `🧪 Đã sử dụng Bình Máu: Hồi phục +50 HP! (Hiện tại: ${user.hp}/${maxHp})`;
+  } else if (itemId === 'mana_potion') {
+    const maxMp = user.max_mp || 40;
+    if (user.mp >= maxMp) {
+      if (typeof showToastAlert === 'function') showToastAlert('🔮 Năng lượng của bạn đã đầy (100%), không cần dùng Bình MP!');
+      return { success: false, reason: 'already_full' };
+    }
+    user.mp = Math.min(maxMp, (user.mp || 0) + 40);
+    if (typeof BattleEngine !== 'undefined' && BattleEngine.active && BattleEngine.hero) {
+      BattleEngine.hero.mp = Math.min(BattleEngine.hero.maxMp || maxMp, (BattleEngine.hero.mp || 0) + 40);
+      if (typeof BattleEngine.updateBattleUI === 'function') BattleEngine.updateBattleUI();
+    }
+    used = true;
+    successMsg = `🔮 Đã sử dụng Bình Năng Lượng: Hồi phục +40 MP! (Hiện tại: ${user.mp}/${maxMp})`;
+  } else if (itemId === 'double_xp') {
+    const baseExpiry = (user.double_xp_expires && user.double_xp_until && user.double_xp_expires < user.double_xp_until)
+      ? user.double_xp_expires
+      : (user.double_xp_until || user.double_xp_expires || 0);
+    user.double_xp_until = Math.max(Date.now(), baseExpiry) + (30 * 60 * 1000);
+    user.double_xp_expires = user.double_xp_until;
+    user.double_xp_active = true;
+    used = true;
+    successMsg = '✨ Đã kích hoạt Thần Dược x2 EXP: Toàn bộ EXP sẽ được nhân đôi trong 30 phút!';
+  } else if (itemId === 'hint_scroll') {
+    user.hint_scrolls_active = (user.hint_scrolls_active || 0) + 1;
+    used = true;
+    successMsg = '📜 Đã sử dụng Cuộn Giấy Khai Sáng: Sẵn sàng gợi ý 2 đáp án sai cho câu hỏi trắc nghiệm tiếp theo!';
+  } else if (itemId === 'pet_snacks') {
+    const activePet = user.equipped_pet || 'wise_owl';
+    if (!user.pets) user.pets = {};
+    const canonical = (typeof GamificationPets !== 'undefined' && GamificationPets.resolvePetId) ? GamificationPets.resolvePetId(activePet) : activePet;
+    if (!user.pets[canonical]) user.pets[canonical] = { unlocked: true, level: 1, affinity: 50 };
+    user.pets[canonical].affinity = Math.min(100, (user.pets[canonical].affinity || 0) + 25);
+    used = true;
+    successMsg = `🍖 Đã cho thú cưng ăn bánh thưởng: +25 Thân Thiết! (${user.pets[canonical].affinity}/100)`;
+  }
+
+  if (used) {
+    user.inventory[actualKey] = count - 1;
+    if (user.inventory[actualKey] <= 0) {
+      delete user.inventory[actualKey];
+    }
+
+    const quests = (typeof window !== 'undefined' && window.GamificationQuests) ? window.GamificationQuests : ((typeof GamificationQuests !== 'undefined') ? GamificationQuests : null);
+    if (quests && typeof quests.trackProgress === 'function') {
+      quests.trackProgress('use_potion', 1);
+    }
+
+    if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
+    if (typeof playInventoryEquipSound === 'function') playInventoryEquipSound();
+    if (typeof showToastAlert === 'function') showToastAlert(successMsg);
+
+    if (typeof renderInventoryModal === 'function') renderInventoryModal();
+    if (typeof updateTopHud === 'function') updateTopHud();
+
+    return { success: true, item: itemId, message: successMsg };
+  }
+
+  return { success: false, reason: 'unknown_item' };
+}
+
+// ==================== VẼ PREVIEW PAPERDOLL CANVAS 5 LỚP TRANG BỊ ====================
+function renderHeroPaperdollPreview(canvasOrId = 'invHeroPaperdollCanvas', user) {
+  if (!user) user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+  const canvas = (typeof canvasOrId === 'string') ? document.getElementById(canvasOrId) : canvasOrId;
+  if (!canvas || typeof canvas.getContext !== 'function') return;
+
+  if (typeof BattleEngine !== 'undefined' && typeof BattleEngine.renderHeroPreview === 'function') {
+    BattleEngine.renderHeroPreview(canvas);
+    return;
+  }
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  const w = canvas.width;
+  const h = canvas.height;
+  const cx = w / 2;
+  const cy = h / 2 + 10;
+
+  ctx.clearRect(0, 0, w, h);
+
+  // Vầng hào quang & bục đá vinh danh (Pedestal)
+  const grad = ctx.createRadialGradient(cx, cy + 12, 4, cx, cy + 12, 45);
+  grad.addColorStop(0, 'rgba(255, 231, 135, 0.35)');
+  grad.addColorStop(1, 'rgba(255, 231, 135, 0)');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.arc(cx, cy + 12, 45, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = '#1E2238';
+  ctx.beginPath();
+  ctx.ellipse(cx, cy + 20, 36, 9, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#FFE787';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  ctx.save();
+  ctx.translate(cx, cy - 8);
+  ctx.scale(1.2, 1.2);
+
+  const eq = user?.equipped || {};
+  const getItem = (id) => (typeof getRpgEquipmentById === 'function' ? getRpgEquipmentById(id) : null);
+  const boots = getItem(eq.boots);
+  const armor = getItem(eq.armor);
+  const gloves = getItem(eq.gloves);
+  const helmet = getItem(eq.helmet);
+  const weapon = getItem(eq.weapon);
+
+  // Lớp 1: Boots (Chân & Ủng)
+  const bootColor = boots?.visual?.color || '#475569';
+  ctx.fillStyle = bootColor;
+  ctx.fillRect(-7, 10, 5, 12);
+  ctx.fillRect(2, 10, 5, 12);
+
+  // Lớp 2: Armor & Cape (Thân & Áo Giáp)
+  const armorColor = armor?.visual?.color || '#334155';
+  ctx.fillStyle = armorColor;
+  ctx.fillRect(-9, -6, 18, 18);
+
+  // Lớp 3: Gloves & Arms (Tay & Găng)
+  const gloveColor = gloves?.visual?.color || '#64748B';
+  ctx.fillStyle = gloveColor;
+  ctx.fillRect(-13, -4, 4, 12);
+  ctx.fillRect(9, -4, 4, 12);
+
+  // Lớp 4: Head & Helmet (Đầu & Mũ/Vương Miện)
+  ctx.fillStyle = '#FBBF24'; // Da mặt
+  ctx.fillRect(-6, -18, 12, 12);
+  ctx.fillStyle = '#111'; // Mắt pixel
+  ctx.fillRect(-3, -13, 2, 2);
+  ctx.fillRect(1, -13, 2, 2);
+
+  const helmColor = helmet?.visual?.color || '#94A3B8';
+  ctx.fillStyle = helmColor;
+  ctx.fillRect(-8, -22, 16, 7); // Mũ bảo hộ
+
+  // Lớp 5: Weapon (Vũ Khí)
+  const bladeColor = weapon?.visual?.bladeColor || '#CBD5E1';
+  ctx.fillStyle = bladeColor;
+  ctx.fillRect(13, -16, 3, 22);
+  ctx.fillStyle = '#D97706'; // Chuôi kiếm
+  ctx.fillRect(10, 4, 9, 3);
+
+  ctx.restore();
+}
+
 // Render toàn bộ giao diện Modal Túi Đồ
 function renderInventoryModal() {
   const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
@@ -336,13 +649,16 @@ function renderInventoryModal() {
   // 2. Render 6 Ô Paperdoll Trang Bị
   renderPaperdollSlots(user);
 
-  // 3. Render Tổng Bảng Chỉ Số Thực Chiến
+  // 3. Render 5-Slot Visual Hero Sprite Canvas Preview
+  renderHeroPaperdollPreview('invHeroPaperdollCanvas', user);
+
+  // 4. Render Tổng Bảng Chỉ Số Thực Chiến
   renderTotalStatsSummary(user);
 
-  // 4. Render Kho Lưới Vật Phẩm
+  // 5. Render Kho Lưới Vật Phẩm
   renderInventoryGrid();
 
-  // 5. Render Thẻ So Sánh / Chi Tiết Món Đang Chọn
+  // 6. Render Thẻ So Sánh / Chi Tiết Món Đang Chọn
   renderItemComparisonCard(selectedInventoryItem);
 }
 
@@ -363,6 +679,8 @@ function renderPaperdollSlots(user) {
 
     const itemId = user.equipped?.[slot];
     const item = itemId ? getRpgEquipmentById(itemId) : null;
+    const enh = user?.equipment_enhances?.[slot] || 0;
+    const enhBadge = enh > 0 ? `<span class="px-1.5 py-0.2 bg-amber-400 text-[#111] font-mono-code font-extrabold text-[10px] rounded shadow-sm">+${enh}</span>` : '';
 
     if (item) {
       const tierDef = RPG_TIERS[item.tier] || RPG_TIERS.common;
@@ -373,8 +691,8 @@ function renderPaperdollSlots(user) {
         <div class="flex items-center gap-2 overflow-hidden">
           <span class="text-lg">${slot === 'weapon' ? '🗡️' : slot === 'helmet' ? '🪖' : slot === 'armor' ? '🛡️' : slot === 'gloves' ? '🧤' : slot === 'boots' ? '👢' : '💍'}</span>
           <div class="truncate">
-            <div class="text-[10px] uppercase font-bold text-slate-500">${slotLabels[slot]}</div>
-            <div class="font-display font-extrabold text-xs text-[#111] truncate" style="color: ${tierDef.color}">${item.name}</div>
+            <div class="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1">${slotLabels[slot]} ${enhBadge}</div>
+            <div class="font-display font-extrabold text-xs text-[#111] truncate" style="color: ${tierDef.color}">${item.name}${enh > 0 ? ` (+${enh})` : ''}</div>
           </div>
         </div>
         <button type="button" onclick="event.stopPropagation(); unequipRpgSlot('${slot}')" class="px-1.5 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded hover:bg-red-600" title="Tháo cất vào túi">Tháo</button>
@@ -439,13 +757,47 @@ function renderInventoryGrid() {
 
   let items = inv.map(id => getRpgEquipmentById(id)).filter(Boolean);
 
+  if (currentInventoryFilter === 'consumable') {
+    const consumables = RPG_CONSUMABLES_CATALOG.map(c => {
+      let count = 0;
+      if (user && user.inventory) {
+        count = (user.inventory[c.id] || 0);
+        if (c.id === 'health_potion' && typeof user.inventory.health_potions !== 'undefined') {
+          count += user.inventory.health_potions;
+        }
+        if (c.id === 'double_xp' && typeof user.inventory.double_xp_potion !== 'undefined') {
+          count += user.inventory.double_xp_potion;
+        }
+      }
+      return { ...c, count };
+    });
+
+    const totalCount = consumables.reduce((acc, c) => acc + c.count, 0);
+    const countBadge = document.getElementById('invItemsCountLabel');
+    if (countBadge) countBadge.innerText = `${totalCount} vật phẩm`;
+
+    container.innerHTML = consumables.map(item => `
+      <div class="neo-box bg-white p-2.5 flex flex-col justify-between border-2 border-[#111] shadow-[2px_2px_0px_#111]">
+        <div class="space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">${item.icon}</span>
+            <span class="font-mono-code font-extrabold text-xs px-2 py-0.5 rounded border ${item.count > 0 ? 'bg-amber-100 text-amber-900 border-amber-300' : 'bg-slate-100 text-slate-400 border-slate-300'}">
+              x${item.count}
+            </span>
+          </div>
+          <h4 class="font-display font-extrabold text-xs text-[#111] pt-1 truncate" style="color: ${item.color}">${item.name}</h4>
+          <p class="text-[10px] text-slate-500 leading-snug">${item.desc}</p>
+        </div>
+        <button type="button" onclick="useConsumableItem('${item.id}')" ${item.count <= 0 ? 'disabled' : ''} class="neo-btn mt-2 w-full py-1 text-xs font-display font-extrabold uppercase flex items-center justify-center gap-1 ${item.count > 0 ? 'bg-[#141414] hover:bg-slate-800 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed opacity-60'}">
+          <span>Sử Dụng</span>
+        </button>
+      </div>
+    `).join('');
+    return;
+  }
+
   if (currentInventoryFilter !== 'all') {
-    if (currentInventoryFilter === 'consumable') {
-      // Các vật phẩm tiêu hao (Máu, MP, Gợi ý)
-      items = [];
-    } else {
-      items = items.filter(item => item.slot === currentInventoryFilter);
-    }
+    items = items.filter(item => item.slot === currentInventoryFilter);
   }
 
   const countBadge = document.getElementById('invItemsCountLabel');
@@ -593,4 +945,46 @@ function playInventoryEquipSound() {
     osc.start(now);
     osc.stop(now + 0.18);
   } catch (e) {}
+}
+
+function isDoubleXpActive(user) {
+  if (!user) user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+  if (!user) return false;
+  const expiry = Math.max(user.double_xp_until || 0, user.double_xp_expires || 0);
+  const active = expiry > Date.now();
+  user.double_xp_active = active;
+  return active;
+}
+
+// Xuất global cho toàn bộ hệ thống
+if (typeof window !== 'undefined') {
+  window.ensureUserEquipmentInitialized = ensureUserEquipmentInitialized;
+  window.calculatePlayerTotalStats = calculatePlayerTotalStats;
+  window.getActiveSetPerks = getActiveSetPerks;
+  window.equipRpgItem = equipRpgItem;
+  window.unequipRpgSlot = unequipRpgSlot;
+  window.salvageRpgItem = salvageRpgItem;
+  window.renderHeroPaperdollPreview = renderHeroPaperdollPreview;
+  window.openInventoryModal = openInventoryModal;
+  window.closeInventoryModal = closeInventoryModal;
+  window.setInventoryFilter = setInventoryFilter;
+  window.renderInventoryModal = renderInventoryModal;
+  window.useConsumableItem = useConsumableItem;
+  window.isDoubleXpActive = isDoubleXpActive;
+  window.RPG_CONSUMABLES_CATALOG = RPG_CONSUMABLES_CATALOG;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    ensureUserEquipmentInitialized,
+    calculatePlayerTotalStats,
+    getActiveSetPerks,
+    equipRpgItem,
+    unequipRpgSlot,
+    salvageRpgItem,
+    renderHeroPaperdollPreview,
+    useConsumableItem,
+    isDoubleXpActive,
+    RPG_CONSUMABLES_CATALOG
+  };
 }

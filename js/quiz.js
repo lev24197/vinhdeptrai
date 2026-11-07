@@ -1,4 +1,4 @@
-﻿// ==================== ĐẤU TRƯỜNG TRẮC NGHIỆM ANKI (QUIZ ARENA) ====================
+// ==================== ĐẤU TRƯỜNG TRẮC NGHIỆM ANKI (QUIZ ARENA) ====================
 let quizSelectedStts = new Set();
 let quizWordsCache = {}; // stt -> array of words
 let quizQuestions = [];
@@ -329,14 +329,10 @@ async function startQuizSession() {
 function renderCurrentQuizCard() {
   if (quizCurrentIdx >= quizQuestions.length) {
     if (quizGameMode === 'rpg' && typeof BattleEngine !== 'undefined' && BattleEngine.monster?.isBoss && BattleEngine.monster.hp > 0) {
-      // Hiệp sĩ tung tuyệt kỹ kết liễu trảm rồng trọn vẹn
-      BattleEngine.hero.state = 'dashing';
-      BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 30, '⚡ TUYỆT KỸ KẾT LIỄU: TRẢM MA ĐẠI PHÁ!', '#FFE787', true);
-      setTimeout(() => {
-        BattleEngine.monster.hp = 0;
-        BattleEngine.triggerMonsterDeathExplosion();
-      }, 600);
-      return;
+      if (typeof triggerHeroFinishingBlow === 'function') {
+        triggerHeroFinishingBlow();
+        return;
+      }
     }
     if (typeof showDungeonVictory === 'function') {
       showDungeonVictory();
@@ -473,7 +469,17 @@ function chooseQuizOption(idx) {
     // Gamification Integration: Cộng XP và Vàng tức thì vào tài khoản
     if (typeof addXP === 'function') addXP(points, 'Trả lời đúng trắc nghiệm');
     if (typeof addCoins === 'function') addCoins(Math.max(1, Math.round(2 * multiplier)), 'Thưởng câu đúng');
-    if (typeof GamificationQuests !== 'undefined') { GamificationQuests.trackProgress('quiz_correct', 1); if (quizStreak >= 5) GamificationQuests.trackProgress('streak_combo', quizStreak); }
+    if (typeof GamificationQuests !== 'undefined') {
+      GamificationQuests.trackProgress('word_correct', 1);
+      GamificationQuests.trackProgress('quiz_correct', 1);
+      if (quizStreak >= 5) {
+        GamificationQuests.trackProgress('combo_streak', quizStreak);
+        GamificationQuests.trackProgress('streak_combo', quizStreak);
+      }
+      if (q.target && q.target.level === 'advanced') {
+        GamificationQuests.trackProgress('c1_c2_word', 1);
+      }
+    }
 
     // Battle Engine Integration: Hiệp sĩ tấn công quái vật!
     if (quizGameMode === 'rpg' && typeof BattleEngine !== 'undefined') {
@@ -585,7 +591,10 @@ function showQuizResults() {
       maxStreak: quizMaxStreak,
       mistakes: quizMistakes
     });
-  if (typeof GamificationQuests !== 'undefined') { GamificationQuests.trackProgress('quiz_finish', 1); }
+    if (typeof GamificationQuests !== 'undefined') {
+      GamificationQuests.trackProgress('dungeon_clear', 1);
+      GamificationQuests.trackProgress('quiz_finish', 1);
+    }
   }
 
   let rank = 'ANKI TITAN';

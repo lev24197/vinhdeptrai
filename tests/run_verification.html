@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anki RPG Gamification Verification Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #070913;
+      background-image: 
+        radial-gradient(circle at 50% 10%, rgba(30, 27, 75, 0.5) 0%, transparent 60%),
+        linear-gradient(to bottom, #070913 0%, #0F111E 100%);
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+    }
+    .neo-box {
+      border: 3px solid #111;
+      box-shadow: 4px 4px 0px #111;
+    }
+    .neo-box-yellow {
+      border: 3px solid #111;
+      box-shadow: 4px 4px 0px #FFE787;
+    }
+    .neo-btn {
+      border: 2px solid #111;
+      box-shadow: 3px 3px 0px #111;
+      transition: all 0.1s ease;
+    }
+    .neo-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #111;
+    }
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+  </style>
+</head>
+<body class="p-3 sm:p-6">
+
+  <!-- Uncaught Page Error Interceptor & Headless Dialog Stubs -->
+  <script>
+    window.alert = function(msg) {};
+    window.confirm = function(msg) { return true; };
+    window.prompt = function(msg) { return null; };
+    window.__PAGE_ERRORS__ = [];
+    window.addEventListener('error', function(e) {
+      window.__PAGE_ERRORS__.push({
+        type: 'uncaught_error',
+        message: e.message,
+        filename: e.filename,
+        lineno: e.lineno
+      });
+      const errBox = document.getElementById('page-errors-list');
+      if (errBox) {
+        errBox.innerHTML += `<div class="text-red-400 font-mono-code text-xs">⚠️ [Error] ${e.message} (${e.filename}:${e.lineno})</div>`;
+        document.getElementById('page-errors-container').classList.remove('hidden');
+      }
+    });
+    window.addEventListener('unhandledrejection', function(e) {
+      window.__PAGE_ERRORS__.push({
+        type: 'unhandled_rejection',
+        reason: String(e.reason)
+      });
+    });
+  </script>
+
+  <div class="max-w-5xl mx-auto space-y-6">
+
+    <!-- Header Banner -->
+    <header class="neo-box bg-[#FFE787] text-[#111] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-3xl">⚔️</span>
+          <span class="font-mono-code text-xs font-extrabold uppercase tracking-widest bg-[#111] text-[#FFE787] px-2 py-0.5 rounded">
+            E2E AUDITOR & VERIFICATION HARNESS
+          </span>
+        </div>
+        <h1 class="font-display font-extrabold text-2xl sm:text-3xl uppercase tracking-tight">
+          Anki RPG Gamification Verification
+        </h1>
+        <p class="text-xs sm:text-sm font-semibold text-slate-800 mt-1">
+          Programmatic test runner validating combat math, elemental matrix, dungeons, tower, forge & persistence.
+        </p>
+      </div>
+
+      <div class="flex flex-col items-end gap-2 w-full sm:w-auto">
+        <button onclick="executeVerification()" id="btnRerunTests" class="neo-btn px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-display font-extrabold text-xs uppercase flex items-center gap-2">
+          <span>🔄</span> <span>CHẠY LẠI TEST SUITE</span>
+        </button>
+        <span id="test-timestamp" class="text-[11px] font-mono-code text-slate-700">Chờ khởi chạy...</span>
+      </div>
+    </header>
+
+    <!-- Top KPI Counters -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-display">
+      <div class="neo-box bg-[#181B2E] p-3 text-center">
+        <div class="text-xs font-bold text-slate-400 uppercase">Tổng Số Test</div>
+        <div id="statTotal" class="text-2xl sm:text-3xl font-extrabold text-white font-mono-code">-</div>
+      </div>
+      <div class="neo-box bg-[#181B2E] p-3 text-center border-l-4 border-l-emerald-500">
+        <div class="text-xs font-bold text-emerald-400 uppercase">Đạt (Passed)</div>
+        <div id="statPassed" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono-code">-</div>
+      </div>
+      <div class="neo-box bg-[#181B2E] p-3 text-center border-l-4 border-l-red-500">
+        <div class="text-xs font-bold text-red-400 uppercase">Lỗi (Failed)</div>
+        <div id="statFailed" class="text-2xl sm:text-3xl font-extrabold text-red-400 font-mono-code">-</div>
+      </div>
+      <div class="neo-box bg-[#181B2E] p-3 text-center">
+        <div class="text-xs font-bold text-amber-400 uppercase">Thời Gian Chạy</div>
+        <div id="statDuration" class="text-2xl sm:text-3xl font-extrabold text-amber-300 font-mono-code">- ms</div>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="neo-box bg-[#10121F] p-2 space-y-1">
+      <div class="flex justify-between items-center text-xs font-mono-code font-bold px-1">
+        <span id="test-status-label" class="text-amber-400 animate-pulse">ĐANG CHẠY CÁC CA KIỂM THỬ...</span>
+        <span id="test-percent-label" class="text-white">0%</span>
+      </div>
+      <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden border border-slate-700">
+        <div id="testProgressBar" class="h-full bg-emerald-500 transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Page Errors Container (Hidden by default) -->
+    <div id="page-errors-container" class="neo-box bg-red-950/80 border-red-500 p-4 space-y-2 hidden">
+      <div class="flex items-center gap-2 text-red-400 font-display font-extrabold text-sm uppercase">
+        <span>⚠️</span> <span>PHÁT HIỆN LỖI RUNTIME UNCAUGHT JAVASCRIPT:</span>
+      </div>
+      <div id="page-errors-list" class="space-y-1"></div>
+    </div>
+
+    <!-- Test Suites Output Container -->
+    <main id="suitesContainer" class="space-y-4">
+      <!-- Sẽ được fill bằng renderSuitesUI() -->
+      <div class="neo-box bg-[#121424] p-8 text-center text-slate-400 font-mono-code text-sm">
+        Đang nạp cơ sở dữ liệu và chuẩn bị khởi chạy bài kiểm tra...
+      </div>
+    </main>
+
+    <!-- Hidden Output for Headless Scraping -->
+    <div id="test-status" class="hidden">IDLE</div>
+    <div id="test-summary-data" class="hidden"></div>
+    <script id="test-output-json" type="application/json"></script>
+    <div id="verification-complete" class="hidden"></div>
+
+    <!-- Hidden Frames for Live Zero-Exception Audit of battle.html and index.html -->
+    <div class="hidden">
+      <iframe id="auditFrameBattle" src="../battle.html" style="width:1px;height:1px;"></iframe>
+      <iframe id="auditFrameIndex" src="../index.html" style="width:1px;height:1px;"></iframe>
+      <div id="frame-audit-results"></div>
+    </div>
+
+  </div>
+
+  <!-- ==================== CÁC MODULE JAVASCRIPT ==================== -->
+  <script src="../js/data.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/equipment_data.js"></script>
+  <script src="../js/inventory.js"></script>
+  <script src="../js/shop.js"></script>
+  <script src="../js/dungeon_data_100.js"></script>
+  <script src="../js/gamification_quests.js"></script>
+  <script src="../js/gamification_skills.js"></script>
+  <script src="../js/gamification_pets.js"></script>
+  <script src="../js/gamification_tower.js"></script>
+  <script src="../js/battle.js"></script>
+  <script src="../js/quiz.js"></script>
+
+  <!-- TEST SUITE SPECIFICATION -->
+  <script src="gamification_test_suite.js"></script>
+
+  <!-- Dynamic Frame Audit Controller -->
+  <script>
+    const frameAuditState = {
+      battle: { loaded: false, errors: [] },
+      index: { loaded: false, errors: [] }
+    };
+    window.frameAuditState = frameAuditState;
+    window.__FRAME_AUDIT_DATA__ = frameAuditState;
+
+    function syncFrameAuditDiv() {
+      const el = document.getElementById('frame-audit-results');
+      if (el) {
+        el.textContent = JSON.stringify({
+          battle: {
+            loaded: Boolean(frameAuditState.battle.loaded),
+            errors: frameAuditState.battle.errors
+          },
+          index: {
+            loaded: Boolean(frameAuditState.index.loaded),
+            errors: frameAuditState.index.errors
+          }
+        });
+      }
+    }
+
+    // 1. Cross-Window Message Listener (catches early/inline parse errors and load signals via postMessage)
+    window.addEventListener('message', function(ev) {
+      if (ev.data && ev.data.type === 'PAGE_ERROR_DISPATCH') {
+        const src = ev.data.source;
+        if (src && frameAuditState[src]) {
+          const exists = frameAuditState[src].errors.some(function(e) {
+            return e.message === ev.data.error.message && e.lineno === ev.data.error.lineno;
+          });
+          if (!exists) {
+            frameAuditState[src].errors.push(ev.data.error);
+            syncFrameAuditDiv();
+          }
+        }
+      }
+      if (ev.data && ev.data.type === 'PAGE_LOAD_DISPATCH') {
+        const src = ev.data.source;
+        if (src && frameAuditState[src]) {
+          frameAuditState[src].loaded = true;
+          syncFrameAuditDiv();
+        }
+      }
+    });
+
+    // 2. Direct Window Hooking & Polling
+    function hookFrame(iframeId, frameKey) {
+      const iframe = document.getElementById(iframeId);
+      if (!iframe) return;
+
+      function attachWindowHooks() {
+        try {
+          const win = iframe.contentWindow;
+          if (!win) return;
+
+          // Drain errors already recorded in __PAGE_ERRORS__
+          if (Array.isArray(win.__PAGE_ERRORS__)) {
+            win.__PAGE_ERRORS__.forEach(function(err) {
+              const exists = frameAuditState[frameKey].errors.some(function(e) {
+                return e.message === err.message && e.lineno === err.lineno;
+              });
+              if (!exists) {
+                frameAuditState[frameKey].errors.push(err);
+              }
+            });
+          }
+
+          // Attach runtime listener for errors firing subsequently
+          if (!win.__VERIFICATION_HOOKED__) {
+            win.__VERIFICATION_HOOKED__ = true;
+            win.addEventListener('error', function(e) {
+              frameAuditState[frameKey].errors.push({
+                type: 'uncaught_error',
+                message: e.message || String(e),
+                filename: e.filename || '',
+                lineno: e.lineno || 0
+              });
+              syncFrameAuditDiv();
+            });
+
+            win.addEventListener('unhandledrejection', function(e) {
+              frameAuditState[frameKey].errors.push({
+                type: 'unhandled_rejection',
+                message: (e.reason && (e.reason.message || e.reason.stack)) ? String(e.reason.message || e.reason) : String(e.reason)
+              });
+              syncFrameAuditDiv();
+            });
+          }
+
+          frameAuditState[frameKey].loaded = true;
+          syncFrameAuditDiv();
+        } catch (err) {
+          console.warn('Frame inspection note for ' + frameKey + ':', err);
+        }
+      }
+
+      iframe.addEventListener('load', function() {
+        attachWindowHooks();
+        setTimeout(attachWindowHooks, 250);
+      });
+
+      iframe.addEventListener('error', function() {
+        frameAuditState[frameKey].errors.push({
+          type: 'frame_load_error',
+          message: 'Could not load iframe resource for ' + frameKey
+        });
+        syncFrameAuditDiv();
+      });
+
+      if (iframe.contentDocument && (iframe.contentDocument.readyState === 'complete' || iframe.contentDocument.readyState === 'interactive')) {
+        attachWindowHooks();
+      }
+    }
+
+    hookFrame('auditFrameBattle', 'battle');
+    hookFrame('auditFrameIndex', 'index');
+
+    // Asynchronous Frame Audit Awaiter for test runner and T9.3
+    window.__AWAIT_FRAME_AUDIT__ = function(timeoutMs) {
+      timeoutMs = timeoutMs || 3000;
+      const bFrame = document.getElementById('auditFrameBattle');
+      const iFrame = document.getElementById('auditFrameIndex');
+
+      function waitOne(frame, frameKey) {
+        if (!frame) return Promise.resolve();
+        return new Promise(resolve => {
+          let resolved = false;
+          const done = () => {
+            if (!resolved) {
+              resolved = true;
+              hookFrame(frame.id, frameKey);
+              resolve();
+            }
+          };
+
+          if (frameAuditState[frameKey].loaded) {
+            done();
+            return;
+          }
+
+          try {
+            const doc = frame.contentDocument;
+            const win = frame.contentWindow;
+            if (win && win.location && win.location.href && win.location.href !== 'about:blank' && doc && doc.readyState === 'complete') {
+              done();
+              return;
+            }
+          } catch(e) {}
+
+          frame.addEventListener('load', done, { once: true });
+          setTimeout(done, timeoutMs);
+        });
+      }
+
+      return Promise.all([
+        waitOne(bFrame, 'battle'),
+        waitOne(iFrame, 'index')
+      ]).then(function() {
+        hookFrame('auditFrameBattle', 'battle');
+        hookFrame('auditFrameIndex', 'index');
+        syncFrameAuditDiv();
+        return frameAuditState;
+      });
+    };
+  </script>
+
+  <!-- Runner Execution Controller -->
+  <script>
+    async function executeVerification() {
+      const statusLabel = document.getElementById('test-status-label');
+      const progressBar = document.getElementById('testProgressBar');
+      const percentLabel = document.getElementById('testpercent-label');
+      const testStatusEl = document.getElementById('test-status');
+
+      testStatusEl.innerText = 'RUNNING';
+      if (statusLabel) {
+        statusLabel.innerText = 'ĐANG THỰC THI TOÀN BỘ KIỂM THỬ...';
+        statusLabel.className = 'text-amber-400 animate-pulse font-bold';
+      }
+
+      if (typeof runGamificationTests !== 'function') {
+        console.error('runGamificationTests is not defined');
+        return;
+      }
+
+      const results = await runGamificationTests();
+
+      // Update KPIs
+      document.getElementById('statTotal').innerText = results.total;
+      document.getElementById('statPassed').innerText = results.passed;
+      document.getElementById('statFailed').innerText = results.failed;
+      document.getElementById('statDuration').innerText = results.durationMs + ' ms';
+      document.getElementById('test-timestamp').innerText = 'Hoàn tất: ' + new Date().toLocaleTimeString();
+
+      const passRate = results.total > 0 ? (results.passed / results.total) * 100 : 0;
+      progressBar.style.width = passRate + '%';
+      if (percentLabel) percentLabel.innerText = passRate.toFixed(1) + '%';
+
+      if (results.failed === 0) {
+        statusLabel.innerText = `✅ TẤT CẢ ${results.total} CA KIỂM THỬ ĐẠT CHUẨN 100%!`;
+        statusLabel.className = 'text-emerald-400 font-extrabold';
+        progressBar.className = 'h-full bg-emerald-500';
+        testStatusEl.innerText = 'PASSED';
+      } else {
+        statusLabel.innerText = `❌ PHÁT HIỆN ${results.failed} CA KIỂM THỬ THẤT BẠI!`;
+        statusLabel.className = 'text-red-400 font-extrabold';
+        progressBar.className = 'h-full bg-red-500';
+        testStatusEl.innerText = 'FAILED';
+      }
+
+      // Render UI Cards
+      renderSuitesUI(results.suites);
+
+      // Populate Headless Scraping Elements
+      const jsonEl = document.getElementById('test-output-json');
+      if (jsonEl) jsonEl.textContent = JSON.stringify(results);
+
+      const summaryData = document.getElementById('test-summary-data');
+      if (summaryData) {
+        summaryData.innerText = `TOTAL=${results.total}|PASSED=${results.passed}|FAILED=${results.failed}|TIME=${results.durationMs}`;
+      }
+
+      const completeMarker = document.getElementById('verification-complete');
+      if (completeMarker) {
+        completeMarker.setAttribute('data-passed', String(results.failed === 0));
+        completeMarker.setAttribute('data-total', String(results.total));
+        completeMarker.setAttribute('data-failed', String(results.failed));
+        completeMarker.innerText = 'COMPLETE';
+      }
+    }
+
+    function renderSuitesUI(suites) {
+      const container = document.getElementById('suitesContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      for (const [suiteName, data] of Object.entries(suites)) {
+        const isSuitePassed = (data.failed === 0);
+        const card = document.createElement('div');
+        card.className = `neo-box p-4 bg-[#121424] space-y-3 ${isSuitePassed ? 'border-slate-700' : 'border-red-500'}`;
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between border-b pb-2.5 ${isSuitePassed ? 'border-slate-700' : 'border-red-800'}">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">${isSuitePassed ? '🛡️' : '⚠️'}</span>
+              <h3 class="font-display font-extrabold text-sm sm:text-base uppercase ${isSuitePassed ? 'text-white' : 'text-red-400'}">
+                ${suiteName}
+              </h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded font-mono-code text-xs font-bold ${isSuitePassed ? 'bg-emerald-950 text-emerald-300 border border-emerald-700' : 'bg-red-950 text-red-300 border border-red-700'}">
+                ${data.passed}/${data.total} PASSED
+              </span>
+            </div>
+          </div>
+
+          <div class="space-y-1.5 font-mono-code text-xs">
+            ${data.tests.map(t => `
+              <div class="p-2 rounded flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 ${t.passed ? 'bg-[#181B2E] text-slate-200' : 'bg-red-950/70 border border-red-600 text-red-200'}">
+                <div class="flex items-center gap-2">
+                  <span>${t.passed ? '✅' : '❌'}</span>
+                  <span class="font-bold">${t.name}</span>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  ${!t.passed ? `<span class="text-red-400 text-[11px] font-semibold">${t.error || 'Failed'}</span>` : ''}
+                  <span class="text-[11px] text-slate-400">${t.durationMs}ms</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+
+        container.appendChild(card);
+      }
+    }
+
+    // Auto-run on load
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(executeVerification, 150);
+    });
+  </script>
+</body>
+</html>

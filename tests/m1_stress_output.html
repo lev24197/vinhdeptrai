@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+  <meta charset="UTF-8">
+  <title>Milestone 1 Stress Test Harness</title>
+</head>
+<body>
+  <h1>Milestone 1 Stress Test Suite</h1>
+  <div id="status">COMPLETED</div>
+  <pre id="output">Total: 17, Passed: 15, Failed: 2
+
+[Suite 1: Vocabulary Fallback Generator Stress &amp; Boundaries] (6/6 passed)
+  ✓ [PASS] T1.1: Every topic 1 to 100 generates valid schema of &gt;= 8 items (7ms)
+  ✓ [PASS] T1.2: Corpus topics 87-100 specifically load rich Oxford/CEFR words with cloze and IPA (3ms)
+  ✓ [PASS] T1.3: Boundary &amp; extreme topic numbers (0, 101, 9999, -1, NaN, null, undefined, empty string) (1ms)
+  ✓ [PASS] T1.4: generateFallbackTsv formatting across boundaries (0, 87, 100, 101, NaN, -1) (1ms)
+  ✓ [PASS] T1.5: smartFetch interception for missing files vs existing files vs invalid paths (54ms)
+  ✓ [PASS] T1.6: ensureTopicVocabularyFallback populates quizWordsCache and protects quiz sessions (0ms)
+[Suite 2: Supabase Guest Merge Edge Cases &amp; State Persistence] (5/5 passed)
+  ✓ [PASS] T2.1: Advanced Guest merges into Fresh Cloud Account (level, currencies, stats, dungeons) (0ms)
+  ✓ [PASS] T2.2: Existing Cloud Account is NOT overwritten by Fresh Guest (0ms)
+  ✓ [PASS] T2.3: Switching between two cloud accounts does not merge data (0ms)
+  ✓ [PASS] T2.4: [EMPIRICAL FINDING] Guest Max HP/MP Scaling Discrepancy on Merge (0ms)
+  ✓ [PASS] T2.5: [EMPIRICAL FINDING] Guest Consumable Inventory Loss on Brand New Cloud Merge (0ms)
+[Suite 3: Consumable Key Fallbacks &amp; Duplication Testing] (4/6 passed)
+  ✓ [PASS] T3.1: Plural health_potions is normalized to health_potion in loadLocalProfileFallback (0ms)
+  ✓ [PASS] T3.2: Plural health_potions adds to existing singular health_potion (0ms)
+  ✗ [FAIL] T3.3: [EMPIRICAL BUG REPRODUCTION] useShopItem("health_potions") fails and refuses to heal (0ms)
+      Error: Demonstrated bug: useShopItem("health_potions") triggered false "not owned" alert
+  ✓ [PASS] T3.4: useShopItem("double_xp_potion") vs useShopItem("double_xp") alias works correctly (0ms)
+  ✗ [FAIL] T3.5: [EMPIRICAL BUG REPRODUCTION] Infinite Duplication Bug on double_xp_potion reloads (0ms)
+      Error: Demonstrated bug: cycle counts compounded: 4, 4, 4, 4
+  ✓ [PASS] T3.6: Bidirectional dust &lt;-&gt; magic_dust accessor integrity (0ms)
+</pre>
+  <div id="results-json" style="display:none;">{
+  "suites": [
+    {
+      "name": "Suite 1: Vocabulary Fallback Generator Stress &amp; Boundaries",
+      "tests": [
+        {
+          "name": "T1.1: Every topic 1 to 100 generates valid schema of &gt;= 8 items",
+          "passed": true,
+          "error": null,
+          "duration": 7
+        },
+        {
+          "name": "T1.2: Corpus topics 87-100 specifically load rich Oxford/CEFR words with cloze and IPA",
+          "passed": true,
+          "error": null,
+          "duration": 3
+        },
+        {
+          "name": "T1.3: Boundary &amp; extreme topic numbers (0, 101, 9999, -1, NaN, null, undefined, empty string)",
+          "passed": true,
+          "error": null,
+          "duration": 1
+        },
+        {
+          "name": "T1.4: generateFallbackTsv formatting across boundaries (0, 87, 100, 101, NaN, -1)",
+          "passed": true,
+          "error": null,
+          "duration": 1
+        },
+        {
+          "name": "T1.5: smartFetch interception for missing files vs existing files vs invalid paths",
+          "passed": true,
+          "error": null,
+          "duration": 54
+        },
+        {
+          "name": "T1.6: ensureTopicVocabularyFallback populates quizWordsCache and protects quiz sessions",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        }
+      ],
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "name": "Suite 2: Supabase Guest Merge Edge Cases &amp; State Persistence",
+      "tests": [
+        {
+          "name": "T2.1: Advanced Guest merges into Fresh Cloud Account (level, currencies, stats, dungeons)",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        },
+        {
+          "name": "T2.2: Existing Cloud Account is NOT overwritten by Fresh Guest",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        },
+        {
+          "name": "T2.3: Switching between two cloud accounts does not merge data",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        },
+        {
+          "name": "T2.4: [EMPIRICAL FINDING] Guest Max HP/MP Scaling Discrepancy on Merge",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        },
+        {
+          "name": "T2.5: [EMPIRICAL FINDING] Guest Consumable Inventory Loss on Brand New Cloud Merge",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        }
+      ],
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "name": "Suite 3: Consumable Key Fallbacks &amp; Duplication Testing",
+      "tests": [
+        {
+          "name": "T3.1: Plural health_potions is normalized to health_potion in loadLocalProfileFallback",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        },
+        {
+          "name": "T3.2: Plural health_potions adds to existing singular health_potion",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        },
+        {
+          "name": "T3.3: [EMPIRICAL BUG REPRODUCTION] useShopItem(\"health_potions\") fails and refuses to heal",
+          "passed": false,
+          "error": "Demonstrated bug: useShopItem(\"health_potions\") triggered false \"not owned\" alert",
+          "duration": 0
+        },
+        {
+          "name": "T3.4: useShopItem(\"double_xp_potion\") vs useShopItem(\"double_xp\") alias works correctly",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        },
+        {
+          "name": "T3.5: [EMPIRICAL BUG REPRODUCTION] Infinite Duplication Bug on double_xp_potion reloads",
+          "passed": false,
+          "error": "Demonstrated bug: cycle counts compounded: 4, 4, 4, 4",
+          "duration": 0
+        },
+        {
+          "name": "T3.6: Bidirectional dust &lt;-&gt; magic_dust accessor integrity",
+          "passed": true,
+          "error": null,
+          "duration": 0
+        }
+      ],
+      "passed": 4,
+      "failed": 2
+    }
+  ],
+  "total": 17,
+  "passed": 15,
+  "failed": 2,
+  "bugsFound": []
+}</div>
+  <div id="done" style="display: block;">DONE</div>
+
+  <!-- Game Modules -->
+  <script src="../js/data.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/equipment_data.js"></script>
+  <script src="../js/inventory.js"></script>
+  <script src="../js/shop.js"></script>
+  <script src="../js/dungeon_data_100.js"></script>
+  <script src="../js/gamification_quests.js"></script>
+  <script src="../js/gamification_skills.js"></script>
+  <script src="../js/gamification_pets.js"></script>
+  <script src="../js/gamification_tower.js"></script>
+  <script src="../js/battle.js"></script>
+
+  <!-- Stress Test Suite -->
+  <script src="m1_stress_harness.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      // Run all stress test suites sequentially
+      if (typeof window.runMilestone1StressSuites === 'function') {
+        await window.runMilestone1StressSuites();
+      }
+
+      const statusEl = document.getElementById('status');
+      const outputEl = document.getElementById('output');
+      const jsonEl = document.getElementById('results-json');
+      const doneEl = document.getElementById('done');
+
+      const results = window.__M1_STRESS_RESULTS__;
+      jsonEl.textContent = JSON.stringify(results, null, 2);
+
+      let summaryText = `Total: ${results.total}, Passed: ${results.passed}, Failed: ${results.failed}\n\n`;
+      results.suites.forEach(s => {
+        summaryText += `[${s.name}] (${s.passed}/${s.tests.length} passed)\n`;
+        s.tests.forEach(t => {
+          summaryText += `  ${t.passed ? '✓ [PASS]' : '✗ [FAIL]'} ${t.name} (${t.duration}ms)\n`;
+          if (t.error) summaryText += `      Error: ${t.error}\n`;
+        });
+      });
+
+      if (results.bugsFound && results.bugsFound.length > 0) {
+        summaryText += `\n⚠️ BUGS EMPIRICALLY CONFIRMED (${results.bugsFound.length}):\n`;
+        results.bugsFound.forEach(b => {
+          summaryText += `  • [${b.severity}] ${b.id}: ${b.description}\n    Proof: ${b.empiricalProof}\n`;
+        });
+      }
+
+      outputEl.textContent = summaryText;
+      statusEl.textContent = 'COMPLETED';
+      doneEl.style.display = 'block';
+    });
+  </script>
+
+
+</body></html>

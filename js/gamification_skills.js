@@ -13,20 +13,27 @@ const GamificationSkills = {
       active_1: {
         id: 'w_active_1', slot: 1, name: 'Cuồng Trảm Sấm Sét', mp: 20, icon: '⚔️',
         desc: 'Hiệp sĩ dồn toàn lực vung kiếm chém sấm sét, tăng x2.2 sát thương đòn đánh tiếp theo!',
-        effect: 'dmg_mult_2.2'
+        effect: 'dmg_mult_2.2',
+        dmgMult: 2.2
       },
       active_2: {
         id: 'w_active_2', slot: 2, name: 'Khiên Phản Đòn', mp: 25, icon: '🛡️',
         desc: 'Dựng khiên thép chặn đòn: giảm 80% sát thương quái đánh và phản lại 100% sát thương đó vào mặt quái!',
-        effect: 'reflect_shield'
+        effect: 'reflect_shield',
+        mitigation: 0.8,
+        reflect: 1.0
       },
       passive_1: {
         id: 'w_passive_1', name: 'Thân Thể Thép', icon: '🪖',
-        desc: 'Tăng vĩnh viễn +15 Giáp phòng thủ (DEF) và +30 Máu tối đa (Max HP).'
+        desc: 'Tăng vĩnh viễn +15 Giáp phòng thủ (DEF) và +30 Máu tối đa (Max HP).',
+        bonusDef: 15,
+        bonusMaxHp: 30
       },
       passive_2: {
         id: 'w_passive_2', name: 'Bất Tử Chiến Ý', icon: '❤️‍🔥',
-        desc: 'Khi nhận đòn đánh chí tử hạ gục, Hiệp sĩ sống sót kiên cường với 1 HP một lần duy nhất trong mỗi ải.'
+        desc: 'Khi nhận đòn đánh chí tử hạ gục, Hiệp sĩ sống sót kiên cường với 1 HP một lần duy nhất trong mỗi ải.',
+        effect: 'undying_will',
+        surviveWithHp: 1
       }
     },
     mage: {
@@ -36,20 +43,26 @@ const GamificationSkills = {
       active_1: {
         id: 'm_active_1', slot: 1, name: 'Bão Băng Tê Liệt', mp: 25, icon: '❄️',
         desc: 'Phóng bão băng cực hàn làm đóng băng quái vật, khiến quái bị mất lượt phản đòn tiếp theo!',
-        effect: 'freeze_monster'
+        effect: 'freeze_monster',
+        freezeTurns: 1
       },
       active_2: {
-        id: 'm_active_2', slot: 2, name: 'Hỏa Cầu Hủy Diệt', mp: 35, icon: '☄️',
+        id: 'm_active_2', slot: 2, name: 'Thiên Thạch Hủy Diệt', mp: 35, icon: '☄️',
         desc: 'Triệu hồi quả cầu lửa hư không gây sát thương x3.0 và thiêu rụi bỏ qua 50% DEF quái vật!',
-        effect: 'meteor_strike'
+        effect: 'meteor_strike',
+        dmgMult: 3.0,
+        ignoreDefPercent: 0.5
       },
       passive_1: {
         id: 'm_passive_1', name: 'Minh Triết Cổ Đại', icon: '📖',
-        desc: 'Trả lời đúng từ vựng cấp độ C1-C2 Nâng cao lập tức hồi phục ngay +15 MP năng lượng!'
+        desc: 'Trả lời đúng từ vựng cấp độ C1-C2 Nâng cao lập tức hồi phục ngay +15 MP năng lượng!',
+        bonusMpOnCorrect: 15
       },
       passive_2: {
         id: 'm_passive_2', name: 'Khiên Linh Hồn', icon: '✨',
-        desc: 'Tăng vĩnh viễn +25 MP tối đa và tăng 15% sát thương ma pháp cơ bản.'
+        desc: 'Tăng vĩnh viễn +25 MP tối đa và tăng 15% sát thương ma pháp cơ bản.',
+        bonusMaxMp: 25,
+        bonusMagicDmgPercent: 0.15
       }
     },
     ranger: {
@@ -59,20 +72,26 @@ const GamificationSkills = {
       active_1: {
         id: 'r_active_1', slot: 1, name: 'Mắt Đại Bàng', mp: 15, icon: '👁️',
         desc: 'Tập trung nhãn lực thần tốc: tự động loại bỏ ngay lập tức 2 đáp án sai trong câu hỏi hiện tại!',
-        effect: 'eliminate_2_options'
+        effect: 'eliminate_2_options',
+        eliminateCount: 2
       },
       active_2: {
-        id: 'r_active_2', slot: 2, name: 'Mưa Tên Xuyên Giáp', mp: 25, icon: '🎯',
-        desc: 'Bắn loạt mũi tên xé gió gây 2 đòn sát thương liên tiếp và bỏ qua 40% giáp của quái!',
-        effect: 'arrow_barrage'
+        id: 'r_active_2', slot: 2, name: 'Mưa Tên Bão Táp', mp: 25, icon: '🎯',
+        desc: 'Bắn loạt mũi tên xé gió gây 2 đòn sát thương liên tiếp (mỗi phát x1.1) và bỏ qua 40% giáp của quái!',
+        effect: 'arrow_barrage',
+        hits: 2,
+        multPerHit: 1.1,
+        ignoreDefPercent: 0.4
       },
       passive_1: {
         id: 'r_passive_1', name: 'Tập Trung Cao Độ', icon: '🎯',
-        desc: 'Tăng vĩnh viễn +15% Tỉ lệ Bạo kích (Crit Chance) cho mọi đòn đánh.'
+        desc: 'Tăng vĩnh viễn +15% Tỉ lệ Bạo kích (Crit Chance) cho mọi đòn đánh.',
+        bonusCrit: 15
       },
       passive_2: {
         id: 'r_passive_2', name: 'Thợ Săn Tiền Thưởng', icon: '🪙',
-        desc: 'Tăng thêm +30% Vàng rơi ra khi tiêu diệt quái vật và Boss.'
+        desc: 'Tăng thêm +30% Vàng rơi ra khi tiêu diệt quái vật và Boss.',
+        bonusGoldPercent: 0.30
       }
     },
     assassin: {
@@ -82,20 +101,27 @@ const GamificationSkills = {
       active_1: {
         id: 'a_active_1', slot: 1, name: 'Bóng Ma Hư Không', mp: 20, icon: '💨',
         desc: 'Hóa thành bóng ma tàng hình: 100% né tránh hoàn toàn đợt tấn công tiếp theo của quái!',
-        effect: 'absolute_dodge'
+        effect: 'absolute_dodge',
+        dodgeRate: 1.0
       },
       active_2: {
         id: 'a_active_2', slot: 2, name: 'Ám Sát Trọng Thương', mp: 30, icon: '🩸',
         desc: 'Đòn đánh kế tiếp chắc chắn là Bạo Kích với lượng sát thương khổng lồ gấp x3.5 lần!',
-        effect: 'guaranteed_crit_3.5'
+        effect: 'guaranteed_crit_3.5',
+        critMult: 3.5,
+        guaranteedCrit: true
       },
       passive_1: {
         id: 'a_passive_1', name: 'Lưỡi Dao Tẩm Độc', icon: '🧪',
-        desc: 'Mỗi cú đánh chính xác khiến quái vật nhiễm độc, rút thêm 25 HP liên tục mỗi lượt.'
+        desc: 'Mỗi cú đánh chính xác khiến quái vật nhiễm độc, rút thêm 25 HP liên tục mỗi lượt trong 3 lượt.',
+        effect: 'poison_dot',
+        poisonDmg: 25,
+        poisonTurns: 3
       },
       passive_2: {
         id: 'a_passive_2', name: 'Khinh Thân Thần Tốc', icon: '⚡',
-        desc: 'Tăng vĩnh viễn +15% Tỉ lệ Né Đòn (Dodge Chance) cho Hiệp Sĩ.'
+        desc: 'Tăng vĩnh viễn +15% Tỉ lệ Né Đòn (Dodge Chance) cho Hiệp Sĩ.',
+        bonusDodge: 15
       }
     }
   },
@@ -142,16 +168,17 @@ const GamificationSkills = {
 
     this.renderSkillTreeModal();
     if (typeof renderLobbyView === 'function') renderLobbyView();
-    if (typeof BattleEngine !== 'undefined') BattleEngine.updateBattleUI();
+    if (typeof BattleEngine !== 'undefined' && typeof BattleEngine.updateBattleUI === 'function') BattleEngine.updateBattleUI();
   },
 
   // Tẩy điểm kỹ năng (Reset Skills)
-  resetSkills: function() {
+  resetSkills: function(skipConfirm) {
     const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
-    if (!user) return;
+    if (!user) return false;
     this.ensureInitialized(user);
 
-    if (confirm('Bạn có muốn đặt lại toàn bộ Điểm Kỹ Năng để học lại từ đầu không?')) {
+    const shouldReset = skipConfirm || (typeof confirm !== 'function') || confirm('Bạn có muốn đặt lại toàn bộ Điểm Kỹ Năng để học lại từ đầu không?');
+    if (shouldReset) {
       const totalPoints = Math.max(0, (user.level || 1) - 1);
       user.skill_points = totalPoints;
       user.skills_unlocked = {
@@ -162,9 +189,34 @@ const GamificationSkills = {
       };
 
       if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
+      if (typeof RetroAudio !== 'undefined' && typeof RetroAudio.playCoin === 'function') RetroAudio.playCoin();
       this.renderSkillTreeModal();
       if (typeof renderLobbyView === 'function') renderLobbyView();
+      return true;
     }
+    return false;
+  },
+
+  // Chuyển chức nghiệp nhân vật (Warrior / Mage / Ranger / Assassin)
+  selectClass: function(className) {
+    if (!this.CLASS_SKILLS[className]) return;
+    const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : null;
+    if (!user) return;
+    this.ensureInitialized(user);
+    if (user.rpg_class === className) return;
+
+    user.rpg_class = className;
+    if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
+    if (typeof RetroAudio !== 'undefined' && typeof RetroAudio.playFanfare === 'function') RetroAudio.playFanfare();
+
+    if (typeof GamificationQuests !== 'undefined' && typeof GamificationQuests.showToastNotification === 'function') {
+      const c = this.CLASS_SKILLS[className];
+      GamificationQuests.showToastNotification(`⚔️ Đã chuyển chức nghiệp: [${c.name}]!`, c.color);
+    }
+
+    this.renderSkillTreeModal();
+    if (typeof renderLobbyView === 'function') renderLobbyView();
+    if (typeof BattleEngine !== 'undefined' && typeof BattleEngine.updateBattleUI === 'function') BattleEngine.updateBattleUI();
   },
 
   // ==================== KÍCH HOẠT KỸ NĂNG TRONG TRẬN CHIẾN ====================
@@ -202,8 +254,13 @@ const GamificationSkills = {
     this.applySkillEffect(skill.effect, skill.name);
 
     if (typeof RetroAudio !== 'undefined' && typeof RetroAudio.playMagic === 'function') RetroAudio.playMagic();
-    BattleEngine.updateBattleUI();
+    if (typeof BattleEngine !== 'undefined' && typeof BattleEngine.updateBattleUI === 'function') BattleEngine.updateBattleUI();
     if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
+  },
+
+  // Alias activateActiveSkill to castCombatSkill
+  activateActiveSkill: function(slotNum) {
+    return this.castCombatSkill(slotNum);
   },
 
   applySkillEffect: function(effectType, skillName) {
@@ -211,31 +268,60 @@ const GamificationSkills = {
 
     if (effectType === 'dmg_mult_2.2') {
       BattleEngine.pendingBerserk = true;
+      BattleEngine.pendingSkillParams = { effect: effectType, dmgMult: 2.2 };
       BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `⚡ ${skillName}! SÁT THƯƠNG x2.2`, '#EF4444', true);
     } else if (effectType === 'reflect_shield') {
       BattleEngine.pendingReflectShield = true;
-      BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `🛡️ ${skillName}! PHẢN SÁT THƯƠNG`, '#F59E0B', true);
+      BattleEngine.pendingSkillParams = { effect: effectType, mitigation: 0.8, reflect: 1.0 };
+      BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `🛡️ ${skillName}! GIẢM 80% & PHẢN 100%`, '#F59E0B', true);
     } else if (effectType === 'freeze_monster') {
       if (BattleEngine.monster) {
         BattleEngine.monster.frozen = true;
+        BattleEngine.monster.freezeTurns = 1;
+        BattleEngine.pendingSkillParams = { effect: effectType, freezeTurns: 1 };
         BattleEngine.addFloatDamage(BattleEngine.monster.x, BattleEngine.monster.y - 35, `❄️ ĐÓNG BĂNG! QUÁI MẤT LƯỢT`, '#38BDF8', true);
       }
     } else if (effectType === 'meteor_strike') {
       BattleEngine.pendingMeteorStrike = true;
-      BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `☄️ ${skillName}! HỎA CẦU x3.0`, '#8B5CF6', true);
+      BattleEngine.pendingSkillParams = { effect: effectType, dmgMult: 3.0, ignoreDefPercent: 0.5 };
+      BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `☄️ ${skillName}! HỎA CẦU x3.0 (BỎ QUA 50% GIÁP)`, '#8B5CF6', true);
     } else if (effectType === 'eliminate_2_options') {
       this.eliminateWrongAnswers();
+      BattleEngine.pendingSkillParams = { effect: effectType, eliminateCount: 2 };
       BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `👁️ ${skillName}! GẠCH 2 ĐÁP ÁN`, '#10B981', true);
     } else if (effectType === 'arrow_barrage') {
       BattleEngine.pendingArrowBarrage = true;
-      BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `🎯 ${skillName}! XUYÊN GIÁP 40%`, '#10B981', true);
+      BattleEngine.pendingSkillParams = { effect: effectType, hits: 2, multPerHit: 1.1, ignoreDefPercent: 0.4 };
+      BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `🎯 ${skillName}! 2 PHÁT LIÊN HOÀN (XUYÊN 40% GIÁP)`, '#10B981', true);
     } else if (effectType === 'absolute_dodge') {
       BattleEngine.pendingAbsoluteDodge = true;
+      BattleEngine.pendingSkillParams = { effect: effectType, dodgeRate: 1.0 };
       BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `💨 ${skillName}! 100% NÉ ĐÒN`, '#38BDF8', true);
     } else if (effectType === 'guaranteed_crit_3.5') {
       BattleEngine.pendingCrit35 = true;
+      BattleEngine.pendingSkillParams = { effect: effectType, critMult: 3.5, guaranteedCrit: true };
       BattleEngine.addFloatDamage(BattleEngine.hero.x, BattleEngine.hero.y - 35, `🩸 ${skillName}! BẠO KÍCH x3.5`, '#F59E0B', true);
     }
+  },
+
+  // Lấy tham số hiệu ứng độc của Sát Thủ (M3 Combat Engine hook: 25 HP/lượt trong 3 lượt)
+  getAssassinPoisonParams: function() {
+    return {
+      poisonDmg: 25,
+      poisonTurns: 3,
+      label: 'Lưỡi Dao Tẩm Độc (25 HP/lượt, 3 lượt)'
+    };
+  },
+
+  // Kiểm tra người chơi có đang kích hoạt thiên phú bị động nào không
+  hasPassive: function(user, passiveKey) {
+    if (!user || !user.skills_unlocked) return false;
+    return Boolean(user.skills_unlocked[passiveKey]);
+  },
+
+  // Lấy toàn bộ tham số kỹ năng của một class
+  getClassSkills: function(className) {
+    return this.CLASS_SKILLS[className] || this.CLASS_SKILLS.warrior;
   },
 
   // Hỗ trợ Xạ Thủ loại bỏ 2 đáp án sai trong câu hỏi hiện tại
@@ -310,6 +396,19 @@ const GamificationSkills = {
             </div>
             <button onclick="GamificationSkills.closeModal()" class="neo-btn w-8 h-8 bg-white text-[#111] font-bold flex items-center justify-center text-sm hover:bg-red-500 hover:text-white">✕</button>
           </div>
+        </div>
+
+        <!-- Thanh Chuyển Đổi 4 Hệ Phái -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-[#121422] rounded border border-slate-800">
+          ${Object.keys(this.CLASS_SKILLS).map(cKey => {
+            const c = this.CLASS_SKILLS[cKey];
+            const isCurrent = (cls === cKey);
+            return `
+              <button onclick="GamificationSkills.selectClass('${cKey}')" class="py-1 px-2 rounded text-xs font-display font-bold uppercase transition flex items-center justify-center gap-1.5 ${isCurrent ? 'bg-amber-400 text-black shadow-sm font-extrabold' : 'text-slate-400 hover:text-white hover:bg-slate-800/80'}">
+                <span>${c.icon}</span> <span>${c.name}</span>
+              </button>
+            `;
+          }).join('')}
         </div>
 
         <!-- Nội dung 2 Nhánh Kỹ Năng: Chủ Động & Bị Động -->
@@ -393,6 +492,7 @@ const GamificationSkills = {
 };
 
 // Xuất global cho toàn bộ trang
+GamificationSkills.activateActiveSkill = GamificationSkills.castCombatSkill;
 if (typeof window !== 'undefined') {
   window.GamificationSkills = GamificationSkills;
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Milestone 2 Challenger Stress Harness</title>
+  <script src="../js/gamification_skills.js"></script>
+  <script src="../js/gamification_pets.js"></script>
+  <script src="../js/gamification_tower.js"></script>
+  <script src="stress_m2_challenger.js"></script>
+</head>
+<body style="background:#111; color:#eee; font-family:sans-serif; padding:20px;">
+  <h1>Milestone 2 Challenger Empirical Stress Suite</h1>
+  <div id="status">INITIALIZING...</div>
+  <pre id="output"></pre>
+  <div id="results-json" style="display:none;"></div>
+  <div id="test-done" style="display:none;">NO</div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('status').innerText = 'RUNNING...';
+      try {
+        const out = await window.runAllChallengerTests();
+        document.getElementById('status').innerText = out.failed === 0 ? 'ALL_PASSED' : 'HAS_FAILURES';
+        document.getElementById('output').innerText = JSON.stringify(out, null, 2);
+        document.getElementById('results-json').innerText = JSON.stringify(out);
+        document.getElementById('test-done').innerText = 'YES';
+      } catch (err) {
+        console.error('Test execution error:', err);
+        document.getElementById('status').innerText = 'ERROR: ' + err.message;
+        document.getElementById('output').innerText = err.stack || err.message;
+        document.getElementById('test-done').innerText = 'ERROR';
+      }
+    });
+  </script>
+</body>
+</html>
