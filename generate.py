@@ -105,9 +105,9 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
         f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
     )
     models_to_try = [
-        "gemini-3.1-flash-lite-preview",
-        "gemini-3-flash-preview",
         "gemini-2.5-flash",
+        "gemini-3-flash-preview",
+        "gemini-3.1-flash-lite-preview",
         "gemini-2.5-flash-lite",
     ]
     for model_name in models_to_try:
@@ -118,7 +118,7 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
                 config=types.GenerateContentConfig(
                     response_mime_type="application/json",
                     response_schema=NounList,
-                    temperature=0.4,
+                    temperature=0.35,
                 ),
             )
             parsed: NounList = response.parsed
@@ -126,7 +126,7 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
                 return parsed.items
         except Exception as e:
             append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} ({mode}) gặp lỗi tạm thời: {str(e)}. Đang thử lại...", stt)
-            time.sleep(6)
+            time.sleep(1)
     raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} ({mode}) sau khi thử các model.")
 
 def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
@@ -140,7 +140,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     while len(conversational_nouns) < 50 and conv_attempt < 6:
         conv_attempt += 1
         needed = 50 - len(conversational_nouns)
-        ask_count = min(40, max(needed + 5, 15))
+        ask_count = min(55, max(needed + 5, 15))
         append_run_log("INFO", f"CONV_BATCH_{conv_attempt}", f"Đang xin {ask_count} từ giao tiếp (#{stt}) - Đã có: {len(conversational_nouns)}/50", stt)
         batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode="conversational")
         for item in batch:
@@ -150,7 +150,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
                 conversational_nouns.append(item)
                 if len(conversational_nouns) == 50:
                     break
-        time.sleep(2)
+        time.sleep(1)
 
     # --- PHẦN 2: 50 DANH TỪ NÂNG CAO THÔNG DỤNG (C1 - C2 / IELTS 7.5+) ---
     append_run_log("INFO", "START_ADV", f"Bắt đầu tạo 50 từ nâng cao thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
@@ -158,7 +158,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     while len(advanced_nouns) < 50 and adv_attempt < 6:
         adv_attempt += 1
         needed = 50 - len(advanced_nouns)
-        ask_count = min(40, max(needed + 5, 15))
+        ask_count = min(55, max(needed + 5, 15))
         append_run_log("INFO", f"ADV_BATCH_{adv_attempt}", f"Đang xin {ask_count} từ nâng cao (#{stt}) - Đã có: {len(advanced_nouns)}/50", stt)
         batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode="advanced")
         for item in batch:
@@ -168,7 +168,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
                 advanced_nouns.append(item)
                 if len(advanced_nouns) == 50:
                     break
-        time.sleep(2)
+        time.sleep(1)
 
     total_nouns = conversational_nouns[:50] + advanced_nouns[:50]
 
@@ -177,7 +177,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     while len(total_nouns) < 100 and topup_attempt < 6:
         topup_attempt += 1
         needed = 100 - len(total_nouns)
-        ask_count = min(35, max(needed + 5, 12))
+        ask_count = min(40, max(needed + 5, 12))
         append_run_log("WARNING", f"TOPUP_BATCH_{topup_attempt}", f"Chủ đề #{stt}: Bù đắp {needed} từ còn thiếu để đạt chuẩn 100 từ (Đang có: {len(total_nouns)}/100)...", stt)
         mode = "advanced" if len(advanced_nouns) < 50 else "conversational"
         batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode=mode)
@@ -188,7 +188,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
                 total_nouns.append(item)
                 if len(total_nouns) == 100:
                     break
-        time.sleep(2)
+        time.sleep(1)
 
     total_nouns = total_nouns[:100]
     if len(total_nouns) < 100:

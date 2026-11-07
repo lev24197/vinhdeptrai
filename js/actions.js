@@ -173,7 +173,7 @@ async function generateSingleInBrowser(stt, topicVi) {
     for (let attempt = 1; attempt <= 5 && collectedConv.length < 50; attempt++) {
       const needed = 50 - collectedConv.length;
       if (needed <= 0) break;
-      const askCount = Math.min(40, Math.max(needed + 5, 15));
+      const askCount = Math.min(55, Math.max(needed + 5, 15));
       const prompt = `Generate a JSON array of ${askCount} practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English, strictly NO adjectives, NO verbs) related to the topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`, {
@@ -181,7 +181,7 @@ async function generateSingleInBrowser(stt, topicVi) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: 'application/json', temperature: 0.4 }
+          generationConfig: { responseMimeType: 'application/json', temperature: 0.35 }
         })
       });
       if (!res.ok) throw new Error(`Gemini API trả về HTTP ${res.status}: ${await res.text()}`);
@@ -204,7 +204,7 @@ async function generateSingleInBrowser(stt, topicVi) {
     for (let attempt = 1; attempt <= 5 && collectedAdv.length < 50; attempt++) {
       const needed = 50 - collectedAdv.length;
       if (needed <= 0) break;
-      const askCount = Math.min(40, Math.max(needed + 5, 15));
+      const askCount = Math.min(55, Math.max(needed + 5, 15));
       const prompt = `Generate a JSON array of ${askCount} advanced, technical, and domain-specific English nouns (single or standard compound nouns, CEFR C1-C2 level) directly and physically belonging to the topic: "${topicVi}".
 CRITICAL REQUIREMENTS:
 1. Every word MUST be a specialized, technical, or domain-specific NOUN (single noun or compound noun) representing real tangible objects, specialized components, equipment, tools, materials, distinct sub-types, professional roles, or distinct concepts belonging to "${topicVi}".
@@ -218,7 +218,7 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: 'application/json', temperature: 0.4 }
+          generationConfig: { responseMimeType: 'application/json', temperature: 0.35 }
         })
       });
       if (!res.ok) throw new Error(`Gemini API trả về HTTP ${res.status}: ${await res.text()}`);
