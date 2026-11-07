@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07 16:18:06",
+  "updated_at": "2026-11-07 22:58:51",
   "topics": [
     {
       "stt": 1,
@@ -850,11 +850,11 @@
     {
       "stt": 95,
       "topic": "Quản trị kinh doanh doanh nghiệp (Business Administration)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/95.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #95 (Quản trị kinh doanh doanh nghiệp (Business Administration)) chỉ tạo được 98/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 96,
@@ -895,19 +895,19 @@
     {
       "stt": 100,
       "topic": "Logistics và Chuỗi cung ứng (Logistics & Supply Chain)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/100.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-07 22:58",
       "last_error": null
     },
     {
       "stt": 101,
       "topic": "Trái cây (Fruits)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/101.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-07 22:58",
       "last_error": null
     },
     {
