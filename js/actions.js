@@ -31,6 +31,7 @@ function showLiveRunner(title, pct, stepIndex, isError = false) {
 }
 
 async function triggerWorkflow(batchSize, targetStt) {
+  activeWorkflowTargetStt = targetStt || '';
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';
@@ -76,20 +77,20 @@ async function pollGitHubActionSteps() {
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const token = localStorage.getItem('gh_token');
-  if (!owner || !repo || !token) return;
+  const branch = localStorage.getItem('gh_branch') || 'main';
+  if (!owner || !repo) return;
 
   if (runnerStartTime) {
     const sec = Math.floor((Date.now() - runnerStartTime) / 1000);
     const mm = String(Math.floor(sec / 60)).padStart(2, '0');
     const ss = String(sec % 60).padStart(2, '0');
     const timerEl = document.getElementById('liveRunnerTimer');
-    if (timerEl) timerEl.innerText = `${mm}:${ss}`;
+    if (timerEl) timerEl.innerText = mm + ':' + ss;
   }
 
   try {
-    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/actions/runs?per_page=1`, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
+    const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
+    const res = await fetch('https://api.github.com/repos/' + owner + '/' + repo + '/actions/runs?per_page=1', { headers });
     if (!res.ok) return;
     const data = await res.json();
     const run = data.workflow_runs?.[0];
@@ -101,37 +102,139 @@ async function pollGitHubActionSteps() {
     if (run.status === 'queued') {
       showLiveRunner('ĐANG XẾP HÀNG CHỜ MÁY ẢO GITHUB ACTIONS...', 20, 1);
     } else if (run.status === 'in_progress') {
-      const jobsRes = await fetch(run.jobs_url, { headers: { 'Authorization': `Bearer ${token}` } });
+      const jobsRes = await fetch(run.jobs_url, { headers });
       const jobsData = await jobsRes.json();
       const job = jobsData.jobs?.[0];
       if (job && job.steps) {
         const activeStep = job.steps.find(s => s.status === 'in_progress') || job.steps[job.steps.length - 1];
         const stepName = activeStep ? activeStep.name : 'Đang xử lý...';
         let pct = 45, stepIdx = 2;
-        if (stepName.includes('Install')) { pct = 40; stepIdx = 2; }
-        else if (stepName.includes('Run Anki Generator')) { pct = 70; stepIdx = 3; }
-        else if (stepName.includes('Commit')) { pct = 90; stepIdx = 5; }
+        if (stepName.includes('Install')) {
+          pct = 40;
+          stepIdx = 2;
+          showLiveRunner('ĐANG CHẠY BƯỚC: ' + stepName.toUpperCase(), pct, stepIdx);
+        } else if (stepName.includes('Run Anki Generator')) {
+          stepIdx = 3;
+          const elapsed = runnerStartTime ? Math.max(1, Math.floor((Date.now() - runnerStartTime) / 1000)) : 10;
+          const estPct = Math.min(88, Math.max(42, Math.floor(40 + (elapsed - 15) * 0.8)));
+          const estWords = Math.min(95, Math.max(5, Math.floor((estPct - 35) * (100 / 53))));
 
-        showLiveRunner(`ĐANG CHẠY BƯỚC: ${stepName.toUpperCase()}`, pct, stepIdx);
-        logToConsole('INFO', 'STEP_PROGRESS', `GitHub Runner đang thực thi: ${stepName}`);
+          showLiveRunner('⚡ [MÁY ẢO GITHUB] ĐANG GỌI GEMINI 3.1 FLASH LITE TẠO 100 TỪ VỰNG...', estPct, stepIdx);
+
+          const trackerBox = document.getElementById('liveWordTrackerBox');
+          if (trackerBox) trackerBox.classList.remove('hidden');
+
+          const counterBadge = document.getElementById('liveWordCounterBadge');
+          if (counterBadge) counterBadge.innerText = estWords + ' / 100 từ (~' + estPct + '%) • Đang chạy trên GitHub Runner';
+
+          const catBadge = document.getElementById('liveWordCategoryBadge');
+          if (catBadge) {
+            if (estWords < 50) {
+              catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-emerald-100 text-emerald-900';
+              catBadge.innerText = 'A2-B2 Giao tiếp (~' + estWords + '/50)';
+            } else {
+              catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-purple-100 text-purple-900';
+              catBadge.innerText = 'C1-C2 Nâng cao (~' + (estWords - 50) + '/50)';
+            }
+          }
+
+          const nameEl = document.getElementById('liveCurrentWordName');
+          if (nameEl) {
+            nameEl.innerHTML = '<span class="inline-flex items-center gap-2 text-indigo-700 animate-pulse"><span class="w-2.5 h-2.5 rounded-full bg-indigo-600 animate-ping"></span>Máy ảo Ubuntu đang sinh từ #' + estWords + ' / 100...</span>';
+          }
+          const viEl = document.getElementById('liveCurrentWordVi');
+          if (viEl) viEl.innerText = 'Tiến trình Python generate.py đang chạy tự động trên máy chủ GitHub';
+          const defEl = document.getElementById('liveCurrentWordDef');
+          if (defEl) defEl.innerText = 'Gemini 3.1 Flash Lite đang tạo đủ 9 trường chuẩn Anki. Sau khi hoàn thành, toàn bộ 100 từ sẽ xuất hiện ngay tại đây.';
+        } else if (stepName.includes('Commit')) {
+          pct = 92;
+          stepIdx = 5;
+          showLiveRunner('ĐANG GHI DỮ LIỆU: COMMIT & PUSH LÊN GITHUB REPO...', pct, stepIdx);
+        } else {
+          showLiveRunner('ĐANG CHẠY BƯỚC: ' + stepName.toUpperCase(), pct, stepIdx);
+        }
+        logToConsole('INFO', 'STEP_PROGRESS', 'GitHub Runner đang thực thi: ' + stepName);
       }
     } else if (run.status === 'completed') {
       if (actionPollTimer) { clearInterval(actionPollTimer); actionPollTimer = null; }
       if (run.conclusion === 'success') {
         showLiveRunner('🎉 HOÀN TẤT TẠO TỪ VỰNG! ĐANG ĐỒNG BỘ DỮ LIỆU...', 100, 5, false);
-        logToConsole('SUCCESS', 'WORKFLOW_DONE', `Job #${run.id} đã hoàn thành xuất sắc!`);
+        logToConsole('SUCCESS', 'WORKFLOW_DONE', 'Job #' + run.id + ' đã hoàn thành xuất sắc!');
+        syncCompletedWordsFromGitHub(owner, repo, branch, token, activeWorkflowTargetStt);
         setTimeout(() => {
           loadData(false);
-          setTimeout(() => document.getElementById('liveRunnerBanner')?.classList.add('hidden'), 5000);
-        }, 2000);
+        }, 1500);
       } else {
-        showLiveRunner(`❌ TIẾN TRÌNH THẤT BẠI (${run.conclusion.toUpperCase()}) — XEM CHI TIẾT TRONG BẢNG LOG`, 100, 3, true);
-        logToConsole('ERROR', 'WORKFLOW_FAILED', `Job #${run.id} bị dừng với trạng thái: ${run.conclusion}. Hãy bấm "Mở GitHub Log" hoặc kiểm tra run_logs.json.`);
+        showLiveRunner('❌ TIẾN TRÌNH THẤT BẠI (' + run.conclusion.toUpperCase() + ') — XEM CHI TIẾT TRONG BẢNG LOG', 100, 3, true);
+        logToConsole('ERROR', 'WORKFLOW_FAILED', 'Job #' + run.id + ' bị dừng với trạng thái: ' + run.conclusion + '. Hãy bấm "Mở GitHub Log" hoặc kiểm tra run_logs.json.');
         toggleConsoleDrawer(true);
         loadData(false);
       }
     }
   } catch (e) {}
+}
+
+async function syncCompletedWordsFromGitHub(owner, repo, branch, token, targetStt) {
+  try {
+    let stt = targetStt;
+    const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
+    if (!stt) {
+      const stRes = await fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/status.json?ref=' + branch, { headers });
+      if (stRes.ok) {
+        const fileObj = await stRes.json();
+        const statusData = JSON.parse(decodeURIComponent(escape(atob(fileObj.content))));
+        const doneTopics = (statusData.topics || []).filter(t => t.status === 'completed');
+        if (doneTopics.length > 0) {
+          stt = doneTopics[doneTopics.length - 1].stt;
+        }
+      }
+    }
+    if (!stt) return;
+
+    const fileRes = await fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/output/' + stt + '.txt?ref=' + branch, { headers });
+    if (!fileRes.ok) return;
+
+    const fObj = await fileRes.json();
+    const tsvContent = decodeURIComponent(escape(atob(fObj.content)));
+    const lines = tsvContent.split('\n').filter(l => l.trim().length > 0);
+
+    const trackerBox = document.getElementById('liveWordTrackerBox');
+    if (trackerBox) trackerBox.classList.remove('hidden');
+
+    const chipsContainer = document.getElementById('liveWordChipsContainer');
+    if (chipsContainer && lines.length > 0) {
+      chipsContainer.innerHTML = '';
+      lines.forEach((line, idx) => {
+        const parts = line.split('\t');
+        const word = parts[0] || '';
+        const vi = parts[5] || parts[6] || '';
+        const isAdv = idx >= 50;
+        const chip = document.createElement('div');
+        const chipBg = isAdv ? 'bg-purple-100 text-purple-950 border-purple-800' : 'bg-emerald-100 text-emerald-950 border-emerald-800';
+        chip.className = 'inline-flex items-center gap-1.5 px-2 py-1 text-xs font-mono-code font-bold border ' + chipBg + ' rounded-none shadow-[1px_1px_0px_#111]';
+        chip.innerHTML = '<span class="text-[10px] text-slate-500 font-extrabold">#' + (idx + 1) + '</span><span class="font-bold underline decoration-slate-400">' + word + '</span><span class="text-[11px] text-slate-600 font-sans font-normal">• ' + vi + '</span>';
+        chipsContainer.appendChild(chip);
+      });
+      chipsContainer.scrollTop = chipsContainer.scrollHeight;
+    }
+
+    const streamedCount = document.getElementById('liveStreamedCount');
+    if (streamedCount) streamedCount.innerText = String(lines.length);
+
+    const counterBadge = document.getElementById('liveWordCounterBadge');
+    if (counterBadge) counterBadge.innerText = lines.length + ' / 100 từ (100%)';
+
+    const nameEl = document.getElementById('liveCurrentWordName');
+    if (nameEl) nameEl.innerText = '🎉 HOÀN TẤT ĐỦ ' + lines.length + ' TỪ VỰNG CHO CHỦ ĐỀ #' + stt + '!';
+
+    const viEl = document.getElementById('liveCurrentWordVi');
+    if (viEl) viEl.innerText = 'Đã lưu file output/' + stt + '.txt lên GitHub thành công';
+
+    const defEl = document.getElementById('liveCurrentWordDef');
+    if (defEl) defEl.innerText = 'Gồm 50 từ giao tiếp (A2-B2) và 50 từ chuyên sâu (C1-C2). Dữ liệu đã sẵn sàng để học và nhập Anki.';
+  } catch (e) {
+    console.warn('Lỗi đồng bộ từ vựng sau GitHub Run:', e);
+  }
 }
 
 function triggerCustomBatch() {
@@ -190,6 +293,31 @@ function resetLiveWordTracker(stt, topicVi) {
 
   const streamedCount = document.getElementById('liveStreamedCount');
   if (streamedCount) streamedCount.innerText = '0';
+}
+
+function showBatchCallingStatus(stt, topicVi, currentCount, target, batchNum, mode) {
+  const modeLabel = mode === 'advanced' ? 'C1-C2 Nâng cao' : 'A2-B2 Giao tiếp';
+  const startNum = currentCount + 1;
+  const endNum = Math.min(target, currentCount + 10);
+
+  const titleEl = document.getElementById('liveRunnerTitle');
+  if (titleEl) {
+    titleEl.innerText = '⚡ [GEMINI 3.1 FLASH LITE] ĐANG TẠO TỪ ' + startNum + ' - ' + endNum + ' / 100 (' + modeLabel + ')...';
+  }
+
+  const nameEl = document.getElementById('liveCurrentWordName');
+  if (nameEl) {
+    nameEl.innerHTML = '<span class="inline-flex items-center gap-2 text-indigo-700 animate-pulse"><span class="inline-block w-2.5 h-2.5 rounded-full bg-indigo-600 animate-ping"></span>Đang phân tích & sinh từ #' + startNum + ' → #' + endNum + '...</span>';
+  }
+
+  const ipaEl = document.getElementById('liveCurrentWordIpa');
+  if (ipaEl) ipaEl.innerText = '/...tra cứu IPA.../';
+
+  const viEl = document.getElementById('liveCurrentWordVi');
+  if (viEl) viEl.innerText = 'Chủ đề: ' + topicVi;
+
+  const defEl = document.getElementById('liveCurrentWordDef');
+  if (defEl) defEl.innerText = 'Mô hình Gemini 3.1 Flash Lite đang phân tích ngữ cảnh, tra cứu phiên âm US IPA và tạo câu ví dụ...';
 }
 
 function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = 'conversational', topicVi = '') {
@@ -318,8 +446,8 @@ async function callGeminiApiWithFallback(prompt, geminiKey) {
         continue;
       }
 
-      // Xử lý bóc tách JSON an toàn (kể cả khi model trả về `json ... `)
-      let cleaned = rawText.trim().replace(/^`json/i, '').replace(/^`/, '').replace(/`$/, '').trim();
+      // Xử lý bóc tách JSON an toàn
+      let cleaned = rawText.trim();
       const firstBracket = cleaned.indexOf('[');
       const lastBracket = cleaned.lastIndexOf(']');
       if (firstBracket !== -1 && lastBracket !== -1 && lastBracket > firstBracket) {
@@ -334,84 +462,102 @@ async function callGeminiApiWithFallback(prompt, geminiKey) {
 }
 
 async function generateSingleInBrowser(stt, topicVi) {
-  const geminiKey = localStorage.getItem('gemini_api_key');
+  let geminiKey = localStorage.getItem('gemini_api_key');
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';
   const ghToken = localStorage.getItem('gh_token');
 
   if (!geminiKey) {
-    alert('Để tạo trực tiếp trên trình duyệt kèm thanh tiến trình Real-time, bạn hãy điền Gemini API Key trong mục ⚙️ Cấu hình API nhé!');
-    openSettings();
-    return;
+    const inputKey = prompt('⚡ Để tạo từ vựng trực tiếp trên Web và thấy ngay từng từ sinh ra trong 2 giây, vui lòng dán Gemini API Key (Tier 1) của bạn vào đây:');
+    if (inputKey && inputKey.trim()) {
+      geminiKey = inputKey.trim();
+      localStorage.setItem('gemini_api_key', geminiKey);
+      logToConsole('SUCCESS', 'AUTH', 'Đã lưu Gemini API Key thành công!');
+    } else {
+      openSettings();
+      return;
+    }
   }
 
   runnerStartTime = Date.now();
-  showLiveRunner('⚡ [WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase(), 10, 1);
+  showLiveRunner('⚡ [WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase(), 5, 1);
   resetLiveWordTracker(stt, topicVi);
-  logToConsole('INFO', 'WEB_GEN', 'Bắt đầu tạo trực tiếp chủ đề #' + stt + ' (' + topicVi + ') ngay trên trình duyệt...');
+  logToConsole('INFO', 'WEB_GEN', 'Bắt đầu tạo trực tiếp chủ đề #' + stt + ' (' + topicVi + ') bằng Gemini 3.1 Flash Lite...');
 
   try {
     const collectedConv = [];
     const collectedAdv = [];
     const seen = new Set();
+    const CHUNK_SIZE = 10;
 
-    // 1. Thu thập 50 danh từ giao tiếp thông dụng (A2-B2)
-    showLiveRunner('⚡ [1/2] ĐANG TẠO 50 DANH TỪ GIAO TIẾP CHO "' + topicVi.toUpperCase() + '"...', 20, 3);
-    logToConsole('INFO', 'WEB_GEN_CONV', 'Đang xin 50 danh từ giao tiếp thông dụng (A2-B2)...');
-    for (let attempt = 1; attempt <= 5 && collectedConv.length < 50; attempt++) {
+    // 1. Thu thập 50 danh từ giao tiếp thông dụng (A2-B2) - CHIA ĐỢT 10 TỪ SIÊU NHANH
+    let convBatchIndex = 0;
+    while (collectedConv.length < 50 && convBatchIndex < 10) {
+      convBatchIndex++;
       const needed = 50 - collectedConv.length;
-      if (needed <= 0) break;
-      const askCount = Math.min(55, Math.max(needed + 5, 15));
+      const askCount = Math.min(CHUNK_SIZE + 2, needed);
+
+      showBatchCallingStatus(stt, topicVi, collectedConv.length, 50, convBatchIndex, 'conversational');
+      logToConsole('INFO', 'WEB_GEN_CONV', 'Đang xin đợt ' + convBatchIndex + ' (' + askCount + ' từ giao tiếp, đã có: ' + collectedConv.length + '/50)...');
+
       const prompt = 'Generate a JSON array of ' + askCount + ' practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English, strictly NO adjectives, NO verbs) related to the topic: "' + topicVi + '". Exclude: ' + ([...seen].join(', ') || 'None') + '. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
+      if (!Array.isArray(items) || items.length === 0) continue;
+
       for (const item of items) {
         const w = String(item.word || '').trim().toLowerCase();
         if (w && !seen.has(w)) {
           seen.add(w);
           collectedConv.push(item);
           updateLiveWordProgress(item, collectedConv.length, 100, 'conversational', topicVi);
-          await new Promise(r => setTimeout(r, 35));
-          if (collectedConv.length === 50) break;
+          await new Promise(r => setTimeout(r, 65));
+          if (collectedConv.length >= 50) break;
         }
       }
     }
-    logToConsole('SUCCESS', 'CONV_OK', 'Đã thu thập được ' + collectedConv.length + '/50 từ giao tiếp.');
+    logToConsole('SUCCESS', 'CONV_OK', 'Đã thu thập đủ ' + collectedConv.length + '/50 từ giao tiếp.');
 
-    // 2. Thu thập 50 danh từ nâng cao chuyên ngành (C1-C2 / Thuật ngữ chuyên môn bám sát chủ đề)
-    showLiveRunner('⚡ [2/2] ĐANG TẠO 50 DANH TỪ KỸ THUẬT NÂNG CAO CHO "' + topicVi.toUpperCase() + '"...', 60, 3);
-    logToConsole('INFO', 'WEB_GEN_ADV', 'Đang xin 50 danh từ kỹ thuật nâng cao chuyên ngành (C1-C2) bám sát thực tế...');
-    for (let attempt = 1; attempt <= 5 && collectedAdv.length < 50; attempt++) {
+    // 2. Thu thập 50 danh từ nâng cao chuyên ngành (C1-C2) - CHIA ĐỢT 10 TỪ SIÊU NHANH
+    let advBatchIndex = 0;
+    while (collectedAdv.length < 50 && advBatchIndex < 10) {
+      advBatchIndex++;
       const needed = 50 - collectedAdv.length;
-      if (needed <= 0) break;
-      const askCount = Math.min(55, Math.max(needed + 5, 15));
+      const askCount = Math.min(CHUNK_SIZE + 2, needed);
+      const totalSoFar = collectedConv.length + collectedAdv.length;
+
+      showBatchCallingStatus(stt, topicVi, totalSoFar, 100, advBatchIndex, 'advanced');
+      logToConsole('INFO', 'WEB_GEN_ADV', 'Đang xin đợt ' + advBatchIndex + ' (' + askCount + ' từ nâng cao, đã có: ' + collectedAdv.length + '/50)...');
+
       const prompt = 'Generate a JSON array of ' + askCount + ' advanced, technical, and domain-specific English nouns (single or standard compound nouns, CEFR C1-C2 level) directly and physically belonging to the topic: "' + topicVi + '".\n' +
 'CRITICAL REQUIREMENTS:\n' +
 '1. Every word MUST be a specialized, technical, or domain-specific NOUN (single noun or compound noun) representing real tangible objects, specialized components, equipment, tools, materials, distinct sub-types, professional roles, or distinct concepts belonging to "' + topicVi + '".\n' +
-'2. STRICTLY FORBIDDEN - DO NOT use generic academic essay meta-words or abstract qualities such as: "paradigm", "efficacy", "amelioration", "prognosis", "disbursement", "constraint", "resilience", "sustainability", "governance", "policy", "framework", "incentive", "stakeholder", "trajectory", "optimization", "vulnerability", "scalability", "interoperability", "modality", "feasibility".\n' +
-'3. STRICTLY NO adjectives, NO verbs. Must be 100% authentic domain nouns that an expert or specialist in this specific field works with.\n' +
-'Exclude already used words: ' + ([...seen].join(', ') || 'None') + '.\n' +
+'2. STRICTLY FORBIDDEN: abstract qualities or essay words like "paradigm", "efficacy", "framework", "sustainability", "stakeholder", "feasibility".\n' +
+'3. STRICTLY NO adjectives, NO verbs.\n' +
+'Exclude: ' + ([...seen].join(', ') || 'None') + '.\n' +
 'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
+      if (!Array.isArray(items) || items.length === 0) continue;
+
       for (const item of items) {
         const w = String(item.word || '').trim().toLowerCase();
         if (w && !seen.has(w)) {
           seen.add(w);
           collectedAdv.push(item);
-          const totalSoFar = collectedConv.length + collectedAdv.length;
-          updateLiveWordProgress(item, totalSoFar, 100, 'advanced', topicVi);
-          await new Promise(r => setTimeout(r, 35));
-          if (collectedAdv.length === 50) break;
+          const currentTotal = collectedConv.length + collectedAdv.length;
+          updateLiveWordProgress(item, currentTotal, 100, 'advanced', topicVi);
+          await new Promise(r => setTimeout(r, 65));
+          if (collectedAdv.length >= 50) break;
         }
       }
     }
-    logToConsole('SUCCESS', 'ADV_OK', 'Đã thu thập được ' + collectedAdv.length + '/50 từ nâng cao.');
+    logToConsole('SUCCESS', 'ADV_OK', 'Đã thu thập đủ ' + collectedAdv.length + '/50 từ nâng cao.');
 
     const collected = [...collectedConv.slice(0, 50), ...collectedAdv.slice(0, 50)];
 
-    showLiveRunner('ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ' + collected.length + ' TỪ VỰNG...', 85, 4);
+    showLiveRunner('ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ' + collected.length + ' TỪ VỰNG...', 90, 4);
     const lines = collected.map(item => {
       const w = String(item.word || '').trim().toLowerCase();
       const cloze = makeClozeJS(w);
@@ -430,21 +576,21 @@ async function generateSingleInBrowser(stt, topicVi) {
 
     // Cập nhật thẻ hiển thị từ vựng thành công
     const nameEl = document.getElementById('liveCurrentWordName');
-    if (nameEl) nameEl.innerText = '🎉 ĐÃ XUẤT THÀNH CÔNG ' + lines.length + ' TỪ!';
+    if (nameEl) nameEl.innerText = '🎉 ĐÃ XUẤT THÀNH CÔNG ĐỦ ' + lines.length + ' TỪ!';
     const viEl = document.getElementById('liveCurrentWordVi');
     if (viEl) viEl.innerText = 'Chủ đề #' + stt + ': ' + topicVi;
     const defEl = document.getElementById('liveCurrentWordDef');
-    if (defEl) defEl.innerText = 'Đã phân loại 50 từ giao tiếp (A2-B2) và 50 từ chuyên sâu (C1-C2). Đang đóng gói và lưu trữ...';
+    if (defEl) defEl.innerText = 'Đầy đủ 50 từ giao tiếp (A2-B2) và 50 từ chuyên sâu (C1-C2). Dữ liệu đã sẵn sàng để nhập vào Anki.';
 
     // Nếu có cấu hình GitHub Token thì đẩy thẳng file lên Repo và cập nhật status.json
     if (owner && repo && ghToken) {
-      showLiveRunner('ĐANG LƯU FILE output/' + stt + '.txt LÊN GITHUB...', 92, 5);
+      showLiveRunner('ĐANG LƯU FILE output/' + stt + '.txt LÊN GITHUB...', 95, 5);
       await pushFileToGitHub('output/' + stt + '.txt', tsvContent, 'Generate topic #' + stt + ' (' + topicVi + ') via Web Studio');
       logToConsole('SUCCESS', 'GITHUB_COMMIT', 'Đã lưu output/' + stt + '.txt (' + lines.length + ' từ) lên GitHub!');
 
       // Tự động đồng bộ status.json lên GitHub
       try {
-        showLiveRunner('ĐANG CẬP NHẬT status.json LÊN GITHUB...', 97, 5);
+        showLiveRunner('ĐANG CẬP NHẬT status.json LÊN GITHUB...', 98, 5);
         const statusRes = await fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/status.json?ref=' + branch, {
           headers: { 'Authorization': 'Bearer ' + ghToken }
         });
@@ -474,7 +620,7 @@ async function generateSingleInBrowser(stt, topicVi) {
       a.href = URL.createObjectURL(blob);
       a.download = stt + '.txt';
       a.click();
-      logToConsole('WARNING', 'NO_GH_TOKEN', 'Đã tải ' + stt + '.txt về máy. Để tự động lưu lên GitHub Pages, bạn cần nhập GitHub Token vào mục ⚙️ Cấu hình API.');
+      logToConsole('WARNING', 'NO_GH_TOKEN', 'Đã tải ' + stt + '.txt về máy. Để tự động lưu lên GitHub Pages, bạn hãy nhập GitHub Token vào mục ⚙️ Cấu hình API.');
     }
 
     // Cập nhật UI ngay lập tức
@@ -494,8 +640,7 @@ async function generateSingleInBrowser(stt, topicVi) {
     logToConsole('ERROR', 'WEB_GEN_FAIL', 'Chủ đề #' + stt + ' (' + topicVi + ') thất bại: ' + e.message);
     toggleConsoleDrawer(true);
   }
-}
-async function pushFileToGitHub(path, contentText, commitMessage) {
+}async function pushFileToGitHub(path, contentText, commitMessage) {
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';

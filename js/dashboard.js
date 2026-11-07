@@ -319,7 +319,7 @@ function renderGridMap() {
     else if (isDone && wc >= 100) cls = 'bg-[#169C64] text-white';
     else if (isDone && wc < 100) cls = 'bg-[#F7B32B] text-[#111]';
     const safe = t.topic.replace(/'/g, "\\'");
-    const act = isDone ? `previewFile(${t.stt}, '${safe}')` : `triggerWorkflow('1', '${t.stt}')`;
+    const act = isDone ? `previewFile(${t.stt}, '${safe}')` : `generateSingleInBrowser(${t.stt}, '${safe}')`;
 
     return `
       <div

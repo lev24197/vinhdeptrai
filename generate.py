@@ -139,6 +139,13 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
     combined_err = " | ".join(err_history)
     raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} ({mode}). Chi tiết lỗi: {combined_err}")
 
+def print_cli_progress(current: int, total: int, stt: int, topic: str, item: NounItem, mode_tag: str):
+    pct = int(current * 100 / total)
+    bar_len = 20
+    filled = int(bar_len * current // total)
+    bar = "█" * filled + "░" * (bar_len - filled)
+    clean_mean = item.meaning_vi[:35] if len(item.meaning_vi) > 35 else item.meaning_vi
+    print(f"[{bar}] {current:03d}/{total:03d} ({pct:3d}%) [{mode_tag}] #{stt} | {item.word:<18} {item.ipa:<18} -> {clean_mean}")
 def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     seen = set()
     conversational_nouns: list[NounItem] = []
@@ -158,6 +165,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
             if w and w not in seen:
                 seen.add(w)
                 conversational_nouns.append(item)
+                print_cli_progress(len(conversational_nouns), 100, stt, topic_vi, item, 'A2-B2 Giao tiếp')
                 if len(conversational_nouns) == 50:
                     break
         time.sleep(1)
@@ -176,6 +184,8 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
             if w and w not in seen:
                 seen.add(w)
                 advanced_nouns.append(item)
+                current_total = len(conversational_nouns) + len(advanced_nouns)
+                print_cli_progress(current_total, 100, stt, topic_vi, item, 'C1-C2 Nâng cao')
                 if len(advanced_nouns) == 50:
                     break
         time.sleep(1)
@@ -196,6 +206,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
             if w and w not in seen:
                 seen.add(w)
                 total_nouns.append(item)
+                print_cli_progress(len(total_nouns), 100, stt, topic_vi, item, 'Bù đắp 100 từ')
                 if len(total_nouns) == 100:
                     break
         time.sleep(1)
