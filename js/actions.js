@@ -1,4 +1,4 @@
-﻿// ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
+// ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
 
 function showLiveRunner(title, pct, stepIndex, isError = false) {
   const banner = document.getElementById('liveRunnerBanner');
@@ -145,20 +145,158 @@ async function generateDirectlyInBrowser() {
   await generateSingleInBrowser(pending.stt, pending.topic);
 }
 
+// ==================== LIVE WORD STREAMING TRACKER ====================
+function resetLiveWordTracker(stt, topicVi) {
+  const trackerBox = document.getElementById('liveWordTrackerBox');
+  if (trackerBox) trackerBox.classList.remove('hidden');
+
+  const counterBadge = document.getElementById('liveWordCounterBadge');
+  if (counterBadge) counterBadge.innerText = '0 / 100 từ (0%)';
+
+  const catBadge = document.getElementById('liveWordCategoryBadge');
+  if (catBadge) {
+    catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-emerald-100 text-emerald-900';
+    catBadge.innerText = 'A2-B2 Giao tiếp';
+  }
+
+  const topicBadge = document.getElementById('liveTopicNameBadge');
+  if (topicBadge) topicBadge.innerText = '#' + stt + ': ' + topicVi;
+
+  const wordName = document.getElementById('liveCurrentWordName');
+  if (wordName) wordName.innerText = 'Đang gọi Gemini 3.1 Flash Lite...';
+
+  const wordIpa = document.getElementById('liveCurrentWordIpa');
+  if (wordIpa) wordIpa.innerText = '/.../';
+
+  const wordVi = document.getElementById('liveCurrentWordVi');
+  if (wordVi) wordVi.innerText = 'Đang khởi động tiến trình sinh từ...';
+
+  const wordPlural = document.getElementById('liveCurrentWordPlural');
+  if (wordPlural) wordPlural.innerText = '';
+
+  const wordDef = document.getElementById('liveCurrentWordDef');
+  if (wordDef) wordDef.innerText = 'Hệ thống đang gọi mô hình AI tối ưu nhất (Gemini 3.1 Flash Lite) từ Google AI Studio...';
+
+  const ex1 = document.getElementById('liveCurrentWordEx1');
+  if (ex1) ex1.innerText = '...';
+
+  const ex2 = document.getElementById('liveCurrentWordEx2');
+  if (ex2) ex2.innerText = '...';
+
+  const chipsContainer = document.getElementById('liveWordChipsContainer');
+  if (chipsContainer) {
+    chipsContainer.innerHTML = '<span class="text-xs text-slate-400 italic">Chưa có từ nào được sinh. Đang gửi yêu cầu...</span>';
+  }
+
+  const streamedCount = document.getElementById('liveStreamedCount');
+  if (streamedCount) streamedCount.innerText = '0';
+}
+
+function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = 'conversational', topicVi = '') {
+  const trackerBox = document.getElementById('liveWordTrackerBox');
+  if (trackerBox) trackerBox.classList.remove('hidden');
+
+  const pct = Math.min(100, Math.round((currentCount / totalTarget) * 100));
+
+  // Cập nhật thanh loading bar chính
+  const bar = document.getElementById('liveRunnerBar');
+  if (bar) {
+    bar.style.width = pct + '%';
+    bar.innerText = pct + '% (' + currentCount + '/' + totalTarget + ' từ)';
+  }
+
+  // Cập nhật Title chính
+  const titleEl = document.getElementById('liveRunnerTitle');
+  if (titleEl) {
+    const modeLabel = mode === 'advanced' ? 'CHUYÊN SÂU C1-C2' : 'GIAO TIẾP A2-B2';
+    titleEl.innerText = '⚡ ĐANG TẠO TỪ VỰNG: ' + (topicVi ? topicVi.toUpperCase() + ' • ' : '') + '[' + currentCount + '/' + totalTarget + ' TỪ - ' + modeLabel + ']';
+  }
+
+  // Cập nhật Badge số lượng
+  const counterBadge = document.getElementById('liveWordCounterBadge');
+  if (counterBadge) {
+    counterBadge.innerText = currentCount + ' / ' + totalTarget + ' từ (' + pct + '%)';
+  }
+
+  // Cập nhật Phân loại A2-B2 hay C1-C2
+  const catBadge = document.getElementById('liveWordCategoryBadge');
+  if (catBadge) {
+    if (mode === 'advanced') {
+      catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-purple-100 text-purple-900';
+      catBadge.innerText = 'C1-C2 Nâng cao';
+    } else {
+      catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-emerald-100 text-emerald-900';
+      catBadge.innerText = 'A2-B2 Giao tiếp';
+    }
+  }
+
+  // Hiển thị chi tiết từ đang tạo
+  const word = String(item.word || '').trim().toLowerCase();
+  let ipa = String(item.ipa || '').trim();
+  if (ipa && !ipa.startsWith('/')) ipa = '/' + ipa.replace(/\//g, '') + '/';
+  const vi = String(item.meaning_vi || '').trim();
+  const plural = String(item.plural || '').trim();
+  const def = String(item.definition || '').trim();
+  const ex1 = String(item.example_1 || '').replace(/^[12]\.\s*/, '').trim();
+  const ex2 = String(item.example_2 || '').replace(/^[12]\.\s*/, '').trim();
+
+  const nameEl = document.getElementById('liveCurrentWordName');
+  if (nameEl) nameEl.innerText = word;
+
+  const ipaEl = document.getElementById('liveCurrentWordIpa');
+  if (ipaEl) ipaEl.innerText = ipa;
+
+  const viEl = document.getElementById('liveCurrentWordVi');
+  if (viEl) viEl.innerText = vi;
+
+  const pluralEl = document.getElementById('liveCurrentWordPlural');
+  if (pluralEl) pluralEl.innerText = plural ? '(số nhiều: ' + plural + ')' : '';
+
+  const defEl = document.getElementById('liveCurrentWordDef');
+  if (defEl) defEl.innerText = def;
+
+  const ex1El = document.getElementById('liveCurrentWordEx1');
+  if (ex1El) ex1El.innerText = ex1;
+
+  const ex2El = document.getElementById('liveCurrentWordEx2');
+  if (ex2El) ex2El.innerText = ex2;
+
+  // Cập nhật khay chips từ vựng
+  const chipsContainer = document.getElementById('liveWordChipsContainer');
+  if (chipsContainer) {
+    if (currentCount === 1) chipsContainer.innerHTML = '';
+
+    const chip = document.createElement('div');
+    const chipBg = mode === 'advanced' ? 'bg-purple-100 text-purple-950 border-purple-800' : 'bg-emerald-100 text-emerald-950 border-emerald-800';
+    chip.className = 'inline-flex items-center gap-1.5 px-2 py-1 text-xs font-mono-code font-bold border ' + chipBg + ' rounded-none shadow-[1px_1px_0px_#111]';
+    chip.innerHTML = '<span class="text-[10px] text-slate-500 font-extrabold">#' + currentCount + '</span><span class="font-bold underline decoration-slate-400">' + word + '</span><span class="text-[11px] text-slate-600 font-sans font-normal">• ' + vi + '</span>';
+    chipsContainer.appendChild(chip);
+    chipsContainer.scrollTop = chipsContainer.scrollHeight;
+  }
+
+  const streamedCount = document.getElementById('liveStreamedCount');
+  if (streamedCount) streamedCount.innerText = String(currentCount);
+}
+
 // Hàm gọi Gemini API đa model với cơ chế Fallback tự động & bóc tách JSON an toàn
 async function callGeminiApiWithFallback(prompt, geminiKey) {
   const models = [
-    'gemini-1.5-flash',
-    'gemini-2.0-flash',
+    'gemini-3.1-flash-lite-preview',
+    'gemini-3.1-flash-lite',
+    'gemini-3-flash-preview',
+    'gemini-3-flash',
     'gemini-2.5-flash',
-    'gemini-1.5-pro',
-    'gemini-1.5-flash-8b'
+    'gemini-2.5-flash-lite',
+    'gemini-3.5-flash-lite',
+    'gemini-3.8-flash',
+    'gemini-2.0-flash',
+    'gemini-1.5-flash'
   ];
 
   let lastError = null;
   for (const model of models) {
     try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`, {
+      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + geminiKey, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -169,19 +307,19 @@ async function callGeminiApiWithFallback(prompt, geminiKey) {
 
       if (!res.ok) {
         const errText = await res.text();
-        lastError = new Error(`Model ${model} trả về HTTP ${res.status}: ${errText}`);
+        lastError = new Error('Model ' + model + ' trả về HTTP ' + res.status + ': ' + errText);
         continue;
       }
 
       const data = await res.json();
       const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!rawText) {
-        lastError = new Error(`Model ${model} không trả về nội dung (finishReason: ${data.candidates?.[0]?.finishReason || 'UNKNOWN'})`);
+        lastError = new Error('Model ' + model + ' không trả về nội dung (finishReason: ' + (data.candidates?.[0]?.finishReason || 'UNKNOWN') + ')');
         continue;
       }
 
-      // Xử lý bóc tách JSON an toàn (kể cả khi model trả về ```json ... ```)
-      let cleaned = rawText.trim().replace(/^```json/i, '').replace(/^```/, '').replace(/```$/, '').trim();
+      // Xử lý bóc tách JSON an toàn (kể cả khi model trả về `json ... `)
+      let cleaned = rawText.trim().replace(/^`json/i, '').replace(/^`/, '').replace(/`$/, '').trim();
       const firstBracket = cleaned.indexOf('[');
       const lastBracket = cleaned.lastIndexOf(']');
       if (firstBracket !== -1 && lastBracket !== -1 && lastBracket > firstBracket) {
@@ -209,8 +347,9 @@ async function generateSingleInBrowser(stt, topicVi) {
   }
 
   runnerStartTime = Date.now();
-  showLiveRunner(`⚡ [WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #${stt}: ${topicVi.toUpperCase()}`, 15, 1);
-  logToConsole('INFO', 'WEB_GEN', `Bắt đầu tạo trực tiếp chủ đề #${stt} (${topicVi}) ngay trên trình duyệt...`);
+  showLiveRunner('⚡ [WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase(), 10, 1);
+  resetLiveWordTracker(stt, topicVi);
+  logToConsole('INFO', 'WEB_GEN', 'Bắt đầu tạo trực tiếp chủ đề #' + stt + ' (' + topicVi + ') ngay trên trình duyệt...');
 
   try {
     const collectedConv = [];
@@ -218,13 +357,13 @@ async function generateSingleInBrowser(stt, topicVi) {
     const seen = new Set();
 
     // 1. Thu thập 50 danh từ giao tiếp thông dụng (A2-B2)
-    showLiveRunner(`⚡ [1/2] ĐANG TẠO 50 DANH TỪ GIAO TIẾP CHO "${topicVi.toUpperCase()}"...`, 35, 3);
-    logToConsole('INFO', 'WEB_GEN_CONV', `Đang xin 50 danh từ giao tiếp thông dụng (A2-B2)...`);
+    showLiveRunner('⚡ [1/2] ĐANG TẠO 50 DANH TỪ GIAO TIẾP CHO "' + topicVi.toUpperCase() + '"...', 20, 3);
+    logToConsole('INFO', 'WEB_GEN_CONV', 'Đang xin 50 danh từ giao tiếp thông dụng (A2-B2)...');
     for (let attempt = 1; attempt <= 5 && collectedConv.length < 50; attempt++) {
       const needed = 50 - collectedConv.length;
       if (needed <= 0) break;
       const askCount = Math.min(55, Math.max(needed + 5, 15));
-      const prompt = `Generate a JSON array of ${askCount} practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English, strictly NO adjectives, NO verbs) related to the topic: "${topicVi}". Exclude: ${[...seen].join(', ') || 'None'}. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
+      const prompt = 'Generate a JSON array of ' + askCount + ' practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English, strictly NO adjectives, NO verbs) related to the topic: "' + topicVi + '". Exclude: ' + ([...seen].join(', ') || 'None') + '. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
       for (const item of items) {
@@ -232,26 +371,28 @@ async function generateSingleInBrowser(stt, topicVi) {
         if (w && !seen.has(w)) {
           seen.add(w);
           collectedConv.push(item);
+          updateLiveWordProgress(item, collectedConv.length, 100, 'conversational', topicVi);
+          await new Promise(r => setTimeout(r, 35));
           if (collectedConv.length === 50) break;
         }
       }
     }
-    logToConsole('SUCCESS', 'CONV_OK', `Đã thu thập được ${collectedConv.length}/50 từ giao tiếp.`);
+    logToConsole('SUCCESS', 'CONV_OK', 'Đã thu thập được ' + collectedConv.length + '/50 từ giao tiếp.');
 
     // 2. Thu thập 50 danh từ nâng cao chuyên ngành (C1-C2 / Thuật ngữ chuyên môn bám sát chủ đề)
-    showLiveRunner(`⚡ [2/2] ĐANG TẠO 50 DANH TỪ KỸ THUẬT NÂNG CAO CHO "${topicVi.toUpperCase()}"...`, 70, 3);
-    logToConsole('INFO', 'WEB_GEN_ADV', `Đang xin 50 danh từ kỹ thuật nâng cao chuyên ngành (C1-C2) bám sát thực tế...`);
+    showLiveRunner('⚡ [2/2] ĐANG TẠO 50 DANH TỪ KỸ THUẬT NÂNG CAO CHO "' + topicVi.toUpperCase() + '"...', 60, 3);
+    logToConsole('INFO', 'WEB_GEN_ADV', 'Đang xin 50 danh từ kỹ thuật nâng cao chuyên ngành (C1-C2) bám sát thực tế...');
     for (let attempt = 1; attempt <= 5 && collectedAdv.length < 50; attempt++) {
       const needed = 50 - collectedAdv.length;
       if (needed <= 0) break;
       const askCount = Math.min(55, Math.max(needed + 5, 15));
-      const prompt = `Generate a JSON array of ${askCount} advanced, technical, and domain-specific English nouns (single or standard compound nouns, CEFR C1-C2 level) directly and physically belonging to the topic: "${topicVi}".
-CRITICAL REQUIREMENTS:
-1. Every word MUST be a specialized, technical, or domain-specific NOUN (single noun or compound noun) representing real tangible objects, specialized components, equipment, tools, materials, distinct sub-types, professional roles, or distinct concepts belonging to "${topicVi}".
-2. STRICTLY FORBIDDEN - DO NOT use generic academic essay meta-words or abstract qualities such as: 'paradigm', 'efficacy', 'amelioration', 'prognosis', 'disbursement', 'constraint', 'resilience', 'sustainability', 'governance', 'policy', 'framework', 'incentive', 'stakeholder', 'trajectory', 'optimization', 'vulnerability', 'scalability', 'interoperability', 'modality', 'feasibility'.
-3. STRICTLY NO adjectives, NO verbs. Must be 100% authentic domain nouns that an expert or specialist in this specific field works with.
-Exclude already used words: ${[...seen].join(', ') || 'None'}.
-Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
+      const prompt = 'Generate a JSON array of ' + askCount + ' advanced, technical, and domain-specific English nouns (single or standard compound nouns, CEFR C1-C2 level) directly and physically belonging to the topic: "' + topicVi + '".\n' +
+'CRITICAL REQUIREMENTS:\n' +
+'1. Every word MUST be a specialized, technical, or domain-specific NOUN (single noun or compound noun) representing real tangible objects, specialized components, equipment, tools, materials, distinct sub-types, professional roles, or distinct concepts belonging to "' + topicVi + '".\n' +
+'2. STRICTLY FORBIDDEN - DO NOT use generic academic essay meta-words or abstract qualities such as: "paradigm", "efficacy", "amelioration", "prognosis", "disbursement", "constraint", "resilience", "sustainability", "governance", "policy", "framework", "incentive", "stakeholder", "trajectory", "optimization", "vulnerability", "scalability", "interoperability", "modality", "feasibility".\n' +
+'3. STRICTLY NO adjectives, NO verbs. Must be 100% authentic domain nouns that an expert or specialist in this specific field works with.\n' +
+'Exclude already used words: ' + ([...seen].join(', ') || 'None') + '.\n' +
+'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
       for (const item of items) {
@@ -259,42 +400,53 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
         if (w && !seen.has(w)) {
           seen.add(w);
           collectedAdv.push(item);
+          const totalSoFar = collectedConv.length + collectedAdv.length;
+          updateLiveWordProgress(item, totalSoFar, 100, 'advanced', topicVi);
+          await new Promise(r => setTimeout(r, 35));
           if (collectedAdv.length === 50) break;
         }
       }
     }
-    logToConsole('SUCCESS', 'ADV_OK', `Đã thu thập được ${collectedAdv.length}/50 từ nâng cao.`);
+    logToConsole('SUCCESS', 'ADV_OK', 'Đã thu thập được ' + collectedAdv.length + '/50 từ nâng cao.');
 
     const collected = [...collectedConv.slice(0, 50), ...collectedAdv.slice(0, 50)];
 
-    showLiveRunner(`ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ${collected.length} TỪ VỰNG...`, 85, 4);
+    showLiveRunner('ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ' + collected.length + ' TỪ VỰNG...', 85, 4);
     const lines = collected.map(item => {
       const w = String(item.word || '').trim().toLowerCase();
       const cloze = makeClozeJS(w);
       let ipa = String(item.ipa || '').trim();
-      if (!ipa.startsWith('/')) ipa = `/${ipa.replace(/\//g, '')}/`;
+      if (!ipa.startsWith('/')) ipa = '/' + ipa.replace(/\//g, '') + '/';
       const sound = makeSoundJS(w);
       const def = String(item.definition || '').replace(/\t|\n/g, ' ').trim();
       const vi = String(item.meaning_vi || '').replace(/\t|\n/g, ' ').trim();
       const plural = String(item.plural || '').trim().toLowerCase();
       const ex1 = String(item.example_1 || '').replace(/^[12]\.\s*/, '').trim();
       const ex2 = String(item.example_2 || '').replace(/^[12]\.\s*/, '').trim();
-      return [w, cloze, ipa, sound, def, vi, vi, plural, `1. ${ex1} <br>2. ${ex2}`].join('\t');
+      return [w, cloze, ipa, sound, def, vi, vi, plural, '1. ' + ex1 + ' <br>2. ' + ex2].join('\t');
     });
 
     const tsvContent = lines.join('\n') + '\n';
 
+    // Cập nhật thẻ hiển thị từ vựng thành công
+    const nameEl = document.getElementById('liveCurrentWordName');
+    if (nameEl) nameEl.innerText = '🎉 ĐÃ XUẤT THÀNH CÔNG ' + lines.length + ' TỪ!';
+    const viEl = document.getElementById('liveCurrentWordVi');
+    if (viEl) viEl.innerText = 'Chủ đề #' + stt + ': ' + topicVi;
+    const defEl = document.getElementById('liveCurrentWordDef');
+    if (defEl) defEl.innerText = 'Đã phân loại 50 từ giao tiếp (A2-B2) và 50 từ chuyên sâu (C1-C2). Đang đóng gói và lưu trữ...';
+
     // Nếu có cấu hình GitHub Token thì đẩy thẳng file lên Repo và cập nhật status.json
     if (owner && repo && ghToken) {
-      showLiveRunner(`ĐANG LƯU FILE output/${stt}.txt LÊN GITHUB...`, 92, 5);
-      await pushFileToGitHub(`output/${stt}.txt`, tsvContent, `Generate topic #${stt} (${topicVi}) via Web Studio`);
-      logToConsole('SUCCESS', 'GITHUB_COMMIT', `Đã lưu output/${stt}.txt (${lines.length} từ) lên GitHub!`);
+      showLiveRunner('ĐANG LƯU FILE output/' + stt + '.txt LÊN GITHUB...', 92, 5);
+      await pushFileToGitHub('output/' + stt + '.txt', tsvContent, 'Generate topic #' + stt + ' (' + topicVi + ') via Web Studio');
+      logToConsole('SUCCESS', 'GITHUB_COMMIT', 'Đã lưu output/' + stt + '.txt (' + lines.length + ' từ) lên GitHub!');
 
       // Tự động đồng bộ status.json lên GitHub
       try {
-        showLiveRunner(`ĐANG CẬP NHẬT status.json LÊN GITHUB...`, 97, 5);
-        const statusRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/status.json?ref=${branch}`, {
-          headers: { 'Authorization': `Bearer ${ghToken}` }
+        showLiveRunner('ĐANG CẬP NHẬT status.json LÊN GITHUB...', 97, 5);
+        const statusRes = await fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/status.json?ref=' + branch, {
+          headers: { 'Authorization': 'Bearer ' + ghToken }
         });
         if (statusRes.ok) {
           const statusFileObj = await statusRes.json();
@@ -303,14 +455,14 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
           if (topItem) {
             topItem.status = 'completed';
             topItem.word_count = lines.length;
-            topItem.file_path = `output/${stt}.txt`;
+            topItem.file_path = 'output/' + stt + '.txt';
             topItem.generated_at = new Date().toISOString().replace('T', ' ').substring(0, 16);
             topItem.last_error = null;
           }
           currentStatusData.updated_at = new Date().toISOString().replace('T', ' ').substring(0, 19);
           const updatedStatusStr = JSON.stringify(currentStatusData, null, 2);
-          await pushFileToGitHub('status.json', updatedStatusStr, `Update status.json for topic #${stt} via Web Studio`);
-          logToConsole('SUCCESS', 'GITHUB_STATUS', `Đã cập nhật status.json trên GitHub thành công!`);
+          await pushFileToGitHub('status.json', updatedStatusStr, 'Update status.json for topic #' + stt + ' via Web Studio');
+          logToConsole('SUCCESS', 'GITHUB_STATUS', 'Đã cập nhật status.json trên GitHub thành công!');
         }
       } catch (stErr) {
         console.warn('Lỗi đồng bộ status.json:', stErr);
@@ -320,9 +472,9 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
       const blob = new Blob([tsvContent], { type: 'text/plain;charset=utf-8' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = `${stt}.txt`;
+      a.download = stt + '.txt';
       a.click();
-      logToConsole('WARNING', 'NO_GH_TOKEN', `Đã tải ${stt}.txt về máy. Để tự động lưu lên GitHub Pages, bạn cần nhập GitHub Token vào mục ⚙️ Cấu hình API.`);
+      logToConsole('WARNING', 'NO_GH_TOKEN', 'Đã tải ' + stt + '.txt về máy. Để tự động lưu lên GitHub Pages, bạn cần nhập GitHub Token vào mục ⚙️ Cấu hình API.');
     }
 
     // Cập nhật UI ngay lập tức
@@ -336,14 +488,13 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
     updateDashboardUI();
     renderGridMap();
     applyFiltersAndRender();
-    showLiveRunner(`🎉 HOÀN TẤT CHỦ ĐỀ #${stt}: ${topicVi.toUpperCase()} (${lines.length} TỪ)!`, 100, 5, false);
+    showLiveRunner('🎉 HOÀN TẤT CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase() + ' (' + lines.length + ' TỪ)!', 100, 5, false);
   } catch (e) {
-    showLiveRunner(`❌ LỖI KHI TẠO CHỦ ĐỀ #${stt}: ${e.message}`, 100, 3, true);
-    logToConsole('ERROR', 'WEB_GEN_FAIL', `Chủ đề #${stt} (${topicVi}) thất bại: ${e.message}`);
+    showLiveRunner('❌ LỖI KHI TẠO CHỦ ĐỀ #' + stt + ': ' + e.message, 100, 3, true);
+    logToConsole('ERROR', 'WEB_GEN_FAIL', 'Chủ đề #' + stt + ' (' + topicVi + ') thất bại: ' + e.message);
     toggleConsoleDrawer(true);
   }
 }
-
 async function pushFileToGitHub(path, contentText, commitMessage) {
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');

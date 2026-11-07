@@ -1466,6 +1466,52 @@
     t.assertEqual(auditData.index.errors.length, 0, `index.html dynamic audit must have 0 errors, found: ${JSON.stringify(auditData.index.errors)}`);
   });
 
+  s9.test('T9.4: Live Word Streaming Tracker Elements & Execution Sanity', async (t) => {
+    if (typeof document === 'undefined') return;
+    const indexFrame = document.getElementById('auditFrameIndex');
+    if (!indexFrame) return;
+
+    let doc = indexFrame.contentDocument || indexFrame.contentWindow?.document;
+    if (!doc || doc.readyState !== 'complete') {
+      await new Promise(r => {
+        indexFrame.addEventListener('load', r, { once: true });
+        setTimeout(r, 2000);
+      });
+      doc = indexFrame.contentDocument || indexFrame.contentWindow?.document;
+    }
+
+    t.assertTrue(Boolean(doc), 'indexFrame document must be loaded');
+    const trackerBox = doc.getElementById('liveWordTrackerBox');
+    t.assertTrue(Boolean(trackerBox), '#liveWordTrackerBox must exist in index.html DOM');
+    t.assertTrue(Boolean(doc.getElementById('liveWordCounterBadge')), '#liveWordCounterBadge must exist');
+    t.assertTrue(Boolean(doc.getElementById('liveWordCategoryBadge')), '#liveWordCategoryBadge must exist');
+    t.assertTrue(Boolean(doc.getElementById('liveCurrentWordCard')), '#liveCurrentWordCard must exist');
+    t.assertTrue(Boolean(doc.getElementById('liveCurrentWordName')), '#liveCurrentWordName must exist');
+    t.assertTrue(Boolean(doc.getElementById('liveCurrentWordVi')), '#liveCurrentWordVi must exist');
+    t.assertTrue(Boolean(doc.getElementById('liveWordChipsContainer')), '#liveWordChipsContainer must exist');
+
+    const win = indexFrame.contentWindow;
+    if (win && typeof win.resetLiveWordTracker === 'function') {
+      win.resetLiveWordTracker(1, "Kiểm thử Tracker");
+      t.assertEqual(doc.getElementById('liveWordCounterBadge')?.innerText, '0 / 100 từ (0%)', 'Counter badge must reset to 0%');
+
+      if (typeof win.updateLiveWordProgress === 'function') {
+        const sampleWord = {
+          word: "aerospace",
+          ipa: "/ˈer.oʊ.speɪs/",
+          definition: "Branch of technology concerned with aviation and space flight",
+          meaning_vi: "ngành hàng không vũ trụ",
+          plural: "aerospaces",
+          example_1: "She works in the aerospace industry.",
+          example_2: "Aerospace engineers design satellites."
+        };
+        win.updateLiveWordProgress(sampleWord, 1, 100, 'advanced', "Hàng không vũ trụ");
+        t.assertEqual(doc.getElementById('liveCurrentWordName')?.innerText, 'aerospace', 'Word name must match');
+        t.assertEqual(doc.getElementById('liveCurrentWordVi')?.innerText, 'ngành hàng không vũ trụ', 'Vietnamese meaning must match');
+        t.assertEqual(doc.getElementById('liveStreamedCount')?.innerText, '1', 'Streamed count must be 1');
+      }
+    }
+  });
   // Export to global for execution in browsers and test harnesses
   global.GamificationTestRunner = runner;
   global.runGamificationTests = () => runner.runAll();

@@ -165,6 +165,47 @@
         <div id="step-4" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">4. Xuất 9 cột TSV</div>
         <div id="step-5" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">5. Commit & Push</div>
       </div>
+
+      <!-- Khu vực hiển thị từ vựng đang tạo thời gian thực (Real-time Word Streaming Tracker) -->
+      <div id="liveWordTrackerBox" class="mt-4 border-2 border-[#111] bg-amber-50/70 p-3 sm:p-4 rounded-none shadow-[3px_3px_0px_#111]">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-[#111] pb-2 mb-3">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="inline-flex items-center justify-center w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-xs font-mono-code font-extrabold uppercase text-[#111]">TỪ VỰNG ĐANG SINH TRỰC TIẾP:</span>
+            <span id="liveWordCounterBadge" class="bg-[#111] text-[#FFE787] text-[11px] font-mono-code font-bold px-2 py-0.5 rounded-none border border-black">0 / 100 từ (0%)</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-mono-code">
+            <span id="liveWordCategoryBadge" class="px-2 py-0.5 font-bold border border-[#111] bg-emerald-100 text-emerald-900">A2-B2 Giao tiếp</span>
+            <span id="liveTopicNameBadge" class="text-slate-700 font-bold truncate max-w-[220px]">Chủ đề</span>
+          </div>
+        </div>
+
+        <!-- Thẻ từ vựng lớn hiển thị thông tin từ đang tạo -->
+        <div id="liveCurrentWordCard" class="bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111] transition-all duration-200">
+          <div class="flex flex-wrap items-baseline gap-2 sm:gap-3 mb-1">
+            <span id="liveCurrentWordName" class="font-display font-extrabold text-xl sm:text-2xl text-[#111] tracking-tight">waiting...</span>
+            <span id="liveCurrentWordIpa" class="font-mono-code text-sm sm:text-base text-indigo-600 font-bold">/.../</span>
+            <span id="liveCurrentWordVi" class="font-display font-bold text-sm sm:text-base text-emerald-700 bg-emerald-50 px-2 py-0.5 border border-emerald-300">Nghĩa tiếng Việt</span>
+            <span id="liveCurrentWordPlural" class="font-mono-code text-xs text-slate-500 font-bold"></span>
+          </div>
+          <p id="liveCurrentWordDef" class="text-xs text-slate-700 italic mb-2">Đang tải và xử lý từ vựng từ Gemini AI...</p>
+          <div class="bg-slate-50 border border-slate-300 p-2 text-xs text-slate-800 space-y-1 font-sans">
+            <div class="flex gap-1.5"><span class="font-bold text-blue-600">Ex 1:</span> <span id="liveCurrentWordEx1">...</span></div>
+            <div class="flex gap-1.5"><span class="font-bold text-blue-600">Ex 2:</span> <span id="liveCurrentWordEx2">...</span></div>
+          </div>
+        </div>
+
+        <!-- Khay cuộn các chip từ vựng đã hoàn thành -->
+        <div class="mt-3">
+          <div class="text-[11px] font-mono-code font-bold text-slate-600 uppercase mb-1.5 flex items-center justify-between">
+            <span>Danh sách từ đã sinh (<span id="liveStreamedCount">0</span>/100 từ):</span>
+            <span class="text-[10px] text-slate-400 font-normal">Tự động tích lũy từng từ</span>
+          </div>
+          <div id="liveWordChipsContainer" class="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto p-2 bg-white border border-[#111] shadow-inner text-xs">
+            <span class="text-xs text-slate-400 italic">Chưa có từ nào được sinh. Bấm nút tạo từ để bắt đầu...</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
