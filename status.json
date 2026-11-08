@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08 03:11:20",
+  "updated_at": "2026-11-08 12:10:43",
   "topics": [
     {
       "stt": 1,
@@ -958,28 +958,28 @@
     {
       "stt": 107,
       "topic": "Bánh nướng và tráng miệng (Baking & Desserts)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/107.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-08 12:08",
       "last_error": null
     },
     {
       "stt": 108,
       "topic": "Thực phẩm đóng hộp (Canned Foods)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/108.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-08 12:09",
       "last_error": null
     },
     {
       "stt": 109,
       "topic": "Ngũ cốc và các loại hạt (Grains & Nuts)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/109.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-08 12:10",
       "last_error": null
     },
     {
