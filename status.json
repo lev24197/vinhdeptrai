@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08 01:33:02",
+  "updated_at": "2026-11-08 01:35:55",
   "topics": [
     {
       "stt": 1,
@@ -932,9 +932,9 @@
       "stt": 104,
       "topic": "Hải sản (Seafood)",
       "status": "completed",
-      "word_count": 98,
+      "word_count": 100,
       "file_path": "output/104.txt",
-      "generated_at": "2026-11-08 01:33",
+      "generated_at": "2026-11-08 01:35",
       "last_error": null
     },
     {
