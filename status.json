@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08 01:35:55",
+  "updated_at": "2026-11-08 02:14:58",
   "topics": [
     {
       "stt": 1,
@@ -940,10 +940,10 @@
     {
       "stt": 105,
       "topic": "Các loại gia vị (Spices & Seasonings)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 63,
       "file_path": "output/105.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-08 02:14",
       "last_error": null
     },
     {
