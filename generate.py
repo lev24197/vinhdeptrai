@@ -73,25 +73,15 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
     exclude_str = ", ".join(exclude_words) if exclude_words else "None"
 
     core_membership_rule = (
-        f"CRITICAL CATEGORY MEMBERSHIP CONSTRAINT (STRICT 'IS-A' RULE ONLY):
+        f"CRITICAL CATEGORY MEMBERSHIP CONSTRAINT:
 "
-        f"1. 100% DIRECT MEMBERS / INSTANCES / VARIETIES / CUTS: Every single word MUST pass the 'IS-A' member test: 'Is this word literally an instance, species, variety, sub-type, culinary cut, or direct member of {topic_vi}?'
+        f"1. 100% DIRECT DOMAIN MEMBERS & CORE ELEMENTS: Every single word MUST directly and concretely belong to the domain of '{topic_vi}'.
 "
-        f"   - For category topics like 'Hải sản' (Seafood): ONLY output actual seafood species, shellfish, crustaceans, mollusks, or culinary seafood items (e.g., tuna, salmon, crab, shrimp, lobster, clam, oyster, squid, octopus, scallop, abalone, halibut, swordfish, sea urchin, cuttlefish, king crab, geoduck, flounder, mackerel, snapper, roe, caviar).
+        f"   - Name actual tangible objects, varieties, specific sub-types, core ingredients, preparations, or key elements that uniquely define '{topic_vi}'.
 "
-        f"   - For category topics like 'Thịt & Gia cầm' (Meat & Poultry): ONLY output concrete meats, poultry, game, specific culinary cuts, or charcuterie (e.g., beef, chicken, pork, duck, lamb, venison, ribeye, sirloin, tenderloin, brisket, pork belly, drumstick, bacon, sausage, prosciutto, pastrami).
+        f"2. ABSOLUTELY FORBIDDEN - DO NOT GENERATE GENERIC ESSAY WORDS OR UNRELATED FLUFF:
 "
-        f"2. ABSOLUTELY FORBIDDEN - DO NOT GENERATE PERIPHERAL ASSOCIATIONS OR SURROUNDINGS:
-"
-        f"   - NEVER output surroundings/habitats (ocean, sea, beach, coast, river, water, forest, field, farm, kitchen, market).
-"
-        f"   - NEVER output fishing gear/vessels/tools (boat, ship, trawler, net, rod, hook, trap, knife, cage).
-"
-        f"   - NEVER output tableware/dining items (menu, plate, bowl, fork, spoon, table, restaurant, customer).
-"
-        f"   - NEVER output seasonings/sides/condiments (salt, ice, lemon, pepper, sauce, oil, salad, rice).
-"
-        f"   - NEVER output academic meta-words, pathology, histology, or biology textbooks (crustaceology, ichthyology, aquaculture, bycatch, mariculture, rigor mortis, statocyst, radula, scapula, mandible, epimysium, paradigm, efficacy, framework).
+        f"   - NEVER include general academic meta-words or abstract buzzwords: 'paradigm', 'efficacy', 'amelioration', 'resilience', 'sustainability', 'governance', 'policy', 'framework', 'stakeholder', 'optimization', 'vulnerability', 'scalability', 'feasibility'.
 "
         f"3. STRICTLY NO ADJECTIVES, NO VERBS: Must be authentic English singular nouns or standard compound nouns."
     )

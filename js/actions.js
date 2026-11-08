@@ -489,95 +489,109 @@ async function generateSingleInBrowser(stt, topicVi) {
     const collectedConv = [];
     const collectedAdv = [];
     const seen = new Set();
-    const CHUNK_SIZE = 10;
 
-    // 1. Thu thập 50 danh từ giao tiếp thông dụng (A2-B2)
+    // 1. Thu thập 50 danh từ thông dụng (A2-B2) qua các đợt lớn (25-30 từ/lần)
     let convBatchIndex = 0;
-    while (collectedConv.length < 50 && convBatchIndex < 25) {
+    let convEmptyStreak = 0;
+    while (collectedConv.length < 50 && convBatchIndex < 12 && convEmptyStreak < 3) {
       convBatchIndex++;
       const needed = 50 - collectedConv.length;
-      const askCount = Math.max(12, Math.min(25, needed + 5));
+      const askCount = Math.max(16, Math.min(30, needed + 6));
+      const excludeSample = [...seen].slice(-40);
 
       showBatchCallingStatus(stt, topicVi, collectedConv.length, 50, convBatchIndex, 'conversational');
       logToConsole('INFO', 'WEB_GEN_CONV', 'Đang xin đợt ' + convBatchIndex + ' (' + askCount + ' từ giao tiếp, đã có: ' + collectedConv.length + '/50)...');
 
-      const prompt = 'Generate a JSON array of ' + askCount + ' practical, popular conversational English singular nouns (CEFR A2-B2 level) that are 100% DIRECT MEMBERS, SPECIES, VARIETIES, OR ITEMS of the topic: "' + topicVi + '".\n' +
-        'CRITICAL IS-A MEMBERSHIP CONSTRAINT:\n' +
-        '1. Every word MUST answer YES to: "Is this word literally a kind, species, variety, culinary cut, or member of ' + topicVi + '?" (e.g. For Seafood: ONLY actual seafood/fish/shellfish like salmon, tuna, crab, shrimp, clam, squid; for Meat: beef, chicken, pork, steak, drumstick).\n' +
-        '2. STRICTLY FORBIDDEN: surroundings (ocean, beach, sea, water, market, kitchen), tools/vessels (boat, net, rod), tableware (menu, plate, fork), seasonings (salt, ice, lemon, sauce), abstract concepts.\n' +
-        '3. Strictly NO adjectives, NO verbs.\n' +
-        'Exclude: ' + ([...seen].join(', ') || 'None') + '.\n' +
-        'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
+      const prompt = `Generate a JSON array of ${askCount} practical, common English singular nouns (CEFR A2-B2 level, essential daily vocabulary) that directly belong to the category/topic: "${topicVi}".
+CRITICAL DOMAIN RULES:
+1. Every single word MUST be a concrete English noun representing genuine types, varieties, core elements, key components, or direct items of "${topicVi}".
+2. ABSOLUTELY FORBIDDEN: Generic academic essay buzzwords (no "paradigm", "efficacy", "sustainability", "resilience", "framework", "feasibility", "stakeholder").
+3. Strictly NO adjectives, NO verbs.
+${excludeSample.length ? `Exclude these already generated words: ${excludeSample.join(', ')}.\n` : ''}Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
-      if (!Array.isArray(items) || items.length === 0) continue;
+      if (!Array.isArray(items) || items.length === 0) {
+        convEmptyStreak++;
+        continue;
+      }
 
+      let addedThisBatch = 0;
       for (const item of items) {
         const w = String(item.word || '').trim().toLowerCase();
         if (w && !seen.has(w)) {
           seen.add(w);
           collectedConv.push(item);
+          addedThisBatch++;
           updateLiveWordProgress(item, collectedConv.length, 100, 'conversational', topicVi);
-          await new Promise(r => setTimeout(r, 65));
+          await new Promise(r => setTimeout(r, 45));
           if (collectedConv.length >= 50) break;
         }
       }
+      if (addedThisBatch === 0) convEmptyStreak++;
+      else convEmptyStreak = 0;
     }
-    logToConsole('SUCCESS', 'CONV_OK', 'Đã thu thập: ' + collectedConv.length + '/50 từ giao tiếp.');
+    logToConsole('SUCCESS', 'CONV_OK', 'Pha 1 hoàn thành: ' + collectedConv.length + '/50 từ giao tiếp.');
 
-    // 2. Thu thập 50 danh từ nâng cao chuyên ngành (C1-C2)
+    // 2. Thu thập 50 danh từ nâng cao/chuyên ngành (B2-C2)
     let advBatchIndex = 0;
-    while (collectedAdv.length < 50 && advBatchIndex < 25) {
+    let advEmptyStreak = 0;
+    while (collectedAdv.length < 50 && advBatchIndex < 12 && advEmptyStreak < 3) {
       advBatchIndex++;
       const needed = 50 - collectedAdv.length;
-      const askCount = Math.max(12, Math.min(25, needed + 5));
+      const askCount = Math.max(16, Math.min(30, needed + 6));
       const totalSoFar = collectedConv.length + collectedAdv.length;
+      const excludeSample = [...seen].slice(-40);
 
       showBatchCallingStatus(stt, topicVi, totalSoFar, 100, advBatchIndex, 'advanced');
       logToConsole('INFO', 'WEB_GEN_ADV', 'Đang xin đợt ' + advBatchIndex + ' (' + askCount + ' từ nâng cao, đã có: ' + collectedAdv.length + '/50)...');
 
-      const prompt = 'Generate a JSON array of ' + askCount + ' advanced, specialized, prized, or gourmet English nouns (single or standard compound nouns, CEFR C1-C2 level) that are 100% DIRECT MEMBERS, SPECIFIC SPECIES, SUB-TYPES, VARIETIES, OR CUTS of the topic: "' + topicVi + '".\n' +
-        'CRITICAL IS-A MEMBERSHIP CONSTRAINT:\n' +
-        '1. Every word MUST be a genuine, distinct species, variety, prized culinary item, or specific cut of "' + topicVi + '" (e.g. for Seafood: halibut, swordfish, abalone, sea urchin, geoduck, cuttlefish, king crab, monkfish, turbot, barramundi, langoustine; for Meat: ribeye, sirloin, pastrami, prosciutto, venison, pheasant, guanciale, oxtail).\n' +
-        '2. STRICTLY FORBIDDEN: Biology/pathology meta-words (crustaceology, ichthyology, bycatch, aquaculture, statocyst, radula, rigor mortis, mandible, epimysium), surroundings, tools, tableware, seasonings (ocean, boat, net, plate, menu, market, salt, ice, lemon), abstract words.\n' +
-        '3. STRICTLY NO adjectives, NO verbs.\n' +
-        'Exclude: ' + ([...seen].join(', ') || 'None') + '.\n' +
-        'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
+      const prompt = `Generate a JSON array of ${askCount} advanced, specialized, prized, or domain-specific English singular nouns (CEFR B2-C2 level, specialized vocabulary) directly belonging to the category/topic: "${topicVi}".
+CRITICAL DOMAIN RULES:
+1. Every word MUST be a genuine specialized variety, specific sub-type, culinary cut, professional term, key component, or distinct item belonging to "${topicVi}".
+2. ABSOLUTELY FORBIDDEN: Generic essay buzzwords (no "paradigm", "efficacy", "sustainability", "resilience", "framework", "feasibility", "modality").
+3. Strictly NO adjectives, NO verbs.
+${excludeSample.length ? `Exclude these already generated words: ${excludeSample.join(', ')}.\n` : ''}Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
-      if (!Array.isArray(items) || items.length === 0) continue;
+      if (!Array.isArray(items) || items.length === 0) {
+        advEmptyStreak++;
+        continue;
+      }
 
+      let addedThisBatch = 0;
       for (const item of items) {
         const w = String(item.word || '').trim().toLowerCase();
         if (w && !seen.has(w)) {
           seen.add(w);
           collectedAdv.push(item);
+          addedThisBatch++;
           const currentTotal = collectedConv.length + collectedAdv.length;
           updateLiveWordProgress(item, currentTotal, 100, 'advanced', topicVi);
-          await new Promise(r => setTimeout(r, 65));
+          await new Promise(r => setTimeout(r, 45));
           if (collectedAdv.length >= 50) break;
         }
       }
+      if (addedThisBatch === 0) advEmptyStreak++;
+      else advEmptyStreak = 0;
     }
-    logToConsole('SUCCESS', 'ADV_OK', 'Đã thu thập: ' + collectedAdv.length + '/50 từ nâng cao.');
+    logToConsole('SUCCESS', 'ADV_OK', 'Pha 2 hoàn thành: ' + collectedAdv.length + '/50 từ nâng cao.');
 
-    // 3. VÒNG LẶP BẢO HIỂM CHẮC CHẮN ĐẠT ĐỦ ĐÚNG 100 TỪ (NẾU 2 PHA TRÊN CÒN THIẾU)
+    // 3. VÒNG LẶP BẢO HIỂM THÔNG MINH (ADAPTIVE TOP-UP): BẮT BUỘC ĐẠT ĐỦ ĐÚNG 100 TỪ
     let allCollected = [...collectedConv.slice(0, 50), ...collectedAdv.slice(0, 50)];
     let topupIndex = 0;
-    while (allCollected.length < 100 && topupIndex < 25) {
+    while (allCollected.length < 100 && topupIndex < 10) {
       topupIndex++;
       const needed = 100 - allCollected.length;
-      const askCount = Math.max(12, Math.min(25, needed + 5));
-      const mode = (collectedAdv.length < 50) ? 'advanced' : 'conversational';
+      const askCount = Math.max(15, Math.min(30, needed + 8));
+      const excludeSample = [...seen].slice(-35);
 
       showBatchCallingStatus(stt, topicVi, allCollected.length, 100, topupIndex, 'topup');
-      logToConsole('WARNING', 'WEB_GEN_TOPUP', '[Bảo hiểm 100 từ] Đang bù đắp đợt ' + topupIndex + ' (' + askCount + ' từ, đang có: ' + allCollected.length + '/100)...');
+      logToConsole('WARNING', 'WEB_GEN_TOPUP', '[Bảo hiểm 100 từ] Đang bù đắp đợt ' + topupIndex + ' (cần thêm ' + needed + ' từ, đang có: ' + allCollected.length + '/100)...');
 
-      const prompt = 'Generate a JSON array of ' + askCount + ' distinct English singular nouns (' + (mode === 'advanced' ? 'CEFR C1-C2 level, specialized/prized types' : 'CEFR A2-B2 level, common practical nouns') + ') directly and strictly belonging to the category: "' + topicVi + '".\n' +
-        'CRITICAL IS-A RULE: Every single word MUST answer YES to: "Is this word a genuine member, species, variety, culinary cut, or item of ' + topicVi + '?"\n' +
-        'STRICTLY FORBIDDEN: surroundings/locations (ocean, beach, water, market), tools/vessels (boat, net, rod), tableware (menu, plate), seasonings/sides (salt, ice, lemon, sauce), abstract terms.\n' +
-        'Exclude: ' + ([...seen].join(', ') || 'None') + '.\n' +
-        'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
+      // Mở rộng linh hoạt để quét sạch mọi khía cạnh thực tế của chủ đề
+      const prompt = `Generate a JSON array of ${askCount} distinct English singular nouns related to all practical aspects, products, preparations, tools, varieties, and key terminology of "${topicVi}".
+CRITICAL RULES: Authentic English nouns only. NO abstract essay fluff ("paradigm", "sustainability"). NO adjectives, NO verbs.
+${excludeSample.length ? `Do NOT repeat these words: ${excludeSample.join(', ')}.\n` : ''}Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
       if (!Array.isArray(items) || items.length === 0) continue;
@@ -588,7 +602,7 @@ async function generateSingleInBrowser(stt, topicVi) {
           seen.add(w);
           allCollected.push(item);
           updateLiveWordProgress(item, allCollected.length, 100, 'topup', topicVi);
-          await new Promise(r => setTimeout(r, 65));
+          await new Promise(r => setTimeout(r, 45));
           if (allCollected.length >= 100) break;
         }
       }
