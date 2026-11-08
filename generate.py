@@ -187,7 +187,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     # --- PHẦN 1: 50 DANH TỪ GIAO TIẾP THÔNG DỤNG (A2 - B2) ---
     append_run_log("INFO", "START_CONV", f"Bắt đầu tạo 50 từ giao tiếp thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
     conv_attempt = 0
-    while len(conversational_nouns) < 50 and conv_attempt < 6:
+    while len(conversational_nouns) < 50 and conv_attempt < 15:
         conv_attempt += 1
         needed = 50 - len(conversational_nouns)
         ask_count = min(55, max(needed + 5, 15))
@@ -206,7 +206,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     # --- PHẦN 2: 50 DANH TỪ NÂNG CAO THÔNG DỤNG (C1 - C2 / IELTS 7.5+) ---
     append_run_log("INFO", "START_ADV", f"Bắt đầu tạo 50 từ nâng cao thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
     adv_attempt = 0
-    while len(advanced_nouns) < 50 and adv_attempt < 6:
+    while len(advanced_nouns) < 50 and adv_attempt < 15:
         adv_attempt += 1
         needed = 50 - len(advanced_nouns)
         ask_count = min(55, max(needed + 5, 15))
@@ -227,7 +227,7 @@ def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
 
     # --- PHẦN 3: BẢO HIỂM CHẮC CHẮN ĐẠT ĐỦ 100 TỪ (SAFETY TOP-UP LOOP) ---
     topup_attempt = 0
-    while len(total_nouns) < 100 and topup_attempt < 6:
+    while len(total_nouns) < 100 and topup_attempt < 15:
         topup_attempt += 1
         needed = 100 - len(total_nouns)
         ask_count = min(40, max(needed + 5, 12))
@@ -354,6 +354,9 @@ def main():
                 ex2 = clean_field(item.example_2).lstrip("1234567890. ")
                 examples = f"1. {ex1} <br>2. {ex2}"
                 lines.append("\t".join([w, cloze, ipa, sound, definition, vi, vi, plural, examples]))
+
+            if len(lines) != 100:
+                raise ValueError(f"Chủ đề #{stt} ({topic_name}) bắt buộc phải có đúng 100 từ nhưng chỉ có {len(lines)} từ! Từ chối lưu file.")
 
             file_path = f"{OUTPUT_DIR}/{stt}.txt"
             with open(file_path, "w", encoding="utf-8") as f:

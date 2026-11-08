@@ -14,7 +14,7 @@
       "stt": 2,
       "topic": "Văn hóa quán cà phê và Đồ uống (Cafe Culture & Beverages)",
       "status": "completed",
-      "word_count": 102,
+      "word_count": 100,
       "file_path": "output/2.txt",
       "generated_at": null,
       "last_error": null
@@ -23,7 +23,7 @@
       "stt": 3,
       "topic": "Ẩm thực và Các loại lẩu (Culinary Arts & Hotpots)",
       "status": "completed",
-      "word_count": 102,
+      "word_count": 100,
       "file_path": "output/3.txt",
       "generated_at": null,
       "last_error": null
@@ -32,7 +32,7 @@
       "stt": 4,
       "topic": "Gia đình và Người thân (Family & Relatives)",
       "status": "completed",
-      "word_count": 102,
+      "word_count": 100,
       "file_path": "output/4.txt",
       "generated_at": null,
       "last_error": null
@@ -41,7 +41,7 @@
       "stt": 5,
       "topic": "Các bộ phận trên cơ thể người (Human Body Parts)",
       "status": "completed",
-      "word_count": 102,
+      "word_count": 100,
       "file_path": "output/5.txt",
       "generated_at": null,
       "last_error": null
@@ -851,7 +851,7 @@
       "stt": 95,
       "topic": "Quản trị kinh doanh doanh nghiệp (Business Administration)",
       "status": "completed",
-      "word_count": 85,
+      "word_count": 100,
       "file_path": "output/95.txt",
       "generated_at": "2026-11-07 16:36",
       "last_error": null
@@ -941,7 +941,7 @@
       "stt": 105,
       "topic": "Các loại gia vị (Spices & Seasonings)",
       "status": "completed",
-      "word_count": 63,
+      "word_count": 100,
       "file_path": "output/105.txt",
       "generated_at": "2026-11-08 02:14",
       "last_error": null

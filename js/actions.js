@@ -491,12 +491,12 @@ async function generateSingleInBrowser(stt, topicVi) {
     const seen = new Set();
     const CHUNK_SIZE = 10;
 
-    // 1. Thu thập 50 danh từ giao tiếp thông dụng (A2-B2) - CHIA ĐỢT 10 TỪ SIÊU NHANH
+    // 1. Thu thập 50 danh từ giao tiếp thông dụng (A2-B2)
     let convBatchIndex = 0;
-    while (collectedConv.length < 50 && convBatchIndex < 10) {
+    while (collectedConv.length < 50 && convBatchIndex < 25) {
       convBatchIndex++;
       const needed = 50 - collectedConv.length;
-      const askCount = Math.min(CHUNK_SIZE + 2, needed);
+      const askCount = Math.max(12, Math.min(25, needed + 5));
 
       showBatchCallingStatus(stt, topicVi, collectedConv.length, 50, convBatchIndex, 'conversational');
       logToConsole('INFO', 'WEB_GEN_CONV', 'Đang xin đợt ' + convBatchIndex + ' (' + askCount + ' từ giao tiếp, đã có: ' + collectedConv.length + '/50)...');
@@ -523,14 +523,14 @@ async function generateSingleInBrowser(stt, topicVi) {
         }
       }
     }
-    logToConsole('SUCCESS', 'CONV_OK', 'Đã thu thập đủ ' + collectedConv.length + '/50 từ giao tiếp.');
+    logToConsole('SUCCESS', 'CONV_OK', 'Đã thu thập: ' + collectedConv.length + '/50 từ giao tiếp.');
 
-    // 2. Thu thập 50 danh từ nâng cao chuyên ngành (C1-C2) - CHIA ĐỢT 10 TỪ SIÊU NHANH
+    // 2. Thu thập 50 danh từ nâng cao chuyên ngành (C1-C2)
     let advBatchIndex = 0;
-    while (collectedAdv.length < 50 && advBatchIndex < 10) {
+    while (collectedAdv.length < 50 && advBatchIndex < 25) {
       advBatchIndex++;
       const needed = 50 - collectedAdv.length;
-      const askCount = Math.min(CHUNK_SIZE + 2, needed);
+      const askCount = Math.max(12, Math.min(25, needed + 5));
       const totalSoFar = collectedConv.length + collectedAdv.length;
 
       showBatchCallingStatus(stt, topicVi, totalSoFar, 100, advBatchIndex, 'advanced');
@@ -559,9 +559,52 @@ async function generateSingleInBrowser(stt, topicVi) {
         }
       }
     }
-    logToConsole('SUCCESS', 'ADV_OK', 'Đã thu thập đủ ' + collectedAdv.length + '/50 từ nâng cao.');
+    logToConsole('SUCCESS', 'ADV_OK', 'Đã thu thập: ' + collectedAdv.length + '/50 từ nâng cao.');
 
-    const collected = [...collectedConv.slice(0, 50), ...collectedAdv.slice(0, 50)];
+    // 3. VÒNG LẶP BẢO HIỂM CHẮC CHẮN ĐẠT ĐỦ ĐÚNG 100 TỪ (NẾU 2 PHA TRÊN CÒN THIẾU)
+    let allCollected = [...collectedConv.slice(0, 50), ...collectedAdv.slice(0, 50)];
+    let topupIndex = 0;
+    while (allCollected.length < 100 && topupIndex < 25) {
+      topupIndex++;
+      const needed = 100 - allCollected.length;
+      const askCount = Math.max(12, Math.min(25, needed + 5));
+      const mode = (collectedAdv.length < 50) ? 'advanced' : 'conversational';
+
+      showBatchCallingStatus(stt, topicVi, allCollected.length, 100, topupIndex, 'topup');
+      logToConsole('WARNING', 'WEB_GEN_TOPUP', '[Bảo hiểm 100 từ] Đang bù đắp đợt ' + topupIndex + ' (' + askCount + ' từ, đang có: ' + allCollected.length + '/100)...');
+
+      const prompt = 'Generate a JSON array of ' + askCount + ' distinct English singular nouns (' + (mode === 'advanced' ? 'CEFR C1-C2 level, specialized/prized types' : 'CEFR A2-B2 level, common practical nouns') + ') directly and strictly belonging to the category: "' + topicVi + '".\n' +
+        'CRITICAL IS-A RULE: Every single word MUST answer YES to: "Is this word a genuine member, species, variety, culinary cut, or item of ' + topicVi + '?"\n' +
+        'STRICTLY FORBIDDEN: surroundings/locations (ocean, beach, water, market), tools/vessels (boat, net, rod), tableware (menu, plate), seasonings/sides (salt, ice, lemon, sauce), abstract terms.\n' +
+        'Exclude: ' + ([...seen].join(', ') || 'None') + '.\n' +
+        'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
+
+      const items = await callGeminiApiWithFallback(prompt, geminiKey);
+      if (!Array.isArray(items) || items.length === 0) continue;
+
+      for (const item of items) {
+        const w = String(item.word || '').trim().toLowerCase();
+        if (w && !seen.has(w)) {
+          seen.add(w);
+          allCollected.push(item);
+          updateLiveWordProgress(item, allCollected.length, 100, 'topup', topicVi);
+          await new Promise(r => setTimeout(r, 65));
+          if (allCollected.length >= 100) break;
+        }
+      }
+    }
+
+    // KHÓA BẢO ĐẢM TUYỆT ĐỐI: CHỈ LẤY ĐÚNG 100 TỪ & KHÔNG BAO GIỜ XUẤT FILE THIẾU TỪ
+    allCollected = allCollected.slice(0, 100);
+    if (allCollected.length < 100) {
+      const errMsg = 'Chủ đề #' + stt + ' (' + topicVi + ') chỉ thu thập được ' + allCollected.length + '/100 từ sau nhiều lần thử lại. Hệ thống từ chối lưu file thiếu từ để đảm bảo chất lượng! Vui lòng bấm tạo lại.';
+      logToConsole('ERROR', 'INCOMPLETE_BLOCKED', errMsg);
+      showLiveRunner('❌ THẤT BẠI: CHỈ ĐẠT ' + allCollected.length + '/100 TỪ (TỪ CHỐI LƯU FILE THIẾU)', 100, 5, true);
+      alert(errMsg);
+      return;
+    }
+
+    const collected = allCollected;
 
     showLiveRunner('ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ' + collected.length + ' TỪ VỰNG...', 90, 4);
     const lines = collected.map(item => {
