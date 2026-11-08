@@ -72,36 +72,69 @@ def clean_field(text: str) -> str:
 def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt: int, mode: str = "conversational") -> list[NounItem]:
     exclude_str = ", ".join(exclude_words) if exclude_words else "None"
 
+    core_membership_rule = (
+        f"CRITICAL CATEGORY MEMBERSHIP CONSTRAINT (STRICT 'IS-A' RULE ONLY):
+"
+        f"1. 100% DIRECT MEMBERS / INSTANCES / VARIETIES / CUTS: Every single word MUST pass the 'IS-A' member test: 'Is this word literally an instance, species, variety, sub-type, culinary cut, or direct member of {topic_vi}?'
+"
+        f"   - For category topics like 'Hải sản' (Seafood): ONLY output actual seafood species, shellfish, crustaceans, mollusks, or culinary seafood items (e.g., tuna, salmon, crab, shrimp, lobster, clam, oyster, squid, octopus, scallop, abalone, halibut, swordfish, sea urchin, cuttlefish, king crab, geoduck, flounder, mackerel, snapper, roe, caviar).
+"
+        f"   - For category topics like 'Thịt & Gia cầm' (Meat & Poultry): ONLY output concrete meats, poultry, game, specific culinary cuts, or charcuterie (e.g., beef, chicken, pork, duck, lamb, venison, ribeye, sirloin, tenderloin, brisket, pork belly, drumstick, bacon, sausage, prosciutto, pastrami).
+"
+        f"2. ABSOLUTELY FORBIDDEN - DO NOT GENERATE PERIPHERAL ASSOCIATIONS OR SURROUNDINGS:
+"
+        f"   - NEVER output surroundings/habitats (ocean, sea, beach, coast, river, water, forest, field, farm, kitchen, market).
+"
+        f"   - NEVER output fishing gear/vessels/tools (boat, ship, trawler, net, rod, hook, trap, knife, cage).
+"
+        f"   - NEVER output tableware/dining items (menu, plate, bowl, fork, spoon, table, restaurant, customer).
+"
+        f"   - NEVER output seasonings/sides/condiments (salt, ice, lemon, pepper, sauce, oil, salad, rice).
+"
+        f"   - NEVER output academic meta-words, pathology, histology, or biology textbooks (crustaceology, ichthyology, aquaculture, bycatch, mariculture, rigor mortis, statocyst, radula, scapula, mandible, epimysium, paradigm, efficacy, framework).
+"
+        f"3. STRICTLY NO ADJECTIVES, NO VERBS: Must be authentic English singular nouns or standard compound nouns."
+    )
+
     if mode == "advanced":
         mode_instruction = (
-            f"CATEGORY: ADVANCED SPECIALIZED & DOMAIN-SPECIFIC NOUNS DIRECTLY BELONGING TO '{topic_vi}' (CEFR C1-C2 level, specialized terminology).\n"
-            f"STRICT REQUIREMENTS FOR ADVANCED NOUNS:\n"
-            f"1. 100% DOMAIN-SPECIFIC NOUNS: Every single word must be a specialized, technical, or domain-specific noun (single noun or standard compound noun) that uniquely, concretely, and specifically belongs to '{topic_vi}'.\n"
-            f"   - Name actual tangible objects, specialized components, equipment, technical installations, tools, materials, specific sub-types, professional roles, or distinct specialized concepts that a professional, practitioner, or specialist in this specific field works with.\n"
-            f"2. ABSOLUTELY FORBIDDEN - DO NOT GENERATE GENERIC ABSTRACT ESSAY WORDS:\n"
-            f"   - NEVER include general academic meta-words or abstract qualities such as: 'paradigm', 'efficacy', 'amelioration', 'prognosis', 'disbursement', 'constraint', 'resilience', 'sustainability', 'governance', 'policy', 'framework', 'incentive', 'stakeholder', 'trajectory', 'optimization', 'vulnerability', 'scalability', 'interoperability', 'modality', 'feasibility', etc.\n"
-            f"3. STRICTLY NO ADJECTIVES, NO VERBS, NO ESSAY FLUFF: The word must function 100% as an authentic NOUN in English representing real, distinct elements of '{topic_vi}'.\n"
-            f"4. The word must be strictly relevant and deeply anchored in the real-world context of '{topic_vi}'."
+            f"CATEGORY: ADVANCED, SPECIALIZED, PRIZED, OR GOURMET VARIETIES OF '{topic_vi}' (CEFR C1-C2 level).
+"
+            f"- Generate distinct, less common, prized, gourmet, or specialized varieties, species, and cuts of '{topic_vi}'.
+"
+            f"- Maintain 100% adherence to the 'IS-A' membership constraint above (NO biology textbook terms, NO gear, NO surroundings).
+"
+            f"{core_membership_rule}"
         )
     else:
         mode_instruction = (
-            f"CATEGORY: PRACTICAL CONVERSATIONAL NOUNS (CEFR A2-B2 level, daily communication & spoken English).\n"
-            f"- Select natural, highly useful, and frequent concrete nouns that native speakers actually use in daily conversations and real-life scenarios related to '{topic_vi}'.\n"
-            f"- AVOID overly simplistic or childish words (unless fundamental), focusing on solid practical communicative nouns.\n"
-            f"- MUST be 100% concrete/conversational nouns (no adjectives, no verbs)."
+            f"CATEGORY: POPULAR & COMMON CONVERSATIONAL MEMBERS OF '{topic_vi}' (CEFR A2-B2 level, essential daily vocabulary).
+"
+            f"- Generate the most popular, familiar, practical, and frequently encountered real-world varieties, species, and cuts of '{topic_vi}'.
+"
+            f"{core_membership_rule}"
         )
 
     prompt = (
         f"Generate exactly {count} distinct English nouns (single words or standard compound nouns) "
-        f"related to the Vietnamese topic: '{topic_vi}'.\n"
-        f"{mode_instruction}\n"
-        f"Do NOT include any of these already generated words: {exclude_str}.\n"
-        f"Requirements:\n"
-        f"- 'word': lowercase singular noun.\n"
-        f"- 'ipa': standard American IPA inside slashes /.../.\n"
-        f"- 'definition': concise English definition.\n"
-        f"- 'meaning_vi': accurate Vietnamese translation matching the topic context.\n"
-        f"- 'plural': plural noun form.\n"
+        f"that belong 100% to the category of '{topic_vi}'.
+"
+        f"{mode_instruction}
+"
+        f"Do NOT include any of these already generated words: {exclude_str}.
+"
+        f"Requirements:
+"
+        f"- 'word': lowercase singular noun.
+"
+        f"- 'ipa': standard American IPA inside slashes /.../.
+"
+        f"- 'definition': concise English definition.
+"
+        f"- 'meaning_vi': accurate Vietnamese translation matching the topic context.
+"
+        f"- 'plural': plural noun form.
+"
         f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
     )
     models_to_try = [

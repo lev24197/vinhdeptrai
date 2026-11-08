@@ -1,4 +1,4 @@
-// ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
+﻿// ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
 
 function showLiveRunner(title, pct, stepIndex, isError = false) {
   const banner = document.getElementById('liveRunnerBanner');
@@ -501,7 +501,13 @@ async function generateSingleInBrowser(stt, topicVi) {
       showBatchCallingStatus(stt, topicVi, collectedConv.length, 50, convBatchIndex, 'conversational');
       logToConsole('INFO', 'WEB_GEN_CONV', 'Đang xin đợt ' + convBatchIndex + ' (' + askCount + ' từ giao tiếp, đã có: ' + collectedConv.length + '/50)...');
 
-      const prompt = 'Generate a JSON array of ' + askCount + ' practical, common conversational English singular nouns (CEFR A2-B2 level, daily communication & spoken English, strictly NO adjectives, NO verbs) related to the topic: "' + topicVi + '". Exclude: ' + ([...seen].join(', ') || 'None') + '. Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
+      const prompt = 'Generate a JSON array of ' + askCount + ' practical, popular conversational English singular nouns (CEFR A2-B2 level) that are 100% DIRECT MEMBERS, SPECIES, VARIETIES, OR ITEMS of the topic: "' + topicVi + '".\n' +
+        'CRITICAL IS-A MEMBERSHIP CONSTRAINT:\n' +
+        '1. Every word MUST answer YES to: "Is this word literally a kind, species, variety, culinary cut, or member of ' + topicVi + '?" (e.g. For Seafood: ONLY actual seafood/fish/shellfish like salmon, tuna, crab, shrimp, clam, squid; for Meat: beef, chicken, pork, steak, drumstick).\n' +
+        '2. STRICTLY FORBIDDEN: surroundings (ocean, beach, sea, water, market, kitchen), tools/vessels (boat, net, rod), tableware (menu, plate, fork), seasonings (salt, ice, lemon, sauce), abstract concepts.\n' +
+        '3. Strictly NO adjectives, NO verbs.\n' +
+        'Exclude: ' + ([...seen].join(', ') || 'None') + '.\n' +
+        'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
       if (!Array.isArray(items) || items.length === 0) continue;
@@ -530,13 +536,13 @@ async function generateSingleInBrowser(stt, topicVi) {
       showBatchCallingStatus(stt, topicVi, totalSoFar, 100, advBatchIndex, 'advanced');
       logToConsole('INFO', 'WEB_GEN_ADV', 'Đang xin đợt ' + advBatchIndex + ' (' + askCount + ' từ nâng cao, đã có: ' + collectedAdv.length + '/50)...');
 
-      const prompt = 'Generate a JSON array of ' + askCount + ' advanced, technical, and domain-specific English nouns (single or standard compound nouns, CEFR C1-C2 level) directly and physically belonging to the topic: "' + topicVi + '".\n' +
-'CRITICAL REQUIREMENTS:\n' +
-'1. Every word MUST be a specialized, technical, or domain-specific NOUN (single noun or compound noun) representing real tangible objects, specialized components, equipment, tools, materials, distinct sub-types, professional roles, or distinct concepts belonging to "' + topicVi + '".\n' +
-'2. STRICTLY FORBIDDEN: abstract qualities or essay words like "paradigm", "efficacy", "framework", "sustainability", "stakeholder", "feasibility".\n' +
-'3. STRICTLY NO adjectives, NO verbs.\n' +
-'Exclude: ' + ([...seen].join(', ') || 'None') + '.\n' +
-'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
+      const prompt = 'Generate a JSON array of ' + askCount + ' advanced, specialized, prized, or gourmet English nouns (single or standard compound nouns, CEFR C1-C2 level) that are 100% DIRECT MEMBERS, SPECIFIC SPECIES, SUB-TYPES, VARIETIES, OR CUTS of the topic: "' + topicVi + '".\n' +
+        'CRITICAL IS-A MEMBERSHIP CONSTRAINT:\n' +
+        '1. Every word MUST be a genuine, distinct species, variety, prized culinary item, or specific cut of "' + topicVi + '" (e.g. for Seafood: halibut, swordfish, abalone, sea urchin, geoduck, cuttlefish, king crab, monkfish, turbot, barramundi, langoustine; for Meat: ribeye, sirloin, pastrami, prosciutto, venison, pheasant, guanciale, oxtail).\n' +
+        '2. STRICTLY FORBIDDEN: Biology/pathology meta-words (crustaceology, ichthyology, bycatch, aquaculture, statocyst, radula, rigor mortis, mandible, epimysium), surroundings, tools, tableware, seasonings (ocean, boat, net, plate, menu, market, salt, ice, lemon), abstract words.\n' +
+        '3. STRICTLY NO adjectives, NO verbs.\n' +
+        'Exclude: ' + ([...seen].join(', ') || 'None') + '.\n' +
+        'Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.';
 
       const items = await callGeminiApiWithFallback(prompt, geminiKey);
       if (!Array.isArray(items) || items.length === 0) continue;
