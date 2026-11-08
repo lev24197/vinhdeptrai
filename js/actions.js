@@ -406,21 +406,25 @@ function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = 'c
   if (streamedCount) streamedCount.innerText = String(currentCount);
 }
 
+let cachedWorkingModel = null;
+
 // Hàm gọi Gemini API đa model với cơ chế Fallback tự động & bóc tách JSON an toàn
-async function callGeminiApiWithFallback(prompt, geminiKey) {
-  const models = [
-    'gemini-3.1-flash-lite-preview',
+async function callGeminiApiWithFallback(prompt, geminiKey, temperature = 0.65) {
+  const preferredModel = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
+  const candidateModels = [
+    cachedWorkingModel,
+    preferredModel,
     'gemini-3.1-flash-lite',
-    'gemini-3-flash-preview',
+    'gemini-3.1-flash-lite-preview',
     'gemini-3-flash',
+    'gemini-3-flash-preview',
     'gemini-2.5-flash',
     'gemini-2.5-flash-lite',
-    'gemini-3.5-flash-lite',
-    'gemini-3.8-flash',
     'gemini-2.0-flash',
     'gemini-1.5-flash'
-  ];
+  ].filter(Boolean);
 
+  const models = [...new Set(candidateModels)];
   let lastError = null;
   for (const model of models) {
     try {
@@ -429,7 +433,7 @@ async function callGeminiApiWithFallback(prompt, geminiKey) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: 'application/json', temperature: 0.35 }
+          generationConfig: { responseMimeType: 'application/json', temperature: temperature }
         })
       });
 
@@ -453,7 +457,11 @@ async function callGeminiApiWithFallback(prompt, geminiKey) {
       if (firstBracket !== -1 && lastBracket !== -1 && lastBracket > firstBracket) {
         cleaned = cleaned.substring(firstBracket, lastBracket + 1);
       }
-      return JSON.parse(cleaned);
+      const parsed = JSON.parse(cleaned);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        cachedWorkingModel = model;
+        return parsed;
+      }
     } catch (e) {
       lastError = e;
     }
@@ -467,6 +475,7 @@ async function generateSingleInBrowser(stt, topicVi) {
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';
   const ghToken = localStorage.getItem('gh_token');
+  const preferredModel = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
 
   if (!geminiKey) {
     const inputKey = prompt('⚡ Để tạo từ vựng trực tiếp trên Web và thấy ngay từng từ sinh ra trong 2 giây, vui lòng dán Gemini API Key (Tier 1) của bạn vào đây:');
@@ -483,144 +492,134 @@ async function generateSingleInBrowser(stt, topicVi) {
   runnerStartTime = Date.now();
   showLiveRunner('⚡ [WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase(), 5, 1);
   resetLiveWordTracker(stt, topicVi);
-  logToConsole('INFO', 'WEB_GEN', 'Bắt đầu tạo trực tiếp chủ đề #' + stt + ' (' + topicVi + ') bằng Gemini 3.1 Flash Lite...');
+  logToConsole('INFO', 'WEB_GEN', 'Bắt đầu tạo trực tiếp chủ đề #' + stt + ' (' + topicVi + ') bằng model ' + preferredModel + '...');
 
   try {
-    const collectedConv = [];
-    const collectedAdv = [];
+    const collected = [];
     const seen = new Set();
 
-    // 1. Thu thập 50 danh từ thông dụng (A2-B2) qua các đợt lớn (25-30 từ/lần)
-    let convBatchIndex = 0;
-    let convEmptyStreak = 0;
-    while (collectedConv.length < 50 && convBatchIndex < 12 && convEmptyStreak < 3) {
-      convBatchIndex++;
-      const needed = 50 - collectedConv.length;
-      const askCount = Math.max(16, Math.min(30, needed + 6));
-      const excludeSample = [...seen].slice(-40);
+    // 4 Phân diện ngữ nghĩa tự nhiên của mọi chủ đề để khai thác trọn vẹn 100 từ độc nhất
+    const facets = [
+      {
+        name: 'Cốt lõi & Phổ biến',
+        tag: 'A2-B2 Cốt lõi',
+        desc: 'core varieties, primary types, essential elements, and common forms',
+        targetCount: 30
+      },
+      {
+        name: 'Chuyên sâu & Đặc trưng',
+        tag: 'B2-C1 Chuyên sâu',
+        desc: 'specialized sub-types, regional varieties, prized cultivars, and distinct styles',
+        targetCount: 30
+      },
+      {
+        name: 'Chế biến & Thành phẩm',
+        tag: 'C1 Thành phẩm',
+        desc: 'culinary preparations, finished products, commercial cuts, forms, and presentations',
+        targetCount: 25
+      },
+      {
+        name: 'Thành phần, Nguyên liệu & Dụng cụ',
+        tag: 'C1-C2 Dụng cụ & Nguyên liệu',
+        desc: 'key ingredients, essential components, characteristic tools, and domain-specific elements',
+        targetCount: 25
+      }
+    ];
 
-      showBatchCallingStatus(stt, topicVi, collectedConv.length, 50, convBatchIndex, 'conversational');
-      logToConsole('INFO', 'WEB_GEN_CONV', 'Đang xin đợt ' + convBatchIndex + ' (' + askCount + ' từ giao tiếp, đã có: ' + collectedConv.length + '/50)...');
+    // PHA 1: Quét 4 phân diện chính (mỗi phân diện 25-30 từ, tổng 110 từ)
+    for (let i = 0; i < facets.length; i++) {
+      if (collected.length >= 100) break;
+      const facet = facets[i];
 
-      const prompt = `Generate a JSON array of ${askCount} practical, common English singular nouns (CEFR A2-B2 level, essential daily vocabulary) that directly belong to the category/topic: "${topicVi}".
+      showBatchCallingStatus(stt, topicVi, collected.length, 100, i + 1, facet.name);
+      logToConsole('INFO', 'WEB_GEN_FACET', 'Đang xin đợt ' + (i + 1) + '/4 [' + facet.name + '] (' + facet.targetCount + ' từ, đã có ' + collected.length + '/100)...');
+
+      const excludeStr = seen.size > 0 ? `STRICTLY DO NOT REPEAT ANY of these already generated words (${seen.size} words): ${[...seen].join(', ')}.\n` : '';
+      const prompt = `Generate a JSON array of ${facet.targetCount} distinct English singular nouns related to "${topicVi}".
+Focus specifically on: ${facet.desc}.
 CRITICAL DOMAIN RULES:
-1. Every single word MUST be a concrete English noun representing genuine types, varieties, core elements, key components, or direct items of "${topicVi}".
-2. ABSOLUTELY FORBIDDEN: Generic academic essay buzzwords (no "paradigm", "efficacy", "sustainability", "resilience", "framework", "feasibility", "stakeholder").
-3. Strictly NO adjectives, NO verbs.
-${excludeSample.length ? `Exclude these already generated words: ${excludeSample.join(', ')}.\n` : ''}Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
+1. Every word MUST directly and concretely belong to the domain/category of "${topicVi}".
+2. Concrete English nouns only (NO adjectives, NO verbs).
+3. ABSOLUTELY FORBIDDEN: General academic meta-words or abstract essay buzzwords ("paradigm", "efficacy", "sustainability", "resilience", "framework", "feasibility", "stakeholder", "amelioration", "optimization").
+${excludeStr}Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
-      const items = await callGeminiApiWithFallback(prompt, geminiKey);
-      if (!Array.isArray(items) || items.length === 0) {
-        convEmptyStreak++;
-        continue;
-      }
-
-      let addedThisBatch = 0;
-      for (const item of items) {
-        const w = String(item.word || '').trim().toLowerCase();
-        if (w && !seen.has(w)) {
-          seen.add(w);
-          collectedConv.push(item);
-          addedThisBatch++;
-          updateLiveWordProgress(item, collectedConv.length, 100, 'conversational', topicVi);
-          await new Promise(r => setTimeout(r, 45));
-          if (collectedConv.length >= 50) break;
+      try {
+        const items = await callGeminiApiWithFallback(prompt, geminiKey, 0.65);
+        if (Array.isArray(items)) {
+          for (const item of items) {
+            const w = String(item.word || '').trim().toLowerCase();
+            if (w && !seen.has(w)) {
+              seen.add(w);
+              collected.push(item);
+              updateLiveWordProgress(item, collected.length, 100, facet.tag, topicVi);
+              await new Promise(r => setTimeout(r, 40));
+              if (collected.length >= 100) break;
+            }
+          }
         }
+      } catch (e) {
+        logToConsole('WARNING', 'FACET_RETRY', 'Phân diện ' + facet.name + ' gặp lỗi (' + e.message + '), chuyển tiếp phân diện tiếp theo...');
       }
-      if (addedThisBatch === 0) convEmptyStreak++;
-      else convEmptyStreak = 0;
     }
-    logToConsole('SUCCESS', 'CONV_OK', 'Pha 1 hoàn thành: ' + collectedConv.length + '/50 từ giao tiếp.');
+    logToConsole('SUCCESS', 'FACETS_OK', 'Hoàn tất quét 4 phân diện. Đã có: ' + collected.length + '/100 từ.');
 
-    // 2. Thu thập 50 danh từ nâng cao/chuyên ngành (B2-C2)
-    let advBatchIndex = 0;
-    let advEmptyStreak = 0;
-    while (collectedAdv.length < 50 && advBatchIndex < 12 && advEmptyStreak < 3) {
-      advBatchIndex++;
-      const needed = 50 - collectedAdv.length;
-      const askCount = Math.max(16, Math.min(30, needed + 6));
-      const totalSoFar = collectedConv.length + collectedAdv.length;
-      const excludeSample = [...seen].slice(-40);
+    // PHA 2: VÒNG LẶP BẢO HIỂM THÔNG MINH (SAFETY TOP-UP LOOP) - BẮT BUỘC ĐẠT ĐỦ ĐÚNG 100 TỪ
+    let topupAttempt = 0;
+    const maxTopupAttempts = 15;
+    while (collected.length < 100 && topupAttempt < maxTopupAttempts) {
+      topupAttempt++;
+      const needed = 100 - collected.length;
+      const askCount = Math.max(12, Math.min(25, needed + 5));
 
-      showBatchCallingStatus(stt, topicVi, totalSoFar, 100, advBatchIndex, 'advanced');
-      logToConsole('INFO', 'WEB_GEN_ADV', 'Đang xin đợt ' + advBatchIndex + ' (' + askCount + ' từ nâng cao, đã có: ' + collectedAdv.length + '/50)...');
+      showBatchCallingStatus(stt, topicVi, collected.length, 100, topupAttempt, 'Bảo hiểm bù đắp');
+      logToConsole('WARNING', 'WEB_GEN_TOPUP', '[Bảo hiểm 100 từ] Đang bù đắp đợt ' + topupAttempt + ' (cần thêm ' + needed + ' từ, hiện có ' + collected.length + '/100)...');
 
-      const prompt = `Generate a JSON array of ${askCount} advanced, specialized, prized, or domain-specific English singular nouns (CEFR B2-C2 level, specialized vocabulary) directly belonging to the category/topic: "${topicVi}".
-CRITICAL DOMAIN RULES:
-1. Every word MUST be a genuine specialized variety, specific sub-type, culinary cut, professional term, key component, or distinct item belonging to "${topicVi}".
-2. ABSOLUTELY FORBIDDEN: Generic essay buzzwords (no "paradigm", "efficacy", "sustainability", "resilience", "framework", "feasibility", "modality").
-3. Strictly NO adjectives, NO verbs.
-${excludeSample.length ? `Exclude these already generated words: ${excludeSample.join(', ')}.\n` : ''}Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
+      const angles = [
+        'lesser-known international varieties, regional specialties, and cultural traditions',
+        'specialized tools, equipment, containers, and apparatus used in this field',
+        'raw ingredients, base materials, extracts, and flavorings associated with this category',
+        'historical varieties, artisanal crafts, and professional techniques related to this topic'
+      ];
+      const angle = angles[(topupAttempt - 1) % angles.length];
 
-      const items = await callGeminiApiWithFallback(prompt, geminiKey);
-      if (!Array.isArray(items) || items.length === 0) {
-        advEmptyStreak++;
-        continue;
-      }
+      const prompt = `Generate a JSON array of ${askCount} MORE distinct English singular nouns related to "${topicVi}".
+Focus on: ${angle}.
+CRITICAL: Every word MUST be an authentic concrete noun directly belonging to "${topicVi}".
+STRICTLY DO NOT REPEAT ANY of these existing words: ${[...seen].join(', ')}.
+Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
 
-      let addedThisBatch = 0;
-      for (const item of items) {
-        const w = String(item.word || '').trim().toLowerCase();
-        if (w && !seen.has(w)) {
-          seen.add(w);
-          collectedAdv.push(item);
-          addedThisBatch++;
-          const currentTotal = collectedConv.length + collectedAdv.length;
-          updateLiveWordProgress(item, currentTotal, 100, 'advanced', topicVi);
-          await new Promise(r => setTimeout(r, 45));
-          if (collectedAdv.length >= 50) break;
+      try {
+        const items = await callGeminiApiWithFallback(prompt, geminiKey, 0.75);
+        if (Array.isArray(items)) {
+          for (const item of items) {
+            const w = String(item.word || '').trim().toLowerCase();
+            if (w && !seen.has(w)) {
+              seen.add(w);
+              collected.push(item);
+              updateLiveWordProgress(item, collected.length, 100, 'Bù đắp ' + topupAttempt, topicVi);
+              await new Promise(r => setTimeout(r, 40));
+              if (collected.length >= 100) break;
+            }
+          }
         }
-      }
-      if (addedThisBatch === 0) advEmptyStreak++;
-      else advEmptyStreak = 0;
-    }
-    logToConsole('SUCCESS', 'ADV_OK', 'Pha 2 hoàn thành: ' + collectedAdv.length + '/50 từ nâng cao.');
-
-    // 3. VÒNG LẶP BẢO HIỂM THÔNG MINH (ADAPTIVE TOP-UP): BẮT BUỘC ĐẠT ĐỦ ĐÚNG 100 TỪ
-    let allCollected = [...collectedConv.slice(0, 50), ...collectedAdv.slice(0, 50)];
-    let topupIndex = 0;
-    while (allCollected.length < 100 && topupIndex < 10) {
-      topupIndex++;
-      const needed = 100 - allCollected.length;
-      const askCount = Math.max(15, Math.min(30, needed + 8));
-      const excludeSample = [...seen].slice(-35);
-
-      showBatchCallingStatus(stt, topicVi, allCollected.length, 100, topupIndex, 'topup');
-      logToConsole('WARNING', 'WEB_GEN_TOPUP', '[Bảo hiểm 100 từ] Đang bù đắp đợt ' + topupIndex + ' (cần thêm ' + needed + ' từ, đang có: ' + allCollected.length + '/100)...');
-
-      // Mở rộng linh hoạt để quét sạch mọi khía cạnh thực tế của chủ đề
-      const prompt = `Generate a JSON array of ${askCount} distinct English singular nouns related to all practical aspects, products, preparations, tools, varieties, and key terminology of "${topicVi}".
-CRITICAL RULES: Authentic English nouns only. NO abstract essay fluff ("paradigm", "sustainability"). NO adjectives, NO verbs.
-${excludeSample.length ? `Do NOT repeat these words: ${excludeSample.join(', ')}.\n` : ''}Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
-
-      const items = await callGeminiApiWithFallback(prompt, geminiKey);
-      if (!Array.isArray(items) || items.length === 0) continue;
-
-      for (const item of items) {
-        const w = String(item.word || '').trim().toLowerCase();
-        if (w && !seen.has(w)) {
-          seen.add(w);
-          allCollected.push(item);
-          updateLiveWordProgress(item, allCollected.length, 100, 'topup', topicVi);
-          await new Promise(r => setTimeout(r, 45));
-          if (allCollected.length >= 100) break;
-        }
+      } catch (e) {
+        logToConsole('WARNING', 'TOPUP_ERR', 'Đợt bù đắp ' + topupAttempt + ' lỗi: ' + e.message);
       }
     }
 
-    // KHÓA BẢO ĐẢM TUYỆT ĐỐI: CHỈ LẤY ĐÚNG 100 TỪ & KHÔNG BAO GIỜ XUẤT FILE THIẾU TỪ
-    allCollected = allCollected.slice(0, 100);
-    if (allCollected.length < 100) {
-      const errMsg = 'Chủ đề #' + stt + ' (' + topicVi + ') chỉ thu thập được ' + allCollected.length + '/100 từ sau nhiều lần thử lại. Hệ thống từ chối lưu file thiếu từ để đảm bảo chất lượng! Vui lòng bấm tạo lại.';
+    // Khóa cắt chuẩn xác đúng 100 từ
+    const finalItems = collected.slice(0, 100);
+    if (finalItems.length < 100) {
+      const errMsg = 'Chủ đề #' + stt + ' (' + topicVi + ') sau các đợt bù đắp chỉ đạt ' + finalItems.length + '/100 từ. Vui lòng bấm tạo lại!';
       logToConsole('ERROR', 'INCOMPLETE_BLOCKED', errMsg);
-      showLiveRunner('❌ THẤT BẠI: CHỈ ĐẠT ' + allCollected.length + '/100 TỪ (TỪ CHỐI LƯU FILE THIẾU)', 100, 5, true);
+      showLiveRunner('❌ THẤT BẠI: CHỈ ĐẠT ' + finalItems.length + '/100 TỪ', 100, 5, true);
       alert(errMsg);
       return;
     }
 
-    const collected = allCollected;
+    const collectedNouns = finalItems;
 
-    showLiveRunner('ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ' + collected.length + ' TỪ VỰNG...', 90, 4);
+    showLiveRunner('ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ' + collectedNouns.length + ' TỪ VỰNG...', 90, 4);
     const lines = collected.map(item => {
       const w = String(item.word || '').trim().toLowerCase();
       const cloze = makeClozeJS(w);
@@ -735,6 +734,8 @@ function openSettings() {
   document.getElementById('ghBranch').value = localStorage.getItem('gh_branch') || 'main';
   document.getElementById('ghToken').value = localStorage.getItem('gh_token') || '';
   document.getElementById('geminiKeyInput').value = localStorage.getItem('gemini_api_key') || '';
+  const modelEl = document.getElementById('geminiModelSelect');
+  if (modelEl) modelEl.value = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
   document.getElementById('settingsModal').classList.remove('hidden');
   document.getElementById('settingsModal').classList.add('flex');
 }
@@ -750,6 +751,8 @@ function saveSettings() {
   localStorage.setItem('gh_branch', document.getElementById('ghBranch').value.trim() || 'main');
   localStorage.setItem('gh_token', document.getElementById('ghToken').value.trim());
   localStorage.setItem('gemini_api_key', document.getElementById('geminiKeyInput').value.trim());
+  const modelEl = document.getElementById('geminiModelSelect');
+  if (modelEl) localStorage.setItem('gemini_model', modelEl.value);
   closeSettings();
-  logToConsole('SUCCESS', 'CONFIG', 'Đã cập nhật cấu hình GitHub & Gemini API Key.');
+  logToConsole('SUCCESS', 'CONFIG', 'Đã cập nhật cấu hình GitHub & Gemini API Key (Model: ' + (modelEl ? modelEl.value : 'gemini-3.1-flash-lite') + ').');
 }

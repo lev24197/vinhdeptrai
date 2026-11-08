@@ -1439,6 +1439,18 @@
           <input id="geminiKeyInput" type="password" placeholder="AIzaSy..." class="neo-box-sm w-full px-3 py-2 bg-white" />
           <p class="text-[11px] text-slate-500 mt-1">Tất cả Key chỉ lưu trong <code>localStorage</code> trình duyệt của bạn.</p>
         </div>
+        <div>
+          <label class="block mb-1 text-[#2C317A]">Gemini Model Ưu Tiên (Google AI Studio Tier 1)</label>
+          <select id="geminiModelSelect" class="neo-box-sm w-full px-3 py-2 bg-white font-mono-code text-xs">
+            <option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite (Khuyên dùng - 150K RPD, 4K RPM, Siêu tốc)</option>
+            <option value="gemini-3-flash">gemini-3-flash (10K RPD, 1K RPM)</option>
+            <option value="gemini-2.5-flash">gemini-2.5-flash (10K RPD, 1K RPM)</option>
+            <option value="gemini-2.5-flash-lite">gemini-2.5-flash-lite</option>
+            <option value="gemini-2.0-flash">gemini-2.0-flash</option>
+            <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+          </select>
+          <p class="text-[11px] text-slate-500 mt-1">Gợi ý từ bảng Rate Limit của bạn: <b>gemini-3.1-flash-lite</b> cho phép tới 150.000 lượt/ngày và 4.000 lượt/phút.</p>
+        </div>
       </div>
       <div class="flex justify-end gap-2 mt-6">
         <button onclick="closeSettings()" class="neo-btn px-4 py-2 bg-white text-xs font-extrabold">ĐÓNG</button>

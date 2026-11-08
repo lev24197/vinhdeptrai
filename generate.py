@@ -69,76 +69,40 @@ def make_sound(word: str) -> str:
 def clean_field(text: str) -> str:
     return str(text).replace("\t", " ").replace("\n", " ").replace("\r", " ").strip()
 
-def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt: int, mode: str = "conversational") -> list[NounItem]:
+cached_working_model = None
+
+def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt: int, mode_desc: str = "core varieties, primary types, essential elements, and common forms", temperature: float = 0.65) -> list[NounItem]:
+    global cached_working_model
     exclude_str = ", ".join(exclude_words) if exclude_words else "None"
 
-    core_membership_rule = (
-        f"CRITICAL CATEGORY MEMBERSHIP CONSTRAINT:
-"
-        f"1. 100% DIRECT DOMAIN MEMBERS & CORE ELEMENTS: Every single word MUST directly and concretely belong to the domain of '{topic_vi}'.
-"
-        f"   - Name actual tangible objects, varieties, specific sub-types, core ingredients, preparations, or key elements that uniquely define '{topic_vi}'.
-"
-        f"2. ABSOLUTELY FORBIDDEN - DO NOT GENERATE GENERIC ESSAY WORDS OR UNRELATED FLUFF:
-"
-        f"   - NEVER include general academic meta-words or abstract buzzwords: 'paradigm', 'efficacy', 'amelioration', 'resilience', 'sustainability', 'governance', 'policy', 'framework', 'stakeholder', 'optimization', 'vulnerability', 'scalability', 'feasibility'.
-"
-        f"3. STRICTLY NO ADJECTIVES, NO VERBS: Must be authentic English singular nouns or standard compound nouns."
-    )
-
-    if mode == "advanced":
-        mode_instruction = (
-            f"CATEGORY: ADVANCED, SPECIALIZED, PRIZED, OR GOURMET VARIETIES OF '{topic_vi}' (CEFR C1-C2 level).
-"
-            f"- Generate distinct, less common, prized, gourmet, or specialized varieties, species, and cuts of '{topic_vi}'.
-"
-            f"- Maintain 100% adherence to the 'IS-A' membership constraint above (NO biology textbook terms, NO gear, NO surroundings).
-"
-            f"{core_membership_rule}"
-        )
-    else:
-        mode_instruction = (
-            f"CATEGORY: POPULAR & COMMON CONVERSATIONAL MEMBERS OF '{topic_vi}' (CEFR A2-B2 level, essential daily vocabulary).
-"
-            f"- Generate the most popular, familiar, practical, and frequently encountered real-world varieties, species, and cuts of '{topic_vi}'.
-"
-            f"{core_membership_rule}"
-        )
-
     prompt = (
-        f"Generate exactly {count} distinct English nouns (single words or standard compound nouns) "
-        f"that belong 100% to the category of '{topic_vi}'.
-"
-        f"{mode_instruction}
-"
-        f"Do NOT include any of these already generated words: {exclude_str}.
-"
-        f"Requirements:
-"
-        f"- 'word': lowercase singular noun.
-"
-        f"- 'ipa': standard American IPA inside slashes /.../.
-"
-        f"- 'definition': concise English definition.
-"
-        f"- 'meaning_vi': accurate Vietnamese translation matching the topic context.
-"
-        f"- 'plural': plural noun form.
-"
+        f"Generate a JSON list of exactly {count} distinct English singular nouns related to '{topic_vi}'.\n"
+        f"Focus specifically on: {mode_desc}.\n"
+        f"CRITICAL DOMAIN RULES:\n"
+        f"1. Every single word MUST directly and concretely belong to the domain/category of '{topic_vi}'.\n"
+        f"2. Authentic concrete English nouns only (NO adjectives, NO verbs).\n"
+        f"3. ABSOLUTELY FORBIDDEN: Generic essay buzzwords ('paradigm', 'efficacy', 'sustainability', 'resilience', 'framework', 'feasibility', 'stakeholder', 'optimization').\n"
+        f"STRICTLY DO NOT REPEAT ANY of these already generated words ({len(exclude_words)} words): {exclude_str}.\n"
+        f"Requirements:\n"
+        f"- 'word': lowercase singular noun.\n"
+        f"- 'ipa': standard American IPA inside slashes /.../.\n"
+        f"- 'definition': concise English definition.\n"
+        f"- 'meaning_vi': accurate Vietnamese translation matching the topic context.\n"
+        f"- 'plural': plural noun form.\n"
         f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
     )
     models_to_try = [
-        "gemini-3.1-flash-lite-preview",
+        cached_working_model,
         "gemini-3.1-flash-lite",
-        "gemini-3-flash-preview",
+        "gemini-3.1-flash-lite-preview",
         "gemini-3-flash",
+        "gemini-3-flash-preview",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
-        "gemini-3.5-flash-lite",
-        "gemini-3.8-flash",
         "gemini-2.0-flash",
         "gemini-1.5-flash",
     ]
+    models_to_try = [m for m in dict.fromkeys(models_to_try) if m]
     err_history = []
     for model_name in models_to_try:
         try:
@@ -148,19 +112,20 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
                 config=types.GenerateContentConfig(
                     response_mime_type="application/json",
                     response_schema=NounList,
-                    temperature=0.35,
+                    temperature=temperature,
                 ),
             )
             parsed: NounList = response.parsed
             if parsed and parsed.items:
+                cached_working_model = model_name
                 return parsed.items
         except Exception as e:
             err_msg = f"{model_name}: {str(e)}"
             err_history.append(err_msg)
-            append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} ({mode}) lỗi: {str(e)[:120]}. Đang thử model tiếp theo...", stt)
+            append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} ({mode_desc[:25]}) lỗi: {str(e)[:120]}. Đang thử model tiếp theo...", stt)
             time.sleep(1)
     combined_err = " | ".join(err_history)
-    raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} ({mode}). Chi tiết lỗi: {combined_err}")
+    raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt}. Chi tiết lỗi: {combined_err}")
 
 def print_cli_progress(current: int, total: int, stt: int, topic: str, item: NounItem, mode_tag: str):
     pct = int(current * 100 / total)
@@ -169,77 +134,69 @@ def print_cli_progress(current: int, total: int, stt: int, topic: str, item: Nou
     bar = "█" * filled + "░" * (bar_len - filled)
     clean_mean = item.meaning_vi[:35] if len(item.meaning_vi) > 35 else item.meaning_vi
     print(f"[{bar}] {current:03d}/{total:03d} ({pct:3d}%) [{mode_tag}] #{stt} | {item.word:<18} {item.ipa:<18} -> {clean_mean}")
+
 def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     seen = set()
-    conversational_nouns: list[NounItem] = []
-    advanced_nouns: list[NounItem] = []
+    collected: list[NounItem] = []
 
-    # --- PHẦN 1: 50 DANH TỪ GIAO TIẾP THÔNG DỤNG (A2 - B2) ---
-    append_run_log("INFO", "START_CONV", f"Bắt đầu tạo 50 từ giao tiếp thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
-    conv_attempt = 0
-    while len(conversational_nouns) < 50 and conv_attempt < 15:
-        conv_attempt += 1
-        needed = 50 - len(conversational_nouns)
-        ask_count = min(55, max(needed + 5, 15))
-        append_run_log("INFO", f"CONV_BATCH_{conv_attempt}", f"Đang xin {ask_count} từ giao tiếp (#{stt}) - Đã có: {len(conversational_nouns)}/50", stt)
-        batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode="conversational")
-        for item in batch:
-            w = item.word.strip().lower()
-            if w and w not in seen:
-                seen.add(w)
-                conversational_nouns.append(item)
-                print_cli_progress(len(conversational_nouns), 100, stt, topic_vi, item, 'A2-B2 Giao tiếp')
-                if len(conversational_nouns) == 50:
-                    break
+    facets = [
+        ("Cốt lõi & Phổ biến", "A2-B2 Cốt lõi", "core varieties, primary types, essential items, and common forms", 30),
+        ("Chuyên sâu & Đặc trưng", "B2-C1 Chuyên sâu", "specialized sub-types, regional varieties, prized cultivars, and distinct styles", 30),
+        ("Chế biến & Thành phẩm", "C1 Thành phẩm", "culinary preparations, finished products, commercial cuts, forms, and presentations", 25),
+        ("Thành phần & Dụng cụ", "C1-C2 Dụng cụ & Nguyên liệu", "key ingredients, essential components, characteristic tools, and domain-specific elements", 25),
+    ]
+
+    for facet_name, tag, facet_desc, target_count in facets:
+        if len(collected) >= 100:
+            break
+        append_run_log("INFO", "FACET_START", f"Chủ đề #{stt}: Bắt đầu phân diện [{facet_name}] ({target_count} từ, đã có {len(collected)}/100)", stt)
+        try:
+            batch = fetch_batch(client, topic_vi, target_count, list(seen), stt, mode_desc=facet_desc, temperature=0.65)
+            for item in batch:
+                w = item.word.strip().lower()
+                if w and w not in seen:
+                    seen.add(w)
+                    collected.append(item)
+                    print_cli_progress(len(collected), 100, stt, topic_vi, item, tag)
+                    if len(collected) >= 100:
+                        break
+        except Exception as e:
+            append_run_log("WARNING", "FACET_ERR", f"Phân diện {facet_name} gặp lỗi: {e}", stt)
         time.sleep(1)
 
-    # --- PHẦN 2: 50 DANH TỪ NÂNG CAO THÔNG DỤNG (C1 - C2 / IELTS 7.5+) ---
-    append_run_log("INFO", "START_ADV", f"Bắt đầu tạo 50 từ nâng cao thông dụng cho chủ đề #{stt} ({topic_vi})", stt)
-    adv_attempt = 0
-    while len(advanced_nouns) < 50 and adv_attempt < 15:
-        adv_attempt += 1
-        needed = 50 - len(advanced_nouns)
-        ask_count = min(55, max(needed + 5, 15))
-        append_run_log("INFO", f"ADV_BATCH_{adv_attempt}", f"Đang xin {ask_count} từ nâng cao (#{stt}) - Đã có: {len(advanced_nouns)}/50", stt)
-        batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode="advanced")
-        for item in batch:
-            w = item.word.strip().lower()
-            if w and w not in seen:
-                seen.add(w)
-                advanced_nouns.append(item)
-                current_total = len(conversational_nouns) + len(advanced_nouns)
-                print_cli_progress(current_total, 100, stt, topic_vi, item, 'C1-C2 Nâng cao')
-                if len(advanced_nouns) == 50:
-                    break
-        time.sleep(1)
-
-    total_nouns = conversational_nouns[:50] + advanced_nouns[:50]
-
-    # --- PHẦN 3: BẢO HIỂM CHẮC CHẮN ĐẠT ĐỦ 100 TỪ (SAFETY TOP-UP LOOP) ---
     topup_attempt = 0
-    while len(total_nouns) < 100 and topup_attempt < 15:
+    angles = [
+        "lesser-known international varieties, regional specialties, and cultural traditions",
+        "specialized tools, equipment, containers, and apparatus used in this field",
+        "raw ingredients, base materials, extracts, and flavorings associated with this category",
+        "historical varieties, artisanal crafts, and professional techniques related to this topic",
+    ]
+    while len(collected) < 100 and topup_attempt < 15:
         topup_attempt += 1
-        needed = 100 - len(total_nouns)
-        ask_count = min(40, max(needed + 5, 12))
-        append_run_log("WARNING", f"TOPUP_BATCH_{topup_attempt}", f"Chủ đề #{stt}: Bù đắp {needed} từ còn thiếu để đạt chuẩn 100 từ (Đang có: {len(total_nouns)}/100)...", stt)
-        mode = "advanced" if len(advanced_nouns) < 50 else "conversational"
-        batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode=mode)
-        for item in batch:
-            w = item.word.strip().lower()
-            if w and w not in seen:
-                seen.add(w)
-                total_nouns.append(item)
-                print_cli_progress(len(total_nouns), 100, stt, topic_vi, item, 'Bù đắp 100 từ')
-                if len(total_nouns) == 100:
-                    break
+        needed = 100 - len(collected)
+        ask_count = min(30, max(needed + 5, 12))
+        angle = angles[(topup_attempt - 1) % len(angles)]
+        append_run_log("WARNING", f"TOPUP_BATCH_{topup_attempt}", f"Chủ đề #{stt}: Bù đắp {needed} từ còn thiếu (Đang có: {len(collected)}/100)...", stt)
+        try:
+            batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode_desc=angle, temperature=0.75)
+            for item in batch:
+                w = item.word.strip().lower()
+                if w and w not in seen:
+                    seen.add(w)
+                    collected.append(item)
+                    print_cli_progress(len(collected), 100, stt, topic_vi, item, f"Bù đắp {topup_attempt}")
+                    if len(collected) >= 100:
+                        break
+        except Exception as e:
+            append_run_log("WARNING", "TOPUP_ERR", f"Lỗi bù đắp đợt {topup_attempt}: {e}", stt)
         time.sleep(1)
 
-    total_nouns = total_nouns[:100]
-    if len(total_nouns) < 100:
-        raise ValueError(f"Chủ đề #{stt} ({topic_vi}) chỉ tạo được {len(total_nouns)}/100 từ sau nhiều lần thử lại!")
+    collected = collected[:100]
+    if len(collected) < 100:
+        raise ValueError(f"Chủ đề #{stt} ({topic_vi}) chỉ tạo được {len(collected)}/100 từ sau nhiều lần thử lại!")
 
-    append_run_log("SUCCESS", "COLLECT_DONE", f"Chủ đề #{stt}: Hoàn tất đủ 100 từ chuẩn (50 giao tiếp + 50 nâng cao).", stt)
-    return total_nouns
+    append_run_log("SUCCESS", "COLLECT_DONE", f"Chủ đề #{stt}: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề.", stt)
+    return collected
 
 def load_and_sync_status() -> dict:
     df = pd.read_excel(EXCEL_FILE)
