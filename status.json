@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08 02:14:58",
+  "updated_at": "2026-11-08 03:11:20",
   "topics": [
     {
       "stt": 1,
@@ -949,10 +949,10 @@
     {
       "stt": 106,
       "topic": "Đồ ngọt và kẹo (Sweets & Candies)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/106.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-08 03:11",
       "last_error": null
     },
     {
