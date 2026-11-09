@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09 12:22:54",
+  "updated_at": "2026-11-09 19:53:16",
   "topics": [
     {
       "stt": 1,
@@ -1012,10 +1012,10 @@
     {
       "stt": 113,
       "topic": "Nước ép và Sinh tố (Juices & Smoothies)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/113.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-09 19:53",
       "last_error": null
     },
     {
