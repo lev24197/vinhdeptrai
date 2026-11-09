@@ -629,51 +629,56 @@ window.addEventListener('keydown', (e) => {
 
 
 // ==================== TẢI TRỌN BỘ 100 FILE MP3 DẠNG ZIP TỪ GOOGLE CLOUD SERVICE ====================
-async function downloadTopicAudioZip() {
-  if (!currentModalWords || !currentModalWords.length) {
-    alert('Không có từ vựng nào trong chủ đề này để tải âm thanh!');
-    return;
-  }
+const DEFAULT_AUDIO_SERVICE_URL = 'https://anki-audio-service-918034752495.asia-southeast1.run.app';
 
-  const serviceUrl = (localStorage.getItem('audio_service_url') || '').trim().replace(/\/+$/, '');
+async function downloadTopicAudioZipDirect(stt, topicName, btnElement = null) {
+  let serviceUrl = (localStorage.getItem('audio_service_url') || '').trim().replace(/\/+$/, '');
   if (!serviceUrl) {
-    const inputUrl = prompt(
-      '⚡ Bạn chưa cấu hình Google Cloud Audio Service URL!\n\n' +
-      'Vui lòng dán Service URL Cloud Run của bạn vào đây (ví dụ: https://anki-audio-service-xxx.a.run.app):\n' +
-      '(Xem hướng dẫn trong cloud_audio_service/README.md để lấy link này trong 2 phút)'
-    );
-    if (inputUrl && inputUrl.trim()) {
-      localStorage.setItem('audio_service_url', inputUrl.trim());
-      openSettings();
-      return downloadTopicAudioZip();
-    } else {
-      openSettings();
-      return;
-    }
+    serviceUrl = DEFAULT_AUDIO_SERVICE_URL;
+    localStorage.setItem('audio_service_url', DEFAULT_AUDIO_SERVICE_URL);
+    const inp = document.getElementById('audioServiceUrlInput');
+    if (inp) inp.value = DEFAULT_AUDIO_SERVICE_URL;
   }
 
-  const btn = document.getElementById('btnDownloadAudioZip');
-  const originalHtml = btn ? btn.innerHTML : '🔊 Tải ZIP Âm Thanh';
+  const btn = btnElement || document.getElementById('btnDownloadAudioZip');
+  const originalHtml = btn ? btn.innerHTML : '🔊 Tải Audio';
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = '⏳ Đang nén ZIP âm thanh...';
+    btn.innerHTML = '⏳ Đang nén...';
   }
 
-  const titleEl = document.getElementById('previewTitle');
-  const topicName = titleEl ? titleEl.innerText : 'ChuDe';
-  const words = currentModalWords.map(w => w.word);
-
   try {
+    // 1. Lấy danh sách từ vựng: Ưu tiên từ currentModalWords nếu đang mở modal đúng chủ đề, nếu không fetch từ file output/{stt}.txt
+    let words = [];
+    if (typeof activeStt !== 'undefined' && Number(activeStt) === Number(stt) && currentModalWords && currentModalWords.length) {
+      words = currentModalWords.map(w => w.word);
+    } else {
+      const resFile = await fetch(`output/${stt}.txt?v=${Date.now()}`);
+      if (!resFile.ok) {
+        throw new Error(`Chủ đề #${stt} chưa có file output/${stt}.txt! Hãy bấm '⚡ Tạo Trên Web' trước để tạo từ vựng.`);
+      }
+      const text = await resFile.text();
+      const lines = text.trim().split(/\r?\n/).filter(Boolean);
+      words = lines.map(line => line.split('\t')[0].trim()).filter(Boolean);
+    }
+
+    if (!words.length) {
+      throw new Error(`Chủ đề #${stt} không có từ vựng nào!`);
+    }
+
     if (typeof showLiveRunner === 'function') {
-      showLiveRunner(`⚡ [GCP + CAMBRIDGE] ĐANG CÀO & NÉN ÂM THANH CHỦ ĐỀ #${activeStt}...`, 50, 3);
+      showLiveRunner(`⚡ [GCP + CAMBRIDGE] ĐANG CÀO & NÉN ÂM THANH CHO #${stt}: ${(topicName || 'CHỦ ĐỀ').toUpperCase()}...`, 50, 3);
+    }
+    if (typeof logToConsole === 'function') {
+      logToConsole('INFO', 'AUDIO_CRAWL', `Bắt đầu cào âm thanh cho chủ đề #${stt} (${words.length} từ) qua Google Cloud Run...`);
     }
 
     const res = await fetch(`${serviceUrl}/crawl_zip`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        topic_id: Number(activeStt),
-        topic_name: topicName,
+        topic_id: Number(stt),
+        topic_name: topicName || 'ChuDe',
         words: words
       })
     });
@@ -687,17 +692,17 @@ async function downloadTopicAudioZip() {
     const blobUrl = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = blobUrl;
-    a.download = `output_${activeStt}_audio.zip`;
+    a.download = `output_${stt}_audio.zip`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(blobUrl);
 
     if (typeof logToConsole === 'function') {
-      logToConsole('SUCCESS', 'AUDIO_ZIP', `Đã tải trọn bộ file output_${activeStt}_audio.zip (${words.length} từ) về máy!`);
+      logToConsole('SUCCESS', 'AUDIO_ZIP', `Đã tải trọn bộ file output_${stt}_audio.zip (${words.length} từ) về máy thành công!`);
     }
     if (typeof showLiveRunner === 'function') {
-      showLiveRunner(`🎉 ĐÃ TẢI XONG FILE output_${activeStt}_audio.zip (${words.length} TỪ)!`, 100, 5);
+      showLiveRunner(`🎉 ĐÃ TẢI XONG FILE output_${stt}_audio.zip (${words.length} TỪ)!`, 100, 5);
       setTimeout(() => {
         const lr = document.getElementById('liveRunnerSection');
         if (lr) lr.classList.add('hidden');
@@ -705,11 +710,17 @@ async function downloadTopicAudioZip() {
     }
   } catch (err) {
     console.error('Lỗi tải ZIP âm thanh:', err);
-    alert('Không thể tải file âm thanh từ Cloud Service: ' + err.message + '\n\nVui lòng kiểm tra lại Google Cloud Audio Service URL trong mục Cài đặt.');
+    alert('Không thể tải file âm thanh từ Cloud Service: ' + err.message);
   } finally {
     if (btn) {
       btn.disabled = false;
       btn.innerHTML = originalHtml;
     }
   }
+}
+
+function downloadTopicAudioZip() {
+  const titleEl = document.getElementById('previewTitle');
+  const topicName = titleEl ? titleEl.innerText : 'ChuDe';
+  downloadTopicAudioZipDirect(activeStt, topicName, document.getElementById('btnDownloadAudioZip'));
 }

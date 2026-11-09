@@ -230,6 +230,7 @@ function renderTable() {
         <a href="battle.html?stt=${t.stt}" class="px-2 py-1 bg-[#FF9F1C] text-[#111] hover:bg-amber-400 rounded text-xs font-extrabold shadow-sm inline-block" title="Vào đấu trường săn quái cày cấp với chủ đề này">⚔️ Đấu Quái</a>
         <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-[#141414] text-white hover:bg-slate-800 rounded text-xs font-bold shadow-sm">Xem / Sửa</button>
         <button onclick="downloadSingleFile(${t.stt})" class="px-2 py-1 bg-[#3F6AE4] text-white hover:bg-blue-600 rounded text-xs font-bold">⬇ .TXT</button>
+        <button onclick="downloadTopicAudioZipDirect(${t.stt}, '${safeTopic}', this)" class="px-2 py-1 bg-[#FF9F1C] text-[#111] hover:bg-amber-400 border border-[#111] rounded text-xs font-extrabold shadow-sm flex items-center gap-1" title="Tải trọn bộ 100 file âm thanh MP3 (Cambridge & GCP Neural2)"><span>🔊</span> Tải Audio</button>
         <button onclick="triggerWorkflow('1', '${t.stt}')" class="px-2 py-1 bg-white hover:bg-amber-100 border border-[#111] rounded text-[11px] font-bold" title="Tạo lại chủ đề này">↻ Tạo lại</button>
       `;
     } else {
@@ -451,4 +452,29 @@ async function downloadSelectedOrAllCsv() {
   a.href = URL.createObjectURL(blob);
   a.download = `anki_dictionary_${targets.length}_topics.csv`;
   a.click();
+}
+
+
+// Tải Audio ZIP cho các chủ đề được tick chọn hoặc chủ đề gần nhất
+async function downloadSelectedOrFirstAudioZip() {
+  const targets = selectedStts.size > 0
+    ? allTopics.filter(t => selectedStts.has(t.stt) && t.status === 'completed')
+    : allTopics.filter(t => t.status === 'completed');
+
+  if (!targets.length) {
+    alert('Chưa có chủ đề hoàn thành nào để tải âm thanh! Vui lòng tạo từ vựng trước.');
+    return;
+  }
+
+  if (targets.length === 1 || selectedStts.size === 0) {
+    const t = targets[targets.length - 1]; // Chọn bài mới nhất
+    return downloadTopicAudioZipDirect(t.stt, t.topic);
+  }
+
+  // Nếu tick chọn nhiều bài: Tải tuần tự từng bài
+  alert(`Bắt đầu tải trọn bộ âm thanh cho ${targets.length} chủ đề đã chọn. File ZIP từng chủ đề sẽ được tự động tải về máy.`);
+  for (const t of targets) {
+    await downloadTopicAudioZipDirect(t.stt, t.topic);
+    await new Promise(r => setTimeout(r, 1000));
+  }
 }
