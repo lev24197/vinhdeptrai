@@ -390,7 +390,7 @@
               <span class="tid-cta-arrow">📑</span>
               <span class="tid-cta-label">Gộp 1 File Anki (.TXT)</span>
             </button>
-            <button onclick="downloadSelectedOrFirstAudioZip()" class="tid-cta bg-[#FF9F1C] hover:bg-amber-400 text-[#111]">
+            <button onclick="downloadSelectedOrFirstAudioZip(this)" id="bannerAudioZipBtn" class="tid-cta bg-[#FF9F1C] hover:bg-amber-400 text-[#111]">
               <span class="tid-cta-arrow">🔊</span>
               <span class="tid-cta-label">Tải ZIP Âm Thanh (GCP)</span>
             </button>
@@ -548,7 +548,7 @@
               <th class="py-3 px-4 w-44">TRẠNG THÁI</th>
               <th class="py-3 px-4 w-40">SỐ LƯỢNG TỪ</th>
               <th class="py-3 px-4 w-36">THỜI GIAN</th>
-              <th class="py-3 px-4 text-right w-64">THAO TÁC</th>
+              <th class="py-3 px-4 text-right min-w-[440px]">THAO TÁC</th>
             </tr>
           </thead>
           <tbody id="tableBody" class="divide-y-2 divide-[#111] text-xs font-semibold"></tbody>
@@ -996,7 +996,7 @@
           <button onclick="switchModalTab('quiz')" id="modalTab-quiz" class="neo-btn px-3 py-1 bg-white text-xs font-extrabold">⌨️ Gõ Từ Khuyết Chữ</button>
           <button onclick="saveEditedFileToGitHub()" id="btnSaveGitHub" class="neo-btn px-3 py-1 bg-[#169C64] text-white text-xs font-extrabold">💾 Lưu lên GitHub</button>
           <a id="previewDownloadBtn" href="#" download class="neo-btn px-3 py-1 bg-[#3F6AE4] text-white text-xs font-extrabold">⬇ Tải .TXT</a>
-          <button onclick="downloadTopicAudioZip()" id="btnDownloadAudioZip" class="neo-btn px-3 py-1 bg-[#FF9F1C] text-[#111] text-xs font-extrabold flex items-center gap-1 shadow-sm"><span>🔊</span> Tải ZIP Âm Thanh</button>
+          <button onclick="downloadTopicAudioZip(this)" id="btnDownloadAudioZip" class="neo-btn px-3 py-1 bg-[#38E54D] text-[#111] hover:bg-emerald-300 text-xs font-extrabold flex items-center gap-1 shadow-sm"><span>🔊</span> Tạo & Tải ZIP Âm Thanh (100 từ)</button>
           <button onclick="closePreview()" class="neo-btn px-3 py-1 bg-[#F05332] text-white text-xs font-extrabold">✕</button>
         </div>
       </div>

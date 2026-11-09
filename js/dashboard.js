@@ -230,13 +230,14 @@ function renderTable() {
         <a href="battle.html?stt=${t.stt}" class="px-2 py-1 bg-[#FF9F1C] text-[#111] hover:bg-amber-400 rounded text-xs font-extrabold shadow-sm inline-block" title="Vào đấu trường săn quái cày cấp với chủ đề này">⚔️ Đấu Quái</a>
         <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-[#141414] text-white hover:bg-slate-800 rounded text-xs font-bold shadow-sm">Xem / Sửa</button>
         <button onclick="downloadSingleFile(${t.stt})" class="px-2 py-1 bg-[#3F6AE4] text-white hover:bg-blue-600 rounded text-xs font-bold">⬇ .TXT</button>
-        <button onclick="downloadTopicAudioZipDirect(${t.stt}, '${safeTopic}', this)" class="px-2 py-1 bg-[#FF9F1C] text-[#111] hover:bg-amber-400 border border-[#111] rounded text-xs font-extrabold shadow-sm flex items-center gap-1" title="Tải trọn bộ 100 file âm thanh MP3 (Cambridge & GCP Neural2)"><span>🔊</span> Tải Audio</button>
+        <button onclick="downloadTopicAudioZipDirect(${t.stt}, null, this)" class="px-2.5 py-1 bg-[#38E54D] text-[#111] hover:bg-emerald-300 border border-[#111] rounded text-xs font-extrabold shadow-sm inline-flex items-center gap-1" title="Tạo & Tải trọn bộ 100 file âm thanh MP3 chuẩn Anki (Cambridge & GCP Neural2)"><span>🔊</span> Tạo Audio (ZIP)</button>
         <button onclick="triggerWorkflow('1', '${t.stt}')" class="px-2 py-1 bg-white hover:bg-amber-100 border border-[#111] rounded text-[11px] font-bold" title="Tạo lại chủ đề này">↻ Tạo lại</button>
       `;
     } else {
       actions = `
         <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-[#38E54D] text-[#111] hover:bg-emerald-400 border border-[#111] rounded text-xs font-extrabold shadow-sm">⚡ Tạo Trên Web</button>
         <button onclick="triggerWorkflow('1', '${t.stt}')" class="px-2 py-1 bg-[#141414] text-white hover:bg-slate-800 rounded text-xs font-bold">Chạy Bot ↗</button>
+        <button onclick="alert('Chủ đề #${t.stt} chưa có 100 từ vựng. Vui lòng bấm \'⚡ Tạo Trên Web\' để tạo danh sách từ trước khi tạo file âm thanh!')" class="px-2 py-1 bg-slate-100 text-slate-400 border border-slate-300 rounded text-xs font-bold inline-flex items-center gap-1 opacity-70" title="Chưa có từ vựng để tạo âm thanh"><span>🔊</span> Tạo Audio</button>
       `;
     }
 
@@ -257,7 +258,7 @@ function renderTable() {
         <td class="py-2.5 px-4">${statusBadge}</td>
         <td class="py-2.5 px-4 font-mono-code font-bold">${wc > 0 ? `${wc} từ` : '—'}</td>
         <td class="py-2.5 px-4 font-mono-code text-[11px] text-slate-500">${t.generated_at || '—'}</td>
-        <td class="py-2.5 px-4 text-right space-x-1">${actions}</td>
+        <td class="py-2.5 px-4 text-right space-x-1 whitespace-nowrap">${actions}</td>
       </tr>
     `;
   }).join('');
@@ -455,26 +456,60 @@ async function downloadSelectedOrAllCsv() {
 }
 
 
-// Tải Audio ZIP cho các chủ đề được tick chọn hoặc chủ đề gần nhất
-async function downloadSelectedOrFirstAudioZip() {
-  const targets = selectedStts.size > 0
-    ? allTopics.filter(t => selectedStts.has(t.stt) && t.status === 'completed')
-    : allTopics.filter(t => t.status === 'completed');
+// Tải Audio ZIP cho các chủ đề được tick chọn hoặc chủ đề người dùng chọn
+async function downloadSelectedOrFirstAudioZip(btnElement = null) {
+  const btn = btnElement || document.getElementById('bannerAudioZipBtn');
+  const originalHtml = btn ? btn.innerHTML : '';
 
-  if (!targets.length) {
-    alert('Chưa có chủ đề hoàn thành nào để tải âm thanh! Vui lòng tạo từ vựng trước.');
+  const completedTargets = (typeof allTopics !== 'undefined' && Array.isArray(allTopics))
+    ? allTopics.filter(t => t.status === 'completed')
+    : [];
+
+  if (!completedTargets.length) {
+    alert('Chưa có chủ đề hoàn thành nào để tải âm thanh! Vui lòng bấm "⚡ Tạo Trên Web" để tạo từ vựng trước.');
     return;
   }
 
-  if (targets.length === 1 || selectedStts.size === 0) {
-    const t = targets[targets.length - 1]; // Chọn bài mới nhất
-    return downloadTopicAudioZipDirect(t.stt, t.topic);
+  // 1. Nếu người dùng tick chọn checkbox trong bảng
+  if (selectedStts.size > 0) {
+    const selectedCompleted = completedTargets.filter(t => selectedStts.has(t.stt));
+    if (!selectedCompleted.length) {
+      alert('Các chủ đề bạn vừa chọn chưa có từ vựng hoàn chỉnh!');
+      return;
+    }
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = `<span class="tid-cta-arrow">⏳</span> <span class="tid-cta-label">Đang nén ${selectedCompleted.length} chủ đề...</span>`;
+    }
+    for (const t of selectedCompleted) {
+      await downloadTopicAudioZipDirect(t.stt, t.topic, btn);
+      await new Promise(r => setTimeout(r, 800));
+    }
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = originalHtml;
+    }
+    return;
   }
 
-  // Nếu tick chọn nhiều bài: Tải tuần tự từng bài
-  alert(`Bắt đầu tải trọn bộ âm thanh cho ${targets.length} chủ đề đã chọn. File ZIP từng chủ đề sẽ được tự động tải về máy.`);
-  for (const t of targets) {
-    await downloadTopicAudioZipDirect(t.stt, t.topic);
-    await new Promise(r => setTimeout(r, 1000));
+  // 2. Nếu chưa tick ô nào: Hỏi người dùng muốn tải STT nào (mặc định bài hoàn thành đầu tiên)
+  const defaultStt = completedTargets[0].stt;
+  const promptInput = prompt(
+    `Nhập STT chủ đề bạn muốn tải trọn bộ 100 file âm thanh MP3 (1 - 1000):\n(Hoặc tick chọn ô vuông ở đầu các dòng trong bảng để tải hàng loạt)\n\nHiện có ${completedTargets.length} chủ đề đã hoàn thành (Ví dụ: #${defaultStt} ${completedTargets[0].topic}):`,
+    defaultStt
+  );
+  if (!promptInput) return;
+
+  const targetStt = parseInt(promptInput.trim(), 10);
+  const matched = allTopics.find(t => t.stt === targetStt);
+  if (!matched) {
+    alert(`Không tìm thấy chủ đề số #${targetStt} trong danh sách!`);
+    return;
   }
+  if (matched.status !== 'completed') {
+    alert(`Chủ đề #${targetStt} (${matched.topic}) chưa tạo từ vựng! Hãy bấm "⚡ Tạo Trên Web" trước.`);
+    return;
+  }
+
+  return downloadTopicAudioZipDirect(matched.stt, matched.topic, btn);
 }

@@ -737,7 +737,7 @@ function openSettings() {
   const modelEl = document.getElementById('geminiModelSelect');
   if (modelEl) modelEl.value = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
   const audioServiceInput = document.getElementById('audioServiceUrlInput');
-  if (audioServiceInput) audioServiceInput.value = localStorage.getItem('audio_service_url') || '';
+  if (audioServiceInput) audioServiceInput.value = typeof getAudioServiceUrl === 'function' ? getAudioServiceUrl() : (localStorage.getItem('audio_service_url') || 'https://anki-audio-service-918034752495.asia-southeast1.run.app');
   document.getElementById('settingsModal').classList.remove('hidden');
   document.getElementById('settingsModal').classList.add('flex');
 }
@@ -756,7 +756,10 @@ function saveSettings() {
   const modelEl = document.getElementById('geminiModelSelect');
   if (modelEl) localStorage.setItem('gemini_model', modelEl.value);
   const audioServiceInput = document.getElementById('audioServiceUrlInput');
-  if (audioServiceInput) localStorage.setItem('audio_service_url', audioServiceInput.value.trim());
+  if (audioServiceInput) {
+    const val = audioServiceInput.value.trim() || (typeof DEFAULT_AUDIO_SERVICE_URL !== 'undefined' ? DEFAULT_AUDIO_SERVICE_URL : 'https://anki-audio-service-918034752495.asia-southeast1.run.app');
+    localStorage.setItem('audio_service_url', val);
+  }
   closeSettings();
   logToConsole('SUCCESS', 'CONFIG', 'Đã cập nhật cấu hình GitHub & Gemini API Key (Model: ' + (modelEl ? modelEl.value : 'gemini-3.1-flash-lite') + ').');
 }

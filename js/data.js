@@ -8,6 +8,14 @@ let currentPage = 1;
 let actionPollTimer = null;
 let runnerStartTime = null;
 
+// URL mặc định của Microservice Google Cloud Run tạo âm thanh Anki (Cambridge + Neural2)
+const DEFAULT_AUDIO_SERVICE_URL = 'https://anki-audio-service-918034752495.asia-southeast1.run.app';
+
+function getAudioServiceUrl() {
+  const custom = (localStorage.getItem('audio_service_url') || '').trim().replace(/\/+$/, '');
+  return custom || DEFAULT_AUDIO_SERVICE_URL;
+}
+
 // Tự động nhận diện cấu hình Repo GitHub
 function autoDetectGitHubRepo() {
   if (!localStorage.getItem('gh_owner')) localStorage.setItem('gh_owner', 'lev24197');
