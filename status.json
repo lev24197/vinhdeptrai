@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08 12:10:43",
+  "updated_at": "2026-11-09 12:22:54",
   "topics": [
     {
       "stt": 1,
@@ -985,28 +985,28 @@
     {
       "stt": 110,
       "topic": "Chế độ ăn kiêng (Diets & Nutrition)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/110.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-09 12:20",
       "last_error": null
     },
     {
       "stt": 111,
       "topic": "Cà phê đặc sản (Specialty Coffee)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/111.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-09 12:21",
       "last_error": null
     },
     {
       "stt": 112,
       "topic": "Các loại trà (Tea Varieties)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/112.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-09 12:22",
       "last_error": null
     },
     {
