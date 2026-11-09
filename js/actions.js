@@ -736,6 +736,8 @@ function openSettings() {
   document.getElementById('geminiKeyInput').value = localStorage.getItem('gemini_api_key') || '';
   const modelEl = document.getElementById('geminiModelSelect');
   if (modelEl) modelEl.value = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
+  const audioServiceInput = document.getElementById('audioServiceUrlInput');
+  if (audioServiceInput) audioServiceInput.value = localStorage.getItem('audio_service_url') || '';
   document.getElementById('settingsModal').classList.remove('hidden');
   document.getElementById('settingsModal').classList.add('flex');
 }
@@ -753,6 +755,8 @@ function saveSettings() {
   localStorage.setItem('gemini_api_key', document.getElementById('geminiKeyInput').value.trim());
   const modelEl = document.getElementById('geminiModelSelect');
   if (modelEl) localStorage.setItem('gemini_model', modelEl.value);
+  const audioServiceInput = document.getElementById('audioServiceUrlInput');
+  if (audioServiceInput) localStorage.setItem('audio_service_url', audioServiceInput.value.trim());
   closeSettings();
   logToConsole('SUCCESS', 'CONFIG', 'Đã cập nhật cấu hình GitHub & Gemini API Key (Model: ' + (modelEl ? modelEl.value : 'gemini-3.1-flash-lite') + ').');
 }

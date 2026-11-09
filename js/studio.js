@@ -15,16 +15,45 @@ let audioPlaylistIndex = 0;
 let isAudioPlaylistRunning = false;
 let audioPlaylistSpeed = 1.0;
 
-function speakWord(word) {
+let currentPlayingAudioObj = null;
+
+function fallbackSpeechSynthesis(word) {
   if (typeof speakWordTTS === 'function') {
     speakWordTTS(word);
   } else if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(word);
     u.lang = 'en-US';
-    u.rate = audioPlaylistSpeed;
+    u.rate = audioPlaylistSpeed || 1.0;
     window.speechSynthesis.speak(u);
   }
+}
+
+function speakWord(word) {
+  const cleanWord = String(word || '').trim().toLowerCase();
+  const serviceUrl = (localStorage.getItem('audio_service_url') || '').trim().replace(/\/+$/, '');
+
+  if (serviceUrl && cleanWord) {
+    try {
+      if (currentPlayingAudioObj) {
+        currentPlayingAudioObj.pause();
+        currentPlayingAudioObj = null;
+      }
+      const audioUrl = `${serviceUrl}/audio/${encodeURIComponent(cleanWord)}`;
+      const audio = new Audio(audioUrl);
+      audio.playbackRate = audioPlaylistSpeed || 1.0;
+      currentPlayingAudioObj = audio;
+      audio.play().catch(err => {
+        console.warn('Không thể phát âm thanh từ Cloud Service, fallback về TTS:', err);
+        fallbackSpeechSynthesis(word);
+      });
+      return;
+    } catch (e) {
+      console.warn('Lỗi audio streaming:', e);
+    }
+  }
+
+  fallbackSpeechSynthesis(word);
 }
 
 function makeClozeJS(word) {
@@ -597,3 +626,90 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
+
+
+// ==================== TẢI TRỌN BỘ 100 FILE MP3 DẠNG ZIP TỪ GOOGLE CLOUD SERVICE ====================
+async function downloadTopicAudioZip() {
+  if (!currentModalWords || !currentModalWords.length) {
+    alert('Không có từ vựng nào trong chủ đề này để tải âm thanh!');
+    return;
+  }
+
+  const serviceUrl = (localStorage.getItem('audio_service_url') || '').trim().replace(/\/+$/, '');
+  if (!serviceUrl) {
+    const inputUrl = prompt(
+      '⚡ Bạn chưa cấu hình Google Cloud Audio Service URL!\n\n' +
+      'Vui lòng dán Service URL Cloud Run của bạn vào đây (ví dụ: https://anki-audio-service-xxx.a.run.app):\n' +
+      '(Xem hướng dẫn trong cloud_audio_service/README.md để lấy link này trong 2 phút)'
+    );
+    if (inputUrl && inputUrl.trim()) {
+      localStorage.setItem('audio_service_url', inputUrl.trim());
+      openSettings();
+      return downloadTopicAudioZip();
+    } else {
+      openSettings();
+      return;
+    }
+  }
+
+  const btn = document.getElementById('btnDownloadAudioZip');
+  const originalHtml = btn ? btn.innerHTML : '🔊 Tải ZIP Âm Thanh';
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Đang nén ZIP âm thanh...';
+  }
+
+  const titleEl = document.getElementById('previewTitle');
+  const topicName = titleEl ? titleEl.innerText : 'ChuDe';
+  const words = currentModalWords.map(w => w.word);
+
+  try {
+    if (typeof showLiveRunner === 'function') {
+      showLiveRunner(`⚡ [GCP + CAMBRIDGE] ĐANG CÀO & NÉN ÂM THANH CHỦ ĐỀ #${activeStt}...`, 50, 3);
+    }
+
+    const res = await fetch(`${serviceUrl}/crawl_zip`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        topic_id: Number(activeStt),
+        topic_name: topicName,
+        words: words
+      })
+    });
+
+    if (!res.ok) {
+      const errDetail = await res.text();
+      throw new Error(`Cloud Run HTTP ${res.status}: ${errDetail}`);
+    }
+
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = `output_${activeStt}_audio.zip`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(blobUrl);
+
+    if (typeof logToConsole === 'function') {
+      logToConsole('SUCCESS', 'AUDIO_ZIP', `Đã tải trọn bộ file output_${activeStt}_audio.zip (${words.length} từ) về máy!`);
+    }
+    if (typeof showLiveRunner === 'function') {
+      showLiveRunner(`🎉 ĐÃ TẢI XONG FILE output_${activeStt}_audio.zip (${words.length} TỪ)!`, 100, 5);
+      setTimeout(() => {
+        const lr = document.getElementById('liveRunnerSection');
+        if (lr) lr.classList.add('hidden');
+      }, 4000);
+    }
+  } catch (err) {
+    console.error('Lỗi tải ZIP âm thanh:', err);
+    alert('Không thể tải file âm thanh từ Cloud Service: ' + err.message + '\n\nVui lòng kiểm tra lại Google Cloud Audio Service URL trong mục Cài đặt.');
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = originalHtml;
+    }
+  }
+}

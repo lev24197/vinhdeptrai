@@ -992,6 +992,7 @@
           <button onclick="switchModalTab('quiz')" id="modalTab-quiz" class="neo-btn px-3 py-1 bg-white text-xs font-extrabold">⌨️ Gõ Từ Khuyết Chữ</button>
           <button onclick="saveEditedFileToGitHub()" id="btnSaveGitHub" class="neo-btn px-3 py-1 bg-[#169C64] text-white text-xs font-extrabold">💾 Lưu lên GitHub</button>
           <a id="previewDownloadBtn" href="#" download class="neo-btn px-3 py-1 bg-[#3F6AE4] text-white text-xs font-extrabold">⬇ Tải .TXT</a>
+          <button onclick="downloadTopicAudioZip()" id="btnDownloadAudioZip" class="neo-btn px-3 py-1 bg-[#FF9F1C] text-[#111] text-xs font-extrabold flex items-center gap-1 shadow-sm"><span>🔊</span> Tải ZIP Âm Thanh</button>
           <button onclick="closePreview()" class="neo-btn px-3 py-1 bg-[#F05332] text-white text-xs font-extrabold">✕</button>
         </div>
       </div>
@@ -1450,6 +1451,11 @@
             <option value="gemini-1.5-flash">gemini-1.5-flash</option>
           </select>
           <p class="text-[11px] text-slate-500 mt-1">Gợi ý từ bảng Rate Limit của bạn: <b>gemini-3.1-flash-lite</b> cho phép tới 150.000 lượt/ngày và 4.000 lượt/phút.</p>
+        </div>
+        <div class="pt-2 border-t-2 border-[#111]">
+          <label class="block mb-1 text-[#2C317A]">Google Cloud Audio Service URL</label>
+          <input id="audioServiceUrlInput" type="text" placeholder="https://anki-audio-service-xxx.a.run.app" class="neo-box-sm w-full px-3 py-2 bg-white font-mono-code text-xs" />
+          <p class="text-[11px] text-slate-500 mt-1">Dán URL Cloud Run của bạn để cào âm thanh Cambridge & TTS phát thanh viên siêu tốc 3 giây.</p>
         </div>
       </div>
       <div class="flex justify-end gap-2 mt-6">
