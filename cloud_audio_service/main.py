@@ -83,19 +83,12 @@ def fetch_cambridge_audio(word: str) -> tuple[Optional[bytes], Optional[str], Op
         clean_w.replace(" ", "_"),
         clean_w
     ]
+    # Lưu ý: Khi dùng curl_cffi impersonate="chrome120", không gán cứng User-Agent thủ công
+    # để tránh bị Cloudflare phát hiện lệch TLS fingerprint với User-Agent.
     headers = {
-        "User-Agent": USER_AGENT,
         "Referer": "https://dictionary.cambridge.org/",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9",
-        "Sec-Ch-Ua": '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
-        "Sec-Ch-Ua-Mobile": "?0",
-        "Sec-Ch-Ua-Platform": '"Windows"',
-        "Sec-Fetch-Dest": "document",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "none",
-        "Sec-Fetch-User": "?1",
-        "Upgrade-Insecure-Requests": "1",
     }
 
     last_debug = ""
@@ -428,15 +421,16 @@ def crawl_and_zip_topic(req: CrawlTopicRequest):
 
         zf.writestr("bao_cao_am_thanh.txt", "\n".join(report_lines))
 
-    zip_buffer.seek(0)
+    zip_data = zip_buffer.getvalue()
     filename = f"output_{req.topic_id}_audio.zip"
 
-    return StreamingResponse(
-        zip_buffer,
+    return Response(
+        content=zip_data,
         media_type="application/zip",
         headers={
-            "Content-Disposition": f"attachment; filename={filename}",
+            "Content-Disposition": f'attachment; filename="{filename}"',
             "X-Success-Count": str(success_count),
-            "X-Total-Words": str(len(words))
+            "X-Total-Words": str(len(words)),
+            "Access-Control-Expose-Headers": "Content-Disposition, X-Success-Count, X-Total-Words"
         }
     )
