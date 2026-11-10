@@ -1,755 +1,544 @@
-// ==================== STUDIO XEM, SỬA LIVE, FLASHCARD 2.0 & QUIZ KHUYẾT CHỮ ====================
-let activeStt = null;
-let currentModalWords = [];
-let currentFcIndex = 0;
-let modalQuizIndex = 0;
-let modalQuizScore = 0;
+// ============================================================================
+// MODULE: js/studio.js
+// Chức năng: Studio Học & Chỉnh Sửa Chủ Đề (9-Column Live Editor,
+//            3D Flashcards Leitner SRS, Cloze Typing Quiz, Audio Playlist & Print PDF)
+//            Hỗ trợ cả chế độ Modal nhanh và trang độc lập studio.html.
+// ============================================================================
 
-// Trạng thái Slideshow & Audio Player
-let fcSlideshowTimer = null;
-let isFcSlideshowRunning = false;
-let fcSlideshowInterval = 4000;
-let fcAutoPronounce = true;
+let currentPreviewStt = null;
+let currentPreviewLines = [];
+let currentFlashcardIdx = 0;
+let isEditMode = false;
+let currentQuizItem = null;
+let quizScoreCorrect = 0;
+let quizScoreWrong = 0;
 
-let audioPlaylistIndex = 0;
-let isAudioPlaylistRunning = false;
-let audioPlaylistSpeed = 1.0;
+let isPlaylistPlaying = false;
+let playlistTimeout = null;
+let isAutoSlide = false;
+let autoSlideInterval = null;
+let srsMemoryMap = JSON.parse(localStorage.getItem('anki_srs_memory') || '{}');
 
-let currentPlayingAudioObj = null;
-
-function fallbackSpeechSynthesis(word) {
-  if (typeof speakWordTTS === 'function') {
-    speakWordTTS(word);
-  } else if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(word);
-    u.lang = 'en-US';
-    u.rate = audioPlaylistSpeed || 1.0;
-    window.speechSynthesis.speak(u);
-  }
-}
-
-function speakWord(word) {
-  const cleanWord = String(word || '').trim().toLowerCase();
-  const serviceUrl = typeof getAudioServiceUrl === 'function' ? getAudioServiceUrl() : (DEFAULT_AUDIO_SERVICE_URL || 'https://anki-audio-service-918034752495.asia-southeast1.run.app');
-
-  if (serviceUrl && cleanWord) {
-    try {
-      if (currentPlayingAudioObj) {
-        currentPlayingAudioObj.pause();
-        currentPlayingAudioObj = null;
-      }
-      const audioUrl = `${serviceUrl}/audio/${encodeURIComponent(cleanWord)}`;
-      const audio = new Audio(audioUrl);
-      audio.playbackRate = audioPlaylistSpeed || 1.0;
-      currentPlayingAudioObj = audio;
-      audio.play().catch(err => {
-        console.warn('Không thể phát âm thanh từ Cloud Service, fallback về TTS:', err);
-        fallbackSpeechSynthesis(word);
-      });
-      return;
-    } catch (e) {
-      console.warn('Lỗi audio streaming:', e);
-    }
-  }
-
-  fallbackSpeechSynthesis(word);
-}
-
-function makeClozeJS(word) {
-  return word.trim().split(/\s+/).map(p => p.length <= 2 ? p : p[0] + '_'.repeat(p.length - 2) + p[p.length - 1]).join(' ');
-}
-
-function makeSoundJS(word) {
-  return `[sound:${word.trim().toLowerCase().replace(/\s+/g, '_')}.mp3]`;
-}
-
-// Mở Modal Xem / Sửa Chủ Đề
-async function previewFile(stt, topic) {
-  activeStt = stt;
-  const sttBadge = document.getElementById('previewSttBadge');
-  if (sttBadge) sttBadge.innerText = `#${stt}`;
-  const titleEl = document.getElementById('previewTitle');
-  if (titleEl) titleEl.innerText = topic;
-
-  const dlBtn = document.getElementById('previewDownloadBtn');
-  if (dlBtn) dlBtn.onclick = () => downloadSingleFile(stt);
-
-  switchModalTab('table');
-
-  const modal = document.getElementById('previewModal');
-  if (modal) {
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-  }
-
-  // Dừng mọi tiến trình auto nếu có
-  stopFlashcardSlideshow();
-  stopAudioPlaylist();
-
-  try {
-    const res = await smartFetch(`output/${stt}.txt`);
-    let rawText = await res.text();
-
-    // Kiểm tra bản nháp lưu tạm trong LocalStorage nếu có
-    const draftKey = `draft_topic_${stt}`;
-    const savedDraft = localStorage.getItem(draftKey);
-    if (savedDraft && savedDraft !== rawText) {
-      if (confirm(`Tìm thấy bản nháp đã chỉnh sửa chưa lưu cho chủ đề #${stt}. Bạn có muốn khôi phục bản nháp này không?`)) {
-        rawText = savedDraft;
-      }
-    }
-
-    const tsvArea = document.getElementById('rawTsvTextarea');
-    if (tsvArea) tsvArea.value = rawText;
-
-    const lines = rawText.split('\n').filter(l => l.trim());
-    currentModalWords = lines.map((line, idx) => {
-      const cols = line.split('\t');
-      return {
-        index: idx,
-        word: cols[0] || '',
-        cloze: cols[1] || '',
-        ipa: cols[2] || '',
-        sound: cols[3] || '',
-        definition: cols[4] || '',
-        vi: cols[5] || '',
-        plural: cols[7] || '',
-        examples: cols[8] || ''
-      };
-    });
-
-    currentFcIndex = 0;
-    modalQuizIndex = 0;
-    modalQuizScore = 0;
-    renderModalWords();
-    renderFlashcard();
-    loadQuizQuestion();
-  } catch (e) {
-    alert(`Không tải được nội dung chủ đề #${stt}: ` + e.message);
-  }
-}
-
-function closePreview() {
-  stopFlashcardSlideshow();
-  stopAudioPlaylist();
-  const modal = document.getElementById('previewModal');
-  if (modal) {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  }
-}
-
-// ==================== TAB 1: BẢNG 9 CỘT SỬA TRỰC TIẾP ====================
-function renderModalWords() {
-  const q = document.getElementById('modalWordSearch')?.value.toLowerCase().trim() || '';
-  const filtered = currentModalWords.filter(w => !q || w.word.toLowerCase().includes(q) || w.vi.toLowerCase().includes(q));
-  const countInfo = document.getElementById('modalWordCountInfo');
-  if (countInfo) countInfo.innerText = `${filtered.length} / ${currentModalWords.length} từ`;
-
-  const body = document.getElementById('previewBody');
-  if (!body) return;
-  body.innerHTML = filtered.map(item => {
-    const isAdv = item.index >= 50;
-    const tag = isAdv
-      ? `<span class="text-[9px] font-mono-code font-bold bg-[#8C43F6] text-white px-1 py-0.2 rounded mr-1">C1</span>`
-      : `<span class="text-[9px] font-mono-code font-bold bg-[#169C64] text-white px-1 py-0.2 rounded mr-1">A2</span>`;
-
-    const isCurrentPlaying = (isAudioPlaylistRunning && item.index === audioPlaylistIndex);
-    const rowClass = isCurrentPlaying ? 'bg-amber-200 font-bold border-l-4 border-amber-600' : 'hover:bg-amber-50';
-
-    return `
-      <tr class="${rowClass} align-top transition-colors">
-        <td class="p-2 font-mono-code text-[11px] text-slate-500">${tag}${item.index + 1}</td>
-        <td class="p-2 font-extrabold text-[#2C317A]">
-          <div class="flex items-center gap-1">
-            <button onclick="speakWord('${item.word}')" class="text-xs hover:scale-125 transition" title="Nghe phát âm">🔊</button>
-            <input value="${item.word}" onchange="updateWordCell(${item.index}, 'word', this.value)" class="bg-transparent border-b border-transparent focus:border-[#111] font-bold w-full" />
-          </div>
-        </td>
-        <td class="p-2 font-mono-code text-slate-600" id="clozeCell-${item.index}">${item.cloze}</td>
-        <td class="p-2 font-mono-code"><input value="${item.ipa}" onchange="updateWordCell(${item.index}, 'ipa', this.value)" class="bg-transparent border-b border-transparent focus:border-[#111] w-28" /></td>
-        <td class="p-2 text-slate-700"><input value="${item.definition.replace(/"/g, '&quot;')}" onchange="updateWordCell(${item.index}, 'definition', this.value)" class="bg-transparent border-b border-transparent focus:border-[#111] w-full" /></td>
-        <td class="p-2 text-[#169C64] font-bold"><input value="${item.vi}" onchange="updateWordCell(${item.index}, 'vi', this.value)" class="bg-transparent border-b border-transparent focus:border-[#111] w-32" /></td>
-        <td class="p-2"><input value="${item.plural}" onchange="updateWordCell(${item.index}, 'plural', this.value)" class="bg-transparent border-b border-transparent focus:border-[#111] w-28" /></td>
-        <td class="p-2"><input value="${item.examples.replace(/"/g, '&quot;')}" onchange="updateWordCell(${item.index}, 'examples', this.value)" class="bg-transparent border-b border-transparent focus:border-[#111] w-full" /></td>
-      </tr>
-    `;
-  }).join('');
-}
-
-function updateWordCell(idx, field, val) {
-  const item = currentModalWords[idx];
-  item[field] = val.trim();
-  if (field === 'word') {
-    item.cloze = makeClozeJS(item.word);
-    item.sound = makeSoundJS(item.word);
-    const c = document.getElementById(`clozeCell-${idx}`);
-    if (c) c.innerText = item.cloze;
-  }
-  const lines = currentModalWords.map(i => [i.word, i.cloze, i.ipa, i.sound, i.definition, i.vi, i.vi, i.plural, i.examples].join('\t'));
-  const fullText = lines.join('\n') + '\n';
-  const tsvArea = document.getElementById('rawTsvTextarea');
-  if (tsvArea) tsvArea.value = fullText;
-
-  // Tự động lưu bản nháp vào LocalStorage
-  if (activeStt) {
-    localStorage.setItem(`draft_topic_${activeStt}`, fullText);
-    const draftNotice = document.getElementById('modalDraftNotice');
-    if (draftNotice) {
-      draftNotice.innerText = 'Đã tự động lưu bản nháp lúc ' + new Date().toLocaleTimeString();
-      draftNotice.classList.remove('hidden');
-    }
-  }
-}
-
-// Sao chép toàn bộ TSV vào Clipboard
-function copyTsvToClipboard() {
-  const rawText = document.getElementById('rawTsvTextarea')?.value;
-  if (!rawText) return;
-  navigator.clipboard.writeText(rawText).then(() => {
-    if (typeof showToastAlert === 'function') {
-      showToastAlert('📋 Đã sao chép 100 dòng TSV vào Clipboard! Có thể dán ngay vào Anki Desktop.');
-    } else {
-      alert('📋 Đã sao chép 100 dòng TSV vào Clipboard!');
-    }
-  }).catch(() => {
-    alert('Không thể truy cập Clipboard trình duyệt.');
-  });
-}
-
-// Lưu lên GitHub Actions
-async function saveEditedFileToGitHub() {
-  const btn = document.getElementById('btnSaveGitHub');
-  if (btn) btn.innerText = '⏳ Đang lưu...';
-  try {
-    if (typeof pushFileToGitHub === 'function') {
-      await pushFileToGitHub(`output/${activeStt}.txt`, document.getElementById('rawTsvTextarea').value, `Update output/${activeStt}.txt via Web`);
-      if (activeStt) localStorage.removeItem(`draft_topic_${activeStt}`);
-      alert(`Đã lưu thành công file output/${activeStt}.txt lên GitHub!`);
-    } else {
-      alert('Chức năng pushFileToGitHub yêu cầu kết nối GitHub Token trong mục Cấu hình API.');
-    }
-  } catch (e) {
-    alert('Lỗi khi lưu lên GitHub: ' + e.message);
-  }
-  if (btn) btn.innerText = '💾 Lưu lên GitHub';
-}
-
-function switchModalTab(tab) {
-  ['table', 'flashcard', 'quiz'].forEach(t => {
-    const el = document.getElementById('modalView' + t.charAt(0).toUpperCase() + t.slice(1));
-    if (el) {
-      el.classList.toggle('hidden', t !== tab);
-      if (t !== 'table') el.classList.toggle('flex', t === tab);
-    }
-    const tabBtn = document.getElementById('modalTab-' + t);
-    if (tabBtn) {
-      tabBtn.className = t === tab
-        ? 'neo-btn px-3 py-1 bg-[#111] text-white text-xs font-extrabold'
-        : 'neo-btn px-3 py-1 bg-white text-[#111] text-xs font-extrabold';
-    }
-  });
-
-  if (tab !== 'flashcard') {
-    stopFlashcardSlideshow();
-  }
-}
-
-// ==================== TAB 2: FLASHCARD 2.0 (SRS LEITNER & SLIDESHOW) ====================
-function renderFlashcard() {
-  if (!currentModalWords.length) return;
-  const item = currentModalWords[currentFcIndex];
-  const box = document.getElementById('flashcardBox');
-  if (box) box.classList.remove('flipped');
-
-  const prog = document.getElementById('fcProgress');
-  if (prog) prog.innerText = `Thẻ ${currentFcIndex + 1} / ${currentModalWords.length}`;
-
-  const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
-  setTxt('fcCloze', item.cloze);
-  setTxt('fcDef', item.definition);
-  setTxt('fcViFront', `Nghĩa: ${item.vi}`);
-  setTxt('fcWord', item.word);
-  setTxt('fcIpa', item.ipa);
-  setTxt('fcPlural', item.plural);
-  setTxt('fcSoundTag', item.sound);
-  setTxt('fcViBack', item.vi);
-
-  const exEl = document.getElementById('fcExamples');
-  if (exEl) exEl.innerHTML = item.examples;
-
-  // Hiển thị trạng thái SRS hiện tại của từ nếu có
-  const srsRecord = getWordSRSRecord(item.word);
-  const srsBadge = document.getElementById('fcSrsBadge');
-  if (srsBadge) {
-    if (srsRecord && srsRecord.level > 0) {
-      srsBadge.innerText = `⭐ Cấp độ nhớ: Lv.${srsRecord.level} (${srsRecord.reps} lần ôn)`;
-      srsBadge.className = 'text-[10px] font-mono-code font-bold bg-emerald-100 text-emerald-800 border border-emerald-400 px-2 py-0.5 rounded';
-    } else {
-      srsBadge.innerText = 'Chưa có dữ liệu SRS';
-      srsBadge.className = 'text-[10px] font-mono-code font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded';
-    }
-  }
-}
-
-function toggleFlipCard() {
-  const box = document.getElementById('flashcardBox');
-  if (box) {
-    box.classList.toggle('flipped');
-    if (box.classList.contains('flipped') && fcAutoPronounce) {
-      speakCurrentCard();
-    }
-  }
-}
-
-function changeFlashcard(d) {
-  currentFcIndex = (currentFcIndex + d + currentModalWords.length) % currentModalWords.length;
-  renderFlashcard();
-}
-
-function speakCurrentCard() {
-  if (currentModalWords.length && currentModalWords[currentFcIndex]) {
-    speakWord(currentModalWords[currentFcIndex].word);
-  }
-}
-
-// Đánh giá Leitner SRS (1: Again, 2: Hard, 3: Good, 4: Easy)
-function rateFlashcardSRS(grade) {
-  if (!currentModalWords.length) return;
-  const item = currentModalWords[currentFcIndex];
-  const srsKey = `srs_record_${item.word.toLowerCase()}`;
-  let rec = JSON.parse(localStorage.getItem(srsKey) || '{"level":0,"reps":0,"last":0}');
-
-  if (grade === 1) { // Chưa nhớ
-    rec.level = 1;
-    rec.reps++;
-  } else if (grade === 2) { // Tạm ổn
-    rec.level = Math.max(1, rec.level);
-    rec.reps++;
-  } else if (grade === 3) { // Nhớ tốt
-    rec.level = (rec.level || 1) + 1;
-    rec.reps++;
-  } else if (grade === 4) { // Quá dễ
-    rec.level = (rec.level || 1) + 2;
-    rec.reps++;
-  }
-  rec.last = Date.now();
-  localStorage.setItem(srsKey, JSON.stringify(rec));
-
-  // Tự động chuyển sang thẻ kế tiếp
-  changeFlashcard(1);
-}
-
-function getWordSRSRecord(word) {
-  try {
-    return JSON.parse(localStorage.getItem(`srs_record_${word.toLowerCase()}`));
-  } catch (e) {
-    return null;
-  }
-}
-
-// Chế độ Auto-Slideshow (Tự động lướt thẻ)
-function toggleFlashcardSlideshow() {
-  if (isFcSlideshowRunning) {
-    stopFlashcardSlideshow();
+function togglePlaylistAudio() {
+  if (isPlaylistPlaying) {
+    stopPlaylistAudio();
   } else {
-    startFlashcardSlideshow();
+    isPlaylistPlaying = true;
+    const btn = document.getElementById('btnPlaylistAudio');
+    if (btn) {
+      btn.innerText = '⏹ Dừng đọc tự động';
+      btn.className = 'px-3 py-1.5 bg-rose-600 text-white rounded-lg text-xs font-bold shadow animate-pulse transition';
+    }
+    playNextInPlaylist(0);
   }
 }
 
-function startFlashcardSlideshow() {
-  isFcSlideshowRunning = true;
-  const btn = document.getElementById('fcBtnSlideshow');
-  if (btn) {
-    btn.innerHTML = '⏸ Dừng Tự Động';
-    btn.className = 'neo-btn px-3 py-1 bg-red-600 text-white text-xs font-extrabold';
-  }
-
-  const loop = () => {
-    if (!isFcSlideshowRunning) return;
-    // Bước 1: Lật thẻ xem đáp án
-    toggleFlipCard();
-    // Bước 2: Đợi 1/2 khoảng thời gian rồi sang thẻ mới
-    setTimeout(() => {
-      if (!isFcSlideshowRunning) return;
-      changeFlashcard(1);
-      fcSlideshowTimer = setTimeout(loop, fcSlideshowInterval);
-    }, fcSlideshowInterval / 2);
-  };
-
-  fcSlideshowTimer = setTimeout(loop, fcSlideshowInterval / 2);
-}
-
-function stopFlashcardSlideshow() {
-  isFcSlideshowRunning = false;
-  if (fcSlideshowTimer) clearTimeout(fcSlideshowTimer);
-  fcSlideshowTimer = null;
-  const btn = document.getElementById('fcBtnSlideshow');
-  if (btn) {
-    btn.innerHTML = '▶️ Tự Động Lướt';
-    btn.className = 'neo-btn px-3 py-1 bg-amber-400 text-[#111] text-xs font-extrabold';
-  }
-}
-
-// ==================== TRÌNH PHÁT AUDIO LIÊN TỤC 100 TỪ (VOCABULARY AUDIO PLAYLIST) ====================
-function toggleAudioPlaylist() {
-  if (isAudioPlaylistRunning) {
-    stopAudioPlaylist();
-  } else {
-    startAudioPlaylist();
-  }
-}
-
-function startAudioPlaylist() {
-  if (!currentModalWords.length) return;
-  isAudioPlaylistRunning = true;
-  audioPlaylistIndex = 0;
-  updateAudioPlaylistUI(true);
-  playNextInAudioPlaylist();
-}
-
-function stopAudioPlaylist() {
-  isAudioPlaylistRunning = false;
+function stopPlaylistAudio() {
+  isPlaylistPlaying = false;
+  if (playlistTimeout) clearTimeout(playlistTimeout);
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-  updateAudioPlaylistUI(false);
-  renderModalWords();
-}
-
-function playNextInAudioPlaylist() {
-  if (!isAudioPlaylistRunning || audioPlaylistIndex >= currentModalWords.length) {
-    stopAudioPlaylist();
-    return;
-  }
-
-  const item = currentModalWords[audioPlaylistIndex];
-  renderModalWords(); // Highlight dòng đang đọc
-
-  const trackInfo = document.getElementById('audioPlaylistTrackInfo');
-  if (trackInfo) trackInfo.innerText = `#${audioPlaylistIndex + 1}/100: ${item.word} (${item.vi})`;
-
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(item.word);
-    u.lang = 'en-US';
-    u.rate = audioPlaylistSpeed;
-    u.onend = () => {
-      if (!isAudioPlaylistRunning) return;
-      audioPlaylistIndex++;
-      setTimeout(playNextInAudioPlaylist, 1200); // Tạm dừng 1.2s trước từ kế
-    };
-    u.onerror = () => {
-      audioPlaylistIndex++;
-      setTimeout(playNextInAudioPlaylist, 1000);
-    };
-    window.speechSynthesis.speak(u);
-  } else {
-    audioPlaylistIndex++;
-    setTimeout(playNextInAudioPlaylist, 1500);
-  }
-}
-
-function updateAudioPlaylistUI(running) {
-  const btn = document.getElementById('btnToggleAudioPlaylist');
+  const btn = document.getElementById('btnPlaylistAudio');
   if (btn) {
-    btn.innerText = running ? '⏹ Dừng Nghe' : '🎧 Nghe Liên Tục 100 Từ';
-    btn.className = running
-      ? 'neo-btn px-3 py-1 bg-red-600 text-white text-xs font-extrabold flex items-center gap-1'
-      : 'neo-btn px-3 py-1 bg-[#8C43F6] text-white text-xs font-extrabold flex items-center gap-1';
+    btn.innerText = '📻 Nghe tự động 100 từ';
+    btn.className = 'px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-lg text-xs font-bold transition';
   }
-  const bar = document.getElementById('audioPlaylistBar');
-  if (bar) bar.classList.toggle('hidden', !running);
 }
 
-function setAudioPlaylistSpeed(speed) {
-  audioPlaylistSpeed = speed;
-  ['0.8', '1.0', '1.2'].forEach(s => {
-    const b = document.getElementById(`audioSpeedBtn-${s}`);
-    if (b) {
-      b.className = (parseFloat(s) === speed)
-        ? 'px-2 py-0.5 bg-[#111] text-white rounded font-mono-code text-[10px] font-bold'
-        : 'px-2 py-0.5 bg-slate-200 text-slate-800 rounded font-mono-code text-[10px] font-bold';
-    }
-  });
-}
-
-// ==================== BẢN IN HỌC TẬP & PDF (PRINTABLE CHEAT SHEET) ====================
-function openPrintableSheet() {
-  if (!currentModalWords.length) return;
-  const title = document.getElementById('previewTitle')?.innerText || `Chủ đề #${activeStt}`;
-  const win = window.open('', '_blank');
-  if (!win) {
-    alert('Trình duyệt đang chặn cửa sổ pop-up. Vui lòng cho phép mở pop-up để xem bản in.');
+function playNextInPlaylist(idx) {
+  if (!isPlaylistPlaying || idx >= currentPreviewLines.length) {
+    stopPlaylistAudio();
     return;
   }
+  const cols = currentPreviewLines[idx];
+  const word = cols[0] || '';
+  speakWord(word);
 
-  const html = `
-    <!DOCTYPE html>
-    <html lang="vi">
+  const subText = document.getElementById('previewSubText');
+  if (subText) subText.innerHTML = `<span class="text-amber-600 font-bold">📻 Đang phát tự động (#${idx + 1}/100): ${word} — ${cols[5] || ''}</span>`;
+
+  playlistTimeout = setTimeout(() => {
+    playNextInPlaylist(idx + 1);
+  }, 3200);
+}
+
+function toggleFlashcardAutoSlide() {
+  isAutoSlide = !isAutoSlide;
+  const btn = document.getElementById('btnAutoSlide');
+  if (isAutoSlide) {
+    if (btn) {
+      btn.innerText = '⏸ Dừng trình chiếu';
+      btn.className = 'px-3 py-1.5 rounded-lg bg-rose-600 text-white text-xs font-bold shadow animate-pulse';
+    }
+    autoSlideInterval = setInterval(() => {
+      const scene = document.getElementById('flashcardScene');
+      if (scene && !scene.classList.contains('flipped')) {
+        scene.classList.add('flipped');
+      } else {
+        nextFlashcard(1);
+      }
+    }, 2800);
+  } else {
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+    if (btn) {
+      btn.innerText = '▶️ Tự động lật & chuyển (3s)';
+      btn.className = 'px-3 py-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-bold transition';
+    }
+  }
+}
+
+function markSrsStatus(level) {
+  if (!currentPreviewLines.length) return;
+  const cols = currentPreviewLines[currentFlashcardIdx];
+  const key = `${currentPreviewStt}_${(cols[0] || '').toLowerCase()}`;
+  srsMemoryMap[key] = level;
+  localStorage.setItem('anki_srs_memory', JSON.stringify(srsMemoryMap));
+  updateSrsCounters();
+  nextFlashcard(1);
+}
+
+function updateSrsCounters() {
+  let hard = 0, good = 0, easy = 0;
+  currentPreviewLines.forEach(cols => {
+    const key = `${currentPreviewStt}_${(cols[0] || '').toLowerCase()}`;
+    if (srsMemoryMap[key] === 'hard') hard++;
+    if (srsMemoryMap[key] === 'good') good++;
+    if (srsMemoryMap[key] === 'easy') easy++;
+  });
+  const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
+  setTxt('srsCountHard', hard);
+  setTxt('srsCountGood', good);
+  setTxt('srsCountEasy', easy);
+}
+
+function printCurrentTopicSheet() {
+  if (!currentPreviewLines.length) return;
+  const title = document.getElementById('previewTitle')?.innerText || `Chủ đề #${currentPreviewStt}`;
+  const win = window.open('', '_blank');
+  const rows = currentPreviewLines.map((c, idx) => `
+    <tr style="border-bottom: 1px solid #e2e8f0; font-size: 12px;">
+      <td style="padding: 6px; font-weight: bold; color: #64748b;">${idx + 1}</td>
+      <td style="padding: 6px; font-weight: bold; color: #0f172a;">${c[0] || ''} <span style="font-weight:normal; color:#6366f1; font-family:monospace;">${c[2] || ''}</span></td>
+      <td style="padding: 6px; font-weight: bold; color: #047857;">${c[5] || ''}</td>
+      <td style="padding: 6px; color: #334155;">${c[4] || ''}</td>
+      <td style="padding: 6px; color: #475569; font-size: 11px;">${c[8] || ''}</td>
+    </tr>
+  `).join('');
+
+  win.document.write(`
+    <html>
     <head>
-      <meta charset="UTF-8">
-      <title>Bản In Từ Vựng: ${title}</title>
+      <title>Bản In Học Tập - ${title}</title>
       <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding: 25px; color: #111; line-height: 1.4; }
-        h1 { font-size: 20px; text-transform: uppercase; border-bottom: 2px solid #111; padding-bottom: 8px; margin-bottom: 12px; }
-        .meta { font-size: 12px; color: #555; margin-bottom: 16px; }
-        table { width: 100%; border-collapse: collapse; font-size: 11px; }
-        th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
-        th { background: #f4f4f4; text-transform: uppercase; font-size: 10px; }
-        .word { font-weight: bold; color: #1a365d; font-size: 12px; }
-        .ipa { font-family: monospace; color: #718096; }
-        .vi { color: #22543d; font-weight: bold; }
-        .ex { font-size: 10px; color: #4a5568; }
-        @media print {
-          @page { margin: 1.2cm; }
-          body { padding: 0; }
-        }
+        body { font-family: Arial, sans-serif; padding: 20px; color: #1e293b; }
+        h1 { font-size: 18px; margin-bottom: 4px; }
+        p { font-size: 12px; color: #64748b; margin-top: 0; margin-bottom: 16px; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #f1f5f9; text-align: left; padding: 8px 6px; font-size: 11px; text-transform: uppercase; border-bottom: 2px solid #cbd5e1; }
+        @media print { .no-print { display: none; } }
       </style>
     </head>
     <body>
-      <h1>${title} (100 Từ Vựng Chuẩn Anki)</h1>
-      <div class="meta">The Anki Dictionary Studio • Xuất ngày: ${new Date().toLocaleDateString('vi-VN')} • Tổng số từ: ${currentModalWords.length}</div>
+      <div class="no-print" style="margin-bottom: 15px;">
+        <button onclick="window.print()" style="padding: 8px 16px; background: #4f46e5; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">🖨️ Bấm để In hoặc Lưu PDF</button>
+      </div>
+      <h1>${title}</h1>
+      <p>Bộ Từ Điển 100 Từ Vựng Chuẩn Anki (50 Từ Giao Tiếp A2-B2 & 50 Từ Chuyên Sâu C1-C2)</p>
       <table>
         <thead>
-          <tr>
-            <th style="width: 30px">#</th>
-            <th style="width: 140px">Từ vựng (Noun)</th>
-            <th style="width: 100px">Phiên âm IPA</th>
-            <th style="width: 120px">Nghĩa Tiếng Việt</th>
-            <th>Định nghĩa tiếng Anh & Hai câu ví dụ</th>
-          </tr>
+          <tr><th>#</th><th>Từ vựng & IPA</th><th>Nghĩa Tiếng Việt</th><th>Định nghĩa Tiếng Anh</th><th>2 Câu Ví Dụ</th></tr>
         </thead>
-        <tbody>
-          ${currentModalWords.map(w => `
-            <tr>
-              <td>${w.index + 1}</td>
-              <td class="word">${w.word} ${w.plural ? `<small style="color:#718096">(${w.plural})</small>` : ''}</td>
-              <td class="ipa">${w.ipa}</td>
-              <td class="vi">${w.vi}</td>
-              <td>
-                <div><b>${w.definition}</b></div>
-                <div class="ex">${w.examples}</div>
-              </td>
-            </tr>
-          `).join('')}
-        </tbody>
+        <tbody>${rows}</tbody>
       </table>
-      <script>window.onload = () => window.print();<\/script>
     </body>
     </html>
-  `;
-
-  win.document.write(html);
+  `);
   win.document.close();
 }
 
-// ==================== TAB 3: QUIZ GÕ TỪ KHUYẾT CHỮ ====================
-function loadQuizQuestion() {
-  if (!currentModalWords.length) return;
-  const item = currentModalWords[modalQuizIndex];
+async function previewFile(stt, topicTitle) {
+  currentPreviewStt = stt;
+  isEditMode = false;
+  const modal = document.getElementById('previewModal');
+  if (modal) modal.classList.remove('hidden');
+
   const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
-  setTxt('quizProgressText', `CÂU ${modalQuizIndex + 1}/${currentModalWords.length}`);
-  setTxt('quizScoreText', modalQuizScore);
-  setTxt('quizClozeHint', item.cloze);
-  setTxt('quizMeaningVi', item.vi);
-  setTxt('quizDefEn', item.definition);
+  setTxt('previewBadge', `#${stt}`);
+  setTxt('previewTitle', topicTitle);
+  setTxt('previewSubText', 'Đang tải dữ liệu 9 cột từ kho lưu trữ...');
 
-  const input = document.getElementById('quizUserInput');
-  if (input) input.value = '';
+  const studioSelect = document.getElementById('studioTopicSelect');
+  if (studioSelect && String(studioSelect.value) !== String(stt)) {
+    studioSelect.value = String(stt);
+  }
 
-  const fb = document.getElementById('quizFeedback');
+  const saveBtn = document.getElementById('btnSaveCloud');
+  if (saveBtn) saveBtn.classList.add('hidden');
+  const toggleBtn = document.getElementById('btnToggleEdit');
+  if (toggleBtn) toggleBtn.innerText = '✏️ Bật chế độ Chỉnh sửa';
+
+  switchPreviewTab('table');
+
+  const dlBtn = document.getElementById('previewDownloadBtn');
+  if (dlBtn) dlBtn.onclick = () => downloadSingleFile(stt, topicTitle);
+
+  try {
+    const res = await smartFetch(`output/${stt}.txt`);
+    if (!res.ok) throw new Error('Không tìm thấy file');
+    const text = await res.text();
+    const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+    currentPreviewLines = lines.map(line => {
+      const cols = line.split('\t');
+      while (cols.length < 9) cols.push('');
+      return cols;
+    });
+
+    setTxt('previewSubText', `Tổng cộng: ${currentPreviewLines.length} từ vựng • Định dạng 9 cột TSV chuẩn Anki • Bấm vào biểu tượng 🔊 để nghe phát âm US`);
+    renderPreviewTable();
+    currentFlashcardIdx = 0;
+    renderFlashcard();
+    updateSrsCounters();
+  } catch (e) {
+    const tbody = document.getElementById('previewTableBody');
+    if (tbody) tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-rose-500">Không thể tải nội dung file output/${stt}.txt</td></tr>`;
+  }
+}
+
+function renderPreviewTable() {
+  const tbody = document.getElementById('previewTableBody');
+  if (!tbody) return;
+  const searchEl = document.getElementById('previewSearchInput');
+  const q = searchEl ? searchEl.value.toLowerCase().trim() : '';
+
+  const filtered = currentPreviewLines
+    .map((cols, idx) => ({ cols, idx }))
+    .filter(({ cols }) => {
+      if (!q) return true;
+      return (cols[0] || '').toLowerCase().includes(q)
+        || (cols[5] || '').toLowerCase().includes(q)
+        || (cols[4] || '').toLowerCase().includes(q);
+    });
+
+  if (!isEditMode) {
+    tbody.innerHTML = filtered.map(({ cols, idx }) => {
+      const isConversational = idx < 50;
+      const badge = isConversational
+        ? `<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-1">💬 Giao tiếp A2-B2</span>`
+        : `<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200 mb-1">🎓 Nâng cao C1-C2</span>`;
+      const safeWord = (cols[0] || '').replace(/'/g, "\\'");
+
+      return `
+        <tr class="hover:bg-slate-50/80 align-top">
+          <td class="p-3 font-mono-code text-slate-400 font-bold">${idx + 1}</td>
+          <td class="p-3">
+            ${badge}
+            <div class="flex items-center gap-1.5">
+              <button onclick="speakWord('${safeWord}', event)" class="w-6 h-6 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs transition" title="Nghe phát âm">🔊</button>
+              <span class="font-bold text-slate-900 text-sm">${cols[0] || ''}</span>
+            </div>
+            <div class="font-mono-code text-[11px] text-slate-400 mt-0.5">${cols[1] || ''}</div>
+          </td>
+          <td class="p-3">
+            <div class="font-mono-code text-indigo-600 font-semibold">${cols[2] || ''}</div>
+            <div class="font-mono-code text-[10px] text-slate-400 mt-0.5">${cols[3] || ''}</div>
+          </td>
+          <td class="p-3 text-slate-700 leading-relaxed max-w-xs">${cols[4] || ''}</td>
+          <td class="p-3 font-semibold text-emerald-700">${cols[5] || ''}</td>
+          <td class="p-3 font-mono-code text-slate-600">${cols[7] || ''}</td>
+          <td class="p-3 text-slate-600 leading-relaxed max-w-md">${cols[8] || ''}</td>
+        </tr>
+      `;
+    }).join('');
+  } else {
+    tbody.innerHTML = filtered.map(({ cols, idx }) => `
+      <tr class="bg-amber-50/30 align-top">
+        <td class="p-2 font-mono-code text-slate-500 font-bold">${idx + 1}</td>
+        <td class="p-2">
+          <input type="text" value="${(cols[0] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 0, this.value)" class="w-full px-2 py-1 text-xs font-bold border border-slate-300 rounded mb-1" placeholder="Từ vựng" />
+          <input type="text" value="${(cols[1] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 1, this.value)" class="w-full px-2 py-1 text-[11px] font-mono-code border border-slate-200 rounded bg-slate-50" placeholder="Cloze" />
+        </td>
+        <td class="p-2">
+          <input type="text" value="${(cols[2] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 2, this.value)" class="w-full px-2 py-1 text-xs font-mono-code border border-slate-300 rounded mb-1" placeholder="/IPA/" />
+          <input type="text" value="${(cols[3] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 3, this.value)" class="w-full px-2 py-1 text-[10px] font-mono-code border border-slate-200 rounded bg-slate-50" placeholder="[sound:...]" />
+        </td>
+        <td class="p-2">
+          <textarea rows="2" onchange="updateCell(${idx}, 4, this.value)" class="w-full px-2 py-1 text-xs border border-slate-300 rounded">${cols[4] || ''}</textarea>
+        </td>
+        <td class="p-2">
+          <input type="text" value="${(cols[5] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 5, this.value)" class="w-full px-2 py-1 text-xs font-semibold text-emerald-800 border border-slate-300 rounded" />
+        </td>
+        <td class="p-2">
+          <input type="text" value="${(cols[7] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 7, this.value)" class="w-full px-2 py-1 text-xs font-mono-code border border-slate-300 rounded" />
+        </td>
+        <td class="p-2">
+          <textarea rows="2" onchange="updateCell(${idx}, 8, this.value)" class="w-full px-2 py-1 text-xs border border-slate-300 rounded">${cols[8] || ''}</textarea>
+        </td>
+      </tr>
+    `).join('');
+  }
+}
+
+function toggleEditMode() {
+  isEditMode = !isEditMode;
+  const toggleBtn = document.getElementById('btnToggleEdit');
+  const saveBtn = document.getElementById('btnSaveCloud');
+  if (isEditMode) {
+    if (toggleBtn) {
+      toggleBtn.innerText = '👁️ Chuyển về Chế độ Xem';
+      toggleBtn.className = 'px-3 py-1.5 bg-slate-800 text-white rounded-lg text-xs font-bold transition';
+    }
+    if (saveBtn) saveBtn.classList.remove('hidden');
+  } else {
+    if (toggleBtn) {
+      toggleBtn.innerText = '✏️ Bật chế độ Chỉnh sửa';
+      toggleBtn.className = 'px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-lg text-xs font-bold transition';
+    }
+  }
+  renderPreviewTable();
+}
+
+function updateCell(rowIdx, colIdx, val) {
+  if (!currentPreviewLines[rowIdx]) return;
+  currentPreviewLines[rowIdx][colIdx] = val.trim();
+  if (colIdx === 0) {
+    currentPreviewLines[rowIdx][1] = makeClozeJS(val);
+    currentPreviewLines[rowIdx][3] = makeSoundJS(val);
+  }
+  const saveBtn = document.getElementById('btnSaveCloud');
+  if (saveBtn) saveBtn.classList.remove('hidden');
+}
+
+async function saveEditedFileToGitHub() {
+  const owner = localStorage.getItem('gh_owner');
+  const repo = localStorage.getItem('gh_repo');
+  const branch = localStorage.getItem('gh_branch') || 'main';
+  const token = localStorage.getItem('gh_token');
+
+  if (!owner || !repo || !token) {
+    alert('Vui lòng cấu hình GitHub Personal Access Token trong phần ⚙️ Cấu hình API để lưu trực tiếp lên GitHub!');
+    openSettings();
+    return;
+  }
+
+  const saveBtn = document.getElementById('btnSaveCloud');
+  if (saveBtn) {
+    saveBtn.innerText = '⏳ Đang lưu lên GitHub...';
+    saveBtn.disabled = true;
+  }
+
+  const content = currentPreviewLines.map(cols => cols.slice(0, 9).join('\t')).join('\n') + '\n';
+  const path = `output/${currentPreviewStt}.txt`;
+
+  try {
+    const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`, {
+      headers: {
+        'Accept': 'application/vnd.github+json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    let sha = undefined;
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      sha = fileData.sha;
+    }
+
+    const encoded = btoa(unescape(encodeURIComponent(content)));
+    const putRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/vnd.github+json',
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `✏️ Cập nhật trực tiếp chủ đề #${currentPreviewStt} từ Web Studio`,
+        content: encoded,
+        sha,
+        branch
+      })
+    });
+
+    if (putRes.ok) {
+      logToConsole('SUCCESS', 'CLOUD_SAVE', `Đã lưu thành công chủ đề #${currentPreviewStt} lên nhánh ${branch}!`);
+      alert(`✅ Đã lưu thành công file output/${currentPreviewStt}.txt lên GitHub!`);
+      isEditMode = false;
+      toggleEditMode();
+    } else {
+      const err = await putRes.json();
+      alert(`Lỗi khi lưu lên GitHub: ${err.message}`);
+    }
+  } catch (e) {
+    alert(`Lỗi kết nối GitHub API: ${e.message}`);
+  } finally {
+    if (saveBtn) {
+      saveBtn.innerText = '☁️ Lưu trực tiếp lên GitHub';
+      saveBtn.disabled = false;
+    }
+  }
+}
+
+function switchPreviewTab(tab) {
+  ['table', 'flashcard', 'quiz'].forEach(t => {
+    const btn = document.getElementById(`pTab-${t}`);
+    const view = document.getElementById(`previewTab-${t}`);
+    if (btn) {
+      btn.className = t === tab
+        ? 'px-3 py-1.5 rounded-md text-xs font-bold bg-indigo-600 text-white transition'
+        : 'px-3 py-1.5 rounded-md text-xs font-bold text-slate-600 hover:text-slate-900 transition';
+    }
+    if (view) {
+      if (t === tab) view.classList.remove('hidden');
+      else view.classList.add('hidden');
+    }
+  });
+
+  if (tab === 'flashcard') renderFlashcard();
+  if (tab === 'quiz') nextQuizQuestion();
+}
+
+function renderFlashcard() {
+  if (!currentPreviewLines.length) return;
+  if (currentFlashcardIdx < 0) currentFlashcardIdx = currentPreviewLines.length - 1;
+  if (currentFlashcardIdx >= currentPreviewLines.length) currentFlashcardIdx = 0;
+
+  const scene = document.getElementById('flashcardScene');
+  if (scene) scene.classList.remove('flipped');
+  const cols = currentPreviewLines[currentFlashcardIdx];
+
+  const isConv = currentFlashcardIdx < 50;
+  const catEl = document.getElementById('fcCategoryBadge');
+  if (catEl) {
+    catEl.innerText = isConv ? 'PHẦN 1: GIAO TIẾP (A2-B2)' : 'PHẦN 2: NÂNG CAO (C1-C2)';
+    catEl.className = isConv
+      ? 'px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-3'
+      : 'px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-purple-50 text-purple-700 border border-purple-200 mb-3';
+  }
+
+  const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
+  setTxt('fcWord', cols[0] || '');
+  setTxt('fcIpa', cols[2] || '');
+  setTxt('fcCloze', cols[1] || '');
+  setTxt('fcMeaningVi', cols[5] || '');
+  setTxt('fcPlural', cols[7] ? `Số nhiều: ${cols[7]}` : '');
+  setTxt('fcDefEn', cols[4] || '');
+  const exEl = document.getElementById('fcExamples');
+  if (exEl) exEl.innerHTML = cols[8] || '';
+  setTxt('fcCounter', `${currentFlashcardIdx + 1} / ${currentPreviewLines.length}`);
+}
+
+function nextFlashcard(delta) {
+  currentFlashcardIdx += delta;
+  renderFlashcard();
+}
+
+function shuffleFlashcard() {
+  currentFlashcardIdx = Math.floor(Math.random() * currentPreviewLines.length);
+  renderFlashcard();
+}
+
+function nextQuizQuestion() {
+  if (!currentPreviewLines.length) return;
+  const idx = Math.floor(Math.random() * currentPreviewLines.length);
+  const cols = currentPreviewLines[idx];
+  currentQuizItem = {
+    idx,
+    word: (cols[0] || '').trim(),
+    cloze: cols[1] || '',
+    ipa: cols[2] || '',
+    def: cols[4] || '',
+    vi: cols[5] || '',
+    ex: cols[8] || ''
+  };
+
+  const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
+  setTxt('quizMeaningVi', currentQuizItem.vi);
+  setTxt('quizDefEn', currentQuizItem.def);
+  setTxt('quizClozeHint', currentQuizItem.cloze);
+  setTxt('quizIpaHint', currentQuizItem.ipa);
+
+  const input = document.getElementById('quizAnswerInput');
+  if (input) {
+    input.value = '';
+    input.focus();
+  }
+  const fb = document.getElementById('quizFeedbackBox');
   if (fb) fb.classList.add('hidden');
 }
 
 function checkQuizAnswer() {
-  const item = currentModalWords[modalQuizIndex];
-  const input = document.getElementById('quizUserInput');
-  const ans = (input ? input.value : '').trim().toLowerCase();
-  const fb = document.getElementById('quizFeedback');
-  if (!fb) return;
+  if (!currentQuizItem) return;
+  const input = document.getElementById('quizAnswerInput');
+  const userAns = (input ? input.value : '').trim().toLowerCase();
+  const target = currentQuizItem.word.toLowerCase();
+  const fb = document.getElementById('quizFeedbackBox');
+  if (fb) fb.classList.remove('hidden');
 
-  fb.classList.remove('hidden');
-  if (ans === item.word.toLowerCase()) {
-    modalQuizScore++;
-    const scoreText = document.getElementById('quizScoreText');
-    if (scoreText) scoreText.innerText = modalQuizScore;
-    fb.className = 'p-3 border-2 border-[#111] bg-[#38E54D] text-[#111] text-xs font-extrabold text-center';
-    fb.innerText = `🎉 CHÍNH XÁC! "${item.word}" (${item.ipa})`;
-    speakWord(item.word);
-    setTimeout(nextQuizQuestion, 1100);
+  if (userAns === target) {
+    quizScoreCorrect++;
+    const scEl = document.getElementById('quizScoreCorrect');
+    if (scEl) scEl.innerText = `Đúng: ${quizScoreCorrect}`;
+    if (fb) {
+      fb.className = 'mt-4 p-4 rounded-xl text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';
+      fb.innerHTML = `🎉 <strong>Chính xác tuyệt đối!</strong> Từ chuẩn là <span class="underline font-bold">${currentQuizItem.word}</span> (${currentQuizItem.ipa})<br><span class="text-xs font-normal text-slate-600 mt-1 block">${currentQuizItem.ex}</span>`;
+    }
+    speakWord(currentQuizItem.word);
   } else {
-    fb.className = 'p-3 border-2 border-[#111] bg-[#F05332] text-white text-xs font-extrabold text-center';
-    fb.innerText = `Chưa đúng! Đáp án chuẩn là: "${item.word}"`;
+    quizScoreWrong++;
+    const swEl = document.getElementById('quizScoreWrong');
+    if (swEl) swEl.innerText = `Sai: ${quizScoreWrong}`;
+    if (fb) {
+      fb.className = 'mt-4 p-4 rounded-xl text-sm font-semibold bg-rose-50 text-rose-800 border border-rose-200';
+      fb.innerHTML = `❌ <strong>Chưa chính xác!</strong> Đáp án đúng là: <span class="font-bold text-indigo-700">${currentQuizItem.word}</span> (${currentQuizItem.ipa})<br><span class="text-xs font-normal text-slate-600 mt-1 block">${currentQuizItem.ex}</span>`;
+    }
+    speakWord(currentQuizItem.word);
   }
 }
 
-function nextQuizQuestion() {
-  modalQuizIndex = (modalQuizIndex + 1) % currentModalWords.length;
-  loadQuizQuestion();
+function revealQuizAnswer() {
+  if (!currentQuizItem) return;
+  const input = document.getElementById('quizAnswerInput');
+  if (input) input.value = currentQuizItem.word;
+  checkQuizAnswer();
 }
 
-function speakQuizWord() {
-  if (currentModalWords.length && currentModalWords[modalQuizIndex]) {
-    speakWord(currentModalWords[modalQuizIndex].word);
-  }
-}
-
-// Phím tắt Flashcard & Modal Hotkeys
-window.addEventListener('keydown', (e) => {
+function closePreviewModal() {
+  stopPlaylistAudio();
+  if (isAutoSlide) toggleFlashcardAutoSlide();
   const modal = document.getElementById('previewModal');
-  if (!modal || modal.classList.contains('hidden')) return;
-
-  // Nếu đang gõ text vào input thì không bắt phím tắt flashcard
-  if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
-
-  const fcView = document.getElementById('modalViewFlashcard');
-  const isFcVisible = fcView && !fcView.classList.contains('hidden');
-
-  if (e.key === 'Escape') {
-    closePreview();
-  } else if (isFcVisible) {
-    if (e.code === 'Space') {
-      e.preventDefault();
-      toggleFlipCard();
-    } else if (e.key === 'ArrowLeft') {
-      changeFlashcard(-1);
-    } else if (e.key === 'ArrowRight') {
-      changeFlashcard(1);
-    } else if (e.key === '1') {
-      rateFlashcardSRS(1); // Again
-    } else if (e.key === '2') {
-      rateFlashcardSRS(2); // Hard
-    } else if (e.key === '3') {
-      rateFlashcardSRS(3); // Good
-    } else if (e.key === '4') {
-      rateFlashcardSRS(4); // Easy
-    }
-  }
-});
-
-
-// ==================== TẢI TRỌN BỘ 100 FILE MP3 DẠNG ZIP TỪ GOOGLE CLOUD SERVICE ====================
-
-async function downloadTopicAudioZipDirect(stt, topicName = null, btnElement = null) {
-  const serviceUrl = typeof getAudioServiceUrl === 'function' ? getAudioServiceUrl() : (DEFAULT_AUDIO_SERVICE_URL || 'https://anki-audio-service-918034752495.asia-southeast1.run.app');
-
-  // Tự động tìm tên chủ đề nếu không truyền vào
-  let safeTopicTitle = topicName;
-  if (!safeTopicTitle && typeof allTopics !== 'undefined' && Array.isArray(allTopics)) {
-    const f = allTopics.find(x => Number(x.stt) === Number(stt));
-    if (f) safeTopicTitle = f.topic;
-  }
-  if (!safeTopicTitle) safeTopicTitle = `Chủ đề #${stt}`;
-
-  const btn = btnElement || document.getElementById('btnDownloadAudioZip');
-  const originalHtml = btn ? btn.innerHTML : '🔊 Tạo Audio ZIP';
-  if (btn) {
-    btn.disabled = true;
-    btn.innerHTML = '⏳ Đang tạo audio (5s)...';
-  }
-
-  try {
-    // 1. Lấy danh sách từ vựng: Ưu tiên currentModalWords nếu đang mở modal đúng bài, kế đến smartFetch file output/{stt}.txt, kế đến draft local
-    let words = [];
-    if (typeof activeStt !== 'undefined' && Number(activeStt) === Number(stt) && currentModalWords && currentModalWords.length) {
-      words = currentModalWords.map(w => w.word).filter(Boolean);
-    } else {
-      try {
-        const resFile = await smartFetch(`output/${stt}.txt`);
-        if (resFile && resFile.ok) {
-          const text = await resFile.text();
-          const lines = text.trim().split(/\r?\n/).filter(Boolean);
-          words = lines.map(line => line.split('\t')[0].trim()).filter(Boolean);
-        }
-      } catch (fe) {
-        console.warn(`smartFetch không tìm thấy output/${stt}.txt, kiểm tra bản nháp:`, fe);
-      }
-    }
-
-    // Nếu chưa có, kiểm tra bản nháp lưu tạm
-    if (!words.length) {
-      const savedDraft = localStorage.getItem(`draft_topic_${stt}`);
-      if (savedDraft) {
-        const lines = savedDraft.trim().split(/\r?\n/).filter(Boolean);
-        words = lines.map(line => line.split('\t')[0].trim()).filter(Boolean);
-      }
-    }
-
-    if (!words.length) {
-      throw new Error(`Chủ đề #${stt} chưa có từ vựng! Vui lòng bấm "⚡ Tạo Trên Web" để tạo 100 từ vựng trước khi tạo file âm thanh.`);
-    }
-
-    if (typeof showLiveRunner === 'function') {
-      showLiveRunner(`⚡ [GCP CLOUD RUN] ĐANG CÀO & TẠO ÂM THANH CHO #${stt}: ${safeTopicTitle.toUpperCase()} (${words.length} TỪ)...`, 50, 3);
-    }
-    if (typeof logToConsole === 'function') {
-      logToConsole('INFO', 'AUDIO_CRAWL', `Bắt đầu cào âm thanh Cambridge & TTS cho chủ đề #${stt} (${words.length} từ) qua Google Cloud Run...`);
-    }
-
-    const res = await fetch(`${serviceUrl}/crawl_zip`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        topic_id: Number(stt),
-        topic_name: safeTopicTitle,
-        words: words
-      })
-    });
-
-    if (!res.ok) {
-      const errDetail = await res.text();
-      throw new Error(`Cloud Run HTTP ${res.status}: ${errDetail}`);
-    }
-
-    const blob = await res.blob();
-    if (!blob || blob.size < 100) {
-      throw new Error('Dữ liệu tải về từ Cloud Service không hợp lệ hoặc rỗng.');
-    }
-
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = blobUrl;
-    a.download = `output_${stt}_audio.zip`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-
-    // Giữ ObjectURL trong 60 giây để đảm bảo trình duyệt Chromium/Firefox tải hoàn tất vào máy
-    setTimeout(() => {
-      URL.revokeObjectURL(blobUrl);
-    }, 60000);
-
-    if (typeof logToConsole === 'function') {
-      logToConsole('SUCCESS', 'AUDIO_ZIP', `Đã tải trọn bộ file output_${stt}_audio.zip (${words.length} từ, ${(blob.size/1024).toFixed(1)} KB) về máy thành công!`);
-    }
-    if (typeof showToastAlert === 'function') {
-      showToastAlert(`🎉 Đã tải xong bộ âm thanh MP3 output_${stt}_audio.zip (${words.length} từ)!`);
-    }
-    if (typeof showLiveRunner === 'function') {
-      showLiveRunner(`🎉 ĐÃ TẢI XONG FILE output_${stt}_audio.zip (${words.length} TỪ)!`, 100, 5);
-      setTimeout(() => {
-        const lr = document.getElementById('liveRunnerBanner');
-        if (lr) lr.classList.add('hidden');
-      }, 4000);
-    }
-  } catch (err) {
-    console.error('Lỗi tải ZIP âm thanh:', err);
-    if (typeof showToastAlert === 'function') {
-      showToastAlert('⚠️ Lỗi tải âm thanh: ' + err.message);
-    }
-    alert('Không thể tải file âm thanh từ Cloud Service: ' + err.message);
-  } finally {
-    if (btn) {
-      btn.disabled = false;
-      btn.innerHTML = originalHtml;
-    }
+  // Chỉ đóng modal nếu là modal popup (trên studio.html thì hiển thị cố định)
+  if (modal && !modal.dataset.standalonePage) {
+    modal.classList.add('hidden');
   }
 }
 
-function downloadTopicAudioZip(btnElement = null) {
-  const titleEl = document.getElementById('previewTitle');
-  const topicName = titleEl ? titleEl.innerText : 'ChuDe';
-  const btn = btnElement || document.getElementById('btnDownloadAudioZip');
-  downloadTopicAudioZipDirect(activeStt, topicName, btn);
+// ==================== TRANG CHUYÊN BIỆT: STUDIO.HTML ====================
+function populateStudioTopicSelect() {
+  const select = document.getElementById('studioTopicSelect');
+  if (!select) return;
+
+  const completed = allTopics.filter(t => t.status === 'completed');
+  if (!completed.length) {
+    select.innerHTML = `<option value="">Chưa có chủ đề hoàn thành</option>`;
+    return;
+  }
+
+  select.innerHTML = completed.map(t => `<option value="${t.stt}">#${t.stt} — ${t.topic} (${t.word_count || 100} từ)</option>`).join('');
+}
+
+function onStudioTopicSelectChange(sttVal) {
+  const stt = parseInt(sttVal, 10);
+  if (!stt) return;
+  const topicObj = allTopics.find(t => t.stt === stt);
+  previewFile(stt, topicObj ? topicObj.topic : `Chủ đề #${stt}`);
+}
+
+function initStudioPage() {
+  populateStudioTopicSelect();
+  const params = new URLSearchParams(window.location.search);
+  const requestedStt = parseInt(params.get('stt') || '', 10);
+  const completed = allTopics.filter(t => t.status === 'completed');
+  const targetTopic = completed.find(t => t.stt === requestedStt) || completed[0];
+  if (targetTopic) {
+    previewFile(targetTopic.stt, targetTopic.topic);
+  }
 }

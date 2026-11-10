@@ -142,9 +142,6 @@ try {
     } else {
       try {
         $auditData = $auditRaw | ConvertFrom-Json
-        $iLoaded = [bool]($auditData.index -and $auditData.index.loaded)
-        $iCount = if ($auditData.index -and ($null -ne $auditData.index.errors)) { [int]$auditData.index.errors.Count } else { -1 }
-        $iErrors = if ($auditData.index) { @($auditData.index.errors) } else { @() }
 
         Write-Host "   • [battle.html removed]: " -NoNewline
         $battlePath = Join-Path $scriptDir "battle.html"
@@ -155,17 +152,25 @@ try {
           $exitCode = 1
         }
 
-        Write-Host "   • [index.html]:  " -NoNewline
-        if ($iLoaded -and $iCount -eq 0) {
-          Write-Host "0 uncaught exceptions (Loaded: $iLoaded) [PASS]" -ForegroundColor Green
-        } else {
-          Write-Host "$iCount uncaught exceptions (Loaded: $iLoaded) [FAIL]" -ForegroundColor Red
-          if ($iErrors -and $iErrors.Count -gt 0) {
-            foreach ($err in $iErrors) {
-              Write-Host "       ! $($err.message) ($($err.filename):$($err.lineno))" -ForegroundColor DarkRed
+        $pagesToAudit = @("index", "grid", "studio", "audio", "corpus", "audit", "quiz")
+        foreach ($pKey in $pagesToAudit) {
+          $pObj = $auditData.$pKey
+          $pLoaded = [bool]($pObj -and $pObj.loaded)
+          $pCount = if ($pObj -and ($null -ne $pObj.errors)) { [int]$pObj.errors.Count } else { -1 }
+          $pErrors = if ($pObj) { @($pObj.errors) } else { @() }
+
+          Write-Host ("   • [{0}.html]: " -f $pKey).PadRight(20) -NoNewline
+          if ($pLoaded -and $pCount -eq 0) {
+            Write-Host "0 uncaught exceptions (Loaded: $pLoaded) [PASS]" -ForegroundColor Green
+          } else {
+            Write-Host "$pCount uncaught exceptions (Loaded: $pLoaded) [FAIL]" -ForegroundColor Red
+            if ($pErrors -and $pErrors.Count -gt 0) {
+              foreach ($err in $pErrors) {
+                Write-Host "       ! $($err.message) ($($err.filename):$($err.lineno))" -ForegroundColor DarkRed
+              }
             }
+            $exitCode = 1
           }
-          $exitCode = 1
         }
       } catch {
         Write-Host "   ❌ Failed to parse JSON from frame-audit-results: $_" -ForegroundColor Red

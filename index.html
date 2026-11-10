@@ -3,1054 +3,231 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Headless E2E Verification & Audit Exception Trap -->
-  <script>
-    window.__PAGE_ERRORS__ = window.__PAGE_ERRORS__ || [];
-    window.addEventListener('error', function(e) {
-      var errObj = {
-        type: 'uncaught_error',
-        message: e.message || String(e),
-        filename: e.filename || '',
-        lineno: e.lineno || 0,
-        colno: e.colno || 0,
-        timestamp: Date.now()
-      };
-      window.__PAGE_ERRORS__.push(errObj);
-      if (window.parent && window.parent !== window) {
-        try {
-          window.parent.postMessage({
-            type: 'PAGE_ERROR_DISPATCH',
-            source: 'index',
-            error: errObj
-          }, '*');
-        } catch (_) {}
-      }
-    });
-    window.addEventListener('unhandledrejection', function(e) {
-      var reasonMsg = (e.reason && (e.reason.message || e.reason.stack)) ? String(e.reason.message || e.reason) : String(e.reason);
-      var errObj = {
-        type: 'unhandled_rejection',
-        message: reasonMsg,
-        timestamp: Date.now()
-      };
-      window.__PAGE_ERRORS__.push(errObj);
-      if (window.parent && window.parent !== window) {
-        try {
-          window.parent.postMessage({
-            type: 'PAGE_ERROR_DISPATCH',
-            source: 'index',
-            error: errObj
-          }, '*');
-        } catch (_) {}
-      }
-    });
-    window.addEventListener('load', function() {
-      if (window.parent && window.parent !== window) {
-        try {
-          window.parent.postMessage({
-            type: 'PAGE_LOAD_DISPATCH',
-            source: 'index'
-          }, '*');
-        } catch (_) {}
-      }
-    });
-  </script>
-  <title>The Anki Dictionary — 1000 Topics Studio</title>
+  <title>The Anki Dictionary — Quản Lý 1.000 Chủ Đề & Tạo Từ Vựng AI</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="min-h-screen pb-24">
+<body class="min-h-screen flex flex-col">
 
-  <!-- ==================== HEADER PHONG CÁCH THE IELTS DICTIONARY ==================== -->
-  <header class="bg-[#F8F7F2] border-b-[3px] border-[#111111] sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-      <!-- Logo -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-[#4F6D46] border-[2.5px] border-[#111] shadow-[2px_2px_0px_#111] flex items-center justify-center text-white font-display font-extrabold text-xl">
-          D
-        </div>
-        <div>
-          <span class="font-display font-extrabold text-lg sm:text-xl tracking-tight text-[#2E4028]">The Anki Dictionary</span>
-          <span class="hidden sm:inline-block ml-2 text-xs font-mono-code font-bold bg-[#FFE787] border border-[#111] px-2 py-0.5 rounded">1000 TOPICS</span>
-        </div>
-      </div>
+  <!-- THANH ĐIỀU HƯỚNG DÙNG CHUNG (Tự động gắn bởi js/layout.js) -->
+  <div id="sharedNavbarMount"></div>
 
-      <!-- Right Navigation Actions -->
-      <div class="flex flex-wrap items-center gap-2.5">
-        <button onclick="loadData(true)" class="px-3.5 py-1.5 rounded-full bg-white border-2 border-[#111] shadow-[2px_2px_0px_#111] text-xs font-extrabold flex items-center gap-1.5 hover:bg-amber-100">
-          🌐 VI • <span id="lastUpdated">Đang tải...</span>
-        </button>
+  <!-- NỘI DUNG CHÍNH: TRANG CHỦ & DANH SÁCH 1.000 CHỦ ĐỀ -->
+  <main class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 flex-1 space-y-6">
 
-        <button onclick="toggleConsoleDrawer()" class="px-3.5 py-1.5 rounded-full bg-white border-2 border-[#111] shadow-[2px_2px_0px_#111] text-xs font-extrabold flex items-center gap-1.5 hover:bg-amber-100 relative">
-          🖥️ Nhật ký & Log
-          <span id="errorCountBubble" class="hidden -top-1.5 -right-1.5 absolute bg-red-600 text-white text-[10px] font-mono-code font-extrabold w-5 h-5 rounded-full border-2 border-[#111] items-center justify-center">0</span>
-        </button>
-
-        <button onclick="openSettings()" class="px-3.5 py-1.5 rounded-full bg-[#FFE787] border-2 border-[#111] shadow-[2px_2px_0px_#111] text-xs font-extrabold hover:bg-amber-300">
-          ⚙️ Cấu hình API
-        </button>
-      </div>
-    </div>
-  </header>
-<div id="liveRunnerBanner" class="hidden max-w-7xl mx-auto px-4 mt-4">
-    <div id="liveRunnerBox" class="neo-box bg-[#FFFDF7] p-4 rounded-none relative overflow-hidden">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
-        <div class="flex items-center gap-3">
-          <span id="liveRunnerBadge" class="tid-badge-num bg-blue-600">LIVE RUNNER</span>
-          <h3 id="liveRunnerTitle" class="font-display font-extrabold text-sm sm:text-base uppercase tracking-tight">
-            ĐANG KẾT NỐI GITHUB ACTIONS...
-          </h3>
-        </div>
-        <div class="flex items-center gap-2">
-          <span id="liveRunnerTimer" class="font-mono-code text-xs font-bold bg-slate-200 border border-[#111] px-2 py-1">00:00</span>
-          <a id="liveRunnerGhLink" href="#" target="_blank" class="text-xs font-extrabold underline hover:text-blue-700">Mở GitHub Log ↗</a>
-          <button onclick="toggleConsoleDrawer(true)" class="px-2.5 py-1 bg-[#111] text-white text-xs font-mono-code font-bold">Xem Chi Tiết</button>
-        </div>
-      </div>
-
-      <!-- Thanh tiến trình kẻ sọc chuyển động -->
-      <div class="w-full h-6 bg-slate-200 border-[2.5px] border-[#111] relative overflow-hidden">
-        <div id="liveRunnerBar" class="h-full bg-[#199A5E] progress-stripes transition-all duration-500 flex items-center justify-end pr-2 text-[11px] font-mono-code font-extrabold text-white" style="width: 15%">
-          15%
-        </div>
-      </div>
-
-      <!-- Các bước Step-by-step -->
-      <div id="liveRunnerSteps" class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-[11px] font-mono-code font-bold">
-        <div id="step-1" class="p-1.5 border border-[#111] bg-amber-100">1. Khởi tạo Job</div>
-        <div id="step-2" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">2. Cài đặt Python</div>
-        <div id="step-3" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">3. Gọi Gemini API</div>
-        <div id="step-4" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">4. Xuất 9 cột TSV</div>
-        <div id="step-5" class="p-1.5 border border-[#111] bg-slate-100 text-slate-400">5. Commit & Push</div>
-      </div>
-
-      <!-- Khu vực hiển thị từ vựng đang tạo thời gian thực (Real-time Word Streaming Tracker) -->
-      <div id="liveWordTrackerBox" class="mt-4 border-2 border-[#111] bg-amber-50/70 p-3 sm:p-4 rounded-none shadow-[3px_3px_0px_#111]">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-[#111] pb-2 mb-3">
-          <div class="flex items-center gap-2 flex-wrap">
-            <span class="inline-flex items-center justify-center w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="text-xs font-mono-code font-extrabold uppercase text-[#111]">TỪ VỰNG ĐANG SINH TRỰC TIẾP:</span>
-            <span id="liveWordCounterBadge" class="bg-[#111] text-[#FFE787] text-[11px] font-mono-code font-bold px-2 py-0.5 rounded-none border border-black">0 / 100 từ (0%)</span>
-          </div>
-          <div class="flex items-center gap-2 text-xs font-mono-code">
-            <span id="liveWordCategoryBadge" class="px-2 py-0.5 font-bold border border-[#111] bg-emerald-100 text-emerald-900">A2-B2 Giao tiếp</span>
-            <span id="liveTopicNameBadge" class="text-slate-700 font-bold truncate max-w-[220px]">Chủ đề</span>
-          </div>
-        </div>
-
-        <!-- Thẻ từ vựng lớn hiển thị thông tin từ đang tạo -->
-        <div id="liveCurrentWordCard" class="bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111] transition-all duration-200">
-          <div class="flex flex-wrap items-baseline gap-2 sm:gap-3 mb-1">
-            <span id="liveCurrentWordName" class="font-display font-extrabold text-xl sm:text-2xl text-[#111] tracking-tight">waiting...</span>
-            <span id="liveCurrentWordIpa" class="font-mono-code text-sm sm:text-base text-indigo-600 font-bold">/.../</span>
-            <span id="liveCurrentWordVi" class="font-display font-bold text-sm sm:text-base text-emerald-700 bg-emerald-50 px-2 py-0.5 border border-emerald-300">Nghĩa tiếng Việt</span>
-            <span id="liveCurrentWordPlural" class="font-mono-code text-xs text-slate-500 font-bold"></span>
-          </div>
-          <p id="liveCurrentWordDef" class="text-xs text-slate-700 italic mb-2">Đang tải và xử lý từ vựng từ Gemini AI...</p>
-          <div class="bg-slate-50 border border-slate-300 p-2 text-xs text-slate-800 space-y-1 font-sans">
-            <div class="flex gap-1.5"><span class="font-bold text-blue-600">Ex 1:</span> <span id="liveCurrentWordEx1">...</span></div>
-            <div class="flex gap-1.5"><span class="font-bold text-blue-600">Ex 2:</span> <span id="liveCurrentWordEx2">...</span></div>
-          </div>
-        </div>
-
-        <!-- Khay cuộn các chip từ vựng đã hoàn thành -->
-        <div class="mt-3">
-          <div class="text-[11px] font-mono-code font-bold text-slate-600 uppercase mb-1.5 flex items-center justify-between">
-            <span>Danh sách từ đã sinh (<span id="liveStreamedCount">0</span>/100 từ):</span>
-            <span class="text-[10px] text-slate-400 font-normal">Tự động tích lũy từng từ</span>
-          </div>
-          <div id="liveWordChipsContainer" class="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto p-2 bg-white border border-[#111] shadow-inner text-xs">
-            <span class="text-xs text-slate-400 italic">Chưa có từ nào được sinh. Bấm nút tạo từ để bắt đầu...</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
-
-    <!-- ==================== BANNER 01: HÔM NAY TẠO GÌ* (MÀU TÍM ĐÊM + MẶT TRĂNG) ==================== -->
-    <section class="neo-box bg-[#2C317A] text-white p-6 sm:p-8 relative overflow-hidden">
-      <!-- Trang trí Mặt Trăng & Ngôi Sao Pixel -->
-      <div class="hidden md:flex w-32 h-32 rounded-full bg-slate-200 border-[3px] border-[#111] shadow-inner absolute right-10 -top-6 items-center justify-center">
-        <div class="w-6 h-6 rounded-full bg-slate-400/70 absolute top-8 left-6"></div>
-        <div class="w-9 h-9 rounded-full bg-slate-400/60 absolute bottom-6 right-7"></div>
-        <div class="w-4 h-4 rounded-full bg-slate-400/80 absolute top-14 right-6"></div>
-      </div>
-
-      <div class="relative z-10 max-w-2xl space-y-4">
-        <div class="flex items-center gap-3">
-          <span class="tid-badge-num">01</span>
-          <span class="font-mono-code text-xs uppercase tracking-widest text-amber-300 font-bold">LỘ TRÌNH TỰ ĐỘNG HÓA ANKI</span>
-        </div>
-
-        <h1 class="font-display font-extrabold text-3xl sm:text-5xl uppercase leading-none tracking-tight">
-          HÔM NAY TẠO GÌ<span class="text-[#FF9F1C]">*</span>
-        </h1>
-
-        <p class="text-sm sm:text-base text-indigo-100 font-medium leading-relaxed">
-          Hệ thống tự động sinh <b class="text-[#FFE787]">3 chủ đề mới mỗi ngày</b> (100 danh từ/chủ đề, chuẩn 9 cột Anki TSV). Chủ đề tiếp theo trong hàng đợi:
-          <span id="nextQueueBadge" class="inline-block bg-[#111] text-[#FFE787] font-mono-code font-bold px-2.5 py-0.5 border border-white/40 ml-1">Đang kiểm tra...</span>
-        </p>
-
-        <!-- Cụm nút CTA phong cách TID -->
-        <div class="flex flex-wrap items-center gap-3 pt-2">
-          <div class="flex items-center bg-white text-[#111] border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] px-2 py-1">
-            <span class="text-xs font-extrabold mr-2">Số lượng:</span>
-            <input id="customBatchInput" type="number" min="1" max="20" value="3" class="w-12 text-center font-mono-code font-extrabold text-sm bg-amber-100 border border-[#111] py-0.5" />
-          </div>
-
-          <button onclick="generateDirectlyInBrowser()" class="tid-cta ring-2 ring-emerald-400" title="Chạy trực tiếp bằng trình duyệt, thấy ngay từng từ sinh ra trong 2 giây!">
-            <span class="tid-cta-arrow" style="background:#38E54D; font-size:1.05rem">⚡</span>
-            <span class="tid-cta-label" style="background:#169C64; color:#fff">Tạo Trực Tiếp Trên Web (Thấy Từng Từ)</span>
-          </button>
-
-          <button onclick="triggerCustomBatch()" class="tid-cta" title="Chạy máy ảo GitHub Actions tự động trên đám mây">
-            <span class="tid-cta-arrow">☁️</span>
-            <span class="tid-cta-label">Chạy GitHub Action Ngầm</span>
-          </button>
-
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 5 THẺ MÀU PHONG CÁCH LISTENING / READING / SPEAKING / WRITING / VOCAB ==================== -->
+    <!-- 1. THỐNG KÊ TIẾN ĐỘ TỔNG QUAN (5 KPI CARDS) -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-      <!-- Card 1: Blue (Tổng chủ đề) -->
-      <div onclick="setFilterAndScroll('all')" class="neo-box bg-[#3F6AE4] text-white p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
-        <div>
-          <div class="flex items-center gap-2 mb-3">
-            <span id="cardTotalBadge" class="tid-badge-num">1000</span>
-            <span class="font-mono-code text-xs font-bold uppercase tracking-wider text-blue-100">CHỦ ĐỀ</span>
-          </div>
-          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight drop-shadow-[2px_2px_0px_#111]">
-            MASTER LIST
-          </h2>
-          <p class="text-xs text-blue-100 mt-2 leading-relaxed">
-            Toàn bộ danh sách chủ đề tiếng Việt từ file Excel gốc của bạn.
-          </p>
+      <div class="neo-box p-4 bg-white">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">Chủ Đề Đã Xong</span>
+          <span class="tid-badge-num bg-[#169C64] text-white">DONE</span>
         </div>
-        <div class="mt-4 flex items-end justify-between">
-          <span class="text-xs font-mono-code font-bold underline">Xem tất cả →</span>
-          <span class="text-3xl select-none">🦖</span>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="statCompleted" class="text-3xl font-display font-extrabold text-[#169C64]">0</span>
+          <span class="text-xs font-mono-code font-bold text-slate-500">/ 1.000</span>
         </div>
       </div>
 
-      <!-- Card 2: Green (Đã tạo đủ 100 từ) -->
-      <div onclick="setFilterAndScroll('completed')" class="neo-box bg-[#169C64] text-white p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
-        <div>
-          <div class="flex items-center gap-2 mb-3">
-            <span id="cardCompletedBadge" class="tid-badge-num">0 DONE</span>
-            <span class="font-mono-code text-xs font-bold uppercase tracking-wider text-emerald-100">ĐÃ TẠO</span>
-          </div>
-          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight drop-shadow-[2px_2px_0px_#111]">
-            COMPLETED
-          </h2>
-          <p id="cardPerfectText" class="text-xs text-emerald-100 mt-2 leading-relaxed">
-            0 chủ đề đạt chuẩn 100 danh từ, sẵn sàng xuất sang Anki.
-          </p>
+      <div class="neo-box p-4 bg-white">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">Đang Chờ Tạo</span>
+          <span class="tid-badge-num bg-[#FF9F1C] text-[#141414]">QUEUE</span>
         </div>
-        <div class="mt-4 flex items-end justify-between">
-          <span class="text-xs font-mono-code font-bold underline">Lọc đã xong →</span>
-          <span class="text-3xl select-none">🎓</span>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="statPending" class="text-3xl font-display font-extrabold text-[#D97706]">1,000</span>
+          <span class="text-xs font-mono-code font-bold text-slate-500">chủ đề</span>
         </div>
       </div>
 
-      <!-- Card 3: Yellow (Chưa tạo / Hàng đợi) -->
-      <div onclick="setFilterAndScroll('pending')" class="neo-box bg-[#F7B32B] text-[#111] p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
-        <div>
-          <div class="flex items-center gap-2 mb-3">
-            <span id="cardPendingBadge" class="tid-badge-num">0 QUEUE</span>
-            <span class="font-mono-code text-xs font-bold uppercase tracking-wider">CHỜ TẠO</span>
-          </div>
-          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight text-white drop-shadow-[2px_2px_0px_#111]">
-            PENDING
-          </h2>
-          <p id="cardEtaText" class="text-xs font-semibold text-slate-900 mt-2 leading-relaxed">
-            Dự kiến hoàn thành sau - ngày với tốc độ 3 chủ đề/ngày.
-          </p>
+      <div class="neo-box p-4 bg-white">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">Tổng Từ Vựng</span>
+          <span class="tid-badge-num bg-[#2B59FF] text-white">WORDS</span>
         </div>
-        <div class="mt-4 flex items-end justify-between">
-          <span class="text-xs font-mono-code font-extrabold underline">Xem hàng đợi →</span>
-          <span class="text-3xl select-none">⏳</span>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="statWords" class="text-3xl font-display font-extrabold text-[#141414]">0</span>
+          <span id="statWordsSub" class="text-xs font-mono-code font-bold text-[#2B59FF]">/ 100.000</span>
         </div>
       </div>
 
-      <!-- Card 4: Red-Orange (Lỗi hoặc Thiếu từ <100) -->
-      <div onclick="setFilterAndScroll('issues')" class="neo-box bg-[#F05332] text-white p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
-        <div>
-          <div class="flex items-center gap-2 mb-3">
-            <span id="cardIssueBadge" class="tid-badge-num">0 LỖI</span>
-            <span class="font-mono-code text-xs font-bold uppercase tracking-wider text-orange-100">KIỂM TRA</span>
-          </div>
-          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight drop-shadow-[2px_2px_0px_#111]">
-            QA & RETRY
-          </h2>
-          <p class="text-xs text-orange-100 mt-2 leading-relaxed">
-            Các chủ đề bị lỗi API hoặc thiếu từ (&lt;100 từ) cần chạy bù.
-          </p>
+      <div class="neo-box p-4 bg-white">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">Tiếp Theo Cần Tạo</span>
+          <span class="tid-badge-num bg-[#8C43F6] text-white">NEXT</span>
         </div>
-        <div class="mt-4 flex items-end justify-between">
-          <span class="text-xs font-mono-code font-bold underline">Kiểm tra ngay →</span>
-          <span class="text-3xl select-none">🛠️</span>
+        <div class="mt-2">
+          <div id="statNextStt" class="text-xl font-display font-extrabold font-mono-code text-[#8C43F6]">#...</div>
+          <div id="statNextName" class="text-xs font-bold text-slate-700 truncate mt-0.5">Đang kiểm tra...</div>
         </div>
       </div>
 
-      <!-- Card 5: Purple (Tổng kho từ vựng) -->
-      <div onclick="switchMainTab('corpus')" class="neo-box bg-[#8C43F6] text-white p-5 flex flex-col justify-between min-h-[210px] cursor-pointer hover:-translate-y-1 transition relative overflow-hidden">
-        <div>
-          <div class="flex items-center gap-2 mb-3">
-            <span id="cardWordsBadge" class="tid-badge-num">0 TỪ</span>
-            <span class="font-mono-code text-xs font-bold uppercase tracking-wider text-purple-100">KHO TỪ</span>
-          </div>
-          <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight drop-shadow-[2px_2px_0px_#111]">
-            VOCAB BANK
-          </h2>
-          <p class="text-xs text-purple-100 mt-2 leading-relaxed">
-            Mở rộng vốn từ theo chủ đề, tra cứu trùng lặp và tải gói MP3.
-          </p>
+      <div class="neo-box p-4 bg-[#FFE787] text-[#141414] flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-[#141414]">Tiến Độ Toàn Dự Án</span>
+          <span id="statPercent" class="text-xl font-display font-extrabold font-mono-code text-[#141414]">0.0%</span>
         </div>
-        <div class="mt-4 flex items-end justify-between">
-          <span class="text-xs font-mono-code font-bold underline">Mở Từ điển →</span>
-          <span class="text-3xl select-none">📚</span>
+        <div class="w-full h-3.5 bg-white border-2 border-[#141414] rounded-full overflow-hidden mt-3">
+          <div id="progressBar" class="h-full bg-[#169C64] transition-all duration-500" style="width: 0%"></div>
+        </div>
+        <div class="text-[11px] font-mono-code font-bold text-slate-800 mt-2 flex justify-between">
+          <span>50 Giao tiếp (A2-B2)</span>
+          <span>50 Nâng cao (C1-C2)</span>
         </div>
       </div>
     </section>
 
-    <!-- ==================== BANNER 02: TIẾN ĐỘ TỔNG & XUẤT FILE (MÀU XANH BẦU TRỜI + KHỦNG LONG PIXEL) ==================== -->
-    <section class="neo-box bg-[#8DD2FF] p-6 relative overflow-hidden">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div class="space-y-3 flex-1">
-          <div class="flex items-center gap-2.5">
-            <span class="tid-badge-num">02</span>
-            <span class="font-mono-code text-xs font-extrabold uppercase tracking-wider">TIẾN ĐỘ XÂY DỰNG KHO 100.000 DANH TỪ</span>
-          </div>
-          <h2 class="font-display font-extrabold text-2xl sm:text-3xl uppercase tracking-tight">
-            TIẾN TRÌNH TỔNG THỂ: <span id="bigProgressPercent" class="text-[#169C64]">0%</span><span class="text-[#FF9F1C]">*</span>
-          </h2>
+    <!-- 2. THANH TIẾN TRÌNH AI REAL-TIME (Tự động gắn bởi js/layout.js) -->
+    <div id="sharedLiveRunnerMount"></div>
 
-          <!-- Thanh tiến độ Neo-Brutalist -->
-          <div class="w-full h-7 bg-white border-[3px] border-[#111] shadow-[3px_3px_0px_#111] flex overflow-hidden">
-            <div id="barPerfect" class="bg-[#169C64] h-full transition-all duration-500 flex items-center justify-center text-[11px] font-mono-code font-extrabold text-white" style="width: 0%"></div>
-            <div id="barPartial" class="bg-[#F7B32B] h-full transition-all duration-500" style="width: 0%"></div>
-          </div>
-
-          <div class="flex flex-wrap gap-3 pt-2">
-            <button onclick="downloadSelectedOrAllZip()" class="tid-cta">
-              <span class="tid-cta-arrow">📦</span>
-              <span class="tid-cta-label">Tải ZIP (<span id="zipBtnCount">Tất cả đã tạo</span>)</span>
-            </button>
-            <button onclick="downloadSelectedOrAllMerged()" class="tid-cta">
-              <span class="tid-cta-arrow">📑</span>
-              <span class="tid-cta-label">Gộp 1 File Anki (.TXT)</span>
-            </button>
-            <button onclick="downloadSelectedOrFirstAudioZip(this)" id="bannerAudioZipBtn" class="tid-cta bg-[#FF9F1C] hover:bg-amber-400 text-[#111]">
-              <span class="tid-cta-arrow">🔊</span>
-              <span class="tid-cta-label">Tải ZIP Âm Thanh (GCP)</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Hộp thoại Khủng Long Pixel như trong ảnh 1 -->
-        <div class="flex items-center gap-4 self-end lg:self-center">
-          <div class="bg-white border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111] p-3.5 max-w-[230px] text-xs font-bold leading-snug relative">
-            Học từ vựng thông minh hơn, tự động tạo đủ 9 trường chuẩn Anki mỗi ngày!
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== HAI CỘT ĐUA TOP (03) & NHẬT KÝ LỖI NHANH (04) ==================== -->
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <!-- Cột 03: Bảng Xếp Hạng Chủ Đề Mới Tạo (Phong cách ĐUA TOP Vàng Kem) -->
-      <div class="neo-box bg-[#FFF0B3] p-6 flex flex-col justify-between">
+    <!-- 3. BẢNG ĐIỀU KHIỂN TẠO TỪ VỰNG AI & XUẤT DỮ LIỆU HÀNG LOẠT -->
+    <section class="neo-box p-5 bg-white space-y-4">
+      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-slate-100">
         <div>
-          <div class="flex items-center gap-2.5 mb-4">
-            <span class="tid-badge-num">03</span>
-            <span class="font-mono-code text-xs font-extrabold uppercase">SÀN TIẾN ĐỘ • CHỦ ĐỀ MỚI NHẤT</span>
-          </div>
-
-          <div class="bg-white border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111] p-4 space-y-2.5">
-            <p class="font-mono-code text-xs font-extrabold uppercase tracking-wider border-b-2 border-[#111] pb-1.5">
-              CÁC CHỦ ĐỀ VỪA HOÀN THÀNH GẦN ĐÂY
-            </p>
-            <div id="recentCompletedList" class="space-y-2 text-xs font-bold">
-              <p class="text-slate-500 py-2">Đang tải dữ liệu...</p>
-            </div>
-          </div>
-
-          <h3 class="font-display font-extrabold text-xl sm:text-2xl uppercase mt-5 leading-tight">
-            TẠO ĐỀU MỖI NGÀY, CHINH PHỤC 1.000 CHỦ ĐỀ<span class="text-[#FF9F1C]">*</span>
+          <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+            🚀 Trung Tâm Điều Khiển Tạo Từ Vựng Tự Động & Xuất Dữ Liệu Anki
           </h3>
-        </div>
-      </div>
-
-      <!-- Cột 04: Trạng Thái Hệ Thống & Báo Lỗi Trực Tiếp (Phong cách TID COMMUNITY Xanh Rêu) -->
-      <div class="neo-box bg-[#557A46] text-white p-6 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <div class="flex items-center gap-2.5">
-              <span class="tid-badge-num">04</span>
-              <span class="font-mono-code text-xs font-extrabold uppercase text-emerald-100">SYSTEM HEALTH & ERROR LOGS</span>
-            </div>
-            <button onclick="loadRunLogs()" class="text-xs font-mono-code underline text-[#FFE787]">↻ Làm mới Log</button>
-          </div>
-
-          <div id="quickLogBox" class="bg-[#141414] text-emerald-400 border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111] p-4 font-mono-code text-xs h-44 overflow-y-auto space-y-1.5">
-            <p class="text-slate-400">[SYSTEM] Đang tải file run_logs.json...</p>
-          </div>
-
-          <h3 class="font-display font-extrabold text-xl sm:text-2xl uppercase mt-5 leading-tight">
-            GIÁM SÁT LỖI & TỰ ĐỘNG CHẠY LẠI<span class="text-[#FF9F1C]">*</span>
-          </h3>
-        </div>
-
-        <div class="mt-4 flex flex-wrap gap-3">
-          <button onclick="toggleConsoleDrawer(true)" class="tid-cta">
-            <span class="tid-cta-arrow">→</span>
-            <span class="tid-cta-label">Mở Bảng Log Đầy Đủ</span>
-          </button>
-          <button onclick="runQualityAudit()" class="tid-cta">
-            <span class="tid-cta-arrow">🛡️</span>
-            <span class="tid-cta-label">Quét Lỗi Định Dạng 9 Cột</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== THANH CHUYỂN TAB CHÍNH ==================== -->
-    <div id="workspaceAnchor" class="flex flex-wrap gap-2 pt-2">
-      <button onclick="switchMainTab('list')" id="mainTab-list" class="neo-btn px-4 py-2.5 bg-[#111] text-white font-display font-extrabold text-xs uppercase">
-        [05] 📋 DANH SÁCH 1.000 CHỦ ĐỀ
-      </button>
-      <button onclick="switchMainTab('grid')" id="mainTab-grid" class="neo-btn px-4 py-2.5 bg-[#F8F7F2] text-[#111] font-display font-extrabold text-xs uppercase">
-        [06] 🟩 BẢN ĐỒ LƯỚI 1.000 Ô
-      </button>
-      <button onclick="switchMainTab('corpus')" id="mainTab-corpus" class="neo-btn px-4 py-2.5 bg-[#F8F7F2] text-[#111] font-display font-extrabold text-xs uppercase">
-        [07] 📚 TỪ ĐIỂN TỔNG & TRÙNG LẶP
-      </button>
-      <button onclick="switchMainTab('audit')" id="mainTab-audit" class="neo-btn px-4 py-2.5 bg-[#F8F7F2] text-[#111] font-display font-extrabold text-xs uppercase">
-        [08] 🛠️ KIỂM TOÁN QA & BÁO LỖI
-      </button>
-      <button onclick="switchMainTab('quiz')" id="mainTab-quiz" class="neo-btn px-4 py-2.5 bg-[#FFE787] text-[#111] font-display font-extrabold text-xs uppercase border-2 border-[#111] shadow-[2px_2px_0px_#111] flex items-center gap-1.5">
-        [09] 🎯 TRẮC NGHIỆM TỪ VỰNG
-      </button>
-    </div>
-
-    <!-- ==================== TAB 1: BẢNG QUẢN LÝ 1.000 CHỦ ĐỀ ==================== -->
-    <section id="tabSection-list" class="neo-box bg-[#F8F7F2] p-4 sm:p-6 space-y-4">
-      <!-- Bộ lọc -->
-      <div class="flex flex-col lg:flex-row gap-3 justify-between items-stretch lg:items-center pb-3 border-b-2 border-[#111]">
-        <div class="flex flex-wrap gap-2">
-          <button onclick="setFilter('all')" id="btn-all" class="neo-btn px-3 py-1.5 text-xs font-extrabold bg-[#111] text-white">Tất cả</button>
-          <button onclick="setFilter('completed')" id="btn-completed" class="neo-btn px-3 py-1.5 text-xs font-extrabold bg-white">✓ Đã tạo</button>
-          <button onclick="setFilter('pending')" id="btn-pending" class="neo-btn px-3 py-1.5 text-xs font-extrabold bg-white">⏳ Chưa tạo</button>
-          <button onclick="setFilter('issues')" id="btn-issues" class="neo-btn px-3 py-1.5 text-xs font-extrabold bg-[#FFE787] text-red-700">⚠️ Lỗi / Thiếu từ (&lt;100)</button>
+          <p class="text-xs text-slate-500 mt-0.5">
+            Mỗi chủ đề gồm đúng <strong>100 danh từ tiếng Anh chuẩn</strong> (50 từ Giao tiếp A2-B2 + 50 từ Chuyên sâu C1-C2), 9 cột TSV và âm thanh Cambridge MP3.
+          </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <select id="rangeSelect" onchange="currentPage=1; applyFiltersAndRender()" class="neo-box-sm px-3 py-1.5 text-xs bg-white font-extrabold">
-            <option value="all">Khoảng STT: Tất cả (1–500)</option>
-            <option value="1-100">STT 1 – 100</option>
-            <option value="101-200">STT 101 – 200</option>
-            <option value="201-300">STT 201 – 300</option>
-            <option value="301-400">STT 301 – 400</option>
-            <option value="401-500">STT 401 – 500</option>
-          </select>
+          <!-- Cụm Tạo bằng AI -->
+          <div class="flex items-center bg-indigo-50 border border-indigo-200 rounded-xl p-1 gap-1.5">
+            <select id="batchSizeSelect" class="bg-white text-indigo-950 font-bold text-xs px-2.5 py-2 rounded-lg border border-indigo-200 focus:outline-none">
+              <option value="1">Chạy 1 chủ đề tiếp theo</option>
+              <option value="3">Chạy 3 chủ đề liên tiếp</option>
+              <option value="5" selected>Chạy 5 chủ đề liên tiếp</option>
+              <option value="10">Chạy 10 chủ đề liên tiếp</option>
+              <option value="20">Chạy 20 chủ đề liên tiếp</option>
+            </select>
+            <button onclick="generateDirectlyInBrowser()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-lg shadow-sm transition flex items-center gap-1.5" title="Tạo trực tiếp ngay trên trình duyệt bằng Gemini API Key">
+              ⚡ Tạo Trực Tiếp (Thấy Từng Từ)
+            </button>
+            <button onclick="triggerWorkflow()" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg shadow-sm transition flex items-center gap-1" title="Gửi lệnh chạy ngầm trên GitHub Actions">
+              ☁️ Chạy Cloud
+            </button>
+          </div>
 
-          <select id="sortSelect" onchange="applyFiltersAndRender()" class="neo-box-sm px-3 py-1.5 text-xs bg-white font-extrabold">
-            <option value="stt_asc">STT tăng dần (1→1000)</option>
-            <option value="stt_desc">STT giảm dần (1000→1)</option>
-            <option value="date_desc">Mới tạo gần nhất</option>
-            <option value="words_asc">Số lượng từ (Ít → Nhiều)</option>
-          </select>
-
-          <input
-            type="text"
-            id="searchInput"
-            oninput="currentPage=1; applyFiltersAndRender()"
-            placeholder="🔍 Tìm STT hoặc tên chủ đề..."
-            class="neo-box-sm w-full sm:w-64 px-3 py-1.5 text-xs bg-white font-bold focus:outline-none"
-          />
+          <!-- Cụm Tải Xuống Hàng Loạt -->
+          <button onclick="downloadSelectedOrAllZip()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
+            📦 Tải .ZIP (Nhiều file)
+          </button>
+          <button onclick="downloadSelectedOrAllMerged()" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
+            📑 Gộp 1 File .TXT Tổng
+          </button>
+          <button onclick="downloadSelectedOrAllCsv()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
+            📊 Xuất Bảng .CSV
+          </button>
+          <button onclick="downloadSelectedOrFirstAudioZip()" id="btnBulkAudioZip" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
+            🔊 Tải Audio (.ZIP)
+          </button>
+          <button onclick="loadData()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition">
+            🔄 Làm mới
+          </button>
         </div>
       </div>
 
-            <!-- Thanh lọc theo chuyên mục (Thematic Categories) -->
-      <div class="flex items-center gap-1.5 flex-wrap pt-1 pb-1">
-        <span class="text-xs font-mono-code font-extrabold uppercase text-slate-500 mr-1">CHUYÊN MỤC:</span>
-        <button id="catBtn-all" onclick="setCategoryFilter('all')" class="cat-filter-btn px-2.5 py-1 text-xs font-extrabold border-2 border-[#111] bg-[#111] text-white rounded-full">Tất cả</button>
-        <button id="catBtn-food" onclick="setCategoryFilter('food')" class="cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full">🍲 Ẩm Thực</button>
-        <button id="catBtn-travel" onclick="setCategoryFilter('travel')" class="cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full">✈️ Du Lịch</button>
-        <button id="catBtn-tech" onclick="setCategoryFilter('tech')" class="cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full">💻 Công Nghệ</button>
-        <button id="catBtn-business" onclick="setCategoryFilter('business')" class="cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full">💼 Kinh Doanh</button>
-        <button id="catBtn-health" onclick="setCategoryFilter('health')" class="cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full">🏥 Y Tế</button>
-        <button id="catBtn-art" onclick="setCategoryFilter('art')" class="cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full">🎨 Thời Trang</button>
-        <button id="catBtn-edu" onclick="setCategoryFilter('edu')" class="cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full">🏫 Giáo Dục</button>
-        <button id="catBtn-nature" onclick="setCategoryFilter('nature')" class="cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full">🌿 Tự Nhiên</button>
-      </div>
+      <!-- BỘ LỌC TÌM KIẾM & 8 NHÓM LĨNH VỰC -->
+      <div class="space-y-3">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-1.5">
+            <button onclick="setStatusFilter('all')" id="filter-all" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-sm transition">
+              Tất cả (<span id="countAll">1000</span>)
+            </button>
+            <button onclick="setStatusFilter('completed')" id="filter-completed" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+              ✅ Đã xong (<span id="countCompleted">0</span>)
+            </button>
+            <button onclick="setStatusFilter('pending')" id="filter-pending" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+              ⏳ Chưa tạo (<span id="countPending">1000</span>)
+            </button>
+            <button onclick="setStatusFilter('issue')" id="filter-issue" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+              ⚠️ Lệch chuẩn (<span id="countIssue">0</span>)
+            </button>
+          </div>
 
-      <!-- Bảng dữ liệu -->
-      <div class="overflow-x-auto border-2 border-[#111] bg-white">
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="relative flex-1 sm:w-72">
+              <input id="searchInput" type="text" oninput="applyFiltersAndRender()" placeholder="🔍 Tìm tên chủ đề hoặc STT (VD: 23, gym)..." class="w-full pl-3.5 pr-8 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+            <select id="sortSelect" onchange="applyFiltersAndRender()" class="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white font-medium text-slate-700">
+              <option value="stt_asc">Sắp xếp: STT 1 → 1000</option>
+              <option value="stt_desc">Sắp xếp: STT 1000 → 1</option>
+              <option value="completed_first">Ưu tiên: Đã hoàn thành trước</option>
+              <option value="pending_first">Ưu tiên: Chưa tạo trước</option>
+            </select>
+            <select id="pageSizeSelect" onchange="applyFiltersAndRender()" class="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white font-medium text-slate-700">
+              <option value="50" selected>Hiển thị: 50 dòng/trang</option>
+              <option value="100">Hiển thị: 100 dòng/trang</option>
+              <option value="250">Hiển thị: 250 dòng/trang</option>
+              <option value="1000">Hiển thị: Tất cả 1.000</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">Lĩnh vực:</span>
+          <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-800 text-white transition">Tất cả</button>
+          <button onclick="setCategoryFilter('nature')" id="cat-nature" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🌿 Tự nhiên & Địa lý (1–125)</button>
+          <button onclick="setCategoryFilter('career')" id="cat-career" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">💼 Kinh tế & Nghề nghiệp (126–250)</button>
+          <button onclick="setCategoryFilter('health')" id="cat-health" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🏥 Y tế & Thể thao (251–375)</button>
+          <button onclick="setCategoryFilter('tech')" id="cat-tech" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🔬 Khoa học & Công nghệ (376–500)</button>
+          <button onclick="setCategoryFilter('society')" id="cat-society" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🏛️ Xã hội & Pháp luật (501–625)</button>
+          <button onclick="setCategoryFilter('art')" id="cat-art" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🎨 Văn hóa & Nghệ thuật (626–750)</button>
+          <button onclick="setCategoryFilter('food')" id="cat-food" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🍜 Ẩm thực & Đời sống (751–875)</button>
+          <button onclick="setCategoryFilter('abstract')" id="cat-abstract" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🧠 Tư duy & Học thuật (876–1000)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BẢNG DANH SÁCH 1.000 CHỦ ĐỀ -->
+    <section id="mainView-list" class="neo-box bg-white overflow-hidden">
+      <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
-            <tr class="bg-[#141414] text-white font-mono-code text-[11px] uppercase">
-              <th class="py-3 px-3 w-10 text-center">
-                <input type="checkbox" onchange="toggleSelectAllPage(this.checked)" />
+            <tr class="bg-slate-50/90 border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+              <th class="p-3.5 w-10 text-center">
+                <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAllPage(this)" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" />
               </th>
-              <th class="py-3 px-3 w-20">STT</th>
-              <th class="py-3 px-4">TÊN CHỦ ĐỀ (TIẾNG VIỆT)</th>
-              <th class="py-3 px-4 w-44">TRẠNG THÁI</th>
-              <th class="py-3 px-4 w-40">SỐ LƯỢNG TỪ</th>
-              <th class="py-3 px-4 w-36">THỜI GIAN</th>
-              <th class="py-3 px-4 text-right min-w-[440px]">THAO TÁC</th>
+              <th class="p-3.5 w-16">STT</th>
+              <th class="p-3.5">Tên Chủ Đề & Nhóm Lĩnh Vực</th>
+              <th class="p-3.5 w-36 text-center">Trạng Thái</th>
+              <th class="p-3.5 w-28 text-center">Số Lượng Từ</th>
+              <th class="p-3.5 w-72 text-right">Hành Động & Tác Vụ</th>
             </tr>
           </thead>
-          <tbody id="tableBody" class="divide-y-2 divide-[#111] text-xs font-semibold"></tbody>
+          <tbody id="topicTableBody" class="divide-y divide-slate-100 text-sm"></tbody>
         </table>
       </div>
 
-      <!-- Phân trang -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 text-xs font-extrabold">
-        <div class="flex items-center gap-2">
-          <span>Hiển thị</span>
-          <select id="pageSizeSelect" onchange="currentPage=1; applyFiltersAndRender()" class="neo-box-sm px-2 py-1 bg-white">
-            <option value="50">50 dòng</option>
-            <option value="100">100 dòng</option>
-            <option value="250">250 dòng</option>
-            <option value="1000">Tất cả 1000</option>
-          </select>
-          <span id="showingCountText"></span>
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span id="paginationInfo" class="text-xs font-medium text-slate-600">Hiển thị 0–0 / 1000 chủ đề</span>
+          <span id="selectedCountBadge" class="hidden px-2.5 py-0.5 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold">Đã chọn: 0</span>
         </div>
-        <div id="paginationControls" class="flex flex-wrap gap-1.5"></div>
+        <div class="flex items-center gap-1.5" id="paginationControls"></div>
       </div>
-    </section>
-
-    <!-- ==================== TAB 2: BẢN ĐỒ LƯỚI 1.000 Ô ==================== -->
-    <section id="tabSection-grid" class="hidden neo-box bg-[#F8F7F2] p-6">
-      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4 pb-3 border-b-2 border-[#111]">
-        <h2 class="font-display font-extrabold text-base uppercase">BẢN ĐỒ TRỰC QUAN 1.000 CHỦ ĐỀ (BẤM VÀO Ô ĐỂ XEM HOẶC TẠO)</h2>
-        <span id="gridHoverInfo" class="font-mono-code text-xs font-extrabold bg-[#FFE787] border-2 border-[#111] px-3 py-1">Rê chuột vào ô bất kỳ</span>
-      </div>
-      <div id="topicGridMap" class="grid grid-cols-10 sm:grid-cols-20 md:grid-cols-25 lg:grid-cols-40 gap-1.5"></div>
-    </section>
-
-    <!-- ==================== TAB 3: TỪ ĐIỂN TỔNG ==================== -->
-    <section id="tabSection-corpus" class="hidden neo-box bg-[#F8F7F2] p-6 space-y-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-[#111] pb-4">
-        <div>
-          <h2 class="font-display font-extrabold text-lg uppercase">KHO TỪ ĐIỂN TỔNG & KIỂM TRA TRÙNG LẶP</h2>
-          <p class="text-xs text-slate-600 font-semibold">Quét toàn bộ các file <code>.txt</code> đã tạo để tìm kiếm từ vựng xuyên chủ đề.</p>
-        </div>
-        <button onclick="buildGlobalCorpus()" id="btnBuildCorpus" class="tid-cta">
-          <span class="tid-cta-arrow">🔍</span>
-          <span class="tid-cta-label">Quét Toàn Bộ Kho Từ Ngay</span>
-        </button>
-      </div>
-
-            <div id="corpusStatsBanner" class="hidden"></div>
-      <div id="corpusTableContainer" class="hidden space-y-3">
-        <div class="flex flex-wrap justify-between items-center gap-2">
-          <input type="text" id="corpusSearchInput" oninput="renderCorpusTable()" placeholder="Tra cứu từ tiếng Anh hoặc nghĩa tiếng Việt..." class="neo-box-sm w-full sm:w-96 px-3 py-2 text-xs bg-white font-bold" />
-          <label class="flex items-center gap-2 text-xs font-extrabold cursor-pointer">
-            <input type="checkbox" id="corpusOnlyDup" onchange="renderCorpusTable()" />
-            Chỉ hiện các từ xuất hiện lặp lại (&ge; 2 chủ đề)
-          </label>
-        </div>
-        <div class="overflow-x-auto max-h-[500px] border-2 border-[#111] bg-white">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-[#141414] text-white font-mono-code text-[11px] uppercase">
-                <th class="p-2.5">TỪ VỰNG</th>
-                <th class="p-2.5">IPA</th>
-                <th class="p-2.5">NGHĨA TIẾNG VIỆT</th>
-                <th class="p-2.5">TẦN SUẤT</th>
-                <th class="p-2.5">XUẤT HIỆN TẠI CHỦ ĐỀ</th>
-              </tr>
-            </thead>
-            <tbody id="corpusTableBody" class="divide-y-2 divide-[#111] font-semibold"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== TAB 4: KIỂM TOÁN ĐỊNH DẠNG (QA AUDIT) ==================== -->
-    <section id="tabSection-audit" class="hidden neo-box bg-[#F8F7F2] p-6 space-y-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-[#111] pb-4">
-        <div>
-          <h2 class="font-display font-extrabold text-lg uppercase">KIỂM TOÁN CHẤT LƯỢNG ĐỊNH DẠNG 9 CỘT ANKI</h2>
-          <p class="text-xs text-slate-600 font-semibold">Kiểm tra tự động: đủ 100 dòng, 9 cột Tab, IPA <code>/.../</code>, thẻ <code>[sound:...]</code> và 2 câu ví dụ nối <code>&lt;br&gt;</code>.</p>
-        </div>
-        <button onclick="runQualityAudit()" id="btnRunAudit" class="tid-cta">
-          <span class="tid-cta-arrow">🛡️</span>
-          <span class="tid-cta-label">Chạy Kiểm Toán Ngay</span>
-        </button>
-      </div>
-      <div id="auditResultContainer" class="p-4 bg-white border-2 border-[#111] text-xs font-bold">
-        Bấm nút "Chạy Kiểm Toán Ngay" để quét toàn bộ các file đã tạo.
-      </div>
-    </section>
-
-    <!-- ==================== TAB 5: ĐẤU TRƯỜNG TRẮC NGHIỆM ANKI (QUIZ ARENA) ==================== -->
-    <section id="tabSection-quiz" class="hidden neo-box bg-[#F8F7F2] p-4 sm:p-6 space-y-6">
-
-      <!-- MÀN HÌNH 1: THIẾT LẬP VÀ CHỌN CHỦ ĐỀ ĐÃ HỌC -->
-      <div id="quizView-setup" class="space-y-6">
-        <!-- Banner tiêu đề -->
-        <div class="bg-[#FFE787] border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111] p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="space-y-1">
-            <div class="flex items-center gap-2">
-              <span class="tid-badge-num bg-[#111]">VOCABULARY QUIZ</span>
-              <span class="font-mono-code text-xs font-extrabold uppercase text-amber-900 tracking-wider">HỆ THỐNG ÔN TẬP TƯƠNG TÁC</span>
-            </div>
-            <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight">
-              LUYỆN TẬP TRẮC NGHIỆM TỪ VỰNG ANKI<span class="text-[#FF9F1C]">*</span>
-            </h2>
-            <p class="text-xs text-slate-800 font-semibold max-w-xl">
-              Chọn các chủ đề bạn đã học trên Anki, hệ thống sẽ tự động tổng hợp kho từ và tạo các câu hỏi trắc nghiệm ngẫu nhiên với âm thanh phát âm và tính điểm chuỗi combo!
-            </p>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="bg-white border-2 border-[#111] px-3.5 py-2 text-center shadow-[2px_2px_0px_#111]">
-              <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Chủ đề đã chọn</div>
-              <div id="quizSelectedCountBadge" class="font-display font-extrabold text-lg text-[#169C64]">0 / 0</div>
-            </div>
-            <div class="bg-white border-2 border-[#111] px-3.5 py-2 text-center shadow-[2px_2px_0px_#111]">
-              <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Kho từ khả dụng</div>
-              <div id="quizTotalWordsAvailable" class="font-display font-extrabold text-lg text-[#3F6AE4]">0 từ</div>
-            </div>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <!-- Cột 1: Số câu hỏi -->
-          <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
-            <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
-              <span>🔢</span> Số lượng câu hỏi:
-            </label>
-            <div class="grid grid-cols-3 gap-2">
-              <button type="button" onclick="setQuizQuestionCount(10)" id="qCountBtn-10" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111] bg-[#111] text-white">10 câu</button>
-              <button type="button" onclick="setQuizQuestionCount(20)" id="qCountBtn-20" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111] bg-white text-[#111]">20 câu</button>
-              <button type="button" onclick="setQuizQuestionCount(30)" id="qCountBtn-30" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111] bg-white text-[#111]">30 câu</button>
-            </div>
-          </div>
-
-          <!-- Cột 2: Cấp độ từ -->
-          <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
-            <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
-              <span>🎯</span> Cấp độ từ muốn ôn:
-            </label>
-            <select id="quizLevelSelect" onchange="updateQuizWordsCountBadge()" class="w-full neo-box-sm px-3 py-2 text-xs font-bold bg-[#F8F7F2]">
-              <option value="all">🟢 Toàn bộ (Cả Giao tiếp & Nâng cao)</option>
-              <option value="conversational">💬 Chỉ 50 từ Giao tiếp (A2-B2)</option>
-              <option value="advanced">⚡ Chỉ 50 từ Nâng cao (C1-C2)</option>
-            </select>
-          </div>
-
-          <!-- Cột 3: Định dạng câu hỏi -->
-          <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
-            <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
-              <span>🔄</span> Dạng câu hỏi:
-            </label>
-            <select id="quizModeSelect" class="w-full neo-box-sm px-3 py-2 text-xs font-bold bg-[#F8F7F2]">
-              <option value="mixed">🔄 Trộn ngẫu nhiên (EN ➔ VI & VI ➔ EN)</option>
-              <option value="en_to_vi">🇬🇧 Từ tiếng Anh ➔ Nghĩa tiếng Việt</option>
-              <option value="vi_to_en">🇻🇳 Nghĩa tiếng Việt ➔ Từ tiếng Anh</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Danh sách chọn các chủ đề đã học -->
-        <div class="space-y-3">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pb-2 border-b-2 border-[#111]">
-            <div class="flex items-center gap-2">
-              <h3 class="font-display font-extrabold text-sm uppercase">CHỌN CÁC CHỦ ĐỀ BẠN ĐÃ HỌC TRÊN ANKI:</h3>
-              <span id="quizCompletedTopicsNotice" class="text-xs font-mono-code bg-[#169C64] text-white px-2 py-0.5 rounded font-bold"></span>
-            </div>
-            <div class="flex flex-wrap items-center gap-2">
-              <input type="text" id="quizTopicSearch" oninput="filterQuizTopicsUI()" placeholder="🔍 Lọc nhanh tên chủ đề..." class="neo-box-sm px-3 py-1 text-xs bg-white font-bold w-48 sm:w-56" />
-              <button onclick="selectAllQuizTopics(true)" class="neo-btn px-2.5 py-1 text-[11px] font-extrabold bg-white">Chọn tất cả</button>
-              <button onclick="selectAllQuizTopics(false)" class="neo-btn px-2.5 py-1 text-[11px] font-extrabold bg-white">Bỏ chọn</button>
-              <button onclick="selectRecentQuizTopics(5)" class="neo-btn px-2.5 py-1 text-[11px] font-extrabold bg-[#FFE787]">5 bài mới nhất</button>
-            </div>
-          </div>
-
-          <!-- Lưới các thẻ chủ đề để tick chọn -->
-          <div id="quizTopicCheckboxGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 max-h-[380px] overflow-y-auto p-2 bg-slate-100 border-2 border-[#111]">
-            <!-- Sẽ được fill bằng JavaScript -->
-          </div>
-        </div>
-
-        <!-- Nút Bắt Đầu Trắc Nghiệm To Rực Rỡ -->
-        <div class="pt-2 flex justify-center">
-          <button onclick="startQuizSession()" class="neo-btn px-8 py-3.5 bg-[#141414] hover:bg-[#2C317A] text-white font-display font-extrabold text-base uppercase tracking-wider flex items-center gap-3 shadow-[5px_5px_0px_#111] transition-transform active:translate-x-1 active:translate-y-1">
-            <span class="text-xl">🚀</span> BẮT ĐẦU LUYỆN TẬP TRẮC NGHIỆM
-          </button>
-        </div>
-      </div>
-
-      <!-- MÀN HÌNH 2: ĐANG LÀM BÀI TRẮC NGHIỆM (IN-GAME ARENA) -->
-      <div id="quizView-play" class="hidden space-y-5 max-w-4xl mx-auto">
-        <!-- Header thi đấu: Score, Streak, Progress -->
-        <div class="bg-[#141414] text-white border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111] p-4 flex flex-wrap items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <span id="quizPlayBadge" class="tid-badge-num bg-[#FF9F1C] text-[#111]">CÂU 1/10</span>
-            <span id="quizPlayTopicName" class="text-xs font-mono-code text-slate-300 font-bold truncate max-w-xs">Chủ đề</span>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <div id="quizStreakContainer" class="flex items-center gap-1.5 bg-slate-800 border border-slate-600 px-3 py-1 font-mono-code text-xs font-extrabold">
-              <span id="quizStreakFlame" class="text-base">🔥</span>
-              <span>Streak: <b id="quizStreakCount" class="text-[#FFE787]">0</b></span>
-              <span id="quizComboMultiplier" class="hidden text-[10px] bg-[#F05332] text-white px-1.5 py-0.5 rounded font-extrabold">COMBO x2</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <div class="font-mono-code font-extrabold text-sm text-[#38E54D]">
-              ĐIỂM: <span id="quizCurrentScore" class="text-base text-white font-display">0</span>
-            </div>
-            <button onclick="quitQuizEarly()" class="px-2.5 py-1 text-xs font-mono-code bg-red-600 hover:bg-red-500 text-white font-extrabold border border-[#111]">
-              Dừng ✕
-            </button>
-          </div>
-        </div>
-
-        <!-- Thanh tiến trình câu hỏi sọc động -->
-        <div class="w-full h-4 bg-slate-200 border-2 border-[#111] overflow-hidden">
-          <div id="quizPlayProgressBar" class="h-full bg-[#169C64] progress-stripes transition-all duration-300" style="width: 10%"></div>
-        </div>
-
-        <!-- Thẻ câu hỏi trung tâm -->
-        <div class="neo-box bg-white p-3.5 sm:p-4 space-y-2 text-center relative overflow-hidden">
-          <div class="flex items-center justify-between">
-            <span id="quizQuestionLevelBadge" class="tid-badge-num bg-[#3F6AE4] text-white text-[10px]">A2-B2 GIAO TIẾP</span>
-            <button onclick="speakCurrentQuizPrompt()" class="neo-btn px-2.5 py-1 bg-[#FFE787] text-[#111] text-xs font-extrabold flex items-center gap-1">
-              🔊 Nghe phát âm
-            </button>
-          </div>
-
-          <div class="py-4 space-y-2">
-            <div class="text-xs font-mono-code uppercase font-bold text-slate-500" id="quizPromptSubtitle">Dịch từ vựng sau sang tiếng Việt:</div>
-            <h3 id="quizPromptMain" class="font-display font-extrabold text-3xl sm:text-5xl text-[#141414] tracking-tight">word</h3>
-            <div id="quizPromptIpa" class="font-mono-code text-sm font-semibold text-slate-600">/ipa/</div>
-            <div id="quizPromptHint" class="text-xs text-slate-500 max-w-lg mx-auto italic"></div>
-          </div>
-        </div>
-
-        <!-- 4 Lựa chọn Trắc nghiệm A, B, C, D -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="quizOptionsContainer">
-          <!-- 4 button lựa chọn được render tự động -->
-        </div>
-
-        <!-- Hộp giải thích chi tiết & Nút câu tiếp theo (xuất hiện sau khi chọn) -->
-        <div id="quizExplainBox" class="hidden neo-box bg-[#FFFDF7] p-5 space-y-3 border-[2.5px] border-[#111]">
-          <div class="flex items-center justify-between gap-2">
-            <div id="quizFeedbackStatus" class="font-display font-extrabold text-base flex items-center gap-2">
-              <!-- Đúng / Sai -->
-            </div>
-            <button id="quizNextBtn" onclick="nextQuizCard()" class="neo-btn px-6 py-2.5 bg-[#141414] text-white font-display font-extrabold text-xs uppercase flex items-center gap-2">
-              CÂU TIẾP THEO ➔
-            </button>
-          </div>
-
-          <div class="bg-white border-2 border-[#111] p-3 text-xs space-y-1.5 font-semibold">
-            <div class="flex items-center gap-2">
-              <span class="font-bold text-[#141414]" id="quizExpWordTitle">Word</span>
-              <span class="font-mono-code text-slate-500" id="quizExpIpa">/ipa/</span>
-              <span class="font-mono-code text-indigo-600 font-bold" id="quizExpPlural">(pl: words)</span>
-            </div>
-            <div class="text-slate-700" id="quizExpDef">Definition in English</div>
-            <div class="text-[#169C64] font-bold" id="quizExpVi">Nghĩa tiếng Việt</div>
-            <div class="mt-2 pt-2 border-t border-slate-200 text-slate-800 text-[11px]" id="quizExpExamples">
-              1. Example 1 <br> 2. Example 2
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MÀN HÌNH 3: BẢNG TỔNG KẾT KẾT QUẢ TRẮC NGHIỆM -->
-      <div id="quizView-result" class="hidden space-y-6 max-w-3xl mx-auto">
-        <div class="neo-box bg-[#FFE787] p-6 sm:p-8 text-center space-y-4">
-          <div class="text-5xl select-none" id="quizResultEmoji">🏆</div>
-          <span id="quizResultRankBadge" class="tid-badge-num bg-[#111] text-[#FFE787] text-sm px-4 py-1">ANKI TITAN</span>
-          <h2 class="font-display font-extrabold text-3xl sm:text-4xl uppercase tracking-tight" id="quizResultTitle">
-            XUẤT SẮC HOÀN THÀNH VÒNG THI!
-          </h2>
-          <p class="text-xs sm:text-sm font-semibold text-slate-800" id="quizResultSub">
-            Bạn đã thể hiện trí nhớ tuyệt vời với các chủ đề đã học trên Anki.
-          </p>
-
-          <!-- 4 Box thống kê điểm số -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
-            <div class="bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111]">
-              <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Tổng điểm</div>
-              <div id="quizResultScore" class="font-display font-extrabold text-2xl text-[#141414]">0</div>
-            </div>
-            <div class="bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111]">
-              <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Độ chính xác</div>
-              <div id="quizResultAccuracy" class="font-display font-extrabold text-2xl text-[#169C64]">0%</div>
-            </div>
-            <div class="bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111]">
-              <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Max Streak 🔥</div>
-              <div id="quizResultMaxStreak" class="font-display font-extrabold text-2xl text-[#F05332]">0</div>
-            </div>
-            <div class="bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111]">
-              <div class="text-[10px] font-mono-code uppercase font-bold text-slate-500">Số câu đúng</div>
-              <div id="quizResultCorrectRatio" class="font-display font-extrabold text-2xl text-[#3F6AE4]">0/0</div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <!-- Khu vực ÔN LẠI TỪ BỊ SAI (NẾU CÓ) -->
-        <div id="quizMistakesContainer" class="hidden neo-box bg-white p-5 space-y-3">
-          <div class="flex items-center justify-between gap-2 border-b-2 border-[#111] pb-2">
-            <div class="flex items-center gap-2">
-              <span class="text-base">⚠️</span>
-              <h4 class="font-display font-extrabold text-sm uppercase">CÁC TỪ CẦN ÔN LẠI (<span id="quizMistakeCountText">0</span> TỪ)</h4>
-            </div>
-            <button onclick="retryMistakeWordsQuiz()" class="neo-btn px-3 py-1 bg-[#F05332] text-white text-xs font-extrabold">
-              ↺ Chỉ ôn lại các từ này
-            </button>
-          </div>
-          <div id="quizMistakeWordList" class="space-y-2 max-h-60 overflow-y-auto"></div>
-        </div>
-
-        <!-- Các nút bấm điều hướng -->
-        <div class="flex flex-wrap justify-center gap-3 pt-2">
-          <button onclick="playAgainSameSettings()" class="tid-cta">
-            <span class="tid-cta-arrow">🔄</span>
-            <span class="tid-cta-label">Chơi lại ván mới</span>
-          </button>
-          <button onclick="backToQuizSetup()" class="tid-cta">
-            <span class="tid-cta-arrow">⚙️</span>
-            <span class="tid-cta-label">Chọn lại chủ đề khác</span>
-          </button>
-        </div>
-      </div>
-
     </section>
 
   </main>
 
-  <!-- ==================== POPUP GÓC PHẢI DƯỚI: "ĐẾN GIỜ ÔN TỪ VỰNG!" (NHƯ TRONG ẢNH 2) ==================== -->
-  <div id="studyReminderWidget" class="fixed bottom-4 right-4 z-40 max-w-xs w-full neo-box bg-[#FFFDF7] rounded-2xl p-4 transition-all">
-    <div class="flex items-start justify-between gap-2">
-      <div class="flex items-center gap-2.5">
-        <span class="text-2xl">📚</span>
-        <h4 class="font-display font-extrabold text-sm uppercase tracking-tight">ĐẾN GIỜ ÔN TỪ VỰNG!</h4>
-      </div>
-      <button onclick="document.getElementById('studyReminderWidget').classList.add('hidden')" class="w-6 h-6 rounded-full bg-slate-200 border border-[#111] text-xs font-extrabold">&times;</button>
-    </div>
-    <ul id="reminderDeckList" class="mt-2.5 space-y-1 text-xs font-semibold text-slate-700 pl-2">
-      <li>• Chưa có bộ thẻ nào hoàn thành</li>
-    </ul>
-    <p class="text-[11px] text-slate-500 mt-2">Ôn đúng lịch giúp từ vào trí nhớ dài hạn — chỉ mất vài phút.</p>
-    <div class="flex gap-2 mt-3">
-      <button onclick="openRandomCompletedStudy()" class="flex-1 py-2 rounded-xl bg-[#141414] text-white font-display font-extrabold text-xs uppercase border-2 border-[#111]">
-        ÔN NGAY
-      </button>
-      <button onclick="toggleConsoleDrawer()" class="px-3 py-2 rounded-xl bg-[#FFE787] text-[#111] font-display font-extrabold text-xs uppercase border-2 border-[#111]">
-        LOG
-      </button>
-    </div>
-  </div>
+  <!-- HỘP THOẠI DÙNG CHUNG (Preview Modal, Settings Modal, Console Drawer) -->
+  <div id="sharedModalsMount"></div>
 
-  <!-- ==================== BẢNG CONSOLE LOG & BÁO LỖI CHI TIẾT (DRAWER) ==================== -->
-  <div id="consoleDrawer" class="fixed inset-x-0 bottom-0 z-50 hidden">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="neo-box bg-[#141414] text-white p-5">
-        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-700">
-          <div class="flex items-center gap-2.5">
-            <span class="px-2 py-0.5 bg-[#FF9F1C] text-[#111] font-mono-code font-extrabold text-xs">LIVE CONSOLE & ERROR LOGS</span>
-            <span id="consoleStatusSub" class="text-xs font-mono-code text-slate-400">Theo dõi trực tiếp tiến trình tạo file & nhật ký lỗi</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <button onclick="loadRunLogs()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-xs font-mono-code font-bold border border-slate-600">↻ Tải run_logs.json</button>
-            <button onclick="clearLocalConsole()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-xs font-mono-code font-bold border border-slate-600">Xóa màn hình</button>
-            <button onclick="toggleConsoleDrawer(false)" class="px-3 py-1 bg-red-600 text-white text-xs font-mono-code font-extrabold">Đóng [X]</button>
-          </div>
-        </div>
-        <div id="consoleOutput" class="font-mono-code text-xs h-64 overflow-y-auto py-3 space-y-1.5"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== MODAL XEM, SỬA LIVE, FLASHCARD & QUIZ ==================== -->
-  <div id="previewModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-2 sm:p-5 z-50">
-    <div class="neo-box bg-[#F8F7F2] max-w-6xl w-full max-h-[92vh] flex flex-col overflow-hidden">
-      <div class="px-5 py-3.5 bg-[#FFE787] border-b-[3px] border-[#111] flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-        <div class="flex items-center gap-2.5">
-          <span id="previewSttBadge" class="tid-badge-num">#1</span>
-          <h3 id="previewTitle" class="font-display font-extrabold text-lg uppercase">Tên chủ đề</h3>
-        </div>
-        <div class="flex flex-wrap items-center gap-2">
-          <button onclick="switchModalTab('table')" id="modalTab-table" class="neo-btn px-3 py-1 bg-[#111] text-white text-xs font-extrabold">📋 Bảng 9 Cột (Sửa Live)</button>
-          <button onclick="switchModalTab('flashcard')" id="modalTab-flashcard" class="neo-btn px-3 py-1 bg-white text-xs font-extrabold">🎴 Lật Thẻ</button>
-          <button onclick="switchModalTab('quiz')" id="modalTab-quiz" class="neo-btn px-3 py-1 bg-white text-xs font-extrabold">⌨️ Gõ Từ Khuyết Chữ</button>
-          <button onclick="saveEditedFileToGitHub()" id="btnSaveGitHub" class="neo-btn px-3 py-1 bg-[#169C64] text-white text-xs font-extrabold">💾 Lưu lên GitHub</button>
-          <a id="previewDownloadBtn" href="#" download class="neo-btn px-3 py-1 bg-[#3F6AE4] text-white text-xs font-extrabold">⬇ Tải .TXT</a>
-          <button onclick="downloadTopicAudioZip(this)" id="btnDownloadAudioZip" class="neo-btn px-3 py-1 bg-[#38E54D] text-[#111] hover:bg-emerald-300 text-xs font-extrabold flex items-center gap-1 shadow-sm"><span>🔊</span> Tạo & Tải ZIP Âm Thanh (100 từ)</button>
-          <button onclick="closePreview()" class="neo-btn px-3 py-1 bg-[#F05332] text-white text-xs font-extrabold">✕</button>
-        </div>
-      </div>
-
-      <!-- TAB BẢNG 9 CỘT -->
-      <div id="modalViewTable" class="p-4 overflow-y-auto flex-1 bg-white">
-        <div class="mb-3 flex justify-between items-center gap-2">
-          <input type="text" id="modalWordSearch" oninput="renderModalWords()" placeholder="🔍 Lọc từ vựng trong chủ đề này..." class="neo-box-sm px-3 py-1.5 text-xs w-72 font-bold" />
-          <span id="modalWordCountInfo" class="font-mono-code text-xs font-extrabold">100 từ</span>
-        </div>
-        <table class="w-full text-left border-collapse text-xs border-2 border-[#111]">
-          <thead>
-            <tr class="bg-[#141414] text-white font-mono-code text-[11px] uppercase">
-              <th class="p-2 w-8">#</th>
-              <th class="p-2">1. Từ vựng</th>
-              <th class="p-2">2. Khuyết chữ</th>
-              <th class="p-2">3. IPA</th>
-              <th class="p-2">5. Định nghĩa EN</th>
-              <th class="p-2">6&7. Nghĩa VI</th>
-              <th class="p-2">8. Số nhiều</th>
-              <th class="p-2">9. Hai câu ví dụ</th>
-            </tr>
-          </thead>
-          <tbody id="previewBody" class="divide-y-2 divide-[#111] font-semibold"></tbody>
-        </table>
-      </div>
-
-      <!-- TAB FLASHCARD -->
-      <div id="modalViewFlashcard" class="hidden p-6 overflow-y-auto flex-1 flex-col items-center justify-center bg-[#67B7F7]">
-        <div class="w-full max-w-xl">
-          <div class="flex justify-between items-center mb-3 text-xs font-mono-code font-extrabold bg-white border-2 border-[#111] px-3 py-1.5">
-            <span id="fcProgress">Thẻ 1 / 100</span>
-            <span>Bấm thẻ hoặc phím Space để lật</span>
-          </div>
-          <div onclick="toggleFlipCard()" class="perspective cursor-pointer select-none">
-            <div id="flashcardBox" class="flip-card-inner relative w-full h-80">
-              <div class="flip-face absolute inset-0 neo-box bg-[#FFFDF7] p-8 flex flex-col items-center justify-center text-center">
-                <span class="tid-badge-num mb-3">MẶT TRƯỚC • CLOZE</span>
-                <p id="fcCloze" class="text-3xl font-mono-code font-extrabold tracking-widest mb-4"></p>
-                <p id="fcDef" class="text-sm font-semibold text-slate-700 max-w-md"></p>
-                <p id="fcViFront" class="mt-5 text-xs font-extrabold bg-[#FFE787] border border-[#111] px-3 py-1"></p>
-              </div>
-              <div class="flip-face flip-back absolute inset-0 neo-box bg-[#2C317A] text-white p-8 flex flex-col justify-between">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <div class="flex items-center gap-3">
-                      <h4 id="fcWord" class="font-display text-3xl font-extrabold text-[#FFE787]"></h4>
-                      <button onclick="event.stopPropagation(); speakCurrentCard()" class="neo-btn px-2.5 py-1 bg-[#FF9F1C] text-[#111] text-xs font-extrabold">🔊 Nghe</button>
-                    </div>
-                    <p class="text-xs font-mono-code mt-1">IPA: <span id="fcIpa"></span> • Số nhiều: <span id="fcPlural" class="text-[#38E54D]"></span></p>
-                  </div>
-                  <span id="fcSoundTag" class="text-[10px] font-mono-code bg-[#111] px-2 py-1"></span>
-                </div>
-                <div class="my-auto">
-                  <p id="fcViBack" class="text-xl font-extrabold text-[#38E54D] mb-2"></p>
-                  <div id="fcExamples" class="text-xs bg-[#141414] p-3 border-2 border-[#111] leading-relaxed"></div>
-                </div>
-                <div class="text-[10px] font-mono-code text-center text-indigo-200">Bấm thẻ để quay lại mặt trước</div>
-              </div>
-            </div>
-          </div>
-          <div class="flex justify-between mt-5">
-            <button onclick="changeFlashcard(-1)" class="neo-btn px-5 py-2 bg-white text-xs font-extrabold">← TỪ TRƯỚC</button>
-            <button onclick="toggleFlipCard()" class="neo-btn px-6 py-2 bg-[#FF9F1C] text-xs font-extrabold">🔄 LẬT THẺ</button>
-            <button onclick="changeFlashcard(1)" class="neo-btn px-5 py-2 bg-white text-xs font-extrabold">TỪ TIẾP →</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB QUIZ GÕ TỪ -->
-      <div id="modalViewQuiz" class="hidden p-6 overflow-y-auto flex-1 flex-col items-center justify-center bg-[#FFF0B3]">
-        <div class="w-full max-w-xl neo-box bg-white p-6 space-y-4">
-          <div class="flex justify-between items-center font-mono-code text-xs font-extrabold">
-            <span id="quizProgressText" class="tid-badge-num">CÂU 1/100</span>
-            <span class="bg-[#169C64] text-white px-2.5 py-1 border border-[#111]">ĐIỂM: <span id="quizScoreText">0</span></span>
-          </div>
-          <div class="text-center py-4 space-y-2">
-            <p id="quizClozeHint" class="text-3xl font-mono-code font-extrabold tracking-widest"></p>
-            <p id="quizMeaningVi" class="text-lg font-extrabold text-[#169C64]"></p>
-            <p id="quizDefEn" class="text-xs font-semibold text-slate-600 max-w-md mx-auto"></p>
-          </div>
-          <div class="flex gap-2">
-            <input type="text" id="quizUserInput" onkeydown="if(event.key==='Enter') checkQuizAnswer()" placeholder="Gõ danh từ tiếng Anh đầy đủ rồi nhấn Enter..." class="neo-box-sm flex-1 px-4 py-2.5 text-sm font-extrabold" />
-            <button onclick="checkQuizAnswer()" class="neo-btn px-5 py-2.5 bg-[#111] text-white text-xs font-extrabold">KIỂM TRA</button>
-          </div>
-          <div id="quizFeedback" class="hidden p-3 border-2 border-[#111] text-xs font-extrabold text-center"></div>
-          <div class="flex justify-between pt-2 text-xs font-extrabold">
-            <button onclick="speakQuizWord()" class="underline">🔊 Nghe gợi ý phát âm</button>
-            <button onclick="nextQuizQuestion()" class="underline">Câu tiếp theo →</button>
-          </div>
-        </div>
-      </div>
-
-      <textarea id="rawTsvTextarea" class="hidden"></textarea>
-    </div>
-  </div>
-
-  <!-- ==================== MODAL CẤU HÌNH GITHUB & GEMINI API ==================== -->
-  <div id="settingsModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
-    <div class="neo-box bg-[#F8F7F2] max-w-md w-full p-6">
-      <div class="flex items-center gap-2 mb-3">
-        <span class="tid-badge-num">CONFIG</span>
-        <h3 class="font-display font-extrabold text-lg uppercase">CẤU HÌNH API & TRÌNH CHẠY</h3>
-      </div>
-      <div class="space-y-3 text-xs font-bold">
-        <div>
-          <label class="block mb-1">GitHub Username (Owner)</label>
-          <input id="ghOwner" type="text" placeholder="Ví dụ: letuanvinh" class="neo-box-sm w-full px-3 py-2 bg-white" />
-        </div>
-        <div>
-          <label class="block mb-1">Tên Repository</label>
-          <input id="ghRepo" type="text" placeholder="Ví dụ: vinhdeptrai" class="neo-box-sm w-full px-3 py-2 bg-white" />
-        </div>
-        <div>
-          <label class="block mb-1">Branch</label>
-          <input id="ghBranch" type="text" value="main" class="neo-box-sm w-full px-3 py-2 bg-white" />
-        </div>
-        <div>
-          <label class="block mb-1">GitHub Personal Access Token (PAT)</label>
-          <input id="ghToken" type="password" placeholder="ghp_..." class="neo-box-sm w-full px-3 py-2 bg-white" />
-        </div>
-        <div class="pt-2 border-t-2 border-[#111]">
-          <label class="block mb-1 text-[#2C317A]">Gemini API Key (Dùng khi bấm "⚡ Tạo Trực Tiếp Trên Web")</label>
-          <input id="geminiKeyInput" type="password" placeholder="AIzaSy..." class="neo-box-sm w-full px-3 py-2 bg-white" />
-          <p class="text-[11px] text-slate-500 mt-1">Tất cả Key chỉ lưu trong <code>localStorage</code> trình duyệt của bạn.</p>
-        </div>
-        <div>
-          <label class="block mb-1 text-[#2C317A]">Gemini Model Ưu Tiên (Google AI Studio Tier 1)</label>
-          <select id="geminiModelSelect" class="neo-box-sm w-full px-3 py-2 bg-white font-mono-code text-xs">
-            <option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite (Khuyên dùng - 150K RPD, 4K RPM, Siêu tốc)</option>
-            <option value="gemini-3-flash">gemini-3-flash (10K RPD, 1K RPM)</option>
-            <option value="gemini-2.5-flash">gemini-2.5-flash (10K RPD, 1K RPM)</option>
-            <option value="gemini-2.5-flash-lite">gemini-2.5-flash-lite</option>
-            <option value="gemini-2.0-flash">gemini-2.0-flash</option>
-            <option value="gemini-1.5-flash">gemini-1.5-flash</option>
-          </select>
-          <p class="text-[11px] text-slate-500 mt-1">Gợi ý từ bảng Rate Limit của bạn: <b>gemini-3.1-flash-lite</b> cho phép tới 150.000 lượt/ngày và 4.000 lượt/phút.</p>
-        </div>
-        <div class="pt-2 border-t-2 border-[#111]">
-          <label class="block mb-1 text-[#2C317A]">Google Cloud Audio Service URL</label>
-          <input id="audioServiceUrlInput" type="text" placeholder="https://anki-audio-service-xxx.a.run.app" class="neo-box-sm w-full px-3 py-2 bg-white font-mono-code text-xs" />
-          <p class="text-[11px] text-slate-500 mt-1">Dán URL Cloud Run của bạn để cào âm thanh Cambridge & TTS phát thanh viên siêu tốc 3 giây.</p>
-        </div>
-      </div>
-      <div class="flex justify-end gap-2 mt-6">
-        <button onclick="closeSettings()" class="neo-btn px-4 py-2 bg-white text-xs font-extrabold">ĐÓNG</button>
-        <button onclick="saveSettings()" class="neo-btn px-4 py-2 bg-[#FF9F1C] text-xs font-extrabold">LƯU CẤU HÌNH</button>
-      </div>
-    </div>
-  </div>
-  <!-- ==================== CÁC MODULE JAVASCRIPT ==================== -->
+  <!-- MODULAR JAVASCRIPT ARCHITECTURE -->
   <script src="js/data.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/export.js"></script>
+  <script src="js/audio.js"></script>
   <script src="js/dashboard.js"></script>
-  <script src="js/quiz.js"></script>
+  <script src="js/grid.js"></script>
   <script src="js/studio.js"></script>
   <script src="js/corpus.js"></script>
+  <script src="js/audit.js"></script>
+  <script src="js/quiz.js"></script>
   <script src="js/actions.js"></script>
   <script src="js/app.js"></script>
 </body>

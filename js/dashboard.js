@@ -1,514 +1,269 @@
-// ==================== QUẢN LÝ BẢNG ĐIỀU KHIỂN & 500 CHỦ ĐỀ (DASHBOARD) ====================
+// ============================================================================
+// MODULE: js/dashboard.js
+// Chức năng: Bảng Điều Khiển Tiến Độ (KPIs), Phân Loại 8 Nhóm Lĩnh Vực
+//            & Bảng Quản Lý 1.000 Chủ Đề (Tìm kiếm, Bộ lọc, Phân trang).
+// ============================================================================
 
-let currentCategoryFilter = 'all';
-
-// Phân loại chuyên mục chủ đề (Taxonomy)
-const TOPIC_CATEGORIES = {
-  food: { id: 'food', name: 'Ẩm Thực', icon: '🍲', color: '#F97316' },
-  travel: { id: 'travel', name: 'Du Lịch', icon: '✈️', color: '#0EA5E9' },
-  tech: { id: 'tech', name: 'Công Nghệ', icon: '💻', color: '#6366F1' },
-  business: { id: 'business', name: 'Kinh Doanh', icon: '💼', color: '#EAB308' },
-  health: { id: 'health', name: 'Y Tế & Thể Thao', icon: '🏥', color: '#EF4444' },
-  art: { id: 'art', name: 'Thời Trang & Nghệ Thuật', icon: '🎨', color: '#EC4899' },
-  edu: { id: 'edu', name: 'Giáo Dục & Xã Hội', icon: '🏫', color: '#8B5CF6' },
-  nature: { id: 'nature', name: 'Tự Nhiên', icon: '🌿', color: '#10B981' }
-};
-
-function getTopicCategory(topic) {
-  const t = (topic || '').toLowerCase();
-  if (/cà phê|đồ uống|lẩu|ẩm thực|nấu|món ăn|bánh|rượu|cocktail|hải sản|thực phẩm|gia vị|trái cây|rau củ|trà|thịt|ăn uống/i.test(t)) {
-    return TOPIC_CATEGORIES.food;
-  }
-  if (/du lịch|khách sạn|sân bay|bãi biển|resort|kỳ nghỉ|địa lý|thành phố|quốc gia|núi|sông|hàng không|hộ chiếu|danh lam/i.test(t)) {
-    return TOPIC_CATEGORIES.travel;
-  }
-  if (/máy tính|phần mềm|internet|công nghệ|điện tử|viễn thông|robot|trí tuệ|khoa học|dữ liệu|mạng|thiết bị|lập trình|vũ trụ/i.test(t)) {
-    return TOPIC_CATEGORIES.tech;
-  }
-  if (/kinh doanh|ngân hàng|tài chính|tiền tệ|đầu tư|công ty|văn phòng|kế toán|marketing|quản lý|thương mại|bất động sản|việc làm/i.test(t)) {
-    return TOPIC_CATEGORIES.business;
-  }
-  if (/y tế|bệnh viện|sức khỏe|thuốc|thể thao|gym|bóng đá|giải phẫu|nha khoa|dinh dưỡng|bác sĩ|bệnh tật|cơ thể/i.test(t)) {
-    return TOPIC_CATEGORIES.health;
-  }
-  if (/quần áo|thời trang|phụ kiện|âm nhạc|hội họa|điện ảnh|nhiếp ảnh|mỹ phẩm|trang sức|kiến trúc|điêu khắc/i.test(t)) {
-    return TOPIC_CATEGORIES.art;
-  }
-  if (/gia đình|trường học|giáo dục|pháp luật|lịch sử|ngôn ngữ|xã hội|văn hóa|chính trị|triết học|tôn giáo/i.test(t)) {
-    return TOPIC_CATEGORIES.edu;
-  }
-  return TOPIC_CATEGORIES.nature;
+function getTopicCategory(stt) {
+  if (stt <= 125) return { id: 'nature', name: '🌿 Tự Nhiên', color: 'bg-emerald-50 text-emerald-700 border-emerald-200' };
+  if (stt <= 250) return { id: 'career', name: '💼 Kinh Tế & Nghề', color: 'bg-blue-50 text-blue-700 border-blue-200' };
+  if (stt <= 375) return { id: 'health', name: '🏥 Y Tế & Thể Thao', color: 'bg-rose-50 text-rose-700 border-rose-200' };
+  if (stt <= 500) return { id: 'tech', name: '🔬 Khoa Học & CN', color: 'bg-purple-50 text-purple-700 border-purple-200' };
+  if (stt <= 625) return { id: 'society', name: '🏛️ Xã Hội & Luật', color: 'bg-amber-50 text-amber-800 border-amber-200' };
+  if (stt <= 750) return { id: 'art', name: '🎨 Nghệ Thuật', color: 'bg-pink-50 text-pink-700 border-pink-200' };
+  if (stt <= 875) return { id: 'food', name: '🍜 Ẩm Thực & Đời Sống', color: 'bg-orange-50 text-orange-800 border-orange-200' };
+  return { id: 'abstract', name: '🧠 Tư Duy & Học Thuật', color: 'bg-indigo-50 text-indigo-700 border-indigo-200' };
 }
 
 function updateDashboardUI() {
-  const total = allTopics.length || 500;
+  const total = allTopics.length || 1000;
   const completedList = allTopics.filter(t => t.status === 'completed');
-  const completed = completedList.length;
-  const perfect = completedList.filter(t => (t.word_count || 0) >= 100).length;
-  const issuesList = allTopics.filter(t => t.status === 'failed' || (t.status === 'completed' && (t.word_count || 0) < 100));
-  const pendingList = allTopics.filter(t => t.status !== 'completed');
-  const pending = pendingList.length;
-  const totalWords = allTopics.reduce((s, t) => s + (t.word_count || 0), 0);
-  const daysLeft = Math.ceil(pending / 3);
+  const completedCount = completedList.length;
+  const pendingCount = total - completedCount;
+  const issueCount = completedList.filter(t => t.word_count !== 100).length;
+  const totalWords = completedList.reduce((acc, t) => acc + (t.word_count || 100), 0);
+  const pct = ((completedCount / total) * 100).toFixed(1);
 
-  const cardTotal = document.getElementById('cardTotalBadge');
-  if (cardTotal) cardTotal.innerText = `${total} CHỦ ĐỀ`;
-  const cardDone = document.getElementById('cardCompletedBadge');
-  if (cardDone) cardDone.innerText = `${completed} XONG`;
-  const cardPerf = document.getElementById('cardPerfectText');
-  if (cardPerf) cardPerf.innerText = `${perfect} chủ đề đạt chuẩn 100 từ, sẵn sàng học trên Anki.`;
-  const cardPend = document.getElementById('cardPendingBadge');
-  if (cardPend) cardPend.innerText = `${pending} ĐANG CHỜ`;
-  const cardEta = document.getElementById('cardEtaText');
-  if (cardEta) {
-    cardEta.innerText = pending > 0
-      ? `Dự kiến hoàn tất sau ${daysLeft} ngày với tốc độ 3 chủ đề/ngày.`
-      : 'Đã hoàn thành toàn bộ chủ đề!';
-  }
-  const cardIssue = document.getElementById('cardIssueBadge');
-  if (cardIssue) cardIssue.innerText = `${issuesList.length} CẦN XEM`;
-  const cardWords = document.getElementById('cardWordsBadge');
-  if (cardWords) cardWords.innerText = `${totalWords.toLocaleString()} TỪ`;
+  const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
+  setTxt('statCompleted', completedCount.toLocaleString());
+  setTxt('statPending', pendingCount.toLocaleString());
+  setTxt('statWords', totalWords.toLocaleString());
+  setTxt('statWordsSub', `${((totalWords / 100000) * 100).toFixed(1)}% mục tiêu`);
+  setTxt('statPercent', `${pct}%`);
+  const bar = document.getElementById('progressBar');
+  if (bar) bar.style.width = `${pct}%`;
 
-  const nextQueue = document.getElementById('nextQueueBadge');
-  if (nextQueue) {
-    nextQueue.innerText = pendingList[0]
-      ? `#${pendingList[0].stt} - ${pendingList[0].topic}`
-      : 'Đã hoàn thành 100%!';
-  }
-
-  const pct = total > 0 ? ((completed / total) * 100).toFixed(1) : 0;
-  const bigProg = document.getElementById('bigProgressPercent');
-  if (bigProg) bigProg.innerText = `${pct}% (${completed}/${total})`;
-  const barPerf = document.getElementById('barPerfect');
-  if (barPerf) {
-    barPerf.style.width = `${(perfect / total) * 100}%`;
-    barPerf.innerText = completed > 0 ? `${pct}%` : '';
-  }
-  const barPart = document.getElementById('barPartial');
-  if (barPart) barPart.style.width = `${(issuesList.length / total) * 100}%`;
-
-  // Cập nhật Sàn Tiến Độ (Top 4 chủ đề mới tạo)
-  const recent = [...completedList].sort((a, b) => (b.generated_at || '').localeCompare(a.generated_at || '')).slice(0, 4);
-  const recentEl = document.getElementById('recentCompletedList');
-  if (recentEl) {
-    if (recent.length === 0) {
-      recentEl.innerHTML = `<p class="text-slate-500 py-2">Chưa có chủ đề nào hoàn thành.</p>`;
-    } else {
-      recentEl.innerHTML = recent.map((t, i) => {
-        const colors = ['bg-[#FF9F1C]', 'bg-[#8DD2FF]', 'bg-[#F7B32B]', 'bg-slate-200'];
-        const safe = t.topic.replace(/'/g, "\\'");
-        const cat = getTopicCategory(t.topic);
-        return `
-          <div onclick="previewFile(${t.stt}, '${safe}')" class="flex items-center justify-between py-1.5 border-b border-slate-200 cursor-pointer hover:bg-amber-50 px-1">
-            <div class="flex items-center gap-2.5">
-              <span class="w-6 h-6 ${colors[i] || 'bg-slate-200'} border-2 border-[#111] flex items-center justify-center font-mono-code text-xs font-extrabold">${i + 1}</span>
-              <span class="font-extrabold truncate max-w-xs">#${t.stt} • ${cat.icon} ${t.topic}</span>
-            </div>
-            <span class="font-mono-code font-extrabold text-[#169C64]">${t.word_count || 0} từ</span>
-          </div>
-        `;
-      }).join('');
+  const nextTopic = allTopics.find(t => t.status !== 'completed');
+  if (nextTopic) {
+    setTxt('statNextStt', `#${nextTopic.stt}`);
+    const nextNameEl = document.getElementById('statNextName');
+    if (nextNameEl) {
+      nextNameEl.innerText = nextTopic.topic;
+      nextNameEl.title = nextTopic.topic;
     }
+  } else {
+    setTxt('statNextStt', 'HOÀN TẤT!');
+    setTxt('statNextName', 'Đã đủ 1.000 chủ đề');
   }
 
-  // Cập nhật Widget nhắc ôn góc phải dưới
-  const remList = document.getElementById('reminderDeckList');
-  if (remList && recent.length > 0) {
-    remList.innerHTML = recent.slice(0, 2).map(t => `<li>• Bộ thẻ "#${t.stt} - ${t.topic}" (${t.word_count} từ)</li>`).join('') +
-      (completed > 2 ? `<li class="text-slate-500">... và ${completed - 2} bộ thẻ khác</li>` : '');
-  }
+  setTxt('countAll', total);
+  setTxt('countCompleted', completedCount);
+  setTxt('countPending', pendingCount);
+  setTxt('countIssue', issueCount);
 
-  // Đồng bộ số lượng file trên nút ZIP
-  const zipCountEl = document.getElementById('zipBtnCount');
-  if (zipCountEl) {
-    zipCountEl.innerText = selectedStts.size > 0 ? `${selectedStts.size} đã chọn` : `${completed} đã tạo`;
-  }
-}
-
-function setCategoryFilter(catId) {
-  currentCategoryFilter = catId;
-  currentPage = 1;
-  document.querySelectorAll('.cat-filter-btn').forEach(b => {
-    b.className = 'cat-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-white text-[#111] hover:bg-slate-100 rounded-full';
-  });
-  const activeBtn = document.getElementById('catBtn-' + catId);
-  if (activeBtn) {
-    activeBtn.className = 'cat-filter-btn px-2.5 py-1 text-xs font-extrabold border-2 border-[#111] bg-[#111] text-white rounded-full';
-  }
   applyFiltersAndRender();
+  if (typeof renderGridMap === 'function') {
+    renderGridMap();
+  }
 }
 
-function setFilter(f) {
-  currentFilter = f;
+function setStatusFilter(status) {
+  currentStatusFilter = status;
   currentPage = 1;
-  ['all', 'completed', 'pending', 'issues'].forEach(k => {
-    const btn = document.getElementById('btn-' + k);
+  ['all', 'completed', 'pending', 'issue'].forEach(s => {
+    const btn = document.getElementById(`filter-${s}`);
     if (!btn) return;
-    btn.className = k === f
-      ? 'neo-btn px-3 py-1.5 text-xs font-extrabold bg-[#111] text-white'
-      : 'neo-btn px-3 py-1.5 text-xs font-extrabold bg-white text-[#111]';
+    if (s === status) {
+      btn.className = 'filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-sm transition';
+    } else {
+      btn.className = 'filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition';
+    }
   });
   applyFiltersAndRender();
 }
 
-function setFilterAndScroll(f) {
-  if (typeof switchMainTab === 'function') switchMainTab('list');
-  setFilter(f);
-  const anchor = document.getElementById('workspaceAnchor');
-  if (anchor) anchor.scrollIntoView({ behavior: 'smooth' });
+function setCategoryFilter(cat) {
+  currentCategoryFilter = cat;
+  currentPage = 1;
+  document.querySelectorAll('.cat-pill').forEach(btn => {
+    btn.className = 'cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition';
+  });
+  const activeBtn = document.getElementById(`cat-${cat}`);
+  if (activeBtn) {
+    activeBtn.className = 'cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-800 text-white transition';
+  }
+  applyFiltersAndRender();
 }
 
 function applyFiltersAndRender() {
-  const q = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
-  const rangeVal = document.getElementById('rangeSelect')?.value || 'all';
-  const sortVal = document.getElementById('sortSelect')?.value || 'stt_asc';
-
-  let minStt = 1, maxStt = 999999;
-  if (rangeVal !== 'all') [minStt, maxStt] = rangeVal.split('-').map(Number);
+  const searchEl = document.getElementById('searchInput');
+  const query = searchEl ? searchEl.value.toLowerCase().trim() : '';
+  const sortEl = document.getElementById('sortSelect');
+  const sortMode = sortEl ? sortEl.value : 'stt_asc';
+  const sizeEl = document.getElementById('pageSizeSelect');
+  pageSize = sizeEl ? parseInt(sizeEl.value || '50', 10) : 50;
 
   filteredTopics = allTopics.filter(t => {
-    if (t.stt < minStt || t.stt > maxStt) return false;
-    if (currentFilter === 'completed' && t.status !== 'completed') return false;
-    if (currentFilter === 'pending' && t.status === 'completed') return false;
-    if (currentFilter === 'issues' && !(t.status === 'failed' || (t.status === 'completed' && (t.word_count || 0) < 100))) return false;
+    if (currentStatusFilter === 'completed' && t.status !== 'completed') return false;
+    if (currentStatusFilter === 'pending' && t.status === 'completed') return false;
+    if (currentStatusFilter === 'issue' && (t.status !== 'completed' || t.word_count === 100)) return false;
+
     if (currentCategoryFilter !== 'all') {
-      const cat = getTopicCategory(t.topic);
+      const cat = getTopicCategory(t.stt);
       if (cat.id !== currentCategoryFilter) return false;
     }
-    if (q && !String(t.stt).includes(q) && !t.topic.toLowerCase().includes(q)) return false;
+
+    if (query) {
+      const matchTopic = t.topic.toLowerCase().includes(query);
+      const matchStt = String(t.stt) === query || `#${t.stt}` === query;
+      if (!matchTopic && !matchStt) return false;
+    }
     return true;
   });
 
   filteredTopics.sort((a, b) => {
-    if (sortVal === 'stt_asc') return a.stt - b.stt;
-    if (sortVal === 'stt_desc') return b.stt - a.stt;
-    if (sortVal === 'date_desc') return (b.generated_at || '').localeCompare(a.generated_at || '');
-    if (sortVal === 'words_asc') return (a.word_count || 0) - (b.word_count || 0);
+    if (sortMode === 'stt_asc') return a.stt - b.stt;
+    if (sortMode === 'stt_desc') return b.stt - a.stt;
+    if (sortMode === 'completed_first') {
+      if (a.status === b.status) return a.stt - b.stt;
+      return a.status === 'completed' ? -1 : 1;
+    }
+    if (sortMode === 'pending_first') {
+      if (a.status === b.status) return a.stt - b.stt;
+      return a.status !== 'completed' ? -1 : 1;
+    }
     return 0;
   });
 
   renderTable();
+  renderPagination();
+}
+
+function toggleSelectAllPage(checkbox) {
+  const start = (currentPage - 1) * pageSize;
+  const slice = filteredTopics.slice(start, start + pageSize);
+  slice.forEach(t => {
+    if (checkbox.checked) selectedTopics.add(t.stt);
+    else selectedTopics.delete(t.stt);
+  });
+  renderTable();
+}
+
+function toggleRowSelect(stt) {
+  if (selectedTopics.has(stt)) selectedTopics.delete(stt);
+  else selectedTopics.add(stt);
+  const badge = document.getElementById('selectedCountBadge');
+  if (badge) {
+    if (selectedTopics.size > 0) {
+      badge.classList.remove('hidden');
+      badge.innerText = `Đã chọn: ${selectedTopics.size} chủ đề`;
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
 }
 
 function renderTable() {
-  const tbody = document.getElementById('tableBody');
+  const tbody = document.getElementById('topicTableBody');
   if (!tbody) return;
-  const pageSizeSelect = document.getElementById('pageSizeSelect');
-  const pageSize = pageSizeSelect ? parseInt(pageSizeSelect.value, 10) : 50;
+  const start = (currentPage - 1) * pageSize;
+  const slice = filteredTopics.slice(start, start + pageSize);
+
+  const badge = document.getElementById('selectedCountBadge');
+  if (badge) {
+    if (selectedTopics.size > 0) {
+      badge.classList.remove('hidden');
+      badge.innerText = `Đã chọn: ${selectedTopics.size} chủ đề`;
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
+
+  if (!slice.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="p-10 text-center text-slate-400">Không tìm thấy chủ đề nào khớp với bộ lọc hiện tại.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = slice.map(t => {
+    const isDone = t.status === 'completed';
+    const isChecked = selectedTopics.has(t.stt);
+    const cat = getTopicCategory(t.stt);
+    const wordOk = isDone && t.word_count === 100;
+    const safeTopic = t.topic.replace(/'/g, "\\'");
+
+    return `
+      <tr class="hover:bg-slate-50/90 transition ${isChecked ? 'bg-indigo-50/50' : ''}">
+        <td class="p-3.5 text-center">
+          <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleRowSelect(${t.stt})" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" />
+        </td>
+        <td class="p-3.5 font-mono-code text-xs font-bold text-slate-500">#${t.stt}</td>
+        <td class="p-3.5">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${cat.color}">${cat.name}</span>
+            <span class="font-semibold text-slate-900">${t.topic}</span>
+          </div>
+        </td>
+        <td class="p-3.5 text-center">
+          ${isDone
+            ? (wordOk
+                ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">✓ Chuẩn 100t</span>`
+                : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">⚠️ ${t.word_count} từ</span>`)
+            : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-500">⏳ Chưa tạo</span>`
+          }
+        </td>
+        <td class="p-3.5 text-center font-mono-code text-xs font-bold ${isDone ? 'text-slate-800' : 'text-slate-300'}">
+          ${isDone ? `${t.word_count} từ` : '—'}
+        </td>
+        <td class="p-3.5 text-right">
+          <div class="flex items-center justify-end gap-1.5">
+            ${isDone ? `
+              <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-md text-xs font-semibold transition shadow-sm" title="Mở Studio xem bảng 9 cột, học Flashcard 3D & Gõ Cloze">
+                Xem / Sửa
+              </button>
+              <button onclick="downloadSingleFile(${t.stt}, '${safeTopic}')" class="px-2 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-md text-xs font-semibold transition" title="Tải file .txt đơn lẻ cho Anki">
+                ⬇ .TXT
+              </button>
+              <button onclick="downloadTopicAudioZipDirect(${t.stt}, '${safeTopic}', this)" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md text-xs font-bold transition shadow-sm" title="Tự động cào 100 file phát âm MP3 chuẩn Cambridge đóng gói .ZIP">
+                🔊 Tạo Audio (ZIP)
+              </button>
+              <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="px-2 py-1 bg-slate-100 hover:bg-amber-100 text-slate-600 hover:text-amber-800 rounded-md text-xs font-semibold transition" title="Tạo lại trực tiếp trên trình duyệt (Thấy ngay từng từ)">
+                ↻ Tạo lại
+              </button>
+            ` : `
+              <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-xs font-semibold transition shadow-sm" title="Tạo ngay 100 từ trực tiếp trên trình duyệt (Thấy ngay từng từ sinh ra)">
+                ⚡ Tạo 100 từ ngay
+              </button>
+            `}
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function renderPagination() {
   const total = filteredTopics.length;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
   if (currentPage > totalPages) currentPage = totalPages;
 
-  const start = (currentPage - 1) * pageSize;
-  const items = filteredTopics.slice(start, start + pageSize);
-  const showText = document.getElementById('showingCountText');
-  if (showText) {
-    showText.innerText = `(${total > 0 ? start + 1 : 0}-${Math.min(start + pageSize, total)} / ${total})`;
-  }
+  const start = total === 0 ? 0 : (currentPage - 1) * pageSize + 1;
+  const end = Math.min(total, currentPage * pageSize);
+  const infoEl = document.getElementById('paginationInfo');
+  if (infoEl) infoEl.innerText = `Hiển thị ${start}–${end} / ${total} chủ đề (Trang ${currentPage}/${totalPages})`;
 
-  tbody.innerHTML = items.map(t => {
-    const isDone = t.status === 'completed';
-    const isFail = t.status === 'failed';
-    const isSelected = selectedStts.has(t.stt);
-    const wc = t.word_count || 0;
-    const safeTopic = t.topic.replace(/'/g, "\\'");
-    const cat = getTopicCategory(t.topic);
-
-    let statusBadge = `<span class="px-2 py-0.5 bg-slate-200 text-slate-700 rounded font-mono-code text-[11px] font-bold">Chờ tạo</span>`;
-    if (isFail) {
-      statusBadge = `<span class="px-2 py-0.5 bg-red-100 text-red-700 border border-red-500 rounded font-mono-code text-[11px] font-bold" title="${t.last_error || 'Lỗi'}">⚠️ Lỗi</span>`;
-    } else if (isDone && wc >= 100) {
-      statusBadge = `<span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 border border-emerald-600 rounded font-mono-code text-[11px] font-bold">✓ Chuẩn 100t</span>`;
-    } else if (isDone && wc < 100) {
-      statusBadge = `<span class="px-2 py-0.5 bg-amber-100 text-amber-800 border border-amber-600 rounded font-mono-code text-[11px] font-bold">Thiếu (${wc}/100)</span>`;
-    }
-
-    let actions = '';
-    if (isDone) {
-      actions = `
-        <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-[#141414] text-white hover:bg-slate-800 rounded text-xs font-bold shadow-sm">Xem / Sửa</button>
-        <button onclick="downloadSingleFile(${t.stt})" class="px-2 py-1 bg-[#3F6AE4] text-white hover:bg-blue-600 rounded text-xs font-bold">⬇ .TXT</button>
-        <button onclick="downloadTopicAudioZipDirect(${t.stt}, null, this)" class="px-2.5 py-1 bg-[#38E54D] text-[#111] hover:bg-emerald-300 border border-[#111] rounded text-xs font-extrabold shadow-sm inline-flex items-center gap-1" title="Tạo & Tải trọn bộ 100 file âm thanh MP3 chuẩn Anki (Cambridge & GCP Neural2)"><span>🔊</span> Tạo Audio (ZIP)</button>
-        <button onclick="triggerWorkflow('1', '${t.stt}')" class="px-2 py-1 bg-white hover:bg-amber-100 border border-[#111] rounded text-[11px] font-bold" title="Tạo lại chủ đề này">↻ Tạo lại</button>
-      `;
-    } else {
-      actions = `
-        <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-[#38E54D] text-[#111] hover:bg-emerald-400 border border-[#111] rounded text-xs font-extrabold shadow-sm">⚡ Tạo Trên Web</button>
-        <button onclick="triggerWorkflow('1', '${t.stt}')" class="px-2 py-1 bg-[#141414] text-white hover:bg-slate-800 rounded text-xs font-bold">Chạy Bot ↗</button>
-        <button onclick="alert('Chủ đề #${t.stt} chưa có 100 từ vựng. Vui lòng bấm \'⚡ Tạo Trên Web\' để tạo danh sách từ trước khi tạo file âm thanh!')" class="px-2 py-1 bg-slate-100 text-slate-400 border border-slate-300 rounded text-xs font-bold inline-flex items-center gap-1 opacity-70" title="Chưa có từ vựng để tạo âm thanh"><span>🔊</span> Tạo Audio</button>
-      `;
-    }
-
-    return `
-      <tr class="hover:bg-amber-50/60 transition ${isSelected ? 'bg-amber-100/50' : ''}">
-        <td class="py-2.5 px-3 text-center">
-          <input type="checkbox" onchange="toggleSelectTopic(${t.stt}, this.checked)" ${isSelected ? 'checked' : ''} class="w-4 h-4 rounded cursor-pointer" />
-        </td>
-        <td class="py-2.5 px-3 font-mono-code font-extrabold text-slate-500">#${t.stt}</td>
-        <td class="py-2.5 px-4 font-extrabold text-[#111]">
-          <div class="flex items-center gap-1.5 flex-wrap">
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-mono-code font-bold" style="background:${cat.color}20; color:${cat.color}">
-              ${cat.icon} ${cat.name}
-            </span>
-            <span class="hover:underline cursor-pointer" onclick="previewFile(${t.stt}, '${safeTopic}')">${t.topic}</span>
-          </div>
-        </td>
-        <td class="py-2.5 px-4">${statusBadge}</td>
-        <td class="py-2.5 px-4 font-mono-code font-bold">${wc > 0 ? `${wc} từ` : '—'}</td>
-        <td class="py-2.5 px-4 font-mono-code text-[11px] text-slate-500">${t.generated_at || '—'}</td>
-        <td class="py-2.5 px-4 text-right space-x-1 whitespace-nowrap">${actions}</td>
-      </tr>
-    `;
-  }).join('');
-
-  renderPagination(totalPages);
-}
-
-function renderPagination(totalPages) {
-  const container = document.getElementById('paginationControls');
-  if (!container) return;
-  if (totalPages <= 1) { container.innerHTML = ''; return; }
-
+  const ctrl = document.getElementById('paginationControls');
+  if (!ctrl) return;
   let html = '';
-  if (currentPage > 1) {
-    html += `<button onclick="currentPage--; renderTable()" class="neo-btn px-2.5 py-1 bg-white text-xs font-extrabold">← Trước</button>`;
+
+  html += `<button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="px-2.5 py-1 rounded border text-xs font-semibold ${currentPage === 1 ? 'bg-slate-100 text-slate-300 border-slate-200 cursor-not-allowed' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'}">‹ Trước</button>`;
+
+  const maxBtns = 5;
+  let startP = Math.max(1, currentPage - 2);
+  let endP = Math.min(totalPages, startP + maxBtns - 1);
+  if (endP - startP < maxBtns - 1) startP = Math.max(1, endP - maxBtns + 1);
+
+  for (let p = startP; p <= endP; p++) {
+    html += `<button onclick="changePage(${p})" class="px-3 py-1 rounded border text-xs font-bold ${p === currentPage ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'}">${p}</button>`;
   }
 
-  for (let p = 1; p <= totalPages; p++) {
-    if (p === 1 || p === totalPages || (p >= currentPage - 2 && p <= currentPage + 2)) {
-      html += `<button onclick="currentPage=${p}; renderTable()" class="neo-btn px-2.5 py-1 text-xs font-extrabold ${p === currentPage ? 'bg-[#111] text-white' : 'bg-white'}">${p}</button>`;
-    } else if (p === currentPage - 3 || p === currentPage + 3) {
-      html += `<span class="px-1 py-1 text-xs font-mono-code font-bold">...</span>`;
-    }
-  }
-
-  if (currentPage < totalPages) {
-    html += `<button onclick="currentPage++; renderTable()" class="neo-btn px-2.5 py-1 bg-white text-xs font-extrabold">Sau →</button>`;
-  }
-  container.innerHTML = html;
+  html += `<button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="px-2.5 py-1 rounded border text-xs font-semibold ${currentPage === totalPages ? 'bg-slate-100 text-slate-300 border-slate-200 cursor-not-allowed' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'}">Sau ›</button>`;
+  ctrl.innerHTML = html;
 }
 
-function toggleSelectTopic(stt, isChecked) {
-  if (isChecked) selectedStts.add(stt);
-  else selectedStts.delete(stt);
-  updateDashboardUI();
-}
-
-function toggleSelectAllPage(isChecked) {
-  const pageSizeSelect = document.getElementById('pageSizeSelect');
-  const pageSize = pageSizeSelect ? parseInt(pageSizeSelect.value, 10) : 50;
-  const start = (currentPage - 1) * pageSize;
-  const items = filteredTopics.slice(start, start + pageSize);
-
-  items.forEach(t => {
-    if (isChecked) selectedStts.add(t.stt);
-    else selectedStts.delete(t.stt);
-  });
+function changePage(p) {
+  const totalPages = Math.max(1, Math.ceil(filteredTopics.length / pageSize));
+  if (p < 1 || p > totalPages) return;
+  currentPage = p;
   renderTable();
-  updateDashboardUI();
-}
-
-function renderGridMap() {
-  const container = document.getElementById('topicGridMap');
-  if (!container) return;
-  container.innerHTML = allTopics.map(t => {
-    const isDone = t.status === 'completed';
-    const wc = t.word_count || 0;
-    let cls = 'bg-white text-slate-700';
-    if (t.status === 'failed') cls = 'bg-[#F05332] text-white';
-    else if (isDone && wc >= 100) cls = 'bg-[#169C64] text-white';
-    else if (isDone && wc < 100) cls = 'bg-[#F7B32B] text-[#111]';
-    const safe = t.topic.replace(/'/g, "\\'");
-    const act = isDone ? `previewFile(${t.stt}, '${safe}')` : `generateSingleInBrowser(${t.stt}, '${safe}')`;
-
-    return `
-      <div
-        onclick="${act}"
-        onmouseenter="document.getElementById('gridHoverInfo').innerText = '#${t.stt}: ${safe} (${t.status})'"
-        class="aspect-square border border-[#111] text-[10px] font-mono-code font-bold flex items-center justify-center cursor-pointer hover:scale-125 transition-transform z-0 hover:z-10 shadow-[1px_1px_0px_#111] ${cls}"
-        title="#${t.stt}: ${t.topic}">
-        ${t.stt}
-      </div>
-    `;
-  }).join('');
-}
-
-async function downloadSingleFile(stt) {
-  try {
-    const res = await smartFetch(`output/${stt}.txt`);
-    const text = await res.text();
-    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `${stt}.txt`;
-    a.click();
-  } catch (e) {
-    alert(`Lỗi khi tải file #${stt}: ` + e.message);
-  }
-}
-
-// ==================== TẢI XUỐNG ĐỒNG THỜI (PARALLEL FAST DOWNLOAD) ====================
-async function downloadSelectedOrAllZip() {
-  const targets = selectedStts.size > 0
-    ? allTopics.filter(t => selectedStts.has(t.stt) && t.status === 'completed')
-    : allTopics.filter(t => t.status === 'completed');
-
-  if (!targets.length) {
-    alert('Chưa có file hoàn thành nào để tải!');
-    return;
-  }
-
-  showToastAlert(`📦 Đang nén song song ${targets.length} file vào ZIP...`);
-  const zip = new JSZip();
-
-  // Tải song song theo nhóm 15 file
-  const chunkSize = 15;
-  for (let i = 0; i < targets.length; i += chunkSize) {
-    const chunk = targets.slice(i, i + chunkSize);
-    await Promise.all(chunk.map(async t => {
-      try {
-        const res = await smartFetch(`output/${t.stt}.txt`);
-        if (res.ok) zip.file(`${t.stt}.txt`, await res.text());
-      } catch (e) {}
-    }));
-  }
-
-  const blob = await zip.generateAsync({ type: 'blob' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `anki_dictionary_${targets.length}_topics.zip`;
-  a.click();
-  showToastAlert(`🎉 Tải thành công tệp ZIP chứa ${targets.length} file Anki!`);
-}
-
-async function downloadSelectedOrAllMerged() {
-  const targets = selectedStts.size > 0
-    ? allTopics.filter(t => selectedStts.has(t.stt) && t.status === 'completed')
-    : allTopics.filter(t => t.status === 'completed');
-
-  if (!targets.length) {
-    alert('Chưa có file hoàn thành nào!');
-    return;
-  }
-
-  showToastAlert(`📑 Đang tổng hợp song song ${targets.length} chủ đề...`);
-  const chunks = [];
-  const chunkSize = 15;
-
-  for (let i = 0; i < targets.length; i += chunkSize) {
-    const chunk = targets.slice(i, i + chunkSize);
-    const texts = await Promise.all(chunk.map(async t => {
-      try {
-        const res = await smartFetch(`output/${t.stt}.txt`);
-        if (res.ok) return (await res.text()).trim();
-      } catch (e) {}
-      return '';
-    }));
-    chunks.push(...texts.filter(Boolean));
-  }
-
-  const blob = new Blob([chunks.join('\n') + '\n'], { type: 'text/plain;charset=utf-8' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `anki_merged_${targets.length}_topics.txt`;
-  a.click();
-  showToastAlert(`🎉 Tải thành công file gộp ${targets.length} chủ đề!`);
-}
-
-// Xuất file CSV (Tương thích Excel)
-async function downloadSelectedOrAllCsv() {
-  const targets = selectedStts.size > 0
-    ? allTopics.filter(t => selectedStts.has(t.stt) && t.status === 'completed')
-    : allTopics.filter(t => t.status === 'completed');
-
-  if (!targets.length) {
-    alert('Chưa có file hoàn thành nào!');
-    return;
-  }
-
-  showToastAlert(`📊 Đang xuất định dạng CSV cho ${targets.length} chủ đề...`);
-  const csvRows = ['"STT","Word","Cloze","IPA","Sound","Definition","Meaning_VI","Plural","Examples"'];
-  const chunkSize = 15;
-
-  for (let i = 0; i < targets.length; i += chunkSize) {
-    const chunk = targets.slice(i, i + chunkSize);
-    await Promise.all(chunk.map(async t => {
-      try {
-        const res = await smartFetch(`output/${t.stt}.txt`);
-        if (res.ok) {
-          const lines = (await res.text()).split('\n').filter(l => l.trim());
-          lines.forEach(line => {
-            const cols = line.split('\t').map(c => `"${c.replace(/"/g, '""')}"`);
-            csvRows.push([`"${t.stt}"`, ...cols].join(','));
-          });
-        }
-      } catch (e) {}
-    }));
-  }
-
-  const blob = new Blob(['\uFEFF' + csvRows.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `anki_dictionary_${targets.length}_topics.csv`;
-  a.click();
-}
-
-
-// Tải Audio ZIP cho các chủ đề được tick chọn hoặc chủ đề người dùng chọn
-async function downloadSelectedOrFirstAudioZip(btnElement = null) {
-  const btn = btnElement || document.getElementById('bannerAudioZipBtn');
-  const originalHtml = btn ? btn.innerHTML : '';
-
-  const completedTargets = (typeof allTopics !== 'undefined' && Array.isArray(allTopics))
-    ? allTopics.filter(t => t.status === 'completed')
-    : [];
-
-  if (!completedTargets.length) {
-    alert('Chưa có chủ đề hoàn thành nào để tải âm thanh! Vui lòng bấm "⚡ Tạo Trên Web" để tạo từ vựng trước.');
-    return;
-  }
-
-  // 1. Nếu người dùng tick chọn checkbox trong bảng
-  if (selectedStts.size > 0) {
-    const selectedCompleted = completedTargets.filter(t => selectedStts.has(t.stt));
-    if (!selectedCompleted.length) {
-      alert('Các chủ đề bạn vừa chọn chưa có từ vựng hoàn chỉnh!');
-      return;
-    }
-    if (btn) {
-      btn.disabled = true;
-      btn.innerHTML = `<span class="tid-cta-arrow">⏳</span> <span class="tid-cta-label">Đang nén ${selectedCompleted.length} chủ đề...</span>`;
-    }
-    for (const t of selectedCompleted) {
-      await downloadTopicAudioZipDirect(t.stt, t.topic, btn);
-      await new Promise(r => setTimeout(r, 800));
-    }
-    if (btn) {
-      btn.disabled = false;
-      btn.innerHTML = originalHtml;
-    }
-    return;
-  }
-
-  // 2. Nếu chưa tick ô nào: Hỏi người dùng muốn tải STT nào (mặc định bài hoàn thành đầu tiên)
-  const defaultStt = completedTargets[0].stt;
-  const promptInput = prompt(
-    `Nhập STT chủ đề bạn muốn tải trọn bộ 100 file âm thanh MP3 (1 - 1000):\n(Hoặc tick chọn ô vuông ở đầu các dòng trong bảng để tải hàng loạt)\n\nHiện có ${completedTargets.length} chủ đề đã hoàn thành (Ví dụ: #${defaultStt} ${completedTargets[0].topic}):`,
-    defaultStt
-  );
-  if (!promptInput) return;
-
-  const targetStt = parseInt(promptInput.trim(), 10);
-  const matched = allTopics.find(t => t.stt === targetStt);
-  if (!matched) {
-    alert(`Không tìm thấy chủ đề số #${targetStt} trong danh sách!`);
-    return;
-  }
-  if (matched.status !== 'completed') {
-    alert(`Chủ đề #${targetStt} (${matched.topic}) chưa tạo từ vựng! Hãy bấm "⚡ Tạo Trên Web" trước.`);
-    return;
-  }
-
-  return downloadTopicAudioZipDirect(matched.stt, matched.topic, btn);
+  renderPagination();
 }

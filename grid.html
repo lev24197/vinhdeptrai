@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bản Đồ Lưới 1.000 Ô — The Anki Dictionary</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- THANH ĐIỀU HƯỚNG DÙNG CHUNG -->
+  <div id="sharedNavbarMount"></div>
+
+  <main class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 flex-1 space-y-6">
+
+    <!-- THANH TIẾN TRÌNH AI REAL-TIME -->
+    <div id="sharedLiveRunnerMount"></div>
+
+    <!-- 1. THỐNG KÊ TIẾN ĐỘ THEO 8 NHÓM LĨNH VỰC (Bấm vào thẻ để lọc bản đồ lưới) -->
+    <section class="neo-box p-5 bg-white">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <h2 class="font-display font-extrabold text-lg text-[#141414]">🟩 Bản Đồ Tiến Độ 8 Lĩnh Vực (1.000 Chủ Đề)</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Nhấn vào bất kỳ thẻ lĩnh vực nào bên dưới để lọc nổi bật các ô thuộc lĩnh vực đó trên bản đồ 1.000 ô.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <input id="gridSearchInput" type="text" oninput="renderGridMap()" placeholder="🔍 Tìm nhanh ô theo STT hoặc tên chủ đề..." class="px-3 py-1.5 text-xs rounded-lg border-2 border-[#141414] w-64 font-medium focus:outline-none" />
+          <button onclick="setGridFilter('all', 'all')" class="neo-btn px-3 py-1.5 bg-[#FFE787] text-[#141414] rounded-lg text-xs font-extrabold">
+            Hiện tất cả 1.000 ô
+          </button>
+        </div>
+      </div>
+
+      <div id="gridCategoryBreakdown" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+    </section>
+
+    <!-- 2. BẢN ĐỒ LƯỚI TRỰC QUAN 1.000 Ô -->
+    <section id="mainView-grid" class="neo-box bg-white p-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
+        <div>
+          <h3 class="font-bold text-slate-900 text-base">Bản Đồ Trực Quan 1.000 Chủ Đề (1 → 1.000)</h3>
+          <p class="text-xs text-slate-500">Di chuột vào từng ô để xem tên chủ đề. Nhấp vào ô <strong class="text-emerald-700">Màu Xanh</strong> để Học/Xem từ vựng, hoặc nhấp vào ô <strong class="text-slate-600">Màu Trắng</strong> để Tạo ngay 100 từ bằng AI.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 text-xs font-medium">
+          <button onclick="setGridFilter(null, 'completed')" class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-emerald-300 bg-emerald-50 hover:bg-emerald-100">
+            <span class="w-3.5 h-3.5 rounded bg-[#169C64] inline-block border border-[#141414]"></span> Đã đủ 100 từ
+          </button>
+          <button onclick="setGridFilter(null, 'issue')" class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-amber-300 bg-amber-50 hover:bg-amber-100">
+            <span class="w-3.5 h-3.5 rounded bg-[#FF9F1C] inline-block border border-[#141414]"></span> Thiếu/Thừa từ
+          </button>
+          <button onclick="setGridFilter(null, 'pending')" class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-slate-300 bg-slate-50 hover:bg-slate-100">
+            <span class="w-3.5 h-3.5 rounded bg-white border border-slate-400 inline-block"></span> Chưa tạo
+          </button>
+        </div>
+      </div>
+
+      <div id="gridContainer" class="grid grid-cols-10 sm:grid-cols-20 md:grid-cols-25 lg:grid-cols-40 gap-1.5"></div>
+    </section>
+
+  </main>
+
+  <!-- HỘP THOẠI DÙNG CHUNG -->
+  <div id="sharedModalsMount"></div>
+
+  <!-- MODULAR JAVASCRIPT ARCHITECTURE -->
+  <script src="js/data.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/export.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/studio.js"></script>
+  <script src="js/actions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

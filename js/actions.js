@@ -1,4 +1,4 @@
-﻿// ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
+// ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
 
 function showLiveRunner(title, pct, stepIndex, isError = false) {
   const banner = document.getElementById('liveRunnerBanner');
@@ -702,64 +702,5 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
     logToConsole('ERROR', 'WEB_GEN_FAIL', 'Chủ đề #' + stt + ' (' + topicVi + ') thất bại: ' + e.message);
     toggleConsoleDrawer(true);
   }
-}async function pushFileToGitHub(path, contentText, commitMessage) {
-  const owner = localStorage.getItem('gh_owner');
-  const repo = localStorage.getItem('gh_repo');
-  const branch = localStorage.getItem('gh_branch') || 'main';
-  const token = localStorage.getItem('gh_token');
-  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-
-  let sha = undefined;
-  const getRes = await fetch(apiUrl + `?ref=${branch}`, { headers: { 'Authorization': `Bearer ${token}` } });
-  if (getRes.ok) {
-    const fData = await getRes.json();
-    sha = fData.sha;
-  }
-
-  const base64Content = btoa(unescape(encodeURIComponent(contentText)));
-  const bodyObj = { message: commitMessage, content: base64Content, branch };
-  if (sha) bodyObj.sha = sha;
-
-  const putRes = await fetch(apiUrl, {
-    method: 'PUT',
-    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(bodyObj)
-  });
-  if (!putRes.ok) throw new Error(await putRes.text());
 }
 
-function openSettings() {
-  document.getElementById('ghOwner').value = localStorage.getItem('gh_owner') || 'lev24197';
-  document.getElementById('ghRepo').value = localStorage.getItem('gh_repo') || 'vinhdeptrai';
-  document.getElementById('ghBranch').value = localStorage.getItem('gh_branch') || 'main';
-  document.getElementById('ghToken').value = localStorage.getItem('gh_token') || '';
-  document.getElementById('geminiKeyInput').value = localStorage.getItem('gemini_api_key') || '';
-  const modelEl = document.getElementById('geminiModelSelect');
-  if (modelEl) modelEl.value = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
-  const audioServiceInput = document.getElementById('audioServiceUrlInput');
-  if (audioServiceInput) audioServiceInput.value = typeof getAudioServiceUrl === 'function' ? getAudioServiceUrl() : (localStorage.getItem('audio_service_url') || 'https://anki-audio-service-918034752495.asia-southeast1.run.app');
-  document.getElementById('settingsModal').classList.remove('hidden');
-  document.getElementById('settingsModal').classList.add('flex');
-}
-
-function closeSettings() {
-  document.getElementById('settingsModal').classList.add('hidden');
-  document.getElementById('settingsModal').classList.remove('flex');
-}
-
-function saveSettings() {
-  localStorage.setItem('gh_owner', document.getElementById('ghOwner').value.trim() || 'lev24197');
-  localStorage.setItem('gh_repo', document.getElementById('ghRepo').value.trim() || 'vinhdeptrai');
-  localStorage.setItem('gh_branch', document.getElementById('ghBranch').value.trim() || 'main');
-  localStorage.setItem('gh_token', document.getElementById('ghToken').value.trim());
-  localStorage.setItem('gemini_api_key', document.getElementById('geminiKeyInput').value.trim());
-  const modelEl = document.getElementById('geminiModelSelect');
-  if (modelEl) localStorage.setItem('gemini_model', modelEl.value);
-  const audioServiceInput = document.getElementById('audioServiceUrlInput');
-  if (audioServiceInput) {
-    const val = audioServiceInput.value.trim() || (typeof DEFAULT_AUDIO_SERVICE_URL !== 'undefined' ? DEFAULT_AUDIO_SERVICE_URL : 'https://anki-audio-service-918034752495.asia-southeast1.run.app');
-    localStorage.setItem('audio_service_url', val);
-  }
-  closeSettings();
-  logToConsole('SUCCESS', 'CONFIG', 'Đã cập nhật cấu hình GitHub & Gemini API Key (Model: ' + (modelEl ? modelEl.value : 'gemini-3.1-flash-lite') + ').');
-}

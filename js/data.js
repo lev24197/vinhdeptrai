@@ -1,148 +1,139 @@
-// ==================== TRÌNH KẾT NỐI VÀ TỰ ĐỘNG ĐỒNG BỘ DỮ LIỆU (DATA CONNECTOR) ====================
+// ============================================================================
+// MODULE: js/data.js
+// Chức năng: Quản lý kết nối dữ liệu trung tâm (smartFetch, loadData, loadRunLogs)
+//            & Terminal Nhật ký Hệ thống (Console Log Drawer).
+// ============================================================================
+
 let allTopics = [];
 let filteredTopics = [];
-let selectedStts = new Set();
-let currentFilter = 'all';
+let selectedTopics = new Set();
+let currentStatusFilter = 'all';
+let currentCategoryFilter = 'all';
 let currentPage = 1;
+let pageSize = 50;
+let consoleLogs = [];
 
-let actionPollTimer = null;
-let runnerStartTime = null;
-
-// URL mặc định của Microservice Google Cloud Run tạo âm thanh Anki (Cambridge + Neural2)
-const DEFAULT_AUDIO_SERVICE_URL = 'https://anki-audio-service-918034752495.asia-southeast1.run.app';
-
-function getAudioServiceUrl() {
-  const custom = (localStorage.getItem('audio_service_url') || '').trim().replace(/\/+$/, '');
-  return custom || DEFAULT_AUDIO_SERVICE_URL;
-}
-
-// Tự động nhận diện cấu hình Repo GitHub
-function autoDetectGitHubRepo() {
-  if (!localStorage.getItem('gh_owner')) localStorage.setItem('gh_owner', 'lev24197');
-  if (!localStorage.getItem('gh_repo')) localStorage.setItem('gh_repo', 'vinhdeptrai');
-  if (!localStorage.getItem('gh_branch')) localStorage.setItem('gh_branch', 'main');
-}
-
-/**
- * Trình tải thông minh (Smart Fetch):
- * - Nếu mở web bằng file:/// (nhấp đúp file trên máy tính) hoặc fetch local bị chặn CORS:
- *   ➜ Tự động chuyển hướng tải trực tiếp từ GitHub Raw của repo lev24197/vinhdeptrai!
- * - Nếu chạy trên HTTP/HTTPS (GitHub Pages hoặc Local Server):
- *   ➜ Tải file local, nếu lỗi thì tự động fallback về GitHub Raw.
- * Nhờ đó database LUÔN LUÔN được nạp 100% trong mọi môi trường!
- */
 async function smartFetch(relativePath) {
-  const cleanPath = relativePath.replace(/^\.?\//, '');
-  const isFileProto = window.location.protocol === 'file:';
-  const owner = localStorage.getItem('gh_owner') || 'lev24197';
-  const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
+  const owner = localStorage.getItem('gh_owner');
+  const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const remoteUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${cleanPath}`;
+  const isLocal = window.location.protocol === 'file:';
 
-  // Nếu đang chạy trên server HTTP/HTTPS, ưu tiên fetch local
-  if (!isFileProto) {
-    try {
-      const res = await fetch(`./${cleanPath}?t=` + Date.now());
-      if (res.ok) return res;
-    } catch (e) {
-      console.warn(`Local fetch failed cho ${cleanPath}, đang fallback về GitHub Raw...`);
-    }
+  if (isLocal && owner && repo) {
+    const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${relativePath}?t=${Date.now()}`;
+    return fetch(rawUrl);
   }
-
-  // Tải trực tiếp từ GitHub Raw (hỗ trợ CORS cho cả file:/// và các trình duyệt)
-  const resRemote = await fetch(remoteUrl + '?t=' + Date.now());
-  if (resRemote.ok) return resRemote;
-  throw new Error(`Không thể nạp dữ liệu từ local lẫn GitHub (${cleanPath})`);
+  return fetch(`${relativePath}?t=${Date.now()}`);
 }
 
-function logToConsole(level, step, msg) {
-  const box = document.getElementById('consoleOutput');
-  const quickBox = document.getElementById('quickLogBox');
-  const time = new Date().toLocaleTimeString('vi-VN');
-  let color = 'text-emerald-400';
-  if (level === 'ERROR') color = 'text-red-400 font-bold';
-  else if (level === 'WARNING') color = 'text-amber-300';
-  else if (level === 'INFO') color = 'text-sky-300';
+function logToConsole(level, step, message) {
+  const timeStr = new Date().toLocaleTimeString('vi-VN');
+  consoleLogs.unshift({ time: timeStr, level, step, message });
+  renderConsoleLogs();
 
-  const line = `<div class="${color}">[${time}] [${level}] [${step}] ${msg}</div>`;
-  if (box) box.insertAdjacentHTML('afterbegin', line);
-  if (quickBox) quickBox.insertAdjacentHTML('afterbegin', line);
+  if (level === 'ERROR') {
+    const errBadge = document.getElementById('consoleErrorBadge');
+    if (errBadge) errBadge.classList.remove('hidden');
+  }
 }
 
-function clearLocalConsole() {
-  const box = document.getElementById('consoleOutput');
-  if (box) box.innerHTML = '';
+function renderConsoleLogs() {
+  const container = document.getElementById('consoleLogContainer');
+  const countEl = document.getElementById('consoleLogCount');
+  if (countEl) countEl.innerText = `${consoleLogs.length} bản ghi`;
+  if (!container) return;
+
+  container.innerHTML = consoleLogs.map(log => {
+    let color = 'text-slate-300';
+    let badgeBg = 'bg-slate-800 text-slate-300';
+    if (log.level === 'SUCCESS') { color = 'text-emerald-400'; badgeBg = 'bg-emerald-950 text-emerald-300 border border-emerald-700'; }
+    if (log.level === 'WARNING') { color = 'text-amber-300'; badgeBg = 'bg-amber-950 text-amber-300 border border-amber-700'; }
+    if (log.level === 'ERROR') { color = 'text-rose-400 font-bold'; badgeBg = 'bg-rose-950 text-rose-300 border border-rose-700'; }
+
+    return `<div class="flex items-start gap-2 border-b border-slate-900 pb-1">
+      <span class="text-slate-500 shrink-0">[${log.time}]</span>
+      <span class="px-1.5 py-0.2 rounded text-[10px] font-bold shrink-0 ${badgeBg}">${log.level}</span>
+      <span class="text-indigo-400 font-bold shrink-0">[${log.step}]</span>
+      <span class="${color} break-all">${log.message}</span>
+    </div>`;
+  }).join('');
 }
 
-function toggleConsoleDrawer(forceOpen) {
-  const d = document.getElementById('consoleDrawer');
-  if (!d) return;
-  if (typeof forceOpen === 'boolean') d.classList.toggle('hidden', !forceOpen);
-  else d.classList.toggle('hidden');
+function clearConsoleLogs() {
+  consoleLogs = [];
+  renderConsoleLogs();
+  const errBadge = document.getElementById('consoleErrorBadge');
+  if (errBadge) errBadge.classList.add('hidden');
+}
+
+function toggleConsoleDrawer(forceState) {
+  const drawer = document.getElementById('consoleDrawer');
+  if (!drawer) return;
+  const isHidden = drawer.classList.contains('translate-y-full');
+  const shouldOpen = forceState !== undefined ? forceState : isHidden;
+  if (shouldOpen) {
+    drawer.classList.remove('translate-y-full');
+    const errBadge = document.getElementById('consoleErrorBadge');
+    if (errBadge) errBadge.classList.add('hidden');
+  } else {
+    drawer.classList.add('translate-y-full');
+  }
 }
 
 async function loadRunLogs() {
   try {
     const res = await smartFetch('run_logs.json');
+    if (!res.ok) return;
     const logs = await res.json();
-    const box = document.getElementById('consoleOutput');
-    const qBox = document.getElementById('quickLogBox');
-    let errCount = 0;
-
-    const html = logs.slice(0, 60).map(l => {
-      if (l.level === 'ERROR') errCount++;
-      let c = 'text-emerald-400';
-      if (l.level === 'ERROR') c = 'text-red-400 font-bold';
-      else if (l.level === 'WARNING') c = 'text-amber-300';
-      else if (l.level === 'INFO') c = 'text-sky-300';
-      const retryBtn = (l.level === 'ERROR' && l.stt)
-        ? `<button onclick="triggerWorkflow('1','${l.stt}')" class="ml-2 px-1.5 py-0.2 bg-red-600 text-white rounded text-[10px]">↻ Chạy lại #${l.stt}</button>`
-        : '';
-      return `<div class="${c}">[${l.time}] [${l.level}] [${l.step}] ${l.message} ${retryBtn}</div>`;
-    }).join('');
-
-    if (html) {
-      if (box) box.innerHTML = html;
-      if (qBox) qBox.innerHTML = html;
-    }
-    const bubble = document.getElementById('errorCountBubble');
-    if (bubble) {
-      if (errCount > 0) {
-        bubble.innerText = errCount;
-        bubble.classList.remove('hidden');
-        bubble.classList.add('flex');
-      } else {
-        bubble.classList.add('hidden');
-      }
+    if (Array.isArray(logs)) {
+      logs.slice(-30).forEach(entry => {
+        consoleLogs.unshift({
+          time: entry.timestamp ? entry.timestamp.split(' ')[1] || entry.timestamp : '--:--',
+          level: entry.level || 'INFO',
+          step: entry.step || 'PYTHON',
+          message: entry.message || ''
+        });
+      });
+      renderConsoleLogs();
     }
   } catch (e) {}
 }
 
-async function loadData(checkAction = false) {
-  autoDetectGitHubRepo();
-  const lastUpdatedEl = document.getElementById('lastUpdated');
+async function loadData(silent = false) {
+  const badge = document.getElementById('syncBadge');
+  if (!silent && badge) {
+    badge.innerText = '🔄 Đang tải dữ liệu...';
+    badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 border-2 border-[#141414]';
+  }
+
   try {
-    const res = await smartFetch('status.json');
-    const data = await res.json();
-    allTopics = data.topics || [];
+    const res = await smartFetch('progress.json');
+    if (!res.ok) throw new Error('Không tìm thấy progress.json');
+    allTopics = await res.json();
 
-    const isFileProto = window.location.protocol === 'file:';
-    const sourceTag = isFileProto ? '🌐 GitHub Cloud' : '💻 Local';
-    if (lastUpdatedEl) {
-      lastUpdatedEl.innerHTML = `${data.updated_at || 'Vừa xong'} <span class="ml-1 text-[10px] opacity-75 font-mono-code">(${sourceTag})</span>`;
-    }
-
-    // Cập nhật tất cả các module giao diện
     if (typeof updateDashboardUI === 'function') updateDashboardUI();
     if (typeof renderGridMap === 'function') renderGridMap();
-    if (typeof applyFiltersAndRender === 'function') applyFiltersAndRender();
-    if (typeof renderQuizTopicSelection === 'function') renderQuizTopicSelection();
-    loadRunLogs();
 
-    logToConsole('SUCCESS', 'DATABASE', `Đã nạp thành công database: ${allTopics.length} chủ đề (${sourceTag})`);
-    if (checkAction && typeof pollGitHubActionSteps === 'function') pollGitHubActionSteps();
-  } catch (e) {
-    if (lastUpdatedEl) lastUpdatedEl.innerText = 'Lỗi kết nối';
-    logToConsole('ERROR', 'LOAD_STATUS', 'Không thể nạp database: ' + e.message);
+    // Khởi tạo tự động cho các trang chức năng chuyên biệt
+    const activePage = typeof getActivePageFilename === 'function' ? getActivePageFilename() : 'index.html';
+    if (activePage === 'studio.html' && typeof initStudioPage === 'function') initStudioPage();
+    if (activePage === 'audio.html' && typeof initAudioPage === 'function') initAudioPage();
+    if (activePage === 'corpus.html' && typeof initCorpusPage === 'function') initCorpusPage();
+    if (activePage === 'audit.html' && typeof initAuditPage === 'function') initAuditPage();
+    if (activePage === 'quiz.html' && typeof renderQuizTopicSelection === 'function') renderQuizTopicSelection();
+
+    const mode = (window.location.protocol === 'file:' && localStorage.getItem('gh_owner')) ? '☁️ GitHub Cloud' : '💻 Local';
+    if (badge) {
+      badge.innerText = `🟢 Đồng bộ lúc ${new Date().toLocaleTimeString('vi-VN')} (${mode})`;
+      badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-[#E3F7ED] text-[#141414] border-2 border-[#141414] shadow-[2px_2px_0px_#141414]';
+    }
+    if (!silent) logToConsole('SUCCESS', 'SYNC_DATA', `Đã đồng bộ thành công ${allTopics.length} chủ đề từ progress.json.`);
+  } catch (err) {
+    if (badge) {
+      badge.innerText = '⚠️ Chưa kết nối dữ liệu (Bấm ⚙️ Cấu hình API)';
+      badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-rose-100 text-rose-800 border-2 border-[#141414] cursor-pointer';
+      badge.onclick = () => { if (typeof openSettings === 'function') openSettings(); };
+    }
+    logToConsole('ERROR', 'SYNC_FAIL', 'Không thể đọc progress.json trực tiếp. Nếu mở file:// trên máy, hãy nhập GitHub Owner & Repo trong phần ⚙️ Cấu hình API.');
   }
 }
