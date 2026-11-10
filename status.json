@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09 19:53:16",
+  "updated_at": "2026-11-10 13:35:03",
   "topics": [
     {
       "stt": 1,
@@ -1021,28 +1021,28 @@
     {
       "stt": 114,
       "topic": "Rượu vang và Đồ uống có cồn (Wine & Alcoholic Beverages)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/114.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-10 13:33",
       "last_error": null
     },
     {
       "stt": 115,
       "topic": "Dụng cụ pha chế (Bartending Tools)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/115.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-10 13:34",
       "last_error": null
     },
     {
       "stt": 116,
       "topic": "Văn hóa uống rượu bia (Drinking Culture)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/116.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-10 13:35",
       "last_error": null
     },
     {
