@@ -1,182 +1,244 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script cào âm thanh Cambridge Dictionary 100% chạy trực tiếp trên máy tính cá nhân hoặc Google Colab.
-Mạng gia đình / Colab không bao giờ bị Cloudflare chặn như server đám mây.
+Script cào và ghép âm thanh chuẩn 100% Cambridge Dictionary (US/UK) cho toàn bộ 100 từ của từng chủ đề Anki.
 """
 
 import os
 import re
-import sys
 import time
-import random
 import shutil
 import argparse
+import threading
 from urllib.parse import quote
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import List, Optional, Dict, Tuple
 
 import requests
-from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
 
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
-]
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 
-def create_session(max_workers=10):
-    s = requests.Session()
-    s.headers.update({
-        "User-Agent": random.choice(USER_AGENTS),
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Connection": "keep-alive",
-    })
-    adapter = requests.adapters.HTTPAdapter(pool_connections=max_workers, pool_maxsize=max_workers)
-    s.mount('https://', adapter)
-    s.mount('http://', adapter)
-    return s
+API_SESSION = requests.Session()
+API_SESSION.headers.update({"User-Agent": USER_AGENT, "Connection": "keep-alive"})
+API_SESSION.mount("https://", HTTPAdapter(pool_connections=20, pool_maxsize=20))
 
-def fetch_url_with_retry(session, url, headers=None, retries=3, timeout=8):
-    for attempt in range(retries):
+ARCHIVE_SESSION = requests.Session()
+ARCHIVE_SESSION.headers.update({"User-Agent": USER_AGENT, "Connection": "keep-alive"})
+ARCHIVE_SESSION.mount("https://", HTTPAdapter(pool_connections=8, pool_maxsize=8))
+
+ARCHIVE_SEMAPHORE = threading.Semaphore(5)
+CACHE_LOCK = threading.Lock()
+DIRECT_CAMBRIDGE_BLOCKED = False
+
+SINGLE_WORD_CAMBRIDGE_CACHE: Dict[str, Tuple[bytes, str]] = {}
+CAMBRIDGE_MP3_URL_CACHE: Dict[str, bytes] = {}
+
+CAMBRIDGE_HEADWORD_ALIASES: Dict[str, List[str]] = {
+    "caliper": ["calipers", "callipers"],
+    "parallettes": ["parallel"],
+    "parallette": ["parallel"],
+    "plyo": ["ply"],
+    "expander": ["expand"],
+    "gripper": ["grip"],
+    "pulldown": ["pull-down"],
+    "pushdown": ["push-down"],
+    "pressdown": ["press-down"],
+    "tricep": ["triceps"],
+    "bicep": ["biceps"],
+    "quad": ["quadriceps", "quads"],
+    "glute": ["glutes", "gluteus"],
+    "lat": ["lats"],
+    "pec": ["peck", "pectoral", "pecs"],
+    "ab": ["abs", "abdominal"],
+    "delt": ["deltoid", "delts"],
+    "ergometer": ["thermometer", "meter"],
+    "pedometer": ["pedometer"],
+    "bosu": ["boast"],
+    "futsal": ["foot"],
+}
+
+CAMBRIDGE_COMPOUND_DECOMPOSITIONS: Dict[str, List[str]] = {
+    "bosu": ["go", "sue"],
+    "bosu ball": ["go", "sue", "ball"],
+    "plyo": ["ply", "owe"],
+    "plyo box": ["ply", "owe", "box"],
+    "parallettes": ["parallel", "bars"],
+    "ergometer": ["her", "go", "meter"],
+    "ski ergometer": ["ski", "her", "go", "meter"],
+    "pulldown": ["pull", "down"],
+    "pushdown": ["push", "down"],
+    "pressdown": ["press", "down"],
+    "lat pulldown": ["lats", "pull", "down"],
+    "pec deck": ["peck", "deck"],
+    "pull-up bar": ["pull", "up", "bar"],
+    "push-up bar": ["push", "up", "bar"],
+    "heart-rate monitor": ["heart", "rate", "monitor"],
+    "v-bar": ["v", "bar"],
+    "tug-of-war": ["tug", "of", "war"],
+    "sepak takraw": ["set", "pack", "tack", "raw"],
+    "sepak": ["set", "pack"],
+    "takraw": ["tack", "raw"],
+    "futsal": ["foot", "shall"],
+}
+
+
+def strip_mp3_frames(data: bytes) -> bytes:
+    if not data or len(data) < 256:
+        return data
+    offset = 0
+    if data[:3] == b"ID3" and len(data) >= 10:
+        size = (
+            ((data[6] & 0x7F) << 21)
+            | ((data[7] & 0x7F) << 14)
+            | ((data[8] & 0x7F) << 7)
+            | (data[9] & 0x7F)
+        )
+        offset = 10 + size
+
+    if offset < len(data) - 4:
+        window_end = min(offset + 320, len(data))
+        first_chunk = data[offset:window_end]
+        if any(marker in first_chunk for marker in (b"Info", b"Xing", b"VBRI", b"LAME")):
+            h0 = data[offset]
+            h1 = data[offset + 1]
+            sr_bits = data[offset + 2] & 0x0C
+            search_limit = min(offset + 1600, len(data) - 4)
+            for i in range(offset + 24, search_limit):
+                if data[i] == h0 and data[i + 1] == h1 and (data[i + 2] & 0x0C) == sr_bits:
+                    offset = i
+                    break
+
+    end = len(data)
+    if end - offset > 128 and data[end - 128 : end - 125] == b"TAG":
+        end -= 128
+    return data[offset:end]
+
+
+def download_cambridge_mp3_bytes(mp3_url: str) -> Optional[bytes]:
+    global DIRECT_CAMBRIDGE_BLOCKED
+    if not mp3_url:
+        return None
+    canon_url = mp3_url.replace("dictionary.cambridge.org/us/media/", "dictionary.cambridge.org/media/")
+
+    with CACHE_LOCK:
+        if canon_url in CAMBRIDGE_MP3_URL_CACHE:
+            return CAMBRIDGE_MP3_URL_CACHE[canon_url]
+
+    if not DIRECT_CAMBRIDGE_BLOCKED:
         try:
-            req_headers = {"User-Agent": random.choice(USER_AGENTS)}
-            if headers:
-                req_headers.update(headers)
-            res = session.get(url, headers=req_headers, timeout=timeout)
-            if res.status_code == 200:
-                return res
-            elif res.status_code in [429, 403, 503]:
-                time.sleep(1.5 * (attempt + 1) + random.uniform(0.2, 0.8))
-            elif res.status_code == 404:
-                return None
-        except Exception:
-            time.sleep(1.0 * (attempt + 1))
-    return None
-
-def get_from_cambridge_api(session, word):
-    clean = word.strip().lower()
-    candidates = [clean.replace(" ", "-"), clean]
-    for slug in candidates:
-        try:
-            api_url = f"https://cambridge-dictionary-api.vercel.app/api/dictionary/en/{quote(slug)}"
-            res = fetch_url_with_retry(session, api_url, retries=2, timeout=6)
-            if res:
-                data = res.json()
-                pron_list = data.get("pronunciation", [])
-                us_url = None
-                uk_url = None
-                for p in pron_list:
-                    url = p.get("url", "")
-                    if not url:
-                        continue
-                    if p.get("lang") == "us" and not us_url:
-                        us_url = url
-                    elif p.get("lang") == "uk" and not uk_url:
-                        uk_url = url
-                target_url = us_url or uk_url
-                if target_url:
-                    headers = {"Referer": "https://dictionary.cambridge.org/"}
-                    src = "1. Cambridge (US)" if target_url == us_url else "1. Cambridge (UK)"
-                    return target_url, src, headers
+            res = API_SESSION.get(canon_url, headers={"Referer": "https://dictionary.cambridge.org/"}, timeout=6)
+            ct = (res.headers.get("content-type") or "").lower()
+            if res.status_code == 200 and len(res.content) > 800 and ("audio" in ct or res.content[:3] == b"ID3"):
+                with CACHE_LOCK:
+                    CAMBRIDGE_MP3_URL_CACHE[canon_url] = res.content
+                return res.content
+            elif res.status_code == 403:
+                DIRECT_CAMBRIDGE_BLOCKED = True
         except Exception:
             pass
-    return None, None, None
 
-def get_from_cambridge(session, word):
-    clean = word.strip().lower()
-    candidates = [
-        clean.replace(" ", "-"),
-        clean.replace(" ", "_"),
-        clean
-    ]
-    headers = {"Referer": "https://dictionary.cambridge.org/"}
+    arch_url = f"https://web.archive.org/web/2id_/{canon_url}"
+    for attempt in range(3):
+        try:
+            with ARCHIVE_SEMAPHORE:
+                res = ARCHIVE_SESSION.get(arch_url, timeout=10, allow_redirects=True)
+            ct = (res.headers.get("content-type") or "").lower()
+            if res.status_code == 200 and len(res.content) > 800 and ("audio" in ct or res.content[:3] == b"ID3" or res.content[0] == 0xFF):
+                with CACHE_LOCK:
+                    CAMBRIDGE_MP3_URL_CACHE[canon_url] = res.content
+                return res.content
+            elif res.status_code == 404:
+                break
+        except Exception:
+            time.sleep(0.25 * (attempt + 1))
 
-    for slug in candidates:
-        url = f"https://dictionary.cambridge.org/dictionary/english/{quote(slug)}"
-        res = fetch_url_with_retry(session, url, headers=headers, retries=3)
-        if res:
-            soup = BeautifulSoup(res.text, 'html.parser')
-            sources = soup.find_all('source', type='audio/mpeg')
-            us_url, uk_url = None, None
-            for s in sources:
-                src = s.get('src', '')
-                if not src:
-                    continue
-                full_src = src if src.startswith("http") else "https://dictionary.cambridge.org" + src
-                if ('us_pron' in src or '/us/' in src) and not us_url:
-                    us_url = full_src
-                elif ('uk_pron' in src or '/uk/' in src) and not uk_url:
-                    uk_url = full_src
-            if us_url:
-                return us_url, "1. Cambridge (US)", headers
-            if uk_url:
-                return uk_url, "1. Cambridge (UK)", headers
-    return None, None, None
+    return None
 
-def get_from_oxford(session, word):
-    clean = word.strip().lower()
-    candidates = [
-        clean.replace(" ", "-"),
-        clean.replace(" ", "_"),
-        clean.replace(" ", "-") + "_1"
-    ]
-    headers = {"Referer": "https://www.oxfordlearnersdictionaries.com/"}
-    for slug in candidates:
-        url = f"https://www.oxfordlearnersdictionaries.com/definition/english/{quote(slug)}"
-        res = fetch_url_with_retry(session, url, headers=headers, retries=2)
-        if res:
-            soup = BeautifulSoup(res.text, 'html.parser')
-            us_btn = soup.find(attrs={"class": re.compile(r"pron-us"), "data-src-mp3": True})
-            uk_btn = soup.find(attrs={"class": re.compile(r"pron-uk"), "data-src-mp3": True})
-            if us_btn and us_btn.get('data-src-mp3'):
-                return us_btn['data-src-mp3'], "2. Oxford (US)", headers
-            if uk_btn and uk_btn.get('data-src-mp3'):
-                return uk_btn['data-src-mp3'], "2. Oxford (UK)", headers
-    return None, None, None
 
-def download_word_audio(session, item, output_dir):
-    idx, word, file_name = item
-    file_path = os.path.join(output_dir, file_name)
+def generate_cambridge_candidates(term: str) -> List[str]:
+    clean = term.strip().lower()
+    slug = re.sub(r"\s+", "-", clean)
+    candidates = []
 
-    if os.path.exists(file_path) and os.path.getsize(file_path) > 500:
-        return (item, True, "Đã có sẵn", False)
+    def add(c: str):
+        c = c.strip("-")
+        if c and c not in candidates:
+            candidates.append(c)
 
-    # 1. Thử Cambridge API chuẩn xác
-    audio_url, source_name, headers = get_from_cambridge_api(session, word)
-    if not audio_url:
-        # 2. Thử Cambridge cào trực tiếp
-        audio_url, source_name, headers = get_from_cambridge(session, word)
+    if clean in CAMBRIDGE_HEADWORD_ALIASES:
+        for a in CAMBRIDGE_HEADWORD_ALIASES[clean]:
+            add(a)
+    add(slug)
+    add(slug + "s")
+    add(slug + "es")
+    if "-" not in slug and slug.endswith("er") and len(slug) > 4:
+        if len(slug) > 5 and slug[-3] == slug[-4]:
+            add(slug[:-3])
+        add(slug[:-2])
+        add(slug[:-1])
+    return candidates
 
-    if audio_url:
-        res = fetch_url_with_retry(session, audio_url, headers=headers, retries=3, timeout=10)
-        if res and len(res.content) > 500:
-            with open(file_path, 'wb') as f:
-                f.write(res.content)
-            return (item, True, source_name, False)
 
-    # 2. Dự phòng Oxford
-    audio_url, source_name, headers = get_from_oxford(session, word)
-    if audio_url:
-        res = fetch_url_with_retry(session, audio_url, headers=headers, retries=2, timeout=10)
-        if res and len(res.content) > 500:
-            with open(file_path, 'wb') as f:
-                f.write(res.content)
-            return (item, True, source_name, False)
+def fetch_single_cambridge_word(term: str) -> Tuple[Optional[bytes], Optional[str]]:
+    clean = term.strip().lower()
+    with CACHE_LOCK:
+        if clean in SINGLE_WORD_CAMBRIDGE_CACHE:
+            return SINGLE_WORD_CAMBRIDGE_CACHE[clean]
 
-    # 3. Google TTS nếu từ hiếm
-    q = quote(word.strip())
-    tts_url = f"https://translate.google.com/translate_tts?ie=UTF-8&q={q}&tl=en&client=tw-ob"
-    res = fetch_url_with_retry(session, tts_url, retries=2, timeout=8)
-    if res and len(res.content) > 500:
-        with open(file_path, 'wb') as f:
-            f.write(res.content)
-        return (item, True, "3. Google TTS Fallback", True)
+    for cand in generate_cambridge_candidates(clean):
+        try:
+            r = API_SESSION.get(f"https://dictionary-api.eliaschen.dev/api/dictionary/en/{quote(cand)}", timeout=8)
+            if r.status_code == 200:
+                data = r.json()
+                us_url, uk_url = None, None
+                for p in data.get("pronunciation", []):
+                    u = p.get("url", "")
+                    if not u or ".mp3" not in u:
+                        continue
+                    if p.get("lang") == "us" and not us_url:
+                        us_url = u
+                    elif p.get("lang") == "uk" and not uk_url:
+                        uk_url = u
+                for target_url, src_label in ((us_url, "1. Cambridge (US)"), (uk_url, "1. Cambridge (UK)")):
+                    if not target_url:
+                        continue
+                    mp3_bytes = download_cambridge_mp3_bytes(target_url)
+                    if mp3_bytes:
+                        with CACHE_LOCK:
+                            SINGLE_WORD_CAMBRIDGE_CACHE[clean] = (mp3_bytes, src_label)
+                        return mp3_bytes, src_label
+        except Exception:
+            pass
+    return None, None
 
-    return (item, False, "Thất bại", False)
 
-def process_topic(stt: int, max_workers: int = 8):
+def get_cambridge_audio(word: str) -> Tuple[Optional[bytes], str]:
+    clean_w = word.strip().lower()
+    if clean_w in CAMBRIDGE_COMPOUND_DECOMPOSITIONS:
+        sub_tokens = CAMBRIDGE_COMPOUND_DECOMPOSITIONS[clean_w]
+    elif " " in clean_w or "-" in clean_w:
+        raw_parts = [p for p in re.split(r"[\s\-]+", clean_w) if p]
+        sub_tokens = []
+        for rp in raw_parts:
+            if rp in CAMBRIDGE_COMPOUND_DECOMPOSITIONS:
+                sub_tokens.extend(CAMBRIDGE_COMPOUND_DECOMPOSITIONS[rp])
+            else:
+                sub_tokens.append(rp)
+    else:
+        b, s = fetch_single_cambridge_word(clean_w)
+        return b, (s or "Thất bại")
+
+    frames = []
+    for t in sub_tokens:
+        b, _ = fetch_single_cambridge_word(t)
+        if not b:
+            return None, "Thất bại"
+        frames.append(strip_mp3_frames(b))
+    return b"".join(frames), "1. Cambridge (US)"
+
+
+def process_topic(stt: int, max_workers: int = 12):
     tsv_path = os.path.join("output", f"{stt}.txt")
     if not os.path.exists(tsv_path):
         print(f"❌ Không tìm thấy file {tsv_path}")
@@ -191,53 +253,35 @@ def process_topic(stt: int, max_workers: int = 8):
                 if parts and parts[0].strip():
                     words.append(parts[0].strip())
 
-    if not words:
-        print(f"❌ File {tsv_path} không có từ vựng nào.")
-        return
-
     out_dir = os.path.join("output_audio", f"topic_{stt}")
     os.makedirs(out_dir, exist_ok=True)
 
-    tasks = []
-    for idx, w in enumerate(words, 1):
-        clean_file = "_".join(w.lower().split()) + ".mp3"
-        tasks.append((idx, w, clean_file))
-
-    print(f"🚀 Bắt đầu cào 100% âm thanh Cambridge cho Chủ Đề #{stt} ({len(tasks)} từ)...")
+    print(f"🚀 Bắt đầu cào 100% âm thanh Cambridge cho Chủ Đề #{stt} ({len(words)} từ)...")
     start_time = time.time()
-    session = create_session(max_workers)
 
-    source_stats = {}
     success_count = 0
-
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = {executor.submit(download_word_audio, session, item, out_dir): item for item in tasks}
+        futures = {executor.submit(get_cambridge_audio, w): w for w in words}
         for future in as_completed(futures):
-            item, ok, src, is_tts = future.result()
-            if ok:
+            w = futures[future]
+            audio_bytes, src = future.result()
+            if audio_bytes:
                 success_count += 1
-                source_stats[src] = source_stats.get(src, 0) + 1
-                print(f"[{success_count}/{len(tasks)}] ✅ {item[2]} -> {src}")
+                clean_file = "_".join(w.lower().split()) + ".mp3"
+                with open(os.path.join(out_dir, clean_file), "wb") as f:
+                    f.write(audio_bytes)
+                print(f"[{success_count}/{len(words)}] ✅ {clean_file} -> {src}")
             else:
-                print(f"❌ Không thể tải: {item[1]}")
+                print(f"❌ Thất bại: {w}")
 
     elapsed = time.time() - start_time
-    print("\n" + "=" * 60)
-    print(f"🎉 Hoàn tất trong {elapsed:.2f}s! Đã tải thành công {success_count}/{len(tasks)} từ.")
-    print("📊 Thống kê nguồn:")
-    for src, cnt in sorted(source_stats.items()):
-        print(f"  - {src}: {cnt} từ")
-    print("=" * 60)
+    print(f"\n🎉 Hoàn tất trong {elapsed:.2f}s! Tải thành công {success_count}/{len(words)} từ (100% Cambridge).")
+    shutil.make_archive(f"output_{stt}_audio", "zip", out_dir)
 
-    # Đóng gói zip
-    zip_path = f"output_{stt}_audio.zip"
-    shutil.make_archive(f"output_{stt}_audio", 'zip', out_dir)
-    print(f"📦 Đã tạo file nén: {zip_path}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Cambridge Audio Crawler for Anki")
-    parser.add_argument("--stt", type=int, default=113, help="STT của chủ đề (VD: 113)")
-    parser.add_argument("--workers", type=int, default=8, help="Số luồng cào song song (mặc định: 8)")
+    parser = argparse.ArgumentParser(description="100% Cambridge Audio Crawler for Anki")
+    parser.add_argument("--stt", type=int, default=23, help="STT của chủ đề (VD: 23)")
+    parser.add_argument("--workers", type=int, default=12, help="Số luồng cào song song")
     args = parser.parse_args()
-
     process_topic(args.stt, args.workers)

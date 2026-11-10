@@ -34,15 +34,16 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --role="roles/logging.logWriter" \
   --condition=None > /dev/null 2>&1 || true
 
-# 3. Triển khai dịch vụ Cloud Run
+# 3. Triển khai dịch vụ Cloud Run (2 vCPU, 1GB RAM, timeout 300s để cào 100% Cambridge siêu tốc)
 echo "📦 Đang build và deploy container lên Cloud Run (khu vực asia-southeast1)..."
 gcloud run deploy anki-audio-service \
   --source . \
   --region asia-southeast1 \
   --platform managed \
   --allow-unauthenticated \
-  --memory 512Mi \
-  --cpu 1 \
+  --memory 1Gi \
+  --cpu 2 \
+  --timeout 300 \
   --min-instances 0 \
   --max-instances 5
 
