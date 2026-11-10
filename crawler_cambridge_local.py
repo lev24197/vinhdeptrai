@@ -55,6 +55,35 @@ def fetch_url_with_retry(session, url, headers=None, retries=3, timeout=8):
             time.sleep(1.0 * (attempt + 1))
     return None
 
+def get_from_cambridge_api(session, word):
+    clean = word.strip().lower()
+    candidates = [clean.replace(" ", "-"), clean]
+    for slug in candidates:
+        try:
+            api_url = f"https://cambridge-dictionary-api.vercel.app/api/dictionary/en/{quote(slug)}"
+            res = fetch_url_with_retry(session, api_url, retries=2, timeout=6)
+            if res:
+                data = res.json()
+                pron_list = data.get("pronunciation", [])
+                us_url = None
+                uk_url = None
+                for p in pron_list:
+                    url = p.get("url", "")
+                    if not url:
+                        continue
+                    if p.get("lang") == "us" and not us_url:
+                        us_url = url
+                    elif p.get("lang") == "uk" and not uk_url:
+                        uk_url = url
+                target_url = us_url or uk_url
+                if target_url:
+                    headers = {"Referer": "https://dictionary.cambridge.org/"}
+                    src = "1. Cambridge (US)" if target_url == us_url else "1. Cambridge (UK)"
+                    return target_url, src, headers
+        except Exception:
+            pass
+    return None, None, None
+
 def get_from_cambridge(session, word):
     clean = word.strip().lower()
     candidates = [
@@ -114,8 +143,12 @@ def download_word_audio(session, item, output_dir):
     if os.path.exists(file_path) and os.path.getsize(file_path) > 500:
         return (item, True, "Đã có sẵn", False)
 
-    # 1. Thử Cambridge
-    audio_url, source_name, headers = get_from_cambridge(session, word)
+    # 1. Thử Cambridge API chuẩn xác
+    audio_url, source_name, headers = get_from_cambridge_api(session, word)
+    if not audio_url:
+        # 2. Thử Cambridge cào trực tiếp
+        audio_url, source_name, headers = get_from_cambridge(session, word)
+
     if audio_url:
         res = fetch_url_with_retry(session, audio_url, headers=headers, retries=3, timeout=10)
         if res and len(res.content) > 500:

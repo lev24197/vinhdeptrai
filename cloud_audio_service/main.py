@@ -70,6 +70,48 @@ def fetch_url(url: str, headers: dict = None, timeout: int = 10):
     else:
         return std_requests.get(url, headers=headers, timeout=timeout)
 
+def fetch_cambridge_api_audio(word: str) -> tuple[Optional[bytes], Optional[str], Optional[str]]:
+    """
+    ƯU TIÊN TUYỆT ĐỐI 100%: Cào trực tiếp thông qua Cambridge API để lấy URL MP3 chuẩn xác 100% của Cambridge.
+    """
+    clean_w = word.strip().lower()
+    candidates = [
+        clean_w.replace(" ", "-"),
+        clean_w.replace(" ", "_"),
+        clean_w
+    ]
+    for slug in candidates:
+        try:
+            api_url = f"https://cambridge-dictionary-api.vercel.app/api/dictionary/en/{quote(slug)}"
+            r = std_requests.get(api_url, timeout=7)
+            if r.status_code == 200:
+                data = r.json()
+                pron_list = data.get("pronunciation", [])
+                us_url = None
+                uk_url = None
+                for p in pron_list:
+                    url = p.get("url", "")
+                    if not url:
+                        continue
+                    if p.get("lang") == "us" and not us_url:
+                        us_url = url
+                    elif p.get("lang") == "uk" and not uk_url:
+                        uk_url = url
+                target_url = us_url or uk_url
+                if target_url:
+                    headers = {
+                        "Referer": "https://dictionary.cambridge.org/",
+                        "Accept": "*/*"
+                    }
+                    audio_res = fetch_url(target_url, headers=headers, timeout=12)
+                    if audio_res.status_code == 200 and len(audio_res.content) > 500:
+                        src_name = "1. Cambridge (US)" if target_url == us_url else "1. Cambridge (UK)"
+                        logger.info(f"[Cambridge API SUCCESS] '{word}' -> {src_name} ({len(audio_res.content)} bytes)")
+                        return audio_res.content, src_name, f"Success: {target_url}"
+        except Exception as e:
+            logger.debug(f"[Cambridge API Error] '{word}' slug '{slug}': {e}")
+    return None, None, "Not found via Cambridge API"
+
 def fetch_cambridge_audio(word: str) -> tuple[Optional[bytes], Optional[str], Optional[str]]:
     """
     ƯU TIÊN TUYỆT ĐỐI SỐ 1: Cào âm thanh từ từ điển Cambridge.
@@ -258,35 +300,42 @@ def generate_gcp_cloud_tts(word: str) -> tuple[Optional[bytes], Optional[str]]:
 
 def get_audio_for_word(word: str) -> tuple[Optional[bytes], str]:
     """
-    Logic ưu tiên nghiêm ngặt:
-    1. Ưu tiên số 1: Cambridge Dictionary (US -> UK)
-    2. Dự phòng 1: Oxford Learner's Dictionaries (US -> UK)
-    3. Dự phòng 2: Collins Dictionary (US -> UK)
-    4. Chốt chặn cuối cùng: Google Cloud TTS (Neural2 US)
+    Logic ưu tiên nghiêm ngặt (100% Cambridge First):
+    1. Ưu tiên số 1: Cambridge Dictionary qua API chính thức (US -> UK)
+    2. Ưu tiên số 2: Cambridge Dictionary cào trực tiếp bằng Chrome TLS (US -> UK)
+    3. Dự phòng 1: Oxford Learner's Dictionaries (US -> UK)
+    4. Dự phòng 2: Collins Dictionary (US -> UK)
+    5. Chốt chặn cuối cùng: Google Cloud TTS (Neural2 US)
     """
     clean_w = word.strip().lower()
     if clean_w in AUDIO_MEMORY_CACHE:
         return AUDIO_MEMORY_CACHE[clean_w]
 
-    # Bước 1: Cambridge
+    # Bước 1: Cambridge qua API URL chuẩn xác
+    data, src, _ = fetch_cambridge_api_audio(clean_w)
+    if data:
+        AUDIO_MEMORY_CACHE[clean_w] = (data, src)
+        return data, src
+
+    # Bước 2: Cambridge cào trực tiếp
     data, src, _ = fetch_cambridge_audio(clean_w)
     if data:
         AUDIO_MEMORY_CACHE[clean_w] = (data, src)
         return data, src
 
-    # Bước 2: Oxford
+    # Bước 3: Oxford
     data, src, _ = fetch_oxford_audio(clean_w)
     if data:
         AUDIO_MEMORY_CACHE[clean_w] = (data, src)
         return data, src
 
-    # Bước 3: Collins
+    # Bước 4: Collins
     data, src, _ = fetch_collins_audio(clean_w)
     if data:
         AUDIO_MEMORY_CACHE[clean_w] = (data, src)
         return data, src
 
-    # Bước 4: Google Cloud TTS
+    # Bước 5: Google Cloud TTS
     data, src = generate_gcp_cloud_tts(clean_w)
     if data:
         AUDIO_MEMORY_CACHE[clean_w] = (data, src)
@@ -315,6 +364,7 @@ def debug_word_audio(word: str):
     """
     Endpoint kiểm tra chi tiết trạng thái cào âm thanh từ từng nguồn cho 1 từ.
     """
+    api_bytes, api_src, api_dbg = fetch_cambridge_api_audio(word)
     cam_bytes, cam_src, cam_dbg = fetch_cambridge_audio(word)
     ox_bytes, ox_src, ox_dbg = fetch_oxford_audio(word)
     col_bytes, col_src, col_dbg = fetch_collins_audio(word)
@@ -322,7 +372,13 @@ def debug_word_audio(word: str):
     return {
         "word": word,
         "has_curl_cffi": HAS_CURL_CFFI,
-        "cambridge": {
+        "cambridge_via_api": {
+            "success": bool(api_bytes),
+            "source": api_src,
+            "bytes": len(api_bytes) if api_bytes else 0,
+            "debug": api_dbg
+        },
+        "cambridge_direct": {
             "success": bool(cam_bytes),
             "source": cam_src,
             "bytes": len(cam_bytes) if cam_bytes else 0,
