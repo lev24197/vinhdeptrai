@@ -78,11 +78,7 @@
         </div>
       </div>
 
-      <!-- Right Pills & User Profile Widget -->
-      <a href="battle.html" class="neo-btn px-3 py-1.5 rounded-full bg-[#FF9F1C] text-[#111] text-xs font-display font-extrabold flex items-center gap-1.5 hover:bg-amber-400 shadow-[2px_2px_0px_#111]">
-        <span>⚔️</span> Đấu Trường RPG ➔
-      </a>
-      <div id="headerUserWidget" class="flex items-center"></div>
+      <!-- Right Navigation Actions -->
       <div class="flex flex-wrap items-center gap-2.5">
         <button onclick="loadData(true)" class="px-3.5 py-1.5 rounded-full bg-white border-2 border-[#111] shadow-[2px_2px_0px_#111] text-xs font-extrabold flex items-center gap-1.5 hover:bg-amber-100">
           🌐 VI • <span id="lastUpdated">Đang tải...</span>
@@ -99,42 +95,7 @@
       </div>
     </div>
   </header>
-
-  <!-- ==================== THANH TIỆN ÍCH THỊ TRẤN RPG TRÊN HEADER ==================== -->
-  <div class="bg-[#11131F] text-white border-b-2 border-[#111] px-4 py-1.5 sticky top-[57px] z-30">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
-      <div class="flex items-center gap-1.5 flex-wrap">
-        <span class="text-amber-400 font-mono-code font-extrabold hidden md:inline">⚡ TIỆN ÍCH THỊ TRẤN:</span>
-        <button onclick="if(typeof openInventoryModal==='function') openInventoryModal()" class="px-2.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold border border-slate-600 flex items-center gap-1" title="Mở Túi Đồ [Phím B]">
-          <span>🎒</span> <span>Túi Đồ [B]</span>
-        </button>
-        <button onclick="if(typeof openShopModal==='function') openShopModal('forge')" class="px-2.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold border border-slate-600 flex items-center gap-1" title="Mở Lò Rèn [Phím S]">
-          <span>🔨</span> <span>Lò Rèn [S]</span>
-        </button>
-        <button onclick="if(typeof openShopModal==='function') openShopModal('gacha')" class="px-2.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold border border-slate-600 flex items-center gap-1" title="Mở Rương Báu May Mắn">
-          <span>🎁</span> <span>Rương Báu</span>
-        </button>
-        <button onclick="if(typeof openShopModal==='function') openShopModal('goods')" class="px-2.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-white rounded font-bold border border-slate-600 flex items-center gap-1" title="Quầy Dược Phẩm">
-          <span>🧪</span> <span>Dược Phẩm</span>
-        </button>
-      </div>
-      <div class="flex items-center gap-1.5 flex-wrap">
-        <button onclick="if(typeof GamificationQuests!=='undefined') GamificationQuests.openModal()" class="px-2.5 py-0.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 rounded font-bold border border-amber-500 flex items-center gap-1" title="Mở Nhiệm Vụ Ngày & Thành Tựu [Phím Q]">
-          <span>📜</span> <span>Nhiệm Vụ [Q]</span>
-        </button>
-        <button onclick="if(typeof GamificationSkills!=='undefined') GamificationSkills.openModal()" class="px-2.5 py-0.5 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 rounded font-bold border border-purple-500 flex items-center gap-1" title="Mở Bảng Kỹ Năng Hệ Phái [Phím K]">
-          <span>⚡</span> <span>Kỹ Năng [K]</span>
-        </button>
-        <button onclick="if(typeof GamificationPets!=='undefined') GamificationPets.openModal()" class="px-2.5 py-0.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 rounded font-bold border border-emerald-500 flex items-center gap-1" title="Trại Linh Thú Đồng Hành [Phím P]">
-          <span>🐾</span> <span>Linh Thú [P]</span>
-        </button>
-        <button onclick="if(typeof GamificationTower!=='undefined') GamificationTower.openModal()" class="px-2.5 py-0.5 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 rounded font-bold border border-blue-500 flex items-center gap-1" title="Thử Thách Tháp Vô Tận Babel [Phím T]">
-          <span>🏰</span> <span>Tháp Babel [T]</span>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div id="liveRunnerBanner" class="hidden max-w-7xl mx-auto px-4 mt-4">
+<div id="liveRunnerBanner" class="hidden max-w-7xl mx-auto px-4 mt-4">
     <div id="liveRunnerBox" class="neo-box bg-[#FFFDF7] p-4 rounded-none relative overflow-hidden">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
         <div class="flex items-center gap-3">
@@ -252,10 +213,7 @@
             <span class="tid-cta-label">Chạy GitHub Action Ngầm</span>
           </button>
 
-          <a href="battle.html" class="tid-cta" title="Vào Đấu trường Pixel RPG săn quái cày cấp toàn màn hình">
-            <span class="tid-cta-arrow" style="background:#FF9F1C">⚔️</span>
-            <span class="tid-cta-label">Vào Đấu Trường Pixel RPG ➔</span>
-          </a>
+
         </div>
       </div>
     </section>
@@ -479,7 +437,7 @@
         [08] 🛠️ KIỂM TOÁN QA & BÁO LỖI
       </button>
       <button onclick="switchMainTab('quiz')" id="mainTab-quiz" class="neo-btn px-4 py-2.5 bg-[#FFE787] text-[#111] font-display font-extrabold text-xs uppercase border-2 border-[#111] shadow-[2px_2px_0px_#111] flex items-center gap-1.5">
-        [09] 🎯 ĐẤU TRƯỜNG TRẮC NGHIỆM
+        [09] 🎯 TRẮC NGHIỆM TỪ VỰNG
       </button>
     </div>
 
@@ -645,11 +603,11 @@
         <div class="bg-[#FFE787] border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111] p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div class="space-y-1">
             <div class="flex items-center gap-2">
-              <span class="tid-badge-num bg-[#111]">GAMIFICATION ARENA</span>
+              <span class="tid-badge-num bg-[#111]">VOCABULARY QUIZ</span>
               <span class="font-mono-code text-xs font-extrabold uppercase text-amber-900 tracking-wider">HỆ THỐNG ÔN TẬP TƯƠNG TÁC</span>
             </div>
             <h2 class="font-display font-extrabold text-2xl uppercase tracking-tight">
-              ĐẤU TRƯỜNG TRẮC NGHIỆM TỪ VỰNG ANKI<span class="text-[#FF9F1C]">*</span>
+              LUYỆN TẬP TRẮC NGHIỆM TỪ VỰNG ANKI<span class="text-[#FF9F1C]">*</span>
             </h2>
             <p class="text-xs text-slate-800 font-semibold max-w-xl">
               Chọn các chủ đề bạn đã học trên Anki, hệ thống sẽ tự động tổng hợp kho từ và tạo các câu hỏi trắc nghiệm ngẫu nhiên với âm thanh phát âm và tính điểm chuỗi combo!
@@ -666,33 +624,8 @@
             </div>
           </div>
         </div>
-
-        <!-- Banner Chuyển sang Trang Đấu Trường Toàn Màn Hình Riêng Biệt -->
-        <div class="bg-[#10121F] border-2 border-[#111] p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-white shadow-[4px_4px_0px_#FFE787]">
-          <div class="flex items-center gap-3">
-            <span class="text-3xl">🎮</span>
-            <div>
-              <div class="font-display font-extrabold text-sm text-[#FFE787] uppercase">TRẢI NGHIỆM ĐẤU TRƯỜNG PIXEL RPG TOÀN MÀN HÌNH</div>
-              <div class="text-[11px] text-slate-300">Giao diện fit trọn màn hình không cần cuộn trang, hoạt ảnh vung kiếm chém quái nổ tung sống động.</div>
-            </div>
-          </div>
-          <a href="battle.html" class="neo-btn px-4 py-2 bg-[#FF9F1C] hover:bg-amber-400 text-[#111] font-display font-extrabold text-xs uppercase flex items-center gap-2 shrink-0">
-            ⚔️ MỞ TRANG BATTLE.HTML ➔
-          </a>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Cột 1: Chế độ thi đấu -->
-          <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
-            <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
-              <span>🎮</span> Chế độ thi đấu:
-            </label>
-            <select id="quizEngineModeSelect" class="w-full neo-box-sm px-3 py-2 text-xs font-bold bg-[#FFE787]">
-              <option value="rpg">🎮 Săn Quái Pixel RPG (Khuyên dùng)</option>
-              <option value="classic">📝 Trắc Nghiệm Cổ Điển</option>
-            </select>
-          </div>
-
-          <!-- Cột 2: Số câu hỏi -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Cột 1: Số câu hỏi -->
           <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
             <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
               <span>🔢</span> Số lượng câu hỏi:
@@ -704,7 +637,7 @@
             </div>
           </div>
 
-          <!-- Cột 3: Cấp độ từ -->
+          <!-- Cột 2: Cấp độ từ -->
           <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
             <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
               <span>🎯</span> Cấp độ từ muốn ôn:
@@ -716,7 +649,7 @@
             </select>
           </div>
 
-          <!-- Cột 4: Định dạng câu hỏi -->
+          <!-- Cột 3: Định dạng câu hỏi -->
           <div class="bg-white border-[2.5px] border-[#111] shadow-[3px_3px_0px_#111] p-4 space-y-2">
             <label class="font-mono-code text-xs font-extrabold uppercase flex items-center gap-1.5">
               <span>🔄</span> Dạng câu hỏi:
@@ -753,7 +686,7 @@
         <!-- Nút Bắt Đầu Trắc Nghiệm To Rực Rỡ -->
         <div class="pt-2 flex justify-center">
           <button onclick="startQuizSession()" class="neo-btn px-8 py-3.5 bg-[#141414] hover:bg-[#2C317A] text-white font-display font-extrabold text-base uppercase tracking-wider flex items-center gap-3 shadow-[5px_5px_0px_#111] transition-transform active:translate-x-1 active:translate-y-1">
-            <span class="text-xl">🚀</span> BẮT ĐẦU VÀO ĐẤU TRƯỜNG TRẮC NGHIỆM
+            <span class="text-xl">🚀</span> BẮT ĐẦU LUYỆN TẬP TRẮC NGHIỆM
           </button>
         </div>
       </div>
@@ -768,8 +701,6 @@
           </div>
 
           <div class="flex items-center gap-2">
-            <span id="quizPlayerBadge" class="hidden sm:inline-flex items-center gap-1 bg-[#2C317A] text-white px-2.5 py-1 rounded font-mono-code font-bold text-xs border border-slate-600">🦁 Lv.1</span>
-            <button type="button" onclick="useHintScrollInQuiz()" id="quizBtnUseHint" class="px-2.5 py-1 bg-[#FFE787] text-[#111] hover:bg-amber-300 font-mono-code font-bold text-xs border border-[#111] flex items-center gap-1" title="Dùng 1 Cuộn Giấy Gợi Ý để loại bỏ 2 đáp án sai">📜 Gợi Ý (<span id="quizHintScrollCount">0</span>)</button>
             <div id="quizStreakContainer" class="flex items-center gap-1.5 bg-slate-800 border border-slate-600 px-3 py-1 font-mono-code text-xs font-extrabold">
               <span id="quizStreakFlame" class="text-base">🔥</span>
               <span>Streak: <b id="quizStreakCount" class="text-[#FFE787]">0</b></span>
@@ -790,33 +721,6 @@
         <!-- Thanh tiến trình câu hỏi sọc động -->
         <div class="w-full h-4 bg-slate-200 border-2 border-[#111] overflow-hidden">
           <div id="quizPlayProgressBar" class="h-full bg-[#169C64] progress-stripes transition-all duration-300" style="width: 10%"></div>
-        </div>
-
-        <!-- SÂN ĐẤU CANVAS PIXEL RPG (BATTLE ARENA) -->
-        <div id="pixelBattleArenaContainer" class="space-y-2">
-          <!-- Canvas 800x260 retro pixel art -->
-          <div class="relative w-full overflow-hidden neo-box bg-[#11131F] border-[2.5px] border-[#111] shadow-[4px_4px_0px_#111]">
-            <canvas id="pixelBattleCanvas" class="w-full h-auto block max-h-[190px] sm:max-h-[220px] object-contain" width="800" height="260"></canvas>
-          </div>
-
-          <!-- Thanh thao tác Kỹ Năng & Túi Đồ Tác Chiến -->
-          <div class="flex flex-wrap items-center justify-between gap-2 bg-[#FFE787] border-2 border-[#111] p-2.5 shadow-[2px_2px_0px_#111]">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="text-xs font-mono-code font-extrabold uppercase text-amber-900 hidden sm:inline">⚡ Tác Chiến:</span>
-              <button id="battleBtnSkill" type="button" class="neo-btn px-3 py-1.5 bg-[#141414] text-white text-xs font-display font-extrabold flex items-center gap-1.5 hover:bg-slate-800">
-                <span id="battleSkillLabel">⚔️ Cuồng Trảm (20 MP)</span>
-              </button>
-              <button id="battleBtnHpPotion" type="button" class="neo-btn px-3 py-1.5 bg-red-600 text-white text-xs font-display font-extrabold flex items-center gap-1.5 hover:bg-red-700" title="Hồi phục 50 HP máu">
-                <span>🧪 Bình Máu (<span id="battleHpPotionCount">0</span>)</span>
-              </button>
-              <button id="battleBtnMpPotion" type="button" class="neo-btn px-3 py-1.5 bg-blue-600 text-white text-xs font-display font-extrabold flex items-center gap-1.5 hover:bg-blue-700" title="Hồi phục 40 MP năng lượng">
-                <span>🔮 Bình MP (<span id="battleMpPotionCount">0</span>)</span>
-              </button>
-            </div>
-            <div class="flex items-center gap-1.5 text-[11px] font-mono-code font-bold text-slate-700">
-              <span>💡 Chọn đáp án đúng = Xuất chiêu tấn công quái vật!</span>
-            </div>
-          </div>
         </div>
 
         <!-- Thẻ câu hỏi trung tâm -->
@@ -867,7 +771,7 @@
         </div>
       </div>
 
-      <!-- MÀN HÌNH 3: BẢNG TỔNG KẾT & GAMIFICATION STATS (VICTORY SCREEN) -->
+      <!-- MÀN HÌNH 3: BẢNG TỔNG KẾT KẾT QUẢ TRẮC NGHIỆM -->
       <div id="quizView-result" class="hidden space-y-6 max-w-3xl mx-auto">
         <div class="neo-box bg-[#FFE787] p-6 sm:p-8 text-center space-y-4">
           <div class="text-5xl select-none" id="quizResultEmoji">🏆</div>
@@ -900,13 +804,7 @@
           </div>
         </div>
 
-        <!-- Phần thưởng Gamification -->
-        <div class="bg-white border-2 border-[#111] p-3 shadow-[2px_2px_0px_#111] flex flex-wrap items-center justify-between gap-2 text-xs font-bold">
-          <span class="flex items-center gap-1.5 text-amber-900">
-            <span>🎁</span> Thưởng hoàn thành bài: <b class="text-[#199A5E]">+40 XP</b> & <b class="text-yellow-600">+15 🪙</b>
-          </span>
-          <button onclick="openAccountCenter('profile')" class="underline text-blue-700 hover:text-blue-900 font-extrabold">Xem Hồ Sơ & Cấp Độ ➔</button>
-        </div>
+
 
         <!-- Khu vực ÔN LẠI TỪ BỊ SAI (NẾU CÓ) -->
         <div id="quizMistakesContainer" class="hidden neo-box bg-white p-5 space-y-3">
@@ -1094,327 +992,6 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL TRUNG TÂM TÀI KHOẢN & GAMIFICATION (ACCOUNT HUB) ==================== -->
-  <div id="accountCenterModal" class="fixed inset-0 bg-black/75 hidden items-center justify-center p-3 sm:p-4 z-50 overflow-y-auto">
-    <div class="neo-box bg-[#F8F7F2] max-w-2xl w-full p-4 sm:p-6 my-auto max-h-[92vh] flex flex-col justify-between overflow-hidden">
-      
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between pb-3 border-b-2 border-[#111] shrink-0">
-        <div class="flex items-center gap-2">
-          <span class="tid-badge-num bg-[#FF9F1C] text-[#111]">SUPABASE RPG HUB</span>
-          <h3 class="font-display font-extrabold text-base sm:text-lg uppercase tracking-tight">HỒ SƠ HIỆP SĨ & TÀI KHOẢN</h3>
-        </div>
-        <button onclick="closeAccountCenter()" class="neo-btn w-8 h-8 bg-white font-mono-code font-extrabold flex items-center justify-center text-sm hover:bg-red-500 hover:text-white">✕</button>
-      </div>
-
-      <!-- Tab Buttons -->
-      <div class="flex flex-wrap gap-1.5 py-3 border-b-2 border-[#111] bg-slate-100 -mx-4 sm:-mx-6 px-4 sm:px-6 shrink-0">
-        <button onclick="switchAccountModalTab('profile')" id="accTabBtn-profile" class="neo-btn px-3 py-1.5 bg-[#141414] text-white text-xs font-display font-extrabold uppercase">
-          ⚔️ [01] Hồ Sơ RPG
-        </button>
-        <button onclick="switchAccountModalTab('auth')" id="accTabBtn-auth" class="neo-btn px-3 py-1.5 bg-white text-[#141414] text-xs font-display font-extrabold uppercase">
-          🔑 [02] Đăng Nhập / Đăng Ký
-        </button>
-        <button onclick="switchAccountModalTab('config')" id="accTabBtn-config" class="neo-btn px-3 py-1.5 bg-white text-[#141414] text-xs font-display font-extrabold uppercase">
-          ☁️ [03] Kết Nối Supabase
-        </button>
-        <button onclick="switchAccountModalTab('badges')" id="accTabBtn-badges" class="neo-btn px-3 py-1.5 bg-white text-[#141414] text-xs font-display font-extrabold uppercase">
-          🎖️ [04] Huy Hiệu
-        </button>
-        <button onclick="switchAccountModalTab('shop')" id="accTabBtn-shop" class="neo-btn px-3 py-1.5 bg-white text-[#141414] text-xs font-display font-extrabold uppercase">
-          🛍️ [05] Cửa Hàng
-        </button>
-      </div>
-
-      <!-- Tab Contents (Scrollable Area) -->
-      <div class="overflow-y-auto py-4 space-y-4 flex-1 pr-1">
-
-        <!-- TAB 1: PROFILE & RPG STATS -->
-        <div id="accTabPane-profile" class="space-y-4">
-          <!-- Learner Passport Card -->
-          <div class="neo-box bg-[#FFE787] p-4 sm:p-5 relative overflow-hidden border-[2.5px] border-[#111]">
-            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-              <div id="accHeroAvatar" class="w-20 h-20 rounded-2xl bg-white border-2 border-[#111] shadow-[3px_3px_0px_#111] flex items-center justify-center text-4xl shrink-0">
-                🦁
-              </div>
-              <div class="flex-1 text-center sm:text-left space-y-2">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div>
-                    <h2 id="accHeroUsername" class="font-display font-extrabold text-xl text-[#111]">Vinh Đẹp Trai</h2>
-                    <div class="flex items-center gap-2 mt-1">
-                      <span id="accHeroClassBadge" class="text-xs font-bold text-amber-900 bg-amber-100 border border-[#111] px-2 py-0.5 rounded">⚔️ Chiến Binh</span>
-                      <span id="accHeroLevel" class="font-mono-code text-xs font-extrabold bg-[#111] text-white px-2 py-0.5 rounded">Level 1</span>
-                    </div>
-                  </div>
-                  <div id="accHeroCloudStatus">
-                    <span class="bg-amber-600 text-white text-[10px] px-2 py-0.5 rounded font-mono-code font-bold">💻 CHẾ ĐỘ LOCAL</span>
-                  </div>
-                </div>
-
-                <!-- Bars HP, MP, EXP -->
-                <div class="space-y-1.5 pt-1">
-                  <!-- HP Bar -->
-                  <div>
-                    <div class="flex justify-between text-[11px] font-mono-code font-bold">
-                      <span class="text-red-700">❤️ Sinh Lực (HP)</span>
-                      <span id="accHpText" class="text-red-700">120/120 HP</span>
-                    </div>
-                    <div class="w-full h-3 bg-red-100 border-2 border-[#111] overflow-hidden">
-                      <div id="accHpBar" class="h-full bg-red-500 transition-all duration-300" style="width: 100%"></div>
-                    </div>
-                  </div>
-
-                  <!-- MP Bar -->
-                  <div>
-                    <div class="flex justify-between text-[11px] font-mono-code font-bold">
-                      <span class="text-blue-700">🔮 Năng Lượng (MP)</span>
-                      <span id="accMpText" class="text-blue-700">40/40 MP</span>
-                    </div>
-                    <div class="w-full h-3 bg-blue-100 border-2 border-[#111] overflow-hidden">
-                      <div id="accMpBar" class="h-full bg-blue-500 transition-all duration-300" style="width: 100%"></div>
-                    </div>
-                  </div>
-
-                  <!-- EXP Bar -->
-                  <div>
-                    <div class="flex justify-between text-[11px] font-mono-code font-bold">
-                      <span class="text-emerald-800">⚡ Tiến Trình Kinh Nghiệm (EXP)</span>
-                      <span id="accHeroXpText" class="text-emerald-800">0 / 100 XP (0%)</span>
-                    </div>
-                    <div class="w-full h-3 bg-emerald-100 border-2 border-[#111] overflow-hidden">
-                      <div id="accHeroXpBar" class="h-full bg-[#199A5E] progress-stripes transition-all duration-300" style="width: 0%"></div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- 8 Chỉ số RPG Pixel -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div class="neo-box-sm bg-white p-3 text-center">
-              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Chuỗi Streak 🔥</div>
-              <div id="accStatStreak" class="font-display font-extrabold text-base text-amber-600 mt-0.5">1 Ngày 🔥</div>
-            </div>
-            <div class="neo-box-sm bg-white p-3 text-center">
-              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Kho Vàng 🪙</div>
-              <div id="accStatCoins" class="font-display font-extrabold text-base text-yellow-600 mt-0.5">100 🪙</div>
-            </div>
-            <div class="neo-box-sm bg-white p-3 text-center">
-              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Kim Cương 💎</div>
-              <div id="accStatGems" class="font-display font-extrabold text-base text-cyan-600 mt-0.5">10 💎</div>
-            </div>
-            <div class="neo-box-sm bg-white p-3 text-center">
-              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Bụi Ma Thuật 🌌</div>
-              <div id="accStatDust" class="font-display font-extrabold text-base text-indigo-600 mt-0.5">20 🌌</div>
-            </div>
-            <div class="neo-box-sm bg-white p-3 text-center">
-              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Đá Cường Hóa 🪨</div>
-              <div id="accStatStones" class="font-display font-extrabold text-base text-teal-600 mt-0.5">5 🪨</div>
-            </div>
-            <div class="neo-box-sm bg-white p-3 text-center">
-              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Quái Vật Hạ Gục 👾</div>
-              <div id="accStatMonsters" class="font-display font-extrabold text-base text-purple-600 mt-0.5">0 👾</div>
-            </div>
-            <div class="neo-box-sm bg-white p-3 text-center">
-              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Vũ Khí Trang Bị ⚔️</div>
-              <div id="accStatWeapon" class="font-display font-extrabold text-xs text-[#111] mt-1 truncate">Tập Sự Kiếm</div>
-            </div>
-            <div class="neo-box-sm bg-white p-3 text-center">
-              <div class="text-[10px] font-mono-code font-bold text-slate-500 uppercase">Áo Giáp Phòng Ngự 🛡️</div>
-              <div id="accStatArmor" class="font-display font-extrabold text-xs text-[#111] mt-1 truncate">Áo Vải Tân Thủ</div>
-            </div>
-          </div>
-
-          <!-- Chỉnh sửa hồ sơ nhanh -->
-          <div class="neo-box-sm bg-white p-4 space-y-3">
-            <h4 class="font-display font-extrabold text-xs uppercase text-[#111]">✏️ CHỈNH SỬA TÊN & AVATAR NHÂN VẬT</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label class="block text-[11px] font-bold text-slate-600 mb-1">Tên nhân vật</label>
-                <input id="editAccUsernameInput" type="text" placeholder="Tên nhân vật..." class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
-              </div>
-              <div>
-                <label class="block text-[11px] font-bold text-slate-600 mb-1">Chọn Avatar</label>
-                <select id="editAccAvatarSelect" class="neo-box-sm w-full px-2 py-1.5 text-xs bg-slate-50 font-bold">
-                  <option value="🦁">🦁 Sư Tử Dũng Mãnh</option>
-                  <option value="🐯">🐯 Hổ Cuồng Nộ</option>
-                  <option value="⚡">⚡ Tia Chớp</option>
-                  <option value="🧙‍♂️">🧙‍♂️ Đại Pháp Sư</option>
-                  <option value="👑">👑 Vương Quyền</option>
-                  <option value="🚀">🚀 Phi Thuyền Vượt Ải</option>
-                  <option value="🦊">🦊 Cáo Tinh Anh</option>
-                  <option value="🥋">🥋 Samurai Bất Diệt</option>
-                  <option value="💎">💎 Thần Tinh Tú</option>
-                  <option value="🐉">🐉 Hắc Long</option>
-                  <option value="🦅">🦅 Đại Bàng Viễn Chinh</option>
-                  <option value="🤖">🤖 Cyber Mech</option>
-                </select>
-              </div>
-            </div>
-            <div class="flex justify-end">
-              <button onclick="handleUpdateProfileForm()" class="neo-btn px-4 py-1.5 bg-[#FFE787] text-[#111] text-xs font-extrabold hover:bg-amber-300">
-                Lưu Thay Đổi
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 2: AUTH (SIGN IN / SIGN UP SUPABASE) -->
-        <div id="accTabPane-auth" class="hidden space-y-4">
-          <div id="accAuthStatusCard">
-            <!-- Dynamic via JS -->
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Form Đăng Nhập -->
-            <div class="neo-box-sm bg-white p-4 space-y-3 border-2 border-[#111]">
-              <div class="flex items-center gap-2 border-b pb-2 border-slate-200">
-                <span class="text-base">🔑</span>
-                <h4 class="font-display font-extrabold text-xs uppercase text-[#111]">ĐĂNG NHẬP SUPABASE CLOUD</h4>
-              </div>
-              <div class="space-y-2">
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-600 mb-0.5">Email tài khoản</label>
-                  <input id="authSignInEmail" type="email" placeholder="email@example.com" class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
-                </div>
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-600 mb-0.5">Mật khẩu</label>
-                  <input id="authSignInPassword" type="password" placeholder="••••••••" class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
-                </div>
-              </div>
-              <button id="btnSubmitSignIn" onclick="supabaseSignIn(document.getElementById('authSignInEmail').value, document.getElementById('authSignInPassword').value)" class="neo-btn w-full py-2 bg-[#FFE787] text-[#111] text-xs font-extrabold hover:bg-amber-300 mt-2">
-                Đăng Nhập
-              </button>
-            </div>
-
-            <!-- Form Đăng Ký -->
-            <div class="neo-box-sm bg-white p-4 space-y-3 border-2 border-[#111]">
-              <div class="flex items-center gap-2 border-b pb-2 border-slate-200">
-                <span class="text-base">✨</span>
-                <h4 class="font-display font-extrabold text-xs uppercase text-[#111]">TẠO TÀI KHOẢN & KHỞI TẠO RPG</h4>
-              </div>
-              <div class="space-y-2">
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-600 mb-0.5">Email *</label>
-                  <input id="authSignUpEmail" type="email" placeholder="email@example.com" class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
-                </div>
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-600 mb-0.5">Mật khẩu *</label>
-                  <input id="authSignUpPassword" type="password" placeholder="Tối thiểu 6 ký tự" class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                  <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-0.5">Tên nhân vật</label>
-                    <input id="authSignUpName" type="text" placeholder="Tên..." class="neo-box-sm w-full px-2.5 py-1.5 text-xs bg-slate-50 font-bold" />
-                  </div>
-                  <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-0.5">Avatar</label>
-                    <select id="authSignUpAvatar" class="neo-box-sm w-full px-2 py-1.5 text-xs bg-slate-50 font-bold">
-                      <option value="🦁">🦁 Sư Tử</option>
-                      <option value="🐯">🐯 Cọp Rừng</option>
-                      <option value="⚡">⚡ Tia Chớp</option>
-                      <option value="🧙‍♂️">🧙‍♂️ Pháp Sư</option>
-                      <option value="👑">👑 Hoàng Đế</option>
-                      <option value="🥷">🥷 Ninja</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-[11px] font-bold text-slate-600 mb-0.5">Chọn Lớp Nhân Vật (Class) *</label>
-                  <select id="authSignUpClass" class="neo-box-sm w-full px-2 py-1.5 text-xs bg-slate-50 font-bold">
-                    <option value="warrior">⚔️ Chiến Binh (Máu trâu, Crit sát thương theo combo)</option>
-                    <option value="mage">🧙‍♂️ Pháp Sư (MP dồi dào, x2 dame từ vựng C1-C2)</option>
-                    <option value="ranger">🏹 Xạ Thủ (Tự động tặng cuộn giấy gợi ý)</option>
-                    <option value="assassin">🥷 Sát Thủ (+35% Thưởng Vàng & EXP mỗi trận)</option>
-                  </select>
-                </div>
-              </div>
-              <button id="btnSubmitSignUp" onclick="supabaseSignUp(document.getElementById('authSignUpEmail').value, document.getElementById('authSignUpPassword').value, document.getElementById('authSignUpName').value, document.getElementById('authSignUpAvatar').value, document.getElementById('authSignUpClass').value)" class="neo-btn w-full py-2 bg-[#141414] text-white text-xs font-extrabold hover:bg-slate-800 mt-2">
-                Đăng Ký Tài Khoản RPG
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 3: CONFIG SUPABASE KEYS -->
-        <div id="accTabPane-config" class="hidden space-y-4">
-          <div class="neo-box-sm bg-white p-4 space-y-3 border-2 border-[#111]">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">☁️</span>
-              <h4 class="font-display font-extrabold text-sm uppercase text-[#111]">KẾT NỐI SUPABASE BACKEND (POSTGRESQL CLOUD)</h4>
-            </div>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Điền Project URL và Anon Public Key từ tài khoản Supabase của bạn. Thông tin được lưu bảo mật trong trình duyệt, giúp dữ liệu RPG của bạn đồng bộ trên mọi máy tính và điện thoại.
-            </p>
-            <div class="space-y-3">
-              <div>
-                <label class="block text-[11px] font-bold text-slate-700 mb-1">Supabase Project URL</label>
-                <input id="cfgSbUrl" type="text" placeholder="https://xxxxxxxxxxxx.supabase.co" class="neo-box-sm w-full px-3 py-2 text-xs bg-slate-50 font-mono-code font-bold" />
-              </div>
-              <div>
-                <label class="block text-[11px] font-bold text-slate-700 mb-1">Supabase Anon Public Key</label>
-                <input id="cfgSbKey" type="password" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6..." class="neo-box-sm w-full px-3 py-2 text-xs bg-slate-50 font-mono-code font-bold" />
-              </div>
-              <div class="flex justify-end pt-1">
-                <button onclick="saveSupabaseConfig(document.getElementById('cfgSbUrl').value, document.getElementById('cfgSbKey').value)" class="neo-btn px-4 py-2 bg-[#FF9F1C] text-[#111] text-xs font-extrabold hover:bg-amber-400">
-                  💾 Lưu Cấu Hình Supabase
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hướng Dẫn 3 Bước -->
-          <div class="neo-box-sm bg-amber-50 p-4 space-y-2.5 border-2 border-[#111]">
-            <h5 class="font-display font-extrabold text-xs uppercase text-amber-900">📖 HƯỚNG DẪN 3 BƯỚC KHỞI TẠO SUPABASE (HOÀN TOÀN MIỄN PHÍ):</h5>
-            <ol class="text-xs text-amber-900 space-y-2 list-decimal list-inside font-semibold leading-relaxed">
-              <li>
-                Truy cập <a href="https://supabase.com" target="_blank" class="underline text-blue-700 font-bold">supabase.com</a>, đăng nhập bằng GitHub hoặc Email, sau đó bấm <b>New Project</b>.
-              </li>
-              <li>
-                Vào mục <b>SQL Editor</b> (icon bảng điều khiển bên trái), copy toàn bộ code trong file <code class="bg-amber-200 px-1 py-0.5 rounded font-mono-code">supabase_schema.sql</code> (có sẵn trong thư mục repo của bạn) và bấm <b>Run</b> để tự động tạo bảng dữ liệu RPG.
-              </li>
-              <li>
-                Vào <b>Project Settings ➔ API</b>, sao chép <b>Project URL</b> và <b>Project API Keys (anon public)</b> dán vào 2 ô bên trên rồi bấm Lưu!
-              </li>
-            </ol>
-          </div>
-        </div>
-
-        <!-- TAB 4: BADGES & ACHIEVEMENTS -->
-        <div id="accTabPane-badges" class="hidden space-y-3">
-          <div class="bg-amber-100 border border-[#111] p-3 text-xs font-bold text-amber-900 flex items-center justify-between">
-            <span>Hoàn thành các chiến tích học tập để mở khóa toàn bộ 9 Huy hiệu danh giá!</span>
-            <span class="font-mono-code font-extrabold text-sm">🎖️ BẢNG HUY HIỆU</span>
-          </div>
-          <div id="accBadgeGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[380px] overflow-y-auto pr-1">
-            <!-- Render via JS -->
-          </div>
-        </div>
-
-        <!-- TAB 5: SHOP -->
-        <div id="accTabPane-shop" class="hidden space-y-3">
-          <div class="bg-amber-100 border border-[#111] p-3 text-xs font-bold text-amber-900 flex items-center justify-between">
-            <span>Dùng Vàng 🪙 kiếm được từ các trận đấu từ vựng để mua trang bị trợ lực!</span>
-            <span class="font-mono-code font-extrabold text-sm">🛍️ TIỆM RÈN & DƯỢC PHẨM</span>
-          </div>
-          <div id="accShopGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <!-- Render via JS -->
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="pt-3 border-t-2 border-[#111] flex justify-between items-center shrink-0">
-        <span class="text-[11px] font-mono-code font-bold text-slate-500">The Anki Dictionary • Supabase RPG Engine v1.0</span>
-        <button onclick="closeAccountCenter()" class="neo-btn px-4 py-1.5 bg-white text-xs font-extrabold hover:bg-slate-100">ĐÓNG</button>
-      </div>
-
-    </div>
-  </div>
-
   <!-- ==================== MODAL CẤU HÌNH GITHUB & GEMINI API ==================== -->
   <div id="settingsModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
     <div class="neo-box bg-[#F8F7F2] max-w-md w-full p-6">
@@ -1468,298 +1045,13 @@
       </div>
     </div>
   </div>
-
-  <!-- ==================== MODAL TÚI ĐỒ & TRANG BỊ PAPERDOLL ==================== -->
-  <div id="rpgInventoryModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center p-2 sm:p-4 z-50">
-    <div class="neo-box bg-[#F8F7F2] text-[#111] max-w-4xl w-full p-3 sm:p-5 space-y-3 max-h-[92vh] flex flex-col justify-between overflow-hidden shadow-[6px_6px_0px_#FFE787]">
-      
-      <!-- Header Túi Đồ & Tài Nguyên -->
-      <div class="flex items-center justify-between border-b-2 border-[#111] pb-2">
-        <div class="flex items-center gap-2">
-          <span class="tid-badge-num bg-[#10B981] text-white">PAPERDOLL</span>
-          <h3 class="font-display font-extrabold text-sm sm:text-base uppercase">🎒 KHO ĐỒ & PHÒNG THAY ĐỒ TRANG BỊ</h3>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="flex items-center gap-2 text-xs font-mono-code font-bold bg-white px-2 py-1 border border-[#111]">
-            <span>🪙 <b id="invUserGold" class="text-yellow-600">0</b></span>
-            <span>💎 <b id="invUserGems" class="text-blue-600">0</b></span>
-            <span>🔮 <b id="invUserDust" class="text-purple-600">0</b> Bụi</span>
-            <span>🔷 <b id="invUserStones" class="text-emerald-600">0</b> Đá</span>
-          </div>
-          <button onclick="closeInventoryModal()" class="neo-btn w-7 h-7 bg-white font-bold flex items-center justify-center text-xs hover:bg-red-500 hover:text-white">✕</button>
-        </div>
-      </div>
-
-      <!-- Khung Nội Dung 2 Cột: Paperdoll bên trái + Kho đồ bên phải -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-3 flex-1 overflow-y-auto pr-1">
-        
-        <!-- Cột Trái: Paperdoll 6 Ô Trang Bị + Tổng Chỉ Số (5/12) -->
-        <div class="md:col-span-5 space-y-2.5 bg-white border-2 border-[#111] p-3 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between border-b pb-1 mb-2 border-slate-200">
-              <span class="text-xs font-display font-extrabold uppercase text-[#111]">TRANG BỊ ĐANG MẶC</span>
-              <span class="text-[10px] font-mono-code text-slate-500 font-bold">Bấm để tháo</span>
-            </div>
-
-            <!-- Paperdoll Visual Hero Sprite Canvas (5-Slot Visual Layer Preview) -->
-            <div class="flex justify-center mb-2">
-              <canvas id="invHeroPaperdollCanvas" width="160" height="90" class="neo-box-sm bg-[#181B2E] rounded block"></canvas>
-            </div>
-
-            <!-- 6 Ô Paperdoll -->
-            <div class="grid grid-cols-2 gap-2">
-              <div id="paperdollSlot-weapon"></div>
-              <div id="paperdollSlot-helmet"></div>
-              <div id="paperdollSlot-armor"></div>
-              <div id="paperdollSlot-gloves"></div>
-              <div id="paperdollSlot-boots"></div>
-              <div id="paperdollSlot-accessory"></div>
-            </div>
-
-            <!-- Set Bonus kích hoạt -->
-            <div id="invActiveSetBonuses" class="hidden mt-2 space-y-1"></div>
-          </div>
-
-          <!-- Bảng Tổng Hợp Chỉ Số Thực Chiến -->
-          <div class="bg-[#FFE787]/40 border-2 border-[#111] p-2 space-y-1 text-xs font-mono-code">
-            <div class="text-[10px] uppercase font-extrabold text-amber-900 border-b border-amber-300 pb-0.5">TỔNG LỰC CHIẾN CỦA HIỆP SĨ:</div>
-            <div class="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px] font-bold text-slate-800">
-              <div>Sát thương: <b id="statValAtk" class="text-red-600">0</b></div>
-              <div>Máu (HP): <b id="statValHp" class="text-emerald-700">0</b></div>
-              <div>Năng lượng: <b id="statValMp" class="text-blue-700">0</b></div>
-              <div>Bạo kích: <b id="statValCrit" class="text-red-500">0%</b></div>
-              <div>Né đòn: <b id="statValDodge" class="text-sky-600">0%</b></div>
-              <div>Thưởng EXP: <b id="statValExpBonus" class="text-purple-600">+0%</b></div>
-              <div class="col-span-2">Thưởng Vàng: <b id="statValGoldBonus" class="text-yellow-600">+0%</b></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cột Phải: Lưới 40 Ô Vật Phẩm + Thẻ So Sánh (7/12) -->
-        <div class="md:col-span-7 space-y-2 flex flex-col justify-between overflow-hidden">
-          
-          <!-- Bộ Lọc Danh Mục -->
-          <div class="flex items-center justify-between gap-1 flex-wrap pb-1 border-b border-slate-200">
-            <div class="flex items-center gap-1 flex-wrap">
-              <button id="invFilterBtn-all" onclick="setInventoryFilter('all')" class="inv-filter-btn px-2.5 py-1 text-xs font-bold border border-[#111] bg-[#111] text-white">Tất Cả</button>
-              <button id="invFilterBtn-weapon" onclick="setInventoryFilter('weapon')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Vũ Khí</button>
-              <button id="invFilterBtn-helmet" onclick="setInventoryFilter('helmet')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Mũ</button>
-              <button id="invFilterBtn-armor" onclick="setInventoryFilter('armor')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Giáp</button>
-              <button id="invFilterBtn-gloves" onclick="setInventoryFilter('gloves')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Găng</button>
-              <button id="invFilterBtn-boots" onclick="setInventoryFilter('boots')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Ủng</button>
-              <button id="invFilterBtn-accessory" onclick="setInventoryFilter('accessory')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">Nhẫn</button>
-              <button id="invFilterBtn-consumable" onclick="setInventoryFilter('consumable')" class="inv-filter-btn px-2 py-1 text-xs font-bold border border-[#111] bg-white text-[#111]">🧪 Tiêu Hao</button>
-            </div>
-            <span id="invItemsCountLabel" class="text-xs font-mono-code font-bold text-slate-500">0 / 40 ô</span>
-          </div>
-
-          <!-- Lưới 40 Ô Đồ Trong Kho -->
-          <div id="invItemsGridContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-[220px] overflow-y-auto p-1 bg-slate-100 border border-slate-300">
-            <!-- Sẽ được nạp tự động bằng renderInventoryGrid() -->
-          </div>
-
-          <!-- Thẻ Chi Tiết & So Sánh Chỉ Số Món Đang Chọn -->
-          <div id="invItemInspectCard">
-            <!-- Sẽ được fill bằng renderItemComparisonCard() -->
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- Nút Đóng Footer -->
-      <div class="pt-2 border-t-2 border-[#111] flex justify-between items-center text-xs">
-        <span class="text-slate-500 font-semibold italic">💡 Nhấp vào món đồ để so sánh chỉ số và bấm [Trang Bị] để thay đổi ngoại hình</span>
-        <button onclick="closeInventoryModal()" class="neo-btn px-4 py-1.5 bg-white text-xs font-extrabold hover:bg-slate-100">ĐÓNG</button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ==================== MODAL CỬA HÀNG, GACHA & LÒ RÈN ==================== -->
-  <div id="rpgShopModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center p-2 sm:p-4 z-50">
-    <div class="neo-box bg-[#F8F7F2] text-[#111] max-w-3xl w-full p-4 space-y-3 max-h-[92vh] flex flex-col justify-between overflow-hidden shadow-[6px_6px_0px_#FF9F1C]">
-      
-      <!-- Header Shop & Tabs -->
-      <div class="flex items-center justify-between border-b-2 border-[#111] pb-2">
-        <div class="flex items-center gap-2">
-          <span class="tid-badge-num bg-[#FF9F1C] text-[#111]">SHOP & FORGE</span>
-          <h3 class="font-display font-extrabold text-sm sm:text-base uppercase">🛍️ TIỆM THƯƠNG NHÂN & LÒ RÈN HUYỀN THOẠI</h3>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="flex items-center gap-2 text-xs font-mono-code font-bold bg-white px-2 py-1 border border-[#111]">
-            <span>🪙 <b id="shopUserGold" class="text-yellow-600">0</b></span>
-            <span>💎 <b id="shopUserGems" class="text-blue-600">0</b></span>
-            <span>🔷 <b id="shopUserStones" class="text-emerald-600">0</b> Đá</span>
-          </div>
-          <button onclick="closeShopModal()" class="neo-btn w-7 h-7 bg-white font-bold flex items-center justify-center text-xs hover:bg-red-500 hover:text-white">✕</button>
-        </div>
-      </div>
-
-      <!-- Thanh chọn Tab: Hàng Tiêu Hao | Rương Báu Gacha | Lò Rèn -->
-      <div class="flex items-center gap-2 border-b-2 border-[#111] pb-2">
-        <button id="shopTabBtn-goods" onclick="switchShopTab('goods')" class="px-4 py-2 bg-[#111] text-white font-display font-extrabold text-xs uppercase border-2 border-[#111]">
-          🧪 Quầy Dược Phẩm & Bùa
-        </button>
-        <button id="shopTabBtn-gacha" onclick="switchShopTab('gacha')" class="px-4 py-2 bg-white text-[#111] font-display font-extrabold text-xs uppercase border-2 border-[#111] hover:bg-slate-100">
-          🎁 Rương Báu Gacha
-        </button>
-        <button id="shopTabBtn-forge" onclick="switchShopTab('forge')" class="px-4 py-2 bg-white text-[#111] font-display font-extrabold text-xs uppercase border-2 border-[#111] hover:bg-slate-100">
-          🔨 Lò Rèn Cường Hóa (+1..+10)
-        </button>
-      </div>
-
-      <!-- Nội dung Tab 1: Quầy Dược Phẩm & Bùa -->
-      <div id="shopSection-goods" class="space-y-3 overflow-y-auto max-h-[380px] pr-1">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5" id="shopGoodsContainer">
-          <!-- Sẽ được fill bằng renderShopGoodsList() -->
-        </div>
-      </div>
-
-      <!-- Nội dung Tab 2: Rương Báu May Mắn Gacha -->
-      <div id="shopSection-gacha" class="hidden space-y-3 overflow-y-auto max-h-[380px] pr-1">
-        <!-- Banner Bảo Hiểm May Mắn (Pity Counter) -->
-        <div class="p-2.5 bg-[#FFE787] border-2 border-[#111] text-xs font-bold flex items-center justify-between">
-          <div class="flex items-center gap-1.5">
-            <span class="text-base">🛡️</span>
-            <span>Bảo Hiểm May Mắn: <b id="gachaPityBadge" class="text-red-600">0/10</b></span>
-          </div>
-          <span class="text-[11px] text-slate-700 italic">Mỗi lần mở không ra đồ Huyền Thoại sẽ tích điểm!</span>
-        </div>
-
-        <!-- 3 Rương Báu -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <!-- Rương Gỗ (100 Vàng) -->
-          <div class="neo-box bg-white p-4 text-center space-y-2 border-2 border-[#111] flex flex-col justify-between">
-            <div>
-              <div class="text-4xl animate-bounce">🪵</div>
-              <h4 class="font-display font-extrabold text-sm uppercase text-[#111]">RƯƠNG GỖ RỪNG SÂU</h4>
-              <p class="text-[11px] text-slate-500">Chứa dược phẩm, vật phẩm tăng tốc và cơ hội rơi trang bị Hiếm.</p>
-            </div>
-            <button onclick="openMysteryChest('wood')" class="neo-btn py-2 bg-[#141414] text-white font-display font-extrabold text-xs uppercase hover:bg-slate-800">
-              Mở: 100 🪙 Vàng
-            </button>
-          </div>
-
-          <!-- Rương Bạc (350 Vàng) -->
-          <div class="neo-box bg-slate-50 p-4 text-center space-y-2 border-2 border-blue-500 shadow-[3px_3px_0px_#2563EB] flex flex-col justify-between">
-            <div>
-              <div class="text-4xl animate-pulse">🥈</div>
-              <h4 class="font-display font-extrabold text-sm uppercase text-blue-700">RƯƠNG BẠC HẦM NGỤC</h4>
-              <p class="text-[11px] text-slate-600 font-semibold">Tỷ lệ cao nổ Trang Bị Hiếm (Xanh Lam) và Sử Thi (Tím)!</p>
-            </div>
-            <button onclick="openMysteryChest('silver')" class="neo-btn py-2 bg-blue-600 text-white font-display font-extrabold text-xs uppercase hover:bg-blue-700">
-              Mở: 350 🪙 Vàng
-            </button>
-          </div>
-
-          <!-- Rương Hoàng Kim (5 Kim Cương) -->
-          <div class="neo-box bg-amber-50 p-4 text-center space-y-2 border-2 border-yellow-500 shadow-[3px_3px_0px_#D97706] flex flex-col justify-between">
-            <div>
-              <div class="text-4xl animate-bounce">👑</div>
-              <h4 class="font-display font-extrabold text-sm uppercase text-yellow-800">RƯƠNG HOÀNG KIM HẮC LONG</h4>
-              <p class="text-[11px] text-amber-900 font-bold">100% nổ Trang Bị Sử Thi hoặc Thần Binh Huyền Thoại dát vàng!</p>
-            </div>
-            <button onclick="openMysteryChest('gold')" class="neo-btn py-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-[#111] font-display font-extrabold text-xs uppercase hover:from-amber-600 hover:to-yellow-600">
-              Mở: 5 💎 Kim Cương
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Nội dung Tab 3: Lò Rèn Cường Hóa (+1..+10) -->
-      <div id="shopSection-forge" class="hidden space-y-3 overflow-y-auto max-h-[380px] pr-1">
-        <div class="flex items-center gap-2 bg-white p-2.5 border border-[#111]">
-          <label class="text-xs font-mono-code font-bold uppercase">Chọn ô trang bị muốn đập đồ:</label>
-          <select id="forgeSlotSelect" onchange="renderForgeView()" class="neo-box-sm px-2.5 py-1 text-xs font-bold bg-[#FFE787]">
-            <option value="weapon">⚔️ Vũ Khí Chính</option>
-            <option value="helmet">🪖 Mũ / Nón</option>
-            <option value="armor">🥋 Áo Giáp</option>
-            <option value="gloves">🧤 Găng Tay</option>
-            <option value="boots">👢 Ủng Giày</option>
-            <option value="accessory">💍 Phụ Kiện / Nhẫn</option>
-          </select>
-        </div>
-
-        <div id="forgeItemContainer">
-          <!-- Sẽ được fill bằng renderForgeView() -->
-        </div>
-      </div>
-
-      <!-- Footer Modal Shop -->
-      <div class="pt-2 border-t-2 border-[#111] flex justify-between items-center text-xs">
-        <span class="text-slate-500 font-semibold italic">Đá cường hóa kiếm được khi hạ gục quái vật hoặc mua tại Quầy Dược Phẩm</span>
-        <button onclick="closeShopModal()" class="neo-btn px-4 py-1.5 bg-white text-xs font-extrabold hover:bg-slate-100">ĐÓNG</button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ==================== MODAL REVEAL TRANG BỊ MỞ RƯƠNG ==================== -->
-  <div id="gachaRevealModal" class="fixed inset-0 bg-black/90 hidden items-center justify-center p-4 z-50">
-    <div id="gachaRevealCard" class="neo-box max-w-md w-full p-6 text-center space-y-3 border-4 border-[#111] shadow-[8px_8px_0px_#FFE787]">
-      <!-- Sẽ được fill bằng triggerGachaRevealModal() -->
-    </div>
-  </div>
-
-  <!-- Các thẻ ẩn để quiz.js chạy tương thích tuyệt đối mà không cần DOM ngoài -->
-    <!-- ==================== CAC MODULE JAVASCRIPT ==================== -->
+  <!-- ==================== CÁC MODULE JAVASCRIPT ==================== -->
   <script src="js/data.js"></script>
   <script src="js/dashboard.js"></script>
-  <script src="js/equipment_data.js"></script>
-  <script src="js/inventory.js"></script>
-  <script src="js/shop.js"></script>
-  <script src="js/dungeon_data_100.js"></script>
-  <script src="js/gamification_quests.js"></script>
-  <script src="js/gamification_skills.js"></script>
-  <script src="js/gamification_pets.js"></script>
-  <script src="js/gamification_tower.js"></script>
-  <script src="js/battle.js"></script>
   <script src="js/quiz.js"></script>
   <script src="js/studio.js"></script>
   <script src="js/corpus.js"></script>
   <script src="js/actions.js"></script>
-  <script src="js/auth.js"></script>
   <script src="js/app.js"></script>
-  <script>
-    // PhÃ­m táº¯t Ä‘iá»u hÆ°á»›ng nhanh Tiá»‡n Ã­ch RPG trÃªn trang Index
-    window.addEventListener('keydown', (e) => {
-      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
-      const k = e.key.toLowerCase();
-      if (k === 'b') {
-        const invModal = document.getElementById('rpgInventoryModal');
-        if (invModal && !invModal.classList.contains('hidden')) closeInventoryModal();
-        else if (typeof openInventoryModal === 'function') openInventoryModal();
-      } else if (k === 's') {
-        const shopModal = document.getElementById('rpgShopModal');
-        if (shopModal && !shopModal.classList.contains('hidden')) closeShopModal();
-        else if (typeof openShopModal === 'function') openShopModal('forge');
-      } else if (k === 'q') {
-        if (typeof GamificationQuests !== 'undefined') {
-          const qModal = document.getElementById('rpgQuestsModal');
-          if (qModal && !qModal.classList.contains('hidden')) GamificationQuests.closeModal();
-          else GamificationQuests.openModal();
-        }
-      } else if (k === 'k') {
-        if (typeof GamificationSkills !== 'undefined') {
-          const skModal = document.getElementById('rpgSkillTreeModal');
-          if (skModal && !skModal.classList.contains('hidden')) GamificationSkills.closeModal();
-          else GamificationSkills.openModal();
-        }
-      } else if (k === 'p') {
-        if (typeof GamificationPets !== 'undefined') {
-          const pModal = document.getElementById('rpgPetModal');
-          if (pModal && !pModal.classList.contains('hidden')) GamificationPets.closeModal();
-          else GamificationPets.openModal();
-        }
-      } else if (k === 't') {
-        if (typeof GamificationTower !== 'undefined') {
-          const tModal = document.getElementById('rpgTowerModal');
-          if (tModal && !tModal.classList.contains('hidden')) GamificationTower.closeModal();
-          else GamificationTower.openModal();
-        }
-      }
-    });
-  </script>
 </body>
 </html>

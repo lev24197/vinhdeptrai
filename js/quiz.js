@@ -1,4 +1,4 @@
-// ==================== ĐẤU TRƯỜNG TRẮC NGHIỆM ANKI (QUIZ ARENA) ====================
+// ==================== TRẮC NGHIỆM TỪ VỰNG ANKI (VOCABULARY QUIZ) ====================
 let quizSelectedStts = new Set();
 let quizWordsCache = {}; // stt -> array of words
 let quizQuestions = [];
@@ -10,7 +10,6 @@ let quizMistakes = [];
 let quizTargetQuestionCount = 10;
 let quizIsAnswered = false;
 let currentQuizWord = null;
-let quizGameMode = 'rpg';
 let quizQuestionStartTime = Date.now();
 
 // Web Audio Synthesizer (Chạy mượt tức thì không cần nạp file MP3 ngoài)
@@ -217,9 +216,6 @@ async function startQuizSession() {
   }
 
   const sttList = Array.from(quizSelectedStts);
-  if (sttList.length > 0) {
-    window.activeDungeonStt = sttList[0];
-  }
   const levelFilter = document.getElementById('quizLevelSelect')?.value || 'all';
   const mode = document.getElementById('quizModeSelect')?.value || 'mixed';
 
@@ -299,27 +295,12 @@ async function startQuizSession() {
   quizMistakes = [];
   quizIsAnswered = false;
 
-  const engineSelect = document.getElementById('quizEngineModeSelect');
-  if (engineSelect) quizGameMode = engineSelect.value;
-
   const viewSetup = document.getElementById('quizView-setup');
   if (viewSetup) viewSetup.classList.add('hidden');
   const viewResult = document.getElementById('quizView-result');
   if (viewResult) viewResult.classList.add('hidden');
   const viewPlay = document.getElementById('quizView-play');
   if (viewPlay) viewPlay.classList.remove('hidden');
-
-  const arenaContainer = document.getElementById('pixelBattleArenaContainer');
-  if (quizGameMode === 'rpg') {
-    if (arenaContainer) arenaContainer.classList.remove('hidden');
-    if (typeof BattleEngine !== 'undefined') BattleEngine.startBattle(quizQuestions.length);
-  } else {
-    if (arenaContainer) arenaContainer.classList.add('hidden');
-    if (typeof BattleEngine !== 'undefined') BattleEngine.stopBattle();
-  }
-
-  updateQuizHintButtonUI();
-  updateQuizPlayerBadgeUI();
 
   renderCurrentQuizCard();
   const anchor = document.getElementById('workspaceAnchor');
@@ -328,17 +309,7 @@ async function startQuizSession() {
 
 function renderCurrentQuizCard() {
   if (quizCurrentIdx >= quizQuestions.length) {
-    if (quizGameMode === 'rpg' && typeof BattleEngine !== 'undefined' && BattleEngine.monster?.isBoss && BattleEngine.monster.hp > 0) {
-      if (typeof triggerHeroFinishingBlow === 'function') {
-        triggerHeroFinishingBlow();
-        return;
-      }
-    }
-    if (typeof showDungeonVictory === 'function') {
-      showDungeonVictory();
-    } else {
-      showQuizResults();
-    }
+    showQuizResults();
     return;
   }
 
@@ -347,9 +318,7 @@ function renderCurrentQuizCard() {
   const q = quizQuestions[quizCurrentIdx];
   currentQuizWord = q.target;
 
-  if (quizGameMode === 'rpg' && typeof BattleEngine !== 'undefined') {
-    BattleEngine.spawnMonster(quizCurrentIdx + 1, quizQuestions.length);
-  }
+
 
   const setTxt = (id, txt) => { const el = document.getElementById(id); if (el) el.innerText = txt; };
   const setWidth = (id, w) => { const el = document.getElementById(id); if (el) el.style.width = w; };
@@ -466,25 +435,7 @@ function chooseQuizOption(idx) {
     const streakEl = document.getElementById('quizStreakCount');
     if (streakEl) streakEl.innerText = quizStreak;
 
-    // Gamification Integration: Cộng XP và Vàng tức thì vào tài khoản
-    if (typeof addXP === 'function') addXP(points, 'Trả lời đúng trắc nghiệm');
-    if (typeof addCoins === 'function') addCoins(Math.max(1, Math.round(2 * multiplier)), 'Thưởng câu đúng');
-    if (typeof GamificationQuests !== 'undefined') {
-      GamificationQuests.trackProgress('word_correct', 1);
-      GamificationQuests.trackProgress('quiz_correct', 1);
-      if (quizStreak >= 5) {
-        GamificationQuests.trackProgress('combo_streak', quizStreak);
-        GamificationQuests.trackProgress('streak_combo', quizStreak);
-      }
-      if (q.target && q.target.level === 'advanced') {
-        GamificationQuests.trackProgress('c1_c2_word', 1);
-      }
-    }
 
-    // Battle Engine Integration: Hiệp sĩ tấn công quái vật!
-    if (quizGameMode === 'rpg' && typeof BattleEngine !== 'undefined') {
-      BattleEngine.handlePlayerAnswer(true, q.target, quizStreak);
-    }
 
     if (feedback) {
       feedback.innerHTML = `
@@ -519,10 +470,7 @@ function chooseQuizOption(idx) {
     }
     quizMistakes.push(q.target);
 
-    // Battle Engine Integration: Đòn đánh bị hụt, quái vật phản đòn!
-    if (quizGameMode === 'rpg' && typeof BattleEngine !== 'undefined') {
-      BattleEngine.handlePlayerAnswer(false, q.target, 0);
-    }
+
   }
 
   speakWordTTS(q.target.word);
@@ -561,17 +509,11 @@ function nextQuizCard() {
 
 function quitQuizEarly() {
   if (confirm('Bạn có chắc muốn dừng bài trắc nghiệm và xem kết quả hiện tại không?')) {
-    if (typeof BattleEngine !== 'undefined') BattleEngine.stopBattle();
-    if (typeof showDungeonVictory === 'function') {
-      showDungeonVictory();
-    } else {
-      showQuizResults();
-    }
+    showQuizResults();
   }
 }
 
 function showQuizResults() {
-  if (typeof BattleEngine !== 'undefined') BattleEngine.stopBattle();
   playQuizSound('fanfare');
 
   const playView = document.getElementById('quizView-play');
@@ -583,19 +525,7 @@ function showQuizResults() {
   const totalCorrect = totalAnswered - quizMistakes.length;
   const accuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
 
-  // Gamification Integration: Ghi nhận kết quả vào tài khoản
-  if (typeof recordQuizFinishToAccount === 'function') {
-    recordQuizFinishToAccount({
-      totalAnswered,
-      totalCorrect,
-      maxStreak: quizMaxStreak,
-      mistakes: quizMistakes
-    });
-    if (typeof GamificationQuests !== 'undefined') {
-      GamificationQuests.trackProgress('dungeon_clear', 1);
-      GamificationQuests.trackProgress('quiz_finish', 1);
-    }
-  }
+
 
   let rank = 'ANKI TITAN';
   let emoji = '🏆';
@@ -726,54 +656,3 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
-
-// Gamification Inventory Items in Quiz
-function useHintScrollInQuiz(isFree = false) {
-  if (quizIsAnswered) return;
-  const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : (typeof currentAccount !== 'undefined' ? currentAccount : null);
-
-  if (!isFree) {
-    if (!user || !user.inventory?.hint_scroll) {
-      alert('Bạn không có Cuộn Giấy Gợi Ý! Hãy vào 🛍️ Cửa Hàng để mua nhé.');
-      return;
-    }
-    user.inventory.hint_scroll--;
-    if (typeof saveCurrentRpgUser === 'function') saveCurrentRpgUser();
-    else if (typeof saveCurrentAccount === 'function') saveCurrentAccount();
-    updateQuizHintButtonUI();
-  }
-
-  const q = quizQuestions[quizCurrentIdx];
-  const wrongIndices = [];
-  q.options.forEach((opt, idx) => {
-    if (!opt.isCorrect) wrongIndices.push(idx);
-  });
-  const toDisable = wrongIndices.sort(() => 0.5 - Math.random()).slice(0, 2);
-  toDisable.forEach(idx => {
-    const btn = document.getElementById('quizOptBtn-' + idx);
-    if (btn) {
-      btn.classList.add('opacity-30', 'pointer-events-none', 'line-through');
-    }
-  });
-  if (typeof showToastAlert === 'function') {
-    showToastAlert('📜 Đã kích hoạt loại bỏ 2 đáp án sai!');
-  }
-}
-
-function updateQuizHintButtonUI() {
-  const countSpan = document.getElementById('quizHintScrollCount');
-  const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : (typeof currentAccount !== 'undefined' ? currentAccount : null);
-  if (countSpan && user) {
-    countSpan.innerText = user.inventory?.hint_scroll || 0;
-  }
-}
-
-function updateQuizPlayerBadgeUI() {
-  const badge = document.getElementById('quizPlayerBadge');
-  const user = (typeof currentRpgUser !== 'undefined' && currentRpgUser) ? currentRpgUser : (typeof currentAccount !== 'undefined' ? currentAccount : null);
-  if (badge && user) {
-    const name = user.display_name || user.username || 'Hiệp Sĩ';
-    badge.innerHTML = `${user.avatar || '🦁'} Lv.${user.level || 1} ${name}`;
-  }
-}
-

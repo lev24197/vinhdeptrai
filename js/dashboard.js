@@ -227,7 +227,6 @@ function renderTable() {
     let actions = '';
     if (isDone) {
       actions = `
-        <a href="battle.html?stt=${t.stt}" class="px-2 py-1 bg-[#FF9F1C] text-[#111] hover:bg-amber-400 rounded text-xs font-extrabold shadow-sm inline-block" title="Vào đấu trường săn quái cày cấp với chủ đề này">⚔️ Đấu Quái</a>
         <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-[#141414] text-white hover:bg-slate-800 rounded text-xs font-bold shadow-sm">Xem / Sửa</button>
         <button onclick="downloadSingleFile(${t.stt})" class="px-2 py-1 bg-[#3F6AE4] text-white hover:bg-blue-600 rounded text-xs font-bold">⬇ .TXT</button>
         <button onclick="downloadTopicAudioZipDirect(${t.stt}, null, this)" class="px-2.5 py-1 bg-[#38E54D] text-[#111] hover:bg-emerald-300 border border-[#111] rounded text-xs font-extrabold shadow-sm inline-flex items-center gap-1" title="Tạo & Tải trọn bộ 100 file âm thanh MP3 chuẩn Anki (Cambridge & GCP Neural2)"><span>🔊</span> Tạo Audio (ZIP)</button>

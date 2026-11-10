@@ -13,7 +13,7 @@ $ErrorActionPreference = "Stop"
 
 Write-Host ""
 Write-Host "================================================================================" -ForegroundColor Cyan
-Write-Host "   ANKI RPG GAMIFICATION - PROGRAMMATIC VERIFICATION RUNNER (HEADLESS AUDIT)     " -ForegroundColor Yellow
+Write-Host "   THE ANKI DICTIONARY STUDIO - PROGRAMMATIC VERIFICATION (HEADLESS AUDIT)      " -ForegroundColor Yellow
 Write-Host "================================================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -142,23 +142,16 @@ try {
     } else {
       try {
         $auditData = $auditRaw | ConvertFrom-Json
-        $bLoaded = [bool]($auditData.battle -and $auditData.battle.loaded)
         $iLoaded = [bool]($auditData.index -and $auditData.index.loaded)
-        $bCount = if ($auditData.battle -and ($null -ne $auditData.battle.errors)) { [int]$auditData.battle.errors.Count } else { -1 }
         $iCount = if ($auditData.index -and ($null -ne $auditData.index.errors)) { [int]$auditData.index.errors.Count } else { -1 }
-        $bErrors = if ($auditData.battle) { @($auditData.battle.errors) } else { @() }
         $iErrors = if ($auditData.index) { @($auditData.index.errors) } else { @() }
 
-        Write-Host "   • [battle.html]: " -NoNewline
-        if ($bLoaded -and $bCount -eq 0) {
-          Write-Host "0 uncaught exceptions (Loaded: $bLoaded) [PASS]" -ForegroundColor Green
+        Write-Host "   • [battle.html removed]: " -NoNewline
+        $battlePath = Join-Path $scriptDir "battle.html"
+        if (!(Test-Path $battlePath)) {
+          Write-Host "Verified completely eliminated [PASS]" -ForegroundColor Green
         } else {
-          Write-Host "$bCount uncaught exceptions (Loaded: $bLoaded) [FAIL]" -ForegroundColor Red
-          if ($bErrors -and $bErrors.Count -gt 0) {
-            foreach ($err in $bErrors) {
-              Write-Host "       ! $($err.message) ($($err.filename):$($err.lineno))" -ForegroundColor DarkRed
-            }
-          }
+          Write-Host "File still exists! [FAIL]" -ForegroundColor Red
           $exitCode = 1
         }
 

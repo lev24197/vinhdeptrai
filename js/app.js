@@ -28,7 +28,6 @@ let appInitialized = false;
 function bootstrapApp() {
   if (appInitialized) return;
   appInitialized = true;
-  if (typeof initAuthSystem === 'function') initAuthSystem();
   if (typeof loadData === 'function') loadData(true);
 }
 
