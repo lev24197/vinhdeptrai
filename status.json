@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-10 13:35:03",
+  "updated_at": "2026-11-11 12:21:17",
   "topics": [
     {
       "stt": 1,
@@ -1048,28 +1048,28 @@
     {
       "stt": 117,
       "topic": "Thức uống giải khát (Soft Drinks)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/117.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-11 12:19",
       "last_error": null
     },
     {
       "stt": 118,
       "topic": "Nguyên liệu pha chế (Mixology Ingredients)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/118.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-11 12:20",
       "last_error": null
     },
     {
       "stt": 119,
       "topic": "Quầy bar và Pub (Bars & Pubs)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/119.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-11 12:21",
       "last_error": null
     },
     {
