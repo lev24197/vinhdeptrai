@@ -195,41 +195,55 @@ async function openCurationModal(stt, topicVi) {
   await fetch150CandidatesFromAI(curationCurrentStt, curationCurrentTopicVi);
 }
 
-// Gọi Gemini AI sinh 150 danh từ ứng viên
+// Gọi Gemini AI sinh 150 danh từ ứng viên ĐÚNG THỰC THỂ BẰNG 1 PROMPT DUY NHẤT
 async function fetch150CandidatesFromAI(stt, topicVi) {
   const container = document.getElementById('curationWordsContainer');
   if (container) {
     container.innerHTML = `
       <div class="col-span-full p-16 text-center space-y-3">
         <div class="font-display font-extrabold text-lg text-[#111111] uppercase tracking-wide">
-          ĐANG GỌI GEMINI AI SINH 150 DANH TỪ ỨNG VIÊN...
+          ĐANG GỌI GEMINI AI SINH 150 TỪ ĐÚNG CHỦ ĐỀ (1 PROMPT DUY NHẤT)...
         </div>
         <p class="text-xs font-mono-code text-zinc-600 max-w-lg mx-auto">
-          Mô hình đang tổng hợp các danh từ tiêu biểu, khái niệm cốt lõi và thuật ngữ chuyên ngành kèm nghĩa tiếng Việt tóm tắt cho chủ đề #${stt}: ${topicVi}.
+          Mô hình đang tổng hợp đúng 150 thực thể thuần chất thuộc chủ đề #${stt}: ${topicVi} (không lẫn dụng cụ, đồ dùng hay khái niệm ngoài lề).
         </p>
       </div>`;
   }
 
   const geminiKey = localStorage.getItem('gemini_api_key');
   const prompt = `
-Bạn là chuyên gia ngôn ngữ học & biên dịch từ điển Anki chuyên nghiệp.
+Bạn là chuyên gia ngôn ngữ học và biên soạn từ điển chuyên nghiệp với độ chuẩn xác tuyệt đối về trường từ vựng.
 Chủ đề: "${topicVi}" (STT: #${stt}).
-Nhiệm vụ: Hãy tạo ra danh sách gồm đúng 150 danh từ tiếng Anh (nouns hoặc compound nouns) chất lượng cao, tiêu biểu và độc nhất thuộc chủ đề này.
 
-Yêu cầu bắt buộc:
-1. 100% các từ phải là danh từ hoặc cụm danh từ tiếng Anh (nouns / noun phrases). Tuyệt đối không dùng động từ hay tính từ đơn lẻ.
-2. Không trùng lặp từ.
-3. Mỗi từ phải kèm theo nghĩa tiếng Việt tóm tắt (3 đến 6 từ) chính xác, súc tích và dễ hiểu.
-4. Bao phủ phong phú từ các vật thể, dụng cụ, khái niệm thông dụng đến các thuật ngữ chuyên sâu của chủ đề.
-5. Số lượng: Cung cấp đủ khoảng 140 - 150 từ vựng.
-6. Trả về đúng định dạng JSON Array of Objects:
+Nhiệm vụ: Hãy tạo ra danh sách gồm ĐÚNG 150 danh từ tiếng Anh (nouns hoặc compound nouns) CHÍNH LÀ CÁC THỰC THỂ THUỘC CHỦ ĐỀ NÀY trong 1 lần phản hồi duy nhất.
+
+CÁC NGUYÊN TẮC BẮT BUỘC:
+1. ĐỒNG NHẤT THỰC THỂ 100% (STRICT ENTITY ONLY):
+   - Mọi từ vựng phải là CHÍNH THỰC THỂ của chủ đề đó, không được lấy từ liên quan hay phụ trợ.
+   - Ví dụ: Nếu chủ đề là "Trái cây" (Fruits) thì 100% 150 từ PHẢI LÀ TÊN CÁC LOẠI TRÁI CÂY (apple, banana, mango, durian, kiwi, dragon fruit, persimmon, pomegranate, fig, lychee, mangosteen, rambutan, blueberry, cranberry, avocado, pomelo...).
+   - Nếu chủ đề là "Dụng cụ thể hình" (Gym Equipment) thì 100% 150 từ PHẢI LÀ TÊN DỤNG CỤ, MÁY TẬP (dumbbell, barbell, kettlebell, treadmill, pull-up bar...).
+   - Nếu chủ đề là "Các loài hoa" (Flowers) thì 100% 150 từ PHẢI LÀ TÊN CÁC LOÀI HOA (rose, tulip, sunflower, orchid, daisy...).
+
+2. CẤM HOÀN TOÀN CÁC TỪ NGOẠI LAI / ĐỒ NGHỀ LIÊN QUAN (STRICT EXCLUSIONS):
+   - TUYỆT ĐỐI CẤM các dụng cụ gián tiếp (Ví dụ: chủ đề Trái cây thì CẤM dao, thớt, máy xay sinh tố, rổ, thùng xốp...).
+   - TUYỆT ĐỐI CẤM các địa điểm (Ví dụ: vườn cây, nông trại, siêu thị, quầy hàng...).
+   - TUYỆT ĐỐI CẤM tính từ, hành động hay bộ phận chung chung (Ví dụ: ngọt, chua, bóc vỏ, hạt, cuống, lá, rễ...).
+
+3. ĐỂ ĐẠT ĐỦ 150 TỪ PHONG PHÚ MÀ KHÔNG TRÙNG LẶP:
+   - Hãy rà soát tất cả các phân loại thực tế trên thế giới (từ các loại phổ thông quen thuộc, các giống nhiệt đới, ôn đới, cận nhiệt đới, quả mọng, quả hạch, quả có múi, đến các giống đặc hữu, dại và quốc tế).
+
+4. MỖI TỪ KÈM NGHĨA TIẾNG VIỆT TÓM TẮT:
+   - Dịch nghĩa tiếng Việt chuẩn xác, súc tích (3 đến 6 từ), nêu đúng tên gọi thuần Việt của thực thể đó.
+
+5. ĐỊNH DẠNG TRẢ VỀ:
+   - Trả về ĐÚNG 1 JSON Array gồm chính xác 150 objects:
 [
   { "word": "từ tiếng anh", "meaning_vi": "nghĩa tiếng việt tóm tắt" }
 ]
 `;
 
   try {
-    let list = await callGeminiApiWithFallback(prompt, geminiKey, 0.65);
+    let list = await callGeminiApiWithFallback(prompt, geminiKey, 0.4);
     if (!Array.isArray(list) || list.length === 0) {
       throw new Error('Gemini không trả về danh sách từ hợp lệ');
     }
@@ -243,28 +257,6 @@ Yêu cầu bắt buộc:
       if (!w || seen.has(w) || w.length < 2) continue;
       seen.add(w);
       cleanList.push({ id: cleanList.length + 1, word: w, meaning_vi: vi, isCustom: false });
-    }
-
-    // Nếu còn thiếu (< 130 từ), gọi bổ sung thêm 35 từ nữa
-    if (cleanList.length < 130) {
-      try {
-        const topupPrompt = `
-Chủ đề: "${topicVi}".
-Hãy cung cấp thêm 35 danh từ tiếng Anh chuyên sâu khác thuộc chủ đề này, KHÔNG được trùng với các từ sau: ${cleanList.slice(0, 50).map(x => x.word).join(', ')}.
-Trả về JSON Array: [ { "word": "từ tiếng anh", "meaning_vi": "nghĩa tiếng việt tóm tắt" } ]`;
-        const topupList = await callGeminiApiWithFallback(topupPrompt, geminiKey, 0.7);
-        if (Array.isArray(topupList)) {
-          for (const item of topupList) {
-            const w = String(item.word || '').trim().toLowerCase();
-            const vi = String(item.meaning_vi || '').trim();
-            if (!w || seen.has(w) || w.length < 2) continue;
-            seen.add(w);
-            cleanList.push({ id: cleanList.length + 1, word: w, meaning_vi: vi, isCustom: false });
-          }
-        }
-      } catch (e) {
-        console.warn('Lỗi bổ sung từ curation:', e);
-      }
     }
 
     curationCandidates = cleanList;
