@@ -1,59 +1,60 @@
 <!-- ==========================================================================
      COMPONENT: components/navbar.html
      Thanh Header & Điều hướng 7 Chức năng Chuyên biệt (Multi-Page Navigation)
+     Phong cách Swiss Editorial & Pure Typography — Tuyệt đối 0 Icon / Emoji
      ========================================================================== -->
-<header class="bg-[#F6F4EE] border-b-[3px] border-[#141414] sticky top-0 z-40">
-  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
-    <a href="index.html" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 rounded-lg bg-[#169C64] text-white font-display font-extrabold text-xl flex items-center justify-center border-2 border-[#141414] shadow-[2px_2px_0px_#141414] group-hover:bg-[#FF9F1C] group-hover:text-[#141414] transition">
-        D
+<header class="bg-[#F4F1EA] border-b-2 border-[#111111] sticky top-0 z-40">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-3.5 group">
+      <div class="w-10 h-10 bg-[#111111] text-white font-mono-code font-extrabold text-sm flex items-center justify-center border-2 border-[#111111] group-hover:bg-[#0F766E] transition">
+        AD
       </div>
       <div>
-        <div class="flex items-center gap-2">
-          <h1 class="text-lg sm:text-xl font-display font-extrabold tracking-tight text-[#141414]">The Anki Dictionary</h1>
-          <span class="tid-badge-num bg-[#FFE787] text-[#141414] font-mono-code">1000 TOPICS</span>
+        <div class="flex items-center gap-2.5">
+          <h1 class="text-lg sm:text-xl font-display font-extrabold uppercase tracking-tight text-[#111111]">The Anki Dictionary</h1>
+          <span class="tid-badge-num bg-[#EAE5DA] text-[#111111]">EDITION 9-COL</span>
         </div>
-        <p class="text-[11px] font-medium text-slate-600 hidden sm:block">Hệ Thống Quản Trị 100.000 Từ Vựng Chuẩn Anki & Âm Thanh Cambridge MP3</p>
+        <p class="text-xs font-mono-code text-zinc-600 hidden sm:block">HỆ THỐNG BIÊN SOẠN TỪ VỰNG HỌC THUẬT & ÂM THANH CAMBRIDGE</p>
       </div>
     </a>
 
     <div class="flex flex-wrap items-center gap-2">
-      <span id="syncBadge" class="text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-white text-[#141414] border-2 border-[#141414] shadow-[2px_2px_0px_#141414]">
-        ⏳ Đang đồng bộ...
+      <span id="syncBadge" class="text-xs font-mono-code font-bold px-3 py-1.5 bg-white text-[#111111] border-2 border-[#111111]">
+        TRẠNG THÁI: ĐANG ĐỒNG BỘ...
       </span>
-      <button onclick="toggleConsoleDrawer()" class="neo-btn px-3.5 py-1.5 rounded-full bg-[#141414] text-white text-xs font-bold flex items-center gap-1.5 relative">
-        <span>🖥️ Nhật ký & Log</span>
-        <span id="consoleErrorBadge" class="hidden px-1.5 py-0.2 bg-[#F05332] text-white rounded-full text-[10px] font-extrabold animate-bounce">!</span>
+      <button onclick="toggleConsoleDrawer()" class="neo-btn px-3.5 py-1.5 bg-[#111111] text-white text-xs uppercase flex items-center gap-2 relative">
+        <span>NHẬT KÝ HỆ THỐNG</span>
+        <span id="consoleErrorBadge" class="hidden px-1.5 py-0.5 bg-[#BE123C] text-white text-xs font-mono-code font-extrabold">LỖI</span>
       </button>
-      <button onclick="openSettings()" class="neo-btn px-3.5 py-1.5 rounded-full bg-[#FFE787] text-[#141414] text-xs font-bold flex items-center gap-1.5">
-        ⚙️ Cấu hình API
+      <button onclick="openSettings()" class="neo-btn px-3.5 py-1.5 bg-white text-[#111111] hover:bg-[#EAE5DA] text-xs uppercase">
+        CẤU HÌNH API
       </button>
     </div>
   </div>
 
   <!-- Thanh Điều Hướng 7 Trang Chức Năng Riêng Biệt -->
-  <nav class="bg-[#EFECE6] border-t-2 border-[#141414]">
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-2 overflow-x-auto no-scrollbar">
-      <a href="index.html" data-nav-page="index.html" class="nav-page-link neo-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold whitespace-nowrap flex items-center gap-1.5 bg-white text-[#141414]">
-        📋 1. Danh Sách & Tạo AI
+  <nav class="bg-[#EAE5DA] border-t-2 border-[#111111]">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-2 overflow-x-auto">
+      <a href="index.html" data-nav-page="index.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
+        <span class="font-mono-code opacity-60">01</span> <span>DANH SÁCH & TẠO AI</span>
       </a>
-      <a href="grid.html" data-nav-page="grid.html" class="nav-page-link neo-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold whitespace-nowrap flex items-center gap-1.5 bg-white text-[#141414]">
-        🟩 2. Bản Đồ 1.000 Ô
+      <a href="grid.html" data-nav-page="grid.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
+        <span class="font-mono-code opacity-60">02</span> <span>BẢN ĐỒ LƯỚI</span>
       </a>
-      <a href="studio.html" data-nav-page="studio.html" class="nav-page-link neo-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold whitespace-nowrap flex items-center gap-1.5 bg-white text-[#141414]">
-        🎓 3. Studio Học & Sửa Từ
+      <a href="studio.html" data-nav-page="studio.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
+        <span class="font-mono-code opacity-60">03</span> <span>STUDIO HỌC & SỬA TỪ</span>
       </a>
-      <a href="audio.html" data-nav-page="audio.html" class="nav-page-link neo-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold whitespace-nowrap flex items-center gap-1.5 bg-white text-[#141414]">
-        🔊 4. Âm Thanh Cambridge MP3
+      <a href="audio.html" data-nav-page="audio.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
+        <span class="font-mono-code opacity-60">04</span> <span>ÂM THANH CAMBRIDGE</span>
       </a>
-      <a href="corpus.html" data-nav-page="corpus.html" class="nav-page-link neo-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold whitespace-nowrap flex items-center gap-1.5 bg-white text-[#141414]">
-        📚 5. Kho Từ Điển Tổng
+      <a href="corpus.html" data-nav-page="corpus.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
+        <span class="font-mono-code opacity-60">05</span> <span>KHO TỪ ĐIỂN TỔNG</span>
       </a>
-      <a href="audit.html" data-nav-page="audit.html" class="nav-page-link neo-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold whitespace-nowrap flex items-center gap-1.5 bg-white text-[#141414]">
-        🛡️ 6. Kiểm Toán 9 Cột
+      <a href="audit.html" data-nav-page="audit.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
+        <span class="font-mono-code opacity-60">06</span> <span>KIỂM TOÁN 9 CỘT</span>
       </a>
-      <a href="quiz.html" data-nav-page="quiz.html" class="nav-page-link neo-btn px-3.5 py-1.5 rounded-lg text-xs font-extrabold whitespace-nowrap flex items-center gap-1.5 bg-white text-[#141414]">
-        🎯 7. Trắc Nghiệm Từ Vựng
+      <a href="quiz.html" data-nav-page="quiz.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
+        <span class="font-mono-code opacity-60">07</span> <span>TRẮC NGHIỆM TỪ VỰNG</span>
       </a>
     </div>
   </nav>

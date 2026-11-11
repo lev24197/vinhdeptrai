@@ -1,18 +1,18 @@
 // ============================================================================
 // MODULE: js/dashboard.js
 // Chức năng: Bảng Điều Khiển Tiến Độ (KPIs), Phân Loại 8 Nhóm Lĩnh Vực
-//            & Bảng Quản Lý 1.000 Chủ Đề (Tìm kiếm, Bộ lọc, Phân trang).
+//            & Bảng Quản Lý Chủ Đề (100% Icon-Free Swiss Editorial).
 // ============================================================================
 
 function getTopicCategory(stt) {
-  if (stt <= 125) return { id: 'nature', name: '🌿 Tự Nhiên', color: 'bg-emerald-50 text-emerald-700 border-emerald-200' };
-  if (stt <= 250) return { id: 'career', name: '💼 Kinh Tế & Nghề', color: 'bg-blue-50 text-blue-700 border-blue-200' };
-  if (stt <= 375) return { id: 'health', name: '🏥 Y Tế & Thể Thao', color: 'bg-rose-50 text-rose-700 border-rose-200' };
-  if (stt <= 500) return { id: 'tech', name: '🔬 Khoa Học & CN', color: 'bg-purple-50 text-purple-700 border-purple-200' };
-  if (stt <= 625) return { id: 'society', name: '🏛️ Xã Hội & Luật', color: 'bg-amber-50 text-amber-800 border-amber-200' };
-  if (stt <= 750) return { id: 'art', name: '🎨 Nghệ Thuật', color: 'bg-pink-50 text-pink-700 border-pink-200' };
-  if (stt <= 875) return { id: 'food', name: '🍜 Ẩm Thực & Đời Sống', color: 'bg-orange-50 text-orange-800 border-orange-200' };
-  return { id: 'abstract', name: '🧠 Tư Duy & Học Thuật', color: 'bg-indigo-50 text-indigo-700 border-indigo-200' };
+  if (stt <= 125) return { id: 'nature', name: 'TỰ NHIÊN & ĐỊA LÝ', color: 'bg-[#F4F1EA] text-[#0F766E] border-[#0F766E]' };
+  if (stt <= 250) return { id: 'career', name: 'KINH TẾ & NGHỀ NGHIỆP', color: 'bg-[#F4F1EA] text-[#1D4ED8] border-[#1D4ED8]' };
+  if (stt <= 375) return { id: 'health', name: 'Y TẾ & THỂ THAO', color: 'bg-[#F4F1EA] text-[#BE123C] border-[#BE123C]' };
+  if (stt <= 500) return { id: 'tech', name: 'KHOA HỌC & CÔNG NGHỆ', color: 'bg-[#F4F1EA] text-[#7C3AED] border-[#7C3AED]' };
+  if (stt <= 625) return { id: 'society', name: 'XÃ HỘI & PHÁP LUẬT', color: 'bg-[#F4F1EA] text-[#D97706] border-[#D97706]' };
+  if (stt <= 750) return { id: 'art', name: 'VĂN HÓA & NGHỆ THUẬT', color: 'bg-[#F4F1EA] text-[#DB2777] border-[#DB2777]' };
+  if (stt <= 875) return { id: 'food', name: 'ẨM THỰC & ĐỜI SỐNG', color: 'bg-[#F4F1EA] text-[#EA580C] border-[#EA580C]' };
+  return { id: 'abstract', name: 'TƯ DUY & HỌC THUẬT', color: 'bg-[#F4F1EA] text-[#374151] border-[#374151]' };
 }
 
 function updateDashboardUI() {
@@ -22,13 +22,14 @@ function updateDashboardUI() {
   const pendingCount = total - completedCount;
   const issueCount = completedList.filter(t => t.word_count !== 100).length;
   const totalWords = completedList.reduce((acc, t) => acc + (t.word_count || 100), 0);
-  const pct = ((completedCount / total) * 100).toFixed(1);
+  const targetWords = total * 100;
+  const pct = total > 0 ? ((completedCount / total) * 100).toFixed(1) : '0.0';
 
   const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
   setTxt('statCompleted', completedCount.toLocaleString());
   setTxt('statPending', pendingCount.toLocaleString());
   setTxt('statWords', totalWords.toLocaleString());
-  setTxt('statWordsSub', `${((totalWords / 100000) * 100).toFixed(1)}% mục tiêu`);
+  setTxt('statWordsSub', `${((totalWords / targetWords) * 100).toFixed(1)}% MỤC TIÊU`);
   setTxt('statPercent', `${pct}%`);
   const bar = document.getElementById('progressBar');
   if (bar) bar.style.width = `${pct}%`;
@@ -42,8 +43,8 @@ function updateDashboardUI() {
       nextNameEl.title = nextTopic.topic;
     }
   } else {
-    setTxt('statNextStt', 'HOÀN TẤT!');
-    setTxt('statNextName', 'Đã đủ 1.000 chủ đề');
+    setTxt('statNextStt', 'HOÀN TẤT');
+    setTxt('statNextName', `Đã đủ toàn bộ ${total} chủ đề`);
   }
 
   setTxt('countAll', total);
@@ -64,9 +65,9 @@ function setStatusFilter(status) {
     const btn = document.getElementById(`filter-${s}`);
     if (!btn) return;
     if (s === status) {
-      btn.className = 'filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-sm transition';
+      btn.className = 'filter-pill px-3 py-1.5 text-xs font-mono-code font-bold uppercase bg-[#111111] text-white transition';
     } else {
-      btn.className = 'filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition';
+      btn.className = 'filter-pill px-3 py-1.5 text-xs font-mono-code font-bold uppercase bg-white text-zinc-700 border border-[#111111] hover:bg-[#F4F1EA] transition';
     }
   });
   applyFiltersAndRender();
@@ -76,11 +77,11 @@ function setCategoryFilter(cat) {
   currentCategoryFilter = cat;
   currentPage = 1;
   document.querySelectorAll('.cat-pill').forEach(btn => {
-    btn.className = 'cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition';
+    btn.className = 'cat-pill px-2.5 py-1 text-xs font-mono-code font-bold uppercase bg-white text-zinc-700 border border-[#111111] hover:bg-[#F4F1EA] transition';
   });
   const activeBtn = document.getElementById(`cat-${cat}`);
   if (activeBtn) {
-    activeBtn.className = 'cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-800 text-white transition';
+    activeBtn.className = 'cat-pill px-2.5 py-1 text-xs font-mono-code font-bold uppercase bg-[#111111] text-white border border-[#111111] transition';
   }
   applyFiltersAndRender();
 }
@@ -146,7 +147,7 @@ function toggleRowSelect(stt) {
   if (badge) {
     if (selectedTopics.size > 0) {
       badge.classList.remove('hidden');
-      badge.innerText = `Đã chọn: ${selectedTopics.size} chủ đề`;
+      badge.innerText = `ĐÃ CHỌN: ${selectedTopics.size} CHỦ ĐỀ`;
     } else {
       badge.classList.add('hidden');
     }
@@ -163,14 +164,14 @@ function renderTable() {
   if (badge) {
     if (selectedTopics.size > 0) {
       badge.classList.remove('hidden');
-      badge.innerText = `Đã chọn: ${selectedTopics.size} chủ đề`;
+      badge.innerText = `ĐÃ CHỌN: ${selectedTopics.size} CHỦ ĐỀ`;
     } else {
       badge.classList.add('hidden');
     }
   }
 
   if (!slice.length) {
-    tbody.innerHTML = `<tr><td colspan="6" class="p-10 text-center text-slate-400">Không tìm thấy chủ đề nào khớp với bộ lọc hiện tại.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" class="p-10 text-center font-mono-code text-xs text-zinc-500 uppercase">Không tìm thấy chủ đề nào khớp với bộ lọc hiện tại.</td></tr>`;
     return;
   }
 
@@ -182,46 +183,46 @@ function renderTable() {
     const safeTopic = t.topic.replace(/'/g, "\\'");
 
     return `
-      <tr class="hover:bg-slate-50/90 transition ${isChecked ? 'bg-indigo-50/50' : ''}">
-        <td class="p-3.5 text-center">
-          <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleRowSelect(${t.stt})" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" />
+      <tr class="hover:bg-[#F4F1EA] transition border-b border-zinc-200 ${isChecked ? 'bg-[#EAE5DA]' : ''}">
+        <td class="p-3 text-center">
+          <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleRowSelect(${t.stt})" class="border-2 border-[#111111] accent-[#111111] cursor-pointer" />
         </td>
-        <td class="p-3.5 font-mono-code text-xs font-bold text-slate-500">#${t.stt}</td>
-        <td class="p-3.5">
+        <td class="p-3 font-mono-code text-xs font-bold text-zinc-600">#${t.stt}</td>
+        <td class="p-3">
           <div class="flex flex-wrap items-center gap-2">
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${cat.color}">${cat.name}</span>
-            <span class="font-semibold text-slate-900">${t.topic}</span>
+            <span class="px-2 py-0.5 text-xs font-mono-code font-bold border ${cat.color}">${cat.name}</span>
+            <span class="font-bold text-zinc-900 text-xs sm:text-sm">${t.topic}</span>
           </div>
         </td>
-        <td class="p-3.5 text-center">
+        <td class="p-3 text-center">
           ${isDone
             ? (wordOk
-                ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">✓ Chuẩn 100t</span>`
-                : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">⚠️ ${t.word_count} từ</span>`)
-            : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-500">⏳ Chưa tạo</span>`
+                ? `<span class="inline-block px-2.5 py-0.5 text-xs font-mono-code font-extrabold bg-[#F4F1EA] text-[#0F766E] border border-[#0F766E]">CHUẨN 100 TỪ</span>`
+                : `<span class="inline-block px-2.5 py-0.5 text-xs font-mono-code font-extrabold bg-[#F4F1EA] text-[#D97706] border border-[#D97706]">CẢNH BÁO: ${t.word_count} TỪ</span>`)
+            : `<span class="inline-block px-2.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-zinc-600 border border-zinc-400">CHƯA TẠO</span>`
           }
         </td>
-        <td class="p-3.5 text-center font-mono-code text-xs font-bold ${isDone ? 'text-slate-800' : 'text-slate-300'}">
-          ${isDone ? `${t.word_count} từ` : '—'}
+        <td class="p-3 text-center font-mono-code text-xs font-bold ${isDone ? 'text-zinc-900' : 'text-zinc-400'}">
+          ${isDone ? `${t.word_count} TỪ` : '—'}
         </td>
-        <td class="p-3.5 text-right">
+        <td class="p-3 text-right">
           <div class="flex items-center justify-end gap-1.5">
             ${isDone ? `
-              <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="px-2.5 py-1 bg-slate-900 hover:bg-slate-800 text-white rounded-md text-xs font-semibold transition shadow-sm" title="Mở Studio xem bảng 9 cột, học Flashcard 3D & Gõ Cloze">
-                Xem / Sửa
+              <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="neo-btn px-2.5 py-1 bg-[#111111] text-white text-xs uppercase" title="Mở Studio xem bảng 9 cột, học Flashcard 3D & Gõ Cloze">
+                XEM / SỬA
               </button>
-              <button onclick="downloadSingleFile(${t.stt}, '${safeTopic}')" class="px-2 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-md text-xs font-semibold transition" title="Tải file .txt đơn lẻ cho Anki">
-                ⬇ .TXT
+              <button onclick="downloadSingleFile(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-1 bg-white text-[#111111] text-xs font-mono-code uppercase" title="Tải file .txt đơn lẻ cho Anki">
+                XUẤT .TXT
               </button>
-              <button onclick="downloadTopicAudioZipDirect(${t.stt}, '${safeTopic}', this)" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md text-xs font-bold transition shadow-sm" title="Tự động cào 100 file phát âm MP3 chuẩn Cambridge đóng gói .ZIP">
-                🔊 Tạo Audio (ZIP)
+              <button onclick="downloadTopicAudioZipDirect(${t.stt}, '${safeTopic}', this)" class="neo-btn px-2.5 py-1 bg-[#0F766E] text-white text-xs uppercase" title="Tự động cào 100 file phát âm MP3 chuẩn Cambridge đóng gói .ZIP">
+                TẠO AUDIO (.ZIP)
               </button>
-              <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="px-2 py-1 bg-slate-100 hover:bg-amber-100 text-slate-600 hover:text-amber-800 rounded-md text-xs font-semibold transition" title="Tạo lại trực tiếp trên trình duyệt (Thấy ngay từng từ)">
-                ↻ Tạo lại
+              <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-1 bg-[#EAE5DA] text-[#111111] text-xs uppercase" title="Tạo lại trực tiếp trên trình duyệt">
+                TẠO LẠI
               </button>
             ` : `
-              <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-xs font-semibold transition shadow-sm" title="Tạo ngay 100 từ trực tiếp trên trình duyệt (Thấy ngay từng từ sinh ra)">
-                ⚡ Tạo 100 từ ngay
+              <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="neo-btn px-3 py-1 bg-[#111111] text-white text-xs uppercase" title="Tạo ngay 100 từ trực tiếp trên trình duyệt">
+                TẠO 100 TỪ (AI)
               </button>
             `}
           </div>
@@ -239,13 +240,13 @@ function renderPagination() {
   const start = total === 0 ? 0 : (currentPage - 1) * pageSize + 1;
   const end = Math.min(total, currentPage * pageSize);
   const infoEl = document.getElementById('paginationInfo');
-  if (infoEl) infoEl.innerText = `Hiển thị ${start}–${end} / ${total} chủ đề (Trang ${currentPage}/${totalPages})`;
+  if (infoEl) infoEl.innerText = `HIỂN THỊ ${start}–${end} / ${total} CHỦ ĐỀ (TRANG ${currentPage}/${totalPages})`;
 
   const ctrl = document.getElementById('paginationControls');
   if (!ctrl) return;
   let html = '';
 
-  html += `<button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="px-2.5 py-1 rounded border text-xs font-semibold ${currentPage === 1 ? 'bg-slate-100 text-slate-300 border-slate-200 cursor-not-allowed' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'}">‹ Trước</button>`;
+  html += `<button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="neo-btn px-2.5 py-1 text-xs font-mono-code uppercase ${currentPage === 1 ? 'bg-zinc-200 text-zinc-400 border-zinc-300 cursor-not-allowed' : 'bg-white text-[#111111]'}">TRƯỚC</button>`;
 
   const maxBtns = 5;
   let startP = Math.max(1, currentPage - 2);
@@ -253,10 +254,10 @@ function renderPagination() {
   if (endP - startP < maxBtns - 1) startP = Math.max(1, endP - maxBtns + 1);
 
   for (let p = startP; p <= endP; p++) {
-    html += `<button onclick="changePage(${p})" class="px-3 py-1 rounded border text-xs font-bold ${p === currentPage ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'}">${p}</button>`;
+    html += `<button onclick="changePage(${p})" class="neo-btn px-3 py-1 text-xs font-mono-code font-bold ${p === currentPage ? 'bg-[#111111] text-white' : 'bg-white text-[#111111]'}">${p}</button>`;
   }
 
-  html += `<button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="px-2.5 py-1 rounded border text-xs font-semibold ${currentPage === totalPages ? 'bg-slate-100 text-slate-300 border-slate-200 cursor-not-allowed' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'}">Sau ›</button>`;
+  html += `<button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="neo-btn px-2.5 py-1 text-xs font-mono-code uppercase ${currentPage === totalPages ? 'bg-zinc-200 text-zinc-400 border-zinc-300 cursor-not-allowed' : 'bg-white text-[#111111]'}">SAU</button>`;
   ctrl.innerHTML = html;
 }
 

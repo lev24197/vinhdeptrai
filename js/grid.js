@@ -2,6 +2,7 @@
 // MODULE: js/grid.js
 // Chức năng: Bản đồ Lưới Trực Quan 1.000 Chủ Đề (Visual Grid Map) &
 //            Thống kê chi tiết tiến độ theo 8 nhóm lĩnh vực.
+//            100% Icon-Free Swiss Editorial Design.
 // ============================================================================
 
 let gridCategoryFilter = 'all';
@@ -49,11 +50,11 @@ function renderGridMap() {
 
     const isDimmed = !(matchCat && matchStatus && matchSearch);
 
-    let bg = 'bg-white text-slate-500 border-slate-300 hover:border-[#141414] hover:text-[#141414]';
+    let bg = 'bg-white text-zinc-500 border-zinc-300 hover:border-[#111111] hover:text-[#111111]';
     if (isDone && !isError) {
-      bg = 'bg-[#169C64] text-white border-[#141414] font-extrabold shadow-[1px_1px_0px_#141414]';
+      bg = 'bg-[#0F766E] text-white border-[#111111] font-extrabold';
     } else if (isError) {
-      bg = 'bg-[#FF9F1C] text-[#141414] border-[#141414] font-extrabold shadow-[1px_1px_0px_#141414]';
+      bg = 'bg-[#D97706] text-white border-[#111111] font-extrabold';
     }
 
     if (isDimmed) {
@@ -61,11 +62,11 @@ function renderGridMap() {
     }
 
     const safeTopic = t.topic.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-    const titleTooltip = `#${t.stt}: ${t.topic} (${isDone ? t.word_count + ' từ - Nhấn để Xem/Học' : 'Chưa tạo - Nhấn để Tạo ngay bằng AI'})`;
+    const titleTooltip = `#${t.stt}: ${t.topic} (${isDone ? t.word_count + ' từ - Xem/Sửa' : 'Chưa tạo - Tạo bằng AI'})`;
 
     return `<div onclick="onGridCellClick(${t.stt}, '${safeTopic}', ${isDone})"
       title="${titleTooltip}"
-      class="grid-cell h-8 rounded flex items-center justify-center text-[10px] font-mono-code border cursor-pointer select-none transition-all ${bg}">
+      class="grid-cell h-8 border flex items-center justify-center text-xs font-mono-code cursor-pointer select-none transition-all ${bg}">
       ${t.stt}
     </div>`;
   }).join('');
@@ -90,24 +91,24 @@ function renderGridCategoryStats() {
 
   statsContainer.innerHTML = categories.map(c => {
     const topicsInCat = allTopics.filter(t => getTopicCategory(t.stt).id === c.id);
-    const sampleCat = topicsInCat.length ? getTopicCategory(topicsInCat[0].stt) : { id: c.id, name: c.id, color: 'bg-slate-100 text-slate-800 border-slate-300' };
+    const sampleCat = topicsInCat.length ? getTopicCategory(topicsInCat[0].stt) : { id: c.id, name: c.id, color: 'bg-white text-zinc-800 border-zinc-300' };
     const total = topicsInCat.length || 125;
     const done = topicsInCat.filter(t => t.status === 'completed').length;
-    const pct = Math.round((done / total) * 100);
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
     const isActive = gridCategoryFilter === c.id;
 
     return `
       <div onclick="setGridFilter('${isActive ? 'all' : c.id}', null)"
-        class="neo-box-sm p-3 cursor-pointer transition hover:-translate-y-0.5 ${isActive ? 'bg-[#FFE787] ring-2 ring-[#141414]' : 'bg-white'}">
+        class="neo-box-sm p-3 cursor-pointer transition ${isActive ? 'bg-[#111111] text-white ring-2 ring-[#111111]' : 'bg-white text-[#111111]'}">
         <div class="flex items-center justify-between gap-1 mb-1.5">
-          <span class="text-xs font-extrabold text-[#141414] truncate">${sampleCat.name}</span>
-          <span class="font-mono-code text-[10px] font-bold px-1.5 py-0.5 bg-[#141414] text-white rounded">#${c.range}</span>
+          <span class="text-xs font-display font-extrabold truncate uppercase ${isActive ? 'text-white' : 'text-[#111111]'}">${sampleCat.name}</span>
+          <span class="font-mono-code text-xs font-bold px-1.5 py-0.5 border ${isActive ? 'border-white text-white' : 'border-[#111111] text-[#111111]'}">#${c.range}</span>
         </div>
-        <div class="w-full h-2.5 bg-[#EFECE6] border border-[#141414] rounded-full overflow-hidden mb-1">
-          <div class="h-full bg-[#169C64] transition-all duration-300" style="width: ${pct}%"></div>
+        <div class="w-full h-2 border border-[#111111] bg-[#F4F1EA] mb-1.5 overflow-hidden">
+          <div class="h-full bg-[#0F766E] transition-all duration-300" style="width: ${pct}%"></div>
         </div>
-        <div class="flex items-center justify-between text-[11px] font-mono-code font-bold text-slate-600">
-          <span>Đã xong: <strong class="text-[#169C64]">${done}</strong>/${total}</span>
+        <div class="flex items-center justify-between text-xs font-mono-code font-bold ${isActive ? 'text-zinc-300' : 'text-zinc-600'}">
+          <span>ĐÃ XONG: ${done}/${total}</span>
           <span>${pct}%</span>
         </div>
       </div>

@@ -2,7 +2,7 @@
 // MODULE: js/studio.js
 // Chức năng: Studio Học & Chỉnh Sửa Chủ Đề (9-Column Live Editor,
 //            3D Flashcards Leitner SRS, Cloze Typing Quiz, Audio Playlist & Print PDF)
-//            Hỗ trợ cả chế độ Modal nhanh và trang độc lập studio.html.
+//            100% Icon-Free Swiss Editorial Design.
 // ============================================================================
 
 let currentPreviewStt = null;
@@ -26,8 +26,8 @@ function togglePlaylistAudio() {
     isPlaylistPlaying = true;
     const btn = document.getElementById('btnPlaylistAudio');
     if (btn) {
-      btn.innerText = '⏹ Dừng đọc tự động';
-      btn.className = 'px-3 py-1.5 bg-rose-600 text-white rounded-lg text-xs font-bold shadow animate-pulse transition';
+      btn.innerText = 'DỪNG ĐỌC TỰ ĐỘNG';
+      btn.className = 'neo-btn px-3 py-1.5 bg-[#BE123C] text-white text-xs uppercase';
     }
     playNextInPlaylist(0);
   }
@@ -39,8 +39,8 @@ function stopPlaylistAudio() {
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
   const btn = document.getElementById('btnPlaylistAudio');
   if (btn) {
-    btn.innerText = '📻 Nghe tự động 100 từ';
-    btn.className = 'px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-lg text-xs font-bold transition';
+    btn.innerText = 'PHÁT TỰ ĐỘNG 100 TỪ';
+    btn.className = 'neo-btn px-3 py-1.5 bg-white text-[#111111] text-xs uppercase';
   }
 }
 
@@ -54,7 +54,7 @@ function playNextInPlaylist(idx) {
   speakWord(word);
 
   const subText = document.getElementById('previewSubText');
-  if (subText) subText.innerHTML = `<span class="text-amber-600 font-bold">📻 Đang phát tự động (#${idx + 1}/100): ${word} — ${cols[5] || ''}</span>`;
+  if (subText) subText.innerHTML = `<span class="text-[#0F766E] font-mono-code font-bold uppercase">ĐANG PHÁT TỰ ĐỘNG (#${idx + 1}/100): ${word} — ${cols[5] || ''}</span>`;
 
   playlistTimeout = setTimeout(() => {
     playNextInPlaylist(idx + 1);
@@ -66,8 +66,8 @@ function toggleFlashcardAutoSlide() {
   const btn = document.getElementById('btnAutoSlide');
   if (isAutoSlide) {
     if (btn) {
-      btn.innerText = '⏸ Dừng trình chiếu';
-      btn.className = 'px-3 py-1.5 rounded-lg bg-rose-600 text-white text-xs font-bold shadow animate-pulse';
+      btn.innerText = 'DỪNG TRÌNH CHIẾU';
+      btn.className = 'neo-btn px-3 py-1.5 bg-[#BE123C] text-white text-xs uppercase';
     }
     autoSlideInterval = setInterval(() => {
       const scene = document.getElementById('flashcardScene');
@@ -80,8 +80,8 @@ function toggleFlashcardAutoSlide() {
   } else {
     if (autoSlideInterval) clearInterval(autoSlideInterval);
     if (btn) {
-      btn.innerText = '▶️ Tự động lật & chuyển (3s)';
-      btn.className = 'px-3 py-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-bold transition';
+      btn.innerText = 'TỰ ĐỘNG LẬT (3 GIÂY)';
+      btn.className = 'neo-btn px-3 py-1.5 bg-white text-[#111111] text-xs uppercase';
     }
   }
 }
@@ -115,12 +115,12 @@ function printCurrentTopicSheet() {
   const title = document.getElementById('previewTitle')?.innerText || `Chủ đề #${currentPreviewStt}`;
   const win = window.open('', '_blank');
   const rows = currentPreviewLines.map((c, idx) => `
-    <tr style="border-bottom: 1px solid #e2e8f0; font-size: 12px;">
-      <td style="padding: 6px; font-weight: bold; color: #64748b;">${idx + 1}</td>
-      <td style="padding: 6px; font-weight: bold; color: #0f172a;">${c[0] || ''} <span style="font-weight:normal; color:#6366f1; font-family:monospace;">${c[2] || ''}</span></td>
-      <td style="padding: 6px; font-weight: bold; color: #047857;">${c[5] || ''}</td>
-      <td style="padding: 6px; color: #334155;">${c[4] || ''}</td>
-      <td style="padding: 6px; color: #475569; font-size: 11px;">${c[8] || ''}</td>
+    <tr style="border-bottom: 1px solid #111111; font-size: 12px;">
+      <td style="padding: 6px; font-weight: bold; font-family: monospace;">${idx + 1}</td>
+      <td style="padding: 6px; font-weight: bold;">${c[0] || ''} <span style="font-weight:normal; font-family:monospace;">${c[2] || ''}</span></td>
+      <td style="padding: 6px; font-weight: bold;">${c[5] || ''}</td>
+      <td style="padding: 6px;">${c[4] || ''}</td>
+      <td style="padding: 6px; font-size: 11px;">${c[8] || ''}</td>
     </tr>
   `).join('');
 
@@ -129,23 +129,23 @@ function printCurrentTopicSheet() {
     <head>
       <title>Bản In Học Tập - ${title}</title>
       <style>
-        body { font-family: Arial, sans-serif; padding: 20px; color: #1e293b; }
-        h1 { font-size: 18px; margin-bottom: 4px; }
-        p { font-size: 12px; color: #64748b; margin-top: 0; margin-bottom: 16px; }
-        table { width: 100%; border-collapse: collapse; }
-        th { background: #f1f5f9; text-align: left; padding: 8px 6px; font-size: 11px; text-transform: uppercase; border-bottom: 2px solid #cbd5e1; }
+        body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 24px; color: #111111; }
+        h1 { font-size: 20px; margin-bottom: 4px; text-transform: uppercase; font-weight: 800; }
+        p { font-size: 12px; color: #52525b; margin-top: 0; margin-bottom: 16px; font-family: monospace; }
+        table { width: 100%; border-collapse: collapse; border: 2px solid #111111; }
+        th { background: #eae5da; text-align: left; padding: 8px 6px; font-size: 11px; text-transform: uppercase; border-bottom: 2px solid #111111; font-family: monospace; }
         @media print { .no-print { display: none; } }
       </style>
     </head>
     <body>
-      <div class="no-print" style="margin-bottom: 15px;">
-        <button onclick="window.print()" style="padding: 8px 16px; background: #4f46e5; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">🖨️ Bấm để In hoặc Lưu PDF</button>
+      <div class="no-print" style="margin-bottom: 16px;">
+        <button onclick="window.print()" style="padding: 8px 16px; background: #111111; color: white; border: 2px solid #111111; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 12px;">IN HOẶC LƯU PDF</button>
       </div>
       <h1>${title}</h1>
-      <p>Bộ Từ Điển 100 Từ Vựng Chuẩn Anki (50 Từ Giao Tiếp A2-B2 & 50 Từ Chuyên Sâu C1-C2)</p>
+      <p>BỘ TỪ ĐIỂN 100 TỪ VỰNG CHUẨN ANKI (50 TỪ GIAO TIẾP A2-B2 & 50 TỪ NÂNG CAO C1-C2)</p>
       <table>
         <thead>
-          <tr><th>#</th><th>Từ vựng & IPA</th><th>Nghĩa Tiếng Việt</th><th>Định nghĩa Tiếng Anh</th><th>2 Câu Ví Dụ</th></tr>
+          <tr><th>STT</th><th>TỪ VỰNG & IPA</th><th>NGHĨA TIẾNG VIỆT</th><th>ĐỊNH NGHĨA TIẾNG ANH</th><th>VÍ DỤ THỰC TẾ</th></tr>
         </thead>
         <tbody>${rows}</tbody>
       </table>
@@ -174,7 +174,7 @@ async function previewFile(stt, topicTitle) {
   const saveBtn = document.getElementById('btnSaveCloud');
   if (saveBtn) saveBtn.classList.add('hidden');
   const toggleBtn = document.getElementById('btnToggleEdit');
-  if (toggleBtn) toggleBtn.innerText = '✏️ Bật chế độ Chỉnh sửa';
+  if (toggleBtn) toggleBtn.innerText = 'CHẾ ĐỘ CHỈNH SỬA';
 
   switchPreviewTab('table');
 
@@ -192,14 +192,14 @@ async function previewFile(stt, topicTitle) {
       return cols;
     });
 
-    setTxt('previewSubText', `Tổng cộng: ${currentPreviewLines.length} từ vựng • Định dạng 9 cột TSV chuẩn Anki • Bấm vào biểu tượng 🔊 để nghe phát âm US`);
+    setTxt('previewSubText', `TỔNG CỘNG: ${currentPreviewLines.length} TỪ VỰNG • ĐỊNH DẠNG 9 CỘT TSV ANKI`);
     renderPreviewTable();
     currentFlashcardIdx = 0;
     renderFlashcard();
     updateSrsCounters();
   } catch (e) {
     const tbody = document.getElementById('previewTableBody');
-    if (tbody) tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-rose-500">Không thể tải nội dung file output/${stt}.txt</td></tr>`;
+    if (tbody) tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-[#BE123C] font-mono-code text-xs uppercase">Không thể tải nội dung file output/${stt}.txt</td></tr>`;
   }
 }
 
@@ -222,55 +222,55 @@ function renderPreviewTable() {
     tbody.innerHTML = filtered.map(({ cols, idx }) => {
       const isConversational = idx < 50;
       const badge = isConversational
-        ? `<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-1">💬 Giao tiếp A2-B2</span>`
-        : `<span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200 mb-1">🎓 Nâng cao C1-C2</span>`;
+        ? `<span class="inline-block px-1.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#0F766E] border border-[#0F766E] mb-1">A2-B2 GIAO TIẾP</span>`
+        : `<span class="inline-block px-1.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#7C3AED] border border-[#7C3AED] mb-1">C1-C2 NÂNG CAO</span>`;
       const safeWord = (cols[0] || '').replace(/'/g, "\\'");
 
       return `
-        <tr class="hover:bg-slate-50/80 align-top">
-          <td class="p-3 font-mono-code text-slate-400 font-bold">${idx + 1}</td>
+        <tr class="hover:bg-[#F4F1EA] align-top border-b border-zinc-200">
+          <td class="p-3 font-mono-code text-zinc-500 font-bold">${idx + 1}</td>
           <td class="p-3">
             ${badge}
-            <div class="flex items-center gap-1.5">
-              <button onclick="speakWord('${safeWord}', event)" class="w-6 h-6 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs transition" title="Nghe phát âm">🔊</button>
-              <span class="font-bold text-slate-900 text-sm">${cols[0] || ''}</span>
+            <div class="flex items-center gap-2">
+              <button onclick="speakWord('${safeWord}', event)" class="neo-btn px-2 py-0.5 bg-[#EAE5DA] text-[#111111] text-xs font-mono-code uppercase">PHÁT ÂM</button>
+              <span class="font-bold text-zinc-900 text-xs sm:text-sm">${cols[0] || ''}</span>
             </div>
-            <div class="font-mono-code text-[11px] text-slate-400 mt-0.5">${cols[1] || ''}</div>
+            <div class="font-mono-code text-xs text-zinc-500 mt-1">${cols[1] || ''}</div>
           </td>
           <td class="p-3">
-            <div class="font-mono-code text-indigo-600 font-semibold">${cols[2] || ''}</div>
-            <div class="font-mono-code text-[10px] text-slate-400 mt-0.5">${cols[3] || ''}</div>
+            <div class="font-mono-code text-[#1D4ED8] font-bold text-xs">${cols[2] || ''}</div>
+            <div class="font-mono-code text-xs text-zinc-500 mt-0.5">${cols[3] || ''}</div>
           </td>
-          <td class="p-3 text-slate-700 leading-relaxed max-w-xs">${cols[4] || ''}</td>
-          <td class="p-3 font-semibold text-emerald-700">${cols[5] || ''}</td>
-          <td class="p-3 font-mono-code text-slate-600">${cols[7] || ''}</td>
-          <td class="p-3 text-slate-600 leading-relaxed max-w-md">${cols[8] || ''}</td>
+          <td class="p-3 text-zinc-800 leading-relaxed max-w-xs text-xs">${cols[4] || ''}</td>
+          <td class="p-3 font-semibold text-[#0F766E] text-xs">${cols[5] || ''}</td>
+          <td class="p-3 font-mono-code text-zinc-700 text-xs">${cols[7] || ''}</td>
+          <td class="p-3 text-zinc-700 leading-relaxed max-w-md text-xs font-mono-code">${cols[8] || ''}</td>
         </tr>
       `;
     }).join('');
   } else {
     tbody.innerHTML = filtered.map(({ cols, idx }) => `
-      <tr class="bg-amber-50/30 align-top">
-        <td class="p-2 font-mono-code text-slate-500 font-bold">${idx + 1}</td>
+      <tr class="bg-[#F4F1EA] align-top border-b border-zinc-300">
+        <td class="p-2 font-mono-code text-zinc-600 font-bold">${idx + 1}</td>
         <td class="p-2">
-          <input type="text" value="${(cols[0] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 0, this.value)" class="w-full px-2 py-1 text-xs font-bold border border-slate-300 rounded mb-1" placeholder="Từ vựng" />
-          <input type="text" value="${(cols[1] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 1, this.value)" class="w-full px-2 py-1 text-[11px] font-mono-code border border-slate-200 rounded bg-slate-50" placeholder="Cloze" />
+          <input type="text" value="${(cols[0] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 0, this.value)" class="w-full px-2 py-1 text-xs font-bold border-2 border-[#111111] mb-1" placeholder="Từ vựng" />
+          <input type="text" value="${(cols[1] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 1, this.value)" class="w-full px-2 py-1 text-xs font-mono-code border border-zinc-400 bg-white" placeholder="Cloze" />
         </td>
         <td class="p-2">
-          <input type="text" value="${(cols[2] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 2, this.value)" class="w-full px-2 py-1 text-xs font-mono-code border border-slate-300 rounded mb-1" placeholder="/IPA/" />
-          <input type="text" value="${(cols[3] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 3, this.value)" class="w-full px-2 py-1 text-[10px] font-mono-code border border-slate-200 rounded bg-slate-50" placeholder="[sound:...]" />
+          <input type="text" value="${(cols[2] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 2, this.value)" class="w-full px-2 py-1 text-xs font-mono-code border-2 border-[#111111] mb-1" placeholder="/IPA/" />
+          <input type="text" value="${(cols[3] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 3, this.value)" class="w-full px-2 py-1 text-xs font-mono-code border border-zinc-400 bg-white" placeholder="[sound:...]" />
         </td>
         <td class="p-2">
-          <textarea rows="2" onchange="updateCell(${idx}, 4, this.value)" class="w-full px-2 py-1 text-xs border border-slate-300 rounded">${cols[4] || ''}</textarea>
+          <textarea rows="2" onchange="updateCell(${idx}, 4, this.value)" class="w-full px-2 py-1 text-xs border-2 border-[#111111]">${cols[4] || ''}</textarea>
         </td>
         <td class="p-2">
-          <input type="text" value="${(cols[5] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 5, this.value)" class="w-full px-2 py-1 text-xs font-semibold text-emerald-800 border border-slate-300 rounded" />
+          <input type="text" value="${(cols[5] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 5, this.value)" class="w-full px-2 py-1 text-xs font-semibold text-[#0F766E] border-2 border-[#111111]" />
         </td>
         <td class="p-2">
-          <input type="text" value="${(cols[7] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 7, this.value)" class="w-full px-2 py-1 text-xs font-mono-code border border-slate-300 rounded" />
+          <input type="text" value="${(cols[7] || '').replace(/"/g, '&quot;')}" onchange="updateCell(${idx}, 7, this.value)" class="w-full px-2 py-1 text-xs font-mono-code border-2 border-[#111111]" />
         </td>
         <td class="p-2">
-          <textarea rows="2" onchange="updateCell(${idx}, 8, this.value)" class="w-full px-2 py-1 text-xs border border-slate-300 rounded">${cols[8] || ''}</textarea>
+          <textarea rows="2" onchange="updateCell(${idx}, 8, this.value)" class="w-full px-2 py-1 text-xs border-2 border-[#111111]">${cols[8] || ''}</textarea>
         </td>
       </tr>
     `).join('');
@@ -283,14 +283,14 @@ function toggleEditMode() {
   const saveBtn = document.getElementById('btnSaveCloud');
   if (isEditMode) {
     if (toggleBtn) {
-      toggleBtn.innerText = '👁️ Chuyển về Chế độ Xem';
-      toggleBtn.className = 'px-3 py-1.5 bg-slate-800 text-white rounded-lg text-xs font-bold transition';
+      toggleBtn.innerText = 'CHẾ ĐỘ XEM';
+      toggleBtn.className = 'neo-btn px-3 py-1.5 bg-[#111111] text-white text-xs uppercase';
     }
     if (saveBtn) saveBtn.classList.remove('hidden');
   } else {
     if (toggleBtn) {
-      toggleBtn.innerText = '✏️ Bật chế độ Chỉnh sửa';
-      toggleBtn.className = 'px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-lg text-xs font-bold transition';
+      toggleBtn.innerText = 'CHẾ ĐỘ CHỈNH SỬA';
+      toggleBtn.className = 'neo-btn px-3 py-1.5 bg-white text-[#111111] text-xs uppercase';
     }
   }
   renderPreviewTable();
@@ -314,14 +314,14 @@ async function saveEditedFileToGitHub() {
   const token = localStorage.getItem('gh_token');
 
   if (!owner || !repo || !token) {
-    alert('Vui lòng cấu hình GitHub Personal Access Token trong phần ⚙️ Cấu hình API để lưu trực tiếp lên GitHub!');
+    alert('Vui lòng cấu hình GitHub Personal Access Token trong phần CẤU HÌNH API để lưu trực tiếp lên GitHub!');
     openSettings();
     return;
   }
 
   const saveBtn = document.getElementById('btnSaveCloud');
   if (saveBtn) {
-    saveBtn.innerText = '⏳ Đang lưu lên GitHub...';
+    saveBtn.innerText = 'ĐANG LƯU LÊN GITHUB...';
     saveBtn.disabled = true;
   }
 
@@ -351,7 +351,7 @@ async function saveEditedFileToGitHub() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        message: `✏️ Cập nhật trực tiếp chủ đề #${currentPreviewStt} từ Web Studio`,
+        message: `Update topic #${currentPreviewStt} via Web Studio`,
         content: encoded,
         sha,
         branch
@@ -360,7 +360,7 @@ async function saveEditedFileToGitHub() {
 
     if (putRes.ok) {
       logToConsole('SUCCESS', 'CLOUD_SAVE', `Đã lưu thành công chủ đề #${currentPreviewStt} lên nhánh ${branch}!`);
-      alert(`✅ Đã lưu thành công file output/${currentPreviewStt}.txt lên GitHub!`);
+      alert(`Đã lưu thành công file output/${currentPreviewStt}.txt lên GitHub!`);
       isEditMode = false;
       toggleEditMode();
     } else {
@@ -371,7 +371,7 @@ async function saveEditedFileToGitHub() {
     alert(`Lỗi kết nối GitHub API: ${e.message}`);
   } finally {
     if (saveBtn) {
-      saveBtn.innerText = '☁️ Lưu trực tiếp lên GitHub';
+      saveBtn.innerText = 'LƯU LÊN GITHUB';
       saveBtn.disabled = false;
     }
   }
@@ -383,8 +383,8 @@ function switchPreviewTab(tab) {
     const view = document.getElementById(`previewTab-${t}`);
     if (btn) {
       btn.className = t === tab
-        ? 'px-3 py-1.5 rounded-md text-xs font-bold bg-indigo-600 text-white transition'
-        : 'px-3 py-1.5 rounded-md text-xs font-bold text-slate-600 hover:text-slate-900 transition';
+        ? 'px-3 py-1.5 text-xs font-bold uppercase bg-[#111111] text-white transition'
+        : 'px-3 py-1.5 text-xs font-bold uppercase text-zinc-700 hover:text-black transition';
     }
     if (view) {
       if (t === tab) view.classList.remove('hidden');
@@ -410,8 +410,8 @@ function renderFlashcard() {
   if (catEl) {
     catEl.innerText = isConv ? 'PHẦN 1: GIAO TIẾP (A2-B2)' : 'PHẦN 2: NÂNG CAO (C1-C2)';
     catEl.className = isConv
-      ? 'px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-3'
-      : 'px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-purple-50 text-purple-700 border border-purple-200 mb-3';
+      ? 'px-2.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#0F766E] border border-[#0F766E] mb-3 uppercase'
+      : 'px-2.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#7C3AED] border border-[#7C3AED] mb-3 uppercase';
   }
 
   const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
@@ -476,19 +476,19 @@ function checkQuizAnswer() {
   if (userAns === target) {
     quizScoreCorrect++;
     const scEl = document.getElementById('quizScoreCorrect');
-    if (scEl) scEl.innerText = `Đúng: ${quizScoreCorrect}`;
+    if (scEl) scEl.innerText = `ĐÚNG: ${quizScoreCorrect}`;
     if (fb) {
-      fb.className = 'mt-4 p-4 rounded-xl text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';
-      fb.innerHTML = `🎉 <strong>Chính xác tuyệt đối!</strong> Từ chuẩn là <span class="underline font-bold">${currentQuizItem.word}</span> (${currentQuizItem.ipa})<br><span class="text-xs font-normal text-slate-600 mt-1 block">${currentQuizItem.ex}</span>`;
+      fb.className = 'mt-4 p-4 border-2 border-[#0F766E] bg-white text-xs font-mono-code font-bold uppercase text-[#0F766E]';
+      fb.innerHTML = `CHÍNH XÁC: <span class="underline">${currentQuizItem.word}</span> (${currentQuizItem.ipa})<br><span class="text-xs font-normal text-zinc-600 mt-1 block normal-case">${currentQuizItem.ex}</span>`;
     }
     speakWord(currentQuizItem.word);
   } else {
     quizScoreWrong++;
     const swEl = document.getElementById('quizScoreWrong');
-    if (swEl) swEl.innerText = `Sai: ${quizScoreWrong}`;
+    if (swEl) swEl.innerText = `SAI: ${quizScoreWrong}`;
     if (fb) {
-      fb.className = 'mt-4 p-4 rounded-xl text-sm font-semibold bg-rose-50 text-rose-800 border border-rose-200';
-      fb.innerHTML = `❌ <strong>Chưa chính xác!</strong> Đáp án đúng là: <span class="font-bold text-indigo-700">${currentQuizItem.word}</span> (${currentQuizItem.ipa})<br><span class="text-xs font-normal text-slate-600 mt-1 block">${currentQuizItem.ex}</span>`;
+      fb.className = 'mt-4 p-4 border-2 border-[#BE123C] bg-white text-xs font-mono-code font-bold uppercase text-[#BE123C]';
+      fb.innerHTML = `CHƯA ĐÚNG. ĐÁP ÁN ĐÚNG: <span class="underline">${currentQuizItem.word}</span> (${currentQuizItem.ipa})<br><span class="text-xs font-normal text-zinc-600 mt-1 block normal-case">${currentQuizItem.ex}</span>`;
     }
     speakWord(currentQuizItem.word);
   }
@@ -505,7 +505,6 @@ function closePreviewModal() {
   stopPlaylistAudio();
   if (isAutoSlide) toggleFlashcardAutoSlide();
   const modal = document.getElementById('previewModal');
-  // Chỉ đóng modal nếu là modal popup (trên studio.html thì hiển thị cố định)
   if (modal && !modal.dataset.standalonePage) {
     modal.classList.add('hidden');
   }
@@ -518,11 +517,11 @@ function populateStudioTopicSelect() {
 
   const completed = allTopics.filter(t => t.status === 'completed');
   if (!completed.length) {
-    select.innerHTML = `<option value="">Chưa có chủ đề hoàn thành</option>`;
+    select.innerHTML = `<option value="">CHƯA CÓ CHỦ ĐỀ HOÀN THÀNH</option>`;
     return;
   }
 
-  select.innerHTML = completed.map(t => `<option value="${t.stt}">#${t.stt} — ${t.topic} (${t.word_count || 100} từ)</option>`).join('');
+  select.innerHTML = completed.map(t => `<option value="${t.stt}">#${t.stt} — ${t.topic} (${t.word_count || 100} TỪ)</option>`).join('');
 }
 
 function onStudioTopicSelectChange(sttVal) {

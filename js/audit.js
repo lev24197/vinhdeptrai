@@ -1,10 +1,7 @@
 // ============================================================================
 // MODULE: js/audit.js
 // Chức năng: Kiểm Toán Chất Lượng Định Dạng 9 Cột Anki (8 Tiêu Chí Chuyên Sâu)
-//            - Quét toàn bộ các file output/{stt}.txt đã hoàn thành
-//            - Phát hiện lỗi thiếu từ (<100), sai 9 cột TSV, thiếu IPA, Cloze, Sound,
-//              Ví dụ <br>, hoặc trùng lặp nội bộ
-//            - Xuất báo cáo .TXT và chạy sửa lỗi tự động bằng AI
+//            100% Icon-Free Swiss Editorial Design.
 // ============================================================================
 
 let auditIssuesList = [];
@@ -17,7 +14,7 @@ async function runQualityAudit() {
   const progressText = document.getElementById('auditScanProgressText');
 
   if (!completed.length) {
-    if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400">Chưa có chủ đề nào hoàn thành để kiểm toán.</td></tr>`;
+    if (tbody) tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-zinc-500 font-mono-code text-xs uppercase">Chưa có chủ đề nào hoàn thành để kiểm toán.</td></tr>`;
     return;
   }
 
@@ -34,7 +31,7 @@ async function runQualityAudit() {
     const t = completed[i];
     const pct = Math.round(((i + 1) / completed.length) * 100);
     if (progressBar) progressBar.style.width = `${pct}%`;
-    if (progressText) progressText.innerText = `Đang kiểm tra #${t.stt}: ${t.topic} (${i + 1}/${completed.length})...`;
+    if (progressText) progressText.innerText = `ĐANG KIỂM TRA #${t.stt}: ${t.topic} (${i + 1}/${completed.length})...`;
 
     let issues = [];
     let lineCount = 0;
@@ -78,13 +75,13 @@ async function runQualityAudit() {
           }
         });
 
-        if (badCols > 0) issues.push(`${badCols} dòng sai 9 cột Tab`);
-        if (dupInFile > 0) issues.push(`Trùng lặp nội bộ ${dupInFile} từ`);
+        if (badCols > 0) issues.push(`${badCols} dòng sai 9 cột`);
+        if (dupInFile > 0) issues.push(`Trùng nội bộ ${dupInFile} từ`);
         if (badCloze > 0) issues.push(`${badCloze} dòng lỗi Cloze`);
-        if (badIpa > 0) issues.push(`${badIpa} dòng sai chuẩn /IPA/`);
-        if (badSound > 0) issues.push(`${badSound} dòng sai [sound:.mp3]`);
+        if (badIpa > 0) issues.push(`${badIpa} dòng sai IPA`);
+        if (badSound > 0) issues.push(`${badSound} dòng sai thẻ âm thanh`);
         if (emptyMean > 0) issues.push(`${emptyMean} dòng trống nghĩa`);
-        if (badEx > 0) issues.push(`${badEx} dòng thiếu 2 câu ví dụ`);
+        if (badEx > 0) issues.push(`${badEx} dòng thiếu 2 ví dụ`);
       }
     } catch (e) {
       issues.push('Lỗi đọc dữ liệu');
@@ -100,18 +97,18 @@ async function runQualityAudit() {
 
     const safeTopic = t.topic.replace(/'/g, "\\'");
     rowsHtml.push(`
-      <tr class="${issues.length > 0 ? 'bg-rose-50/60' : 'hover:bg-slate-50'}">
-        <td class="p-3 font-mono-code font-bold text-slate-600">#${t.stt}</td>
-        <td class="p-3 font-semibold text-slate-800">${t.topic}</td>
-        <td class="p-3 text-center font-mono-code font-bold ${lineCount === 100 ? 'text-emerald-600' : 'text-rose-600'}">${lineCount}/100</td>
-        <td class="p-3 text-center">${colOk ? '<span class="text-emerald-600 font-bold">✓ Chuẩn</span>' : '<span class="text-rose-600 font-bold">✕ Lỗi cột</span>'}</td>
-        <td class="p-3 text-center">${ipaSoundOk ? '<span class="text-emerald-600 font-bold">✓ Chuẩn</span>' : '<span class="text-amber-600 font-bold">⚠ Cần sửa</span>'}</td>
+      <tr class="hover:bg-[#F4F1EA] transition border-b border-zinc-200 ${issues.length > 0 ? 'bg-rose-50/40' : ''}">
+        <td class="p-3 font-mono-code font-bold text-zinc-600">#${t.stt}</td>
+        <td class="p-3 font-semibold text-zinc-900 text-xs sm:text-sm">${t.topic}</td>
+        <td class="p-3 text-center font-mono-code font-bold ${lineCount === 100 ? 'text-[#0F766E]' : 'text-[#BE123C]'}">${lineCount}/100</td>
+        <td class="p-3 text-center font-mono-code text-xs font-bold">${colOk ? '<span class="text-[#0F766E]">CHUẨN</span>' : '<span class="text-[#BE123C]">LỖI CỘT</span>'}</td>
+        <td class="p-3 text-center font-mono-code text-xs font-bold">${ipaSoundOk ? '<span class="text-[#0F766E]">CHUẨN</span>' : '<span class="text-[#D97706]">CẦN SỬA</span>'}</td>
         <td class="p-3">
           ${issues.length === 0
-            ? `<span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-[11px] font-bold">Hoàn hảo 100%</span>`
+            ? `<span class="px-2 py-0.5 bg-[#F4F1EA] text-[#0F766E] border border-[#0F766E] text-xs font-mono-code font-bold uppercase">CHUẨN 100%</span>`
             : `<div class="flex flex-wrap items-center gap-1.5">
-                ${issues.map(iss => `<span class="px-2 py-0.5 bg-rose-100 text-rose-700 rounded text-[11px] font-bold">${iss}</span>`).join('')}
-                <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="ml-auto px-2 py-0.5 bg-slate-800 text-white rounded text-[11px] font-semibold hover:bg-slate-900">Sửa ngay</button>
+                ${issues.map(iss => `<span class="px-2 py-0.5 bg-[#F4F1EA] text-[#BE123C] border border-[#BE123C] text-xs font-mono-code font-bold uppercase">${iss}</span>`).join('')}
+                <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="ml-auto neo-btn px-2 py-0.5 bg-[#111111] text-white text-xs uppercase">SỬA</button>
               </div>`
           }
         </td>
@@ -131,7 +128,7 @@ async function runQualityAudit() {
   if (rerunBtn) {
     if (auditIssuesList.length > 0) {
       rerunBtn.classList.remove('hidden');
-      rerunBtn.innerText = `🔄 Chạy sửa lại ${auditIssuesList.length} chủ đề lỗi`;
+      rerunBtn.innerText = `TỰ ĐỘNG SỬA ${auditIssuesList.length} CHỦ ĐỀ CẢNH BÁO`;
     } else {
       rerunBtn.classList.add('hidden');
     }
@@ -168,7 +165,6 @@ async function triggerRerunIssues() {
 }
 
 function initAuditPage() {
-  // Tự động quét ngay khi mở trang audit.html nếu đã có dữ liệu
   if (Array.isArray(allTopics) && allTopics.length > 0) {
     runQualityAudit();
   }

@@ -1,9 +1,7 @@
 // ============================================================================
 // MODULE: js/audio.js
 // Chức năng: Trung tâm Âm thanh Cambridge MP3 & Google Cloud Run Audio Service
-//            - Phát âm trực tiếp từ vựng chuẩn Cambridge Dictionary US/UK
-//            - Tải trọn bộ 100 file MP3 (.ZIP) kèm báo cáo nguồn _BAO_CAO_AM_THANH.txt
-//            - Công cụ kiểm tra & gỡ lỗi phát âm từng từ / từ ghép trên audio.html
+//            100% Icon-Free Swiss Editorial Design.
 // ============================================================================
 
 const DEFAULT_CLOUD_AUDIO_URL = 'https://anki-audio-service-918034752495.asia-southeast1.run.app';
@@ -62,8 +60,8 @@ async function downloadTopicAudioZipDirect(stt, topicTitle, triggerBtn = null) {
   let serviceUrl = getCloudAudioServiceUrl();
   if (!serviceUrl) {
     const inputUrl = prompt(
-      '☁️ Nhập URL Google Cloud Run Audio Service của bạn:\n' +
-      '(Ví dụ: https://anki-audio-service-918034752495.asia-southeast1.run.app)',
+      'NHẬP URL GOOGLE CLOUD RUN AUDIO SERVICE:\n' +
+      '(Mặc định: https://anki-audio-service-918034752495.asia-southeast1.run.app)',
       DEFAULT_CLOUD_AUDIO_URL
     );
     if (!inputUrl || !inputUrl.trim()) return;
@@ -105,10 +103,10 @@ async function downloadTopicAudioZipDirect(stt, topicTitle, triggerBtn = null) {
 
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = `⏳ Đang tải Cambridge (0s)...`;
+    btn.innerHTML = `ĐANG TẢI CAMBRIDGE (0s)...`;
     timerInterval = setInterval(() => {
       elapsedSec++;
-      btn.innerHTML = `⏳ Đang tải Cambridge (${elapsedSec}s)...`;
+      btn.innerHTML = `ĐANG TẢI CAMBRIDGE (${elapsedSec}s)...`;
     }, 1000);
   }
 
@@ -159,7 +157,7 @@ async function downloadTopicAudioZipDirect(stt, topicTitle, triggerBtn = null) {
       logToConsole('SUCCESS', 'CLOUD_AUDIO', `Đã tải xong gói ZIP gồm ${successWords}/${totalWords} file MP3 chuẩn Cambridge trong ${elapsed}s! ${sourceSummary ? '[' + sourceSummary + ']' : ''}`);
     }
     if (typeof showToastAlert === 'function') {
-      showToastAlert(`🔊 Đã tải ${successWords}/${totalWords} file MP3 chủ đề #${stt} (${elapsed}s)! ${sourceSummary}`, 'success');
+      showToastAlert(`ĐÃ TẢI ${successWords}/${totalWords} FILE MP3 CHỦ ĐỀ #${stt} (${elapsed}S)! ${sourceSummary}`, 'success');
     }
   } catch (err) {
     if (typeof logToConsole === 'function') {
@@ -167,7 +165,7 @@ async function downloadTopicAudioZipDirect(stt, topicTitle, triggerBtn = null) {
     }
     alert(
       `Không thể tải file âm thanh từ Cloud Service: ${err.message}\n\n` +
-      `Hãy kiểm tra lại Cloud Audio Service URL trong phần "⚙️ Cấu hình API".`
+      `Hãy kiểm tra lại Cloud Audio Service URL trong phần "CẤU HÌNH API".`
     );
   } finally {
     if (timerInterval) clearInterval(timerInterval);
@@ -222,23 +220,23 @@ async function checkCloudAudioHealth() {
   }
 
   if (!statusEl) return;
-  statusEl.className = 'px-3 py-1 rounded font-mono-code text-xs font-extrabold border-2 border-[#111] bg-[#FFE787] text-[#111]';
-  statusEl.innerText = '⏳ Đang kiểm tra kết nối Cloud Run...';
+  statusEl.className = 'px-3 py-1 font-mono-code text-xs font-extrabold border-2 border-[#111111] bg-white text-[#111111] uppercase';
+  statusEl.innerText = 'ĐANG KIỂM TRA KẾT NỐI...';
 
   const t0 = performance.now();
   try {
     const res = await fetch(`${serviceUrl}/health`);
     const ms = Math.round(performance.now() - t0);
     if (res.ok) {
-      statusEl.className = 'px-3 py-1 rounded font-mono-code text-xs font-extrabold border-2 border-[#111] bg-[#169C64] text-white';
-      statusEl.innerText = `🟢 ONLINE (${ms}ms) • Cambridge Dictionary Engine Sẵn Sàng`;
+      statusEl.className = 'px-3 py-1 font-mono-code text-xs font-extrabold border-2 border-[#111111] bg-[#0F766E] text-white uppercase';
+      statusEl.innerText = `ONLINE (${ms}MS) • CAMBRIDGE ENGINE SẴN SÀNG`;
     } else {
-      statusEl.className = 'px-3 py-1 rounded font-mono-code text-xs font-extrabold border-2 border-[#111] bg-[#F05332] text-white';
-      statusEl.innerText = `🔴 LỖI HTTP ${res.status}`;
+      statusEl.className = 'px-3 py-1 font-mono-code text-xs font-extrabold border-2 border-[#111111] bg-[#BE123C] text-white uppercase';
+      statusEl.innerText = `LỖI HTTP ${res.status}`;
     }
   } catch (e) {
-    statusEl.className = 'px-3 py-1 rounded font-mono-code text-xs font-extrabold border-2 border-[#111] bg-[#F05332] text-white';
-    statusEl.innerText = `🔴 KHÔNG THỂ KẾT NỐI (${e.message})`;
+    statusEl.className = 'px-3 py-1 font-mono-code text-xs font-extrabold border-2 border-[#111111] bg-[#BE123C] text-white uppercase';
+    statusEl.innerText = `KHÔNG THỂ KẾT NỐI (${e.message})`;
   }
 }
 
@@ -255,7 +253,7 @@ async function testCambridgeWordAudio() {
 
   const serviceUrl = getCloudAudioServiceUrl();
   resultBox.classList.remove('hidden');
-  resultBox.innerHTML = `<div class="text-xs font-mono-code font-bold text-slate-600 animate-pulse">⏳ Đang cào & kiểm tra trực tiếp từ "${word}" trên Cambridge Dictionary...</div>`;
+  resultBox.innerHTML = `<div class="text-xs font-mono-code font-bold text-zinc-600 uppercase">Đang cào & kiểm tra trực tiếp từ "${word}" trên Cambridge Dictionary...</div>`;
 
   try {
     const res = await fetch(`${serviceUrl}/debug_word?word=${encodeURIComponent(word)}`);
@@ -264,31 +262,31 @@ async function testCambridgeWordAudio() {
 
     if (data.ok) {
       resultBox.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-3 bg-[#E3F7ED] border-2 border-[#111] p-3.5 rounded-lg">
+        <div class="flex flex-wrap items-center justify-between gap-3 bg-[#F4F1EA] border-2 border-[#111111] p-3.5">
           <div>
             <div class="flex items-center gap-2">
-              <span class="font-display font-extrabold text-base text-[#141414]">${data.word}</span>
-              <span class="px-2 py-0.5 text-[11px] font-mono-code font-extrabold bg-[#169C64] text-white border border-[#111] rounded">${data.source}</span>
-              <span class="text-xs font-mono-code font-bold text-slate-600">${(data.bytes / 1024).toFixed(1)} KB • ${data.elapsed_ms} ms</span>
+              <span class="font-display font-extrabold text-base text-[#111111] uppercase">${data.word}</span>
+              <span class="px-2 py-0.5 text-xs font-mono-code font-extrabold bg-[#0F766E] text-white border border-[#111111]">${data.source}</span>
+              <span class="text-xs font-mono-code font-bold text-zinc-600">${(data.bytes / 1024).toFixed(1)} KB • ${data.elapsed_ms} MS</span>
             </div>
-            <div class="text-xs text-slate-600 mt-1 font-mono-code">Thẻ Anki: <strong>${makeSoundJS(data.word)}</strong></div>
+            <div class="text-xs text-zinc-600 mt-1 font-mono-code">THẺ ANKI: <strong>${makeSoundJS(data.word)}</strong></div>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="speakWord('${safeWord}', event)" class="neo-btn px-4 py-2 bg-[#FFE787] text-[#111] text-xs font-extrabold">
-              🔊 Nghe Phát Âm Cambridge
+            <button onclick="speakWord('${safeWord}', event)" class="neo-btn px-4 py-2 bg-white text-[#111111] text-xs font-extrabold uppercase">
+              PHÁT ÂM CAMBRIDGE
             </button>
-            <a href="${serviceUrl}/speak?word=${encodeURIComponent(word)}" download="${word.toLowerCase().replace(/[^a-z0-9]+/g, '_')}.mp3" class="neo-btn px-3 py-2 bg-white text-[#111] text-xs font-extrabold">
-              ⬇ Tải .MP3
+            <a href="${serviceUrl}/speak?word=${encodeURIComponent(word)}" download="${word.toLowerCase().replace(/[^a-z0-9]+/g, '_')}.mp3" class="neo-btn px-3 py-2 bg-[#111111] text-white text-xs font-extrabold uppercase">
+              TẢI .MP3
             </a>
           </div>
         </div>
       `;
       speakWord(word);
     } else {
-      resultBox.innerHTML = `<div class="p-3 bg-rose-100 border-2 border-[#111] text-xs font-bold text-rose-900">❌ Không tìm thấy âm thanh cho từ "${word}".</div>`;
+      resultBox.innerHTML = `<div class="p-3 bg-white border-2 border-[#BE123C] text-xs font-mono-code font-bold text-[#BE123C] uppercase">KHÔNG TÌM THẤY ÂM THANH CHO TỪ: "${word}"</div>`;
     }
   } catch (e) {
-    resultBox.innerHTML = `<div class="p-3 bg-rose-100 border-2 border-[#111] text-xs font-bold text-rose-900">❌ Lỗi kết nối Cloud Run: ${e.message}</div>`;
+    resultBox.innerHTML = `<div class="p-3 bg-white border-2 border-[#BE123C] text-xs font-mono-code font-bold text-[#BE123C] uppercase">LỖI KẾT NỐI CLOUD RUN: ${e.message}</div>`;
   }
 }
 
@@ -299,12 +297,12 @@ function renderAudioTopicsTable() {
   const q = (document.getElementById('audioTopicSearch')?.value || '').toLowerCase().trim();
   const completed = allTopics.filter(t => t.status === 'completed');
   const countBadge = document.getElementById('audioCompletedTopicsCount');
-  if (countBadge) countBadge.innerText = `${completed.length} chủ đề sẵn sàng tải MP3`;
+  if (countBadge) countBadge.innerText = `${completed.length} CHỦ ĐỀ HOÀN THÀNH`;
 
   const filtered = completed.filter(t => !q || t.topic.toLowerCase().includes(q) || String(t.stt).includes(q));
 
   if (!filtered.length) {
-    tbody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-slate-500 font-bold">Không tìm thấy chủ đề hoàn thành nào phù hợp.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-zinc-500 font-mono-code text-xs uppercase">Không tìm thấy chủ đề hoàn thành nào phù hợp.</td></tr>`;
     return;
   }
 
@@ -312,20 +310,20 @@ function renderAudioTopicsTable() {
     const safeTopic = t.topic.replace(/'/g, "\\'");
     const cat = typeof getTopicCategory === 'function' ? getTopicCategory(t.stt) : { name: '', color: '' };
     return `
-      <tr class="hover:bg-[#FFFDF7] transition border-b border-[#E5E0D5]">
-        <td class="p-3 font-mono-code font-extrabold text-xs text-slate-600">#${t.stt}</td>
+      <tr class="hover:bg-[#F4F1EA] transition border-b border-zinc-200">
+        <td class="p-3 font-mono-code font-extrabold text-xs text-zinc-600">#${t.stt}</td>
         <td class="p-3">
-          <span class="inline-block text-[10px] font-mono-code font-bold px-1.5 py-0.5 rounded border ${cat.color} mb-0.5">${cat.name}</span>
-          <div class="font-bold text-sm text-[#141414]">${t.topic}</div>
+          <span class="inline-block text-xs font-mono-code font-bold px-1.5 py-0.5 border ${cat.color} mb-0.5">${cat.name}</span>
+          <div class="font-bold text-xs sm:text-sm text-[#111111]">${t.topic}</div>
         </td>
-        <td class="p-3 text-center font-mono-code text-xs font-bold text-[#169C64]">${t.word_count || 100} từ</td>
+        <td class="p-3 text-center font-mono-code text-xs font-bold text-[#0F766E]">${t.word_count || 100} TỪ</td>
         <td class="p-3 text-right">
           <div class="flex items-center justify-end gap-2">
-            <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="neo-btn px-2.5 py-1.5 bg-white text-[#141414] text-xs font-extrabold rounded">
-              👁️ Nghe từng từ
+            <button onclick="previewFile(${t.stt}, '${safeTopic}')" class="neo-btn px-2.5 py-1.5 bg-white text-[#111111] text-xs font-extrabold uppercase">
+              NGHE TỪNG TỪ
             </button>
-            <button onclick="downloadTopicAudioZipDirect(${t.stt}, '${safeTopic}', this)" class="neo-btn px-3 py-1.5 bg-[#169C64] text-white text-xs font-extrabold rounded">
-              🔊 Tải 100 MP3 Cambridge (.ZIP)
+            <button onclick="downloadTopicAudioZipDirect(${t.stt}, '${safeTopic}', this)" class="neo-btn px-3 py-1.5 bg-[#0F766E] text-white text-xs font-extrabold uppercase">
+              TẢI 100 MP3 (.ZIP)
             </button>
           </div>
         </td>

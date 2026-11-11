@@ -1,9 +1,7 @@
 // ============================================================================
 // MODULE: js/corpus.js
 // Chức năng: Kho Từ Điển Tổng (Global Vocabulary Bank) & Máy Dò Từ Trùng Lặp
-//            - Quét toàn bộ từ vựng đã tạo trên tất cả chủ đề hoàn thành
-//            - Tra cứu nhanh từ vựng, IPA, nghĩa Việt, phân loại A2-B2 / C1-C2
-//            - Phát hiện các từ xuất hiện ở nhiều hơn 1 chủ đề
+//            100% Icon-Free Swiss Editorial Design.
 // ============================================================================
 
 let globalCorpusList = [];
@@ -31,7 +29,7 @@ async function buildGlobalCorpus() {
     const t = completed[i];
     const pct = Math.round(((i + 1) / completed.length) * 100);
     if (progressBar) progressBar.style.width = `${pct}%`;
-    if (progressText) progressText.innerText = `Đang đọc chủ đề #${t.stt}: ${t.topic} (${i + 1}/${completed.length})...`;
+    if (progressText) progressText.innerText = `ĐANG ĐỌC CHỦ ĐỀ #${t.stt}: ${t.topic} (${i + 1}/${completed.length})...`;
 
     try {
       const res = await smartFetch(`output/${t.stt}.txt`);
@@ -83,11 +81,11 @@ function setCorpusFilter(mode) {
   const btnAll = document.getElementById('corpusFilterAll');
   const btnDup = document.getElementById('corpusFilterDup');
   if (btnAll) btnAll.className = mode === 'all'
-    ? 'px-3 py-2 rounded-lg text-xs font-bold bg-indigo-600 text-white'
-    : 'px-3 py-2 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200';
+    ? 'neo-btn px-3 py-2 text-xs font-mono-code font-bold uppercase bg-[#111111] text-white'
+    : 'neo-btn px-3 py-2 text-xs font-mono-code font-bold uppercase bg-white text-zinc-700 hover:bg-[#F4F1EA]';
   if (btnDup) btnDup.className = mode === 'duplicates'
-    ? 'px-3 py-2 rounded-lg text-xs font-bold bg-amber-600 text-white'
-    : 'px-3 py-2 rounded-lg text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100';
+    ? 'neo-btn px-3 py-2 text-xs font-mono-code font-bold uppercase bg-[#D97706] text-white'
+    : 'neo-btn px-3 py-2 text-xs font-mono-code font-bold uppercase bg-white text-[#D97706] border-[#D97706] hover:bg-amber-50';
   renderCorpusTable();
 }
 
@@ -95,7 +93,7 @@ function renderCorpusTable() {
   const tbody = document.getElementById('corpusTableBody');
   if (!tbody) return;
   if (!globalCorpusList.length) {
-    tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400">Bấm nút <strong>"🔄 Quét & Đồng bộ toàn bộ Kho Từ Vựng"</strong> để nạp dữ liệu.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-zinc-500 font-mono-code text-xs uppercase">Bấm nút "QUÉT & ĐỒNG BỘ KHO TỪ VỰNG" để nạp dữ liệu.</td></tr>`;
     return;
   }
 
@@ -114,28 +112,28 @@ function renderCorpusTable() {
     const safeWord = item.word.replace(/'/g, "\\'");
     const safeTopic = item.topic.replace(/'/g, "\\'");
     return `
-      <tr class="hover:bg-slate-50 transition ${isDup ? 'bg-amber-50/40' : ''}">
-        <td class="p-3 font-bold text-slate-900">
-          <div class="flex items-center gap-1.5">
-            <button onclick="speakWord('${safeWord}', event)" class="w-6 h-6 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs">🔊</button>
-            <span>${item.word}</span>
-            ${isDup ? `<span class="px-1.5 py-0.5 bg-amber-100 text-amber-800 rounded text-[10px] font-bold">x${occurrences.length} chủ đề</span>` : ''}
+      <tr class="hover:bg-[#F4F1EA] transition border-b border-zinc-200 ${isDup ? 'bg-amber-50/50' : ''}">
+        <td class="p-3 font-bold text-zinc-900">
+          <div class="flex items-center gap-2">
+            <button onclick="speakWord('${safeWord}', event)" class="neo-btn px-2 py-0.5 bg-[#EAE5DA] text-[#111111] text-xs font-mono-code uppercase">PHÁT ÂM</button>
+            <span class="text-xs sm:text-sm font-bold">${item.word}</span>
+            ${isDup ? `<span class="px-1.5 py-0.5 bg-white text-[#D97706] border border-[#D97706] text-xs font-mono-code font-bold uppercase">${occurrences.length} CHỦ ĐỀ</span>` : ''}
           </div>
         </td>
-        <td class="p-3 font-mono-code text-indigo-600">${item.ipa}</td>
-        <td class="p-3 font-semibold text-emerald-700">${item.vi}</td>
-        <td class="p-3 text-slate-600 max-w-xs truncate" title="${item.def.replace(/"/g, '&quot;')}">${item.def}</td>
+        <td class="p-3 font-mono-code text-xs text-[#1D4ED8]">${item.ipa}</td>
+        <td class="p-3 font-semibold text-xs text-[#0F766E]">${item.vi}</td>
+        <td class="p-3 text-xs text-zinc-700 max-w-xs truncate" title="${item.def.replace(/"/g, '&quot;')}">${item.def}</td>
         <td class="p-3">
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${item.level === 'A2-B2' ? 'bg-emerald-50 text-emerald-700' : 'bg-purple-50 text-purple-700'}">${item.level}</span>
+          <span class="px-2 py-0.5 text-xs font-mono-code font-bold border border-[#111111] ${item.level === 'A2-B2' ? 'bg-[#EAE5DA] text-[#0F766E]' : 'bg-[#EAE5DA] text-[#7C3AED]'}">${item.level}</span>
         </td>
         <td class="p-3">
-          <button onclick="previewFile(${item.stt}, '${safeTopic}')" class="text-xs font-semibold text-indigo-600 hover:underline">
+          <button onclick="previewFile(${item.stt}, '${safeTopic}')" class="text-xs font-mono-code font-bold text-[#111111] hover:underline uppercase">
             #${item.stt} - ${item.topic}
           </button>
         </td>
       </tr>
     `;
-  }).join('') + (filtered.length > 300 ? `<tr><td colspan="6" class="p-3 text-center text-xs text-slate-400 bg-slate-50">Đang hiển thị 300 / ${filtered.length.toLocaleString()} kết quả khớp. Hãy gõ từ khóa cụ thể hơn để lọc sâu.</td></tr>` : '');
+  }).join('') + (filtered.length > 300 ? `<tr><td colspan="6" class="p-3 text-center text-xs font-mono-code text-zinc-500 bg-[#F4F1EA] uppercase">Đang hiển thị 300 / ${filtered.length.toLocaleString()} kết quả khớp. Nhập từ khóa cụ thể hơn để lọc sâu.</td></tr>` : '');
 }
 
 function initCorpusPage() {

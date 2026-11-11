@@ -112,11 +112,11 @@ function renderQuizTopicSelection() {
         <div class="flex items-center gap-2 overflow-hidden">
           <input type="checkbox" onchange="toggleQuizTopicCheckbox(${t.stt}, this.checked)" ${isChecked ? 'checked' : ''} class="w-4 h-4 accent-[#141414] rounded cursor-pointer" />
           <div class="truncate">
-            <span class="font-mono-code text-[11px] font-extrabold bg-[#141414] text-white px-1 py-0.2 rounded">#${t.stt}</span>
-            <span class="text-xs font-bold text-[#141414] ml-1">${t.topic}</span>
+            <span class="font-mono-code text-xs font-extrabold bg-[#111111] text-white px-1.5 py-0.5">#${t.stt}</span>
+            <span class="text-xs font-bold text-[#111111] ml-1">${t.topic}</span>
           </div>
         </div>
-        <span class="text-[10px] font-mono-code font-bold text-slate-500 shrink-0">${t.word_count || 100}t</span>
+        <span class="text-xs font-mono-code font-bold text-zinc-500 shrink-0">${t.word_count || 100}t</span>
       </label>
     `;
   }).join('');
@@ -220,7 +220,7 @@ async function startQuizSession() {
   const mode = document.getElementById('quizModeSelect')?.value || 'mixed';
 
   if (typeof showLiveRunner === 'function') {
-    showLiveRunner(`⚡ ĐANG NẠP KHO TỪ VỰNG TỪ ${sttList.length} CHỦ ĐỀ ĐÃ CHỌN...`, 40, 3);
+    showLiveRunner(`[NẠP TỪ VỰNG] ĐANG NẠP DỮ LIỆU TỪ ${sttList.length} CHỦ ĐỀ ĐÃ CHỌN...`, 40, 3);
   }
   const rawWords = await loadWordsForTopics(sttList);
   const runnerBanner = document.getElementById('liveRunnerBanner');
@@ -331,10 +331,10 @@ function renderCurrentQuizCard() {
   const comboBadge = document.getElementById('quizComboMultiplier');
   if (comboBadge) {
     if (quizStreak >= 5) {
-      comboBadge.innerText = 'COMBO x2.0 🔥';
+      comboBadge.innerText = 'COMBO X2.0';
       comboBadge.classList.remove('hidden');
     } else if (quizStreak >= 3) {
-      comboBadge.innerText = 'COMBO x1.5 🔥';
+      comboBadge.innerText = 'COMBO X1.5';
       comboBadge.classList.remove('hidden');
     } else {
       comboBadge.classList.add('hidden');
@@ -347,11 +347,11 @@ function renderCurrentQuizCard() {
   const levelBadge = document.getElementById('quizQuestionLevelBadge');
   if (levelBadge) {
     if (q.target.level === 'advanced') {
-      levelBadge.innerText = '⚡ C1-C2 NÂNG CAO';
-      levelBadge.className = 'tid-badge-num bg-[#8C43F6] text-white text-[10px]';
+      levelBadge.innerText = 'C1-C2 NÂNG CAO';
+      levelBadge.className = 'tid-badge-num bg-[#7C3AED] text-white text-xs';
     } else {
-      levelBadge.innerText = '💬 A2-B2 GIAO TIẾP';
-      levelBadge.className = 'tid-badge-num bg-[#169C64] text-white text-[10px]';
+      levelBadge.innerText = 'A2-B2 GIAO TIẾP';
+      levelBadge.className = 'tid-badge-num bg-[#0F766E] text-white text-xs';
     }
   }
 
@@ -375,7 +375,7 @@ function renderCurrentQuizCard() {
         <span class="font-bold text-xs sm:text-sm text-[#141414] leading-snug flex-1">
           ${opt.text}
         </span>
-        <span class="font-mono-code text-[11px] text-slate-400 font-bold hidden sm:inline">[Phím ${idx + 1}]</span>
+        <span class="font-mono-code text-xs text-zinc-500 font-bold hidden sm:inline">[Phím ${idx + 1}]</span>
       </button>
     `).join('');
   }
@@ -404,11 +404,11 @@ function chooseQuizOption(idx) {
     const btn = document.getElementById('quizOptBtn-' + i);
     if (btn) btn.classList.add('pointer-events-none');
     if (opt.isCorrect && btn) {
-      btn.className = 'neo-btn p-3 sm:p-4 bg-[#169C64] text-white text-left flex items-center gap-3 border-2 border-[#111] shadow-[3px_3px_0px_#111]';
+      btn.className = 'neo-btn p-3 sm:p-4 bg-[#0F766E] text-white text-left flex items-center gap-3 border-2 border-[#111111] shadow-[3px_3px_0px_#111111]';
       const iconSpan = btn.querySelector('span:first-child');
       if (iconSpan) {
-        iconSpan.className = 'w-7 h-7 sm:w-8 sm:h-8 rounded bg-white text-[#169C64] font-mono-code font-extrabold text-xs sm:text-sm flex items-center justify-center shrink-0';
-        iconSpan.innerText = '✓';
+        iconSpan.className = 'w-7 h-7 sm:w-8 sm:h-8 bg-white text-[#0F766E] font-mono-code font-extrabold text-xs sm:text-sm flex items-center justify-center shrink-0';
+        iconSpan.innerText = 'OK';
       }
     }
   });
@@ -435,12 +435,10 @@ function chooseQuizOption(idx) {
     const streakEl = document.getElementById('quizStreakCount');
     if (streakEl) streakEl.innerText = quizStreak;
 
-
-
     if (feedback) {
       feedback.innerHTML = `
-        <span class="text-[#169C64] flex items-center gap-1.5 font-bold">
-          <span class="text-base sm:text-xl">🎉</span> CHÍNH XÁC! (+${points} điểm ${multiplier > 1 ? `• COMBO x${multiplier.toFixed(1)} 🔥` : ''} ${isFastReflex ? '⚡ PHẢN XẠ NHANH!' : ''})
+        <span class="text-[#0F766E] flex items-center gap-2 font-mono-code font-bold uppercase text-xs sm:text-sm">
+          <span>CHÍNH XÁC</span> (+${points} ĐIỂM ${multiplier > 1 ? `• COMBO X${multiplier.toFixed(1)}` : ''} ${isFastReflex ? '• PHẢN XẠ NHANH' : ''})
         </span>
       `;
     }
@@ -453,24 +451,22 @@ function chooseQuizOption(idx) {
     if (comboEl) comboEl.classList.add('hidden');
 
     if (optBtn) {
-      optBtn.className = 'neo-btn p-3 sm:p-4 bg-[#F05332] text-white text-left flex items-center gap-3 border-2 border-[#111] shadow-[3px_3px_0px_#111]';
+      optBtn.className = 'neo-btn p-3 sm:p-4 bg-[#BE123C] text-white text-left flex items-center gap-3 border-2 border-[#111111] shadow-[3px_3px_0px_#111111]';
       const iconSpan = optBtn.querySelector('span:first-child');
       if (iconSpan) {
-        iconSpan.className = 'w-7 h-7 sm:w-8 sm:h-8 rounded bg-white text-[#F05332] font-mono-code font-extrabold text-xs sm:text-sm flex items-center justify-center shrink-0';
-        iconSpan.innerText = '✕';
+        iconSpan.className = 'w-7 h-7 sm:w-8 sm:h-8 bg-white text-[#BE123C] font-mono-code font-extrabold text-xs sm:text-sm flex items-center justify-center shrink-0';
+        iconSpan.innerText = 'NO';
       }
     }
 
     if (feedback) {
       feedback.innerHTML = `
-        <span class="text-[#F05332] flex items-center gap-1.5 font-bold">
-          <span class="text-base sm:text-xl">❌</span> CHƯA CHÍNH XÁC! (Đáp án đúng là ô xanh)
+        <span class="text-[#BE123C] flex items-center gap-2 font-mono-code font-bold uppercase text-xs sm:text-sm">
+          <span>CHƯA CHÍNH XÁC</span> (ĐÁP ÁN ĐÚNG LÀ Ô MÀU XANH)
         </span>
       `;
     }
     quizMistakes.push(q.target);
-
-
   }
 
   speakWordTTS(q.target.word);
@@ -488,9 +484,9 @@ function chooseQuizOption(idx) {
   const nextBtn = document.getElementById('quizNextBtn');
   if (nextBtn) {
     if (quizCurrentIdx === quizQuestions.length - 1) {
-      nextBtn.innerHTML = `XEM KẾT QUẢ VINH DANH 🏆`;
+      nextBtn.innerHTML = `XEM KẾT QUẢ TỔNG KẾT`;
     } else {
-      nextBtn.innerHTML = `CÂU TIẾP THEO ➔ (Phím Enter)`;
+      nextBtn.innerHTML = `CÂU TIẾP THEO (ENTER)`;
     }
   }
 
@@ -527,34 +523,32 @@ function showQuizResults() {
 
 
 
-  let rank = 'ANKI TITAN';
-  let emoji = '🏆';
-  let title = 'XUẤT SẮC TUYỆT ĐỐI!';
-  let sub = 'Bạn không trả lời sai một câu nào. Trí nhớ từ vựng của bạn cực kỳ đẳng cấp!';
+  let rank = 'XUẤT SẮC - HẠNG A+';
+  let title = 'KẾT QUẢ ĐẠT CHUẨN TUYỆT ĐỐI';
+  let sub = 'Bạn không trả lời sai câu nào. Trí nhớ từ vựng Anki của bạn rất vững chắc.';
 
   if (accuracy >= 85) {
-    rank = 'VOCAB MASTER';
-    emoji = '🥇';
-    title = 'BẬC THẦY GHI NHỚ TỪ VỰNG!';
-    sub = 'Khả năng phản xạ và ghi nhớ từ vựng Anki của bạn rất vững chắc.';
+    rank = 'XUẤT SẮC - HẠNG A';
+    title = 'BẬC THẦY GHI NHỚ TỪ VỰNG';
+    sub = 'Khả năng phản xạ và ghi nhớ từ vựng Anki của bạn rất tốt.';
   } else if (accuracy >= 70) {
-    rank = 'RISING SCHOLAR';
-    emoji = '🥈';
-    title = 'KẾT QUẢ RẤT KHẢ QUAN!';
+    rank = 'KHÁ - HẠNG B';
+    title = 'KẾT QUẢ RẤT KHẢ QUAN';
     sub = 'Bạn đã nắm được phần lớn từ vựng, chỉ cần củng cố thêm một chút.';
   } else {
-    rank = 'ANKI APPRENTICE';
-    emoji = '🥉';
-    title = 'CẦN ÔN TẬP THÊM!';
-    sub = 'Đừng lo lắng! Hãy bấm nút ôn lại các từ sai ở bên dưới để nắm chắc 100%.';
+    rank = 'CẦN CỦNG CỐ - HẠNG C';
+    title = 'CẦN TIẾP TỤC ÔN TẬP';
+    sub = 'Hãy bấm nút ôn lại các từ sai ở bên dưới để nắm chắc 100%.';
   }
 
   const setElTxt = (id, txt) => { const el = document.getElementById(id); if (el) el.innerText = txt; };
 
   setElTxt('quizResultRankBadge', rank);
-  setElTxt('quizResultEmoji', emoji);
   setElTxt('quizResultTitle', title);
   setElTxt('quizResultSub', sub);
+
+  const emojiEl = document.getElementById('quizResultEmoji');
+  if (emojiEl) emojiEl.innerText = '';
 
   setElTxt('quizResultScore', quizScore);
   setElTxt('quizResultAccuracy', `${accuracy}%`);
@@ -567,13 +561,13 @@ function showQuizResults() {
     if (quizMistakes.length > 0) {
       setElTxt('quizMistakeCountText', quizMistakes.length);
       mistakeList.innerHTML = quizMistakes.map(m => `
-        <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-[#111] text-xs">
+        <div class="flex items-center justify-between p-2.5 bg-white border border-[#111111] text-xs">
           <div class="flex items-center gap-2">
-            <button onclick="speakWordTTS('${m.word}')" class="neo-btn px-2 py-0.5 bg-[#FFE787] text-[10px] font-bold">🔊</button>
-            <span class="font-display font-extrabold text-[#141414]">${m.word}</span>
-            <span class="font-mono-code text-slate-500 text-[11px]">${m.ipa || ''}</span>
+            <button onclick="speakWordTTS('${m.word}')" class="neo-btn px-2 py-0.5 bg-[#EAE5DA] text-xs font-mono-code uppercase">PHÁT ÂM</button>
+            <span class="font-display font-extrabold text-[#111111]">${m.word}</span>
+            <span class="font-mono-code text-zinc-500 text-xs">${m.ipa || ''}</span>
           </div>
-          <div class="font-bold text-[#169C64]">${m.meaningVi}</div>
+          <div class="font-bold text-[#0F766E]">${m.meaningVi}</div>
         </div>
       `).join('');
       mistakeBox.classList.remove('hidden');

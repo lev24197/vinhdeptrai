@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-[#F4F1EA] text-[#111111]">
 
   <!-- THANH ĐIỀU HƯỚNG DÙNG CHUNG -->
   <div id="sharedNavbarMount"></div>
@@ -20,179 +20,179 @@
     <div id="sharedLiveRunnerMount"></div>
 
     <!-- THANH CHỌN CHỦ ĐỀ ĐỂ HỌC / CHỈNH SỬA -->
-    <section class="neo-box p-4 bg-[#FFE787] flex flex-wrap items-center justify-between gap-3">
+    <section class="neo-box p-4 bg-[#EAE5DA] flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center gap-2.5">
-        <span class="px-2.5 py-1 bg-[#141414] text-white font-mono-code text-xs font-extrabold rounded">STUDIO HỌC TẬP</span>
-        <span class="font-display font-extrabold text-sm sm:text-base text-[#141414]">Chọn Chủ Đề Để Học Flashcard 3D, Luyện Cloze Hoặc Sửa 9 Cột:</span>
+        <span class="px-2.5 py-1 bg-[#111111] text-white font-mono-code text-xs font-extrabold uppercase">STUDIO HỌC TẬP</span>
+        <span class="font-display font-extrabold text-sm sm:text-base text-[#111111] uppercase">Chọn Chủ Đề Để Học Flashcard 3D, Luyện Cloze Hoặc Sửa 9 Cột:</span>
       </div>
       <div class="flex flex-wrap items-center gap-2 flex-1 sm:flex-initial justify-end">
-        <select id="studioTopicSelect" onchange="onStudioTopicSelectChange(this.value)" class="px-3 py-2 rounded-lg border-2 border-[#141414] bg-white text-xs sm:text-sm font-extrabold text-[#141414] min-w-[280px] shadow-[2px_2px_0px_#141414]">
+        <select id="studioTopicSelect" onchange="onStudioTopicSelectChange(this.value)" class="px-3 py-2 border-2 border-[#111111] bg-white text-xs sm:text-sm font-mono-code font-bold text-[#111111] min-w-[280px]">
           <option value="">Đang tải danh sách chủ đề...</option>
         </select>
       </div>
     </section>
 
     <!-- KHÔNG GIAN STUDIO CHÍNH (Hiển thị trực tiếp trên trang studio.html) -->
-    <section id="previewModal" data-standalone-page="true" class="neo-box bg-[#F6F4EE] overflow-hidden flex flex-col min-h-[720px]">
-      <div class="p-4 sm:p-5 border-b-2 border-[#141414] flex flex-wrap items-center justify-between gap-3 bg-[#EFECE6]">
+    <section id="previewModal" data-standalone-page="true" class="neo-box bg-[#F4F1EA] overflow-hidden flex flex-col min-h-[720px]">
+      <div class="p-4 sm:p-5 border-b-2 border-[#111111] flex flex-wrap items-center justify-between gap-3 bg-[#EAE5DA]">
         <div>
           <div class="flex items-center gap-2">
-            <span id="previewBadge" class="px-2.5 py-0.5 bg-indigo-100 text-indigo-700 rounded-md text-xs font-mono-code font-bold">#1</span>
-            <h3 id="previewTitle" class="font-extrabold text-lg text-slate-900">Chi tiết chủ đề</h3>
+            <span id="previewBadge" class="px-2.5 py-0.5 bg-[#111111] text-white text-xs font-mono-code font-bold">#1</span>
+            <h3 id="previewTitle" class="font-display font-extrabold text-lg text-[#111111] uppercase">Chi tiết chủ đề</h3>
           </div>
-          <p id="previewSubText" class="text-xs text-slate-500 mt-0.5"></p>
+          <p id="previewSubText" class="text-xs font-mono-code text-zinc-600 mt-0.5"></p>
         </div>
 
-        <div class="flex items-center bg-white p-1 rounded-lg border-2 border-[#141414]">
-          <button onclick="switchPreviewTab('table')" id="pTab-table" class="px-3 py-1.5 rounded-md text-xs font-bold bg-indigo-600 text-white transition">
-            📑 Bảng 9 Cột & Sửa
+        <div class="flex items-center bg-white p-1 border-2 border-[#111111]">
+          <button onclick="switchPreviewTab('table')" id="pTab-table" class="px-3 py-1.5 text-xs font-mono-code font-bold uppercase bg-[#111111] text-white transition">
+            01. BẢNG 9 CỘT & SỬA
           </button>
-          <button onclick="switchPreviewTab('flashcard')" id="pTab-flashcard" class="px-3 py-1.5 rounded-md text-xs font-bold text-slate-600 hover:text-slate-900 transition">
-            🗂️ Lật Thẻ 3D Flashcard
+          <button onclick="switchPreviewTab('flashcard')" id="pTab-flashcard" class="px-3 py-1.5 text-xs font-mono-code font-bold uppercase text-zinc-700 hover:text-black transition">
+            02. THẺ 3D FLASHCARD
           </button>
-          <button onclick="switchPreviewTab('quiz')" id="pTab-quiz" class="px-3 py-1.5 rounded-md text-xs font-bold text-slate-600 hover:text-slate-900 transition">
-            ✍️ Luyện Gõ Từ Cloze
+          <button onclick="switchPreviewTab('quiz')" id="pTab-quiz" class="px-3 py-1.5 text-xs font-mono-code font-bold uppercase text-zinc-700 hover:text-black transition">
+            03. GÕ TỪ CLOZE
           </button>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <button onclick="togglePlaylistAudio()" id="btnPlaylistAudio" class="px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-lg text-xs font-bold transition">
-            📻 Nghe tự động 100 từ
+          <button onclick="togglePlaylistAudio()" id="btnPlaylistAudio" class="neo-btn px-3 py-1.5 bg-white text-[#111111] text-xs uppercase">
+            PHÁT TỰ ĐỘNG 100 TỪ
           </button>
-          <button onclick="printCurrentTopicSheet()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition">
-            🖨️ In PDF / A4
+          <button onclick="printCurrentTopicSheet()" class="neo-btn px-3 py-1.5 bg-white text-[#111111] text-xs uppercase">
+            IN BẢN PDF / A4
           </button>
-          <button id="previewDownloadBtn" class="px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-lg text-xs font-bold transition">
-            ⬇ Tải .TXT
+          <button id="previewDownloadBtn" class="neo-btn px-3 py-1.5 bg-white text-[#111111] text-xs uppercase">
+            TẢI FILE .TXT
           </button>
-          <button onclick="downloadTopicAudioZip()" id="btnDownloadAudioZip" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold shadow-sm transition">
-            🔊 Tải Audio (.ZIP)
+          <button onclick="downloadTopicAudioZip()" id="btnDownloadAudioZip" class="neo-btn px-3 py-1.5 bg-[#0F766E] text-white text-xs uppercase">
+            TẢI AUDIO (.ZIP)
           </button>
         </div>
       </div>
 
       <!-- TAB 1: BẢNG 9 CỘT & LIVE EDITOR -->
       <div id="previewTab-table" class="flex-1 overflow-auto flex flex-col">
-        <div class="px-4 py-2.5 bg-white border-b border-slate-200 flex flex-wrap items-center justify-between gap-2">
+        <div class="px-4 py-2.5 bg-white border-b-2 border-[#111111] flex flex-wrap items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <input id="previewSearchInput" type="text" oninput="renderPreviewTable()" placeholder="🔍 Lọc nhanh từ vựng hoặc nghĩa trong chủ đề này..." class="px-3 py-1 text-xs rounded-lg border border-slate-300 w-72 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <input id="previewSearchInput" type="text" oninput="renderPreviewTable()" placeholder="Lọc nhanh từ vựng hoặc nghĩa trong chủ đề này..." class="px-3 py-1.5 text-xs border-2 border-[#111111] w-72 focus:outline-none" />
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="toggleEditMode()" id="btnToggleEdit" class="px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-lg text-xs font-bold transition">
-              ✏️ Bật chế độ Chỉnh sửa
+            <button onclick="toggleEditMode()" id="btnToggleEdit" class="neo-btn px-3 py-1.5 bg-white text-[#111111] text-xs uppercase">
+              CHẾ ĐỘ CHỈNH SỬA
             </button>
-            <button onclick="saveEditedFileToGitHub()" id="btnSaveCloud" class="hidden px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold shadow-sm transition">
-              ☁️ Lưu trực tiếp lên GitHub
+            <button onclick="saveEditedFileToGitHub()" id="btnSaveCloud" class="hidden neo-btn px-3.5 py-1.5 bg-[#0F766E] text-white text-xs uppercase">
+              LƯU LÊN GITHUB
             </button>
           </div>
         </div>
 
         <div class="overflow-auto flex-1 max-h-[650px]">
           <table class="w-full text-left border-collapse text-xs">
-            <thead class="bg-slate-100 text-slate-600 sticky top-0 z-10 border-b border-slate-200">
+            <thead class="bg-[#EAE5DA] text-[#111111] sticky top-0 z-10 border-b-2 border-[#111111] font-mono-code uppercase font-bold">
               <tr>
-                <th class="p-3 w-10">#</th>
-                <th class="p-3">Từ vựng & Cloze</th>
-                <th class="p-3">IPA & Sound</th>
-                <th class="p-3">Định nghĩa (EN)</th>
-                <th class="p-3">Nghĩa Tiếng Việt</th>
-                <th class="p-3">Số nhiều</th>
-                <th class="p-3">2 Câu Ví dụ</th>
+                <th class="p-3 w-12">STT</th>
+                <th class="p-3">TỪ VỰNG & CLOZE</th>
+                <th class="p-3">IPA & SOUND</th>
+                <th class="p-3">ĐỊNH NGHĨA (EN)</th>
+                <th class="p-3">NGHĨA TIẾNG VIỆT</th>
+                <th class="p-3">SỐ NHIỀU</th>
+                <th class="p-3">2 CÂU VÍ DỤ</th>
               </tr>
             </thead>
-            <tbody id="previewTableBody" class="divide-y divide-slate-200 bg-white"></tbody>
+            <tbody id="previewTableBody" class="divide-y divide-zinc-200 bg-white"></tbody>
           </table>
         </div>
       </div>
 
       <!-- TAB 2: 3D FLASHCARD SRS -->
-      <div id="previewTab-flashcard" class="hidden flex-1 p-6 bg-slate-100 flex flex-col items-center justify-center">
+      <div id="previewTab-flashcard" class="hidden flex-1 p-6 bg-[#F4F1EA] flex flex-col items-center justify-center">
         <div class="max-w-xl w-full">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-            <div class="flex items-center gap-2 text-xs font-bold">
-              <span class="px-2.5 py-1 rounded-md bg-rose-100 text-rose-700">Khó: <strong id="srsCountHard">0</strong></span>
-              <span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-800">Tạm nhớ: <strong id="srsCountGood">0</strong></span>
-              <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-700">Đã thuộc: <strong id="srsCountEasy">0</strong></span>
+            <div class="flex items-center gap-2 text-xs font-mono-code font-bold">
+              <span class="px-2.5 py-1 border border-[#111111] bg-white text-[#BE123C]">KHÓ: <strong id="srsCountHard">0</strong></span>
+              <span class="px-2.5 py-1 border border-[#111111] bg-white text-[#D97706]">TẠM NHỚ: <strong id="srsCountGood">0</strong></span>
+              <span class="px-2.5 py-1 border border-[#111111] bg-white text-[#0F766E]">ĐÃ THUỘC: <strong id="srsCountEasy">0</strong></span>
             </div>
-            <button onclick="toggleFlashcardAutoSlide()" id="btnAutoSlide" class="px-3 py-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-bold transition">
-              ▶️ Tự động lật & chuyển (3s)
+            <button onclick="toggleFlashcardAutoSlide()" id="btnAutoSlide" class="neo-btn px-3 py-1.5 bg-white text-[#111111] text-xs uppercase">
+              TỰ ĐỘNG LẬT (3 GIÂY)
             </button>
           </div>
 
           <div id="flashcardScene" class="flashcard-scene w-full h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
             <div class="flashcard-inner relative w-full h-full">
-              <div class="flashcard-face absolute inset-0 bg-white rounded-2xl shadow-lg border-2 border-indigo-100 p-8 flex flex-col items-center justify-center text-center">
-                <span id="fcCategoryBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-3">PHẦN 1: GIAO TIẾP (A2-B2)</span>
-                <h2 id="fcWord" class="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">word</h2>
+              <div class="flashcard-face absolute inset-0 bg-white border-2 border-[#111111] shadow-[4px_4px_0px_#111111] p-8 flex flex-col items-center justify-center text-center">
+                <span id="fcCategoryBadge" class="px-2.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#111111] border border-[#111111] mb-3">PHẦN 1: GIAO TIẾP (A2-B2)</span>
+                <h2 id="fcWord" class="text-4xl font-display font-extrabold text-[#111111] tracking-tight mb-2">word</h2>
                 <div class="flex items-center gap-2 mb-4">
-                  <span id="fcIpa" class="font-mono-code text-lg text-indigo-600">/wɜːrd/</span>
-                  <button onclick="speakWord(document.getElementById('fcWord').innerText, event)" class="p-2 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-600 transition">🔊</button>
+                  <span id="fcIpa" class="font-mono-code text-lg text-[#1D4ED8]">/wɜːrd/</span>
+                  <button onclick="speakWord(document.getElementById('fcWord').innerText, event)" class="neo-btn px-2.5 py-1 bg-[#EAE5DA] text-[#111111] text-xs font-mono-code uppercase">PHÁT ÂM</button>
                 </div>
-                <p id="fcCloze" class="font-mono-code text-sm text-slate-400 bg-slate-50 px-3 py-1 rounded border border-slate-200">w _ _ d</p>
-                <p class="text-[11px] text-slate-400 mt-6">👆 Bấm vào thẻ hoặc nhấn phím Space để lật xem nghĩa & ví dụ</p>
+                <p id="fcCloze" class="font-mono-code text-sm text-zinc-600 bg-[#F4F1EA] px-3 py-1 border border-[#111111]">w _ _ d</p>
+                <p class="text-xs font-mono-code text-zinc-500 mt-6 uppercase">Nhấp vào thẻ hoặc nhấn phím Space để lật mặt sau</p>
               </div>
-              <div class="flashcard-face flashcard-back absolute inset-0 bg-slate-900 text-white rounded-2xl shadow-lg p-7 flex flex-col justify-between">
+              <div class="flashcard-face flashcard-back absolute inset-0 bg-[#111111] text-white border-2 border-[#111111] p-7 flex flex-col justify-between">
                 <div>
-                  <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-3">
-                    <span id="fcMeaningVi" class="text-2xl font-extrabold text-emerald-400">Nghĩa tiếng Việt</span>
-                    <span id="fcPlural" class="text-xs font-mono-code bg-slate-800 px-2.5 py-1 rounded text-slate-300">Số nhiều: words</span>
+                  <div class="flex items-center justify-between border-b border-zinc-700 pb-3 mb-3">
+                    <span id="fcMeaningVi" class="text-2xl font-display font-extrabold text-[#5EEAD4]">Nghĩa tiếng Việt</span>
+                    <span id="fcPlural" class="text-xs font-mono-code bg-zinc-800 px-2.5 py-1 text-zinc-300">Số nhiều: words</span>
                   </div>
-                  <p id="fcDefEn" class="text-sm text-slate-200 italic mb-4">English definition here</p>
-                  <div id="fcExamples" class="text-xs text-slate-300 space-y-1.5 bg-slate-800/90 p-3.5 rounded-xl border border-slate-700 leading-relaxed"></div>
+                  <p id="fcDefEn" class="text-sm text-zinc-200 italic mb-4">English definition here</p>
+                  <div id="fcExamples" class="text-xs text-zinc-300 space-y-1.5 bg-zinc-900 p-3.5 border border-zinc-700 leading-relaxed font-mono-code"></div>
                 </div>
-                <p class="text-[11px] text-slate-400 text-center">👆 Bấm vào thẻ để lật lại mặt trước</p>
+                <p class="text-xs font-mono-code text-zinc-400 text-center uppercase">Nhấp vào thẻ để lật lại mặt trước</p>
               </div>
             </div>
           </div>
 
           <div class="grid grid-cols-3 gap-2 mt-4">
-            <button onclick="markSrsStatus('hard')" class="py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-xs transition">😓 Khó nhớ (Ôn lại)</button>
-            <button onclick="markSrsStatus('good')" class="py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs transition">🤔 Tạm nhớ</button>
-            <button onclick="markSrsStatus('easy')" class="py-2 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold text-xs transition">⚡ Đã thuộc làu</button>
+            <button onclick="markSrsStatus('hard')" class="neo-btn py-2 bg-white text-[#BE123C] text-xs uppercase">01. KHÓ NHỚ</button>
+            <button onclick="markSrsStatus('good')" class="neo-btn py-2 bg-white text-[#D97706] text-xs uppercase">02. TẠM NHỚ</button>
+            <button onclick="markSrsStatus('easy')" class="neo-btn py-2 bg-white text-[#0F766E] text-xs uppercase">03. ĐÃ THUỘC</button>
           </div>
 
           <div class="flex items-center justify-between mt-4">
-            <button onclick="nextFlashcard(-1)" class="px-5 py-2.5 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-xl shadow border border-slate-200 transition">← Từ trước</button>
+            <button onclick="nextFlashcard(-1)" class="neo-btn px-5 py-2.5 bg-white text-[#111111] text-xs uppercase">TỪ TRƯỚC</button>
             <div class="flex items-center gap-3">
-              <span id="fcCounter" class="font-mono-code text-sm font-bold text-slate-700">1 / 100</span>
-              <button onclick="shuffleFlashcard()" class="px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-xs font-bold transition">🔀 Ngẫu nhiên</button>
+              <span id="fcCounter" class="font-mono-code text-sm font-bold text-[#111111]">1 / 100</span>
+              <button onclick="shuffleFlashcard()" class="neo-btn px-3 py-1.5 bg-[#EAE5DA] text-[#111111] text-xs uppercase">NGẪU NHIÊN</button>
             </div>
-            <button onclick="nextFlashcard(1)" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow transition">Từ tiếp theo →</button>
+            <button onclick="nextFlashcard(1)" class="neo-btn px-5 py-2.5 bg-[#111111] text-white text-xs uppercase">TỪ TIẾP THEO</button>
           </div>
         </div>
       </div>
 
       <!-- TAB 3: CLOZE TYPING QUIZ -->
-      <div id="previewTab-quiz" class="hidden flex-1 p-6 bg-slate-100 flex flex-col items-center justify-center">
-        <div class="max-w-xl w-full bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+      <div id="previewTab-quiz" class="hidden flex-1 p-6 bg-[#F4F1EA] flex flex-col items-center justify-center">
+        <div class="max-w-xl w-full neo-box bg-white p-6">
           <div class="flex items-center justify-between mb-4">
-            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">✍️ Thử thách Gõ Từ Vựng (Cloze Test)</span>
-            <div class="flex items-center gap-2 text-xs font-bold">
-              <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-md" id="quizScoreCorrect">Đúng: 0</span>
-              <span class="px-2.5 py-1 bg-rose-50 text-rose-700 rounded-md" id="quizScoreWrong">Sai: 0</span>
+            <span class="text-xs font-mono-code font-bold uppercase tracking-wider text-[#111111]">LUYỆN GÕ TỪ VỰNG KHUYẾT CHỮ (CLOZE TEST)</span>
+            <div class="flex items-center gap-2 text-xs font-mono-code font-bold">
+              <span class="px-2.5 py-1 bg-[#EAE5DA] text-[#0F766E] border border-[#111111]" id="quizScoreCorrect">ĐÚNG: 0</span>
+              <span class="px-2.5 py-1 bg-[#EAE5DA] text-[#BE123C] border border-[#111111]" id="quizScoreWrong">SAI: 0</span>
             </div>
           </div>
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 mb-4">
-            <div class="text-xs text-slate-400 font-semibold mb-1">Nghĩa Tiếng Việt & Định nghĩa:</div>
-            <div id="quizMeaningVi" class="text-lg font-extrabold text-emerald-700 mb-1">...</div>
-            <div id="quizDefEn" class="text-xs text-slate-600 italic">...</div>
+          <div class="p-4 bg-[#F4F1EA] border-2 border-[#111111] mb-4">
+            <div class="text-xs font-mono-code text-zinc-500 font-bold mb-1 uppercase">NGHĨA TIẾNG VIỆT & ĐỊNH NGHĨA:</div>
+            <div id="quizMeaningVi" class="text-lg font-display font-extrabold text-[#0F766E] mb-1">...</div>
+            <div id="quizDefEn" class="text-xs text-zinc-700 italic">...</div>
           </div>
           <div class="text-center mb-4">
-            <div class="text-xs text-slate-400 mb-1">Gợi ý khuyết chữ (Cloze) & Phiên âm:</div>
-            <div id="quizClozeHint" class="font-mono-code text-2xl font-extrabold text-slate-800 tracking-widest mb-1">_ _ _ _</div>
+            <div class="text-xs font-mono-code text-zinc-500 mb-1 uppercase">GỢI Ý KHUYẾT CHỮ & PHIÊN ÂM:</div>
+            <div id="quizClozeHint" class="font-mono-code text-2xl font-extrabold text-[#111111] tracking-widest mb-1">_ _ _ _</div>
             <div class="flex items-center justify-center gap-2">
-              <span id="quizIpaHint" class="font-mono-code text-sm text-indigo-600">/ipa/</span>
-              <button onclick="speakWord(currentQuizItem?.word || '', event)" class="px-2.5 py-1 rounded bg-indigo-50 text-indigo-600 text-xs font-bold hover:bg-indigo-100">🔊 Nghe gợi ý</button>
+              <span id="quizIpaHint" class="font-mono-code text-sm text-[#1D4ED8]">/ipa/</span>
+              <button onclick="speakWord(currentQuizItem?.word || '', event)" class="neo-btn px-2.5 py-1 bg-[#EAE5DA] text-[#111111] text-xs uppercase">PHÁT ÂM GỢI Ý</button>
             </div>
           </div>
           <div class="flex gap-2">
-            <input id="quizAnswerInput" type="text" onkeydown="if(event.key==='Enter') checkQuizAnswer()" placeholder="Gõ từ tiếng Anh đầy đủ rồi nhấn Enter..." class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-            <button onclick="checkQuizAnswer()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow transition">Kiểm tra</button>
-            <button onclick="revealQuizAnswer()" class="px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs rounded-xl transition">Xem đáp án</button>
+            <input id="quizAnswerInput" type="text" onkeydown="if(event.key==='Enter') checkQuizAnswer()" placeholder="Gõ từ tiếng Anh đầy đủ rồi nhấn Enter..." class="flex-1 px-4 py-2.5 border-2 border-[#111111] font-bold text-[#111111] text-xs focus:outline-none" />
+            <button onclick="checkQuizAnswer()" class="neo-btn px-5 py-2.5 bg-[#111111] text-white text-xs uppercase">KIỂM TRA</button>
+            <button onclick="revealQuizAnswer()" class="neo-btn px-3 py-2.5 bg-white text-[#111111] text-xs uppercase">ĐÁP ÁN</button>
           </div>
-          <div id="quizFeedbackBox" class="hidden mt-4 p-3 rounded-xl text-xs font-semibold"></div>
-          <div class="mt-4 pt-3 border-t border-slate-100 flex justify-end">
-            <button onclick="nextQuizQuestion()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition">Câu hỏi tiếp theo →</button>
+          <div id="quizFeedbackBox" class="hidden mt-4 p-3 border-2 border-[#111111] text-xs font-semibold"></div>
+          <div class="mt-4 pt-3 border-t border-zinc-200 flex justify-end">
+            <button onclick="nextQuizQuestion()" class="neo-btn px-4 py-2 bg-[#111111] text-white text-xs uppercase">CÂU TIẾP THEO</button>
           </div>
         </div>
       </div>

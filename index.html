@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-[#F4F1EA] text-[#111111]">
 
   <!-- THANH ĐIỀU HƯỚNG DÙNG CHUNG (Tự động gắn bởi js/layout.js) -->
   <div id="sharedNavbarMount"></div>
@@ -21,57 +21,57 @@
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
       <div class="neo-box p-4 bg-white">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">Chủ Đề Đã Xong</span>
-          <span class="tid-badge-num bg-[#169C64] text-white">DONE</span>
+          <span class="text-xs font-mono-code font-extrabold uppercase tracking-wider text-zinc-600">Chủ Đề Đã Xong</span>
+          <span class="tid-badge-num bg-[#0F766E] text-white">DONE</span>
         </div>
         <div class="mt-2 flex items-baseline gap-2">
-          <span id="statCompleted" class="text-3xl font-display font-extrabold text-[#169C64]">0</span>
-          <span class="text-xs font-mono-code font-bold text-slate-500">/ 1.000</span>
+          <span id="statCompleted" class="text-3xl font-display font-extrabold text-[#0F766E]">0</span>
+          <span class="text-xs font-mono-code font-bold text-zinc-500">/ 1.000</span>
         </div>
       </div>
 
       <div class="neo-box p-4 bg-white">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">Đang Chờ Tạo</span>
-          <span class="tid-badge-num bg-[#FF9F1C] text-[#141414]">QUEUE</span>
+          <span class="text-xs font-mono-code font-extrabold uppercase tracking-wider text-zinc-600">Đang Chờ Tạo</span>
+          <span class="tid-badge-num bg-[#D97706] text-white">QUEUE</span>
         </div>
         <div class="mt-2 flex items-baseline gap-2">
-          <span id="statPending" class="text-3xl font-display font-extrabold text-[#D97706]">1,000</span>
-          <span class="text-xs font-mono-code font-bold text-slate-500">chủ đề</span>
+          <span id="statPending" class="text-3xl font-display font-extrabold text-[#D97706]">1.000</span>
+          <span class="text-xs font-mono-code font-bold text-zinc-500">chủ đề</span>
         </div>
       </div>
 
       <div class="neo-box p-4 bg-white">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">Tổng Từ Vựng</span>
-          <span class="tid-badge-num bg-[#2B59FF] text-white">WORDS</span>
+          <span class="text-xs font-mono-code font-extrabold uppercase tracking-wider text-zinc-600">Tổng Từ Vựng</span>
+          <span class="tid-badge-num bg-[#1D4ED8] text-white">WORDS</span>
         </div>
         <div class="mt-2 flex items-baseline gap-2">
-          <span id="statWords" class="text-3xl font-display font-extrabold text-[#141414]">0</span>
-          <span id="statWordsSub" class="text-xs font-mono-code font-bold text-[#2B59FF]">/ 100.000</span>
+          <span id="statWords" class="text-3xl font-display font-extrabold text-[#111111]">0</span>
+          <span id="statWordsSub" class="text-xs font-mono-code font-bold text-[#1D4ED8]">/ 100.000</span>
         </div>
       </div>
 
       <div class="neo-box p-4 bg-white">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-extrabold uppercase tracking-wider text-slate-600">Tiếp Theo Cần Tạo</span>
-          <span class="tid-badge-num bg-[#8C43F6] text-white">NEXT</span>
+          <span class="text-xs font-mono-code font-extrabold uppercase tracking-wider text-zinc-600">Tiếp Theo Cần Tạo</span>
+          <span class="tid-badge-num bg-[#6D28D9] text-white">NEXT</span>
         </div>
         <div class="mt-2">
-          <div id="statNextStt" class="text-xl font-display font-extrabold font-mono-code text-[#8C43F6]">#...</div>
-          <div id="statNextName" class="text-xs font-bold text-slate-700 truncate mt-0.5">Đang kiểm tra...</div>
+          <div id="statNextStt" class="text-xl font-display font-extrabold font-mono-code text-[#6D28D9]">#...</div>
+          <div id="statNextName" class="text-xs font-bold text-zinc-800 truncate mt-0.5">Đang kiểm tra...</div>
         </div>
       </div>
 
-      <div class="neo-box p-4 bg-[#FFE787] text-[#141414] flex flex-col justify-between">
+      <div class="neo-box p-4 bg-[#EAE5DA] text-[#111111] flex flex-col justify-between">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-extrabold uppercase tracking-wider text-[#141414]">Tiến Độ Toàn Dự Án</span>
-          <span id="statPercent" class="text-xl font-display font-extrabold font-mono-code text-[#141414]">0.0%</span>
+          <span class="text-xs font-mono-code font-extrabold uppercase tracking-wider text-[#111111]">Tiến Độ Toàn Dự Án</span>
+          <span id="statPercent" class="text-xl font-display font-extrabold font-mono-code text-[#111111]">0.0%</span>
         </div>
-        <div class="w-full h-3.5 bg-white border-2 border-[#141414] rounded-full overflow-hidden mt-3">
-          <div id="progressBar" class="h-full bg-[#169C64] transition-all duration-500" style="width: 0%"></div>
+        <div class="w-full h-3.5 bg-white border-2 border-[#111111] overflow-hidden mt-3 p-0.5">
+          <div id="progressBar" class="h-full bg-[#0F766E] transition-all duration-500" style="width: 0%"></div>
         </div>
-        <div class="text-[11px] font-mono-code font-bold text-slate-800 mt-2 flex justify-between">
+        <div class="text-xs font-mono-code font-bold text-zinc-700 mt-2 flex justify-between">
           <span>50 Giao tiếp (A2-B2)</span>
           <span>50 Nâng cao (C1-C2)</span>
         </div>
@@ -83,49 +83,49 @@
 
     <!-- 3. BẢNG ĐIỀU KHIỂN TẠO TỪ VỰNG AI & XUẤT DỮ LIỆU HÀNG LOẠT -->
     <section class="neo-box p-5 bg-white space-y-4">
-      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 border-b-2 border-[#111111]">
         <div>
-          <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
-            🚀 Trung Tâm Điều Khiển Tạo Từ Vựng Tự Động & Xuất Dữ Liệu Anki
+          <h3 class="font-display font-extrabold text-[#111111] text-base uppercase tracking-tight">
+            Trung Tâm Điều Khiển Tạo Từ Vựng Tự Động & Xuất Dữ Liệu Anki
           </h3>
-          <p class="text-xs text-slate-500 mt-0.5">
+          <p class="text-xs text-zinc-600 mt-0.5">
             Mỗi chủ đề gồm đúng <strong>100 danh từ tiếng Anh chuẩn</strong> (50 từ Giao tiếp A2-B2 + 50 từ Chuyên sâu C1-C2), 9 cột TSV và âm thanh Cambridge MP3.
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
           <!-- Cụm Tạo bằng AI -->
-          <div class="flex items-center bg-indigo-50 border border-indigo-200 rounded-xl p-1 gap-1.5">
-            <select id="batchSizeSelect" class="bg-white text-indigo-950 font-bold text-xs px-2.5 py-2 rounded-lg border border-indigo-200 focus:outline-none">
+          <div class="flex items-center bg-[#F4F1EA] border-2 border-[#111111] p-1 gap-1.5">
+            <select id="batchSizeSelect" class="bg-white text-[#111111] font-bold text-xs px-2.5 py-2 border border-[#111111] focus:outline-none">
               <option value="1">Chạy 1 chủ đề tiếp theo</option>
               <option value="3">Chạy 3 chủ đề liên tiếp</option>
               <option value="5" selected>Chạy 5 chủ đề liên tiếp</option>
               <option value="10">Chạy 10 chủ đề liên tiếp</option>
               <option value="20">Chạy 20 chủ đề liên tiếp</option>
             </select>
-            <button onclick="generateDirectlyInBrowser()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-lg shadow-sm transition flex items-center gap-1.5" title="Tạo trực tiếp ngay trên trình duyệt bằng Gemini API Key">
-              ⚡ Tạo Trực Tiếp (Thấy Từng Từ)
+            <button onclick="generateDirectlyInBrowser()" class="neo-btn px-3.5 py-2 bg-[#0F766E] text-white text-xs uppercase" title="Tạo trực tiếp ngay trên trình duyệt bằng Gemini API Key">
+              TẠO TRỰC TIẾP (THẤY TỪNG TỪ)
             </button>
-            <button onclick="triggerWorkflow()" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg shadow-sm transition flex items-center gap-1" title="Gửi lệnh chạy ngầm trên GitHub Actions">
-              ☁️ Chạy Cloud
+            <button onclick="triggerWorkflow()" class="neo-btn px-3 py-2 bg-[#111111] text-white text-xs uppercase" title="Gửi lệnh chạy ngầm trên GitHub Actions">
+              CHẠY CLOUD
             </button>
           </div>
 
           <!-- Cụm Tải Xuống Hàng Loạt -->
-          <button onclick="downloadSelectedOrAllZip()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
-            📦 Tải .ZIP (Nhiều file)
+          <button onclick="downloadSelectedOrAllZip()" class="neo-btn px-3.5 py-2 bg-white text-[#111111] text-xs uppercase">
+            TẢI .ZIP (NHIỀU FILE)
           </button>
-          <button onclick="downloadSelectedOrAllMerged()" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
-            📑 Gộp 1 File .TXT Tổng
+          <button onclick="downloadSelectedOrAllMerged()" class="neo-btn px-3.5 py-2 bg-white text-[#111111] text-xs uppercase">
+            GỘP 1 FILE .TXT TỔNG
           </button>
-          <button onclick="downloadSelectedOrAllCsv()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
-            📊 Xuất Bảng .CSV
+          <button onclick="downloadSelectedOrAllCsv()" class="neo-btn px-3.5 py-2 bg-white text-[#111111] text-xs uppercase">
+            XUẤT BẢNG .CSV
           </button>
-          <button onclick="downloadSelectedOrFirstAudioZip()" id="btnBulkAudioZip" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
-            🔊 Tải Audio (.ZIP)
+          <button onclick="downloadSelectedOrFirstAudioZip()" id="btnBulkAudioZip" class="neo-btn px-3.5 py-2 bg-[#0F766E] text-white text-xs uppercase">
+            TẢI AUDIO (.ZIP)
           </button>
-          <button onclick="loadData()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition">
-            🔄 Làm mới
+          <button onclick="loadData()" class="neo-btn px-3 py-2 bg-[#EAE5DA] text-[#111111] text-xs uppercase">
+            LÀM MỚI
           </button>
         </div>
       </div>
@@ -134,31 +134,31 @@
       <div class="space-y-3">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           <div class="flex flex-wrap items-center gap-1.5">
-            <button onclick="setStatusFilter('all')" id="filter-all" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-sm transition">
-              Tất cả (<span id="countAll">1000</span>)
+            <button onclick="setStatusFilter('all')" id="filter-all" class="filter-pill px-3 py-1.5 text-xs font-mono-code font-bold border-2 border-[#111111] bg-[#111111] text-white transition">
+              TẤT CẢ (<span id="countAll">1000</span>)
             </button>
-            <button onclick="setStatusFilter('completed')" id="filter-completed" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
-              ✅ Đã xong (<span id="countCompleted">0</span>)
+            <button onclick="setStatusFilter('completed')" id="filter-completed" class="filter-pill px-3 py-1.5 text-xs font-mono-code font-bold border-2 border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">
+              ĐÃ XONG (<span id="countCompleted">0</span>)
             </button>
-            <button onclick="setStatusFilter('pending')" id="filter-pending" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
-              ⏳ Chưa tạo (<span id="countPending">1000</span>)
+            <button onclick="setStatusFilter('pending')" id="filter-pending" class="filter-pill px-3 py-1.5 text-xs font-mono-code font-bold border-2 border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">
+              CHƯA TẠO (<span id="countPending">1000</span>)
             </button>
-            <button onclick="setStatusFilter('issue')" id="filter-issue" class="filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
-              ⚠️ Lệch chuẩn (<span id="countIssue">0</span>)
+            <button onclick="setStatusFilter('issue')" id="filter-issue" class="filter-pill px-3 py-1.5 text-xs font-mono-code font-bold border-2 border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">
+              LỆCH CHUẨN (<span id="countIssue">0</span>)
             </button>
           </div>
 
           <div class="flex flex-wrap items-center gap-2">
-            <div class="relative flex-1 sm:w-72">
-              <input id="searchInput" type="text" oninput="applyFiltersAndRender()" placeholder="🔍 Tìm tên chủ đề hoặc STT (VD: 23, gym)..." class="w-full pl-3.5 pr-8 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <div class="relative flex-1 sm:w-80">
+              <input id="searchInput" type="text" oninput="applyFiltersAndRender()" placeholder="Tìm tên chủ đề hoặc STT (VD: 23, gym)..." class="w-full px-3.5 py-1.5 text-xs border-2 border-[#111111] bg-white font-medium focus:outline-none" />
             </div>
-            <select id="sortSelect" onchange="applyFiltersAndRender()" class="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white font-medium text-slate-700">
+            <select id="sortSelect" onchange="applyFiltersAndRender()" class="text-xs border-2 border-[#111111] px-2.5 py-1.5 bg-white font-mono-code font-bold text-[#111111]">
               <option value="stt_asc">Sắp xếp: STT 1 → 1000</option>
               <option value="stt_desc">Sắp xếp: STT 1000 → 1</option>
               <option value="completed_first">Ưu tiên: Đã hoàn thành trước</option>
               <option value="pending_first">Ưu tiên: Chưa tạo trước</option>
             </select>
-            <select id="pageSizeSelect" onchange="applyFiltersAndRender()" class="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white font-medium text-slate-700">
+            <select id="pageSizeSelect" onchange="applyFiltersAndRender()" class="text-xs border-2 border-[#111111] px-2.5 py-1.5 bg-white font-mono-code font-bold text-[#111111]">
               <option value="50" selected>Hiển thị: 50 dòng/trang</option>
               <option value="100">Hiển thị: 100 dòng/trang</option>
               <option value="250">Hiển thị: 250 dòng/trang</option>
@@ -167,17 +167,17 @@
           </div>
         </div>
 
-        <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100">
-          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">Lĩnh vực:</span>
-          <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-800 text-white transition">Tất cả</button>
-          <button onclick="setCategoryFilter('nature')" id="cat-nature" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🌿 Tự nhiên & Địa lý (1–125)</button>
-          <button onclick="setCategoryFilter('career')" id="cat-career" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">💼 Kinh tế & Nghề nghiệp (126–250)</button>
-          <button onclick="setCategoryFilter('health')" id="cat-health" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🏥 Y tế & Thể thao (251–375)</button>
-          <button onclick="setCategoryFilter('tech')" id="cat-tech" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🔬 Khoa học & Công nghệ (376–500)</button>
-          <button onclick="setCategoryFilter('society')" id="cat-society" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🏛️ Xã hội & Pháp luật (501–625)</button>
-          <button onclick="setCategoryFilter('art')" id="cat-art" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🎨 Văn hóa & Nghệ thuật (626–750)</button>
-          <button onclick="setCategoryFilter('food')" id="cat-food" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🍜 Ẩm thực & Đời sống (751–875)</button>
-          <button onclick="setCategoryFilter('abstract')" id="cat-abstract" class="cat-pill px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">🧠 Tư duy & Học thuật (876–1000)</button>
+        <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-zinc-200">
+          <span class="text-xs font-mono-code font-bold uppercase tracking-wider text-zinc-500 mr-1">Lĩnh vực:</span>
+          <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-[#111111] text-white transition">TẤT CẢ</button>
+          <button onclick="setCategoryFilter('nature')" id="cat-nature" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">TỰ NHIÊN & ĐỊA LÝ (1–125)</button>
+          <button onclick="setCategoryFilter('career')" id="cat-career" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">KINH TẾ & NGHỀ NGHIỆP (126–250)</button>
+          <button onclick="setCategoryFilter('health')" id="cat-health" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">Y TẾ & THỂ THAO (251–375)</button>
+          <button onclick="setCategoryFilter('tech')" id="cat-tech" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">KHOA HỌC & CÔNG NGHỆ (376–500)</button>
+          <button onclick="setCategoryFilter('society')" id="cat-society" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">XÃ HỘI & PHÁP LUẬT (501–625)</button>
+          <button onclick="setCategoryFilter('art')" id="cat-art" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">VĂN HÓA & NGHỆ THUẬT (626–750)</button>
+          <button onclick="setCategoryFilter('food')" id="cat-food" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">ẨM THỰC & ĐỜI SỐNG (751–875)</button>
+          <button onclick="setCategoryFilter('abstract')" id="cat-abstract" class="cat-pill px-2.5 py-1 text-xs font-mono-code font-bold border border-[#111111] bg-white text-zinc-700 hover:bg-[#EAE5DA] transition">TƯ DUY & HỌC THUẬT (876–1000)</button>
         </div>
       </div>
     </section>
@@ -187,25 +187,25 @@
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
-            <tr class="bg-slate-50/90 border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            <tr class="bg-[#EAE5DA] border-b-2 border-[#111111] text-xs font-mono-code font-extrabold text-[#111111] uppercase tracking-wider">
               <th class="p-3.5 w-10 text-center">
-                <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAllPage(this)" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" />
+                <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAllPage(this)" class="border-2 border-[#111111] text-[#111111] focus:ring-0 cursor-pointer" />
               </th>
               <th class="p-3.5 w-16">STT</th>
-              <th class="p-3.5">Tên Chủ Đề & Nhóm Lĩnh Vực</th>
-              <th class="p-3.5 w-36 text-center">Trạng Thái</th>
-              <th class="p-3.5 w-28 text-center">Số Lượng Từ</th>
-              <th class="p-3.5 w-72 text-right">Hành Động & Tác Vụ</th>
+              <th class="p-3.5">TÊN CHỦ ĐỀ & NHÓM LĨNH VỰC</th>
+              <th class="p-3.5 w-36 text-center">TRẠNG THÁI</th>
+              <th class="p-3.5 w-28 text-center">SỐ LƯỢNG TỪ</th>
+              <th class="p-3.5 w-72 text-right">HÀNH ĐỘNG & TÁC VỤ</th>
             </tr>
           </thead>
-          <tbody id="topicTableBody" class="divide-y divide-slate-100 text-sm"></tbody>
+          <tbody id="topicTableBody" class="divide-y divide-zinc-200 text-xs"></tbody>
         </table>
       </div>
 
-      <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+      <div class="p-4 bg-[#EAE5DA] border-t-2 border-[#111111] flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-3">
-          <span id="paginationInfo" class="text-xs font-medium text-slate-600">Hiển thị 0–0 / 1000 chủ đề</span>
-          <span id="selectedCountBadge" class="hidden px-2.5 py-0.5 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold">Đã chọn: 0</span>
+          <span id="paginationInfo" class="text-xs font-mono-code font-bold text-zinc-700">HIỂN THỊ 0–0 / 1000 CHỦ ĐỀ</span>
+          <span id="selectedCountBadge" class="hidden px-2.5 py-0.5 bg-[#111111] text-white text-xs font-mono-code font-bold">ĐÃ CHỌN: 0</span>
         </div>
         <div class="flex items-center gap-1.5" id="paginationControls"></div>
       </div>

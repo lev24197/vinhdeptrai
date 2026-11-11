@@ -73,7 +73,7 @@ function renderConsoleLogs() {
 
     return `<div class="flex items-start gap-2 border-b border-slate-900 pb-1">
       <span class="text-slate-500 shrink-0">[${log.time}]</span>
-      <span class="px-1.5 py-0.2 rounded text-[10px] font-bold shrink-0 ${badgeBg}">${log.level}</span>
+      <span class="px-1.5 py-0.5 text-xs font-mono-code font-bold shrink-0 ${badgeBg}">${log.level}</span>
       <span class="text-indigo-400 font-bold shrink-0">[${log.step}]</span>
       <span class="${color} break-all">${log.message}</span>
     </div>`;
@@ -126,8 +126,8 @@ async function loadRunLogs() {
 async function loadData(silent = false) {
   const badge = document.getElementById('syncBadge');
   if (!silent && badge) {
-    badge.innerText = '🔄 Đang tải dữ liệu...';
-    badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 border-2 border-[#141414]';
+    badge.innerText = 'TRẠNG THÁI: ĐANG TẢI DỮ LIỆU...';
+    badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-[#EAE5DA] text-[#111111] border-2 border-[#111111]';
   }
 
   try {
@@ -149,20 +149,20 @@ async function loadData(silent = false) {
     if (activePage === 'audit.html' && typeof initAuditPage === 'function') initAuditPage();
     if (activePage === 'quiz.html' && typeof renderQuizTopicSelection === 'function') renderQuizTopicSelection();
 
-    const mode = window.location.protocol === 'file:' ? '☁️ GitHub Cloud' : '🌐 GitHub Pages';
+    const mode = window.location.protocol === 'file:' ? 'GITHUB CLOUD' : 'GITHUB PAGES';
     const updatedLabel = statusUpdatedAt ? statusUpdatedAt.split(' ')[1] || statusUpdatedAt : new Date().toLocaleTimeString('vi-VN');
     if (badge) {
-      badge.innerText = `🟢 ${allTopics.length} chủ đề • DB ${updatedLabel} (${mode})`;
-      badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-[#E3F7ED] text-[#141414] border-2 border-[#141414] shadow-[2px_2px_0px_#141414]';
+      badge.innerText = `[KẾT NỐI] ${allTopics.length} CHỦ ĐỀ • DB ${updatedLabel} (${mode})`;
+      badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-white text-[#0F766E] border-2 border-[#111111] shadow-[2px_2px_0px_#111111]';
       badge.onclick = null;
     }
     if (!silent) logToConsole('SUCCESS', 'DATABASE', `Đã nạp database ${DATABASE_FILE}: ${allTopics.length} chủ đề (cập nhật ${statusUpdatedAt || 'không rõ'}).`);
   } catch (err) {
     if (badge) {
-      badge.innerText = '⚠️ Chưa kết nối dữ liệu (Bấm ⚙️ Cấu hình API)';
-      badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-rose-100 text-rose-800 border-2 border-[#141414] cursor-pointer';
+      badge.innerText = '[CHƯA KẾT NỐI] BẤM VÀO ĐÂY ĐỂ CẤU HÌNH API';
+      badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-[#F4F1EA] text-[#BE123C] border-2 border-[#111111] cursor-pointer';
       badge.onclick = () => { if (typeof openSettings === 'function') openSettings(); };
     }
-    logToConsole('ERROR', 'DATABASE', `Không thể nạp database ${DATABASE_FILE}: ${err.message}. Kiểm tra GitHub Owner/Repo/Branch trong ⚙️ Cấu hình API.`);
+    logToConsole('ERROR', 'DATABASE', `Không thể nạp database ${DATABASE_FILE}: ${err.message}. Kiểm tra GitHub Owner/Repo/Branch trong Cấu hình API.`);
   }
 }

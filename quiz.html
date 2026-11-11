@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-[#F4F1EA] text-[#111111]">
 
   <!-- THANH ĐIỀU HƯỚNG DÙNG CHUNG -->
   <div id="sharedNavbarMount"></div>
@@ -22,98 +22,98 @@
     <!-- ĐẤU TRƯỜNG TRẮC NGHIỆM TỪ VỰNG ANKI -->
     <section id="mainView-quiz" class="neo-box bg-white p-6 space-y-6">
       <div id="quizView-setup" class="space-y-6">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b-2 border-[#141414]">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b-2 border-[#111111]">
           <div>
             <div class="flex items-center gap-2">
-              <span class="tid-badge-num bg-[#FF9F1C] text-[#141414]">QUIZ ARENA</span>
-              <h3 class="font-display font-extrabold text-xl text-[#141414]">
-                🎯 Đấu Trường Trắc Nghiệm Từ Vựng Anki
+              <span class="tid-badge-num bg-[#111111] text-white">QUIZ ARENA</span>
+              <h3 class="font-display font-extrabold text-xl text-[#111111] uppercase tracking-tight">
+                Đấu Trường Trắc Nghiệm Từ Vựng Anki
               </h3>
             </div>
-            <p class="text-xs text-slate-600 mt-1 font-medium">
+            <p class="text-xs text-zinc-600 mt-1 font-medium">
               Tích chọn các chủ đề bạn đã học trên Anki để hệ thống trộn ngẫu nhiên câu hỏi trắc nghiệm 4 đáp án, kiểm tra phản xạ nghĩa & phát âm chuẩn US.
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <span id="quizCompletedTopicsNotice" class="px-3 py-1.5 bg-[#E3F7ED] border-2 border-[#141414] rounded-lg text-xs font-mono-code font-bold text-[#141414]">
-              0 chủ đề đã hoàn thành
+            <span id="quizCompletedTopicsNotice" class="px-3 py-1.5 bg-[#EAE5DA] border-2 border-[#111111] text-xs font-mono-code font-bold text-[#111111] uppercase">
+              0 CHỦ ĐỀ ĐÃ HOÀN THÀNH
             </span>
           </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <!-- Cột 1 & 2: Chọn các chủ đề muốn thi -->
-          <div class="lg:col-span-2 neo-box-sm p-4 bg-[#F6F4EE] space-y-3">
+          <div class="lg:col-span-2 neo-box-sm p-4 bg-[#F4F1EA] space-y-3">
             <div class="flex flex-wrap items-center justify-between gap-2">
-              <label class="font-display font-extrabold text-sm text-[#141414] flex items-center gap-2">
-                <span>1️⃣ Chọn các chủ đề bạn đã học trên Anki:</span>
-                <span id="quizSelectedCountBadge" class="px-2 py-0.5 bg-[#141414] text-[#FFE787] rounded text-xs font-mono-code">0 / 0</span>
+              <label class="font-display font-extrabold text-sm text-[#111111] flex items-center gap-2 uppercase">
+                <span>01. Chọn các chủ đề đã học trên Anki:</span>
+                <span id="quizSelectedCountBadge" class="px-2 py-0.5 bg-[#111111] text-white text-xs font-mono-code">0 / 0</span>
               </label>
               <div class="flex flex-wrap items-center gap-1.5">
-                <button type="button" onclick="selectAllQuizTopics(true)" class="neo-btn px-2.5 py-1 bg-[#FFE787] text-[#111] text-xs font-bold">
-                  ✓ Chọn tất cả
+                <button type="button" onclick="selectAllQuizTopics(true)" class="neo-btn px-2.5 py-1 bg-white text-[#111111] text-xs uppercase">
+                  CHỌN TẤT CẢ
                 </button>
-                <button type="button" onclick="selectRecentQuizTopics(5)" class="neo-btn px-2.5 py-1 bg-white text-[#111] text-xs font-bold">
-                  ⚡ 5 chủ đề đầu
+                <button type="button" onclick="selectRecentQuizTopics(5)" class="neo-btn px-2.5 py-1 bg-white text-[#111111] text-xs uppercase">
+                  5 CHỦ ĐỀ ĐẦU
                 </button>
-                <button type="button" onclick="selectAllQuizTopics(false)" class="neo-btn px-2.5 py-1 bg-white text-slate-600 text-xs font-bold">
-                  ✕ Bỏ chọn hết
+                <button type="button" onclick="selectAllQuizTopics(false)" class="neo-btn px-2.5 py-1 bg-white text-zinc-600 text-xs uppercase">
+                  BỎ CHỌN HẾT
                 </button>
               </div>
             </div>
 
             <div>
-              <input id="quizTopicSearch" type="text" oninput="filterQuizTopicsUI()" placeholder="🔍 Tìm nhanh chủ đề đã hoàn thành để tích chọn..." class="w-full px-3 py-2 text-xs rounded-lg border-2 border-[#141414] bg-white font-medium focus:outline-none" />
+              <input id="quizTopicSearch" type="text" oninput="filterQuizTopicsUI()" placeholder="Tìm nhanh chủ đề đã hoàn thành để tích chọn..." class="w-full px-3 py-2 text-xs border-2 border-[#111111] bg-white font-medium focus:outline-none" />
             </div>
 
-            <div id="quizTopicCheckboxGrid" class="max-h-72 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-white border-2 border-[#141414] rounded-lg">
-              <div class="p-4 text-xs text-slate-400 col-span-full text-center">Đang tải danh sách chủ đề đã hoàn thành...</div>
+            <div id="quizTopicCheckboxGrid" class="max-h-72 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-white border-2 border-[#111111]">
+              <div class="p-4 text-xs font-mono-code text-zinc-500 col-span-full text-center uppercase">Đang tải danh sách chủ đề đã hoàn thành...</div>
             </div>
           </div>
 
           <!-- Cột 3: Tùy chỉnh chế độ thi -->
-          <div class="neo-box-sm p-5 bg-[#FFFDF7] flex flex-col justify-between space-y-4">
+          <div class="neo-box-sm p-5 bg-white flex flex-col justify-between space-y-4">
             <div class="space-y-4">
-              <h4 class="font-display font-extrabold text-sm text-[#141414] border-b-2 border-[#141414] pb-2">
-                2️⃣ Cấu Hình Bài Kiểm Tra
+              <h4 class="font-display font-extrabold text-sm text-[#111111] border-b-2 border-[#111111] pb-2 uppercase">
+                02. Cấu Hình Bài Kiểm Tra
               </h4>
 
               <div>
-                <label class="block text-xs font-extrabold text-slate-700 mb-1.5">Số lượng câu hỏi:</label>
+                <label class="block text-xs font-mono-code font-extrabold text-zinc-700 mb-1.5 uppercase">Số lượng câu hỏi:</label>
                 <div class="grid grid-cols-4 gap-1.5">
-                  <button type="button" onclick="setQuizQuestionCount(10)" id="qCountBtn-10" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111] bg-[#111] text-white">10 câu</button>
-                  <button type="button" onclick="setQuizQuestionCount(20)" id="qCountBtn-20" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111] bg-white text-[#111]">20 câu</button>
-                  <button type="button" onclick="setQuizQuestionCount(50)" id="qCountBtn-50" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111] bg-white text-[#111]">50 câu</button>
-                  <button type="button" onclick="setQuizQuestionCount(100)" id="qCountBtn-100" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111] bg-white text-[#111]">100 câu</button>
+                  <button type="button" onclick="setQuizQuestionCount(10)" id="qCountBtn-10" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111111] bg-[#111111] text-white">10 CÂU</button>
+                  <button type="button" onclick="setQuizQuestionCount(20)" id="qCountBtn-20" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111111] bg-white text-[#111111]">20 CÂU</button>
+                  <button type="button" onclick="setQuizQuestionCount(50)" id="qCountBtn-50" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111111] bg-white text-[#111111]">50 CÂU</button>
+                  <button type="button" onclick="setQuizQuestionCount(100)" id="qCountBtn-100" class="quiz-qcount-btn py-2 text-xs font-mono-code font-extrabold border-2 border-[#111111] bg-white text-[#111111]">100 CÂU</button>
                 </div>
               </div>
 
               <div>
-                <label class="block text-xs font-extrabold text-slate-700 mb-1.5">Kiểu câu hỏi trắc nghiệm:</label>
-                <select id="quizModeSelect" class="w-full px-3 py-2 text-xs font-bold border-2 border-[#141414] rounded-lg bg-white">
-                  <option value="mixed">🔀 Trộn ngẫu nhiên (Anh ⇄ Việt)</option>
-                  <option value="en_to_vi">🇬🇧 ➔ 🇻🇳 Nhìn từ Tiếng Anh chọn Nghĩa Việt</option>
-                  <option value="vi_to_en">🇻🇳 ➔ 🇬🇧 Nhìn Nghĩa Việt chọn từ Tiếng Anh</option>
+                <label class="block text-xs font-mono-code font-extrabold text-zinc-700 mb-1.5 uppercase">Kiểu câu hỏi trắc nghiệm:</label>
+                <select id="quizModeSelect" class="w-full px-3 py-2 text-xs font-bold border-2 border-[#111111] bg-white">
+                  <option value="mixed">Trộn ngẫu nhiên (Anh &lt;-&gt; Việt)</option>
+                  <option value="en_to_vi">[EN -&gt; VI] Nhìn từ Tiếng Anh chọn Nghĩa Việt</option>
+                  <option value="vi_to_en">[VI -&gt; EN] Nhìn Nghĩa Việt chọn từ Tiếng Anh</option>
                 </select>
               </div>
 
               <div>
-                <label class="block text-xs font-extrabold text-slate-700 mb-1.5">Cấp độ từ vựng muốn ôn:</label>
-                <select id="quizLevelSelect" onchange="updateQuizWordsCountBadge()" class="w-full px-3 py-2 text-xs font-bold border-2 border-[#141414] rounded-lg bg-white">
-                  <option value="all">🌟 Cả 2 phần: Giao tiếp A2-B2 + Nâng cao C1-C2 (100 từ/chủ đề)</option>
-                  <option value="conversational">💬 Chỉ Phần 1: Giao tiếp thông dụng A2-B2 (50 từ đầu)</option>
-                  <option value="advanced">🎓 Chỉ Phần 2: Chuyên sâu & Học thuật C1-C2 (50 từ sau)</option>
+                <label class="block text-xs font-mono-code font-extrabold text-zinc-700 mb-1.5 uppercase">Cấp độ từ vựng muốn ôn:</label>
+                <select id="quizLevelSelect" onchange="updateQuizWordsCountBadge()" class="w-full px-3 py-2 text-xs font-bold border-2 border-[#111111] bg-white">
+                  <option value="all">Cả 2 phần: Giao tiếp A2-B2 + Nâng cao C1-C2 (100 từ/chủ đề)</option>
+                  <option value="conversational">Chỉ Phần 1: Giao tiếp thông dụng A2-B2 (50 từ đầu)</option>
+                  <option value="advanced">Chỉ Phần 2: Chuyên sâu & Học thuật C1-C2 (50 từ sau)</option>
                 </select>
               </div>
             </div>
 
-            <div class="pt-3 border-t-2 border-[#141414] space-y-2">
-              <div class="flex items-center justify-between text-xs font-mono-code font-bold text-slate-600">
-                <span>Kho từ khả dụng:</span>
-                <span id="quizTotalWordsAvailable" class="text-[#169C64] font-extrabold">0 từ</span>
+            <div class="pt-3 border-t-2 border-[#111111] space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono-code font-bold text-zinc-600">
+                <span>KHO TỪ KHẢ DỤNG:</span>
+                <span id="quizTotalWordsAvailable" class="text-[#0F766E] font-extrabold">0 TỪ</span>
               </div>
-              <button type="button" onclick="startQuizSession()" class="w-full neo-btn py-3.5 bg-[#169C64] text-white font-display font-extrabold text-sm tracking-wide flex items-center justify-center gap-2">
-                <span>🚀 BẮT ĐẦU LÀM BÀI TRẮC NGHIỆM</span>
+              <button type="button" onclick="startQuizSession()" class="w-full neo-btn py-3.5 bg-[#0F766E] text-white font-display font-extrabold text-xs sm:text-sm tracking-wide uppercase">
+                BẮT ĐẦU LÀM BÀI TRẮC NGHIỆM
               </button>
             </div>
           </div>
@@ -122,109 +122,109 @@
 
       <!-- MÀN HÌNH ĐANG LÀM BÀI -->
       <div id="quizView-play" class="hidden space-y-3">
-        <div class="flex flex-wrap items-center justify-between gap-2 p-2.5 sm:p-3 bg-[#141414] text-white rounded-xl border-2 border-[#141414]">
+        <div class="flex flex-wrap items-center justify-between gap-2 p-3 bg-[#111111] text-white border-2 border-[#111111]">
           <div class="flex items-center gap-2">
-            <span id="quizPlayBadge" class="px-2.5 py-0.5 bg-[#FFE787] text-[#141414] font-mono-code font-extrabold text-xs rounded">CÂU 1/10</span>
-            <span id="quizPlayTopicName" class="text-xs font-bold text-slate-300 truncate max-w-[180px] sm:max-w-xs">#1 Chủ đề</span>
+            <span id="quizPlayBadge" class="px-2.5 py-0.5 bg-[#EAE5DA] text-[#111111] font-mono-code font-extrabold text-xs">CÂU 1/10</span>
+            <span id="quizPlayTopicName" class="text-xs font-mono-code font-bold text-zinc-300 truncate max-w-[180px] sm:max-w-xs uppercase">#1 Chủ đề</span>
           </div>
 
           <div class="flex items-center gap-3 font-mono-code text-xs font-bold">
-            <span class="px-2.5 py-0.5 bg-[#169C64] text-white rounded">🏆 Điểm: <strong id="quizCurrentScore">0</strong></span>
-            <span class="px-2.5 py-0.5 bg-[#FF9F1C] text-[#111] rounded">🔥 Chuỗi: <strong id="quizStreakCount">0</strong></span>
-            <span id="quizComboMultiplier" class="hidden px-2 py-0.5 bg-[#F05332] text-white rounded font-extrabold animate-bounce">COMBO x1.5</span>
-            <button type="button" onclick="quitQuizEarly()" class="px-2.5 py-0.5 bg-rose-600 hover:bg-rose-700 text-white rounded text-xs font-bold">
-              ✕ Kết thúc
+            <span class="px-2.5 py-0.5 bg-[#0F766E] text-white">ĐIỂM: <strong id="quizCurrentScore">0</strong></span>
+            <span class="px-2.5 py-0.5 bg-[#D97706] text-white">CHUỖI: <strong id="quizStreakCount">0</strong></span>
+            <span id="quizComboMultiplier" class="hidden px-2 py-0.5 bg-[#BE123C] text-white font-extrabold animate-bounce">COMBO x1.5</span>
+            <button type="button" onclick="quitQuizEarly()" class="px-2.5 py-0.5 bg-[#BE123C] text-white text-xs font-mono-code uppercase font-bold">
+              KẾT THÚC
             </button>
           </div>
         </div>
 
-        <div class="w-full h-2.5 bg-[#EFECE6] border-2 border-[#141414] rounded-full overflow-hidden">
-          <div id="quizPlayProgressBar" class="h-full bg-[#169C64] transition-all duration-300" style="width: 10%"></div>
+        <div class="w-full h-3 bg-[#EAE5DA] border-2 border-[#111111] p-0.5">
+          <div id="quizPlayProgressBar" class="h-full bg-[#0F766E] transition-all duration-300" style="width: 10%"></div>
         </div>
 
-        <div class="max-w-3xl mx-auto neo-box p-4 sm:p-6 bg-[#FFFDF7] space-y-4">
+        <div class="max-w-3xl mx-auto neo-box p-4 sm:p-6 bg-white space-y-4">
           <div class="text-center space-y-1.5">
             <div class="flex items-center justify-center gap-2">
-              <span id="quizQuestionLevelBadge" class="tid-badge-num bg-emerald-100 text-emerald-900">A2-B2 GIAO TIẾP</span>
-              <span id="quizPromptSubtitle" class="text-[11px] font-mono-code font-bold text-slate-500">Chọn đáp án đúng nhất:</span>
+              <span id="quizQuestionLevelBadge" class="tid-badge-num bg-[#EAE5DA] text-[#111111]">A2-B2 GIAO TIẾP</span>
+              <span id="quizPromptSubtitle" class="text-xs font-mono-code font-bold text-zinc-600 uppercase">Chọn đáp án đúng nhất:</span>
             </div>
 
             <div class="flex items-center justify-center gap-2.5 pt-1">
-              <h2 id="quizPromptMain" class="text-xl sm:text-3xl font-display font-extrabold text-[#141414] tracking-tight">word</h2>
-              <button type="button" id="quizSpeakBtn" onclick="speakCurrentQuizPrompt()" class="neo-btn w-8 h-8 rounded-full bg-[#FFE787] text-[#141414] flex items-center justify-center text-sm shrink-0" title="Nghe phát âm">
-                🔊
+              <h2 id="quizPromptMain" class="text-xl sm:text-3xl font-display font-extrabold text-[#111111] tracking-tight">word</h2>
+              <button type="button" id="quizSpeakBtn" onclick="speakCurrentQuizPrompt()" class="neo-btn px-2.5 py-1 bg-[#EAE5DA] text-[#111111] text-xs font-mono-code uppercase shrink-0" title="Nghe phát âm">
+                PHÁT ÂM
               </button>
             </div>
 
-            <div id="quizPromptIpa" class="font-mono-code text-xs sm:text-sm font-bold text-indigo-700"></div>
-            <div id="quizPromptHint" class="text-xs text-slate-600 italic max-w-xl mx-auto line-clamp-2"></div>
+            <div id="quizPromptIpa" class="font-mono-code text-xs sm:text-sm font-bold text-[#1D4ED8]"></div>
+            <div id="quizPromptHint" class="text-xs text-zinc-600 italic max-w-xl mx-auto line-clamp-2"></div>
           </div>
 
           <div id="quizOptionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
 
-          <div id="quizExplainBox" class="hidden p-3.5 bg-[#F6F4EE] border-2 border-[#141414] rounded-xl space-y-1.5">
+          <div id="quizExplainBox" class="hidden p-3.5 bg-[#F4F1EA] border-2 border-[#111111] space-y-1.5">
             <div class="flex flex-wrap items-center justify-between gap-2">
-              <div id="quizFeedbackStatus" class="font-display font-extrabold text-xs sm:text-sm"></div>
-              <button type="button" onclick="nextQuizCard()" id="quizNextBtn" class="neo-btn px-4 py-1.5 bg-[#141414] text-[#FFE787] font-display font-extrabold text-xs">
-                CÂU TIẾP THEO ➔ (Enter)
+              <div id="quizFeedbackStatus" class="font-display font-extrabold text-xs sm:text-sm uppercase"></div>
+              <button type="button" onclick="nextQuizCard()" id="quizNextBtn" class="neo-btn px-4 py-1.5 bg-[#111111] text-white font-display font-extrabold text-xs uppercase">
+                CÂU TIẾP THEO (ENTER)
               </button>
             </div>
-            <div class="text-xs text-slate-700 space-y-1 pt-1.5 border-t border-slate-300">
-              <div><strong class="text-[#141414]" id="quizExpWordTitle"></strong> <span class="font-mono-code text-indigo-700" id="quizExpIpa"></span> <span class="font-mono-code text-slate-500" id="quizExpPlural"></span></div>
-              <div class="font-semibold text-emerald-800" id="quizExpVi"></div>
-              <div class="italic text-slate-600" id="quizExpDef"></div>
-              <div class="font-mono-code text-[11px] text-slate-600 bg-white p-2 border border-slate-300 rounded mt-1" id="quizExpExamples"></div>
+            <div class="text-xs text-zinc-700 space-y-1 pt-1.5 border-t border-zinc-300">
+              <div><strong class="text-[#111111]" id="quizExpWordTitle"></strong> <span class="font-mono-code text-[#1D4ED8]" id="quizExpIpa"></span> <span class="font-mono-code text-zinc-500" id="quizExpPlural"></span></div>
+              <div class="font-semibold text-[#0F766E]" id="quizExpVi"></div>
+              <div class="italic text-zinc-600" id="quizExpDef"></div>
+              <div class="font-mono-code text-xs text-zinc-600 bg-white p-2 border border-zinc-300 mt-1" id="quizExpExamples"></div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- MÀN HÌNH TỔNG KẾT -->
-      <div id="quizView-result" class="hidden max-w-3xl mx-auto neo-box p-6 sm:p-8 bg-[#FFFDF7] space-y-6 text-center">
+      <div id="quizView-result" class="hidden max-w-3xl mx-auto neo-box p-6 sm:p-8 bg-white space-y-6 text-center">
         <div class="space-y-2">
-          <span id="quizResultRankBadge" class="inline-block px-4 py-1 bg-[#FFE787] border-2 border-[#141414] font-mono-code font-extrabold text-xs uppercase shadow-[2px_2px_0px_#141414]">
+          <span id="quizResultRankBadge" class="inline-block px-4 py-1 bg-[#EAE5DA] border-2 border-[#111111] font-mono-code font-extrabold text-xs uppercase shadow-[2px_2px_0px_#111111]">
             HOÀN THÀNH BÀI THI
           </span>
-          <div id="quizResultEmoji" class="text-6xl pt-2">🏆</div>
-          <h2 id="quizResultTitle" class="text-2xl sm:text-3xl font-display font-extrabold text-[#141414]">KẾT QUẢ XUẤT SẮC!</h2>
-          <p id="quizResultSub" class="text-xs sm:text-sm text-slate-600 font-medium"></p>
+          <div id="quizResultEmoji" class="text-2xl font-mono-code font-extrabold pt-2 text-[#0F766E] uppercase">[KẾT QUẢ ĐÃ GHI NHẬN]</div>
+          <h2 id="quizResultTitle" class="text-2xl sm:text-3xl font-display font-extrabold text-[#111111] uppercase">KẾT QUẢ XUẤT SẮC!</h2>
+          <p id="quizResultSub" class="text-xs sm:text-sm text-zinc-600 font-medium"></p>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-          <div class="neo-box-sm p-3.5 bg-white">
-            <div class="text-[11px] font-bold text-slate-500 uppercase">Tổng Điểm</div>
-            <div id="quizResultScore" class="text-2xl font-display font-extrabold text-[#169C64] mt-1">0</div>
+          <div class="neo-box-sm p-3.5 bg-[#F4F1EA]">
+            <div class="text-xs font-mono-code font-bold text-zinc-500 uppercase">TỔNG ĐIỂM</div>
+            <div id="quizResultScore" class="text-2xl font-display font-extrabold text-[#0F766E] mt-1">0</div>
           </div>
-          <div class="neo-box-sm p-3.5 bg-white">
-            <div class="text-[11px] font-bold text-slate-500 uppercase">Tỷ Lệ Chính Xác</div>
-            <div id="quizResultAccuracy" class="text-2xl font-display font-extrabold text-[#2B59FF] mt-1">0%</div>
+          <div class="neo-box-sm p-3.5 bg-[#F4F1EA]">
+            <div class="text-xs font-mono-code font-bold text-zinc-500 uppercase">TỶ LỆ CHÍNH XÁC</div>
+            <div id="quizResultAccuracy" class="text-2xl font-display font-extrabold text-[#1D4ED8] mt-1">0%</div>
           </div>
-          <div class="neo-box-sm p-3.5 bg-white">
-            <div class="text-[11px] font-bold text-slate-500 uppercase">Chuỗi Đúng Kỷ Lục</div>
-            <div id="quizResultMaxStreak" class="text-2xl font-display font-extrabold text-[#FF9F1C] mt-1">0</div>
+          <div class="neo-box-sm p-3.5 bg-[#F4F1EA]">
+            <div class="text-xs font-mono-code font-bold text-zinc-500 uppercase">CHUỖI ĐÚNG KỶ LỤC</div>
+            <div id="quizResultMaxStreak" class="text-2xl font-display font-extrabold text-[#D97706] mt-1">0</div>
           </div>
-          <div class="neo-box-sm p-3.5 bg-white">
-            <div class="text-[11px] font-bold text-slate-500 uppercase">Số Câu Đúng</div>
-            <div id="quizResultCorrectRatio" class="text-2xl font-display font-extrabold text-[#141414] mt-1">0/0</div>
+          <div class="neo-box-sm p-3.5 bg-[#F4F1EA]">
+            <div class="text-xs font-mono-code font-bold text-zinc-500 uppercase">SỐ CÂU ĐÚNG</div>
+            <div id="quizResultCorrectRatio" class="text-2xl font-display font-extrabold text-[#111111] mt-1">0/0</div>
           </div>
         </div>
 
         <div id="quizMistakesContainer" class="hidden text-left space-y-2">
-          <h4 class="font-display font-extrabold text-sm text-[#F05332] flex items-center gap-1.5">
-            <span>⚠️ Danh sách các từ bạn trả lời sai cần ôn lại ngay (<span id="quizMistakeCountText">0</span> từ):</span>
+          <h4 class="font-display font-extrabold text-sm text-[#BE123C] flex items-center gap-1.5 uppercase">
+            <span>Danh sách các từ bạn trả lời sai cần ôn lại ngay (<span id="quizMistakeCountText">0</span> từ):</span>
           </h4>
-          <div id="quizMistakeWordList" class="max-h-60 overflow-y-auto divide-y divide-slate-200 border-2 border-[#141414] bg-white rounded-lg p-2"></div>
+          <div id="quizMistakeWordList" class="max-h-60 overflow-y-auto divide-y divide-zinc-200 border-2 border-[#111111] bg-white p-2"></div>
         </div>
 
         <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <button type="button" id="btnRetryMistakes" onclick="retryMistakeWordsQuiz()" class="hidden neo-btn px-5 py-3 bg-[#F05332] text-white font-display font-extrabold text-xs">
-            🔥 ÔN LẠI CÁC TỪ VỪA SAI
+          <button type="button" id="btnRetryMistakes" onclick="retryMistakeWordsQuiz()" class="hidden neo-btn px-5 py-3 bg-[#BE123C] text-white font-display font-extrabold text-xs uppercase">
+            ÔN LẠI CÁC TỪ VỪA SAI
           </button>
-          <button type="button" onclick="playAgainSameSettings()" class="neo-btn px-5 py-3 bg-[#169C64] text-white font-display font-extrabold text-xs">
-            🔄 THI LẠI ĐỀ MỚI (CÙNG CHỦ ĐỀ)
+          <button type="button" onclick="playAgainSameSettings()" class="neo-btn px-5 py-3 bg-[#0F766E] text-white font-display font-extrabold text-xs uppercase">
+            THI LẠI ĐỀ MỚI (CÙNG CHỦ ĐỀ)
           </button>
-          <button type="button" onclick="backToQuizSetup()" class="neo-btn px-5 py-3 bg-[#FFE787] text-[#141414] font-display font-extrabold text-xs">
-            ⚙️ ĐỔI CHỦ ĐỀ KHÁC
+          <button type="button" onclick="backToQuizSetup()" class="neo-btn px-5 py-3 bg-white text-[#111111] font-display font-extrabold text-xs uppercase">
+            ĐỔI CHỦ ĐỀ KHÁC
           </button>
         </div>
       </div>

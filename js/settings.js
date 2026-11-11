@@ -110,5 +110,5 @@ function saveSettings() {
   if (typeof logToConsole === 'function') {
     logToConsole('SUCCESS', 'CONFIG', `Đã cập nhật cấu hình GitHub, Gemini (${modelVal}) & Cloud Audio Service.`);
   }
-  showToastAlert('✅ Đã lưu cấu hình API thành công!', 'success');
+  showToastAlert('ĐÃ LƯU CẤU HÌNH API THÀNH CÔNG', 'success');
 }

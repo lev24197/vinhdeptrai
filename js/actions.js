@@ -12,11 +12,11 @@ function showLiveRunner(title, pct, stepIndex, isError = false) {
   bar.innerText = `${pct}%`;
 
   if (isError) {
-    bar.className = 'h-full bg-[#F05332] transition-all duration-300 flex items-center justify-end pr-2 text-[11px] font-mono-code font-extrabold text-white';
+    bar.className = 'h-full bg-[#BE123C] transition-all duration-300 flex items-center justify-end pr-2 text-xs font-mono-code font-extrabold text-white';
     badge.className = 'tid-badge-num bg-[#F05332]';
     badge.innerText = 'ERROR';
   } else {
-    bar.className = 'h-full bg-[#169C64] progress-stripes transition-all duration-500 flex items-center justify-end pr-2 text-[11px] font-mono-code font-extrabold text-white';
+    bar.className = 'h-full bg-[#0F766E] transition-all duration-500 flex items-center justify-end pr-2 text-xs font-mono-code font-extrabold text-white';
     badge.className = 'tid-badge-num bg-blue-600';
     badge.innerText = 'LIVE RUNNER';
   }
@@ -38,7 +38,7 @@ async function triggerWorkflow(batchSize, targetStt) {
   const token = localStorage.getItem('gh_token');
 
   if (!owner || !repo || !token) {
-    alert('Vui lòng bấm "⚙️ Cấu hình API" và điền Owner, Repo, GitHub Token trước!');
+    alert('Vui lòng bấm "Cấu hình API" và điền Owner, Repo, GitHub Token trước!');
     openSettings();
     return;
   }
@@ -119,7 +119,7 @@ async function pollGitHubActionSteps() {
           const estPct = Math.min(88, Math.max(42, Math.floor(40 + (elapsed - 15) * 0.8)));
           const estWords = Math.min(95, Math.max(5, Math.floor((estPct - 35) * (100 / 53))));
 
-          showLiveRunner('⚡ [MÁY ẢO GITHUB] ĐANG GỌI GEMINI 3.1 FLASH LITE TẠO 100 TỪ VỰNG...', estPct, stepIdx);
+          showLiveRunner('[MÁY ẢO GITHUB] ĐANG GỌI GEMINI 3.1 FLASH LITE TẠO 100 TỪ VỰNG...', estPct, stepIdx);
 
           const trackerBox = document.getElementById('liveWordTrackerBox');
           if (trackerBox) trackerBox.classList.remove('hidden');
@@ -158,14 +158,14 @@ async function pollGitHubActionSteps() {
     } else if (run.status === 'completed') {
       if (actionPollTimer) { clearInterval(actionPollTimer); actionPollTimer = null; }
       if (run.conclusion === 'success') {
-        showLiveRunner('🎉 HOÀN TẤT TẠO TỪ VỰNG! ĐANG ĐỒNG BỘ DỮ LIỆU...', 100, 5, false);
+        showLiveRunner('[HOÀN TẤT] TẠO TỪ VỰNG! ĐANG ĐỒNG BỘ DỮ LIỆU...', 100, 5, false);
         logToConsole('SUCCESS', 'WORKFLOW_DONE', 'Job #' + run.id + ' đã hoàn thành xuất sắc!');
         syncCompletedWordsFromGitHub(owner, repo, branch, token, activeWorkflowTargetStt);
         setTimeout(() => {
           loadData(false);
         }, 1500);
       } else {
-        showLiveRunner('❌ TIẾN TRÌNH THẤT BẠI (' + run.conclusion.toUpperCase() + ') — XEM CHI TIẾT TRONG BẢNG LOG', 100, 3, true);
+        showLiveRunner('[THẤT BẠI] TIẾN TRÌNH (' + run.conclusion.toUpperCase() + ') — XEM CHI TIẾT TRONG BẢNG LOG', 100, 3, true);
         logToConsole('ERROR', 'WORKFLOW_FAILED', 'Job #' + run.id + ' bị dừng với trạng thái: ' + run.conclusion + '. Hãy bấm "Mở GitHub Log" hoặc kiểm tra run_logs.json.');
         toggleConsoleDrawer(true);
         loadData(false);
@@ -212,7 +212,7 @@ async function syncCompletedWordsFromGitHub(owner, repo, branch, token, targetSt
         const chip = document.createElement('div');
         const chipBg = isAdv ? 'bg-purple-100 text-purple-950 border-purple-800' : 'bg-emerald-100 text-emerald-950 border-emerald-800';
         chip.className = 'inline-flex items-center gap-1.5 px-2 py-1 text-xs font-mono-code font-bold border ' + chipBg + ' rounded-none shadow-[1px_1px_0px_#111]';
-        chip.innerHTML = '<span class="text-[10px] text-slate-500 font-extrabold">#' + (idx + 1) + '</span><span class="font-bold underline decoration-slate-400">' + word + '</span><span class="text-[11px] text-slate-600 font-sans font-normal">• ' + vi + '</span>';
+        chip.innerHTML = '<span class="text-xs text-zinc-500 font-extrabold">#' + (idx + 1) + '</span><span class="font-bold underline decoration-zinc-400">' + word + '</span><span class="text-xs text-zinc-700 font-sans font-normal">• ' + vi + '</span>';
         chipsContainer.appendChild(chip);
       });
       chipsContainer.scrollTop = chipsContainer.scrollHeight;
@@ -225,7 +225,7 @@ async function syncCompletedWordsFromGitHub(owner, repo, branch, token, targetSt
     if (counterBadge) counterBadge.innerText = lines.length + ' / 100 từ (100%)';
 
     const nameEl = document.getElementById('liveCurrentWordName');
-    if (nameEl) nameEl.innerText = '🎉 HOÀN TẤT ĐỦ ' + lines.length + ' TỪ VỰNG CHO CHỦ ĐỀ #' + stt + '!';
+    if (nameEl) nameEl.innerText = '[HOÀN TẤT] ĐỦ ' + lines.length + ' TỪ VỰNG CHO CHỦ ĐỀ #' + stt + '!';
 
     const viEl = document.getElementById('liveCurrentWordVi');
     if (viEl) viEl.innerText = 'Đã lưu file output/' + stt + '.txt lên GitHub thành công';
@@ -302,12 +302,12 @@ function showBatchCallingStatus(stt, topicVi, currentCount, target, batchNum, mo
 
   const titleEl = document.getElementById('liveRunnerTitle');
   if (titleEl) {
-    titleEl.innerText = '⚡ [GEMINI 3.1 FLASH LITE] ĐANG TẠO TỪ ' + startNum + ' - ' + endNum + ' / 100 (' + modeLabel + ')...';
+    titleEl.innerText = '[GEMINI 3.1 FLASH LITE] ĐANG TẠO TỪ ' + startNum + ' - ' + endNum + ' / 100 (' + modeLabel + ')...';
   }
 
   const nameEl = document.getElementById('liveCurrentWordName');
   if (nameEl) {
-    nameEl.innerHTML = '<span class="inline-flex items-center gap-2 text-indigo-700 animate-pulse"><span class="inline-block w-2.5 h-2.5 rounded-full bg-indigo-600 animate-ping"></span>Đang phân tích & sinh từ #' + startNum + ' → #' + endNum + '...</span>';
+    nameEl.innerHTML = '<span class="inline-flex items-center gap-2 text-[#0F766E] font-bold">Đang phân tích & sinh từ #' + startNum + ' - #' + endNum + '...</span>';
   }
 
   const ipaEl = document.getElementById('liveCurrentWordIpa');
@@ -337,7 +337,7 @@ function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = 'c
   const titleEl = document.getElementById('liveRunnerTitle');
   if (titleEl) {
     const modeLabel = mode === 'advanced' ? 'CHUYÊN SÂU C1-C2' : 'GIAO TIẾP A2-B2';
-    titleEl.innerText = '⚡ ĐANG TẠO TỪ VỰNG: ' + (topicVi ? topicVi.toUpperCase() + ' • ' : '') + '[' + currentCount + '/' + totalTarget + ' TỪ - ' + modeLabel + ']';
+    titleEl.innerText = '[ĐANG TẠO TỪ VỰNG] ' + (topicVi ? topicVi.toUpperCase() + ' • ' : '') + '[' + currentCount + '/' + totalTarget + ' TỪ - ' + modeLabel + ']';
   }
 
   // Cập nhật Badge số lượng
@@ -397,7 +397,7 @@ function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = 'c
     const chip = document.createElement('div');
     const chipBg = mode === 'advanced' ? 'bg-purple-100 text-purple-950 border-purple-800' : 'bg-emerald-100 text-emerald-950 border-emerald-800';
     chip.className = 'inline-flex items-center gap-1.5 px-2 py-1 text-xs font-mono-code font-bold border ' + chipBg + ' rounded-none shadow-[1px_1px_0px_#111]';
-    chip.innerHTML = '<span class="text-[10px] text-slate-500 font-extrabold">#' + currentCount + '</span><span class="font-bold underline decoration-slate-400">' + word + '</span><span class="text-[11px] text-slate-600 font-sans font-normal">• ' + vi + '</span>';
+    chip.innerHTML = '<span class="text-xs text-zinc-500 font-extrabold">#' + currentCount + '</span><span class="font-bold underline decoration-zinc-400">' + word + '</span><span class="text-xs text-zinc-700 font-sans font-normal">• ' + vi + '</span>';
     chipsContainer.appendChild(chip);
     chipsContainer.scrollTop = chipsContainer.scrollHeight;
   }
@@ -478,7 +478,7 @@ async function generateSingleInBrowser(stt, topicVi) {
   const preferredModel = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
 
   if (!geminiKey) {
-    const inputKey = prompt('⚡ Để tạo từ vựng trực tiếp trên Web và thấy ngay từng từ sinh ra trong 2 giây, vui lòng dán Gemini API Key (Tier 1) của bạn vào đây:');
+    const inputKey = prompt('Để tạo từ vựng trực tiếp trên Web và thấy ngay từng từ sinh ra trong 2 giây, vui lòng dán Gemini API Key (Tier 1) của bạn vào đây:');
     if (inputKey && inputKey.trim()) {
       geminiKey = inputKey.trim();
       localStorage.setItem('gemini_api_key', geminiKey);
@@ -490,7 +490,7 @@ async function generateSingleInBrowser(stt, topicVi) {
   }
 
   runnerStartTime = Date.now();
-  showLiveRunner('⚡ [WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase(), 5, 1);
+  showLiveRunner('[WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase(), 5, 1);
   resetLiveWordTracker(stt, topicVi);
   logToConsole('INFO', 'WEB_GEN', 'Bắt đầu tạo trực tiếp chủ đề #' + stt + ' (' + topicVi + ') bằng model ' + preferredModel + '...');
 
@@ -612,7 +612,7 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
     if (finalItems.length < 100) {
       const errMsg = 'Chủ đề #' + stt + ' (' + topicVi + ') sau các đợt bù đắp chỉ đạt ' + finalItems.length + '/100 từ. Vui lòng bấm tạo lại!';
       logToConsole('ERROR', 'INCOMPLETE_BLOCKED', errMsg);
-      showLiveRunner('❌ THẤT BẠI: CHỈ ĐẠT ' + finalItems.length + '/100 TỪ', 100, 5, true);
+      showLiveRunner('[THẤT BẠI] CHỈ ĐẠT ' + finalItems.length + '/100 TỪ', 100, 5, true);
       alert(errMsg);
       return;
     }
@@ -638,7 +638,7 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
 
     // Cập nhật thẻ hiển thị từ vựng thành công
     const nameEl = document.getElementById('liveCurrentWordName');
-    if (nameEl) nameEl.innerText = '🎉 ĐÃ XUẤT THÀNH CÔNG ĐỦ ' + lines.length + ' TỪ!';
+    if (nameEl) nameEl.innerText = '[THÀNH CÔNG] ĐÃ XUẤT ĐỦ ' + lines.length + ' TỪ!';
     const viEl = document.getElementById('liveCurrentWordVi');
     if (viEl) viEl.innerText = 'Chủ đề #' + stt + ': ' + topicVi;
     const defEl = document.getElementById('liveCurrentWordDef');
@@ -682,7 +682,7 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
       a.href = URL.createObjectURL(blob);
       a.download = stt + '.txt';
       a.click();
-      logToConsole('WARNING', 'NO_GH_TOKEN', 'Đã tải ' + stt + '.txt về máy. Để tự động lưu lên GitHub Pages, bạn hãy nhập GitHub Token vào mục ⚙️ Cấu hình API.');
+      logToConsole('WARNING', 'NO_GH_TOKEN', 'Đã tải ' + stt + '.txt về máy. Để tự động lưu lên GitHub Pages, bạn hãy nhập GitHub Token vào mục Cấu hình API.');
     }
 
     // Cập nhật UI ngay lập tức
@@ -696,9 +696,9 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
     updateDashboardUI();
     renderGridMap();
     applyFiltersAndRender();
-    showLiveRunner('🎉 HOÀN TẤT CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase() + ' (' + lines.length + ' TỪ)!', 100, 5, false);
+    showLiveRunner('[HOÀN TẤT] CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase() + ' (' + lines.length + ' TỪ)!', 100, 5, false);
   } catch (e) {
-    showLiveRunner('❌ LỖI KHI TẠO CHỦ ĐỀ #' + stt + ': ' + e.message, 100, 3, true);
+    showLiveRunner('[LỖI] KHI TẠO CHỦ ĐỀ #' + stt + ': ' + e.message, 100, 3, true);
     logToConsole('ERROR', 'WEB_GEN_FAIL', 'Chủ đề #' + stt + ' (' + topicVi + ') thất bại: ' + e.message);
     toggleConsoleDrawer(true);
   }
