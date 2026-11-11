@@ -217,10 +217,16 @@ function renderTable() {
               <button onclick="downloadTopicAudioZipDirect(${t.stt}, '${safeTopic}', this)" class="neo-btn px-2.5 py-1 bg-[#0F766E] text-white text-xs uppercase" title="Tự động cào 100 file phát âm MP3 chuẩn Cambridge đóng gói .ZIP">
                 TẠO AUDIO (.ZIP)
               </button>
+              <button onclick="openCurationModal(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-1 bg-white text-[#D97706] border border-[#D97706] text-xs uppercase" title="Tùy chọn 2: Tạo lại qua lọc chọn 100 trong 150 từ">
+                LỌC LẠI
+              </button>
               <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-1 bg-[#EAE5DA] text-[#111111] text-xs uppercase" title="Tạo lại trực tiếp trên trình duyệt">
                 TẠO LẠI
               </button>
             ` : `
+              <button onclick="openCurationModal(${t.stt}, '${safeTopic}')" class="neo-btn px-2.5 py-1 bg-[#D97706] text-white text-xs uppercase" title="Tùy chọn 2: Lọc chọn 100 từ trong 150 từ trước khi tạo">
+                LỌC 100/150 TỪ
+              </button>
               <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="neo-btn px-3 py-1 bg-[#111111] text-white text-xs uppercase" title="Tạo ngay 100 từ trực tiếp trên trình duyệt">
                 TẠO 100 TỪ (AI)
               </button>

@@ -162,6 +162,7 @@
   <script src="../js/audit.js"></script>
   <script src="../js/quiz.js"></script>
   <script src="../js/actions.js"></script>
+  <script src="../js/curation.js"></script>
   <script src="../js/app.js"></script>
 
   <!-- Dynamic Frame Audit Controller for all 7 HTML pages -->
@@ -351,6 +352,7 @@
           s.assertTrue(typeof runQualityAudit === 'function' && typeof initAuditPage === 'function', "js/audit.js: audit");
           s.assertTrue(typeof startQuizSession === 'function' && typeof renderQuizTopicSelection === 'function', "js/quiz.js: quiz");
           s.assertTrue(typeof generateSingleInBrowser === 'function' && typeof triggerWorkflow === 'function', "js/actions.js: actions");
+          s.assertTrue(typeof openCurationModal === 'function' && typeof startCurationWorkflowForNextPending === 'function' && typeof autoSelectRandom100 === 'function', "js/curation.js: 2-stage curation wizard");
           s.assertTrue(typeof switchMainTab === 'function', "js/app.js: router");
         });
 
@@ -426,6 +428,32 @@
           s.assertEqual(getTopicCategory(700).id, "art", "STT 700 -> art");
           s.assertEqual(getTopicCategory(800).id, "food", "STT 800 -> food");
           s.assertEqual(getTopicCategory(950).id, "abstract", "STT 950 -> abstract");
+        });
+
+        s.test("T4.2: 2-Stage Curation Wizard state, draft autosave and random picker logic", () => {
+          ensureCurationModalMounted();
+          const modalEl = document.getElementById('curationModal');
+          s.assertTrue(modalEl !== null, "Curation modal mounted in DOM");
+
+          // Test draft persistence
+          curationCurrentStt = 999;
+          curationCurrentTopicVi = 'Test Topic';
+          curationCandidates = Array.from({ length: 150 }, (_, i) => ({ id: i + 1, word: 'word_' + (i + 1), meaning_vi: 'nghĩa ' + (i + 1), isCustom: false }));
+          curationSelectedWords = new Set(['word_1', 'word_2']);
+
+          saveCurationDraft();
+          const raw = localStorage.getItem('curation_draft_999');
+          s.assertTrue(raw !== null, "Draft must be saved in localStorage");
+          const parsed = JSON.parse(raw);
+          s.assertEqual(parsed.selectedWords.length, 2, "Draft must preserve 2 selected words");
+
+          // Test autoSelectRandom100
+          autoSelectRandom100();
+          s.assertEqual(curationSelectedWords.size, 100, "autoSelectRandom100 must fill exactly 100 words");
+
+          // Clean up test draft
+          clearCurationDraft(999);
+          s.assertEqual(localStorage.getItem('curation_draft_999'), null, "clearCurationDraft must delete draft");
         });
       });
 

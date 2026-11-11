@@ -106,6 +106,9 @@
             <button onclick="generateDirectlyInBrowser()" class="neo-btn px-3.5 py-2 bg-[#0F766E] text-white text-xs uppercase" title="Tạo trực tiếp ngay trên trình duyệt bằng Gemini API Key">
               TẠO TRỰC TIẾP (THẤY TỪNG TỪ)
             </button>
+            <button onclick="startCurationWorkflowForNextPending()" class="neo-btn px-3.5 py-2 bg-[#D97706] text-white text-xs uppercase" title="Tùy chọn 2: Sinh 150 từ để bạn duyệt chọn đúng 100 từ trước khi tạo 9 cột">
+              LỌC 100/150 TỪ (AI)
+            </button>
             <button onclick="triggerWorkflow()" class="neo-btn px-3 py-2 bg-[#111111] text-white text-xs uppercase" title="Gửi lệnh chạy ngầm trên GitHub Actions">
               CHẠY CLOUD
             </button>
@@ -229,6 +232,7 @@
   <script src="js/audit.js"></script>
   <script src="js/quiz.js"></script>
   <script src="js/actions.js"></script>
+  <script src="js/curation.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
