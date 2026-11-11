@@ -12,18 +12,39 @@ let currentCategoryFilter = 'all';
 let currentPage = 1;
 let pageSize = 50;
 let consoleLogs = [];
+let statusUpdatedAt = '';
 
+// Biến trạng thái dùng chung cho tiến trình GitHub Actions / tạo từ trực tiếp (js/actions.js)
+let actionPollTimer = null;
+let runnerStartTime = null;
+
+// Database chính của hệ thống (do Python & GitHub Actions cập nhật): status.json = { updated_at, topics: [...] }
+const DATABASE_FILE = 'status.json';
+
+/**
+ * Trình tải thông minh (Smart Fetch):
+ * - Trên GitHub Pages / HTTP: ưu tiên file cùng thư mục, lỗi thì tự fallback về GitHub Raw.
+ * - Trên file:/// (mở trực tiếp trên máy): tải thẳng từ GitHub Raw.
+ * Luôn trả về Response có res.ok === true, nếu không sẽ ném lỗi.
+ */
 async function smartFetch(relativePath) {
-  const owner = localStorage.getItem('gh_owner');
-  const repo = localStorage.getItem('gh_repo');
+  const cleanPath = String(relativePath).replace(/^\.?\//, '');
+  const owner = localStorage.getItem('gh_owner') || 'lev24197';
+  const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const isLocal = window.location.protocol === 'file:';
+  const isFileProto = window.location.protocol === 'file:';
 
-  if (isLocal && owner && repo) {
-    const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${relativePath}?t=${Date.now()}`;
-    return fetch(rawUrl);
+  if (!isFileProto) {
+    try {
+      const res = await fetch(`./${cleanPath}?t=${Date.now()}`, { cache: 'no-store' });
+      if (res.ok) return res;
+    } catch (e) {}
   }
-  return fetch(`${relativePath}?t=${Date.now()}`);
+
+  const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${cleanPath}?t=${Date.now()}`;
+  const resRemote = await fetch(rawUrl, { cache: 'no-store' });
+  if (resRemote.ok) return resRemote;
+  throw new Error(`Không thể nạp ${cleanPath} (local lẫn GitHub Raw đều lỗi HTTP ${resRemote.status})`);
 }
 
 function logToConsole(level, step, message) {
@@ -83,20 +104,23 @@ function toggleConsoleDrawer(forceState) {
 async function loadRunLogs() {
   try {
     const res = await smartFetch('run_logs.json');
-    if (!res.ok) return;
     const logs = await res.json();
     if (Array.isArray(logs)) {
-      logs.slice(-30).forEach(entry => {
+      // run_logs.json lưu bản ghi mới nhất ở đầu mảng
+      logs.slice(0, 60).reverse().forEach(entry => {
+        const rawTime = entry.time || entry.timestamp || '--:--';
         consoleLogs.unshift({
-          time: entry.timestamp ? entry.timestamp.split(' ')[1] || entry.timestamp : '--:--',
+          time: String(rawTime).includes(' ') ? String(rawTime).split(' ')[1] : rawTime,
           level: entry.level || 'INFO',
           step: entry.step || 'PYTHON',
-          message: entry.message || ''
+          message: (entry.message || '') + (entry.stt ? ` (chủ đề #${entry.stt})` : '')
         });
       });
       renderConsoleLogs();
     }
-  } catch (e) {}
+  } catch (e) {
+    // run_logs.json là tùy chọn — không có cũng không ảnh hưởng database
+  }
 }
 
 async function loadData(silent = false) {
@@ -107,9 +131,12 @@ async function loadData(silent = false) {
   }
 
   try {
-    const res = await smartFetch('progress.json');
-    if (!res.ok) throw new Error('Không tìm thấy progress.json');
-    allTopics = await res.json();
+    const res = await smartFetch(DATABASE_FILE);
+    const data = await res.json();
+    // Hỗ trợ cả 2 định dạng: { updated_at, topics: [...] } hoặc mảng thuần [...]
+    allTopics = Array.isArray(data) ? data : (Array.isArray(data.topics) ? data.topics : []);
+    statusUpdatedAt = (!Array.isArray(data) && data.updated_at) ? data.updated_at : '';
+    if (!allTopics.length) throw new Error(`${DATABASE_FILE} không chứa danh sách chủ đề`);
 
     if (typeof updateDashboardUI === 'function') updateDashboardUI();
     if (typeof renderGridMap === 'function') renderGridMap();
@@ -122,18 +149,20 @@ async function loadData(silent = false) {
     if (activePage === 'audit.html' && typeof initAuditPage === 'function') initAuditPage();
     if (activePage === 'quiz.html' && typeof renderQuizTopicSelection === 'function') renderQuizTopicSelection();
 
-    const mode = (window.location.protocol === 'file:' && localStorage.getItem('gh_owner')) ? '☁️ GitHub Cloud' : '💻 Local';
+    const mode = window.location.protocol === 'file:' ? '☁️ GitHub Cloud' : '🌐 GitHub Pages';
+    const updatedLabel = statusUpdatedAt ? statusUpdatedAt.split(' ')[1] || statusUpdatedAt : new Date().toLocaleTimeString('vi-VN');
     if (badge) {
-      badge.innerText = `🟢 Đồng bộ lúc ${new Date().toLocaleTimeString('vi-VN')} (${mode})`;
+      badge.innerText = `🟢 ${allTopics.length} chủ đề • DB ${updatedLabel} (${mode})`;
       badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-[#E3F7ED] text-[#141414] border-2 border-[#141414] shadow-[2px_2px_0px_#141414]';
+      badge.onclick = null;
     }
-    if (!silent) logToConsole('SUCCESS', 'SYNC_DATA', `Đã đồng bộ thành công ${allTopics.length} chủ đề từ progress.json.`);
+    if (!silent) logToConsole('SUCCESS', 'DATABASE', `Đã nạp database ${DATABASE_FILE}: ${allTopics.length} chủ đề (cập nhật ${statusUpdatedAt || 'không rõ'}).`);
   } catch (err) {
     if (badge) {
       badge.innerText = '⚠️ Chưa kết nối dữ liệu (Bấm ⚙️ Cấu hình API)';
       badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 rounded-full bg-rose-100 text-rose-800 border-2 border-[#141414] cursor-pointer';
       badge.onclick = () => { if (typeof openSettings === 'function') openSettings(); };
     }
-    logToConsole('ERROR', 'SYNC_FAIL', 'Không thể đọc progress.json trực tiếp. Nếu mở file:// trên máy, hãy nhập GitHub Owner & Repo trong phần ⚙️ Cấu hình API.');
+    logToConsole('ERROR', 'DATABASE', `Không thể nạp database ${DATABASE_FILE}: ${err.message}. Kiểm tra GitHub Owner/Repo/Branch trong ⚙️ Cấu hình API.`);
   }
 }

@@ -305,6 +305,29 @@
       const runner = new VerificationTestRunner();
       const startTime = performance.now();
 
+      // Nạp database thật (status.json) trước khi chạy test
+      let dbError = null;
+      try {
+        await Promise.race([
+          loadData(true),
+          new Promise((_, rej) => setTimeout(() => rej(new Error('Timeout 8s khi nạp status.json')), 8000))
+        ]);
+      } catch (e) { dbError = e.message; }
+
+      runner.suite("0. GitHub Database Connection (status.json)", (s) => {
+        s.test("T0.1: Database file name is status.json (khớp với Python & GitHub Actions)", () => {
+          s.assertEqual(DATABASE_FILE, 'status.json', "DATABASE_FILE");
+        });
+        s.test("T0.2: status.json loaded into allTopics with valid topic records", () => {
+          s.assertTrue(!dbError, "Lỗi nạp database: " + dbError);
+          s.assertTrue(allTopics.length > 0, "Database phải có ít nhất 1 chủ đề (hiện có " + allTopics.length + ")");
+          s.assertTrue(typeof allTopics[0].stt === 'number' && !!allTopics[0].topic, "Cấu trúc chủ đề hợp lệ");
+        });
+        s.test("T0.3: Runtime state globals for actions.js are declared", () => {
+          s.assertTrue(typeof actionPollTimer !== 'undefined' && typeof runnerStartTime !== 'undefined', "actionPollTimer/runnerStartTime");
+        });
+      });
+
       // ==========================================
       // SUITE 1: 13 Single-Responsibility JS Modules & RPG Elimination
       // ==========================================
