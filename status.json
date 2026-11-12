@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11 12:21:17",
+  "updated_at": "2026-11-12 13:25:58",
   "topics": [
     {
       "stt": 1,
@@ -1075,28 +1075,28 @@
     {
       "stt": 120,
       "topic": "Trà sữa và Topping (Bubble Tea & Toppings)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/120.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-12 13:24",
       "last_error": null
     },
     {
       "stt": 121,
       "topic": "Hệ thần kinh và Não bộ (Nervous System & Brain)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/121.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-12 13:25",
       "last_error": null
     },
     {
       "stt": 122,
       "topic": "Hệ tiêu hóa (Digestive System)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/122.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-12 13:25",
       "last_error": null
     },
     {
