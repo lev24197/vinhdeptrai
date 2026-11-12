@@ -500,6 +500,7 @@
           s.assertTrue(typeof parseAnkiStatsText === 'function', "parseAnkiStatsText must exist");
           s.assertTrue(typeof filterSubdecks === 'function', "filterSubdecks must exist");
           s.assertTrue(typeof changeSubdeckPage === 'function', "changeSubdeckPage must exist");
+          s.assertTrue(typeof triggerAnkiWebSync === 'function', "triggerAnkiWebSync must exist");
         });
 
         s.test("T6.2: parseAnkiStatsText correctly extracts stats from raw Anki text", () => {

@@ -1,0 +1,47 @@
+name: Sync AnkiWeb Statistics
+
+on:
+  schedule:
+    # Tự động đồng bộ cùng các khung giờ Việt Nam (UTC+7):
+    # 09:00 Sáng, 12:00 Trưa, 15:00 Chiều, 18:00 Chiều và 22:00 Đêm
+    - cron: '0 2,5,8,11,15 * * *'
+  workflow_dispatch:
+    inputs:
+      force_sync:
+        description: 'Ép đồng bộ lại toàn bộ dữ liệu từ AnkiWeb'
+        required: false
+        default: 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Anki Python Engine
+        run: |
+          pip install --upgrade pip
+          pip install anki
+
+      - name: Sync Collection and Extract Stats from AnkiWeb
+        env:
+          ANKIWEB_USERNAME: ${{ secrets.ANKIWEB_USERNAME }}
+          ANKIWEB_PASSWORD: ${{ secrets.ANKIWEB_PASSWORD }}
+        run: python scripts/sync_ankiweb.py
+
+      - name: Commit and Push Anki Stats
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/anki_stats.json
+          git diff --staged --quiet || git commit -m "Auto-sync AnkiWeb study statistics [skip ci]"
+          git push

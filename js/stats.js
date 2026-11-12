@@ -771,3 +771,73 @@ function setupStatsEventHandlers() {
     searchInput.addEventListener('input', e => filterSubdecks(e.target.value));
   }
 }
+
+// ----------------------------------------------------------------------------
+// 16. KÍCH HOẠT ĐỒNG BỘ ANKIWEB TRỰC TIẾP LÊN GITHUB ACTIONS
+// ----------------------------------------------------------------------------
+async function triggerAnkiWebSync() {
+  const token = localStorage.getItem('gh_token') || '';
+  const owner = localStorage.getItem('gh_owner') || 'lev24197';
+  const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
+  const btn = document.getElementById('btnSyncAnkiWeb');
+
+  if (!token) {
+    alert(
+      "ĐỂ KÍCH HOẠT ĐỒNG BỘ ANKIWEB TRÊN CLOUD TỰ ĐỘNG:\n\n" +
+      "1. Hãy nhập GitHub Token (PAT) trong mục 'CẤU HÌNH API' trên thanh menu.\n" +
+      "2. Trên GitHub Repo (Settings -> Secrets and variables -> Actions), hãy thêm 2 biến bí mật:\n" +
+      "   - ANKIWEB_USERNAME: Email tài khoản AnkiWeb\n" +
+      "   - ANKIWEB_PASSWORD: Mật khẩu AnkiWeb\n\n" +
+      "Lưu ý: Hệ thống cũng tự động chạy định kỳ 5 lần mỗi ngày (9h, 12h, 15h, 18h và 22h VN) hoàn toàn tự động."
+    );
+    if (typeof openSettings === 'function') openSettings();
+    return;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = 'ĐANG GỬI LỆNH LÊN CLOUD...';
+  }
+
+  try {
+    const url = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/sync_ankiweb.yml/dispatches`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ref: 'main' })
+    });
+
+    if (res.status === 204) {
+      alert(
+        "LỆNH ĐỒNG BỘ ĐÃ GỬI THÀNH CÔNG!\n\n" +
+        "Máy chủ GitHub Actions đang kết nối AnkiWeb để tải dữ liệu ôn tập mới nhất của bạn.\n" +
+        "Quá trình mất khoảng 30-45 giây. Trang web sẽ tự động làm mới số liệu ngay khi hoàn tất."
+      );
+      if (btn) btn.innerText = 'ĐANG ĐỒNG BỘ CLOUD (35S)...';
+      setTimeout(() => {
+        loadAnkiStatsData(true);
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = 'ĐỒNG BỘ ANKIWEB CLOUD';
+        }
+      }, 35000);
+    } else {
+      const errJson = await res.json().catch(() => ({}));
+      alert(`Không thể kích hoạt GitHub Actions (HTTP ${res.status}): ${errJson.message || 'Kiểm tra quyền của GitHub Token'}`);
+      if (btn) {
+        btn.disabled = false;
+        btn.innerText = 'ĐỒNG BỘ ANKIWEB CLOUD';
+      }
+    }
+  } catch (err) {
+    alert(`Lỗi kết nối API: ${err.message}`);
+    if (btn) {
+      btn.disabled = false;
+      btn.innerText = 'ĐỒNG BỘ ANKIWEB CLOUD';
+    }
+  }
+}
