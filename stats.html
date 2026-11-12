@@ -40,13 +40,16 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
+          <button onclick="analyzeAnkiStatsWithGemini()" class="neo-btn px-4 py-2 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase hover:bg-black" title="Dùng AI Gemini nhận xét chuyên sâu kết quả học tập">
+            AI NHẬN XÉT HỌC TẬP
+          </button>
           <button onclick="triggerAnkiWebSync()" id="btnSyncAnkiWeb" class="neo-btn px-4 py-2 bg-[#0F766E] text-white text-xs font-mono-code font-bold uppercase" title="Kích hoạt GitHub Actions tự động lên AnkiWeb kéo dữ liệu học tập mới nhất">
             ĐỒNG BỘ ANKIWEB CLOUD
           </button>
           <button onclick="loadAnkiStatsData(true)" class="neo-btn px-4 py-2 bg-white text-[#111111] hover:bg-[#EAE5DA] text-xs font-mono-code font-bold uppercase" title="Tải lại số liệu từ tệp dữ liệu cloud mới nhất">
             LÀM MỚI SỐ LIỆU
           </button>
-          <button onclick="openQuickPasteModal()" class="neo-btn px-4 py-2 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase" title="Dán nhanh đoạn văn bản sao chép từ màn hình Statistics của AnkiDroid trên điện thoại">
+          <button onclick="openQuickPasteModal()" class="neo-btn px-4 py-2 bg-white text-[#111111] hover:bg-[#EAE5DA] text-xs font-mono-code font-bold uppercase border-2 border-[#111111]" title="Dán nhanh đoạn văn bản sao chép từ màn hình Statistics của AnkiDroid trên điện thoại">
             DÁN SỐ LIỆU TỪ ĐIỆN THOẠI
           </button>
         </div>
@@ -155,7 +158,7 @@
 
           <div id="futureDueChartMount" class="mt-4 pt-2"></div>
         </div>
-        <p class="text-[11px] font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
+        <p class="text-xs font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
           Biểu đồ thể hiện số lượng thẻ sẽ đến hạn ôn tập từng ngày từ ngày 0 đến ngày +30.
         </p>
       </section>
@@ -175,7 +178,7 @@
 
           <div id="calendarHeatmapMount" class="mt-4 overflow-x-auto"></div>
         </div>
-        <p class="text-[11px] font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
+        <p class="text-xs font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
           Lưới đóng góp nhiệt theo ngày thể hiện tần suất và cường độ ôn tập liên tục trong năm.
         </p>
       </section>
@@ -202,7 +205,7 @@
 
           <div id="reviewsHistoryChartMount" class="mt-4 pt-2"></div>
         </div>
-        <p class="text-[11px] font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
+        <p class="text-xs font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
           Biểu đồ cột xếp chồng 30 ngày qua phân tách tỷ trọng thẻ già (Mature), thẻ non (Young) và thẻ học lại (Relearn).
         </p>
       </section>
@@ -222,8 +225,8 @@
             </span>
           </div>
 
-          <!-- Thanh phân đoạn tỉ lệ -->
-          <div id="cardCountBarMount" class="mt-3"></div>
+          <!-- Biểu đồ Donut Chart phân bổ 4 loại thẻ -->
+          <div id="cardCountDonutMount" class="mt-4 pt-1"></div>
 
           <!-- Chi tiết bảng số lượng -->
           <div class="grid grid-cols-2 gap-2 mt-4 text-xs font-mono-code">
@@ -253,7 +256,7 @@
             </div>
           </div>
         </div>
-        <p class="text-[11px] font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
+        <p class="text-xs font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
           Phân bố toàn diện 12.300 thẻ thuộc bộ bài (thẻ Mature là thẻ có khoảng cách ôn tập trên 21 ngày).
         </p>
       </section>
@@ -275,7 +278,7 @@
           </span>
         </div>
         <div id="intervalsChartMount" class="pt-2"></div>
-        <p class="text-[11px] font-mono-code text-zinc-500">
+        <p class="text-xs font-mono-code text-zinc-500">
           Thời gian trì hoãn cho đến khi thẻ ôn tập được lặp lại tiếp theo.
         </p>
       </section>
@@ -294,7 +297,7 @@
           </span>
         </div>
         <div id="stabilityChartMount" class="pt-2"></div>
-        <p class="text-[11px] font-mono-code text-zinc-500">
+        <p class="text-xs font-mono-code text-zinc-500">
           Khoảng thời gian ước tính để xác suất nhớ lại rơi từ 100% xuống ngưỡng 90%.
         </p>
       </section>
@@ -316,7 +319,7 @@
           </span>
         </div>
         <div id="difficultyChartMount" class="pt-2"></div>
-        <p class="text-[11px] font-mono-code text-zinc-500">
+        <p class="text-xs font-mono-code text-zinc-500">
           Độ khó càng cao thì sự gia tăng độ ổn định của thẻ sau mỗi lần ôn tập càng chậm.
         </p>
       </section>
@@ -358,7 +361,7 @@
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse">
             <thead>
-              <tr class="border-b-2 border-[#111111] text-[11px] font-mono-code font-extrabold uppercase text-zinc-600 bg-[#EAE5DA]">
+              <tr class="border-b-2 border-[#111111] text-xs font-mono-code font-extrabold uppercase text-zinc-600 bg-[#EAE5DA]">
                 <th class="p-2.5">GIAI ĐOẠN</th>
                 <th class="p-2.5 text-right">YOUNG</th>
                 <th class="p-2.5 text-right">MATURE</th>
@@ -383,7 +386,7 @@
           <span class="px-2 py-0.5 bg-[#EAE5DA] text-xs font-mono-code font-bold border border-[#111111]">GIỜ VIỆT NAM (UTC+7)</span>
         </div>
         <div id="hourlyChartMount" class="pt-2"></div>
-        <p class="text-[11px] font-mono-code text-zinc-500">
+        <p class="text-xs font-mono-code text-zinc-500">
           Khối lượng ôn tập từng khung giờ từ 0h sáng đến 23h đêm (thể hiện thói quen học tập trong ngày).
         </p>
       </section>
@@ -400,7 +403,7 @@
               Tỉ Lệ Nhấn Nút Đánh Giá (Answer Buttons)
             </h3>
           </div>
-          <div class="flex items-center gap-2 text-[11px] font-mono-code font-bold">
+          <div class="flex items-center gap-2 text-xs font-mono-code font-bold">
             <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-[#BE123C]"></span> AGAIN</span>
             <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-[#EA580C]"></span> HARD</span>
             <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-[#0F766E]"></span> GOOD</span>
@@ -424,7 +427,7 @@
           </div>
         </div>
         <div id="cardsAddedChartMount" class="pt-2"></div>
-        <p class="text-[11px] font-mono-code text-zinc-500">
+        <p class="text-xs font-mono-code text-zinc-500">
           Khối lượng thẻ mới được nạp vào bộ bài trong 30 ngày gần nhất.
         </p>
       </section>
@@ -452,10 +455,27 @@
         </div>
       </div>
 
+      <!-- Thanh bộ lọc trạng thái chủ đề con -->
+      <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-zinc-200">
+        <span class="text-xs font-mono-code font-bold text-zinc-600 uppercase">LỌC TRẠNG THÁI:</span>
+        <button id="subdeckCatBtn-all" onclick="setSubdeckCategoryFilter('all')" class="px-3 py-1 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase">
+          TẤT CẢ
+        </button>
+        <button id="subdeckCatBtn-review" onclick="setSubdeckCategoryFilter('review')" class="neo-btn px-3 py-1 bg-white text-[#111111] text-xs font-mono-code font-bold uppercase">
+          ĐÃ CÓ THẺ REVIEW
+        </button>
+        <button id="subdeckCatBtn-learning" onclick="setSubdeckCategoryFilter('learning')" class="neo-btn px-3 py-1 bg-white text-[#111111] text-xs font-mono-code font-bold uppercase">
+          ĐANG HỌC
+        </button>
+        <button id="subdeckCatBtn-new" onclick="setSubdeckCategoryFilter('new')" class="neo-btn px-3 py-1 bg-white text-[#111111] text-xs font-mono-code font-bold uppercase">
+          CHƯA HỌC (100% MỚI)
+        </button>
+      </div>
+
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
           <thead>
-            <tr class="border-b-2 border-[#111111] text-[11px] font-mono-code font-extrabold uppercase text-zinc-600 bg-[#EAE5DA]">
+            <tr class="border-b-2 border-[#111111] text-xs font-mono-code font-extrabold uppercase text-zinc-600 bg-[#EAE5DA]">
               <th class="p-2.5 w-16">STT</th>
               <th class="p-2.5">TÊN CHỦ ĐỀ CON</th>
               <th class="p-2.5 text-right w-20">TỔNG THẺ</th>
@@ -472,6 +492,33 @@
 
       <!-- Phân trang danh sách chủ đề con -->
       <div id="subdecksPagination" class="pt-3 border-t border-zinc-200 flex justify-between items-center"></div>
+    </section>
+
+    <!-- SECTION 15: AI GEMINI PHÂN TÍCH & CỐ VẤN KẾT QUẢ HỌC TẬP (FSRS ADVISORY) -->
+    <section class="neo-box p-5 bg-white space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b-2 border-[#111111]">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 15</span>
+            <span class="px-2.5 py-0.5 bg-[#0F766E] text-white text-xs font-mono-code font-extrabold uppercase">
+              TRÍ TUỆ NHÂN TẠO CỐ VẤN
+            </span>
+          </div>
+          <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111] mt-1">
+            AI Gemini Phân Tích & Cố Vấn Kết Quả Học Tập (FSRS Advisory)
+          </h3>
+          <p class="text-xs font-mono-code text-zinc-600 mt-0.5">
+            Phân tích chuyên sâu Spaced Repetition, chỉ số trí nhớ FSRS, tải trọng 30 ngày và chiến lược tối ưu phản xạ.
+          </p>
+        </div>
+
+        <button onclick="analyzeAnkiStatsWithGemini()" id="btnGeminiAnalyze" class="neo-btn px-5 py-2.5 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase hover:bg-black transition-colors" title="Gửi toàn bộ 14 chỉ số thống kê học tập đến Google Gemini AI để nhận phân tích và đề xuất hành động tối ưu">
+          DÙNG AI GEMINI NHẬN XÉT KẾT QUẢ
+        </button>
+      </div>
+
+      <!-- Khung hiển thị kết quả phân tích AI Gemini -->
+      <div id="geminiAnalysisResult" class="hidden"></div>
     </section>
 
   </main>
