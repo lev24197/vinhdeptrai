@@ -148,6 +148,7 @@ async function loadData(silent = false) {
     if (activePage === 'corpus.html' && typeof initCorpusPage === 'function') initCorpusPage();
     if (activePage === 'audit.html' && typeof initAuditPage === 'function') initAuditPage();
     if (activePage === 'quiz.html' && typeof renderQuizTopicSelection === 'function') renderQuizTopicSelection();
+    if (activePage === 'stats.html' && typeof initStatsPage === 'function') initStatsPage();
 
     const mode = window.location.protocol === 'file:' ? 'GITHUB CLOUD' : 'GITHUB PAGES';
     const updatedLabel = statusUpdatedAt ? statusUpdatedAt.split(' ')[1] || statusUpdatedAt : new Date().toLocaleTimeString('vi-VN');

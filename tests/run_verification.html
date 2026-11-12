@@ -127,7 +127,7 @@
     <!-- Test Suites Output Container -->
     <main id="suitesContainer" class="space-y-4">
       <div class="neo-box bg-[#121424] p-8 text-center text-slate-400 font-mono-code text-sm">
-        Đang nạp 13 module JS và 7 trang HTML để kiểm thử tự động...
+        Đang nạp 14 module JS và 8 trang HTML để kiểm thử tự động...
       </div>
     </main>
 
@@ -144,12 +144,13 @@
       <iframe id="auditFrame-corpus" data-page-key="corpus" src="../corpus.html" style="width:1px;height:1px;"></iframe>
       <iframe id="auditFrame-audit" data-page-key="audit" src="../audit.html" style="width:1px;height:1px;"></iframe>
       <iframe id="auditFrame-quiz" data-page-key="quiz" src="../quiz.html" style="width:1px;height:1px;"></iframe>
+      <iframe id="auditFrame-stats" data-page-key="stats" src="../stats.html" style="width:1px;height:1px;"></iframe>
       <div id="frame-audit-results"></div>
     </div>
 
   </div>
 
-  <!-- ==================== 13 MODULE JAVASCRIPT ĐƠN NHIỆM ==================== -->
+  <!-- ==================== 14 MODULE JAVASCRIPT ĐƠN NHIỆM ==================== -->
   <script src="../js/data.js"></script>
   <script src="../js/layout.js"></script>
   <script src="../js/settings.js"></script>
@@ -161,13 +162,14 @@
   <script src="../js/corpus.js"></script>
   <script src="../js/audit.js"></script>
   <script src="../js/quiz.js"></script>
+  <script src="../js/stats.js"></script>
   <script src="../js/actions.js"></script>
   <script src="../js/curation.js"></script>
   <script src="../js/app.js"></script>
 
-  <!-- Dynamic Frame Audit Controller for all 7 HTML pages -->
+  <!-- Dynamic Frame Audit Controller for all 8 HTML pages -->
   <script>
-    const pageKeys = ['index', 'grid', 'studio', 'audio', 'corpus', 'audit', 'quiz'];
+    const pageKeys = ['index', 'grid', 'studio', 'audio', 'corpus', 'audit', 'quiz', 'stats'];
     const frameAuditState = {};
     pageKeys.forEach(k => {
       frameAuditState[k] = { loaded: false, errors: [] };
@@ -470,20 +472,71 @@
       });
 
       // ==========================================
-      // SUITE 5: Live Multi-Page Audit Across All 7 HTML Files
+      // SUITE 5: Live Multi-Page Audit Across All 8 HTML Files
       // ==========================================
-      runner.suite("5. Live Multi-Page Audit Across All 7 HTML Files", (s) => {
+      runner.suite("5. Live Multi-Page Audit Across All 8 HTML Files", (s) => {
         s.test("T5.1: Test harness execution encountered 0 page errors", () => {
           s.assertEqual(window.__PAGE_ERRORS__.length, 0, "Zero uncaught page errors");
         });
 
         const audit = window.__FRAME_AUDIT_DATA__ || {};
-        ['index', 'grid', 'studio', 'audio', 'corpus', 'audit', 'quiz'].forEach((pageKey, idx) => {
+        ['index', 'grid', 'studio', 'audio', 'corpus', 'audit', 'quiz', 'stats'].forEach((pageKey, idx) => {
           s.test(`T5.${idx + 2}: Live [${pageKey}.html] iframe loaded with 0 console exceptions`, () => {
             const pageAudit = audit[pageKey] || { loaded: false, errors: [] };
             s.assertTrue(pageAudit.loaded, `${pageKey}.html must load in iframe`);
             s.assertEqual(pageAudit.errors.length, 0, `${pageKey}.html must have 0 console exceptions`);
           });
+        });
+      });
+
+      // ==========================================
+      // SUITE 6: Anki FSRS Statistics Engine & Visual Analytics
+      // ==========================================
+      runner.suite("6. Anki FSRS Statistics Engine & Visual Analytics", (s) => {
+        s.test("T6.1: js/stats.js module exports required methods", () => {
+          s.assertTrue(typeof initStatsPage === 'function', "initStatsPage must exist");
+          s.assertTrue(typeof loadAnkiStatsData === 'function', "loadAnkiStatsData must exist");
+          s.assertTrue(typeof renderAllStatsCharts === 'function', "renderAllStatsCharts must exist");
+          s.assertTrue(typeof parseAnkiStatsText === 'function', "parseAnkiStatsText must exist");
+          s.assertTrue(typeof filterSubdecks === 'function', "filterSubdecks must exist");
+          s.assertTrue(typeof changeSubdeckPage === 'function', "changeSubdeckPage must exist");
+        });
+
+        s.test("T6.2: parseAnkiStatsText correctly extracts stats from raw Anki text", () => {
+          const sample = `Today
+Studied 108 cards in 12.93 minutes today (7.18s/card)
+Again count: 62 (57.41%)
+Learn: 108, Review: 0, Relearn: 0, Filtered: 0
+Days studied: 31 of 31 (100%)
+Total: 19,128 reviews
+Card Counts
+New 6,152 50.02%
+Learning 14 0.11%
+Young 2,006 16.31%
+Mature 4,128 33.56%
+Total 12,300`;
+          const parsed = parseAnkiStatsText(sample);
+          s.assertEqual(parsed.today.cards_studied, 108, "cards_studied must be 108");
+          s.assertEqual(parsed.today.time_minutes, 12.93, "time_minutes must be 12.93");
+          s.assertEqual(parsed.today.again_count, 62, "again_count must be 62");
+          s.assertEqual(parsed.card_counts.new, 6152, "new cards must be 6152");
+          s.assertEqual(parsed.card_counts.mature, 4128, "mature cards must be 4128");
+          s.assertEqual(parsed.card_counts.total, 12300, "total cards must be 12300");
+        });
+
+        s.test("T6.3: data/anki_stats.json exists and contains full metric schema", async () => {
+          try {
+            const res = await fetch('../data/anki_stats.json');
+            s.assertTrue(res.ok, "data/anki_stats.json must be accessible via fetch");
+            const data = await res.json();
+            s.assertEqual(data.deck_name, "Thử thách mỗi ngày 100 từ vựng", "target deck must match");
+            s.assertTrue(Boolean(data.today && data.today.cards_studied), "today section must be populated");
+            s.assertTrue(Boolean(data.card_counts && data.card_counts.total === 12300), "total cards must be 12300");
+            s.assertTrue(Array.isArray(data.future_due.days), "future_due days array must be present");
+            s.assertTrue(Array.isArray(data.subdecks), "subdecks array must be present");
+          } catch (e) {
+            s.assertTrue(false, "Failed to load anki_stats.json: " + e.message);
+          }
         });
       });
 

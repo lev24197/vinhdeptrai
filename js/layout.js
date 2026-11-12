@@ -65,6 +65,9 @@ function getSharedNavbarHTML() {
         <a href="quiz.html" data-nav-page="quiz.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
           <span class="font-mono-code opacity-60">07</span> <span>TRẮC NGHIỆM TỪ VỰNG</span>
         </a>
+        <a href="stats.html" data-nav-page="stats.html" class="nav-page-link neo-btn px-3.5 py-1.5 text-xs uppercase whitespace-nowrap flex items-center gap-2 bg-white text-[#111111]">
+          <span class="font-mono-code opacity-60">08</span> <span>THỐNG KÊ ANKI FSRS</span>
+        </a>
       </div>
     </nav>
   </header>`;

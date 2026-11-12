@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Anki Dictionary — Thống Kê Học Tập Anki & Thuật Toán FSRS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="min-h-screen flex flex-col bg-[#F4F1EA] text-[#111111]">
+
+  <!-- THANH ĐIỀU HƯỚNG DÙNG CHUNG -->
+  <div id="sharedNavbarMount"></div>
+
+  <!-- NỘI DUNG CHÍNH: BẢNG ĐIỀU KHIỂN THỐNG KÊ ANKI & THUẬT TOÁN FSRS -->
+  <main class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 flex-1 space-y-6">
+
+    <!-- TIÊU ĐỀ TRANG & KHỐI TRẠNG THÁI BỘ BÀI MỤC TIÊU -->
+    <section class="neo-box p-5 bg-white space-y-4">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b-2 border-[#111111]">
+        <div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="px-2.5 py-0.5 bg-[#111111] text-white text-xs font-mono-code font-extrabold uppercase">
+              BỘ ĐIỀU KHIỂN HỌC TẬP ANKI
+            </span>
+            <span class="px-2.5 py-0.5 bg-[#0F766E] text-white text-xs font-mono-code font-extrabold uppercase">
+              THUẬT TOÁN FSRS
+            </span>
+            <span id="ankiStatsSyncBadge" class="text-xs font-mono-code font-bold px-3 py-1 bg-[#EAE5DA] text-[#111111] border border-[#111111]">
+              TRẠNG THÁI: ĐANG KẾT NỐI...
+            </span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-display font-extrabold uppercase tracking-tight text-[#111111] mt-2">
+            Thống Kê Học Tập & Tiến Độ Ghi Nhớ Từ Vựng
+          </h2>
+          <p class="text-xs font-mono-code text-zinc-600 mt-1">
+            BỘ BÀI MỤC TIÊU: <span class="font-bold text-[#111111]">THỬ THÁCH MỖI NGÀY 100 TỪ VỰNG</span> (BAO GỒM TẤT CẢ CÁC BỘ BÀI CON, LOẠI BỎ 100% BỘ BÀI KHÁC).
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="loadAnkiStatsData(true)" class="neo-btn px-4 py-2 bg-white text-[#111111] hover:bg-[#EAE5DA] text-xs font-mono-code font-bold uppercase" title="Tải lại số liệu từ tệp dữ liệu cloud mới nhất">
+            LÀM MỚI SỐ LIỆU
+          </button>
+          <button onclick="openQuickPasteModal()" class="neo-btn px-4 py-2 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase" title="Dán nhanh đoạn văn bản sao chép từ màn hình Statistics của AnkiDroid trên điện thoại">
+            DÁN SỐ LIỆU TỪ ĐIỆN THOẠI
+          </button>
+        </div>
+      </div>
+
+      <!-- THANH CHỈ SỐ NHANH: STREAK & TỔNG LƯỢT ÔN TẬP -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+        <div class="p-3 bg-[#F4F1EA] border border-[#111111]">
+          <span class="text-xs font-mono-code font-bold text-zinc-600 uppercase">CHUỖI HỌC (STREAK):</span>
+          <div id="summaryStreak" class="text-2xl font-display font-extrabold text-[#0F766E] mt-0.5">38 NGÀY</div>
+        </div>
+        <div class="p-3 bg-[#F4F1EA] border border-[#111111]">
+          <span class="text-xs font-mono-code font-bold text-zinc-600 uppercase">NGÀY HỌC 30 NGÀY QUA:</span>
+          <div id="summaryDaysStudied" class="text-xl font-display font-extrabold text-[#111111] mt-0.5">30 / 30 NGÀY</div>
+        </div>
+        <div class="p-3 bg-[#F4F1EA] border border-[#111111]">
+          <span class="text-xs font-mono-code font-bold text-zinc-600 uppercase">LƯỢT ÔN TẬP 30 NGÀY:</span>
+          <div id="summaryTotalReviews" class="text-xl font-display font-extrabold text-[#2563EB] mt-0.5">18.804 LƯỢT</div>
+        </div>
+        <div class="p-3 bg-[#F4F1EA] border border-[#111111]">
+          <span class="text-xs font-mono-code font-bold text-zinc-600 uppercase">TRUNG BÌNH HÀNG NGÀY:</span>
+          <div id="summaryAvgDailyReviews" class="text-xl font-display font-extrabold text-[#D97706] mt-0.5">626 THẺ / NGÀY</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: HÔM NAY (TODAY OVERVIEW) -->
+    <section class="neo-box p-5 bg-white space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+        <div>
+          <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 01</span>
+          <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+            Hôm Nay: Tiến Độ Ôn Tập Trong Ngày (Today)
+          </h3>
+        </div>
+        <span class="px-2.5 py-1 bg-[#EAE5DA] text-xs font-mono-code font-bold border border-[#111111]">HÔM NAY</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-4 bg-[#F4F1EA] border-2 border-[#111111] space-y-1">
+          <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">ĐÃ HỌC HÔM NAY:</span>
+          <div id="todayCardsStudied" class="text-3xl font-display font-extrabold text-[#0F766E]">108</div>
+          <p class="text-xs font-mono-code text-zinc-600">Thẻ đã hoàn tất ôn luyện</p>
+        </div>
+
+        <div class="p-4 bg-[#F4F1EA] border-2 border-[#111111] space-y-1">
+          <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">THỜI GIAN ÔN TẬP:</span>
+          <div id="todayTimeMinutes" class="text-2xl sm:text-3xl font-display font-extrabold text-[#111111]">12.93 PHÚT</div>
+          <p class="text-xs font-mono-code text-zinc-600">Tổng thời gian tập trung</p>
+        </div>
+
+        <div class="p-4 bg-[#F4F1EA] border-2 border-[#111111] space-y-1">
+          <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">TỐC ĐỘ PHẢN XẠ:</span>
+          <div id="todaySpeed" class="text-2xl sm:text-3xl font-display font-extrabold text-[#2563EB]">7.18 GIÂY / THẺ</div>
+          <p class="text-xs font-mono-code text-zinc-600">Thời gian trả lời trung bình</p>
+        </div>
+
+        <div class="p-4 bg-[#F4F1EA] border-2 border-[#111111] space-y-1">
+          <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">NÚT LẶP LẠI (AGAIN):</span>
+          <div id="todayAgainCount" class="text-2xl sm:text-3xl font-display font-extrabold text-[#BE123C]">62 LẦN (57.4%)</div>
+          <p class="text-xs font-mono-code text-zinc-600">Thẻ cần ôn lại trong phiên</p>
+        </div>
+      </div>
+
+      <div class="p-3 bg-[#EAE5DA] border border-[#111111] grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono-code font-bold">
+        <div>LEARN: <span id="todayLearnCount" class="text-[#0F766E]">108</span> THẺ</div>
+        <div>REVIEW: <span id="todayReviewCount" class="text-[#2563EB]">0</span> THẺ</div>
+        <div>RELEARN: <span id="todayRelearnCount" class="text-[#BE123C]">0</span> THẺ</div>
+        <div>GOOD & EASY: <span id="todayGoodEasy" class="text-[#0F766E]">46</span> LẦN</div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 & 3: DỰ BÁO ĐẾN HẠN TƯƠNG LAI & LỊCH HOẠT ĐỘNG TOÀN NĂM -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- 2. DỰ BÁO ĐẾN HẠN (7 cols) -->
+      <section class="lg:col-span-7 neo-box p-5 bg-white space-y-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+            <div>
+              <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 02</span>
+              <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+                Dự Báo Đến Hạn Tương Lai (Future Due - 30 Ngày)
+              </h3>
+            </div>
+            <span class="px-2 py-0.5 bg-[#EAE5DA] text-xs font-mono-code font-bold border border-[#111111]">30 NGÀY TỚI</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 text-xs font-mono-code">
+            <div class="p-2.5 bg-[#F4F1EA] border border-[#111111]">
+              <span class="text-zinc-500 font-bold uppercase">NGÀY MAI:</span>
+              <div id="futureDueTomorrow" class="font-display font-extrabold text-base text-[#D97706] mt-0.5">400 THẺ</div>
+            </div>
+            <div class="p-2.5 bg-[#F4F1EA] border border-[#111111]">
+              <span class="text-zinc-500 font-bold uppercase">TỔNG 30 NGÀY:</span>
+              <div id="futureTotal30" class="font-display font-extrabold text-base text-[#111111] mt-0.5">2.413 LƯỢT</div>
+            </div>
+            <div class="p-2.5 bg-[#F4F1EA] border border-[#111111]">
+              <span class="text-zinc-500 font-bold uppercase">TRUNG BÌNH:</span>
+              <div id="futureAvgDay" class="font-display font-extrabold text-base text-[#0F766E] mt-0.5">78 THẺ/NGÀY</div>
+            </div>
+            <div class="p-2.5 bg-[#F4F1EA] border border-[#111111]">
+              <span class="text-zinc-500 font-bold uppercase">TẢI TRỌNG NGÀY:</span>
+              <div id="futureDailyLoad" class="font-display font-extrabold text-base text-[#BE123C] mt-0.5">436 THẺ/NGÀY</div>
+            </div>
+          </div>
+
+          <div id="futureDueChartMount" class="mt-4 pt-2"></div>
+        </div>
+        <p class="text-[11px] font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
+          Biểu đồ thể hiện số lượng thẻ sẽ đến hạn ôn tập từng ngày từ ngày 0 đến ngày +30.
+        </p>
+      </section>
+
+      <!-- 3. LỊCH HOẠT ĐỘNG (5 cols) -->
+      <section class="lg:col-span-5 neo-box p-5 bg-white space-y-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+            <div>
+              <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 03</span>
+              <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+                Lịch Học Tập (Calendar Heatmap)
+              </h3>
+            </div>
+            <span class="px-2 py-0.5 bg-[#EAE5DA] text-xs font-mono-code font-bold border border-[#111111]">365 NGÀY</span>
+          </div>
+
+          <div id="calendarHeatmapMount" class="mt-4 overflow-x-auto"></div>
+        </div>
+        <p class="text-[11px] font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
+          Lưới đóng góp nhiệt theo ngày thể hiện tần suất và cường độ ôn tập liên tục trong năm.
+        </p>
+      </section>
+    </div>
+
+    <!-- SECTION 4 & 5: LỊCH SỬ ÔN TẬP 30 NGÀY & TỔNG KHO THẺ -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- 4. LỊCH SỬ 30 NGÀY (7 cols) -->
+      <section class="lg:col-span-7 neo-box p-5 bg-white space-y-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+            <div>
+              <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 04</span>
+              <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+                Lịch Sử Ôn Tập 30 Ngày Qua (Reviews History)
+              </h3>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-mono-code font-bold">
+              <span class="flex items-center gap-1"><span class="w-3 h-3 bg-[#0F766E] border border-[#111111]"></span> MATURE</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 bg-[#D97706] border border-[#111111]"></span> YOUNG</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 bg-[#BE123C] border border-[#111111]"></span> RELEARN</span>
+            </div>
+          </div>
+
+          <div id="reviewsHistoryChartMount" class="mt-4 pt-2"></div>
+        </div>
+        <p class="text-[11px] font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
+          Biểu đồ cột xếp chồng 30 ngày qua phân tách tỷ trọng thẻ già (Mature), thẻ non (Young) và thẻ học lại (Relearn).
+        </p>
+      </section>
+
+      <!-- 5. TỔNG KHO THẺ (5 cols) -->
+      <section class="lg:col-span-5 neo-box p-5 bg-white space-y-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+            <div>
+              <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 05</span>
+              <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+                Tổng Kho Thẻ & Phân Bổ (Card Counts)
+              </h3>
+            </div>
+            <span class="px-2 py-0.5 bg-[#111111] text-white text-xs font-mono-code font-extrabold">
+              <span id="cardCountTotal">12.300</span> THẺ
+            </span>
+          </div>
+
+          <!-- Thanh phân đoạn tỉ lệ -->
+          <div id="cardCountBarMount" class="mt-3"></div>
+
+          <!-- Chi tiết bảng số lượng -->
+          <div class="grid grid-cols-2 gap-2 mt-4 text-xs font-mono-code">
+            <div class="p-2.5 bg-[#F4F1EA] border border-[#111111] space-y-0.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-blue-700 uppercase">MỚI (NEW):</span>
+                <span id="cardCountNew" class="font-extrabold text-[#111111]">6.152 (50.0%)</span>
+              </div>
+            </div>
+            <div class="p-2.5 bg-[#F4F1EA] border border-[#111111] space-y-0.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-amber-600 uppercase">ĐANG HỌC (LEARNING):</span>
+                <span id="cardCountLearn" class="font-extrabold text-[#111111]">14 (0.1%)</span>
+              </div>
+            </div>
+            <div class="p-2.5 bg-[#F4F1EA] border border-[#111111] space-y-0.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-amber-700 uppercase">THẺ NON (YOUNG):</span>
+                <span id="cardCountYoung" class="font-extrabold text-[#111111]">2.006 (16.3%)</span>
+              </div>
+            </div>
+            <div class="p-2.5 bg-[#F4F1EA] border border-[#111111] space-y-0.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-emerald-700 uppercase">THẺ GIÀ (MATURE):</span>
+                <span id="cardCountMature" class="font-extrabold text-[#111111]">4.128 (33.6%)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-[11px] font-mono-code text-zinc-500 border-t border-zinc-200 pt-2">
+          Phân bố toàn diện 12.300 thẻ thuộc bộ bài (thẻ Mature là thẻ có khoảng cách ôn tập trên 21 ngày).
+        </p>
+      </section>
+    </div>
+
+    <!-- SECTION 6 & 7: KHOẢNG CÁCH ÔN TẬP & ĐỘ ỔN ĐỊNH FSRS -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- 6. KHOẢNG CÁCH (INTERVALS) -->
+      <section class="neo-box p-5 bg-white space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+          <div>
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 06</span>
+            <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+              Khoảng Cách Ôn Tập (Review Intervals)
+            </h3>
+          </div>
+          <span class="px-2 py-0.5 bg-[#0F766E] text-white text-xs font-mono-code font-bold">
+            TRUNG VỊ: <span id="intervalsMedian">1.94 THÁNG</span>
+          </span>
+        </div>
+        <div id="intervalsChartMount" class="pt-2"></div>
+        <p class="text-[11px] font-mono-code text-zinc-500">
+          Thời gian trì hoãn cho đến khi thẻ ôn tập được lặp lại tiếp theo.
+        </p>
+      </section>
+
+      <!-- 7. ĐỘ ỔN ĐỊNH FSRS (STABILITY) -->
+      <section class="neo-box p-5 bg-white space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+          <div>
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 07</span>
+            <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+              Độ Ổn Định Trí Nhớ (FSRS Card Stability)
+            </h3>
+          </div>
+          <span class="px-2 py-0.5 bg-[#2563EB] text-white text-xs font-mono-code font-bold">
+            TRUNG VỊ: <span id="stabilityMedian">1.97 THÁNG</span>
+          </span>
+        </div>
+        <div id="stabilityChartMount" class="pt-2"></div>
+        <p class="text-[11px] font-mono-code text-zinc-500">
+          Khoảng thời gian ước tính để xác suất nhớ lại rơi từ 100% xuống ngưỡng 90%.
+        </p>
+      </section>
+    </div>
+
+    <!-- SECTION 8 & 9: ĐỘ KHÓ THẺ & KHẢ NĂNG GỢI NHỚ FSRS -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- 8. ĐỘ KHÓ (DIFFICULTY) -->
+      <section class="neo-box p-5 bg-white space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+          <div>
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 08</span>
+            <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+              Độ Khó Thẻ (FSRS Card Difficulty)
+            </h3>
+          </div>
+          <span class="px-2 py-0.5 bg-[#BE123C] text-white text-xs font-mono-code font-bold">
+            TRUNG VỊ: <span id="difficultyMedian">0%</span>
+          </span>
+        </div>
+        <div id="difficultyChartMount" class="pt-2"></div>
+        <p class="text-[11px] font-mono-code text-zinc-500">
+          Độ khó càng cao thì sự gia tăng độ ổn định của thẻ sau mỗi lần ôn tập càng chậm.
+        </p>
+      </section>
+
+      <!-- 9. KHẢ NĂNG GỢI NHỚ (RETRIEVABILITY) -->
+      <section class="neo-box p-5 bg-white space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+          <div>
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 09</span>
+            <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+              Khả Năng Gợi Nhớ Hôm Nay (FSRS Retrievability)
+            </h3>
+          </div>
+          <span class="px-2 py-0.5 bg-[#0F766E] text-white text-xs font-mono-code font-bold">
+            TRUNG BÌNH: <span id="retrievabilityAvg">95.0%</span>
+          </span>
+        </div>
+        <div class="p-2.5 bg-[#F4F1EA] border border-[#111111] text-xs font-mono-code">
+          KIẾN THỨC ƯỚC TÍNH: <b id="retrievabilityKnowledge" class="text-[#0F766E]">5.836 THẺ / 1.945 TỪ VỰNG</b>
+        </div>
+        <div id="retrievabilityChartMount" class="pt-2"></div>
+      </section>
+    </div>
+
+    <!-- SECTION 10 & 11: TỈ LỆ NHỚ & PHÂN BỔ THEO GIỜ -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- 10. TỈ LỆ NHỚ (5 cols) -->
+      <section class="lg:col-span-5 neo-box p-5 bg-white space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+          <div>
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 10</span>
+            <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+              Tỉ Lệ Nhớ Thực Tế (Retention Rate)
+            </h3>
+          </div>
+          <span class="px-2 py-0.5 bg-[#EAE5DA] text-xs font-mono-code font-bold border border-[#111111]">THẺ INTERVAL &ge; 1 NGÀY</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b-2 border-[#111111] text-[11px] font-mono-code font-extrabold uppercase text-zinc-600 bg-[#EAE5DA]">
+                <th class="p-2.5">GIAI ĐOẠN</th>
+                <th class="p-2.5 text-right">YOUNG</th>
+                <th class="p-2.5 text-right">MATURE</th>
+                <th class="p-2.5 text-right">TỔNG</th>
+                <th class="p-2.5 text-right">LƯỢT</th>
+              </tr>
+            </thead>
+            <tbody id="retentionTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 11. PHÂN BỔ 24 GIỜ (7 cols) -->
+      <section class="lg:col-span-7 neo-box p-5 bg-white space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+          <div>
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 11</span>
+            <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+              Phân Bổ Ôn Tập Theo Giờ (Hourly Breakdown - 24H)
+            </h3>
+          </div>
+          <span class="px-2 py-0.5 bg-[#EAE5DA] text-xs font-mono-code font-bold border border-[#111111]">GIỜ VIỆT NAM (UTC+7)</span>
+        </div>
+        <div id="hourlyChartMount" class="pt-2"></div>
+        <p class="text-[11px] font-mono-code text-zinc-500">
+          Khối lượng ôn tập từng khung giờ từ 0h sáng đến 23h đêm (thể hiện thói quen học tập trong ngày).
+        </p>
+      </section>
+    </div>
+
+    <!-- SECTION 12 & 13: TỈ LỆ NHẤN NÚT & THẺ THÊM MỚI -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- 12. NÚT ĐÁNH GIÁ (ANSWER BUTTONS) -->
+      <section class="neo-box p-5 bg-white space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+          <div>
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 12</span>
+            <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+              Tỉ Lệ Nhấn Nút Đánh Giá (Answer Buttons)
+            </h3>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] font-mono-code font-bold">
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-[#BE123C]"></span> AGAIN</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-[#EA580C]"></span> HARD</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-[#0F766E]"></span> GOOD</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 bg-[#2563EB]"></span> EASY</span>
+          </div>
+        </div>
+        <div id="answerButtonsMount" class="space-y-3 pt-1"></div>
+      </section>
+
+      <!-- 13. THẺ THÊM MỚI (CARDS ADDED) -->
+      <section class="neo-box p-5 bg-white space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+          <div>
+            <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 13</span>
+            <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+              Thẻ Thêm Mới 30 Ngày Qua (Cards Added)
+            </h3>
+          </div>
+          <div class="text-xs font-mono-code font-bold">
+            TỔNG: <span id="cardsAddedTotal" class="text-blue-700">9.300 THẺ</span> | TB: <span id="cardsAddedAvg">300/NGÀY</span>
+          </div>
+        </div>
+        <div id="cardsAddedChartMount" class="pt-2"></div>
+        <p class="text-[11px] font-mono-code text-zinc-500">
+          Khối lượng thẻ mới được nạp vào bộ bài trong 30 ngày gần nhất.
+        </p>
+      </section>
+    </div>
+
+    <!-- SECTION 14: TIẾN TRÌNH HỌC TỪNG CHỦ ĐỀ CON (SUBDECKS EXPLORER) -->
+    <section class="neo-box p-5 bg-white space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b-2 border-[#111111]">
+        <div>
+          <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">KHU VỰC 14</span>
+          <h3 class="text-base sm:text-lg font-display font-extrabold uppercase text-[#111111]">
+            Khám Phá Tiến Trình Học Từng Chủ Đề Con (Sub-decks Explorer)
+          </h3>
+          <p class="text-xs font-mono-code text-zinc-600 mt-0.5">
+            Theo dõi chi tiết số thẻ New, Learn, Review và tỷ lệ hoàn tất (%) của hơn 100 chủ đề con trong dự án.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <input type="text" id="subdeckSearchInput" placeholder="Tìm tên chủ đề hoặc STT..." 
+                 class="px-3 py-1.5 bg-[#F4F1EA] border-2 border-[#111111] text-xs font-mono-code font-bold focus:outline-none focus:bg-white w-64" />
+          <span id="subdecksFilteredCount" class="text-xs font-mono-code font-bold px-2.5 py-1 bg-[#EAE5DA] border border-[#111111] whitespace-nowrap">
+            101 / 101 CHỦ ĐỀ
+          </span>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b-2 border-[#111111] text-[11px] font-mono-code font-extrabold uppercase text-zinc-600 bg-[#EAE5DA]">
+              <th class="p-2.5 w-16">STT</th>
+              <th class="p-2.5">TÊN CHỦ ĐỀ CON</th>
+              <th class="p-2.5 text-right w-20">TỔNG THẺ</th>
+              <th class="p-2.5 text-right w-20 text-blue-700">MỚI</th>
+              <th class="p-2.5 text-right w-20 text-amber-700">ĐANG HỌC</th>
+              <th class="p-2.5 text-right w-20 text-emerald-800">REVIEW</th>
+              <th class="p-2.5 text-right w-36">TIẾN ĐỘ THUỘC</th>
+              <th class="p-2.5 text-center w-36">TRẠNG THÁI</th>
+            </tr>
+          </thead>
+          <tbody id="subdecksTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Phân trang danh sách chủ đề con -->
+      <div id="subdecksPagination" class="pt-3 border-t border-zinc-200 flex justify-between items-center"></div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: DÁN NHANH THỐNG KÊ TỪ ĐIỆN THOẠI (QUICK PASTE MODAL) -->
+  <div id="quickPasteModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="neo-box bg-white max-w-2xl w-full p-6 space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+        <div>
+          <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">CẬP NHẬT TỪ ĐIỆN THOẠI</span>
+          <h4 class="text-lg font-display font-extrabold uppercase text-[#111111]">
+            Dán Đoạn Văn Bản Thống Kê Từ AnkiDroid
+          </h4>
+        </div>
+        <button onclick="closeQuickPasteModal()" class="text-xs font-mono-code font-extrabold px-2.5 py-1 bg-[#111111] text-white">
+          ĐÓNG [X]
+        </button>
+      </div>
+
+      <p class="text-xs font-mono-code text-zinc-600">
+        Hướng dẫn: Mở ứng dụng <b class="text-[#111111]">AnkiDroid</b> trên điện thoại &rarr; Chọn bộ bài <b class="text-[#111111]">Thử thách mỗi ngày 100 từ vựng</b> &rarr; Vào menu <b class="text-[#111111]">Thống kê (Statistics)</b> &rarr; Bấm nút <b class="text-[#111111]">Sao chép (Copy)</b> &rarr; Dán vào khung bên dưới:
+      </p>
+
+      <textarea id="quickPasteTextarea" rows="8" placeholder="Dán văn bản sao chép từ Anki vào đây (Ví dụ: Studied 108 cards in 12.93 minutes today...)" 
+                class="w-full p-3 bg-[#F4F1EA] border-2 border-[#111111] text-xs font-mono-code focus:outline-none focus:bg-white"></textarea>
+
+      <div class="flex items-center justify-between pt-2">
+        <button onclick="clearManualStatsOverride()" class="text-xs font-mono-code font-bold text-rose-700 underline uppercase" title="Khôi phục lại dữ liệu nạp từ tệp cloud anki_stats.json">
+          XÓA BẢN DÁN (VỀ DỮ LIỆU CLOUD)
+        </button>
+        <div class="flex items-center gap-2">
+          <button onclick="closeQuickPasteModal()" class="neo-btn px-4 py-2 bg-white text-[#111111] text-xs font-mono-code font-bold uppercase">
+            HỦY
+          </button>
+          <button onclick="handlePasteAnkiStats()" class="neo-btn px-4 py-2 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase">
+            XÁC NHẬN & CẬP NHẬT BIỂU ĐỒ
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHÂN TRANG DÙNG CHUNG -->
+  <div id="sharedFooterMount"></div>
+  <div id="sharedConsoleMount"></div>
+
+  <!-- SCRIPTS -->
+  <script src="js/layout.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/export.js"></script>
+  <script src="js/stats.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

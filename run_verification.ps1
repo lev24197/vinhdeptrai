@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # The Anki Dictionary & RPG Arena - Automated Headless Verification Runner
 # File: run_verification.ps1
 # ==============================================================================
@@ -152,7 +152,7 @@ try {
           $exitCode = 1
         }
 
-        $pagesToAudit = @("index", "grid", "studio", "audio", "corpus", "audit", "quiz")
+        $pagesToAudit = @("index", "grid", "studio", "audio", "corpus", "audit", "quiz", "stats")
         foreach ($pKey in $pagesToAudit) {
           $pObj = $auditData.$pKey
           $pLoaded = [bool]($pObj -and $pObj.loaded)

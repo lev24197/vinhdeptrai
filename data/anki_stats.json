@@ -1,0 +1,1401 @@
+﻿{
+  "deck_name": "Th\u1EED th\u00E1ch m\u1ED7i ng\u00E0y 100 t\u1EEB v\u1EF1ng",
+  "updated_at": "2026-11-12 21:54:56",
+  "summary": {
+    "streak_days": 38,
+    "days_studied_past_30": 30,
+    "total_reviews_past_30": 18804,
+    "avg_reviews_day": 626,
+    "total_deck_cards": 12300,
+    "total_all_time_reviews": 20741
+  },
+  "today": {
+    "cards_studied": 108,
+    "time_minutes": 12.93,
+    "seconds_per_card": 7.18,
+    "again_count": 62,
+    "again_pct": 57.41,
+    "hard_count": 0,
+    "good_count": 1,
+    "easy_count": 45,
+    "learn": 108,
+    "review": 0,
+    "relearn": 0
+  },
+  "card_counts": {
+    "new": 6152,
+    "new_pct": 50.02,
+    "learning": 14,
+    "learning_pct": 0.11,
+    "relearning": 0,
+    "young": 2006,
+    "young_pct": 16.31,
+    "mature": 4128,
+    "mature_pct": 33.56,
+    "suspended": 0,
+    "buried": 0,
+    "total": 12300
+  },
+  "future_due": {
+    "due_tomorrow": 240,
+    "total_future_30": 2399,
+    "avg_reviews_day": 77,
+    "daily_load": 254,
+    "days": [
+      {
+        "day": 0,
+        "count": 711
+      },
+      {
+        "day": 1,
+        "count": 240
+      },
+      {
+        "day": 2,
+        "count": 197
+      },
+      {
+        "day": 3,
+        "count": 124
+      },
+      {
+        "day": 4,
+        "count": 168
+      },
+      {
+        "day": 5,
+        "count": 147
+      },
+      {
+        "day": 6,
+        "count": 125
+      },
+      {
+        "day": 7,
+        "count": 104
+      },
+      {
+        "day": 8,
+        "count": 85
+      },
+      {
+        "day": 9,
+        "count": 45
+      },
+      {
+        "day": 10,
+        "count": 31
+      },
+      {
+        "day": 11,
+        "count": 29
+      },
+      {
+        "day": 12,
+        "count": 27
+      },
+      {
+        "day": 13,
+        "count": 19
+      },
+      {
+        "day": 14,
+        "count": 17
+      },
+      {
+        "day": 15,
+        "count": 13
+      },
+      {
+        "day": 16,
+        "count": 14
+      },
+      {
+        "day": 17,
+        "count": 12
+      },
+      {
+        "day": 18,
+        "count": 16
+      },
+      {
+        "day": 19,
+        "count": 13
+      },
+      {
+        "day": 20,
+        "count": 15
+      },
+      {
+        "day": 21,
+        "count": 16
+      },
+      {
+        "day": 22,
+        "count": 18
+      },
+      {
+        "day": 23,
+        "count": 19
+      },
+      {
+        "day": 24,
+        "count": 19
+      },
+      {
+        "day": 25,
+        "count": 23
+      },
+      {
+        "day": 26,
+        "count": 26
+      },
+      {
+        "day": 27,
+        "count": 31
+      },
+      {
+        "day": 28,
+        "count": 32
+      },
+      {
+        "day": 29,
+        "count": 32
+      },
+      {
+        "day": 30,
+        "count": 31
+      }
+    ]
+  },
+  "reviews_history": {
+    "days_studied_30": 30,
+    "total_reviews_30": 18804,
+    "avg_reviews_day": 626.8,
+    "daily": [
+      {
+        "day_offset": -29,
+        "date": "2026-10-14",
+        "total": 46,
+        "mature": 0,
+        "young": 46,
+        "relearn": 0
+      },
+      {
+        "day_offset": -28,
+        "date": "2026-10-15",
+        "total": 433,
+        "mature": 0,
+        "young": 419,
+        "relearn": 14
+      },
+      {
+        "day_offset": -27,
+        "date": "2026-10-16",
+        "total": 591,
+        "mature": 0,
+        "young": 591,
+        "relearn": 0
+      },
+      {
+        "day_offset": -26,
+        "date": "2026-10-17",
+        "total": 607,
+        "mature": 0,
+        "young": 601,
+        "relearn": 6
+      },
+      {
+        "day_offset": -25,
+        "date": "2026-10-18",
+        "total": 32,
+        "mature": 0,
+        "young": 32,
+        "relearn": 0
+      },
+      {
+        "day_offset": -24,
+        "date": "2026-10-19",
+        "total": 1085,
+        "mature": 0,
+        "young": 1048,
+        "relearn": 37
+      },
+      {
+        "day_offset": -23,
+        "date": "2026-10-20",
+        "total": 634,
+        "mature": 0,
+        "young": 628,
+        "relearn": 6
+      },
+      {
+        "day_offset": -22,
+        "date": "2026-10-21",
+        "total": 674,
+        "mature": 0,
+        "young": 636,
+        "relearn": 38
+      },
+      {
+        "day_offset": -21,
+        "date": "2026-10-22",
+        "total": 146,
+        "mature": 0,
+        "young": 146,
+        "relearn": 0
+      },
+      {
+        "day_offset": -20,
+        "date": "2026-10-23",
+        "total": 555,
+        "mature": 0,
+        "young": 555,
+        "relearn": 0
+      },
+      {
+        "day_offset": -19,
+        "date": "2026-10-24",
+        "total": 309,
+        "mature": 0,
+        "young": 303,
+        "relearn": 6
+      },
+      {
+        "day_offset": -18,
+        "date": "2026-10-25",
+        "total": 1459,
+        "mature": 0,
+        "young": 1373,
+        "relearn": 86
+      },
+      {
+        "day_offset": -17,
+        "date": "2026-10-26",
+        "total": 177,
+        "mature": 0,
+        "young": 175,
+        "relearn": 2
+      },
+      {
+        "day_offset": -16,
+        "date": "2026-10-27",
+        "total": 1433,
+        "mature": 0,
+        "young": 1267,
+        "relearn": 166
+      },
+      {
+        "day_offset": -15,
+        "date": "2026-10-28",
+        "total": 359,
+        "mature": 0,
+        "young": 358,
+        "relearn": 1
+      },
+      {
+        "day_offset": -14,
+        "date": "2026-10-29",
+        "total": 185,
+        "mature": 0,
+        "young": 177,
+        "relearn": 8
+      },
+      {
+        "day_offset": -13,
+        "date": "2026-10-30",
+        "total": 512,
+        "mature": 0,
+        "young": 481,
+        "relearn": 31
+      },
+      {
+        "day_offset": -12,
+        "date": "2026-10-31",
+        "total": 1489,
+        "mature": 9,
+        "young": 1338,
+        "relearn": 142
+      },
+      {
+        "day_offset": -11,
+        "date": "2026-11-01",
+        "total": 1201,
+        "mature": 10,
+        "young": 1171,
+        "relearn": 20
+      },
+      {
+        "day_offset": -10,
+        "date": "2026-11-02",
+        "total": 1178,
+        "mature": 8,
+        "young": 1132,
+        "relearn": 38
+      },
+      {
+        "day_offset": -9,
+        "date": "2026-11-03",
+        "total": 34,
+        "mature": 0,
+        "young": 32,
+        "relearn": 2
+      },
+      {
+        "day_offset": -8,
+        "date": "2026-11-04",
+        "total": 1067,
+        "mature": 7,
+        "young": 885,
+        "relearn": 175
+      },
+      {
+        "day_offset": -7,
+        "date": "2026-11-05",
+        "total": 1389,
+        "mature": 12,
+        "young": 947,
+        "relearn": 430
+      },
+      {
+        "day_offset": -6,
+        "date": "2026-11-06",
+        "total": 60,
+        "mature": 1,
+        "young": 59,
+        "relearn": 0
+      },
+      {
+        "day_offset": -5,
+        "date": "2026-11-07",
+        "total": 26,
+        "mature": 0,
+        "young": 23,
+        "relearn": 3
+      },
+      {
+        "day_offset": -4,
+        "date": "2026-11-08",
+        "total": 10,
+        "mature": 0,
+        "young": 10,
+        "relearn": 0
+      },
+      {
+        "day_offset": -3,
+        "date": "2026-11-09",
+        "total": 1792,
+        "mature": 22,
+        "young": 1631,
+        "relearn": 139
+      },
+      {
+        "day_offset": -2,
+        "date": "2026-11-10",
+        "total": 34,
+        "mature": 4,
+        "young": 30,
+        "relearn": 0
+      },
+      {
+        "day_offset": -1,
+        "date": "2026-11-11",
+        "total": 1179,
+        "mature": 5,
+        "young": 1125,
+        "relearn": 49
+      },
+      {
+        "day_offset": 0,
+        "date": "2026-11-12",
+        "total": 108,
+        "mature": 0,
+        "young": 108,
+        "relearn": 0
+      }
+    ]
+  },
+  "intervals": {
+    "median_months": 1.97,
+    "median_days": 59,
+    "bins": {
+      "1-5 ng\u00E0y": 546,
+      "6-10 ng\u00E0y": 1056,
+      "11-20 ng\u00E0y": 404,
+      "21-30 ng\u00E0y": 104,
+      "1-2 th\u00E1ng": 1078,
+      "2-3 th\u00E1ng": 2829,
+      "3-6 th\u00E1ng": 105,
+      "6-12 th\u00E1ng": 12,
+      "\u003E 1 n\u0103m": 0
+    }
+  },
+  "stability": {
+    "median_months": 2.01,
+    "median_days": 60.3,
+    "bins": {
+      "0-10 ng\u00E0y": 1672,
+      "11-30 ng\u00E0y": 445,
+      "1-2 th\u00E1ng": 793,
+      "2-3 th\u00E1ng": 3142,
+      "3-6 th\u00E1ng": 88,
+      "6-12 th\u00E1ng": 8,
+      "\u003E 1 n\u0103m": 0
+    }
+  },
+  "difficulty": {
+    "median_pct": 0,
+    "bins": {
+      "0-20%": 4716,
+      "21-40%": 229,
+      "41-60%": 252,
+      "61-80%": 245,
+      "81-100%": 706
+    }
+  },
+  "retrievability": {
+    "average_pct": 95.1,
+    "estimated_knowledge_cards": 5844,
+    "estimated_knowledge_notes": 1948,
+    "bins": {
+      "0-70%": 102,
+      "71-80%": 132,
+      "81-90%": 338,
+      "91-95%": 1045,
+      "96-100%": 4531
+    }
+  },
+  "retention": {
+    "today": {
+      "young": "N/A",
+      "mature": "N/A",
+      "total": "N/A",
+      "count": 0
+    },
+    "yesterday": {
+      "young": "92.4%",
+      "mature": "100.0%",
+      "total": "92.5%",
+      "count": 548
+    },
+    "last_week": {
+      "young": "89.2%",
+      "mature": "97.7%",
+      "total": "89.3%",
+      "count": 2287
+    },
+    "last_month": {
+      "young": "89.6%",
+      "mature": "98.7%",
+      "total": "89.7%",
+      "count": 7572
+    },
+    "last_year": {
+      "young": "89.6%",
+      "mature": "98.7%",
+      "total": "89.7%",
+      "count": 7865
+    }
+  },
+  "hourly_breakdown": [
+    {
+      "hour": 0,
+      "count": 3120,
+      "pass_rate": 70.9
+    },
+    {
+      "hour": 1,
+      "count": 75,
+      "pass_rate": 97.3
+    },
+    {
+      "hour": 2,
+      "count": 0,
+      "pass_rate": 0
+    },
+    {
+      "hour": 3,
+      "count": 0,
+      "pass_rate": 0
+    },
+    {
+      "hour": 4,
+      "count": 82,
+      "pass_rate": 78
+    },
+    {
+      "hour": 5,
+      "count": 0,
+      "pass_rate": 0
+    },
+    {
+      "hour": 6,
+      "count": 0,
+      "pass_rate": 0
+    },
+    {
+      "hour": 7,
+      "count": 158,
+      "pass_rate": 72.8
+    },
+    {
+      "hour": 8,
+      "count": 361,
+      "pass_rate": 66.8
+    },
+    {
+      "hour": 9,
+      "count": 362,
+      "pass_rate": 77.1
+    },
+    {
+      "hour": 10,
+      "count": 694,
+      "pass_rate": 82.9
+    },
+    {
+      "hour": 11,
+      "count": 347,
+      "pass_rate": 62.5
+    },
+    {
+      "hour": 12,
+      "count": 597,
+      "pass_rate": 75.2
+    },
+    {
+      "hour": 13,
+      "count": 502,
+      "pass_rate": 75.9
+    },
+    {
+      "hour": 14,
+      "count": 194,
+      "pass_rate": 83
+    },
+    {
+      "hour": 15,
+      "count": 167,
+      "pass_rate": 55.1
+    },
+    {
+      "hour": 16,
+      "count": 42,
+      "pass_rate": 76.2
+    },
+    {
+      "hour": 17,
+      "count": 94,
+      "pass_rate": 46.8
+    },
+    {
+      "hour": 18,
+      "count": 697,
+      "pass_rate": 58.1
+    },
+    {
+      "hour": 19,
+      "count": 235,
+      "pass_rate": 58.7
+    },
+    {
+      "hour": 20,
+      "count": 964,
+      "pass_rate": 60.8
+    },
+    {
+      "hour": 21,
+      "count": 2761,
+      "pass_rate": 75.4
+    },
+    {
+      "hour": 22,
+      "count": 5989,
+      "pass_rate": 69.1
+    },
+    {
+      "hour": 23,
+      "count": 3300,
+      "pass_rate": 67.1
+    }
+  ],
+  "answer_buttons": {
+    "learning": {
+      "again": 4825,
+      "hard": 163,
+      "good": 431,
+      "easy": 6025
+    },
+    "young": {
+      "again": 809,
+      "hard": 10,
+      "good": 23,
+      "easy": 6945
+    },
+    "mature": {
+      "again": 1,
+      "hard": 0,
+      "good": 0,
+      "easy": 77
+    }
+  },
+  "cards_added": {
+    "total_added_30": 9300,
+    "avg_added_day": 310,
+    "daily": [
+      {
+        "day_offset": -29,
+        "date": "2026-10-14",
+        "count": 1500
+      },
+      {
+        "day_offset": -28,
+        "date": "2026-10-15",
+        "count": 0
+      },
+      {
+        "day_offset": -27,
+        "date": "2026-10-16",
+        "count": 0
+      },
+      {
+        "day_offset": -26,
+        "date": "2026-10-17",
+        "count": 0
+      },
+      {
+        "day_offset": -25,
+        "date": "2026-10-18",
+        "count": 0
+      },
+      {
+        "day_offset": -24,
+        "date": "2026-10-19",
+        "count": 0
+      },
+      {
+        "day_offset": -23,
+        "date": "2026-10-20",
+        "count": 0
+      },
+      {
+        "day_offset": -22,
+        "date": "2026-10-21",
+        "count": 0
+      },
+      {
+        "day_offset": -21,
+        "date": "2026-10-22",
+        "count": 0
+      },
+      {
+        "day_offset": -20,
+        "date": "2026-10-23",
+        "count": 0
+      },
+      {
+        "day_offset": -19,
+        "date": "2026-10-24",
+        "count": 0
+      },
+      {
+        "day_offset": -18,
+        "date": "2026-10-25",
+        "count": 0
+      },
+      {
+        "day_offset": -17,
+        "date": "2026-10-26",
+        "count": 0
+      },
+      {
+        "day_offset": -16,
+        "date": "2026-10-27",
+        "count": 300
+      },
+      {
+        "day_offset": -15,
+        "date": "2026-10-28",
+        "count": 7200
+      },
+      {
+        "day_offset": -14,
+        "date": "2026-10-29",
+        "count": 0
+      },
+      {
+        "day_offset": -13,
+        "date": "2026-10-30",
+        "count": 0
+      },
+      {
+        "day_offset": -12,
+        "date": "2026-10-31",
+        "count": 0
+      },
+      {
+        "day_offset": -11,
+        "date": "2026-11-01",
+        "count": 300
+      },
+      {
+        "day_offset": -10,
+        "date": "2026-11-02",
+        "count": 0
+      },
+      {
+        "day_offset": -9,
+        "date": "2026-11-03",
+        "count": 0
+      },
+      {
+        "day_offset": -8,
+        "date": "2026-11-04",
+        "count": 0
+      },
+      {
+        "day_offset": -7,
+        "date": "2026-11-05",
+        "count": 0
+      },
+      {
+        "day_offset": -6,
+        "date": "2026-11-06",
+        "count": 0
+      },
+      {
+        "day_offset": -5,
+        "date": "2026-11-07",
+        "count": 0
+      },
+      {
+        "day_offset": -4,
+        "date": "2026-11-08",
+        "count": 0
+      },
+      {
+        "day_offset": -3,
+        "date": "2026-11-09",
+        "count": 0
+      },
+      {
+        "day_offset": -2,
+        "date": "2026-11-10",
+        "count": 0
+      },
+      {
+        "day_offset": -1,
+        "date": "2026-11-11",
+        "count": 0
+      },
+      {
+        "day_offset": 0,
+        "date": "2026-11-12",
+        "count": 0
+      }
+    ]
+  },
+  "calendar_heatmap": [
+    {
+      "date": "2026-10-06",
+      "count": 22
+    },
+    {
+      "date": "2026-10-07",
+      "count": 211
+    },
+    {
+      "date": "2026-10-09",
+      "count": 384
+    },
+    {
+      "date": "2026-10-10",
+      "count": 372
+    },
+    {
+      "date": "2026-10-11",
+      "count": 313
+    },
+    {
+      "date": "2026-10-12",
+      "count": 311
+    },
+    {
+      "date": "2026-10-13",
+      "count": 324
+    },
+    {
+      "date": "2026-10-14",
+      "count": 46
+    },
+    {
+      "date": "2026-10-15",
+      "count": 433
+    },
+    {
+      "date": "2026-10-16",
+      "count": 591
+    },
+    {
+      "date": "2026-10-17",
+      "count": 607
+    },
+    {
+      "date": "2026-10-18",
+      "count": 32
+    },
+    {
+      "date": "2026-10-19",
+      "count": 993
+    },
+    {
+      "date": "2026-10-20",
+      "count": 726
+    },
+    {
+      "date": "2026-10-21",
+      "count": 97
+    },
+    {
+      "date": "2026-10-22",
+      "count": 723
+    },
+    {
+      "date": "2026-10-23",
+      "count": 393
+    },
+    {
+      "date": "2026-10-24",
+      "count": 471
+    },
+    {
+      "date": "2026-10-25",
+      "count": 631
+    },
+    {
+      "date": "2026-10-26",
+      "count": 853
+    },
+    {
+      "date": "2026-10-27",
+      "count": 1585
+    },
+    {
+      "date": "2026-10-28",
+      "count": 359
+    },
+    {
+      "date": "2026-10-29",
+      "count": 185
+    },
+    {
+      "date": "2026-10-30",
+      "count": 350
+    },
+    {
+      "date": "2026-10-31",
+      "count": 1651
+    },
+    {
+      "date": "2026-11-01",
+      "count": 1201
+    },
+    {
+      "date": "2026-11-02",
+      "count": 1178
+    },
+    {
+      "date": "2026-11-03",
+      "count": 34
+    },
+    {
+      "date": "2026-11-04",
+      "count": 1067
+    },
+    {
+      "date": "2026-11-05",
+      "count": 455
+    },
+    {
+      "date": "2026-11-06",
+      "count": 934
+    },
+    {
+      "date": "2026-11-07",
+      "count": 86
+    },
+    {
+      "date": "2026-11-08",
+      "count": 10
+    },
+    {
+      "date": "2026-11-09",
+      "count": 1792
+    },
+    {
+      "date": "2026-11-10",
+      "count": 34
+    },
+    {
+      "date": "2026-11-11",
+      "count": 1178
+    },
+    {
+      "date": "2026-11-12",
+      "count": 109
+    }
+  ],
+  "subdecks": [
+    {
+      "stt": 1,
+      "did": 1791299821729,
+      "name": "A. Qu\u1EA7n \u00E1o v\u00E0 Ph\u1EE5 ki\u1EC7n th\u1EDDi trang",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 3,
+      "progress_pct": 100
+    },
+    {
+      "stt": 2,
+      "did": 1791300562095,
+      "name": "B. V\u0103n h\u00F3a qu\u00E1n c\u00E0 ph\u00EA v\u00E0 \u0110\u1ED3 u\u1ED1ng",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 1,
+      "progress_pct": 100
+    },
+    {
+      "stt": 3,
+      "did": 1791301492792,
+      "name": "C. \u1EA8m th\u1EF1c v\u00E0 C\u00E1c lo\u1EA1i l\u1EA9u",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 3,
+      "progress_pct": 100
+    },
+    {
+      "stt": 4,
+      "did": 1791301524024,
+      "name": "D. Gia \u0111\u00ECnh v\u00E0 Ng\u01B0\u1EDDi th\u00E2n",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 1,
+      "progress_pct": 100
+    },
+    {
+      "stt": 5,
+      "did": 1791301679850,
+      "name": "E. C\u00E1c b\u1ED9 ph\u1EADn tr\u00EAn c\u01A1 th\u1EC3 ng\u01B0\u1EDDi",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 9,
+      "progress_pct": 100
+    },
+    {
+      "stt": 6,
+      "did": 1791531930608,
+      "name": "F. \u0110\u1ED3 n\u1ED9i th\u1EA5t v\u00E0 V\u1EADt d\u1EE5ng gia \u0111\u00ECnh",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 5,
+      "progress_pct": 100
+    },
+    {
+      "stt": 7,
+      "did": 1791532130226,
+      "name": "G. C\u00E1c lo\u1EA1i b\u1EC7nh v\u00E0 Tri\u1EC7u ch\u1EE9ng y khoa",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 10,
+      "progress_pct": 100
+    },
+    {
+      "stt": 8,
+      "did": 1791532217888,
+      "name": "H. C\u00E1c t\u1ED5 ch\u1EE9c t\u00ECnh nguy\u1EC7n v\u00E0 T\u1EEB thi\u1EC7n",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 5,
+      "progress_pct": 100
+    },
+    {
+      "stt": 9,
+      "did": 1791532707284,
+      "name": "I. Ng\u00E0nh ngh\u1EC1 v\u00E0 Ch\u1EE9c danh c\u00F4ng vi\u1EC7c",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 5,
+      "progress_pct": 100
+    },
+    {
+      "stt": 10,
+      "did": 1791532762527,
+      "name": "J. T\u00EDnh c\u00E1ch v\u00E0 C\u1EA3m x\u00FAc con ng\u01B0\u1EDDi",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 3,
+      "progress_pct": 100
+    },
+    {
+      "stt": 11,
+      "did": 1791949310835,
+      "name": "K. T\u00EDn ng\u01B0\u1EE1ng v\u00E0 T\u00F4n gi\u00E1o",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 31,
+      "progress_pct": 100
+    },
+    {
+      "stt": 12,
+      "did": 1791949388155,
+      "name": "L. Ph\u00E1p lu\u1EADt v\u00E0 C\u00E1c lo\u1EA1i t\u1ED9i ph\u1EA1m",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 28,
+      "progress_pct": 100
+    },
+    {
+      "stt": 13,
+      "did": 1791949443240,
+      "name": "M. D\u1EE5ng c\u1EE5 v\u1EC7 sinh v\u00E0 Ch\u0103m s\u00F3c c\u00E1 nh\u00E2n",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 21,
+      "progress_pct": 100
+    },
+    {
+      "stt": 14,
+      "did": 1791949493403,
+      "name": "N. V\u0103n h\u00F3a v\u00E0 Phong t\u1EE5c t\u1EADp qu\u00E1n",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 14,
+      "progress_pct": 100
+    },
+    {
+      "stt": 15,
+      "did": 1791949557355,
+      "name": "O. Ch\u00EDnh ph\u1EE7 v\u00E0 C\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 63,
+      "progress_pct": 100
+    },
+    {
+      "stt": 16,
+      "did": 1793076585131,
+      "name": "P. D\u1EE5ng c\u1EE5 v\u00E0 Trang thi\u1EBFt b\u1ECB y t\u1EBF",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 111,
+      "progress_pct": 100
+    },
+    {
+      "stt": 17,
+      "did": 1793076758647,
+      "name": "Q. B\u00E1o ch\u00ED v\u00E0 Ph\u01B0\u01A1ng ti\u1EC7n truy\u1EC1n th\u00F4ng",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 128,
+      "progress_pct": 100
+    },
+    {
+      "stt": 18,
+      "did": 1793076776800,
+      "name": "R. C\u00E1c giai \u0111o\u1EA1n trong cu\u1ED9c \u0111\u1EDDi",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 113,
+      "progress_pct": 100
+    },
+    {
+      "stt": 19,
+      "did": 1793076795022,
+      "name": "S. V\u1EADt d\u1EE5ng v\u00E0 Thi\u1EBFt b\u1ECB nh\u00E0 b\u1EBFp",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 34,
+      "progress_pct": 100
+    },
+    {
+      "stt": 20,
+      "did": 1793076809302,
+      "name": "T. Ph\u00F2ng ng\u1EE7 v\u00E0 Gi\u1EA5c ng\u1EE7",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 101,
+      "progress_pct": 100
+    },
+    {
+      "stt": 21,
+      "did": 1793076823299,
+      "name": "U. S\u1EF1 ki\u1EC7n, L\u1EC5 h\u1ED9i v\u00E0 Ti\u1EC7c t\u00F9ng",
+      "total": 300,
+      "new": 176,
+      "learning": 14,
+      "review": 110,
+      "due": 21,
+      "progress_pct": 36.7
+    },
+    {
+      "stt": 22,
+      "did": 1793076842045,
+      "name": "V. C\u00E1c m\u00F4n Th\u1EC3 thao \u0111\u1ED3ng \u0111\u1ED9i",
+      "total": 300,
+      "new": 299,
+      "learning": 0,
+      "review": 1,
+      "due": 0,
+      "progress_pct": 0.3
+    },
+    {
+      "stt": 23,
+      "did": 1793076853425,
+      "name": "W. D\u1EE5ng c\u1EE5 t\u1EADp th\u1EC3 h\u00ECnh",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 24,
+      "did": 1793076870863,
+      "name": "X. \u0110\u1ED3 ch\u01A1i v\u00E0 Tr\u00F2 ch\u01A1i truy\u1EC1n th\u1ED1ng",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 25,
+      "did": 1793076892117,
+      "name": "Y. C\u00E1c lo\u1EA1i h\u00ECnh ngh\u1EC7 thu\u1EADt bi\u1EC3u di\u1EC5n",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 26,
+      "did": 1793076905617,
+      "name": "Z. \u0110\u1ECBa l\u00FD t\u1EF1 nhi\u00EAn v\u00E0 \u0110\u1ECBa h\u00ECnh",
+      "total": 300,
+      "new": 277,
+      "learning": 0,
+      "review": 23,
+      "due": 1,
+      "progress_pct": 7.7
+    },
+    {
+      "stt": 27,
+      "did": 1793157812433,
+      "name": "ZA. Tr\u01B0\u1EDDng \u0111\u1EA1i h\u1ECDc v\u00E0 \u0110\u1EDDi s\u1ED1ng sinh vi\u00EAn",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 28,
+      "did": 1793157885078,
+      "name": "ZB. C\u00E1c lo\u1EA1i nh\u1EA1c c\u1EE5",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 29,
+      "did": 1793157904616,
+      "name": "ZC. Thu\u1EADt ng\u1EEF \u00E2m nh\u1EA1c v\u00E0 B\u1EA3n nh\u1EA1c",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 30,
+      "did": 1793157945332,
+      "name": "ZD. Tr\u00F2 ch\u01A1i \u0111i\u1EC7n t\u1EED tr\u00EAn PC v\u00E0 Mobile",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 31,
+      "did": 1793157962947,
+      "name": "ZE. Kh\u00F3a lu\u1EADn v\u00E0 Nghi\u00EAn c\u1EE9u khoa h\u1ECDc",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 32,
+      "did": 1793157981347,
+      "name": "ZF. V\u0103n ph\u00F2ng ph\u1EA9m v\u00E0 D\u1EE5ng c\u1EE5 h\u1ECDc t\u1EADp",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 33,
+      "did": 1793157998104,
+      "name": "ZG. C\u00E1c k\u1EF3 thi ng\u00F4n ng\u1EEF v\u00E0 Ch\u1EE9ng ch\u1EC9",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 34,
+      "did": 1793158019425,
+      "name": "ZH. C\u00E2u l\u1EA1c b\u1ED9 v\u00E0 C\u00E1c ban chuy\u00EAn m\u00F4n sinh vi\u00EAn",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 35,
+      "did": 1793158207679,
+      "name": "ZI. Nhi\u1EBFp \u1EA3nh v\u00E0 Thi\u1EBFt b\u1ECB quay ch\u1EE5p",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 36,
+      "did": 1793158582696,
+      "name": "ZJ. \u0110i\u1EC7n \u1EA3nh v\u00E0 Phim tr\u01B0\u1EDDng",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 37,
+      "did": 1793158601222,
+      "name": "ZK. H\u1ED9i h\u1ECDa v\u00E0 M\u1EF9 thu\u1EADt",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 38,
+      "did": 1793158635921,
+      "name": "ZL. K\u00FD t\u00FAc x\u00E1 v\u00E0 Kh\u00F4ng gian l\u01B0u tr\u00FA sinh vi\u00EAn",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 39,
+      "did": 1793158655119,
+      "name": "ZM. C\u00E1c m\u00F4n h\u1ECDc h\u00E0n l\u00E2m",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 40,
+      "did": 1793159982119,
+      "name": "ZN. Trang thi\u1EBFt b\u1ECB ph\u00F2ng th\u00ED nghi\u1EC7m",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    },
+    {
+      "stt": 41,
+      "did": 1793164255008,
+      "name": "ZZZL. V\u1EADt li\u1EC7u x\u00E2y d\u1EF1ng",
+      "total": 300,
+      "new": 300,
+      "learning": 0,
+      "review": 0,
+      "due": 0,
+      "progress_pct": 0
+    }
+  ]
+}
