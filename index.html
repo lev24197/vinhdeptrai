@@ -78,6 +78,84 @@
       </div>
     </section>
 
+    <!-- 1.5. LỊCH TỰ ĐỘNG CLOUD 4 KHUNG GIỜ & BỘ ĐẾM THỜI GIAN THỰC -->
+    <section class="neo-box p-5 bg-white space-y-4">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b-2 border-[#111111]">
+        <div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="px-2.5 py-0.5 bg-[#111111] text-white text-xs font-mono-code font-extrabold uppercase">
+              LỊCH TỰ ĐỘNG CLOUD (GITHUB ACTIONS)
+            </span>
+            <span class="text-xs font-mono-code font-bold text-zinc-600 uppercase">
+              12 CHỦ ĐỀ / NGÀY (4 KHUNG GIỜ X 3 CHỦ ĐỀ)
+            </span>
+          </div>
+          <h3 class="font-display font-extrabold text-[#111111] text-base uppercase tracking-tight mt-1">
+            Bộ Đếm Thời Gian Tự Động Tạo Từ Vựng & 3 Chủ Đề Dự Kiến Kế Tiếp
+          </h3>
+        </div>
+
+        <!-- 4 Khung Giờ Hàng Ngày -->
+        <div class="flex flex-wrap items-center gap-1.5 text-xs font-mono-code">
+          <span class="font-bold text-zinc-500 mr-1 uppercase">4 KHUNG GIỜ:</span>
+          <span id="slotBadge-9" class="px-2.5 py-1 border border-[#111111] font-bold bg-white text-zinc-700">09:00 SÁNG</span>
+          <span id="slotBadge-12" class="px-2.5 py-1 border border-[#111111] font-bold bg-white text-zinc-700">12:00 TRƯA</span>
+          <span id="slotBadge-15" class="px-2.5 py-1 border border-[#111111] font-bold bg-white text-zinc-700">15:00 CHIỀU</span>
+          <span id="slotBadge-18" class="px-2.5 py-1 border border-[#111111] font-bold bg-white text-zinc-700">18:00 CHIỀU</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+        <!-- Cột Đếm Ngược Thời Gian Thực (4 cols) -->
+        <div class="lg:col-span-4 p-4 bg-[#F4F1EA] border-2 border-[#111111] flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">THỜI GIAN ĐẾM NGƯỢC:</span>
+              <span id="nextSlotTargetLabel" class="px-2 py-0.5 bg-[#EAE5DA] border border-[#111111] text-xs font-mono-code font-bold text-[#111111] uppercase">ĐỢT KẾ TIẾP: ...</span>
+            </div>
+            <div class="mt-2 flex items-baseline gap-2">
+              <span id="autoScheduleCountdown" class="text-3xl sm:text-4xl font-mono-code font-extrabold text-[#0F766E] tracking-tight">00:00:00</span>
+              <span id="autoScheduleCountdownUnit" class="text-xs font-mono-code font-bold text-zinc-600">GIỜ:PHÚT:GIÂY</span>
+            </div>
+            <p id="nextSlotDesc" class="text-xs font-mono-code text-zinc-600 mt-1">
+              Máy chủ Ubuntu sẽ tự động kích hoạt tạo 3 chủ đề theo đúng khung giờ.
+            </p>
+          </div>
+
+          <div class="pt-2 border-t border-zinc-300 flex items-center justify-between">
+            <span class="text-xs font-mono-code font-bold text-zinc-500 uppercase">CẦN CHẠY NGAY?</span>
+            <button onclick="triggerWorkflow('3', '')" class="neo-btn px-3 py-1.5 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase" title="Gửi lệnh lên GitHub Actions để chạy ngay 3 chủ đề này không cần đợi">
+              CHẠY NGAY 3 CHỦ ĐỀ
+            </button>
+          </div>
+        </div>
+
+        <!-- Cột Hiển Thị 3 Chủ Đề Dự Kiến Sẽ Tạo (8 cols) -->
+        <div class="lg:col-span-8 p-4 bg-white border-2 border-[#111111] flex flex-col justify-between space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono-code font-extrabold text-[#111111] uppercase">
+              DANH SÁCH 3 CHỦ ĐỀ SẼ ĐƯỢC TỰ ĐỘNG TẠO Ở ĐỢT TIẾP THEO:
+            </span>
+            <span class="px-2 py-0.5 bg-[#EAE5DA] border border-[#111111] text-xs font-mono-code font-bold text-zinc-700 uppercase">
+              300 TỪ CHUẨN ANKI
+            </span>
+          </div>
+
+          <!-- 3 Thẻ Chủ Đề -->
+          <div id="upcoming3TopicsContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <div class="p-3 bg-[#F4F1EA] border border-zinc-300 text-xs font-mono-code text-zinc-500">Đang kiểm tra...</div>
+            <div class="p-3 bg-[#F4F1EA] border border-zinc-300 text-xs font-mono-code text-zinc-500">Đang kiểm tra...</div>
+            <div class="p-3 bg-[#F4F1EA] border border-zinc-300 text-xs font-mono-code text-zinc-500">Đang kiểm tra...</div>
+          </div>
+
+          <div class="text-xs font-mono-code text-zinc-500 flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-zinc-200">
+            <span>Mỗi chủ đề tự động sinh đủ 100 danh từ (50 A2-B2 + 50 C1-C2), 9 cột TSV và âm thanh Cambridge.</span>
+            <span class="font-bold text-[#0F766E] uppercase">TIẾN ĐỘ: 12 CHỦ ĐỀ / 24 GIỜ</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 2. THANH TIẾN TRÌNH AI REAL-TIME (Tự động gắn bởi js/layout.js) -->
     <div id="sharedLiveRunnerMount"></div>
 

@@ -455,6 +455,18 @@
           clearCurationDraft(999);
           s.assertEqual(localStorage.getItem('curation_draft_999'), null, "clearCurationDraft must delete draft");
         });
+
+        s.test("T4.3: 4-Slot Daily Auto Schedule (9h, 12h, 15h, 18h) & 3 Upcoming Topics queue", () => {
+          s.assertTrue(typeof getNextScheduleRunInfo === 'function', "getNextScheduleRunInfo must exist");
+          s.assertTrue(typeof getUpcomingBatchTopics === 'function', "getUpcomingBatchTopics must exist");
+          const info = getNextScheduleRunInfo();
+          s.assertTrue(['9', '12', '15', '18'].includes(info.activeSlot.id), "Target slot must be one of 9, 12, 15, 18");
+          s.assertTrue(info.totalSeconds >= 0, "Countdown seconds must be non-negative");
+          s.assertTrue(info.formattedCountdown.length === 8, "Formatted countdown must be HH:MM:SS");
+          const upcoming = getUpcomingBatchTopics(3);
+          s.assertTrue(Array.isArray(upcoming), "Upcoming topics must be array");
+          s.assertTrue(upcoming.length <= 3, "Upcoming topics length <= 3");
+        });
       });
 
       // ==========================================

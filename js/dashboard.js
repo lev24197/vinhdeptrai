@@ -56,6 +56,9 @@ function updateDashboardUI() {
   if (typeof renderGridMap === 'function') {
     renderGridMap();
   }
+  if (typeof initAutoScheduleCountdown === 'function') {
+    initAutoScheduleCountdown();
+  }
 }
 
 function setStatusFilter(status) {
@@ -273,4 +276,158 @@ function changePage(p) {
   currentPage = p;
   renderTable();
   renderPagination();
+}
+
+// ============================================================================
+// KHUNG GIỜ TỰ ĐỘNG CLOUD 4 ĐỢT / NGÀY & BỘ ĐẾM THỜI GIAN THỰC
+// 09:00 Sáng VN (02:00 UTC) | 12:00 Trưa VN (05:00 UTC)
+// 15:00 Chiều VN (08:00 UTC) | 18:00 Chiều VN (11:00 UTC)
+// ============================================================================
+
+let autoScheduleTimer = null;
+
+function getVietnamNow() {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  return new Date(utc + (7 * 3600000));
+}
+
+function getNextScheduleRunInfo() {
+  const vnNow = getVietnamNow();
+  const slots = [
+    { hour: 9, label: '09:00 SÁNG', id: '9' },
+    { hour: 12, label: '12:00 TRƯA', id: '12' },
+    { hour: 15, label: '15:00 CHIỀU', id: '15' },
+    { hour: 18, label: '18:00 CHIỀU', id: '18' }
+  ];
+
+  let targetDate = null;
+  let activeSlot = null;
+  let isTomorrow = false;
+
+  for (const s of slots) {
+    const candidate = new Date(vnNow);
+    candidate.setHours(s.hour, 0, 0, 0);
+    if (candidate.getTime() > vnNow.getTime()) {
+      targetDate = candidate;
+      activeSlot = s;
+      break;
+    }
+  }
+
+  if (!targetDate) {
+    activeSlot = slots[0];
+    targetDate = new Date(vnNow);
+    targetDate.setDate(targetDate.getDate() + 1);
+    targetDate.setHours(activeSlot.hour, 0, 0, 0);
+    isTomorrow = true;
+  }
+
+  const diffMs = targetDate.getTime() - vnNow.getTime();
+  const totalSeconds = Math.max(0, Math.floor(diffMs / 1000));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return {
+    activeSlot,
+    isTomorrow,
+    hours,
+    minutes,
+    seconds,
+    totalSeconds,
+    formattedCountdown: `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+  };
+}
+
+function getUpcomingBatchTopics(count = 3) {
+  if (!allTopics || !allTopics.length) return [];
+  // Giống hệt logic của generate.py: ưu tiên chủ đề thiếu từ (< 100 từ) rồi đến chủ đề chưa tạo
+  const incomplete = allTopics.filter(t => t.word_count > 0 && t.word_count < 100);
+  const pending = allTopics.filter(t => t.status !== 'completed' && t.status !== 'incomplete');
+  return [...incomplete, ...pending].slice(0, count);
+}
+
+function updateUpcomingScheduleUI() {
+  const container = document.getElementById('upcoming3TopicsContainer');
+  const targetLabel = document.getElementById('nextSlotTargetLabel');
+  const countdownEl = document.getElementById('autoScheduleCountdown');
+  if (!container && !countdownEl) return;
+
+  const info = getNextScheduleRunInfo();
+
+  // Highlight slot active
+  ['9', '12', '15', '18'].forEach(slotId => {
+    const badge = document.getElementById(`slotBadge-${slotId}`);
+    if (!badge) return;
+    if (slotId === info.activeSlot.id) {
+      badge.className = 'px-2.5 py-1 border-2 border-[#111111] font-mono-code font-extrabold bg-[#0F766E] text-white shadow-[2px_2px_0px_#111111]';
+    } else {
+      badge.className = 'px-2.5 py-1 border border-[#111111] font-mono-code font-bold bg-white text-zinc-700';
+    }
+  });
+
+  if (targetLabel) {
+    targetLabel.innerText = info.isTomorrow
+      ? `ĐỢT KẾ TIẾP: ${info.activeSlot.label} (NGÀY MAI)`
+      : `ĐỢT KẾ TIẾP: ${info.activeSlot.label} (HÔM NAY)`;
+  }
+
+  if (countdownEl) {
+    countdownEl.innerText = info.formattedCountdown;
+  }
+
+  // Render 3 chủ đề dự kiến kế tiếp
+  const upcomingTopics = getUpcomingBatchTopics(3);
+  if (container) {
+    if (!upcomingTopics.length) {
+      container.innerHTML = `
+        <div class="col-span-full p-6 text-center font-mono-code text-xs text-[#0F766E] font-bold uppercase bg-[#F4F1EA] border border-[#111111]">
+          TẤT CẢ 1.000 CHỦ ĐỀ ĐÃ ĐƯỢC TẠO HOÀN TẤT!
+        </div>`;
+      return;
+    }
+
+    container.innerHTML = upcomingTopics.map((t, idx) => {
+      const cat = getTopicCategory(t.stt);
+      const safeTopic = t.topic.replace(/'/g, "\\'");
+      const isFix = t.word_count > 0 && t.word_count < 100;
+      return `
+        <div class="p-3 bg-[#F4F1EA] border-2 border-[#111111] flex flex-col justify-between space-y-2">
+          <div class="flex items-center justify-between gap-1.5">
+            <span class="px-2 py-0.5 bg-[#111111] text-white font-mono-code font-extrabold text-xs">#${t.stt}</span>
+            <span class="px-2 py-0.5 border ${cat.color} font-mono-code font-bold text-xs truncate max-w-[130px]">${cat.name}</span>
+          </div>
+          <div>
+            <h5 class="font-display font-extrabold text-xs sm:text-sm text-[#111111] line-clamp-2" title="${t.topic}">${t.topic}</h5>
+            <div class="text-xs font-mono-code text-zinc-600 mt-1">
+              ${isFix ? `HIỆN CÓ: ${t.word_count}/100 TỪ (CẦN BỔ SUNG)` : 'CHƯA TẠO (SẼ TẠO ĐỦ 100 TỪ)'}
+            </div>
+          </div>
+          <div class="pt-2 border-t border-zinc-300 flex items-center justify-between">
+            <span class="text-xs font-mono-code font-bold ${isFix ? 'text-[#D97706]' : 'text-[#0F766E]'} uppercase">
+              ${isFix ? '[ƯU TIÊN SỬA]' : `[VỊ TRÍ ${idx + 1}/3]`}
+            </span>
+            <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-0.5 bg-white text-[#111111] text-xs font-mono-code uppercase hover:bg-[#EAE5DA]" title="Tạo ngay chủ đề này trên trình duyệt">
+              TẠO NGAY
+            </button>
+          </div>
+        </div>`;
+    }).join('');
+  }
+}
+
+function initAutoScheduleCountdown() {
+  if (autoScheduleTimer) clearInterval(autoScheduleTimer);
+  updateUpcomingScheduleUI();
+  autoScheduleTimer = setInterval(() => {
+    const countdownEl = document.getElementById('autoScheduleCountdown');
+    if (!countdownEl) return;
+    const info = getNextScheduleRunInfo();
+    countdownEl.innerText = info.formattedCountdown;
+    if (info.totalSeconds === 0) {
+      updateUpcomingScheduleUI();
+      if (typeof loadData === 'function') loadData(true);
+    }
+  }, 1000);
 }

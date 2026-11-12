@@ -2,8 +2,13 @@ name: Auto Generate Anki Topics
 
 on:
   schedule:
-    # Chạy tự động lúc 00:00 UTC (tức 07:00 sáng giờ Việt Nam) mỗi ngày
-    - cron: '0 0 * * *'
+    # Tự động chạy 4 khung giờ Việt Nam (UTC+7) mỗi ngày:
+    # 09:00 Sáng VN -> 02:00 UTC
+    # 12:00 Trưa VN  -> 05:00 UTC
+    # 15:00 Chiều VN -> 08:00 UTC (3h chiều)
+    # 18:00 Chiều VN -> 11:00 UTC (6h chiều)
+    # Mỗi đợt tạo 3 chủ đề -> 4 đợt x 3 = 12 chủ đề / ngày
+    - cron: '0 2,5,8,11 * * *'
   workflow_dispatch:
     inputs:
       batch_size:
