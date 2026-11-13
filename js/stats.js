@@ -1241,71 +1241,227 @@ function setupStatsEventHandlers() {
 }
 
 // ----------------------------------------------------------------------------
-// 17. KÍCH HOẠT ĐỒNG BỘ ANKIWEB TRỰC TIẾP LÊN GITHUB ACTIONS
+// 17. TRUNG TÂM ĐỒNG BỘ ANKIWEB & TIẾN TRÌNH THỜI GIAN THỰC GITHUB ACTIONS
 // ----------------------------------------------------------------------------
+let syncPollInterval = null;
+
+function openSyncAnkiModal() {
+  const modal = document.getElementById('syncAnkiModal');
+  if (!modal) {
+    openQuickPasteModal();
+    return;
+  }
+  modal.classList.remove('hidden');
+
+  const token = localStorage.getItem('gh_token') || '';
+  const tokenStatus = document.getElementById('syncModalTokenStatus');
+  const tokenInput = document.getElementById('syncModalTokenInput');
+  if (tokenStatus) {
+    if (token) {
+      tokenStatus.innerText = 'ĐÃ CẤU HÌNH';
+      tokenStatus.className = 'font-extrabold text-[#0F766E]';
+      if (tokenInput && !tokenInput.value) tokenInput.value = token;
+    } else {
+      tokenStatus.innerText = 'CHƯA CẤU HÌNH';
+      tokenStatus.className = 'font-extrabold text-[#BE123C]';
+    }
+  }
+
+  const currentStatusEl = document.getElementById('syncModalCurrentStatus');
+  if (currentStatusEl && currentAnkiStats) {
+    const isLocal = !!localStorage.getItem('anki_stats_override');
+    currentStatusEl.innerText = `${isLocal ? '[Bản dán điện thoại]' : '[AnkiWeb Cloud]'} ${currentAnkiStats.updated_at || 'Chưa rõ'} (${currentAnkiStats.card_counts?.total || 12300} thẻ)`;
+  }
+}
+
+function closeSyncAnkiModal() {
+  const modal = document.getElementById('syncAnkiModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+async function executeCloudSyncFromModal() {
+  const tokenInput = document.getElementById('syncModalTokenInput');
+  const inputVal = tokenInput ? tokenInput.value.trim() : '';
+  if (inputVal) {
+    localStorage.setItem('gh_token', inputVal);
+  }
+  const token = inputVal || localStorage.getItem('gh_token') || '';
+  if (!token) {
+    alert("Vui lòng nhập GitHub Personal Access Token (PAT) để kích hoạt máy ảo.");
+    if (tokenInput) tokenInput.focus();
+    return;
+  }
+  await executeCloudSyncProcess(token);
+}
+
 async function triggerAnkiWebSync() {
   const token = localStorage.getItem('gh_token') || '';
+  if (!token) {
+    openSyncAnkiModal();
+    return;
+  }
+  await executeCloudSyncProcess();
+}
+
+async function executeCloudSyncProcess(tokenOverride = '') {
   const owner = localStorage.getItem('gh_owner') || 'lev24197';
   const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
+  const branch = localStorage.getItem('gh_branch') || 'main';
+  const token = tokenOverride || localStorage.getItem('gh_token') || '';
   const btn = document.getElementById('btnSyncAnkiWeb');
+  const modalBtn = document.getElementById('btnModalExecuteSync');
+  const runStatusBox = document.getElementById('syncModalRunStatus');
+  const badge = document.getElementById('ankiStatsSyncBadge');
 
   if (!token) {
-    alert(
-      "ĐỂ KÍCH HOẠT ĐỒNG BỘ ANKIWEB TRÊN CLOUD TỰ ĐỘNG:\n\n" +
-      "1. Hãy nhập GitHub Token (PAT) trong mục 'CẤU HÌNH API' trên thanh menu.\n" +
-      "2. Trên GitHub Repo (Settings -> Secrets and variables -> Actions), hãy thêm 2 biến bí mật:\n" +
-      "   - ANKIWEB_USERNAME: Email tài khoản AnkiWeb\n" +
-      "   - ANKIWEB_PASSWORD: Mật khẩu AnkiWeb\n\n" +
-      "Lưu ý: Hệ thống cũng tự động chạy định kỳ 5 lần mỗi ngày (9h, 12h, 15h, 18h và 22h VN) hoàn toàn tự động."
-    );
-    if (typeof openSettings === 'function') openSettings();
+    openSyncAnkiModal();
     return;
   }
 
-  if (btn) {
-    btn.disabled = true;
-    btn.innerText = 'ĐANG GỬI LỆNH LÊN CLOUD...';
-  }
+  const setBtnText = (txt, disabled = true) => {
+    if (btn) { btn.disabled = disabled; btn.innerText = txt; }
+    if (modalBtn) { modalBtn.disabled = disabled; modalBtn.innerText = txt; }
+    if (badge && disabled) {
+      badge.innerText = `[ĐANG ĐỒNG BỘ] ${txt}`;
+      badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-[#FEF3C7] text-[#D97706] border-2 border-[#111111] animate-pulse';
+    }
+  };
+
+  const showStatusMsg = (msg, isErr = false) => {
+    if (runStatusBox) {
+      runStatusBox.classList.remove('hidden');
+      runStatusBox.innerHTML = `<span class="${isErr ? 'text-[#BE123C] font-bold' : 'text-[#111111]'}">${msg}</span>`;
+    }
+  };
+
+  setBtnText('ĐANG GỬI LỆNH LÊN CLOUD...');
+  showStatusMsg('Đang kết nối GitHub API để kích hoạt máy ảo Ubuntu...');
+
+  const startTime = Date.now();
 
   try {
     const url = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/sync_ankiweb.yml/dispatches`;
     const res = await fetch(url, {
       method: 'POST',
       headers: {
-        'Accept': 'application/vnd.github.v3+json',
+        'Accept': 'application/vnd.github+json',
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ref: 'main' })
+      body: JSON.stringify({ ref: branch })
     });
 
     if (res.status === 204) {
-      alert(
-        "LỆNH ĐỒNG BỘ ĐÃ GỬI THÀNH CÔNG!\n\n" +
-        "Máy chủ GitHub Actions đang kết nối AnkiWeb để tải dữ liệu ôn tập mới nhất của bạn.\n" +
-        "Quá trình mất khoảng 30-45 giây. Trang web sẽ tự động làm mới số liệu ngay khi hoàn tất."
-      );
-      if (btn) btn.innerText = 'ĐANG ĐỒNG BỘ CLOUD (35S)...';
-      setTimeout(() => {
-        loadAnkiStatsData(true);
-        if (btn) {
-          btn.disabled = false;
-          btn.innerText = 'ĐỒNG BỘ ANKIWEB CLOUD';
-        }
-      }, 35000);
-    } else {
-      const errJson = await res.json().catch(() => ({}));
-      alert(`Không thể kích hoạt GitHub Actions (HTTP ${res.status}): ${errJson.message || 'Kiểm tra quyền của GitHub Token'}`);
-      if (btn) {
-        btn.disabled = false;
-        btn.innerText = 'ĐỒNG BỘ ANKIWEB CLOUD';
+      setBtnText('MÁY ẢO ĐÃ NHẬN LỆNH...');
+      showStatusMsg('Lệnh đồng bộ đã gửi thành công! Đang chờ máy ảo GitHub khởi động và đăng nhập AnkiWeb...');
+      if (typeof showToastAlert === 'function') {
+        showToastAlert('Đã gửi lệnh đồng bộ! Máy ảo đang kết nối AnkiWeb...', 'success');
       }
+
+      startPollingSyncRun(owner, repo, token, startTime);
+    } else {
+      let errDetail = '';
+      try {
+        const errJson = await res.json();
+        errDetail = errJson.message || '';
+      } catch (e) {}
+
+      let humanMsg = `Lỗi kích hoạt GitHub Actions (HTTP ${res.status})`;
+      if (res.status === 404) {
+        humanMsg = "Lỗi HTTP 404: Không tìm thấy workflow hoặc GitHub Token thiếu quyền 'workflow' và 'repo'. Vui lòng kiểm tra quyền hạn của GitHub Token.";
+      } else if (res.status === 401) {
+        humanMsg = "Lỗi HTTP 401: GitHub Token không hợp lệ hoặc đã hết hạn.";
+      } else if (errDetail) {
+        humanMsg += `: ${errDetail}`;
+      }
+
+      setBtnText('ĐỒNG BỘ ANKIWEB CLOUD', false);
+      showStatusMsg(humanMsg, true);
+      alert(humanMsg);
     }
   } catch (err) {
+    setBtnText('ĐỒNG BỘ ANKIWEB CLOUD', false);
+    showStatusMsg(`Lỗi kết nối mạng: ${err.message}`, true);
     alert(`Lỗi kết nối API: ${err.message}`);
-    if (btn) {
-      btn.disabled = false;
-      btn.innerText = 'ĐỒNG BỘ ANKIWEB CLOUD';
-    }
   }
+}
+
+function startPollingSyncRun(owner, repo, token, startTime) {
+  if (syncPollInterval) clearInterval(syncPollInterval);
+  let pollAttempts = 0;
+  const maxAttempts = 35; // tối đa 140 giây
+
+  const btn = document.getElementById('btnSyncAnkiWeb');
+  const modalBtn = document.getElementById('btnModalExecuteSync');
+  const runStatusBox = document.getElementById('syncModalRunStatus');
+
+  const setBtnText = (txt, disabled = true) => {
+    if (btn) { btn.disabled = disabled; btn.innerText = txt; }
+    if (modalBtn) { modalBtn.disabled = disabled; modalBtn.innerText = txt; }
+  };
+
+  const showStatusMsg = (msg, isErr = false) => {
+    if (runStatusBox) {
+      runStatusBox.classList.remove('hidden');
+      runStatusBox.innerHTML = `<span class="${isErr ? 'text-[#BE123C] font-bold' : 'text-[#111111]'}">${msg}</span>`;
+    }
+  };
+
+  syncPollInterval = setInterval(async () => {
+    pollAttempts++;
+    if (pollAttempts > maxAttempts) {
+      clearInterval(syncPollInterval);
+      setBtnText('ĐỒNG BỘ ANKIWEB CLOUD', false);
+      showStatusMsg('Thời gian chờ quá lâu. Đang tải lại dữ liệu mới nhất...');
+      await loadAnkiStatsData(true);
+      return;
+    }
+
+    try {
+      const runsUrl = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/sync_ankiweb.yml/runs?per_page=3&t=${Date.now()}`;
+      const res = await fetch(runsUrl, {
+        headers: {
+          'Accept': 'application/vnd.github+json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!res.ok) return;
+      const data = await res.json();
+      const runs = data.workflow_runs || [];
+      const recentRun = runs.find(r => new Date(r.created_at).getTime() >= (startTime - 15000));
+
+      if (recentRun) {
+        if (recentRun.status === 'queued') {
+          setBtnText('MÁY ẢO ĐANG XẾP HÀNG...');
+          showStatusMsg(`Máy ảo Ubuntu đang xếp hàng (Run #${recentRun.run_number})...`);
+        } else if (recentRun.status === 'in_progress') {
+          setBtnText('ĐANG ĐỒNG BỘ ANKIWEB...');
+          showStatusMsg(`Máy ảo đang chạy: Đăng nhập AnkiWeb, tải SQLite và bóc tách 14 biểu đồ...`);
+        } else if (recentRun.status === 'completed') {
+          clearInterval(syncPollInterval);
+          if (recentRun.conclusion === 'success') {
+            setBtnText('ĐỒNG BỘ THÀNH CÔNG!');
+            showStatusMsg('[HOÀN TẤT] Đồng bộ AnkiWeb thành công! Dữ liệu 14 biểu đồ đã được cập nhật.');
+            if (typeof showToastAlert === 'function') {
+              showToastAlert('Đồng bộ AnkiWeb Cloud thành công! Dữ liệu đã cập nhật.', 'success');
+            }
+            localStorage.removeItem('anki_stats_override');
+            setTimeout(async () => {
+              await loadAnkiStatsData(true);
+              setBtnText('ĐỒNG BỘ ANKIWEB CLOUD', false);
+              closeSyncAnkiModal();
+            }, 2500);
+          } else {
+            setBtnText('ĐỒNG BỘ THẤT BẠI', false);
+            const errMsg = `Máy ảo báo lỗi (conclusion: ${recentRun.conclusion}). Vui lòng kiểm tra tài khoản ANKIWEB_USERNAME và ANKIWEB_PASSWORD trong GitHub Secrets!`;
+            showStatusMsg(errMsg, true);
+            if (typeof showToastAlert === 'function') {
+              showToastAlert(errMsg, 'danger');
+            }
+          }
+        }
+      }
+    } catch (e) {}
+  }, 4000);
 }

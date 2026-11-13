@@ -27,7 +27,7 @@
             <span class="px-2.5 py-0.5 bg-[#0F766E] text-white text-xs font-mono-code font-extrabold uppercase">
               THUẬT TOÁN FSRS
             </span>
-            <span id="ankiStatsSyncBadge" class="text-xs font-mono-code font-bold px-3 py-1 bg-[#EAE5DA] text-[#111111] border border-[#111111]">
+            <span id="ankiStatsSyncBadge" onclick="openSyncAnkiModal()" class="text-xs font-mono-code font-bold px-3 py-1 bg-[#EAE5DA] text-[#111111] border border-[#111111] cursor-pointer" title="Bấm vào để mở Trung tâm đồng bộ Anki">
               TRẠNG THÁI: ĐANG KẾT NỐI...
             </span>
           </div>
@@ -522,6 +522,110 @@
     </section>
 
   </main>
+
+  <!-- MODAL: TRUNG TÂM ĐỒNG BỘ DỮ LIỆU HỌC TẬP ANKI -->
+  <div id="syncAnkiModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="neo-box bg-white max-w-2xl w-full p-6 space-y-4 max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b-2 border-[#111111]">
+        <div>
+          <span class="text-xs font-mono-code font-extrabold text-zinc-600 uppercase">TRUNG TÂM KẾT NỐI DỮ LIỆU</span>
+          <h4 class="text-lg font-display font-extrabold uppercase text-[#111111]">
+            Đồng Bộ Thống Kê Học Tập Anki
+          </h4>
+        </div>
+        <button onclick="closeSyncAnkiModal()" class="text-xs font-mono-code font-extrabold px-2.5 py-1 bg-[#111111] text-white">
+          ĐÓNG [X]
+        </button>
+      </div>
+
+      <!-- Khối trạng thái hiện tại -->
+      <div class="p-3 bg-[#F4F1EA] border border-[#111111] space-y-1">
+        <div class="text-xs font-mono-code font-bold text-[#111111] flex items-center justify-between">
+          <span>BỘ BÀI MỤC TIÊU:</span>
+          <span class="font-extrabold text-[#0F766E]">THỬ THÁCH MỖI NGÀY 100 TỪ VỰNG</span>
+        </div>
+        <div class="text-xs font-mono-code text-zinc-600 flex items-center justify-between">
+          <span>DỮ LIỆU HIỆN TẠI:</span>
+          <span id="syncModalCurrentStatus" class="font-bold text-[#111111]">--</span>
+        </div>
+      </div>
+
+      <!-- 2 PHƯƠNG ÁN ĐỒNG BỘ -->
+      <div class="space-y-4">
+        <!-- Phương án 1: Dành cho điện thoại Android (AnkiDroid) - 1 chạm -->
+        <div class="p-4 bg-white border-2 border-[#111111] space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="px-2 py-0.5 bg-[#0F766E] text-white text-xs font-mono-code font-extrabold uppercase">
+              CÁCH 1 • TỐT NHẤT TRÊN ĐIỆN THOẠI ANDROID
+            </span>
+            <span class="text-xs font-mono-code font-bold text-[#0F766E]">TỨC THÌ (3 GIÂY)</span>
+          </div>
+          <h5 class="text-sm font-display font-extrabold uppercase text-[#111111]">
+            Dán Đoạn Thống Kê Từ Ứng Dụng AnkiDroid
+          </h5>
+          <p class="text-xs font-sans text-zinc-700 leading-relaxed">
+            Trên điện thoại, mở <b>AnkiDroid</b> &rarr; Bộ bài <b>Thử thách mỗi ngày 100 từ vựng</b> &rarr; <b>Thống kê (Statistics)</b> &rarr; Bấm <b>Sao chép (Copy)</b> &rarr; Bấm nút dưới để dán:
+          </p>
+          <div class="pt-1">
+            <button onclick="closeSyncAnkiModal(); openQuickPasteModal();" class="neo-btn px-4 py-2 bg-[#0F766E] text-white text-xs font-mono-code font-bold uppercase w-full sm:w-auto">
+              MỞ KHUNG DÁN SỐ LIỆU TỪ ĐIỆN THOẠI
+            </button>
+          </div>
+        </div>
+
+        <!-- Phương án 2: Tự động AnkiWeb Cloud qua GitHub Actions -->
+        <div class="p-4 bg-white border-2 border-[#111111] space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="px-2 py-0.5 bg-[#111111] text-white text-xs font-mono-code font-extrabold uppercase">
+              CÁCH 2 • TỰ ĐỘNG QUA ANKIWEB CLOUD
+            </span>
+            <span class="text-xs font-mono-code font-bold text-zinc-600">ĐỊNH KỲ 5 LẦN/NGÀY</span>
+          </div>
+          <h5 class="text-sm font-display font-extrabold uppercase text-[#111111]">
+            Đồng Bộ Tự Động Từ Máy Chủ AnkiWeb
+          </h5>
+          <p class="text-xs font-sans text-zinc-700 leading-relaxed">
+            Máy chủ GitHub Actions tự động kết nối tài khoản AnkiWeb để tải SQLite và bóc tách 14 biểu đồ vào lúc <b>9h, 12h, 15h, 18h và 22h VN</b>. Bạn cũng có thể kích hoạt thủ công ngay tại đây:
+          </p>
+
+          <!-- Trạng thái cấu hình GitHub Token -->
+          <div class="p-3 bg-[#F4F1EA] border border-[#111111] space-y-2">
+            <div class="flex items-center justify-between text-xs font-mono-code">
+              <span class="font-bold text-zinc-700">GITHUB TOKEN (PAT):</span>
+              <span id="syncModalTokenStatus" class="font-extrabold text-[#BE123C]">CHƯA CẤU HÌNH</span>
+            </div>
+            <div id="syncModalTokenInputBox" class="space-y-1">
+              <input type="password" id="syncModalTokenInput" placeholder="Nhập GitHub Token (ghp_...) để kích hoạt ngay..." 
+                     class="w-full px-3 py-1.5 bg-white border-2 border-[#111111] text-xs font-mono-code focus:outline-none" />
+              <p class="text-xs font-mono-code text-zinc-500">
+                Token cần quyền <b>repo</b> và <b>workflow</b> để gọi lệnh máy ảo GitHub Actions.
+              </p>
+            </div>
+            <div class="text-xs font-mono-code text-zinc-600 border-t border-zinc-200 pt-1.5">
+              <span>SECRETS TRÊN REPO GITHUB:</span>
+              <span class="font-bold text-[#111111]">ANKIWEB_USERNAME & ANKIWEB_PASSWORD</span>
+            </div>
+          </div>
+
+          <div class="pt-1 flex flex-wrap items-center gap-2">
+            <button onclick="executeCloudSyncFromModal()" id="btnModalExecuteSync" class="neo-btn px-4 py-2 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase">
+              KÍCH HOẠT ĐỒNG BỘ CLOUD NGAY
+            </button>
+            <button onclick="openSettings()" class="neo-btn px-3 py-2 bg-white text-[#111111] text-xs font-mono-code font-bold uppercase hover:bg-[#EAE5DA]">
+              MỞ CẤU HÌNH API CHI TIẾT
+            </button>
+          </div>
+          <div id="syncModalRunStatus" class="hidden p-3 bg-[#EAE5DA] border border-[#111111] text-xs font-mono-code space-y-1"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-end pt-2 border-t border-zinc-200">
+        <button onclick="closeSyncAnkiModal()" class="neo-btn px-4 py-2 bg-white text-[#111111] text-xs font-mono-code font-bold uppercase">
+          ĐÓNG
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- MODAL: DÁN NHANH THỐNG KÊ TỪ ĐIỆN THOẠI (QUICK PASTE MODAL) -->
   <div id="quickPasteModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">

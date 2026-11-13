@@ -24,7 +24,9 @@ def main():
 
     if not username or not password:
         print("ERROR: Thiếu biến môi trường ANKIWEB_USERNAME hoặc ANKIWEB_PASSWORD.")
-        print("Vui lòng cấu hình 2 biến bí mật này trong GitHub Repository Secrets.")
+        print("Vui lòng cấu hình 2 biến bí mật này trong GitHub Repository Secrets:")
+        print("  1. ANKIWEB_USERNAME (Email tài khoản AnkiWeb)")
+        print("  2. ANKIWEB_PASSWORD (Mật khẩu tài khoản AnkiWeb)")
         sys.exit(1)
 
     print("================================================================================")
@@ -42,6 +44,7 @@ def main():
         # 1. Nhập thư viện anki và khởi tạo collection
         print("[1/4] Khởi tạo Anki Collection và đăng nhập AnkiWeb...")
         from anki.collection import Collection
+        from anki.sync_pb2 import SyncCollectionResponse
 
         col = Collection(str(temp_col_path))
         
@@ -51,17 +54,30 @@ def main():
 
         # 3. Đồng bộ dữ liệu (media=False để không tải MP3, cực nhanh)
         print("[2/4] Đang đồng bộ cơ sở dữ liệu SQLite từ AnkiWeb (bỏ qua tệp âm thanh MP3)...")
-        # Với collection mới chưa có dữ liệu, dùng full_upload_or_download để kéo toàn bộ về
-        try:
-            col.full_upload_or_download(auth=auth, server_usn=None, upload=False)
-            print("✓ Đã tải trọn vẹn collection từ AnkiWeb về máy ảo.")
-        except Exception as e_full:
-            print(f"Thông báo: full_upload_or_download trả về ({e_full}), chuyển sang sync_collection...")
-            col.sync_collection(auth, sync_media=False)
-            print("✓ Đồng bộ hoàn tất.")
+        sync_out = col.sync_collection(auth, sync_media=False)
+        req_status = getattr(sync_out, "required", None)
+        print(f"[*] Trạng thái kiểm tra đồng bộ: required={req_status}")
 
+        if req_status in (SyncCollectionResponse.FULL_SYNC, SyncCollectionResponse.FULL_DOWNLOAD) or col.card_count() == 0:
+            print("[*] Collection yêu cầu tải toàn bộ từ AnkiWeb (Full Download). Đang chuẩn bị tải...")
+            col.close_for_full_sync()
+            try:
+                server_usn = getattr(sync_out, "server_media_usn", None)
+                col.full_upload_or_download(auth=auth, server_usn=server_usn, upload=False)
+                print("✓ Đã tải trọn vẹn collection từ AnkiWeb về máy ảo.")
+            finally:
+                col.reopen(after_full_sync=True)
+        else:
+            print("✓ Đồng bộ hoàn tất (Incremental sync).")
+
+        card_count = col.card_count()
+        print(f"✓ Tổng số thẻ trong collection sau khi đồng bộ: {card_count} thẻ.")
         col.save()
         col.close()
+
+        if card_count == 0:
+            print("ERROR: Collection sau khi đồng bộ không có thẻ nào! Vui lòng kiểm tra tài khoản AnkiWeb.")
+            sys.exit(1)
 
         # 4. Trích xuất 14 biểu đồ và chỉ số từ file SQLite vừa tải
         print("[3/4] Đang phân tích cơ sở dữ liệu SQLite và bóc tách số liệu cho bộ bài...")
@@ -69,6 +85,11 @@ def main():
 
         print("[4/4] Hoàn tất quá trình đồng bộ AnkiWeb!")
 
+    except Exception as e:
+        print(f"LỖI ĐỒNG BỘ ANKIWEB: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
     finally:
         # Dọn dẹp thư mục tạm
         if TEMP_DIR.exists():
@@ -94,17 +115,24 @@ def extract_and_generate_stats(db_path: Path):
         for did_str, d_obj in decks_json.items():
             all_decks[int(did_str)] = d_obj.get("name", "")
 
+    import unicodedata
+    norm_target = unicodedata.normalize('NFC', TARGET_DECK_BASE).strip()
+
     target_deck_ids = []
     target_deck_names = {}
     for did, name in all_decks.items():
-        if name == TARGET_DECK_BASE or name.startswith(TARGET_DECK_BASE + "\x1f") or name.startswith(TARGET_DECK_BASE + "::"):
+        norm_name = unicodedata.normalize('NFC', name).strip()
+        if norm_name == norm_target or norm_name.startswith(norm_target + "\x1f") or norm_name.startswith(norm_target + "::"):
             target_deck_ids.append(did)
-            target_deck_names[did] = name.replace("\x1f", "::")
+            target_deck_names[did] = norm_name.replace("\x1f", "::")
 
     if not target_deck_ids:
-        print(f"CẢNH BÁO: Không tìm thấy bộ bài nào khớp với '{TARGET_DECK_BASE}'!")
+        print(f"ERROR: Không tìm thấy bộ bài nào khớp với '{TARGET_DECK_BASE}'!")
+        print(f"Danh sách {len(all_decks)} bộ bài hiện có trong tài khoản AnkiWeb:")
+        for did, name in sorted(all_decks.items()):
+            print(f"  - [{did}] {name}")
         conn.close()
-        return
+        sys.exit(1)
 
     print(f"✓ Đã lọc khớp {len(target_deck_ids)} bộ bài mục tiêu (Deck chính và các Deck con).")
     id_list_str = ",".join(str(i) for i in target_deck_ids)
