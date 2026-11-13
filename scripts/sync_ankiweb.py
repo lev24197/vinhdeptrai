@@ -58,6 +58,11 @@ def main():
         req_status = getattr(sync_out, "required", None)
         print(f"[*] Trạng thái kiểm tra đồng bộ: required={req_status}")
 
+        # RẤT QUAN TRỌNG: AnkiWeb chuyển tiếp sang máy chủ shard riêng (ví dụ sync34.ankiweb.net)
+        if getattr(sync_out, "new_endpoint", None):
+            print(f"[*] Cập nhật máy chủ AnkiWeb shard endpoint: {sync_out.new_endpoint}")
+            auth.endpoint = sync_out.new_endpoint
+
         if req_status in (SyncCollectionResponse.FULL_SYNC, SyncCollectionResponse.FULL_DOWNLOAD) or col.card_count() == 0:
             print("[*] Collection yêu cầu tải toàn bộ từ AnkiWeb (Full Download). Đang chuẩn bị tải...")
             col.close_for_full_sync()
@@ -72,7 +77,6 @@ def main():
 
         card_count = col.card_count()
         print(f"✓ Tổng số thẻ trong collection sau khi đồng bộ: {card_count} thẻ.")
-        col.save()
         col.close()
 
         if card_count == 0:

@@ -1,138 +1,138 @@
-﻿{
-  "deck_name": "Th\u1EED th\u00E1ch m\u1ED7i ng\u00E0y 100 t\u1EEB v\u1EF1ng",
-  "updated_at": "2026-11-12 21:54:56",
+{
+  "deck_name": "Thử thách mỗi ngày 100 từ vựng",
+  "updated_at": "2026-11-13 19:12:31",
   "summary": {
     "streak_days": 38,
     "days_studied_past_30": 30,
-    "total_reviews_past_30": 18804,
-    "avg_reviews_day": 626,
+    "total_reviews_past_30": 19182,
+    "avg_reviews_day": 639,
     "total_deck_cards": 12300,
     "total_all_time_reviews": 20741
   },
   "today": {
-    "cards_studied": 108,
-    "time_minutes": 12.93,
-    "seconds_per_card": 7.18,
-    "again_count": 62,
-    "again_pct": 57.41,
+    "cards_studied": 326,
+    "time_minutes": 26.48,
+    "seconds_per_card": 4.87,
+    "again_count": 128,
+    "again_pct": 39.26,
     "hard_count": 0,
-    "good_count": 1,
-    "easy_count": 45,
-    "learn": 108,
-    "review": 0,
-    "relearn": 0
+    "good_count": 0,
+    "easy_count": 198,
+    "learn": 280,
+    "review": 24,
+    "relearn": 22
   },
   "card_counts": {
-    "new": 6152,
-    "new_pct": 50.02,
-    "learning": 14,
+    "new": 5930,
+    "new_pct": 48.21,
+    "learning": 13,
     "learning_pct": 0.11,
     "relearning": 0,
-    "young": 2006,
-    "young_pct": 16.31,
-    "mature": 4128,
-    "mature_pct": 33.56,
+    "young": 2228,
+    "young_pct": 18.11,
+    "mature": 4129,
+    "mature_pct": 33.57,
     "suspended": 0,
     "buried": 0,
     "total": 12300
   },
   "future_due": {
-    "due_tomorrow": 240,
-    "total_future_30": 2399,
-    "avg_reviews_day": 77,
-    "daily_load": 254,
+    "due_tomorrow": 258,
+    "total_future_30": 2656,
+    "avg_reviews_day": 86,
+    "daily_load": 271,
     "days": [
       {
         "day": 0,
-        "count": 711
+        "count": 955
       },
       {
         "day": 1,
-        "count": 240
+        "count": 258
       },
       {
         "day": 2,
-        "count": 197
+        "count": 126
       },
       {
         "day": 3,
-        "count": 124
-      },
-      {
-        "day": 4,
         "count": 168
       },
       {
+        "day": 4,
+        "count": 151
+      },
+      {
         "day": 5,
-        "count": 147
+        "count": 152
       },
       {
         "day": 6,
-        "count": 125
+        "count": 132
       },
       {
         "day": 7,
-        "count": 104
+        "count": 110
       },
       {
         "day": 8,
-        "count": 85
+        "count": 79
       },
       {
         "day": 9,
-        "count": 45
+        "count": 66
       },
       {
         "day": 10,
-        "count": 31
-      },
-      {
-        "day": 11,
         "count": 29
       },
       {
-        "day": 12,
+        "day": 11,
         "count": 27
       },
       {
-        "day": 13,
+        "day": 12,
         "count": 19
       },
       {
-        "day": 14,
+        "day": 13,
         "count": 17
       },
       {
-        "day": 15,
+        "day": 14,
         "count": 13
       },
       {
-        "day": 16,
+        "day": 15,
         "count": 14
       },
       {
-        "day": 17,
+        "day": 16,
         "count": 12
       },
       {
-        "day": 18,
+        "day": 17,
         "count": 16
       },
       {
-        "day": 19,
+        "day": 18,
         "count": 13
       },
       {
-        "day": 20,
+        "day": 19,
         "count": 15
       },
       {
-        "day": 21,
+        "day": 20,
         "count": 16
       },
       {
-        "day": 22,
+        "day": 21,
         "count": 18
+      },
+      {
+        "day": 22,
+        "count": 19
       },
       {
         "day": 23,
@@ -140,19 +140,19 @@
       },
       {
         "day": 24,
-        "count": 19
-      },
-      {
-        "day": 25,
         "count": 23
       },
       {
-        "day": 26,
+        "day": 25,
         "count": 26
       },
       {
-        "day": 27,
+        "day": 26,
         "count": 31
+      },
+      {
+        "day": 27,
+        "count": 32
       },
       {
         "day": 28,
@@ -160,29 +160,21 @@
       },
       {
         "day": 29,
-        "count": 32
+        "count": 31
       },
       {
         "day": 30,
-        "count": 31
+        "count": 37
       }
     ]
   },
   "reviews_history": {
     "days_studied_30": 30,
-    "total_reviews_30": 18804,
-    "avg_reviews_day": 626.8,
+    "total_reviews_30": 19182,
+    "avg_reviews_day": 639.4,
     "daily": [
       {
         "day_offset": -29,
-        "date": "2026-10-14",
-        "total": 46,
-        "mature": 0,
-        "young": 46,
-        "relearn": 0
-      },
-      {
-        "day_offset": -28,
         "date": "2026-10-15",
         "total": 433,
         "mature": 0,
@@ -190,7 +182,7 @@
         "relearn": 14
       },
       {
-        "day_offset": -27,
+        "day_offset": -28,
         "date": "2026-10-16",
         "total": 591,
         "mature": 0,
@@ -198,7 +190,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -26,
+        "day_offset": -27,
         "date": "2026-10-17",
         "total": 607,
         "mature": 0,
@@ -206,7 +198,7 @@
         "relearn": 6
       },
       {
-        "day_offset": -25,
+        "day_offset": -26,
         "date": "2026-10-18",
         "total": 32,
         "mature": 0,
@@ -214,7 +206,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -24,
+        "day_offset": -25,
         "date": "2026-10-19",
         "total": 1085,
         "mature": 0,
@@ -222,7 +214,7 @@
         "relearn": 37
       },
       {
-        "day_offset": -23,
+        "day_offset": -24,
         "date": "2026-10-20",
         "total": 634,
         "mature": 0,
@@ -230,7 +222,7 @@
         "relearn": 6
       },
       {
-        "day_offset": -22,
+        "day_offset": -23,
         "date": "2026-10-21",
         "total": 674,
         "mature": 0,
@@ -238,7 +230,7 @@
         "relearn": 38
       },
       {
-        "day_offset": -21,
+        "day_offset": -22,
         "date": "2026-10-22",
         "total": 146,
         "mature": 0,
@@ -246,7 +238,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -20,
+        "day_offset": -21,
         "date": "2026-10-23",
         "total": 555,
         "mature": 0,
@@ -254,7 +246,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -19,
+        "day_offset": -20,
         "date": "2026-10-24",
         "total": 309,
         "mature": 0,
@@ -262,7 +254,7 @@
         "relearn": 6
       },
       {
-        "day_offset": -18,
+        "day_offset": -19,
         "date": "2026-10-25",
         "total": 1459,
         "mature": 0,
@@ -270,7 +262,7 @@
         "relearn": 86
       },
       {
-        "day_offset": -17,
+        "day_offset": -18,
         "date": "2026-10-26",
         "total": 177,
         "mature": 0,
@@ -278,7 +270,7 @@
         "relearn": 2
       },
       {
-        "day_offset": -16,
+        "day_offset": -17,
         "date": "2026-10-27",
         "total": 1433,
         "mature": 0,
@@ -286,7 +278,7 @@
         "relearn": 166
       },
       {
-        "day_offset": -15,
+        "day_offset": -16,
         "date": "2026-10-28",
         "total": 359,
         "mature": 0,
@@ -294,7 +286,7 @@
         "relearn": 1
       },
       {
-        "day_offset": -14,
+        "day_offset": -15,
         "date": "2026-10-29",
         "total": 185,
         "mature": 0,
@@ -302,7 +294,7 @@
         "relearn": 8
       },
       {
-        "day_offset": -13,
+        "day_offset": -14,
         "date": "2026-10-30",
         "total": 512,
         "mature": 0,
@@ -310,7 +302,7 @@
         "relearn": 31
       },
       {
-        "day_offset": -12,
+        "day_offset": -13,
         "date": "2026-10-31",
         "total": 1489,
         "mature": 9,
@@ -318,7 +310,7 @@
         "relearn": 142
       },
       {
-        "day_offset": -11,
+        "day_offset": -12,
         "date": "2026-11-01",
         "total": 1201,
         "mature": 10,
@@ -326,7 +318,7 @@
         "relearn": 20
       },
       {
-        "day_offset": -10,
+        "day_offset": -11,
         "date": "2026-11-02",
         "total": 1178,
         "mature": 8,
@@ -334,7 +326,7 @@
         "relearn": 38
       },
       {
-        "day_offset": -9,
+        "day_offset": -10,
         "date": "2026-11-03",
         "total": 34,
         "mature": 0,
@@ -342,7 +334,7 @@
         "relearn": 2
       },
       {
-        "day_offset": -8,
+        "day_offset": -9,
         "date": "2026-11-04",
         "total": 1067,
         "mature": 7,
@@ -350,7 +342,7 @@
         "relearn": 175
       },
       {
-        "day_offset": -7,
+        "day_offset": -8,
         "date": "2026-11-05",
         "total": 1389,
         "mature": 12,
@@ -358,7 +350,7 @@
         "relearn": 430
       },
       {
-        "day_offset": -6,
+        "day_offset": -7,
         "date": "2026-11-06",
         "total": 60,
         "mature": 1,
@@ -366,7 +358,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -5,
+        "day_offset": -6,
         "date": "2026-11-07",
         "total": 26,
         "mature": 0,
@@ -374,7 +366,7 @@
         "relearn": 3
       },
       {
-        "day_offset": -4,
+        "day_offset": -5,
         "date": "2026-11-08",
         "total": 10,
         "mature": 0,
@@ -382,7 +374,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -3,
+        "day_offset": -4,
         "date": "2026-11-09",
         "total": 1792,
         "mature": 22,
@@ -390,7 +382,7 @@
         "relearn": 139
       },
       {
-        "day_offset": -2,
+        "day_offset": -3,
         "date": "2026-11-10",
         "total": 34,
         "mature": 4,
@@ -398,7 +390,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -1,
+        "day_offset": -2,
         "date": "2026-11-11",
         "total": 1179,
         "mature": 5,
@@ -406,95 +398,103 @@
         "relearn": 49
       },
       {
-        "day_offset": 0,
+        "day_offset": -1,
         "date": "2026-11-12",
-        "total": 108,
+        "total": 206,
         "mature": 0,
-        "young": 108,
+        "young": 206,
         "relearn": 0
+      },
+      {
+        "day_offset": 0,
+        "date": "2026-11-13",
+        "total": 326,
+        "mature": 2,
+        "young": 302,
+        "relearn": 22
       }
     ]
   },
   "intervals": {
-    "median_months": 1.97,
-    "median_days": 59,
+    "median_months": 1.93,
+    "median_days": 58,
     "bins": {
-      "1-5 ng\u00E0y": 546,
-      "6-10 ng\u00E0y": 1056,
-      "11-20 ng\u00E0y": 404,
-      "21-30 ng\u00E0y": 104,
-      "1-2 th\u00E1ng": 1078,
-      "2-3 th\u00E1ng": 2829,
-      "3-6 th\u00E1ng": 105,
-      "6-12 th\u00E1ng": 12,
-      "\u003E 1 n\u0103m": 0
+      "1-5 ngày": 616,
+      "6-10 ngày": 1209,
+      "11-20 ngày": 403,
+      "21-30 ngày": 103,
+      "1-2 tháng": 1078,
+      "2-3 tháng": 2830,
+      "3-6 tháng": 105,
+      "6-12 tháng": 13,
+      "> 1 năm": 0
     }
   },
   "stability": {
     "median_months": 2.01,
     "median_days": 60.3,
     "bins": {
-      "0-10 ng\u00E0y": 1672,
-      "11-30 ng\u00E0y": 445,
-      "1-2 th\u00E1ng": 793,
-      "2-3 th\u00E1ng": 3142,
-      "3-6 th\u00E1ng": 88,
-      "6-12 th\u00E1ng": 8,
-      "\u003E 1 n\u0103m": 0
+      "0-10 ngày": 1894,
+      "11-30 ngày": 442,
+      "1-2 tháng": 794,
+      "2-3 tháng": 3143,
+      "3-6 tháng": 88,
+      "6-12 tháng": 9,
+      "> 1 năm": 0
     }
   },
   "difficulty": {
     "median_pct": 0,
     "bins": {
-      "0-20%": 4716,
-      "21-40%": 229,
-      "41-60%": 252,
-      "61-80%": 245,
-      "81-100%": 706
+      "0-20%": 4863,
+      "21-40%": 235,
+      "41-60%": 286,
+      "61-80%": 247,
+      "81-100%": 739
     }
   },
   "retrievability": {
-    "average_pct": 95.1,
-    "estimated_knowledge_cards": 5844,
-    "estimated_knowledge_notes": 1948,
+    "average_pct": 94.4,
+    "estimated_knowledge_cards": 6016,
+    "estimated_knowledge_notes": 2005,
     "bins": {
-      "0-70%": 102,
-      "71-80%": 132,
-      "81-90%": 338,
-      "91-95%": 1045,
-      "96-100%": 4531
+      "0-70%": 148,
+      "71-80%": 170,
+      "81-90%": 507,
+      "91-95%": 1250,
+      "96-100%": 4295
     }
   },
   "retention": {
     "today": {
+      "young": "40.9%",
+      "mature": "100.0%",
+      "total": "45.8%",
+      "count": 24
+    },
+    "yesterday": {
       "young": "N/A",
       "mature": "N/A",
       "total": "N/A",
       "count": 0
     },
-    "yesterday": {
-      "young": "92.4%",
-      "mature": "100.0%",
-      "total": "92.5%",
-      "count": 548
-    },
     "last_week": {
-      "young": "89.2%",
-      "mature": "97.7%",
-      "total": "89.3%",
-      "count": 2287
+      "young": "90.0%",
+      "mature": "97.1%",
+      "total": "90.1%",
+      "count": 1866
     },
     "last_month": {
-      "young": "89.6%",
-      "mature": "98.7%",
-      "total": "89.7%",
-      "count": 7572
+      "young": "89.4%",
+      "mature": "98.8%",
+      "total": "89.5%",
+      "count": 7591
     },
     "last_year": {
-      "young": "89.6%",
-      "mature": "98.7%",
-      "total": "89.7%",
-      "count": 7865
+      "young": "89.5%",
+      "mature": "98.8%",
+      "total": "89.6%",
+      "count": 7889
     }
   },
   "hourly_breakdown": [
@@ -511,32 +511,32 @@
     {
       "hour": 2,
       "count": 0,
-      "pass_rate": 0
+      "pass_rate": 0.0
     },
     {
       "hour": 3,
       "count": 0,
-      "pass_rate": 0
+      "pass_rate": 0.0
     },
     {
       "hour": 4,
       "count": 82,
-      "pass_rate": 78
+      "pass_rate": 78.0
     },
     {
       "hour": 5,
       "count": 0,
-      "pass_rate": 0
+      "pass_rate": 0.0
     },
     {
       "hour": 6,
       "count": 0,
-      "pass_rate": 0
+      "pass_rate": 0.0
     },
     {
       "hour": 7,
-      "count": 158,
-      "pass_rate": 72.8
+      "count": 165,
+      "pass_rate": 72.7
     },
     {
       "hour": 8,
@@ -560,8 +560,8 @@
     },
     {
       "hour": 12,
-      "count": 597,
-      "pass_rate": 75.2
+      "count": 916,
+      "pass_rate": 70.1
     },
     {
       "hour": 13,
@@ -571,7 +571,7 @@
     {
       "hour": 14,
       "count": 194,
-      "pass_rate": 83
+      "pass_rate": 83.0
     },
     {
       "hour": 15,
@@ -610,8 +610,8 @@
     },
     {
       "hour": 22,
-      "count": 5989,
-      "pass_rate": 69.1
+      "count": 6087,
+      "pass_rate": 68.8
     },
     {
       "hour": 23,
@@ -621,176 +621,176 @@
   ],
   "answer_buttons": {
     "learning": {
-      "again": 4825,
+      "again": 4980,
       "hard": 163,
       "good": 431,
-      "easy": 6025
+      "easy": 6248
     },
     "young": {
-      "again": 809,
+      "again": 822,
       "hard": 10,
       "good": 23,
-      "easy": 6945
+      "easy": 6954
     },
     "mature": {
       "again": 1,
       "hard": 0,
       "good": 0,
-      "easy": 77
+      "easy": 79
     }
   },
   "cards_added": {
-    "total_added_30": 9300,
-    "avg_added_day": 310,
+    "total_added_30": 7800,
+    "avg_added_day": 260,
     "daily": [
       {
         "day_offset": -29,
-        "date": "2026-10-14",
-        "count": 1500
-      },
-      {
-        "day_offset": -28,
         "date": "2026-10-15",
         "count": 0
       },
       {
-        "day_offset": -27,
+        "day_offset": -28,
         "date": "2026-10-16",
         "count": 0
       },
       {
-        "day_offset": -26,
+        "day_offset": -27,
         "date": "2026-10-17",
         "count": 0
       },
       {
-        "day_offset": -25,
+        "day_offset": -26,
         "date": "2026-10-18",
         "count": 0
       },
       {
-        "day_offset": -24,
+        "day_offset": -25,
         "date": "2026-10-19",
         "count": 0
       },
       {
-        "day_offset": -23,
+        "day_offset": -24,
         "date": "2026-10-20",
         "count": 0
       },
       {
-        "day_offset": -22,
+        "day_offset": -23,
         "date": "2026-10-21",
         "count": 0
       },
       {
-        "day_offset": -21,
+        "day_offset": -22,
         "date": "2026-10-22",
         "count": 0
       },
       {
-        "day_offset": -20,
+        "day_offset": -21,
         "date": "2026-10-23",
         "count": 0
       },
       {
-        "day_offset": -19,
+        "day_offset": -20,
         "date": "2026-10-24",
         "count": 0
       },
       {
-        "day_offset": -18,
+        "day_offset": -19,
         "date": "2026-10-25",
         "count": 0
       },
       {
-        "day_offset": -17,
+        "day_offset": -18,
         "date": "2026-10-26",
         "count": 0
       },
       {
-        "day_offset": -16,
+        "day_offset": -17,
         "date": "2026-10-27",
         "count": 300
       },
       {
-        "day_offset": -15,
+        "day_offset": -16,
         "date": "2026-10-28",
         "count": 7200
       },
       {
-        "day_offset": -14,
+        "day_offset": -15,
         "date": "2026-10-29",
         "count": 0
       },
       {
-        "day_offset": -13,
+        "day_offset": -14,
         "date": "2026-10-30",
         "count": 0
       },
       {
-        "day_offset": -12,
+        "day_offset": -13,
         "date": "2026-10-31",
         "count": 0
       },
       {
-        "day_offset": -11,
+        "day_offset": -12,
         "date": "2026-11-01",
         "count": 300
       },
       {
-        "day_offset": -10,
+        "day_offset": -11,
         "date": "2026-11-02",
         "count": 0
       },
       {
-        "day_offset": -9,
+        "day_offset": -10,
         "date": "2026-11-03",
         "count": 0
       },
       {
-        "day_offset": -8,
+        "day_offset": -9,
         "date": "2026-11-04",
         "count": 0
       },
       {
-        "day_offset": -7,
+        "day_offset": -8,
         "date": "2026-11-05",
         "count": 0
       },
       {
-        "day_offset": -6,
+        "day_offset": -7,
         "date": "2026-11-06",
         "count": 0
       },
       {
-        "day_offset": -5,
+        "day_offset": -6,
         "date": "2026-11-07",
         "count": 0
       },
       {
-        "day_offset": -4,
+        "day_offset": -5,
         "date": "2026-11-08",
         "count": 0
       },
       {
-        "day_offset": -3,
+        "day_offset": -4,
         "date": "2026-11-09",
         "count": 0
       },
       {
-        "day_offset": -2,
+        "day_offset": -3,
         "date": "2026-11-10",
         "count": 0
       },
       {
-        "day_offset": -1,
+        "day_offset": -2,
         "date": "2026-11-11",
         "count": 0
       },
       {
-        "day_offset": 0,
+        "day_offset": -1,
         "date": "2026-11-12",
+        "count": 0
+      },
+      {
+        "day_offset": 0,
+        "date": "2026-11-13",
         "count": 0
       }
     ]
@@ -942,460 +942,464 @@
     },
     {
       "date": "2026-11-12",
-      "count": 109
+      "count": 207
+    },
+    {
+      "date": "2026-11-13",
+      "count": 326
     }
   ],
   "subdecks": [
     {
       "stt": 1,
       "did": 1791299821729,
-      "name": "A. Qu\u1EA7n \u00E1o v\u00E0 Ph\u1EE5 ki\u1EC7n th\u1EDDi trang",
+      "name": "A. Quần áo và Phụ kiện thời trang",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 3,
-      "progress_pct": 100
+      "due": 2,
+      "progress_pct": 100.0
     },
     {
       "stt": 2,
       "did": 1791300562095,
-      "name": "B. V\u0103n h\u00F3a qu\u00E1n c\u00E0 ph\u00EA v\u00E0 \u0110\u1ED3 u\u1ED1ng",
+      "name": "B. Văn hóa quán cà phê và Đồ uống",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 1,
-      "progress_pct": 100
+      "due": 2,
+      "progress_pct": 100.0
     },
     {
       "stt": 3,
       "did": 1791301492792,
-      "name": "C. \u1EA8m th\u1EF1c v\u00E0 C\u00E1c lo\u1EA1i l\u1EA9u",
+      "name": "C. Ẩm thực và Các loại lẩu",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 3,
-      "progress_pct": 100
+      "due": 4,
+      "progress_pct": 100.0
     },
     {
       "stt": 4,
       "did": 1791301524024,
-      "name": "D. Gia \u0111\u00ECnh v\u00E0 Ng\u01B0\u1EDDi th\u00E2n",
+      "name": "D. Gia đình và Người thân",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
       "due": 1,
-      "progress_pct": 100
+      "progress_pct": 100.0
     },
     {
       "stt": 5,
       "did": 1791301679850,
-      "name": "E. C\u00E1c b\u1ED9 ph\u1EADn tr\u00EAn c\u01A1 th\u1EC3 ng\u01B0\u1EDDi",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 9,
-      "progress_pct": 100
-    },
-    {
-      "stt": 6,
-      "did": 1791531930608,
-      "name": "F. \u0110\u1ED3 n\u1ED9i th\u1EA5t v\u00E0 V\u1EADt d\u1EE5ng gia \u0111\u00ECnh",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 5,
-      "progress_pct": 100
-    },
-    {
-      "stt": 7,
-      "did": 1791532130226,
-      "name": "G. C\u00E1c lo\u1EA1i b\u1EC7nh v\u00E0 Tri\u1EC7u ch\u1EE9ng y khoa",
+      "name": "E. Các bộ phận trên cơ thể người",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
       "due": 10,
-      "progress_pct": 100
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 6,
+      "did": 1791531930608,
+      "name": "F. Đồ nội thất và Vật dụng gia đình",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 7,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 7,
+      "did": 1791532130226,
+      "name": "G. Các loại bệnh và Triệu chứng y khoa",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 18,
+      "progress_pct": 100.0
     },
     {
       "stt": 8,
       "did": 1791532217888,
-      "name": "H. C\u00E1c t\u1ED5 ch\u1EE9c t\u00ECnh nguy\u1EC7n v\u00E0 T\u1EEB thi\u1EC7n",
+      "name": "H. Các tổ chức tình nguyện và Từ thiện",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 5,
-      "progress_pct": 100
+      "due": 7,
+      "progress_pct": 100.0
     },
     {
       "stt": 9,
       "did": 1791532707284,
-      "name": "I. Ng\u00E0nh ngh\u1EC1 v\u00E0 Ch\u1EE9c danh c\u00F4ng vi\u1EC7c",
+      "name": "I. Ngành nghề và Chức danh công việc",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 5,
-      "progress_pct": 100
+      "due": 6,
+      "progress_pct": 100.0
     },
     {
       "stt": 10,
       "did": 1791532762527,
-      "name": "J. T\u00EDnh c\u00E1ch v\u00E0 C\u1EA3m x\u00FAc con ng\u01B0\u1EDDi",
+      "name": "J. Tính cách và Cảm xúc con người",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 3,
-      "progress_pct": 100
+      "due": 4,
+      "progress_pct": 100.0
     },
     {
       "stt": 11,
       "did": 1791949310835,
-      "name": "K. T\u00EDn ng\u01B0\u1EE1ng v\u00E0 T\u00F4n gi\u00E1o",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 31,
-      "progress_pct": 100
-    },
-    {
-      "stt": 12,
-      "did": 1791949388155,
-      "name": "L. Ph\u00E1p lu\u1EADt v\u00E0 C\u00E1c lo\u1EA1i t\u1ED9i ph\u1EA1m",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 28,
-      "progress_pct": 100
-    },
-    {
-      "stt": 13,
-      "did": 1791949443240,
-      "name": "M. D\u1EE5ng c\u1EE5 v\u1EC7 sinh v\u00E0 Ch\u0103m s\u00F3c c\u00E1 nh\u00E2n",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 21,
-      "progress_pct": 100
-    },
-    {
-      "stt": 14,
-      "did": 1791949493403,
-      "name": "N. V\u0103n h\u00F3a v\u00E0 Phong t\u1EE5c t\u1EADp qu\u00E1n",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 14,
-      "progress_pct": 100
-    },
-    {
-      "stt": 15,
-      "did": 1791949557355,
-      "name": "O. Ch\u00EDnh ph\u1EE7 v\u00E0 C\u00E1c c\u01A1 quan nh\u00E0 n\u01B0\u1EDBc",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 63,
-      "progress_pct": 100
-    },
-    {
-      "stt": 16,
-      "did": 1793076585131,
-      "name": "P. D\u1EE5ng c\u1EE5 v\u00E0 Trang thi\u1EBFt b\u1ECB y t\u1EBF",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 111,
-      "progress_pct": 100
-    },
-    {
-      "stt": 17,
-      "did": 1793076758647,
-      "name": "Q. B\u00E1o ch\u00ED v\u00E0 Ph\u01B0\u01A1ng ti\u1EC7n truy\u1EC1n th\u00F4ng",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 128,
-      "progress_pct": 100
-    },
-    {
-      "stt": 18,
-      "did": 1793076776800,
-      "name": "R. C\u00E1c giai \u0111o\u1EA1n trong cu\u1ED9c \u0111\u1EDDi",
-      "total": 300,
-      "new": 0,
-      "learning": 0,
-      "review": 300,
-      "due": 113,
-      "progress_pct": 100
-    },
-    {
-      "stt": 19,
-      "did": 1793076795022,
-      "name": "S. V\u1EADt d\u1EE5ng v\u00E0 Thi\u1EBFt b\u1ECB nh\u00E0 b\u1EBFp",
+      "name": "K. Tín ngưỡng và Tôn giáo",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
       "due": 34,
-      "progress_pct": 100
+      "progress_pct": 100.0
     },
     {
-      "stt": 20,
-      "did": 1793076809302,
-      "name": "T. Ph\u00F2ng ng\u1EE7 v\u00E0 Gi\u1EA5c ng\u1EE7",
+      "stt": 12,
+      "did": 1791949388155,
+      "name": "L. Pháp luật và Các loại tội phạm",
       "total": 300,
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 101,
-      "progress_pct": 100
+      "due": 35,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 13,
+      "did": 1791949443240,
+      "name": "M. Dụng cụ vệ sinh và Chăm sóc cá nhân",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 28,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 14,
+      "did": 1791949493403,
+      "name": "N. Văn hóa và Phong tục tập quán",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 25,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 15,
+      "did": 1791949557355,
+      "name": "O. Chính phủ và Các cơ quan nhà nước",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 85,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 16,
+      "did": 1793076585131,
+      "name": "P. Dụng cụ và Trang thiết bị y tế",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 132,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 17,
+      "did": 1793076758647,
+      "name": "Q. Báo chí và Phương tiện truyền thông",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 182,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 18,
+      "did": 1793076776800,
+      "name": "R. Các giai đoạn trong cuộc đời",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 167,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 19,
+      "did": 1793076795022,
+      "name": "S. Vật dụng và Thiết bị nhà bếp",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 46,
+      "progress_pct": 100.0
+    },
+    {
+      "stt": 20,
+      "did": 1793076809302,
+      "name": "T. Phòng ngủ và Giấc ngủ",
+      "total": 300,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 102,
+      "progress_pct": 100.0
     },
     {
       "stt": 21,
       "did": 1793076823299,
-      "name": "U. S\u1EF1 ki\u1EC7n, L\u1EC5 h\u1ED9i v\u00E0 Ti\u1EC7c t\u00F9ng",
+      "name": "U. Sự kiện, Lễ hội và Tiệc tùng",
       "total": 300,
-      "new": 176,
-      "learning": 14,
-      "review": 110,
-      "due": 21,
-      "progress_pct": 36.7
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 56,
+      "progress_pct": 100.0
     },
     {
       "stt": 22,
       "did": 1793076842045,
-      "name": "V. C\u00E1c m\u00F4n Th\u1EC3 thao \u0111\u1ED3ng \u0111\u1ED9i",
+      "name": "V. Các môn Thể thao đồng đội",
       "total": 300,
-      "new": 299,
-      "learning": 0,
-      "review": 1,
+      "new": 253,
+      "learning": 13,
+      "review": 34,
       "due": 0,
-      "progress_pct": 0.3
+      "progress_pct": 11.3
     },
     {
       "stt": 23,
       "did": 1793076853425,
-      "name": "W. D\u1EE5ng c\u1EE5 t\u1EADp th\u1EC3 h\u00ECnh",
+      "name": "W. Dụng cụ tập thể hình",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 24,
       "did": 1793076870863,
-      "name": "X. \u0110\u1ED3 ch\u01A1i v\u00E0 Tr\u00F2 ch\u01A1i truy\u1EC1n th\u1ED1ng",
+      "name": "X. Đồ chơi và Trò chơi truyền thống",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 25,
       "did": 1793076892117,
-      "name": "Y. C\u00E1c lo\u1EA1i h\u00ECnh ngh\u1EC7 thu\u1EADt bi\u1EC3u di\u1EC5n",
+      "name": "Y. Các loại hình nghệ thuật biểu diễn",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 26,
       "did": 1793076905617,
-      "name": "Z. \u0110\u1ECBa l\u00FD t\u1EF1 nhi\u00EAn v\u00E0 \u0110\u1ECBa h\u00ECnh",
+      "name": "Z. Địa lý tự nhiên và Địa hình",
       "total": 300,
       "new": 277,
       "learning": 0,
       "review": 23,
-      "due": 1,
+      "due": 2,
       "progress_pct": 7.7
     },
     {
       "stt": 27,
       "did": 1793157812433,
-      "name": "ZA. Tr\u01B0\u1EDDng \u0111\u1EA1i h\u1ECDc v\u00E0 \u0110\u1EDDi s\u1ED1ng sinh vi\u00EAn",
+      "name": "ZA. Trường đại học và Đời sống sinh viên",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 28,
       "did": 1793157885078,
-      "name": "ZB. C\u00E1c lo\u1EA1i nh\u1EA1c c\u1EE5",
+      "name": "ZB. Các loại nhạc cụ",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 29,
       "did": 1793157904616,
-      "name": "ZC. Thu\u1EADt ng\u1EEF \u00E2m nh\u1EA1c v\u00E0 B\u1EA3n nh\u1EA1c",
+      "name": "ZC. Thuật ngữ âm nhạc và Bản nhạc",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 30,
       "did": 1793157945332,
-      "name": "ZD. Tr\u00F2 ch\u01A1i \u0111i\u1EC7n t\u1EED tr\u00EAn PC v\u00E0 Mobile",
+      "name": "ZD. Trò chơi điện tử trên PC và Mobile",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 31,
       "did": 1793157962947,
-      "name": "ZE. Kh\u00F3a lu\u1EADn v\u00E0 Nghi\u00EAn c\u1EE9u khoa h\u1ECDc",
+      "name": "ZE. Khóa luận và Nghiên cứu khoa học",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 32,
       "did": 1793157981347,
-      "name": "ZF. V\u0103n ph\u00F2ng ph\u1EA9m v\u00E0 D\u1EE5ng c\u1EE5 h\u1ECDc t\u1EADp",
+      "name": "ZF. Văn phòng phẩm và Dụng cụ học tập",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 33,
       "did": 1793157998104,
-      "name": "ZG. C\u00E1c k\u1EF3 thi ng\u00F4n ng\u1EEF v\u00E0 Ch\u1EE9ng ch\u1EC9",
+      "name": "ZG. Các kỳ thi ngôn ngữ và Chứng chỉ",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 34,
       "did": 1793158019425,
-      "name": "ZH. C\u00E2u l\u1EA1c b\u1ED9 v\u00E0 C\u00E1c ban chuy\u00EAn m\u00F4n sinh vi\u00EAn",
+      "name": "ZH. Câu lạc bộ và Các ban chuyên môn sinh viên",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 35,
       "did": 1793158207679,
-      "name": "ZI. Nhi\u1EBFp \u1EA3nh v\u00E0 Thi\u1EBFt b\u1ECB quay ch\u1EE5p",
+      "name": "ZI. Nhiếp ảnh và Thiết bị quay chụp",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 36,
       "did": 1793158582696,
-      "name": "ZJ. \u0110i\u1EC7n \u1EA3nh v\u00E0 Phim tr\u01B0\u1EDDng",
+      "name": "ZJ. Điện ảnh và Phim trường",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 37,
       "did": 1793158601222,
-      "name": "ZK. H\u1ED9i h\u1ECDa v\u00E0 M\u1EF9 thu\u1EADt",
+      "name": "ZK. Hội họa và Mỹ thuật",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 38,
       "did": 1793158635921,
-      "name": "ZL. K\u00FD t\u00FAc x\u00E1 v\u00E0 Kh\u00F4ng gian l\u01B0u tr\u00FA sinh vi\u00EAn",
+      "name": "ZL. Ký túc xá và Không gian lưu trú sinh viên",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 39,
       "did": 1793158655119,
-      "name": "ZM. C\u00E1c m\u00F4n h\u1ECDc h\u00E0n l\u00E2m",
+      "name": "ZM. Các môn học hàn lâm",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 40,
       "did": 1793159982119,
-      "name": "ZN. Trang thi\u1EBFt b\u1ECB ph\u00F2ng th\u00ED nghi\u1EC7m",
+      "name": "ZN. Trang thiết bị phòng thí nghiệm",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     },
     {
       "stt": 41,
       "did": 1793164255008,
-      "name": "ZZZL. V\u1EADt li\u1EC7u x\u00E2y d\u1EF1ng",
+      "name": "ZZZL. Vật liệu xây dựng",
       "total": 300,
       "new": 300,
       "learning": 0,
       "review": 0,
       "due": 0,
-      "progress_pct": 0
+      "progress_pct": 0.0
     }
   ]
 }
