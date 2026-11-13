@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12 13:25:58",
+  "updated_at": "2026-11-13 16:01:58",
   "topics": [
     {
       "stt": 1,
@@ -1102,28 +1102,28 @@
     {
       "stt": 123,
       "topic": "Hệ hô hấp (Respiratory System)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/123.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-13 16:00",
       "last_error": null
     },
     {
       "stt": 124,
       "topic": "Sơ cứu cơ bản (Basic First Aid)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/124.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-13 16:01",
       "last_error": null
     },
     {
       "stt": 125,
       "topic": "Sức khỏe tâm thần (Mental Health)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/125.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-13 16:01",
       "last_error": null
     },
     {
