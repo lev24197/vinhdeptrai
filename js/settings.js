@@ -4,6 +4,17 @@
 //            đồng bộ file trực tiếp lên GitHub Repository & thông báo Toast.
 // ============================================================================
 
+const DEFAULT_GEMINI_API_KEY = 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E';
+const DEFAULT_GH_TOKEN = '';
+
+function getGeminiApiKey() {
+  return localStorage.getItem('gemini_api_key') || DEFAULT_GEMINI_API_KEY;
+}
+
+function getGitHubToken() {
+  return localStorage.getItem('gh_token') || DEFAULT_GH_TOKEN;
+}
+
 function showToastAlert(msg, type = 'success') {
   const toast = document.createElement('div');
   const bg = type === 'success' ? 'bg-[#169C64] text-white' : (type === 'warning' ? 'bg-[#FF9F1C] text-[#111]' : 'bg-[#F05332] text-white');
@@ -21,7 +32,7 @@ async function pushFileToGitHub(path, contentText, commitMessage, ghTokenOpt, ow
   const owner = ownerOpt || localStorage.getItem('gh_owner') || 'lev24197';
   const repo = repoOpt || localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = branchOpt || localStorage.getItem('gh_branch') || 'main';
-  const token = ghTokenOpt || localStorage.getItem('gh_token');
+  const token = ghTokenOpt || getGitHubToken();
   if (!token || !owner || !repo) throw new Error('Thiếu GitHub Token hoặc thông tin Repository.');
 
   const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
@@ -62,8 +73,8 @@ function openSettings() {
   setVal('ghOwner', localStorage.getItem('gh_owner') || 'lev24197');
   setVal('ghRepo', localStorage.getItem('gh_repo') || 'vinhdeptrai');
   setVal('ghBranch', localStorage.getItem('gh_branch') || 'main');
-  setVal('ghToken', localStorage.getItem('gh_token') || '');
-  const geminiKey = localStorage.getItem('gemini_api_key') || '';
+  setVal('ghToken', getGitHubToken());
+  const geminiKey = getGeminiApiKey();
   setVal('geminiKeyInput', geminiKey);
   setVal('geminiApiKey', geminiKey);
   setVal('geminiModelSelect', localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite');
@@ -95,7 +106,7 @@ function saveSettings() {
   localStorage.setItem('gh_branch', getVal('ghBranch') || 'main');
   localStorage.setItem('gh_token', getVal('ghToken'));
 
-  const geminiKey = getVal('geminiKeyInput') || getVal('geminiApiKey');
+  const geminiKey = getVal('geminiKeyInput') || getVal('geminiApiKey') || DEFAULT_GEMINI_API_KEY;
   localStorage.setItem('gemini_api_key', geminiKey);
 
   const modelVal = getVal('geminiModelSelect') || 'gemini-3.1-flash-lite';

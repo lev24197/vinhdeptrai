@@ -35,7 +35,7 @@ async function triggerWorkflow(batchSize, targetStt) {
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const token = localStorage.getItem('gh_token');
+  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
 
   if (!owner || !repo || !token) {
     alert('Vui lòng bấm "Cấu hình API" và điền Owner, Repo, GitHub Token trước!');
@@ -76,7 +76,7 @@ async function triggerWorkflow(batchSize, targetStt) {
 async function pollGitHubActionSteps() {
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
-  const token = localStorage.getItem('gh_token');
+  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
   const branch = localStorage.getItem('gh_branch') || 'main';
   if (!owner || !repo) return;
 
@@ -470,11 +470,11 @@ async function callGeminiApiWithFallback(prompt, geminiKey, temperature = 0.65) 
 }
 
 async function generateSingleInBrowser(stt, topicVi) {
-  let geminiKey = localStorage.getItem('gemini_api_key');
+  let geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E');
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const ghToken = localStorage.getItem('gh_token');
+  const ghToken = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
   const preferredModel = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
 
   if (!geminiKey) {

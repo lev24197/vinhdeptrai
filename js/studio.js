@@ -311,7 +311,7 @@ async function saveEditedFileToGitHub() {
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const token = localStorage.getItem('gh_token');
+  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
 
   if (!owner || !repo || !token) {
     alert('Vui lòng cấu hình GitHub Personal Access Token trong phần CẤU HÌNH API để lưu trực tiếp lên GitHub!');

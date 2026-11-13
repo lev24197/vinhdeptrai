@@ -156,7 +156,7 @@ async function openCurationModal(stt, topicVi) {
   if (titleEl) titleEl.innerText = `LỌC CHỌN 100 TỪ: #${curationCurrentStt} ${curationCurrentTopicVi.toUpperCase()}`;
 
   // Kiểm tra Gemini API Key
-  let geminiKey = localStorage.getItem('gemini_api_key');
+  let geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E');
   if (!geminiKey) {
     const inputKey = prompt('Vui lòng dán Gemini API Key của bạn để hệ thống sinh 150 danh từ ứng viên:');
     if (inputKey && inputKey.trim()) {
@@ -210,7 +210,7 @@ async function fetch150CandidatesFromAI(stt, topicVi) {
       </div>`;
   }
 
-  const geminiKey = localStorage.getItem('gemini_api_key');
+  const geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E');
   const prompt = `
 Bạn là chuyên gia ngôn ngữ học và biên soạn từ điển chuyên nghiệp với độ chuẩn xác tuyệt đối về trường từ vựng.
 Chủ đề: "${topicVi}" (STT: #${stt}).
@@ -586,11 +586,11 @@ async function proceedToGenerate100Details() {
     logToConsole('INFO', 'CURATION_ENRICH', `Bắt đầu sinh 9 cột Anki chi tiết cho 100 từ đã chọn lọc của chủ đề #${stt}...`);
   }
 
-  const geminiKey = localStorage.getItem('gemini_api_key');
+  const geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E');
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const ghToken = localStorage.getItem('gh_token');
+  const ghToken = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
 
   try {
     const fullItems = [];

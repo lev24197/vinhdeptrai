@@ -908,7 +908,7 @@ function setSubdeckCategoryFilter(cat) {
 // 15. AI GEMINI PHÂN TÍCH & CỐ VẤN KẾT QUẢ HỌC TẬP (FSRS ADVISORY)
 // ----------------------------------------------------------------------------
 async function analyzeAnkiStatsWithGemini() {
-  const geminiKey = localStorage.getItem('gemini_api_key') || '';
+  const geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E');
   const resultContainer = document.getElementById('geminiAnalysisResult');
   const btn = document.getElementById('btnGeminiAnalyze');
 
@@ -1253,7 +1253,7 @@ function openSyncAnkiModal() {
   }
   modal.classList.remove('hidden');
 
-  const token = localStorage.getItem('gh_token') || '';
+  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
   const tokenStatus = document.getElementById('syncModalTokenStatus');
   const tokenInput = document.getElementById('syncModalTokenInput');
   if (tokenStatus) {
@@ -1285,7 +1285,7 @@ async function executeCloudSyncFromModal() {
   if (inputVal) {
     localStorage.setItem('gh_token', inputVal);
   }
-  const token = inputVal || localStorage.getItem('gh_token') || '';
+  const token = inputVal || (typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || ''));
   if (!token) {
     alert("Vui lòng nhập GitHub Personal Access Token (PAT) để kích hoạt máy ảo.");
     if (tokenInput) tokenInput.focus();
@@ -1295,7 +1295,7 @@ async function executeCloudSyncFromModal() {
 }
 
 async function triggerAnkiWebSync() {
-  const token = localStorage.getItem('gh_token') || '';
+  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
   if (!token) {
     openSyncAnkiModal();
     return;
@@ -1307,7 +1307,7 @@ async function executeCloudSyncProcess(tokenOverride = '') {
   const owner = localStorage.getItem('gh_owner') || 'lev24197';
   const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const token = tokenOverride || localStorage.getItem('gh_token') || '';
+  const token = tokenOverride || (typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || ''));
   const btn = document.getElementById('btnSyncAnkiWeb');
   const modalBtn = document.getElementById('btnModalExecuteSync');
   const runStatusBox = document.getElementById('syncModalRunStatus');
