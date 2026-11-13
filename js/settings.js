@@ -15,6 +15,39 @@ function getGitHubToken() {
   return localStorage.getItem('gh_token') || DEFAULT_GH_TOKEN;
 }
 
+// Tự động nạp cấu hình token/API từ liên kết thiết lập 1 chạm bảo mật (hash #token=... hoặc #gemini=...)
+(function autoImportCredentialsFromHash() {
+  try {
+    if (typeof window === 'undefined' || !window.location || !window.location.hash) return;
+    const hash = window.location.hash.substring(1);
+    if (!hash) return;
+    const params = new URLSearchParams(hash);
+    let imported = false;
+    const ghTok = params.get('token') || params.get('pat') || params.get('gh_token');
+    if (ghTok && ghTok.trim()) {
+      localStorage.setItem('gh_token', ghTok.trim());
+      imported = true;
+    }
+    const gemKey = params.get('gemini') || params.get('gemini_api_key') || params.get('key');
+    if (gemKey && gemKey.trim()) {
+      localStorage.setItem('gemini_api_key', gemKey.trim());
+      imported = true;
+    }
+    if (imported) {
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      setTimeout(() => {
+        if (typeof showToastAlert === 'function') {
+          showToastAlert('ĐÃ THIẾT LẬP CẤU HÌNH BẢO MẬT TRÊN THIẾT BỊ NÀY', 'success');
+        }
+      }, 500);
+    }
+  } catch (e) {
+    console.warn('Lỗi đọc liên kết cấu hình:', e);
+  }
+})();
+
 function showToastAlert(msg, type = 'success') {
   const toast = document.createElement('div');
   const bg = type === 'success' ? 'bg-[#169C64] text-white' : (type === 'warning' ? 'bg-[#FF9F1C] text-[#111]' : 'bg-[#F05332] text-white');
@@ -104,7 +137,8 @@ function saveSettings() {
   localStorage.setItem('gh_owner', getVal('ghOwner') || 'lev24197');
   localStorage.setItem('gh_repo', getVal('ghRepo') || 'vinhdeptrai');
   localStorage.setItem('gh_branch', getVal('ghBranch') || 'main');
-  localStorage.setItem('gh_token', getVal('ghToken'));
+  const ghToken = getVal('ghToken') || DEFAULT_GH_TOKEN;
+  localStorage.setItem('gh_token', ghToken);
 
   const geminiKey = getVal('geminiKeyInput') || getVal('geminiApiKey') || DEFAULT_GEMINI_API_KEY;
   localStorage.setItem('gemini_api_key', geminiKey);
