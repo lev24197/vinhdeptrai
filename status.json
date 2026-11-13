@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13 16:01:58",
+  "updated_at": "2026-11-14 01:30:11",
   "topics": [
     {
       "stt": 1,
@@ -1129,29 +1129,29 @@
     {
       "stt": 126,
       "topic": "Vệ sinh an toàn thực phẩm (Food Safety)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/126.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #126 (Vệ sinh an toàn thực phẩm (Food Safety)) chỉ tạo được 0/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 127,
       "topic": "Dinh dưỡng học (Nutritional Science)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/127.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #127 (Dinh dưỡng học (Nutritional Science)) chỉ tạo được 0/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 128,
       "topic": "Chăm sóc da liễu (Skin Care & Dermatology)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/128.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #128 (Chăm sóc da liễu (Skin Care & Dermatology)) chỉ tạo được 0/100 từ sau nhiều lần thử lại!"
     },
     {
       "stt": 129,
