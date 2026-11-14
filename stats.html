@@ -531,6 +531,98 @@
       <div id="geminiAnalysisResult" class="hidden"></div>
     </section>
 
+    <!-- SECTION 16: TRÌNH MÔ PHỎNG FSRS TƯƠNG TÁC (TARGET RETENTION & WORKLOAD SIMULATOR) -->
+    <section class="rounded-2xl bg-white border border-slate-200/80 shadow-sm p-6 space-y-6 hover:shadow-md transition-shadow duration-200">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 text-slate-600 uppercase tracking-wider">KHU VỰC 16</span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60 uppercase">
+              CÔNG CỤ TÍNH TOÁN FSRS
+            </span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900 mt-2">
+            Trình Mô Phỏng FSRS: Cân Bằng Tỷ Lệ Nhớ & Tải Ôn Tập Hàng Ngày
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+            Điều chỉnh Target Retention (R) và số từ mới/ngày để tính toán trực quan tải ôn tập hàng ngày và thời gian học tối ưu theo thuật toán FSRS-v5.
+          </p>
+        </div>
+        <button onclick="resetFsrsSimulatorWeb()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all">
+          MẶC ĐỊNH (90% - 30 TỪ)
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <!-- BỘ THANH ĐIỀU CHỈNH TRỰC QUAN -->
+        <div class="lg:col-span-6 space-y-5">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-medium">
+              <label for="webSliderRetention" class="font-bold text-slate-800">Target Retention (Mục tiêu khả năng nhớ):</label>
+              <span id="webLabelRetention" class="px-2.5 py-1 rounded-lg bg-indigo-50 font-extrabold text-indigo-600 text-xs">90%</span>
+            </div>
+            <input id="webSliderRetention" type="range" min="80" max="97" value="90" step="1" oninput="runFsrsSimulationWeb()"
+                   class="w-full accent-indigo-600 cursor-pointer h-2 bg-slate-200 rounded-lg" />
+            <div class="flex justify-between text-xs text-slate-500">
+              <span>80% (Ôn ít, quên nhiều hơn)</span>
+              <span class="font-semibold text-indigo-600">90% (Khuyên dùng)</span>
+              <span>97% (Nhớ sâu, tải ôn rất cao)</span>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-medium">
+              <label for="webSliderNewCards" class="font-bold text-slate-800">Số từ mới bổ sung mỗi ngày:</label>
+              <span id="webLabelNewCards" class="px-2.5 py-1 rounded-lg bg-emerald-50 font-extrabold text-emerald-600 text-xs">30 từ/ngày</span>
+            </div>
+            <input id="webSliderNewCards" type="range" min="0" max="100" value="30" step="5" oninput="runFsrsSimulationWeb()"
+                   class="w-full accent-emerald-600 cursor-pointer h-2 bg-slate-200 rounded-lg" />
+            <div class="flex justify-between text-xs text-slate-500">
+              <span>0 từ (Chỉ duy trì)</span>
+              <span>50 từ/ngày</span>
+              <span>100 từ/ngày (Thử thách lớn)</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
+            <div class="font-bold text-slate-800">Quy luật số mũ FSRS Spaced Repetition:</div>
+            <div>• Tăng Retention từ 90% lên 95% làm tăng khoảng <strong>1.8x đến 2.2x</strong> số lượt ôn tập hàng ngày.</div>
+            <div>• Hạ Retention xuống 85% giúp giảm <strong>40%</strong> số lượt ôn nhưng tỷ lệ quên từ sẽ tăng gấp 1.5 lần.</div>
+          </div>
+        </div>
+
+        <!-- BẢNG KẾT QUẢ DỰ BÁO TƯƠNG TÁC -->
+        <div class="lg:col-span-6 p-5 rounded-2xl bg-gradient-to-br from-indigo-50/60 via-slate-50/60 to-emerald-50/60 border border-slate-200/80">
+          <div class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3">Kết Quả Dự Báo FSRS Mô Phỏng</div>
+          <div class="grid grid-cols-2 gap-3.5">
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+              <div class="text-xs text-slate-500 font-medium">Tải ôn tập hàng ngày</div>
+              <div id="webSimDailyReviews" class="text-xl font-extrabold text-indigo-600 mt-1">125 thẻ</div>
+              <div class="text-xs text-slate-400 mt-0.5">~62 lượt ôn + 30 từ mới</div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+              <div class="text-xs text-slate-500 font-medium">Thời gian học mỗi ngày</div>
+              <div id="webSimDailyTime" class="text-xl font-extrabold text-emerald-600 mt-1">8.2 phút</div>
+              <div class="text-xs text-slate-400 mt-0.5">Tốc độ trung bình 3.95s/thẻ</div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+              <div class="text-xs text-slate-500 font-medium">Kiến thức ghi nhớ sau 1 năm</div>
+              <div id="webSimYearKnowledge" class="text-xl font-extrabold text-sky-600 mt-1">9.850 từ</div>
+              <div class="text-xs text-slate-400 mt-0.5">Xác suất nhớ thực tế: <span id="webSimRealRetention">90%</span></div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-sm">
+              <div class="text-xs text-slate-500 font-medium">Hiệu suất học tập</div>
+              <div id="webSimEfficiencyScore" class="text-xl font-extrabold text-purple-600 mt-1">9.4/10</div>
+              <div class="text-xs text-slate-400 mt-0.5">Tối ưu thời gian vs trí nhớ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- MODAL: TRUNG TÂM ĐỒNG BỘ DỮ LIỆU HỌC TẬP ANKI -->

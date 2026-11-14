@@ -115,6 +115,7 @@ async function initStatsPage() {
   await loadAnkiStatsData();
   setupStatsEventHandlers();
   loadCachedGeminiAnalysis();
+  runFsrsSimulationWeb();
 }
 
 /**
@@ -1673,6 +1674,64 @@ function startPollingSyncRun(owner, repo, token, startTime) {
   }, 4000);
 }
 
+// ============================================================================
+// KHU VỰC 16: TRÌNH MÔ PHỎNG FSRS TARGET RETENTION & TẢI ÔN TẬP
+// ============================================================================
+function runFsrsSimulationWeb() {
+  const sliderR = document.getElementById('webSliderRetention');
+  const sliderN = document.getElementById('webSliderNewCards');
+  if (!sliderR || !sliderN) return;
+
+  const r = parseInt(sliderR.value, 10);
+  const n = parseInt(sliderN.value, 10);
+
+  const labelR = document.getElementById('webLabelRetention');
+  const labelN = document.getElementById('webLabelNewCards');
+  if (labelR) labelR.innerText = r + '%';
+  if (labelN) labelN.innerText = n + ' từ/ngày';
+
+  // FSRS Workload multiplier relative to 90% benchmark
+  const benchmarkFactor = Math.log(0.90);
+  const currentFactor = Math.log(r / 100);
+  const fsrsMultiplier = Math.pow(benchmarkFactor / currentFactor, 1.15);
+
+  const baseDailyReviews = Math.round(62 * fsrsMultiplier);
+  const newCardReviews = Math.round(n * 2.1);
+  const totalDaily = baseDailyReviews + newCardReviews;
+
+  const secPerCard = (currentAnkiStats && currentAnkiStats.today && currentAnkiStats.today.seconds_per_card) || 3.95;
+  const totalSeconds = totalDaily * secPerCard;
+  const totalMinutes = (totalSeconds / 60).toFixed(1);
+
+  const totalNewInYear = n * 365;
+  const currentWords = 2105;
+  const rememberedWords = Math.round((currentWords + totalNewInYear) * (r / 100));
+
+  let efficiency = 10 - Math.abs(r - 90) * 0.45;
+  if (n > 80) efficiency -= 0.5;
+  efficiency = Math.max(6.5, Math.min(9.9, efficiency)).toFixed(1);
+
+  const elDaily = document.getElementById('webSimDailyReviews');
+  const elTime = document.getElementById('webSimDailyTime');
+  const elYear = document.getElementById('webSimYearKnowledge');
+  const elRealR = document.getElementById('webSimRealRetention');
+  const elScore = document.getElementById('webSimEfficiencyScore');
+
+  if (elDaily) elDaily.innerText = totalDaily + ' thẻ';
+  if (elTime) elTime.innerText = totalMinutes + ' phút';
+  if (elYear) elYear.innerText = rememberedWords.toLocaleString() + ' từ';
+  if (elRealR) elRealR.innerText = r + '%';
+  if (elScore) elScore.innerText = efficiency + '/10';
+}
+
+function resetFsrsSimulatorWeb() {
+  const sliderR = document.getElementById('webSliderRetention');
+  const sliderN = document.getElementById('webSliderNewCards');
+  if (sliderR) sliderR.value = 90;
+  if (sliderN) sliderN.value = 30;
+  runFsrsSimulationWeb();
+}
+
 // Gán các hàm cốt lõi vào window để các module khác và test runner có thể truy cập
 window.initStatsPage = initStatsPage;
 window.loadAnkiStatsData = loadAnkiStatsData;
@@ -1693,3 +1752,5 @@ window.analyzeAnkiStatsWithGemini = analyzeAnkiStatsWithGemini;
 window.copyGeminiAnalysisText = copyGeminiAnalysisText;
 window.showStatsTooltip = showStatsTooltip;
 window.hideStatsTooltip = hideStatsTooltip;
+window.runFsrsSimulationWeb = runFsrsSimulationWeb;
+window.resetFsrsSimulatorWeb = resetFsrsSimulatorWeb;
