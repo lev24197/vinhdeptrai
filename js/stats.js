@@ -2,8 +2,9 @@
 // MODULE: js/stats.js
 // Chức năng: Quản trị Bảng điều khiển Thống kê Học tập Anki & Thuật toán FSRS
 //            Bóc tách độc quyền cho bộ bài: "Thử thách mỗi ngày 100 từ vựng"
-//            Bao gồm 14 Biểu đồ Kiến trúc Trực quan Sinh động & AI Gemini Cố Vấn
-//            Phong cách Swiss Editorial Typography — Tuyệt đối 0% Icon/Emoji.
+//            Bao gồm 14 Biểu đồ Trực quan Sinh động & AI Gemini Cố Vấn
+//            Giao diện Modern Clean SaaS — Gradients thanh lịch, góc bo tròn,
+//            Tooltip tương tác mượt mà trên chuột và cảm ứng di động.
 // ============================================================================
 
 let currentAnkiStats = null;
@@ -11,6 +12,101 @@ let subdecksCurrentFilter = '';
 let subdecksCategoryFilter = 'all'; // all, review, learning, new
 let subdecksCurrentPage = 1;
 const subdecksPageSize = 15;
+
+/**
+ * Modern Interactive Floating Tooltip Controller
+ */
+function showStatsTooltip(e, htmlContent) {
+  let tip = document.getElementById('statsModernTooltip');
+  if (!tip) {
+    tip = document.createElement('div');
+    tip.id = 'statsModernTooltip';
+    tip.className = 'fixed pointer-events-none z-[9999] px-3.5 py-2.5 bg-slate-900/90 text-white text-xs rounded-xl shadow-xl backdrop-blur-md border border-slate-700/60 transition-opacity duration-150 font-sans leading-snug';
+    document.body.appendChild(tip);
+  }
+  tip.innerHTML = htmlContent;
+  tip.style.opacity = '1';
+  tip.style.display = 'block';
+
+  let clientX = e.clientX;
+  let clientY = e.clientY;
+  if (clientX === undefined && e.touches && e.touches.length > 0) {
+    clientX = e.touches[0].clientX;
+    clientY = e.touches[0].clientY;
+  }
+  if (clientX === undefined) {
+    clientX = window.innerWidth / 2;
+    clientY = window.innerHeight / 2;
+  }
+
+  const tipRect = tip.getBoundingClientRect();
+  let left = clientX + 14;
+  let top = clientY - tipRect.height - 10;
+
+  if (left + tipRect.width > window.innerWidth - 12) {
+    left = clientX - tipRect.width - 14;
+  }
+  if (top < 12) {
+    top = clientY + 16;
+  }
+
+  tip.style.left = `${Math.max(8, left)}px`;
+  tip.style.top = `${Math.max(8, top)}px`;
+}
+
+function hideStatsTooltip() {
+  const tip = document.getElementById('statsModernTooltip');
+  if (tip) {
+    tip.style.opacity = '0';
+    setTimeout(() => {
+      if (tip && tip.style.opacity === '0') tip.style.display = 'none';
+    }, 150);
+  }
+}
+
+/**
+ * Standard SVG Defs for Modern Gradients
+ */
+function getSvgDefs() {
+  return `
+    <defs>
+      <!-- Indigo to Violet Gradient -->
+      <linearGradient id="gradIndigoViolet" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#6366F1" />
+        <stop offset="100%" stop-color="#8B5CF6" />
+      </linearGradient>
+      <!-- Emerald to Teal Gradient -->
+      <linearGradient id="gradEmeraldTeal" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#10B981" />
+        <stop offset="100%" stop-color="#14B8A6" />
+      </linearGradient>
+      <!-- Amber to Orange Gradient -->
+      <linearGradient id="gradAmberOrange" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#F59E0B" />
+        <stop offset="100%" stop-color="#F97316" />
+      </linearGradient>
+      <!-- Rose to Pink Gradient -->
+      <linearGradient id="gradRosePink" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#F43F5E" />
+        <stop offset="100%" stop-color="#FB7185" />
+      </linearGradient>
+      <!-- Blue to Cyan Gradient -->
+      <linearGradient id="gradBlueCyan" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3B82F6" />
+        <stop offset="100%" stop-color="#06B6D4" />
+      </linearGradient>
+      <!-- Soft Area Gradients for Curves -->
+      <linearGradient id="areaEmerald" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#10B981" stop-opacity="0.25" />
+        <stop offset="100%" stop-color="#10B981" stop-opacity="0.01" />
+      </linearGradient>
+      <linearGradient id="areaIndigo" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#6366F1" stop-opacity="0.22" />
+        <stop offset="100%" stop-color="#6366F1" stop-opacity="0.01" />
+      </linearGradient>
+    </defs>
+  `;
+}
 
 /**
  * Khởi tạo Trang Thống Kê Anki FSRS
@@ -30,7 +126,7 @@ async function loadAnkiStatsData(forceReload = false) {
   const statusBadge = document.getElementById('ankiStatsSyncBadge');
   if (statusBadge) {
     statusBadge.innerText = 'TRẠNG THÁI: ĐANG NẠP DỮ LIỆU ANKI...';
-    statusBadge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-[#EAE5DA] text-[#111111] border-2 border-[#111111]';
+    statusBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200/80 animate-pulse';
   }
 
   // Kiểm tra bộ nhớ tạm do người dùng dán gần đây (nếu không ép tải mới)
@@ -41,7 +137,7 @@ async function loadAnkiStatsData(forceReload = false) {
       renderAllStatsCharts(currentAnkiStats);
       if (statusBadge) {
         statusBadge.innerText = `[BỘ NHỚ TRÌNH DUYỆT] CẬP NHẬT: ${currentAnkiStats.updated_at || 'MỚI DÁN'}`;
-        statusBadge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-[#F4F1EA] text-[#D97706] border-2 border-[#111111]';
+        statusBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200/60 cursor-pointer shadow-sm';
       }
       return;
     } catch (e) {
@@ -81,19 +177,19 @@ async function loadAnkiStatsData(forceReload = false) {
     }
 
     if (!loaded) {
-      const res = await smartFetch('data/anki_stats.json');
+      const res = await (typeof smartFetch === 'function' ? smartFetch('data/anki_stats.json') : fetch('data/anki_stats.json'));
       currentAnkiStats = await res.json();
     }
     renderAllStatsCharts(currentAnkiStats);
 
     if (statusBadge) {
       statusBadge.innerText = `[ĐỒNG BỘ CLOUD] CẬP NHẬT: ${currentAnkiStats.updated_at} (${currentAnkiStats.summary?.total_deck_cards || 0} THẺ)`;
-      statusBadge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-white text-[#0F766E] border-2 border-[#111111] shadow-[2px_2px_0px_#111111]';
+      statusBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60 cursor-pointer hover:bg-emerald-100 transition-colors shadow-sm';
     }
   } catch (err) {
     if (statusBadge) {
       statusBadge.innerText = '[CHƯA CÓ FILE] BẤM VÀO ĐÂY ĐỂ DÁN DỮ LIỆU TỪ ĐIỆN THOẠI';
-      statusBadge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-[#F4F1EA] text-[#BE123C] border-2 border-[#111111] cursor-pointer';
+      statusBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200/60 cursor-pointer hover:bg-rose-100 transition-colors shadow-sm';
       statusBadge.onclick = openQuickPasteModal;
     }
     renderFallbackStats();
@@ -134,7 +230,7 @@ function renderSummaryAndToday(data) {
     if (el) el.innerText = val !== undefined && val !== null ? val : '--';
   };
 
-  setTxt('todayCardsStudied', t.cards_studied || 0);
+  setTxt('todayCardsStudied', Number(t.cards_studied || 0).toLocaleString('vi-VN'));
   setTxt('todayTimeMinutes', `${t.time_minutes || 0} PHÚT`);
   setTxt('todaySpeed', `${t.seconds_per_card || 0} GIÂY / THẺ`);
   setTxt('todayAgainCount', `${t.again_count || 0} LẦN (${t.again_pct || 0}%)`);
@@ -145,9 +241,9 @@ function renderSummaryAndToday(data) {
   setTxt('todayGoodEasy', `${(t.good_count || 0) + (t.easy_count || 0)} LẦN`);
 
   setTxt('summaryStreak', `${s.streak_days || 38} NGÀY`);
-  setTxt('summaryDaysStudied', `${s.days_studied_past_30 || 30} / 30 NGÀY (100%)`);
+  setTxt('summaryDaysStudied', `${s.days_studied_past_30 || 30} / 30 NGÀY`);
   setTxt('summaryTotalReviews', Number(s.total_reviews_past_30 || 18804).toLocaleString('vi-VN'));
-  setTxt('summaryAvgDailyReviews', `${s.avg_reviews_day || 626} LƯỢT / NGÀY`);
+  setTxt('summaryAvgDailyReviews', `${s.avg_reviews_day || 626} THẺ / NGÀY`);
 }
 
 // ----------------------------------------------------------------------------
@@ -169,7 +265,7 @@ function renderFutureDueChart(future) {
   const days = future.days;
   const maxBarVal = Math.max(...days.map(d => d.count), 10);
 
-  // Tính toán tích lũy cho đường Area Curve phía sau
+  // Tính toán tích lũy cho đường Area Curve
   let runningTotal = 0;
   const cumulative = days.map(d => {
     runningTotal += d.count;
@@ -178,63 +274,70 @@ function renderFutureDueChart(future) {
   const maxCumul = Math.max(runningTotal, 100);
 
   const width = 800;
-  const height = 200;
-  const paddingBottom = 28;
-  const paddingTop = 16;
+  const height = 210;
+  const paddingBottom = 30;
+  const paddingTop = 20;
   const chartHeight = height - paddingBottom - paddingTop;
-  const barWidth = Math.max(8, (width - 60) / days.length - 4);
+  const barWidth = Math.max(8, (width - 60) / days.length - 5);
 
   // Tạo đường tích lũy (Cumulative Area Path)
   let areaPoints = `M 30,${paddingTop + chartHeight}`;
   let linePoints = '';
   days.forEach((d, i) => {
-    const x = 30 + i * (barWidth + 4) + barWidth / 2;
+    const x = 30 + i * (barWidth + 5) + barWidth / 2;
     const y = paddingTop + chartHeight - (cumulative[i] / maxCumul) * chartHeight;
     areaPoints += ` L ${x},${y}`;
     linePoints += (i === 0 ? `M ${x},${y}` : ` L ${x},${y}`);
   });
-  const lastX = 30 + (days.length - 1) * (barWidth + 4) + barWidth / 2;
+  const lastX = 30 + (days.length - 1) * (barWidth + 5) + barWidth / 2;
   areaPoints += ` L ${lastX},${paddingTop + chartHeight} Z`;
 
-  // Vẽ các cột bar
+  // Vẽ các cột bar hiện đại với góc bo tròn rx="3" ry="3"
   let barsSvg = '';
   days.forEach((d, i) => {
-    const x = 30 + i * (barWidth + 4);
-    const bHeight = Math.max(2, (d.count / maxBarVal) * chartHeight);
+    const x = 30 + i * (barWidth + 5);
+    const bHeight = Math.max(3, (d.count / maxBarVal) * chartHeight);
     const y = paddingTop + chartHeight - bHeight;
     const isTomorrow = d.day === 1;
-    const color = isTomorrow ? '#D97706' : (d.day === 0 ? '#BE123C' : '#0F766E');
+    const isToday = d.day === 0;
+    const barFill = isTomorrow ? 'url(#gradAmberOrange)' : (isToday ? 'url(#gradRosePink)' : 'url(#gradIndigoViolet)');
+
+    const tipHtml = `&lt;div class=&quot;font-semibold text-white&quot;&gt;Ngày +${d.day}&lt;/div&gt;&lt;div class=&quot;text-indigo-300 font-medium&quot;&gt;${d.count} thẻ đến hạn&lt;/div&gt;&lt;div class=&quot;text-emerald-400 text-[11px]&quot;&gt;Tích lũy: ${Number(cumulative[i]).toLocaleString('vi-VN')} thẻ&lt;/div&gt;`;
 
     barsSvg += `
-      <g class="cursor-pointer group">
-        <title>Ngày +${d.day}: ${d.count} thẻ đến hạn (Tích lũy: ${cumulative[i]})</title>
-        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" fill="${color}" stroke="#111111" stroke-width="1.5" />
+      <g class="cursor-pointer group"
+         onmousemove="showStatsTooltip(event, '${tipHtml}')" 
+         onmouseleave="hideStatsTooltip()"
+         ontouchstart="showStatsTooltip(event, '${tipHtml}')"
+         ontouchend="hideStatsTooltip()">
+        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" rx="3" ry="3" fill="${barFill}" class="transition-opacity duration-150 hover:opacity-80" />
         ${(i % 5 === 0 || i === days.length - 1) ? `
-          <text x="${x + barWidth / 2}" y="${height - 8}" font-family="monospace" font-size="10" font-weight="bold" fill="#111111" text-anchor="middle">+${d.day}</text>
+          <text x="${x + barWidth / 2}" y="${height - 8}" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="600" fill="#64748B" text-anchor="middle">+${d.day}</text>
         ` : ''}
         ${isTomorrow ? `
-          <text x="${x + barWidth / 2}" y="${y - 4}" font-family="monospace" font-size="9" font-weight="extrabold" fill="#D97706" text-anchor="middle">${d.count}</text>
+          <text x="${x + barWidth / 2}" y="${y - 6}" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="700" fill="#D97706" text-anchor="middle">${d.count}</text>
         ` : ''}
       </g>`;
   });
 
   container.innerHTML = `
     <div class="relative">
-      <div class="flex items-center justify-between text-xs font-mono-code font-bold text-zinc-500 mb-1">
-        <span>CỘT: SỐ THẺ HÀNG NGÀY (TRỤC TRÁI)</span>
-        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-[#0F766E]"></span> ĐƯỜNG: TẢI TRỌNG TÍCH LŨY (${Number(runningTotal).toLocaleString('vi-VN')} LƯỢT)</span>
+      <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-indigo-500"></span> CỘT: SỐ THẺ HÀNG NGÀY (TRỤC TRÁI)</span>
+        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 rounded-full bg-emerald-500"></span> ĐƯỜNG: TẢI TRỌNG TÍCH LŨY (${Number(runningTotal).toLocaleString('vi-VN')} LƯỢT)</span>
       </div>
       <svg viewBox="0 0 ${width} ${height}" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Đường lưới ngang -->
-        <line x1="20" y1="${paddingTop}" x2="${width - 20}" y2="${paddingTop}" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,4" />
-        <line x1="20" y1="${paddingTop + chartHeight / 2}" x2="${width - 20}" y2="${paddingTop + chartHeight / 2}" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,4" />
+        ${getSvgDefs()}
+        <!-- Đường lưới ngang nhẹ nhàng -->
+        <line x1="20" y1="${paddingTop}" x2="${width - 20}" y2="${paddingTop}" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4,4" />
+        <line x1="20" y1="${paddingTop + chartHeight / 2}" x2="${width - 20}" y2="${paddingTop + chartHeight / 2}" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4,4" />
         
         <!-- Vùng tích lũy Cumulative Area -->
-        <path d="${areaPoints}" fill="#0F766E" opacity="0.1" />
-        <path d="${linePoints}" fill="none" stroke="#0F766E" stroke-width="2" stroke-dasharray="3,3" />
+        <path d="${areaPoints}" fill="url(#areaEmerald)" />
+        <path d="${linePoints}" fill="none" stroke="#10B981" stroke-width="2.5" />
 
         <!-- Trục hoành -->
-        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#111111" stroke-width="2" />
+        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#E2E8F0" stroke-width="1.5" />
         
         <!-- Cột dữ liệu -->
         ${barsSvg}
@@ -243,7 +346,7 @@ function renderFutureDueChart(future) {
 }
 
 // ----------------------------------------------------------------------------
-// 3. LỊCH HOẠT ĐỘNG TOÀN NĂM (CALENDAR HEATMAP VỚI NHÃN THÁNG & THỨ)
+// 3. LỊCH HOẠT ĐỘNG TOÀN NĂM (CALENDAR HEATMAP VỚI NHÃN THÁNG, THỨ & FLOATING TOOLTIP)
 // ----------------------------------------------------------------------------
 function renderCalendarHeatmap(calendar) {
   const container = document.getElementById('calendarHeatmapMount');
@@ -254,7 +357,7 @@ function renderCalendarHeatmap(calendar) {
     calendar.forEach(c => datesMap.set(c.date, c.count));
   }
 
-  // 52 tuần x 7 ngày
+  // 52 tuần x 7 ngày = 364 ngày gần nhất
   const today = new Date();
   const weeks = [];
   let currentWeek = [];
@@ -264,60 +367,98 @@ function renderCalendarHeatmap(calendar) {
     d.setDate(d.getDate() - i);
     const dateStr = d.toISOString().split('T')[0];
     const count = datesMap.get(dateStr) || 0;
-    const dayOfWeek = d.getDay(); // 0 = CN, 1 = T2...
+    const dayOfWeek = (d.getDay() + 6) % 7; // Chuyển sang 0 = T2, 6 = CN
 
-    currentWeek.push({ date: dateStr, count, dayOfWeek });
+    currentWeek.push({ date: dateStr, count, dayOfWeek, rawDate: d });
     if (dayOfWeek === 6 || i === 0) {
       weeks.push(currentWeek);
       currentWeek = [];
     }
   }
 
-  // Render lưới tuần
-  let weeksHtml = '';
-  weeks.forEach(w => {
-    let weekCols = '';
-    w.forEach(d => {
-      let bg = 'bg-white';
-      let border = 'border-zinc-300';
-      if (d.count > 0 && d.count <= 100) { bg = 'bg-[#CCFBF1]'; border = 'border-[#0F766E]'; }
-      else if (d.count > 100 && d.count <= 300) { bg = 'bg-[#5EEAD4]'; border = 'border-[#0F766E]'; }
-      else if (d.count > 300 && d.count <= 600) { bg = 'bg-[#0D9488]'; border = 'border-[#111111]'; }
-      else if (d.count > 600) { bg = 'bg-[#0F766E]'; border = 'border-[#111111]'; }
+  // Khởi tạo SVG Heatmap với rx="2" ry="2"
+  const cellSize = 11;
+  const cellGap = 3.5;
+  const leftPadding = 30;
+  const topPadding = 18;
+  const totalWeeks = weeks.length;
+  const svgWidth = leftPadding + totalWeeks * (cellSize + cellGap) + 10;
+  const svgHeight = topPadding + 7 * (cellSize + cellGap) + 10;
 
-      weekCols += `
-        <div class="w-3 h-3 ${bg} border ${border} transition-transform hover:scale-150 cursor-pointer" 
-             title="${d.date}: ${d.count} lượt ôn tập"></div>`;
+  // Nhãn tháng
+  let monthLabelsSvg = '';
+  let lastMonth = -1;
+  weeks.forEach((w, wIdx) => {
+    if (w.length > 0) {
+      const m = w[0].rawDate.getMonth();
+      if (m !== lastMonth && wIdx % 4 === 0) {
+        lastMonth = m;
+        const x = leftPadding + wIdx * (cellSize + cellGap);
+        const mNames = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'];
+        monthLabelsSvg += `<text x="${x}" y="12" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" fill="#94A3B8">${mNames[m]}</text>`;
+      }
+    }
+  });
+
+  // Render lưới ô nhiệt SVG với rx="2" ry="2" và refined emerald palette
+  let cellsSvg = '';
+  weeks.forEach((w, wIdx) => {
+    const x = leftPadding + wIdx * (cellSize + cellGap);
+    w.forEach(d => {
+      const y = topPadding + d.dayOfWeek * (cellSize + cellGap);
+      let fillColor = '#F1F5F9'; // 0 lượt ôn: slate-100
+
+      if (d.count > 0 && d.count <= 100) {
+        fillColor = '#A7F3D0'; // Emerald-200
+      } else if (d.count > 100 && d.count <= 300) {
+        fillColor = '#34D399'; // Emerald-400
+      } else if (d.count > 300 && d.count <= 600) {
+        fillColor = '#059669'; // Emerald-600
+      } else if (d.count > 600) {
+        fillColor = '#047857'; // Emerald-700
+      }
+
+      const tipHtml = `&lt;div class=&quot;font-semibold text-white&quot;&gt;${d.date}&lt;/div&gt;&lt;div class=&quot;text-emerald-400 font-bold mt-0.5&quot;&gt;${Number(d.count).toLocaleString('vi-VN')} lượt ôn tập&lt;/div&gt;`;
+
+      cellsSvg += `
+        <rect x="${x}" y="${y}" width="${cellSize}" height="${cellSize}" rx="2" ry="2" fill="${fillColor}"
+              class="transition-opacity duration-150 hover:opacity-75 cursor-pointer"
+              onmousemove="showStatsTooltip(event, '${tipHtml}')"
+              onmouseleave="hideStatsTooltip()"
+              ontouchstart="showStatsTooltip(event, '${tipHtml}')"
+              ontouchend="hideStatsTooltip()" />`;
     });
-    weeksHtml += `<div class="flex flex-col gap-1">${weekCols}</div>`;
   });
 
   container.innerHTML = `
-    <div class="space-y-2">
+    <div class="space-y-3">
       <div class="overflow-x-auto pb-1">
-        <div class="flex gap-1 items-start">
-          <div class="flex flex-col justify-between h-28 text-xs font-mono-code font-bold text-zinc-500 pr-1 select-none">
-            <span>T2</span>
-            <span>T4</span>
-            <span>T6</span>
-            <span>CN</span>
-          </div>
-          <div class="flex gap-1 items-center">
-            ${weeksHtml}
-          </div>
-        </div>
+        <svg viewBox="0 0 ${svgWidth} ${svgHeight}" class="w-full h-auto min-w-[620px] select-none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Nhãn thứ bên trái -->
+          <text x="4" y="${topPadding + 0 * (cellSize + cellGap) + 9}" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" fill="#94A3B8">T2</text>
+          <text x="4" y="${topPadding + 2 * (cellSize + cellGap) + 9}" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" fill="#94A3B8">T4</text>
+          <text x="4" y="${topPadding + 4 * (cellSize + cellGap) + 9}" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" fill="#94A3B8">T6</text>
+          <text x="4" y="${topPadding + 6 * (cellSize + cellGap) + 9}" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" fill="#94A3B8">CN</text>
+
+          <!-- Nhãn tháng bên trên -->
+          ${monthLabelsSvg}
+
+          <!-- Các ô nhiệt Heatmap -->
+          ${cellsSvg}
+        </svg>
       </div>
 
-      <div class="flex items-center justify-between text-xs font-mono-code font-bold text-zinc-600 pt-1 border-t border-zinc-200">
+      <!-- Chú thích dải màu Emerald chuẩn Modern Clean SaaS -->
+      <div class="flex items-center justify-between text-xs font-semibold text-slate-500 pt-2 border-t border-slate-100">
         <span>365 NGÀY TRƯỚC</span>
         <div class="flex items-center gap-1.5">
-          <span class="text-zinc-500">0</span>
-          <div class="w-3 h-3 bg-white border border-zinc-400"></div>
-          <div class="w-3 h-3 bg-[#CCFBF1] border border-[#0F766E]"></div>
-          <div class="w-3 h-3 bg-[#5EEAD4] border border-[#0F766E]"></div>
-          <div class="w-3 h-3 bg-[#0D9488] border border-[#111111]"></div>
-          <div class="w-3 h-3 bg-[#0F766E] border border-[#111111]"></div>
-          <span class="text-zinc-500">600+ LƯỢT</span>
+          <span class="text-slate-400">0</span>
+          <div class="w-3 h-3 rounded-[3px] bg-[#F1F5F9] border border-slate-200"></div>
+          <div class="w-3 h-3 rounded-[3px] bg-[#A7F3D0]"></div>
+          <div class="w-3 h-3 rounded-[3px] bg-[#34D399]"></div>
+          <div class="w-3 h-3 rounded-[3px] bg-[#059669]"></div>
+          <div class="w-3 h-3 rounded-[3px] bg-[#047857]"></div>
+          <span class="text-slate-400">600+ LƯỢT</span>
         </div>
         <span>HÔM NAY</span>
       </div>
@@ -343,23 +484,23 @@ function renderReviewsHistoryChart(history) {
   });
 
   const width = 800;
-  const height = 200;
-  const paddingBottom = 28;
-  const paddingTop = 16;
+  const height = 210;
+  const paddingBottom = 30;
+  const paddingTop = 20;
   const chartHeight = height - paddingBottom - paddingTop;
-  const barWidth = Math.max(6, (width - 60) / list.length - 4);
+  const barWidth = Math.max(6, (width - 60) / list.length - 5);
 
   // Tạo đường MA7
   let ma7Points = '';
   list.forEach((d, i) => {
-    const x = 30 + i * (barWidth + 4) + barWidth / 2;
+    const x = 30 + i * (barWidth + 5) + barWidth / 2;
     const y = paddingTop + chartHeight - (ma7[i] / maxDayTotal) * chartHeight;
     ma7Points += (i === 0 ? `M ${x},${y}` : ` L ${x},${y}`);
   });
 
   let svgBars = '';
   list.forEach((d, i) => {
-    const x = 30 + i * (barWidth + 4);
+    const x = 30 + i * (barWidth + 5);
     const mCount = d.mature || 0;
     const yCount = d.young || 0;
     const rCount = d.relearn || 0;
@@ -372,36 +513,42 @@ function renderReviewsHistoryChart(history) {
     const yY = mY - yH;
     const rY = yY - rH;
 
+    const tipHtml = `&lt;div class=&quot;font-semibold text-white&quot;&gt;${d.date}&lt;/div&gt;&lt;div class=&quot;text-slate-200 mt-0.5&quot;&gt;Tổng: &lt;b&gt;${d.total}&lt;/b&gt; lượt&lt;/div&gt;&lt;div class=&quot;text-emerald-400&quot;&gt;Mature: ${mCount}&lt;/div&gt;&lt;div class=&quot;text-amber-400&quot;&gt;Young: ${yCount}&lt;/div&gt;&lt;div class=&quot;text-rose-400&quot;&gt;Relearn: ${rCount}&lt;/div&gt;&lt;div class=&quot;text-indigo-300 font-semibold mt-1 border-t border-slate-700 pt-1&quot;&gt;MA7: ${ma7[i]} lượt/ngày&lt;/div&gt;`;
+
     svgBars += `
-      <g class="cursor-pointer group">
-        <title>${d.date}: Tổng ${d.total} (Mature: ${mCount}, Young: ${yCount}, Relearn: ${rCount}) • MA7: ${ma7[i]}</title>
-        ${mH > 0 ? `<rect x="${x}" y="${mY}" width="${barWidth}" height="${mH}" fill="#0F766E" stroke="#111111" stroke-width="1" />` : ''}
-        ${yH > 0 ? `<rect x="${x}" y="${yY}" width="${barWidth}" height="${yH}" fill="#D97706" stroke="#111111" stroke-width="1" />` : ''}
-        ${rH > 0 ? `<rect x="${x}" y="${rY}" width="${barWidth}" height="${rH}" fill="#BE123C" stroke="#111111" stroke-width="1" />` : ''}
+      <g class="cursor-pointer group"
+         onmousemove="showStatsTooltip(event, '${tipHtml}')" 
+         onmouseleave="hideStatsTooltip()"
+         ontouchstart="showStatsTooltip(event, '${tipHtml}')"
+         ontouchend="hideStatsTooltip()">
+        ${mH > 0 ? `<rect x="${x}" y="${mY}" width="${barWidth}" height="${mH}" rx="2" ry="2" fill="url(#gradEmeraldTeal)" class="transition-opacity duration-150 hover:opacity-85" />` : ''}
+        ${yH > 0 ? `<rect x="${x}" y="${yY}" width="${barWidth}" height="${yH}" rx="2" ry="2" fill="url(#gradAmberOrange)" class="transition-opacity duration-150 hover:opacity-85" />` : ''}
+        ${rH > 0 ? `<rect x="${x}" y="${rY}" width="${barWidth}" height="${rH}" rx="2" ry="2" fill="url(#gradRosePink)" class="transition-opacity duration-150 hover:opacity-85" />` : ''}
         ${(i % 5 === 0 || i === list.length - 1) ? `
-          <text x="${x + barWidth / 2}" y="${height - 8}" font-family="monospace" font-size="10" font-weight="bold" fill="#111111" text-anchor="middle">${d.day_offset}d</text>
+          <text x="${x + barWidth / 2}" y="${height - 8}" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="600" fill="#64748B" text-anchor="middle">${d.day_offset}d</text>
         ` : ''}
       </g>`;
   });
 
   container.innerHTML = `
     <div class="relative">
-      <div class="flex items-center justify-between text-xs font-mono-code font-bold text-zinc-500 mb-1">
+      <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
         <span>CỘT XẾP CHỒNG: SỐ THẺ HÀNG NGÀY</span>
-        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-[#111111]"></span> ĐƯỜNG ĐEN: TRUNG BÌNH TRƯỢT 7 NGÀY (MA7)</span>
+        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 rounded-full bg-indigo-600"></span> ĐƯỜNG TÍM: TRUNG BÌNH TRƯỢT 7 NGÀY (MA7)</span>
       </div>
       <svg viewBox="0 0 ${width} ${height}" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="20" y1="${paddingTop + chartHeight / 2}" x2="${width - 20}" y2="${paddingTop + chartHeight / 2}" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,4" />
-        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#111111" stroke-width="2" />
+        ${getSvgDefs()}
+        <line x1="20" y1="${paddingTop + chartHeight / 2}" x2="${width - 20}" y2="${paddingTop + chartHeight / 2}" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4,4" />
+        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#E2E8F0" stroke-width="1.5" />
         ${svgBars}
         <!-- Đường trung bình trượt MA7 -->
-        <path d="${ma7Points}" fill="none" stroke="#111111" stroke-width="2.5" />
+        <path d="${ma7Points}" fill="none" stroke="#6366F1" stroke-width="2.5" />
       </svg>
     </div>`;
 }
 
 // ----------------------------------------------------------------------------
-// 5. TỔNG KHO THẺ & PHÂN BỔ TRẠNG THÁI (BIỂU ĐỒ DONUT SVG KIẾN TRÚC)
+// 5. TỔNG KHO THẺ & PHÂN BỔ TRẠNG THÁI (BIỂU ĐỒ DONUT SVG HIỆN ĐẠI)
 // ----------------------------------------------------------------------------
 function renderCardCountsChart(cc) {
   if (!cc) return;
@@ -417,7 +564,7 @@ function renderCardCountsChart(cc) {
   setTxt('cardCountYoung', `${Number(cc.young || 0).toLocaleString('vi-VN')} (${cc.young_pct || 0}%)`);
   setTxt('cardCountMature', `${Number(cc.mature || 0).toLocaleString('vi-VN')} (${cc.mature_pct || 0}%)`);
 
-  // Vẽ biểu đồ Donut Chart hình tròn SVG
+  // Vẽ biểu đồ Donut Chart hình tròn SVG Modern SaaS
   const donutMount = document.getElementById('cardCountDonutMount');
   if (donutMount) {
     const total = cc.total || 12300;
@@ -442,47 +589,45 @@ function renderCardCountsChart(cc) {
 
     donutMount.innerHTML = `
       <div class="flex flex-col sm:flex-row items-center gap-6 justify-center">
-        <div class="relative w-40 h-40 shrink-0">
+        <div class="relative w-44 h-44 shrink-0">
           <svg viewBox="0 0 140 140" class="w-full h-full transform -rotate-90 select-none">
-            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#EAE5DA" stroke-width="20" />
-            <!-- Mature (Xanh lục) -->
-            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#0F766E" stroke-width="20"
-                    stroke-dasharray="${dashMature} ${circumference}" stroke-dashoffset="${offMature}" />
-            <!-- Young (Vàng hổ phách) -->
-            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#D97706" stroke-width="20"
-                    stroke-dasharray="${dashYoung} ${circumference}" stroke-dashoffset="${offYoung}" />
+            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#F1F5F9" stroke-width="18" />
+            <!-- Mature (Xanh ngọc Emerald) -->
+            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#10B981" stroke-width="18"
+                    stroke-dasharray="${dashMature} ${circumference}" stroke-dashoffset="${offMature}" class="transition-all duration-300" />
+            <!-- Young (Vàng hổ phách Amber) -->
+            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#F59E0B" stroke-width="18"
+                    stroke-dasharray="${dashYoung} ${circumference}" stroke-dashoffset="${offYoung}" class="transition-all duration-300" />
             <!-- Learning (Cam) -->
-            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#EA580C" stroke-width="20"
-                    stroke-dasharray="${dashLearn} ${circumference}" stroke-dashoffset="${offLearn}" />
-            <!-- New (Xanh lam) -->
-            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#2563EB" stroke-width="20"
-                    stroke-dasharray="${dashNew} ${circumference}" stroke-dashoffset="${offNew}" />
-            <circle cx="70" cy="70" r="${r - 10}" fill="none" stroke="#111111" stroke-width="1.5" />
-            <circle cx="70" cy="70" r="${r + 10}" fill="none" stroke="#111111" stroke-width="1.5" />
+            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#F97316" stroke-width="18"
+                    stroke-dasharray="${dashLearn} ${circumference}" stroke-dashoffset="${offLearn}" class="transition-all duration-300" />
+            <!-- New (Indigo) -->
+            <circle cx="70" cy="70" r="${r}" fill="none" stroke="#6366F1" stroke-width="18"
+                    stroke-dasharray="${dashNew} ${circumference}" stroke-dashoffset="${offNew}" class="transition-all duration-300" />
           </svg>
           <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-            <span class="text-xs font-mono-code font-bold text-zinc-500 uppercase">TỔNG</span>
-            <span class="text-base font-display font-extrabold text-[#111111] leading-none">${Number(total).toLocaleString('vi-VN')}</span>
-            <span class="text-xs font-mono-code font-bold text-zinc-500">THẺ</span>
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">TỔNG THẺ</span>
+            <span class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight leading-none mt-0.5">${Number(total).toLocaleString('vi-VN')}</span>
+            <span class="text-[10px] font-medium text-slate-400 mt-0.5">FSRS DECK</span>
           </div>
         </div>
 
-        <div class="space-y-1.5 w-full text-xs font-mono-code">
-          <div class="flex items-center justify-between p-1.5 bg-white border border-[#111111]">
-            <span class="flex items-center gap-1.5 font-bold"><span class="w-3 h-3 bg-[#2563EB] border border-[#111111]"></span> MỚI (NEW)</span>
-            <span class="font-extrabold">${cc.new_pct}% (${Number(cc.new || 0).toLocaleString('vi-VN')})</span>
+        <div class="space-y-2 w-full text-xs">
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/60">
+            <span class="flex items-center gap-2 font-semibold text-slate-700"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span> MỚI (NEW)</span>
+            <span class="font-extrabold text-slate-900">${cc.new_pct}% (${Number(cc.new || 0).toLocaleString('vi-VN')})</span>
           </div>
-          <div class="flex items-center justify-between p-1.5 bg-white border border-[#111111]">
-            <span class="flex items-center gap-1.5 font-bold"><span class="w-3 h-3 bg-[#0F766E] border border-[#111111]"></span> THẺ GIÀ (MATURE &ge;21D)</span>
-            <span class="font-extrabold">${cc.mature_pct}% (${Number(cc.mature || 0).toLocaleString('vi-VN')})</span>
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/60">
+            <span class="flex items-center gap-2 font-semibold text-slate-700"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> THẺ GIÀ (MATURE &ge;21D)</span>
+            <span class="font-extrabold text-slate-900">${cc.mature_pct}% (${Number(cc.mature || 0).toLocaleString('vi-VN')})</span>
           </div>
-          <div class="flex items-center justify-between p-1.5 bg-white border border-[#111111]">
-            <span class="flex items-center gap-1.5 font-bold"><span class="w-3 h-3 bg-[#D97706] border border-[#111111]"></span> THẺ NON (YOUNG &lt;21D)</span>
-            <span class="font-extrabold">${cc.young_pct}% (${Number(cc.young || 0).toLocaleString('vi-VN')})</span>
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/60">
+            <span class="flex items-center gap-2 font-semibold text-slate-700"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> THẺ NON (YOUNG &lt;21D)</span>
+            <span class="font-extrabold text-slate-900">${cc.young_pct}% (${Number(cc.young || 0).toLocaleString('vi-VN')})</span>
           </div>
-          <div class="flex items-center justify-between p-1.5 bg-white border border-[#111111]">
-            <span class="flex items-center gap-1.5 font-bold"><span class="w-3 h-3 bg-[#EA580C] border border-[#111111]"></span> ĐANG HỌC (LEARNING)</span>
-            <span class="font-extrabold">${cc.learning_pct}% (${Number(cc.learning || 0).toLocaleString('vi-VN')})</span>
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200/60">
+            <span class="flex items-center gap-2 font-semibold text-slate-700"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> ĐANG HỌC (LEARNING)</span>
+            <span class="font-extrabold text-slate-900">${cc.learning_pct}% (${Number(cc.learning || 0).toLocaleString('vi-VN')})</span>
           </div>
         </div>
       </div>`;
@@ -498,7 +643,7 @@ function renderIntervalsChart(intervals) {
   if (medianEl && intervals) medianEl.innerText = `${intervals.median_months || 1.94} THÁNG`;
   if (!container || !intervals || !intervals.bins) return;
 
-  renderGenericBarHistogram(container, intervals.bins, '#0F766E', 'KHOẢNG CÁCH (NGÀY/THÁNG)');
+  renderGenericBarHistogram(container, intervals.bins, 'url(#gradEmeraldTeal)', 'KHOẢNG CÁCH (NGÀY/THÁNG)');
 }
 
 // ----------------------------------------------------------------------------
@@ -510,7 +655,7 @@ function renderStabilityChart(stability) {
   if (medianEl && stability) medianEl.innerText = `${stability.median_months || 1.97} THÁNG`;
   if (!container || !stability || !stability.bins) return;
 
-  renderGenericBarHistogram(container, stability.bins, '#2563EB', 'ĐỘ ỔN ĐỊNH S (THỜI GIAN ĐỂ NHỚ RƠI VỀ 90%)');
+  renderGenericBarHistogram(container, stability.bins, 'url(#gradIndigoViolet)', 'ĐỘ ỔN ĐỊNH S (THỜI GIAN ĐỂ NHỚ RƠI VỀ 90%)');
 }
 
 // ----------------------------------------------------------------------------
@@ -525,41 +670,46 @@ function renderDifficultyChart(diff) {
   const entries = Object.entries(diff.bins);
   const maxVal = Math.max(...entries.map(e => e[1]), 10);
 
-  // Bảng màu 5 cấp độ khó
-  const colors = ['#0F766E', '#10B981', '#F59E0B', '#EA580C', '#BE123C'];
+  // Bảng màu 5 cấp độ khó Modern SaaS
+  const colors = ['#10B981', '#14B8A6', '#F59E0B', '#F97316', '#F43F5E'];
 
   const width = 600;
-  const height = 160;
-  const paddingBottom = 28;
-  const paddingTop = 12;
+  const height = 170;
+  const paddingBottom = 30;
+  const paddingTop = 16;
   const chartHeight = height - paddingBottom - paddingTop;
   const barWidth = Math.max(16, (width - 60) / entries.length - 12);
 
   let bars = '';
   entries.forEach(([label, count], i) => {
     const x = 30 + i * (barWidth + 12);
-    const bHeight = Math.max(2, (count / maxVal) * chartHeight);
+    const bHeight = Math.max(4, (count / maxVal) * chartHeight);
     const y = paddingTop + chartHeight - bHeight;
-    const color = colors[i] || '#0F766E';
+    const color = colors[i] || '#10B981';
+
+    const tipHtml = `&lt;div class=&quot;font-semibold text-white&quot;&gt;Mức độ: ${label}&lt;/div&gt;&lt;div class=&quot;text-slate-200 mt-0.5&quot;&gt;&lt;b&gt;${Number(count).toLocaleString('vi-VN')}&lt;/b&gt; thẻ&lt;/div&gt;`;
 
     bars += `
-      <g class="cursor-pointer group">
-        <title>Mức độ ${label}: ${count} thẻ</title>
-        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" fill="${color}" stroke="#111111" stroke-width="1.5" />
-        <text x="${x + barWidth / 2}" y="${height - 8}" font-family="monospace" font-size="10" font-weight="bold" fill="#111111" text-anchor="middle">${label}</text>
-        <text x="${x + barWidth / 2}" y="${y - 4}" font-family="monospace" font-size="10" font-weight="extrabold" fill="#111111" text-anchor="middle">${count}</text>
+      <g class="cursor-pointer group"
+         onmousemove="showStatsTooltip(event, '${tipHtml}')" 
+         onmouseleave="hideStatsTooltip()"
+         ontouchstart="showStatsTooltip(event, '${tipHtml}')"
+         ontouchend="hideStatsTooltip()">
+        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" rx="4" ry="4" fill="${color}" class="transition-opacity duration-150 hover:opacity-85" />
+        <text x="${x + barWidth / 2}" y="${height - 8}" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="600" fill="#64748B" text-anchor="middle">${label}</text>
+        <text x="${x + barWidth / 2}" y="${y - 6}" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="700" fill="#1E293B" text-anchor="middle">${Number(count).toLocaleString('vi-VN')}</text>
       </g>`;
   });
 
   container.innerHTML = `
     <div class="relative">
-      <div class="flex items-center justify-between text-xs font-mono-code font-bold text-zinc-500 mb-1">
-        <span class="text-[#0F766E]">0-20% (RẤT DỄ)</span>
-        <span class="text-[#D97706]">41-60% (VỪA)</span>
-        <span class="text-[#BE123C]">81-100% (RẤT KHÓ)</span>
+      <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+        <span class="text-emerald-600">0-20% (RẤT DỄ)</span>
+        <span class="text-amber-600">41-60% (VỪA)</span>
+        <span class="text-rose-600">81-100% (RẤT KHÓ)</span>
       </div>
       <svg viewBox="0 0 ${width} ${height}" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#111111" stroke-width="2" />
+        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#E2E8F0" stroke-width="1.5" />
         ${bars}
       </svg>
     </div>`;
@@ -576,43 +726,50 @@ function renderRetrievabilityChart(ret) {
   if (estEl && ret) estEl.innerText = `${Number(ret.estimated_knowledge_cards || 5836).toLocaleString('vi-VN')} THẺ / ${Number(ret.estimated_knowledge_notes || 1945).toLocaleString('vi-VN')} TỪ VỰNG`;
   if (!container || !ret || !ret.bins) return;
 
-  renderGenericBarHistogram(container, ret.bins, '#0F766E', 'XÁC SUẤT GỢI NHỚ THẺ R (MỤC TIÊU 90% | THỰC TẾ 95%)');
+  renderGenericBarHistogram(container, ret.bins, 'url(#gradEmeraldTeal)', 'XÁC SUẤT GỢI NHỚ THẺ R (MỤC TIÊU 90% | THỰC TẾ 95%)');
 }
 
 // ----------------------------------------------------------------------------
-// HÀM VẼ HISTOGRAM KIẾN TRÚC DÙNG CHUNG
+// HÀM VẼ HISTOGRAM HIỆN ĐẠI DÙNG CHUNG
 // ----------------------------------------------------------------------------
 function renderGenericBarHistogram(container, binsObj, barColor, subtitle) {
   const entries = Object.entries(binsObj);
   const maxVal = Math.max(...entries.map(e => e[1]), 10);
 
   const width = 600;
-  const height = 160;
-  const paddingBottom = 28;
-  const paddingTop = 12;
+  const height = 170;
+  const paddingBottom = 30;
+  const paddingTop = 16;
   const chartHeight = height - paddingBottom - paddingTop;
   const barWidth = Math.max(12, (width - 60) / entries.length - 8);
 
   let bars = '';
   entries.forEach(([label, count], i) => {
     const x = 30 + i * (barWidth + 8);
-    const bHeight = Math.max(2, (count / maxVal) * chartHeight);
+    const bHeight = Math.max(4, (count / maxVal) * chartHeight);
     const y = paddingTop + chartHeight - bHeight;
 
+    const tipHtml = `&lt;div class=&quot;font-semibold text-white&quot;&gt;${label}&lt;/div&gt;&lt;div class=&quot;text-slate-200 mt-0.5&quot;&gt;&lt;b&gt;${Number(count).toLocaleString('vi-VN')}&lt;/b&gt; thẻ&lt;/div&gt;`;
+
     bars += `
-      <g class="cursor-pointer group">
-        <title>${label}: ${count} thẻ</title>
-        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" fill="${barColor}" stroke="#111111" stroke-width="1.5" />
-        <text x="${x + barWidth / 2}" y="${height - 8}" font-family="monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">${label}</text>
-        <text x="${x + barWidth / 2}" y="${y - 4}" font-family="monospace" font-size="9" font-weight="extrabold" fill="#111111" text-anchor="middle">${count}</text>
+      <g class="cursor-pointer group"
+         onmousemove="showStatsTooltip(event, '${tipHtml}')" 
+         onmouseleave="hideStatsTooltip()"
+         ontouchstart="showStatsTooltip(event, '${tipHtml}')"
+         ontouchend="hideStatsTooltip()">
+        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" rx="4" ry="4" fill="${barColor}" class="transition-opacity duration-150 hover:opacity-85" />
+        <text x="${x + barWidth / 2}" y="${height - 8}" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">${label}</text>
+        <text x="${x + barWidth / 2}" y="${y - 6}" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="700" fill="#1E293B" text-anchor="middle">${Number(count).toLocaleString('vi-VN')}</text>
       </g>`;
   });
 
   container.innerHTML = `
     <div class="relative">
-      ${subtitle ? `<div class="text-xs font-mono-code font-bold text-zinc-500 mb-1">${subtitle}</div>` : ''}
+      ${subtitle ? `<div class="text-xs font-semibold text-slate-500 mb-2">${subtitle}</div>` : ''}
       <svg viewBox="0 0 ${width} ${height}" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#111111" stroke-width="2" />
+        ${getSvgDefs()}
+        <line x1="20" y1="${paddingTop + chartHeight / 2}" x2="${width - 20}" y2="${paddingTop + chartHeight / 2}" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4,4" />
+        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#E2E8F0" stroke-width="1.5" />
         ${bars}
       </svg>
     </div>`;
@@ -639,24 +796,24 @@ function renderRetentionTable(ret) {
     const numM = parseFloat(d.mature) || 0;
 
     return `
-      <tr class="border-b border-zinc-200 hover:bg-[#F4F1EA]">
-        <td class="p-2.5 font-mono-code font-bold text-xs uppercase text-zinc-800">${r.label}</td>
-        <td class="p-2.5 text-right font-mono-code text-xs">
-          <div class="flex items-center justify-end gap-1.5">
-            <span class="font-bold text-[#D97706]">${d.young}</span>
-            ${numY > 0 ? `<div class="w-10 h-1.5 bg-zinc-200 border border-[#111111] overflow-hidden"><div class="h-full bg-[#D97706]" style="width:${numY}%"></div></div>` : ''}
+      <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition-colors">
+        <td class="p-3 font-semibold text-xs text-slate-800 uppercase">${r.label}</td>
+        <td class="p-3 text-right text-xs">
+          <div class="flex items-center justify-end gap-2">
+            <span class="font-bold text-amber-600">${d.young}</span>
+            ${numY > 0 ? `<div class="w-12 h-2 rounded-full bg-slate-100 overflow-hidden"><div class="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full" style="width:${numY}%"></div></div>` : ''}
           </div>
         </td>
-        <td class="p-2.5 text-right font-mono-code text-xs">
-          <div class="flex items-center justify-end gap-1.5">
-            <span class="font-bold text-[#0F766E]">${d.mature}</span>
-            ${numM > 0 ? `<div class="w-10 h-1.5 bg-zinc-200 border border-[#111111] overflow-hidden"><div class="h-full bg-[#0F766E]" style="width:${numM}%"></div></div>` : ''}
+        <td class="p-3 text-right text-xs">
+          <div class="flex items-center justify-end gap-2">
+            <span class="font-bold text-emerald-600">${d.mature}</span>
+            ${numM > 0 ? `<div class="w-12 h-2 rounded-full bg-slate-100 overflow-hidden"><div class="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" style="width:${numM}%"></div></div>` : ''}
           </div>
         </td>
-        <td class="p-2.5 font-mono-code font-extrabold text-xs text-[#111111] text-right">
-          <span class="px-1.5 py-0.5 bg-[#EAE5DA] border border-[#111111]">${d.total}</span>
+        <td class="p-3 font-extrabold text-xs text-slate-900 text-right">
+          <span class="px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200">${d.total}</span>
         </td>
-        <td class="p-2.5 font-mono-code text-xs text-zinc-600 text-right">${Number(d.count || 0).toLocaleString('vi-VN')} LƯỢT</td>
+        <td class="p-3 text-xs text-slate-500 font-medium text-right">${Number(d.count || 0).toLocaleString('vi-VN')} LƯỢT</td>
       </tr>`;
   }).join('');
 }
@@ -671,9 +828,9 @@ function renderHourlyChart(hours) {
   const maxCount = Math.max(...hours.map(h => h.count), 50);
 
   const width = 800;
-  const height = 180;
-  const paddingBottom = 28;
-  const paddingTop = 16;
+  const height = 190;
+  const paddingBottom = 30;
+  const paddingTop = 20;
   const chartHeight = height - paddingBottom - paddingTop;
   const barWidth = Math.max(6, (width - 60) / 24 - 4);
 
@@ -685,40 +842,46 @@ function renderHourlyChart(hours) {
     const y = paddingTop + chartHeight - (h.pass_rate / 100.0) * chartHeight;
     linePoints += (i === 0 ? `M ${x},${y}` : ` L ${x},${y}`);
     if (h.count > 0) {
-      dotNodes += `<circle cx="${x}" cy="${y}" r="2.5" fill="#D97706" stroke="#111111" stroke-width="1"><title>${h.hour}h: Nhớ ${h.pass_rate}%</title></circle>`;
+      dotNodes += `<circle cx="${x}" cy="${y}" r="3" fill="#F59E0B" stroke="#FFFFFF" stroke-width="1.5"><title>${h.hour}h: Nhớ ${h.pass_rate}%</title></circle>`;
     }
   });
 
   let bars = '';
   hours.forEach((h, i) => {
     const x = 30 + i * (barWidth + 4);
-    const bHeight = Math.max(2, (h.count / maxCount) * chartHeight);
+    const bHeight = Math.max(3, (h.count / maxCount) * chartHeight);
     const y = paddingTop + chartHeight - bHeight;
     const isPeak = h.hour >= 21 && h.hour <= 23;
-    const barColor = isPeak ? '#0F766E' : '#2563EB';
+    const barFill = isPeak ? 'url(#gradEmeraldTeal)' : 'url(#gradIndigoViolet)';
+
+    const tipHtml = `&lt;div class=&quot;font-semibold text-white&quot;&gt;${h.hour}h:00 - ${h.hour}h:59&lt;/div&gt;&lt;div class=&quot;text-slate-200 mt-0.5&quot;&gt;&lt;b&gt;${h.count}&lt;/b&gt; lượt ôn tập&lt;/div&gt;&lt;div class=&quot;text-amber-400 font-semibold&quot;&gt;Độ nhớ: ${h.pass_rate}%&lt;/div&gt;`;
 
     bars += `
-      <g class="cursor-pointer group">
-        <title>${h.hour}h: ${h.count} lượt ôn tập • Độ nhớ: ${h.pass_rate}%</title>
-        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" fill="${barColor}" stroke="#111111" stroke-width="1.5" />
+      <g class="cursor-pointer group"
+         onmousemove="showStatsTooltip(event, '${tipHtml}')" 
+         onmouseleave="hideStatsTooltip()"
+         ontouchstart="showStatsTooltip(event, '${tipHtml}')"
+         ontouchend="hideStatsTooltip()">
+        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" rx="3" ry="3" fill="${barFill}" class="transition-opacity duration-150 hover:opacity-85" />
         ${(i % 3 === 0 || i === 23) ? `
-          <text x="${x + barWidth / 2}" y="${height - 8}" font-family="monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">${h.hour}h</text>
+          <text x="${x + barWidth / 2}" y="${height - 8}" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">${h.hour}h</text>
         ` : ''}
       </g>`;
   });
 
   container.innerHTML = `
     <div class="relative">
-      <div class="flex items-center justify-between text-xs font-mono-code font-bold text-zinc-500 mb-1">
-        <span class="flex items-center gap-1.5"><span class="w-3 h-3 bg-[#0F766E] border border-[#111111]"></span> CỘT: KHỐI LƯỢNG ÔN TẬP (GIỜ CAO ĐIỂM 21H-23H)</span>
-        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-[#D97706]"></span> ĐƯỜNG VÀNG: TỈ LỆ NHỚ PASS RATE (%)</span>
+      <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-emerald-500"></span> CỘT: KHỐI LƯỢNG ÔN TẬP (GIỜ CAO ĐIỂM 21H-23H)</span>
+        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 rounded-full bg-amber-500"></span> ĐƯỜNG VÀNG: TỈ LỆ NHỚ PASS RATE (%)</span>
       </div>
       <svg viewBox="0 0 ${width} ${height}" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="20" y1="${paddingTop + chartHeight / 2}" x2="${width - 20}" y2="${paddingTop + chartHeight / 2}" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4,4" />
-        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#111111" stroke-width="2" />
+        ${getSvgDefs()}
+        <line x1="20" y1="${paddingTop + chartHeight / 2}" x2="${width - 20}" y2="${paddingTop + chartHeight / 2}" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="4,4" />
+        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#E2E8F0" stroke-width="1.5" />
         ${bars}
         <!-- Đường Pass rate % -->
-        <path d="${linePoints}" fill="none" stroke="#D97706" stroke-width="2" />
+        <path d="${linePoints}" fill="none" stroke="#F59E0B" stroke-width="2.5" />
         ${dotNodes}
       </svg>
     </div>`;
@@ -743,22 +906,22 @@ function renderAnswerButtonsChart(buttons) {
     const getPct = val => tot > 0 ? Math.round(val / tot * 100) : 0;
 
     return `
-      <div class="p-3 bg-[#F4F1EA] border-2 border-[#111111] space-y-2">
+      <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/70 space-y-2.5">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-mono-code font-extrabold uppercase">${t.label}</span>
-          <span class="text-xs font-mono-code text-zinc-600 font-bold">${Number(tot).toLocaleString('vi-VN')} LƯỢT</span>
+          <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">${t.label}</span>
+          <span class="text-xs text-slate-500 font-semibold">${Number(tot).toLocaleString('vi-VN')} LƯỢT</span>
         </div>
-        <div class="h-5 w-full flex border-2 border-[#111111] overflow-hidden bg-white">
-          <div style="width: ${getPct(d.again)}%" class="bg-[#BE123C]" title="Again: ${d.again} (${getPct(d.again)}%)"></div>
-          <div style="width: ${getPct(d.hard)}%" class="bg-[#EA580C]" title="Hard: ${d.hard} (${getPct(d.hard)}%)"></div>
-          <div style="width: ${getPct(d.good)}%" class="bg-[#0F766E]" title="Good: ${d.good} (${getPct(d.good)}%)"></div>
-          <div style="width: ${getPct(d.easy)}%" class="bg-[#2563EB]" title="Easy: ${d.easy} (${getPct(d.easy)}%)"></div>
+        <div class="h-3 w-full flex rounded-full overflow-hidden bg-slate-200/80 shadow-inner">
+          <div style="width: ${getPct(d.again)}%" class="bg-rose-500 transition-all duration-300" title="Again: ${d.again} (${getPct(d.again)}%)"></div>
+          <div style="width: ${getPct(d.hard)}%" class="bg-orange-500 transition-all duration-300" title="Hard: ${d.hard} (${getPct(d.hard)}%)"></div>
+          <div style="width: ${getPct(d.good)}%" class="bg-emerald-500 transition-all duration-300" title="Good: ${d.good} (${getPct(d.good)}%)"></div>
+          <div style="width: ${getPct(d.easy)}%" class="bg-indigo-500 transition-all duration-300" title="Easy: ${d.easy} (${getPct(d.easy)}%)"></div>
         </div>
-        <div class="grid grid-cols-4 gap-1 text-xs font-mono-code text-zinc-700">
-          <div>AGAIN: <b class="text-[#BE123C]">${Number(d.again || 0).toLocaleString('vi-VN')}</b></div>
-          <div>HARD: <b class="text-[#EA580C]">${Number(d.hard || 0).toLocaleString('vi-VN')}</b></div>
-          <div>GOOD: <b class="text-[#0F766E]">${Number(d.good || 0).toLocaleString('vi-VN')}</b></div>
-          <div>EASY: <b class="text-[#2563EB]">${Number(d.easy || 0).toLocaleString('vi-VN')}</b></div>
+        <div class="grid grid-cols-4 gap-2 text-xs font-medium text-slate-600 pt-0.5">
+          <div>AGAIN: <b class="text-rose-600 font-bold">${Number(d.again || 0).toLocaleString('vi-VN')}</b></div>
+          <div>HARD: <b class="text-orange-600 font-bold">${Number(d.hard || 0).toLocaleString('vi-VN')}</b></div>
+          <div>GOOD: <b class="text-emerald-600 font-bold">${Number(d.good || 0).toLocaleString('vi-VN')}</b></div>
+          <div>EASY: <b class="text-indigo-600 font-bold">${Number(d.easy || 0).toLocaleString('vi-VN')}</b></div>
         </div>
       </div>`;
   }).join('');
@@ -780,9 +943,9 @@ function renderCardsAddedChart(added) {
   const maxVal = Math.max(...list.map(d => d.count), 400);
 
   const width = 800;
-  const height = 160;
-  const paddingBottom = 28;
-  const paddingTop = 16;
+  const height = 180;
+  const paddingBottom = 30;
+  const paddingTop = 20;
   const chartHeight = height - paddingBottom - paddingTop;
   const barWidth = Math.max(6, (width - 60) / list.length - 4);
 
@@ -792,29 +955,35 @@ function renderCardsAddedChart(added) {
   let bars = '';
   list.forEach((d, i) => {
     const x = 30 + i * (barWidth + 4);
-    const bHeight = Math.max(2, (d.count / maxVal) * chartHeight);
+    const bHeight = Math.max(3, (d.count / maxVal) * chartHeight);
     const y = paddingTop + chartHeight - bHeight;
 
+    const tipHtml = `&lt;div class=&quot;font-semibold text-white&quot;&gt;${d.date}&lt;/div&gt;&lt;div class=&quot;text-indigo-300 font-bold mt-0.5&quot;&gt;+${d.count} thẻ mới&lt;/div&gt;`;
+
     bars += `
-      <g class="cursor-pointer group">
-        <title>${d.date}: Thêm mới ${d.count} thẻ</title>
-        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" fill="#2563EB" stroke="#111111" stroke-width="1.5" />
+      <g class="cursor-pointer group"
+         onmousemove="showStatsTooltip(event, '${tipHtml}')" 
+         onmouseleave="hideStatsTooltip()"
+         ontouchstart="showStatsTooltip(event, '${tipHtml}')"
+         ontouchend="hideStatsTooltip()">
+        <rect x="${x}" y="${y}" width="${barWidth}" height="${bHeight}" rx="3" ry="3" fill="url(#gradIndigoViolet)" class="transition-opacity duration-150 hover:opacity-85" />
         ${(i % 5 === 0 || i === list.length - 1) ? `
-          <text x="${x + barWidth / 2}" y="${height - 8}" font-family="monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">${d.day_offset}d</text>
+          <text x="${x + barWidth / 2}" y="${height - 8}" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" fill="#64748B" text-anchor="middle">${d.day_offset}d</text>
         ` : ''}
       </g>`;
   });
 
   container.innerHTML = `
     <div class="relative">
-      <div class="flex items-center justify-between text-xs font-mono-code font-bold text-zinc-500 mb-1">
-        <span>CỘT XANH: THẺ THÊM MỚI HÀNG NGÀY</span>
-        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-[#BE123C] border-dashed"></span> ĐƯỜNG ĐỎ: MỤC TIÊU 300 THẺ / NGÀY</span>
+      <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-2">
+        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-indigo-500"></span> CỘT: THẺ THÊM MỚI HÀNG NGÀY</span>
+        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 rounded-full bg-rose-500 border-dashed"></span> ĐƯỜNG ĐỎ: MỤC TIÊU 300 THẺ / NGÀY</span>
       </div>
       <svg viewBox="0 0 ${width} ${height}" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
+        ${getSvgDefs()}
         <!-- Đường mục tiêu 300 -->
-        <line x1="20" y1="${targetY}" x2="${width - 20}" y2="${targetY}" stroke="#BE123C" stroke-width="1.5" stroke-dasharray="4,4" />
-        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#111111" stroke-width="2" />
+        <line x1="20" y1="${targetY}" x2="${width - 20}" y2="${targetY}" stroke="#F43F5E" stroke-width="1.5" stroke-dasharray="4,4" />
+        <line x1="20" y1="${paddingTop + chartHeight}" x2="${width - 20}" y2="${paddingTop + chartHeight}" stroke="#E2E8F0" stroke-width="1.5" />
         ${bars}
       </svg>
     </div>`;
@@ -854,32 +1023,32 @@ function renderSubdecksTable(subdecks) {
   const pageItems = filtered.slice(startIdx, startIdx + subdecksPageSize);
 
   tbody.innerHTML = pageItems.map(s => {
-    let statusBadge = '<span class="px-2 py-0.5 bg-[#EAE5DA] text-zinc-600 font-bold border border-[#111111]">CHƯA HỌC</span>';
+    let statusBadge = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200/70">CHƯA HỌC</span>';
     if (s.progress_pct >= 90) {
-      statusBadge = '<span class="px-2 py-0.5 bg-[#0F766E] text-white font-bold border border-[#111111]">ĐÃ THUỘC (REVIEW)</span>';
+      statusBadge = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-bold">ĐÃ THUỘC (REVIEW)</span>';
     } else if (s.learning > 0 || s.review > 0) {
-      statusBadge = '<span class="px-2 py-0.5 bg-[#D97706] text-white font-bold border border-[#111111]">ĐANG HỌC</span>';
+      statusBadge = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200/60 font-bold">ĐANG HỌC</span>';
     }
 
     return `
-      <tr class="border-b border-zinc-200 hover:bg-[#F4F1EA]">
-        <td class="p-2.5 font-mono-code font-bold text-xs">#${s.stt}</td>
-        <td class="p-2.5 font-bold text-xs text-[#111111]">
+      <tr class="border-b border-slate-100 hover:bg-indigo-50/20 transition-colors">
+        <td class="p-3 font-semibold text-xs text-slate-500">#${s.stt}</td>
+        <td class="p-3 font-bold text-xs text-slate-900">
           <div class="line-clamp-1" title="${s.name}">${s.name}</div>
         </td>
-        <td class="p-2.5 font-mono-code text-xs text-right">${s.total}</td>
-        <td class="p-2.5 font-mono-code text-xs text-blue-700 text-right">${s.new}</td>
-        <td class="p-2.5 font-mono-code text-xs text-amber-700 text-right">${s.learning}</td>
-        <td class="p-2.5 font-mono-code text-xs text-emerald-800 font-bold text-right">${s.review}</td>
-        <td class="p-2.5 font-mono-code text-xs text-right">
-          <div class="flex items-center justify-end gap-2">
-            <span class="font-bold">${s.progress_pct}%</span>
-            <div class="w-16 h-2 bg-zinc-200 border border-[#111111] overflow-hidden">
-              <div class="h-full bg-[#0F766E]" style="width: ${s.progress_pct}%"></div>
+        <td class="p-3 text-xs text-right font-medium">${s.total}</td>
+        <td class="p-3 text-xs text-indigo-600 font-semibold text-right">${s.new}</td>
+        <td class="p-3 text-xs text-orange-600 font-semibold text-right">${s.learning}</td>
+        <td class="p-3 text-xs text-emerald-700 font-bold text-right">${s.review}</td>
+        <td class="p-3 text-xs text-right">
+          <div class="flex items-center justify-end gap-2.5">
+            <span class="font-bold text-slate-900">${s.progress_pct}%</span>
+            <div class="w-20 h-2 rounded-full bg-slate-100 overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" style="width: ${s.progress_pct}%"></div>
             </div>
           </div>
         </td>
-        <td class="p-2.5 text-xs text-center">${statusBadge}</td>
+        <td class="p-3 text-xs text-center">${statusBadge}</td>
       </tr>`;
   }).join('');
 
@@ -891,12 +1060,12 @@ function renderSubdecksPagination(totalPages) {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="flex items-center gap-2 font-mono-code text-xs font-bold">
-      <button onclick="changeSubdeckPage(-1)" ${subdecksCurrentPage <= 1 ? 'disabled class="px-3 py-1 bg-zinc-200 text-zinc-400 border border-zinc-400 cursor-not-allowed"' : 'class="neo-btn px-3 py-1 bg-white text-[#111111]"'}>
+    <div class="flex items-center justify-between w-full text-xs font-semibold">
+      <button onclick="changeSubdeckPage(-1)" ${subdecksCurrentPage <= 1 ? 'disabled class="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed"' : 'class="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-sm transition-all"'}>
         TRANG TRƯỚC
       </button>
-      <span class="px-2 py-1 bg-[#EAE5DA] border border-[#111111]">TRANG ${subdecksCurrentPage} / ${totalPages}</span>
-      <button onclick="changeSubdeckPage(1)" ${subdecksCurrentPage >= totalPages ? 'disabled class="px-3 py-1 bg-zinc-200 text-zinc-400 border border-zinc-400 cursor-not-allowed"' : 'class="neo-btn px-3 py-1 bg-white text-[#111111]"'}>
+      <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">TRANG ${subdecksCurrentPage} / ${totalPages}</span>
+      <button onclick="changeSubdeckPage(1)" ${subdecksCurrentPage >= totalPages ? 'disabled class="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed"' : 'class="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-sm transition-all"'}>
         TRANG SAU
       </button>
     </div>`;
@@ -925,9 +1094,9 @@ function setSubdeckCategoryFilter(cat) {
     const btn = document.getElementById(`subdeckCatBtn-${c}`);
     if (!btn) return;
     if (c === cat) {
-      btn.className = 'px-3 py-1 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase';
+      btn.className = 'px-3.5 py-1.5 rounded-full bg-indigo-600 text-white text-xs font-semibold shadow-sm transition-all';
     } else {
-      btn.className = 'neo-btn px-3 py-1 bg-white text-[#111111] text-xs font-mono-code font-bold uppercase';
+      btn.className = 'px-3.5 py-1.5 rounded-full bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 text-xs font-semibold transition-all shadow-sm';
     }
   });
 
@@ -967,12 +1136,12 @@ async function analyzeAnkiStatsWithGemini() {
   if (resultContainer) {
     resultContainer.classList.remove('hidden');
     resultContainer.innerHTML = `
-      <div class="p-6 bg-[#EAE5DA] border-2 border-[#111111] text-center space-y-2 animate-pulse">
-        <div class="font-mono-code text-xs font-bold text-zinc-600 uppercase">TIẾN TRÌNH AI</div>
-        <div class="font-display font-extrabold text-base text-[#111111] uppercase">
+      <div class="p-6 rounded-2xl bg-gradient-to-br from-indigo-50/70 via-slate-50 to-white border border-indigo-100 text-center space-y-2 animate-pulse shadow-sm">
+        <div class="text-xs font-bold text-indigo-700 uppercase tracking-wider">TIẾN TRÌNH AI</div>
+        <div class="font-bold text-base text-slate-900">
           AI Gemini đang đọc dữ liệu 14 biểu đồ và phân tích thuật toán FSRS...
         </div>
-        <p class="text-xs font-mono-code text-zinc-500">
+        <p class="text-xs text-slate-500 font-medium">
           Đang tính toán tải trọng tương lai, chỉ số ghi nhớ Retention và lập kế hoạch học tập tối ưu.
         </p>
       </div>`;
@@ -1045,14 +1214,14 @@ QUY TẮC ĐỊNH DẠNG:
 
   if (btn) {
     btn.disabled = false;
-    btn.innerText = 'PHÂN TÍCH KẾT QUẢ BẰNG AI GEMINI';
+    btn.innerText = 'DÙNG AI GEMINI NHẬN XÉT KẾT QUẢ';
   }
 
   if (!responseText) {
     if (resultContainer) {
       resultContainer.innerHTML = `
-        <div class="p-4 bg-[#F4F1EA] border-2 border-[#BE123C] text-xs font-mono-code text-[#BE123C] space-y-2">
-          <b>LỖI KẾT NỐI GEMINI API:</b> Không thể tạo nhận xét. Vui lòng kiểm tra lại Gemini API Key trong mục 'CẤU HÌNH API' và thử lại.
+        <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700 space-y-1.5">
+          <b class="font-bold">LỖI KẾT NỐI GEMINI API:</b> Không thể tạo nhận xét. Vui lòng kiểm tra lại Gemini API Key trong mục 'CẤU HÌNH API' và thử lại.
         </div>`;
     }
     return;
@@ -1084,31 +1253,31 @@ function renderGeminiAnalysisUI(payload) {
 
   resultContainer.classList.remove('hidden');
 
-  // Chuyển markdown cơ bản sang HTML thuần Swiss typography
+  // Chuyển markdown cơ bản sang HTML Modern Clean SaaS
   const formattedHtml = formatMarkdownToSwissHTML(payload.text);
 
   resultContainer.innerHTML = `
-    <div class="p-6 bg-white border-2 border-[#111111] shadow-[4px_4px_0px_#111111] space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-2 border-[#111111]">
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 bg-[#0F766E] text-white text-xs font-mono-code font-extrabold uppercase">
+    <div class="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/60 uppercase">
             BÁO CÁO CỐ VẤN CHIẾN LƯỢC FSRS
           </span>
-          <span class="text-xs font-mono-code font-bold text-zinc-600 uppercase">
+          <span class="text-xs font-medium text-slate-500">
             MODEL: ${payload.model} • ${payload.timestamp}
           </span>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="copyGeminiAnalysisText()" class="neo-btn px-3 py-1 bg-white text-[#111111] text-xs font-mono-code font-bold uppercase hover:bg-[#EAE5DA]">
+          <button onclick="copyGeminiAnalysisText()" class="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold shadow-sm transition-all">
             SAO CHÉP BÁO CÁO
           </button>
-          <button onclick="analyzeAnkiStatsWithGemini()" class="neo-btn px-3 py-1 bg-[#111111] text-white text-xs font-mono-code font-bold uppercase">
+          <button onclick="analyzeAnkiStatsWithGemini()" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold shadow-sm transition-all">
             PHÂN TÍCH LẠI
           </button>
         </div>
       </div>
 
-      <div class="prose max-w-none text-xs sm:text-sm font-sans space-y-3 leading-relaxed text-[#111111]">
+      <div class="prose max-w-none text-xs sm:text-sm font-sans space-y-3 leading-relaxed text-slate-700">
         ${formattedHtml}
       </div>
     </div>`;
@@ -1134,20 +1303,20 @@ function formatMarkdownToSwissHTML(md) {
 
       if (b.startsWith('## ') || b.startsWith('### ')) {
         const title = b.replace(/^#+\s*/, '');
-        return `<h4 class="text-sm sm:text-base font-display font-extrabold uppercase tracking-tight text-[#111111] pt-3 pb-1 border-b border-[#111111] mt-2">${title}</h4>`;
+        return `<h4 class="text-base font-bold text-slate-900 pt-3 pb-1.5 border-b border-slate-100 mt-2">${title}</h4>`;
       }
 
       if (b.startsWith('- ') || b.startsWith('* ')) {
         const items = b.split('\n').map(line => {
-          const itemText = line.replace(/^[-*]\s*/, '').replace(/\*\*(.*?)\*\*/g, '<b class="font-bold text-[#111111]">$1</b>');
-          return `<li class="flex items-start gap-2"><span class="w-1.5 h-1.5 bg-[#111111] shrink-0 mt-1.5"></span><span>${itemText}</span></li>`;
+          const itemText = line.replace(/^[-*]\s*/, '').replace(/\*\*(.*?)\*\*/g, '<b class="font-bold text-slate-900">$1</b>');
+          return `<li class="flex items-start gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0 mt-2"></span><span>${itemText}</span></li>`;
         }).join('');
-        return `<ul class="space-y-1.5 pl-2 font-mono-code text-xs">${items}</ul>`;
+        return `<ul class="space-y-1.5 pl-1 text-xs sm:text-sm text-slate-700 font-sans">${items}</ul>`;
       }
 
       // Đoạn văn thường
-      const parsedText = b.replace(/\*\*(.*?)\*\*/g, '<b class="font-extrabold text-[#111111]">$1</b>');
-      return `<p class="text-xs sm:text-sm text-zinc-800">${parsedText}</p>`;
+      const parsedText = b.replace(/\*\*(.*?)\*\*/g, '<b class="font-bold text-slate-900">$1</b>');
+      return `<p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">${parsedText}</p>`;
     })
     .join('');
 }
@@ -1168,32 +1337,38 @@ function closeQuickPasteModal() {
 function handlePasteAnkiStats() {
   const textarea = document.getElementById('quickPasteTextarea');
   if (!textarea || !textarea.value.trim()) {
-    alert('Vui lòng dán đoạn văn bản thống kê sao chép từ Anki!');
+    alert('Vui lòng dán văn bản sao chép từ màn hình Statistics của Anki vào khung!');
     return;
   }
 
   const rawText = textarea.value.trim();
   const parsed = parseAnkiStatsText(rawText);
 
-  if (!parsed || !parsed.today) {
-    alert('Không thể nhận diện các trường thông số Anki. Hãy chắc chắn bạn đã sao chép từ màn hình Statistics!');
+  if (!parsed || !parsed.today || parsed.today.cards_studied === undefined) {
+    alert('Không thể nhận diện cấu trúc thống kê Anki. Vui lòng đảm bảo bạn đã bấm "Copy" trên màn hình Statistics của Anki!');
     return;
   }
 
-  const merged = Object.assign({}, currentAnkiStats || {}, parsed);
+  // Kết hợp với dữ liệu hiện có
+  const merged = currentAnkiStats ? JSON.parse(JSON.stringify(currentAnkiStats)) : {};
+  merged.deck_name = "Thử thách mỗi ngày 100 từ vựng";
   merged.updated_at = new Date().toLocaleString('vi-VN');
+  merged.today = Object.assign(merged.today || {}, parsed.today);
+  if (parsed.summary) merged.summary = Object.assign(merged.summary || {}, parsed.summary);
+  if (parsed.card_counts) merged.card_counts = Object.assign(merged.card_counts || {}, parsed.card_counts);
+
   localStorage.setItem('anki_stats_override', JSON.stringify(merged));
   currentAnkiStats = merged;
-
   renderAllStatsCharts(merged);
+
   closeQuickPasteModal();
-  alert('Đã cập nhật thành công số liệu học tập Anki vào giao diện!');
+  alert('Đã cập nhật số liệu thống kê mới từ điện thoại thành công!');
 }
 
 function clearManualStatsOverride() {
   localStorage.removeItem('anki_stats_override');
-  loadAnkiStatsData(true);
   closeQuickPasteModal();
+  loadAnkiStatsData(true);
 }
 
 function parseAnkiStatsText(text) {
@@ -1295,7 +1470,7 @@ function openSyncAnkiModal() {
   const tokenStatus = document.getElementById('syncModalTokenStatus');
   if (tokenStatus) {
     tokenStatus.innerText = 'ĐÃ TỰ ĐỘNG CẤU HÌNH SẴN';
-    tokenStatus.className = 'font-extrabold text-[#0F766E]';
+    tokenStatus.className = 'font-bold text-emerald-700';
   }
 
   const currentStatusEl = document.getElementById('syncModalCurrentStatus');
@@ -1334,14 +1509,14 @@ async function executeCloudSyncProcess(tokenOverride = '') {
     if (modalBtn) { modalBtn.disabled = disabled; modalBtn.innerText = txt; }
     if (badge && disabled) {
       badge.innerText = `[ĐANG ĐỒNG BỘ] ${txt}`;
-      badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-[#FEF3C7] text-[#D97706] border-2 border-[#111111] animate-pulse';
+      badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200/60 animate-pulse';
     }
   };
 
   const showStatusMsg = (msg, isErr = false) => {
     if (runStatusBox) {
       runStatusBox.classList.remove('hidden');
-      runStatusBox.innerHTML = `<span class="${isErr ? 'text-[#BE123C] font-bold' : 'text-[#111111]'}">${msg}</span>`;
+      runStatusBox.innerHTML = `<span class="${isErr ? 'text-rose-600 font-bold' : 'text-slate-800'}">${msg}</span>`;
     }
   };
 
@@ -1436,7 +1611,7 @@ function startPollingSyncRun(owner, repo, token, startTime) {
   const showStatusMsg = (msg, isErr = false) => {
     if (runStatusBox) {
       runStatusBox.classList.remove('hidden');
-      runStatusBox.innerHTML = `<span class="${isErr ? 'text-[#BE123C] font-bold' : 'text-[#111111]'}">${msg}</span>`;
+      runStatusBox.innerHTML = `<span class="${isErr ? 'text-rose-600 font-bold' : 'text-slate-800'}">${msg}</span>`;
     }
   };
 
@@ -1496,3 +1671,24 @@ function startPollingSyncRun(owner, repo, token, startTime) {
     } catch (e) {}
   }, 4000);
 }
+
+// Gán các hàm cốt lõi vào window để các module khác và test runner có thể truy cập
+window.initStatsPage = initStatsPage;
+window.loadAnkiStatsData = loadAnkiStatsData;
+window.renderAllStatsCharts = renderAllStatsCharts;
+window.parseAnkiStatsText = parseAnkiStatsText;
+window.filterSubdecks = filterSubdecks;
+window.changeSubdeckPage = changeSubdeckPage;
+window.setSubdeckCategoryFilter = setSubdeckCategoryFilter;
+window.openQuickPasteModal = openQuickPasteModal;
+window.closeQuickPasteModal = closeQuickPasteModal;
+window.handlePasteAnkiStats = handlePasteAnkiStats;
+window.clearManualStatsOverride = clearManualStatsOverride;
+window.openSyncAnkiModal = openSyncAnkiModal;
+window.closeSyncAnkiModal = closeSyncAnkiModal;
+window.executeCloudSyncFromModal = executeCloudSyncFromModal;
+window.triggerAnkiWebSync = triggerAnkiWebSync;
+window.analyzeAnkiStatsWithGemini = analyzeAnkiStatsWithGemini;
+window.copyGeminiAnalysisText = copyGeminiAnalysisText;
+window.showStatsTooltip = showStatsTooltip;
+window.hideStatsTooltip = hideStatsTooltip;
