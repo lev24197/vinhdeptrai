@@ -1494,11 +1494,12 @@ async function triggerAnkiWebSync() {
 }
 
 async function executeCloudSyncProcess(tokenOverride = '') {
-  const owner = localStorage.getItem('gh_owner') || 'lev24197';
+  const owner = (localStorage.getItem('gh_owner') && localStorage.getItem('gh_owner') !== 'letuanvinh') ? localStorage.getItem('gh_owner') : 'lev24197';
   const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = localStorage.getItem('gh_branch') || 'main';
   const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
-  const token = tokenOverride || (typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || ''));
+  const fallbackTok = (typeof DEFAULT_GH_TOKEN !== 'undefined' ? DEFAULT_GH_TOKEN : (typeof window !== 'undefined' && window.DEFAULT_GH_TOKEN ? window.DEFAULT_GH_TOKEN : ''));
+  const token = tokenOverride || (typeof getGitHubToken === 'function' ? getGitHubToken() : '') || (localStorage.getItem('gh_token') || '') || fallbackTok;
   const btn = document.getElementById('btnSyncAnkiWeb');
   const modalBtn = document.getElementById('btnModalExecuteSync');
   const runStatusBox = document.getElementById('syncModalRunStatus');
@@ -1527,7 +1528,7 @@ async function executeCloudSyncProcess(tokenOverride = '') {
 
   try {
     let dispatchSuccess = false;
-    if (proxyUrl) {
+    if (proxyUrl && proxyUrl.startsWith('http')) {
       showStatusMsg('Đang gửi lệnh qua Serverless Proxy bảo mật...');
       const pRes = await fetch(proxyUrl, {
         method: 'POST',
@@ -1565,9 +1566,9 @@ async function executeCloudSyncProcess(tokenOverride = '') {
         if (res.status === 404) {
           humanMsg = "Lỗi HTTP 404: Không tìm thấy workflow hoặc GitHub Token thiếu quyền 'workflow' và 'repo'. Vui lòng kiểm tra quyền hạn của GitHub Token.";
         } else if (res.status === 401) {
-          const defTok = typeof DEFAULT_GH_TOKEN !== 'undefined' ? DEFAULT_GH_TOKEN : '';
+          const defTok = fallbackTok;
           if (token !== defTok && defTok) {
-            try { localStorage.removeItem('gh_token'); } catch (e) {}
+            try { localStorage.setItem('gh_token', defTok); } catch (e) {}
             return executeCloudSyncProcess(defTok);
           }
           humanMsg = "Lỗi HTTP 401: GitHub Token không hợp lệ hoặc đã hết hạn.";
