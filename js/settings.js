@@ -9,11 +9,21 @@ const DEFAULT_GH_TOKEN = String.fromCharCode(103, 104, 112, 95, 79, 82, 71, 52, 
 const DEFAULT_SYNC_PROXY_URL = '';
 
 function getGeminiApiKey() {
-  return localStorage.getItem('gemini_api_key') || DEFAULT_GEMINI_API_KEY;
+  const k = localStorage.getItem('gemini_api_key');
+  if (k && k.trim().startsWith('AIzaSy')) return k.trim();
+  return DEFAULT_GEMINI_API_KEY;
 }
 
 function getGitHubToken() {
-  return localStorage.getItem('gh_token') || DEFAULT_GH_TOKEN;
+  const t = localStorage.getItem('gh_token');
+  if (t && (t.trim().startsWith('ghp_') || t.trim().startsWith('github_pat_'))) {
+    return t.trim();
+  }
+  // Nếu có token cũ không hợp lệ trong localStorage (ví dụ dán nhầm Gemini key), tự động xóa sạch
+  if (t) {
+    try { localStorage.removeItem('gh_token'); } catch (e) {}
+  }
+  return DEFAULT_GH_TOKEN;
 }
 
 function getSyncProxyUrl() {

@@ -1351,6 +1351,11 @@ async function executeCloudSyncProcess(tokenOverride = '') {
         if (res.status === 404) {
           humanMsg = "Lỗi HTTP 404: Không tìm thấy workflow hoặc GitHub Token thiếu quyền 'workflow' và 'repo'. Vui lòng kiểm tra quyền hạn của GitHub Token.";
         } else if (res.status === 401) {
+          const defTok = typeof DEFAULT_GH_TOKEN !== 'undefined' ? DEFAULT_GH_TOKEN : '';
+          if (token !== defTok && defTok) {
+            try { localStorage.removeItem('gh_token'); } catch (e) {}
+            return executeCloudSyncProcess(defTok);
+          }
           humanMsg = "Lỗi HTTP 401: GitHub Token không hợp lệ hoặc đã hết hạn.";
         } else if (errDetail) {
           humanMsg += `: ${errDetail}`;
