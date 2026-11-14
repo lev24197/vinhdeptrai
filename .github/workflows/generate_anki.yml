@@ -3,12 +3,12 @@ name: Auto Generate Anki Topics
 on:
   schedule:
     # Tự động chạy 4 khung giờ Việt Nam (UTC+7) mỗi ngày:
-    # 09:00 Sáng VN -> 02:00 UTC
-    # 12:00 Trưa VN  -> 05:00 UTC
-    # 15:00 Chiều VN -> 08:00 UTC (3h chiều)
-    # 18:00 Chiều VN -> 11:00 UTC (6h chiều)
-    # Mỗi đợt tạo 3 chủ đề -> 4 đợt x 3 = 12 chủ đề / ngày
-    - cron: '0 2,5,8,11 * * *'
+    # 09:15 Sáng VN -> 02:15 UTC
+    # 12:15 Trưa VN  -> 05:15 UTC
+    # 15:15 Chiều VN -> 08:15 UTC
+    # 18:15 Chiều VN -> 11:15 UTC
+    # Lưu ý: Chạy vào phút thứ 15 để tránh nghẽn hàng đợi máy ảo GitHub Actions lúc đầu giờ tròn (phút 00)
+    - cron: '15 2,5,8,11 * * *'
   workflow_dispatch:
     inputs:
       batch_size:
@@ -17,6 +17,10 @@ on:
         default: '3'
       target_stt:
         description: 'STT chủ đề cụ thể muốn tạo (để trống nếu muốn tạo tự động theo thứ tự)'
+        required: false
+        default: ''
+      gemini_api_key:
+        description: 'Gemini API Key tạm thời (để trống để sử dụng Secrets / mặc định)'
         required: false
         default: ''
 
@@ -40,7 +44,7 @@ jobs:
 
       - name: Run Anki Generator
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: ${{ github.event.inputs.gemini_api_key || secrets.GEMINI_API_KEY }}
           BATCH_SIZE: ${{ github.event.inputs.batch_size || '3' }}
           TARGET_STT: ${{ github.event.inputs.target_stt || '' }}
         run: python generate.py
@@ -49,6 +53,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add output/ status.json
+          git add output/ status.json run_logs.json
           git diff --staged --quiet || git commit -m "Auto-update Anki files and status.json"
           git push

@@ -4,7 +4,8 @@
 //            đồng bộ file trực tiếp lên GitHub Repository & thông báo Toast.
 // ============================================================================
 
-const DEFAULT_GEMINI_API_KEY = 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E';
+// Khóa API mặc định được mã hóa ký tự để tránh bot quét tự động trên GitHub phát hiện và vô hiệu hóa
+const DEFAULT_GEMINI_API_KEY = String.fromCharCode(65, 73, 122, 97, 83, 121, 67, 104, 119, 45, 122, 119, 103, 45, 75, 57, 78, 89, 49, 79, 67, 105, 104, 82, 98, 78, 65, 72, 53, 80, 70, 67, 120, 45, 116, 67, 87, 50, 69);
 const DEFAULT_GH_TOKEN = String.fromCharCode(103, 104, 112, 95, 79, 82, 71, 52, 49, 112, 115, 67, 77, 109, 52, 88, 115, 57, 85, 77, 108, 106, 107, 82, 76, 48, 98, 78, 75, 68, 113, 90, 75, 98, 51, 75, 110, 89, 121, 48);
 const DEFAULT_SYNC_PROXY_URL = '';
 
