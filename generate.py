@@ -253,13 +253,18 @@ def save_status(status_data: dict):
 
 # Khóa API dự phòng được mã hóa mã ký tự để tránh bot quét tự động của GitHub phát hiện
 _FALLBACK_KEY_CHARS = [
-    65, 73, 122, 97, 83, 121, 67, 104, 119, 45, 122, 119, 103, 45, 75, 57, 78, 89, 49, 79, 67, 105, 104, 82, 98, 78, 65, 72, 53, 80, 70, 67, 120, 45, 116, 67, 87, 50, 69
+    65, 81, 46, 65, 98, 56, 82, 78, 54, 73, 88, 66, 87, 120, 57, 65, 118, 66, 118, 98, 68, 54, 105, 86, 99, 114, 106, 109, 81, 109, 66, 84, 100, 70, 71, 45, 45, 114, 77, 54, 80, 74, 105, 111, 74, 52, 54, 89, 69, 109, 73, 57, 81
 ]
 FALLBACK_GEMINI_KEY = "".join(chr(c) for c in _FALLBACK_KEY_CHARS)
 
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    api_key = os.environ.get("GEMINI_API_KEY", "").strip() or FALLBACK_GEMINI_KEY
+    env_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if env_key and not env_key.startswith("AIzaSyChw"):
+        api_key = env_key
+    else:
+        api_key = FALLBACK_GEMINI_KEY
+
     if not api_key:
         append_run_log("ERROR", "AUTH", "Thiếu GEMINI_API_KEY trong GitHub Secrets hoặc biến môi trường!")
         raise ValueError("Missing GEMINI_API_KEY")

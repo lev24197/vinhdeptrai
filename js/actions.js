@@ -470,7 +470,7 @@ async function callGeminiApiWithFallback(prompt, geminiKey, temperature = 0.65) 
 }
 
 async function generateSingleInBrowser(stt, topicVi) {
-  let geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E');
+  let geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || '');
   const owner = localStorage.getItem('gh_owner');
   const repo = localStorage.getItem('gh_repo');
   const branch = localStorage.getItem('gh_branch') || 'main';

@@ -908,7 +908,7 @@ function setSubdeckCategoryFilter(cat) {
 // 15. AI GEMINI PHÂN TÍCH & CỐ VẤN KẾT QUẢ HỌC TẬP (FSRS ADVISORY)
 // ----------------------------------------------------------------------------
 async function analyzeAnkiStatsWithGemini() {
-  const geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E');
+  const geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || '');
   const resultContainer = document.getElementById('geminiAnalysisResult');
   const btn = document.getElementById('btnGeminiAnalyze');
 
