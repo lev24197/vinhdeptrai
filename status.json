@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14 15:36:26",
+  "updated_at": "2026-11-14 23:23:57",
   "topics": [
     {
       "stt": 1,
@@ -1129,10 +1129,10 @@
     {
       "stt": 126,
       "topic": "Vệ sinh an toàn thực phẩm (Food Safety)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/126.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-14 23:23",
       "last_error": null
     },
     {
