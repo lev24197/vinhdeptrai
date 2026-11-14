@@ -8,13 +8,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col bg-[#F4F1EA] text-[#111111]">
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased">
 
   <!-- THANH ĐIỀU HƯỚNG DÙNG CHUNG -->
   <div id="sharedNavbarMount"></div>
 
-  <main class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 flex-1 space-y-6">
+  <main class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1 space-y-6 sm:space-y-8">
 
     <!-- THANH TIẾN TRÌNH AI REAL-TIME -->
     <div id="sharedLiveRunnerMount"></div>
@@ -22,32 +27,32 @@
     <!-- 1. TRẠNG THÁI MÁY CHỦ GOOGLE CLOUD RUN AUDIO & CÔNG CỤ TEST TỪ CAMBRIDGE -->
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Bảng Cấu hình & Kiểm tra sức khỏe Cloud Run -->
-      <div class="neo-box p-5 bg-white space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b-2 border-[#111111]">
+      <div class="rounded-2xl p-6 bg-white border border-slate-200/80 shadow-sm space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-100">
           <div>
-            <h2 class="font-display font-extrabold text-base sm:text-lg text-[#111111] uppercase tracking-tight">
+            <h2 class="font-display font-extrabold text-base sm:text-lg text-slate-900 uppercase tracking-tight">
               Máy Chủ Google Cloud Run Audio (Cambridge 100%)
             </h2>
-            <p class="text-xs text-zinc-600 mt-0.5">Tự động cào phát âm gốc US/UK từ Cambridge Dictionary & ghép nối MPEG frames cho danh từ ghép.</p>
+            <p class="text-xs text-slate-500 mt-1">Tự động cào phát âm gốc US/UK từ Cambridge Dictionary & ghép nối MPEG frames cho danh từ ghép.</p>
           </div>
-          <span id="audioServiceStatusBadge" class="px-3 py-1 font-mono-code text-xs font-extrabold border-2 border-[#111111] bg-[#EAE5DA] text-[#111111] uppercase">
+          <span id="audioServiceStatusBadge" class="px-3 py-1 font-mono-code text-xs font-bold rounded-full border border-slate-200 bg-slate-50 text-slate-700 uppercase">
             [CHỜ] ĐANG KIỂM TRA...
           </span>
         </div>
 
         <div class="space-y-2">
-          <label class="block text-xs font-mono-code font-extrabold text-[#111111] uppercase">Endpoint URL của Cloud Run Service:</label>
+          <label class="block text-xs font-mono-code font-bold text-slate-600 uppercase">Endpoint URL của Cloud Run Service:</label>
           <div class="flex gap-2">
-            <input id="audioPageServiceUrl" type="text" value="https://anki-audio-service-918034752495.asia-southeast1.run.app" class="flex-1 px-3 py-2 text-xs font-mono-code font-bold border-2 border-[#111111] bg-[#F4F1EA]" />
-            <button onclick="checkCloudAudioHealth()" class="neo-btn px-4 py-2 bg-[#0F766E] text-white text-xs uppercase">
+            <input id="audioPageServiceUrl" type="text" value="https://anki-audio-service-918034752495.asia-southeast1.run.app" class="flex-1 px-3.5 py-2.5 text-xs font-mono-code font-bold rounded-xl border border-slate-200 bg-slate-50/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition" />
+            <button onclick="checkCloudAudioHealth()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase transition shadow-sm active:scale-95">
               LƯU & KIỂM TRA
             </button>
           </div>
         </div>
 
-        <div class="p-3 bg-[#EAE5DA] border-2 border-[#111111] text-xs space-y-1">
-          <div class="font-mono-code font-extrabold text-[#111111] uppercase">Cơ chế đảm bảo 100% Cambridge Dictionary:</div>
-          <ul class="list-disc list-inside text-zinc-700 space-y-0.5 font-medium">
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-xs space-y-1.5">
+          <div class="font-mono-code font-bold text-slate-800 uppercase">Cơ chế đảm bảo 100% Cambridge Dictionary:</div>
+          <ul class="list-disc list-inside text-slate-600 space-y-1 font-medium">
             <li><strong>Từ đơn & Từ có sẵn trong Cambridge:</strong> Tải trực tiếp file MP3 gốc của Cambridge US/UK.</li>
             <li><strong>Danh từ ghép chuyên ngành (VD: weight plate, barbell collar):</strong> Tự động tách từng từ đơn chuẩn Cambridge và ghép nối khung âm thanh MPEG (strip ID3/Xing header) liền mạch 100%.</li>
           </ul>
@@ -55,28 +60,28 @@
       </div>
 
       <!-- Bảng Kiểm tra & Nghe thử trực tiếp bất kỳ từ đơn / từ ghép nào -->
-      <div class="neo-box p-5 bg-white space-y-4">
-        <div class="pb-3 border-b-2 border-[#111111]">
-          <h2 class="font-display font-extrabold text-base sm:text-lg text-[#111111] uppercase tracking-tight">
+      <div class="rounded-2xl p-6 bg-white border border-slate-200/80 shadow-sm space-y-5">
+        <div class="pb-3 border-b border-slate-100">
+          <h2 class="font-display font-extrabold text-base sm:text-lg text-slate-900 uppercase tracking-tight">
             Phòng Thử Nghiệm Phát Âm Cambridge Trực Tiếp
           </h2>
-          <p class="text-xs text-zinc-600 mt-0.5">Nhập bất kỳ từ đơn hoặc danh từ ghép nào để kiểm tra nguồn Cambridge, dung lượng file MP3 và nghe thử ngay.</p>
+          <p class="text-xs text-slate-500 mt-1">Nhập bất kỳ từ đơn hoặc danh từ ghép nào để kiểm tra nguồn Cambridge, dung lượng file MP3 và nghe thử ngay.</p>
         </div>
 
         <div class="flex gap-2">
-          <input id="audioTestWordInput" type="text" value="weight plate" onkeydown="if(event.key==='Enter') testCambridgeWordAudio()" placeholder="Nhập từ vựng tiếng Anh (VD: weight plate, barbell collar, dumbbell)..." class="flex-1 px-3.5 py-2 text-xs sm:text-sm font-bold border-2 border-[#111111] bg-white focus:outline-none" />
-          <button onclick="testCambridgeWordAudio()" class="neo-btn px-4 py-2 bg-[#111111] text-white text-xs uppercase">
+          <input id="audioTestWordInput" type="text" value="weight plate" onkeydown="if(event.key==='Enter') testCambridgeWordAudio()" placeholder="Nhập từ vựng tiếng Anh (VD: weight plate, barbell collar, dumbbell)..." class="flex-1 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl border border-slate-200 bg-slate-50/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition" />
+          <button onclick="testCambridgeWordAudio()" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase transition shadow-sm active:scale-95">
             KIỂM TRA & PHÁT ÂM
           </button>
         </div>
 
-        <div class="flex flex-wrap items-center gap-1.5 text-xs font-mono-code">
-          <span class="text-zinc-600 font-bold uppercase">Thử nhanh từ ghép chủ đề #23:</span>
-          <button onclick="document.getElementById('audioTestWordInput').value='weight plate'; testCambridgeWordAudio();" class="px-2 py-0.5 bg-[#F4F1EA] hover:bg-[#EAE5DA] border border-[#111111] text-xs font-bold">weight plate</button>
-          <button onclick="document.getElementById('audioTestWordInput').value='barbell collar'; testCambridgeWordAudio();" class="px-2 py-0.5 bg-[#F4F1EA] hover:bg-[#EAE5DA] border border-[#111111] text-xs font-bold">barbell collar</button>
-          <button onclick="document.getElementById('audioTestWordInput').value='smith machine'; testCambridgeWordAudio();" class="px-2 py-0.5 bg-[#F4F1EA] hover:bg-[#EAE5DA] border border-[#111111] text-xs font-bold">smith machine</button>
-          <button onclick="document.getElementById('audioTestWordInput').value='roman chair'; testCambridgeWordAudio();" class="px-2 py-0.5 bg-[#F4F1EA] hover:bg-[#EAE5DA] border border-[#111111] text-xs font-bold">roman chair</button>
-          <button onclick="document.getElementById('audioTestWordInput').value='dumbbell'; testCambridgeWordAudio();" class="px-2 py-0.5 bg-[#F4F1EA] hover:bg-[#EAE5DA] border border-[#111111] text-xs font-bold">dumbbell</button>
+        <div class="flex flex-wrap items-center gap-2 text-xs font-mono-code">
+          <span class="text-slate-400 font-bold uppercase">Thử nhanh từ ghép chủ đề #23:</span>
+          <button onclick="document.getElementById('audioTestWordInput').value='weight plate'; testCambridgeWordAudio();" class="px-3 py-1 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 transition">weight plate</button>
+          <button onclick="document.getElementById('audioTestWordInput').value='barbell collar'; testCambridgeWordAudio();" class="px-3 py-1 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 transition">barbell collar</button>
+          <button onclick="document.getElementById('audioTestWordInput').value='smith machine'; testCambridgeWordAudio();" class="px-3 py-1 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 transition">smith machine</button>
+          <button onclick="document.getElementById('audioTestWordInput').value='roman chair'; testCambridgeWordAudio();" class="px-3 py-1 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 transition">roman chair</button>
+          <button onclick="document.getElementById('audioTestWordInput').value='dumbbell'; testCambridgeWordAudio();" class="px-3 py-1 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 transition">dumbbell</button>
         </div>
 
         <div id="audioTestResultBox" class="hidden"></div>
@@ -84,25 +89,25 @@
     </section>
 
     <!-- 2. DANH SÁCH CHỦ ĐỀ ĐÃ HOÀN THÀNH — TẢI TRỌN BỘ 100 FILE MP3 (.ZIP) -->
-    <section class="neo-box bg-white p-5 space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-2 border-[#111111]">
+    <section class="rounded-2xl bg-white border border-slate-200/80 shadow-sm p-6 space-y-5">
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
         <div>
-          <div class="flex items-center gap-2">
-            <h3 class="font-display font-extrabold text-base sm:text-lg text-[#111111] uppercase tracking-tight">
+          <div class="flex items-center gap-2.5">
+            <h3 class="font-display font-extrabold text-base sm:text-lg text-slate-900 uppercase tracking-tight">
               Tải Gói 100 File MP3 Cambridge Theo Từng Chủ Đề (.ZIP)
             </h3>
-            <span id="audioCompletedTopicsCount" class="tid-badge-num bg-[#0F766E] text-white">0 CHỦ ĐỀ</span>
+            <span id="audioCompletedTopicsCount" class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-mono-code text-xs font-bold">0 CHỦ ĐỀ</span>
           </div>
-          <p class="text-xs text-zinc-600 mt-0.5">Mỗi gói .ZIP gồm đúng 100 file .mp3 đặt tên khớp cột [sound:...] của Anki kèm file _BAO_CAO_AM_THANH.txt.</p>
+          <p class="text-xs text-slate-500 mt-1">Mỗi gói .ZIP gồm đúng 100 file .mp3 đặt tên khớp cột [sound:...] của Anki kèm file _BAO_CAO_AM_THANH.txt.</p>
         </div>
         <div class="flex items-center gap-2">
-          <input id="audioTopicSearch" type="text" oninput="renderAudioTopicsTable()" placeholder="Lọc chủ đề theo tên hoặc STT..." class="px-3.5 py-1.5 text-xs border-2 border-[#111111] w-72 font-medium focus:outline-none" />
+          <input id="audioTopicSearch" type="text" oninput="renderAudioTopicsTable()" placeholder="Lọc chủ đề theo tên hoặc STT..." class="px-3.5 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/70 focus:bg-white w-72 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition" />
         </div>
       </div>
 
-      <div class="overflow-x-auto max-h-[600px]">
+      <div class="overflow-x-auto max-h-[600px] rounded-xl border border-slate-200/80">
         <table class="w-full text-left border-collapse text-xs">
-          <thead class="bg-[#EAE5DA] text-[#111111] sticky top-0 z-10 border-b-2 border-[#111111] uppercase font-mono-code font-bold">
+          <thead class="bg-slate-50/90 text-slate-500 sticky top-0 z-10 border-b border-slate-200/80 uppercase font-mono-code font-bold">
             <tr>
               <th class="p-3 w-20">STT</th>
               <th class="p-3">CHỦ ĐỀ TỪ VỰNG</th>
@@ -110,7 +115,7 @@
               <th class="p-3 w-72 text-right">NGHE & TẢI GÓI MP3</th>
             </tr>
           </thead>
-          <tbody id="audioTopicsTableBody" class="divide-y divide-zinc-200"></tbody>
+          <tbody id="audioTopicsTableBody" class="divide-y divide-slate-100"></tbody>
         </table>
       </div>
     </section>

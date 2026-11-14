@@ -8,53 +8,80 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .grid-cell {
+      border-radius: 0.375rem !important;
+      font-size: 0.68rem;
+      font-weight: 700;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .grid-cell:hover {
+      transform: translateY(-2px) scale(1.15);
+      z-index: 20;
+      box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.08);
+    }
+    .neo-box-sm {
+      border-radius: 1rem !important;
+      border: 1px solid rgba(226, 232, 240, 0.9) !important;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+      transition: all 0.2s ease;
+    }
+    .neo-box-sm:hover {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08) !important;
+      transform: translateY(-1px);
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col bg-[#F4F1EA] text-[#111111]">
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased">
 
   <!-- THANH ĐIỀU HƯỚNG DÙNG CHUNG -->
   <div id="sharedNavbarMount"></div>
 
-  <main class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 flex-1 space-y-6">
+  <main class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1 space-y-6 sm:space-y-8">
 
     <!-- THANH TIẾN TRÌNH AI REAL-TIME -->
     <div id="sharedLiveRunnerMount"></div>
 
     <!-- 1. THỐNG KÊ TIẾN ĐỘ THEO 8 NHÓM LĨNH VỰC -->
-    <section class="neo-box p-5 bg-white">
-      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+    <section class="rounded-2xl p-6 bg-white border border-slate-200/80 shadow-sm space-y-5">
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
         <div>
-          <h2 class="font-display font-extrabold text-base sm:text-lg text-[#111111] uppercase tracking-tight">
+          <h2 class="font-display font-extrabold text-base sm:text-lg text-slate-900 uppercase tracking-tight">
             Bản Đồ Tiến Độ 8 Lĩnh Vực (1.000 Chủ Đề)
           </h2>
-          <p class="text-xs text-zinc-600 mt-0.5">Nhấn vào bất kỳ thẻ lĩnh vực nào bên dưới để lọc nổi bật các ô thuộc lĩnh vực đó trên bản đồ 1.000 ô.</p>
+          <p class="text-xs text-slate-500 mt-1">Nhấn vào bất kỳ thẻ lĩnh vực nào bên dưới để lọc nổi bật các ô thuộc lĩnh vực đó trên bản đồ 1.000 ô.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <input id="gridSearchInput" type="text" oninput="renderGridMap()" placeholder="Tìm nhanh ô theo STT hoặc tên chủ đề..." class="px-3.5 py-1.5 text-xs border-2 border-[#111111] w-72 font-medium focus:outline-none bg-white" />
-          <button onclick="setGridFilter('all', 'all')" class="neo-btn px-3 py-1.5 bg-[#EAE5DA] text-[#111111] text-xs font-mono-code font-bold uppercase">
+          <input id="gridSearchInput" type="text" oninput="renderGridMap()" placeholder="Tìm nhanh ô theo STT hoặc tên chủ đề..." class="px-3.5 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/70 focus:bg-white w-72 font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition" />
+          <button onclick="setGridFilter('all', 'all')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-mono-code font-bold uppercase transition">
             HIỆN TẤT CẢ 1.000 Ô
           </button>
         </div>
       </div>
 
-      <div id="gridCategoryBreakdown" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+      <div id="gridCategoryBreakdown" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
     </section>
 
     <!-- 2. BẢN ĐỒ LƯỚI TRỰC QUAN 1.000 Ô -->
-    <section id="mainView-grid" class="neo-box bg-white p-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 mb-5 pb-3 border-b-2 border-[#111111]">
+    <section id="mainView-grid" class="rounded-2xl bg-white border border-slate-200/80 shadow-sm p-6 space-y-5">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-100">
         <div>
-          <h3 class="font-display font-extrabold text-[#111111] text-base uppercase">Bản Đồ Trực Quan 1.000 Chủ Đề (001 → 1000)</h3>
-          <p class="text-xs text-zinc-600">Di chuột vào từng ô để xem tên chủ đề. Nhấp vào ô màu xanh để Học/Xem từ vựng, hoặc nhấp vào ô màu trắng để Tạo 100 từ bằng AI.</p>
+          <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg uppercase tracking-tight">Bản Đồ Trực Quan 1.000 Chủ Đề (001 → 1000)</h3>
+          <p class="text-xs text-slate-500 mt-1">Di chuột vào từng ô để xem tên chủ đề. Nhấp vào ô màu xanh để Học/Xem từ vựng, hoặc nhấp vào ô màu trắng để Tạo 100 từ bằng AI.</p>
         </div>
-        <div class="flex flex-wrap items-center gap-3 text-xs font-mono-code font-bold">
-          <button onclick="setGridFilter(null, 'completed')" class="flex items-center gap-1.5 px-2.5 py-1 border-2 border-[#111111] bg-white hover:bg-[#EAE5DA] text-[#0F766E]">
-            <span class="w-3.5 h-3.5 bg-[#0F766E] inline-block border border-[#111111]"></span> ĐÃ ĐỦ 100 TỪ
+        <div class="flex flex-wrap items-center gap-2.5 text-xs font-mono-code font-bold">
+          <button onclick="setGridFilter(null, 'completed')" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 transition">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block shadow-2xs"></span> ĐÃ ĐỦ 100 TỪ
           </button>
-          <button onclick="setGridFilter(null, 'issue')" class="flex items-center gap-1.5 px-2.5 py-1 border-2 border-[#111111] bg-white hover:bg-[#EAE5DA] text-[#D97706]">
-            <span class="w-3.5 h-3.5 bg-[#D97706] inline-block border border-[#111111]"></span> THIẾU / THỪA TỪ
+          <button onclick="setGridFilter(null, 'issue')" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-700 transition">
+            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block shadow-2xs"></span> THIẾU / THỪA TỪ
           </button>
-          <button onclick="setGridFilter(null, 'pending')" class="flex items-center gap-1.5 px-2.5 py-1 border-2 border-[#111111] bg-white hover:bg-[#EAE5DA] text-zinc-600">
-            <span class="w-3.5 h-3.5 bg-white border border-[#111111] inline-block"></span> CHƯA TẠO
+          <button onclick="setGridFilter(null, 'pending')" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-600 transition">
+            <span class="w-3 h-3 rounded-full bg-white border border-slate-300 inline-block"></span> CHƯA TẠO
           </button>
         </div>
       </div>
