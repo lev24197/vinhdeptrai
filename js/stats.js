@@ -1283,6 +1283,7 @@ async function executeCloudSyncProcess(tokenOverride = '') {
   const owner = localStorage.getItem('gh_owner') || 'lev24197';
   const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = localStorage.getItem('gh_branch') || 'main';
+  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
   const token = tokenOverride || (typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || ''));
   const btn = document.getElementById('btnSyncAnkiWeb');
   const modalBtn = document.getElementById('btnModalExecuteSync');
