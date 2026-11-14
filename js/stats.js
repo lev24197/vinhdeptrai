@@ -1253,12 +1253,16 @@ function openSyncAnkiModal() {
   }
   modal.classList.remove('hidden');
 
+  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
   const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
   const tokenStatus = document.getElementById('syncModalTokenStatus');
   const tokenInput = document.getElementById('syncModalTokenInput');
   if (tokenStatus) {
-    if (token) {
-      tokenStatus.innerText = 'ĐÃ CẤU HÌNH';
+    if (proxyUrl) {
+      tokenStatus.innerText = 'ĐÃ CẤU HÌNH (SERVERLESS PROXY)';
+      tokenStatus.className = 'font-extrabold text-[#0F766E]';
+    } else if (token) {
+      tokenStatus.innerText = 'ĐÃ CẤU HÌNH (GITHUB PAT)';
       tokenStatus.className = 'font-extrabold text-[#0F766E]';
       if (tokenInput && !tokenInput.value) tokenInput.value = token;
     } else {
@@ -1280,14 +1284,15 @@ function closeSyncAnkiModal() {
 }
 
 async function executeCloudSyncFromModal() {
+  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
   const tokenInput = document.getElementById('syncModalTokenInput');
   const inputVal = tokenInput ? tokenInput.value.trim() : '';
   if (inputVal) {
     localStorage.setItem('gh_token', inputVal);
   }
   const token = inputVal || (typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || ''));
-  if (!token) {
-    alert("Vui lòng nhập GitHub Personal Access Token (PAT) để kích hoạt máy ảo.");
+  if (!proxyUrl && !token) {
+    alert("Vui lòng nhập GitHub Personal Access Token (PAT) hoặc cấu hình Proxy để kích hoạt máy ảo.");
     if (tokenInput) tokenInput.focus();
     return;
   }
@@ -1295,8 +1300,9 @@ async function executeCloudSyncFromModal() {
 }
 
 async function triggerAnkiWebSync() {
+  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
   const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
-  if (!token) {
+  if (!proxyUrl && !token) {
     openSyncAnkiModal();
     return;
   }
@@ -1307,13 +1313,14 @@ async function executeCloudSyncProcess(tokenOverride = '') {
   const owner = localStorage.getItem('gh_owner') || 'lev24197';
   const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = localStorage.getItem('gh_branch') || 'main';
+  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
   const token = tokenOverride || (typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || ''));
   const btn = document.getElementById('btnSyncAnkiWeb');
   const modalBtn = document.getElementById('btnModalExecuteSync');
   const runStatusBox = document.getElementById('syncModalRunStatus');
   const badge = document.getElementById('ankiStatsSyncBadge');
 
-  if (!token) {
+  if (!proxyUrl && !token) {
     openSyncAnkiModal();
     return;
   }
@@ -1335,23 +1342,59 @@ async function executeCloudSyncProcess(tokenOverride = '') {
   };
 
   setBtnText('ĐANG GỬI LỆNH LÊN CLOUD...');
-  showStatusMsg('Đang kết nối GitHub API để kích hoạt máy ảo Ubuntu...');
+  showStatusMsg('Đang kích hoạt máy ảo GitHub Actions...');
 
   const startTime = Date.now();
 
   try {
-    const url = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/sync_ankiweb.yml/dispatches`;
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/vnd.github+json',
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ ref: branch })
-    });
+    let dispatchSuccess = false;
+    if (proxyUrl) {
+      showStatusMsg('Đang gửi lệnh qua Serverless Proxy bảo mật...');
+      const pRes = await fetch(proxyUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ workflow: 'sync_ankiweb.yml', ref: branch })
+      });
+      if (pRes.ok) {
+        dispatchSuccess = true;
+      } else {
+        const pErr = await pRes.text();
+        throw new Error(`Proxy báo lỗi HTTP ${pRes.status}: ${pErr}`);
+      }
+    } else {
+      const url = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/sync_ankiweb.yml/dispatches`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/vnd.github+json',
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ref: branch })
+      });
 
-    if (res.status === 204) {
+      if (res.status === 204) {
+        dispatchSuccess = true;
+      } else {
+        let errDetail = '';
+        try {
+          const errJson = await res.json();
+          errDetail = errJson.message || '';
+        } catch (e) {}
+
+        let humanMsg = `Lỗi kích hoạt GitHub Actions (HTTP ${res.status})`;
+        if (res.status === 404) {
+          humanMsg = "Lỗi HTTP 404: Không tìm thấy workflow hoặc GitHub Token thiếu quyền 'workflow' và 'repo'. Vui lòng kiểm tra quyền hạn của GitHub Token.";
+        } else if (res.status === 401) {
+          humanMsg = "Lỗi HTTP 401: GitHub Token không hợp lệ hoặc đã hết hạn.";
+        } else if (errDetail) {
+          humanMsg += `: ${errDetail}`;
+        }
+        throw new Error(humanMsg);
+      }
+    }
+
+    if (dispatchSuccess) {
       setBtnText('MÁY ẢO ĐÃ NHẬN LỆNH...');
       showStatusMsg('Lệnh đồng bộ đã gửi thành công! Đang chờ máy ảo GitHub khởi động và đăng nhập AnkiWeb...');
       if (typeof showToastAlert === 'function') {
@@ -1359,30 +1402,11 @@ async function executeCloudSyncProcess(tokenOverride = '') {
       }
 
       startPollingSyncRun(owner, repo, token, startTime);
-    } else {
-      let errDetail = '';
-      try {
-        const errJson = await res.json();
-        errDetail = errJson.message || '';
-      } catch (e) {}
-
-      let humanMsg = `Lỗi kích hoạt GitHub Actions (HTTP ${res.status})`;
-      if (res.status === 404) {
-        humanMsg = "Lỗi HTTP 404: Không tìm thấy workflow hoặc GitHub Token thiếu quyền 'workflow' và 'repo'. Vui lòng kiểm tra quyền hạn của GitHub Token.";
-      } else if (res.status === 401) {
-        humanMsg = "Lỗi HTTP 401: GitHub Token không hợp lệ hoặc đã hết hạn.";
-      } else if (errDetail) {
-        humanMsg += `: ${errDetail}`;
-      }
-
-      setBtnText('ĐỒNG BỘ ANKIWEB CLOUD', false);
-      showStatusMsg(humanMsg, true);
-      alert(humanMsg);
     }
   } catch (err) {
     setBtnText('ĐỒNG BỘ ANKIWEB CLOUD', false);
-    showStatusMsg(`Lỗi kết nối mạng: ${err.message}`, true);
-    alert(`Lỗi kết nối API: ${err.message}`);
+    showStatusMsg(`Lỗi: ${err.message}`, true);
+    alert(err.message);
   }
 }
 
@@ -1419,12 +1443,9 @@ function startPollingSyncRun(owner, repo, token, startTime) {
 
     try {
       const runsUrl = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/sync_ankiweb.yml/runs?per_page=3&t=${Date.now()}`;
-      const res = await fetch(runsUrl, {
-        headers: {
-          'Accept': 'application/vnd.github+json',
-          'Authorization': `Bearer ${token}`
-        }
-      });
+      const runsHeaders = { 'Accept': 'application/vnd.github+json' };
+      if (token) runsHeaders['Authorization'] = `Bearer ${token}`;
+      const res = await fetch(runsUrl, { headers: runsHeaders });
 
       if (!res.ok) return;
       const data = await res.json();

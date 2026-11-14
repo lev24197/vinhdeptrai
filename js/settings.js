@@ -6,6 +6,7 @@
 
 const DEFAULT_GEMINI_API_KEY = 'AIzaSyChw-zwg-K9NY1OCihRbNAH5PFCx-tCW2E';
 const DEFAULT_GH_TOKEN = '';
+const DEFAULT_SYNC_PROXY_URL = '';
 
 function getGeminiApiKey() {
   return localStorage.getItem('gemini_api_key') || DEFAULT_GEMINI_API_KEY;
@@ -13,6 +14,10 @@ function getGeminiApiKey() {
 
 function getGitHubToken() {
   return localStorage.getItem('gh_token') || DEFAULT_GH_TOKEN;
+}
+
+function getSyncProxyUrl() {
+  return localStorage.getItem('sync_proxy_url') || DEFAULT_SYNC_PROXY_URL;
 }
 
 // Tự động nạp cấu hình token/API từ liên kết thiết lập 1 chạm bảo mật (hash #token=... hoặc #gemini=...)
@@ -31,6 +36,11 @@ function getGitHubToken() {
     const gemKey = params.get('gemini') || params.get('gemini_api_key') || params.get('key');
     if (gemKey && gemKey.trim()) {
       localStorage.setItem('gemini_api_key', gemKey.trim());
+      imported = true;
+    }
+    const proxyUrl = params.get('proxy') || params.get('proxy_url');
+    if (proxyUrl && proxyUrl.trim()) {
+      localStorage.setItem('sync_proxy_url', proxyUrl.trim());
       imported = true;
     }
     if (imported) {
@@ -116,6 +126,7 @@ function openSettings() {
   const audioUrl = localStorage.getItem('cloud_audio_service_url') || localStorage.getItem('audio_service_url') || defaultAudioUrl;
   setVal('cloudAudioServiceUrl', audioUrl);
   setVal('audioServiceUrlInput', audioUrl);
+  setVal('syncProxyUrlInput', getSyncProxyUrl());
 
   const modal = document.getElementById('settingsModal');
   if (modal) {
@@ -150,6 +161,9 @@ function saveSettings() {
   const audioUrl = (getVal('cloudAudioServiceUrl') || getVal('audioServiceUrlInput') || defaultAudioUrl).replace(/\/+$/, '');
   localStorage.setItem('cloud_audio_service_url', audioUrl);
   localStorage.setItem('audio_service_url', audioUrl);
+
+  const proxyUrl = getVal('syncProxyUrlInput') || getVal('syncProxyUrl');
+  if (proxyUrl) localStorage.setItem('sync_proxy_url', proxyUrl.trim().replace(/\/+$/, ''));
 
   closeSettings();
   if (typeof logToConsole === 'function') {
