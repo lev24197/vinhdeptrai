@@ -1,81 +1,81 @@
 <!-- ==========================================================================
      COMPONENT: components/live-runner.html
-     Thanh Tiến Trình Tạo Từ Vựng Trực Tiếp Bằng AI (100% Icon-Free)
+     Thanh Tiến Trình Tạo Từ Vựng Trực Tiếp Bằng AI (Modern Clean SaaS)
      ========================================================================== -->
-<section id="liveRunnerBanner" class="hidden neo-box bg-[#EAE5DA] text-[#111111] p-5 transition-all mb-6">
+<section id="liveRunnerBanner" class="hidden bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm transition-all mb-6">
   <div class="flex flex-wrap items-center justify-between gap-4 mb-3">
     <div class="flex items-center gap-3">
-      <span class="px-2 py-0.5 bg-[#111111] text-white font-mono-code text-xs font-bold uppercase">TIẾN TRÌNH TRỰC TIẾP</span>
-      <h4 id="liveRunnerTitle" class="font-display font-extrabold text-sm sm:text-base uppercase tracking-wider text-[#111111]">
+      <span class="px-2.5 py-0.5 bg-indigo-600 text-white font-mono-code text-xs font-bold uppercase rounded-full">TIẾN TRÌNH TRỰC TIẾP</span>
+      <h4 id="liveRunnerTitle" class="font-display font-bold text-sm sm:text-base uppercase tracking-wider text-slate-900">
         ĐANG CHẠY TIẾN TRÌNH TẠO TỪ VỰNG...
       </h4>
     </div>
     <div class="flex items-center gap-3 text-xs font-mono-code font-bold">
-      <span id="liveRunnerTimer" class="bg-white border-2 border-[#111111] px-2.5 py-1">THỜI GIAN: 00:00</span>
-      <button onclick="toggleConsoleDrawer(true)" class="neo-btn bg-[#111111] text-white px-3 py-1 uppercase">
+      <span id="liveRunnerTimer" class="bg-slate-50 border border-slate-200 px-3 py-1 rounded-lg text-slate-700">THỜI GIAN: 00:00</span>
+      <button onclick="toggleConsoleDrawer(true)" class="neo-btn bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-1.5 uppercase rounded-lg shadow-sm text-xs font-medium">
         MỞ NHẬT KÝ
       </button>
     </div>
   </div>
 
-  <div class="w-full h-6 bg-white border-2 border-[#111111] p-0.5 mb-4">
-    <div id="liveRunnerBar" class="h-full bg-[#0F766E] transition-all duration-300 flex items-center justify-end pr-2 text-xs font-mono-code font-extrabold text-white" style="width: 15%">15%</div>
+  <div class="w-full h-4 bg-slate-100 rounded-full overflow-hidden p-0.5 mb-4 border border-slate-200/60">
+    <div id="liveRunnerBar" class="h-full bg-gradient-to-r from-indigo-500 to-emerald-500 rounded-full transition-all duration-300 flex items-center justify-end pr-2 text-[10px] font-mono-code font-extrabold text-white" style="width: 15%">15%</div>
   </div>
 
   <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs font-mono-code font-bold">
-    <div id="stepIndicator1" class="p-2 border-2 border-[#111111] bg-white flex items-center justify-between gap-2">
-      <span>01. GỬI LỆNH API</span> <span id="stepIcon1" class="uppercase text-zinc-500">[CHỜ]</span>
+    <div id="stepIndicator1" class="p-2.5 border border-slate-200 rounded-xl bg-white shadow-2xs flex items-center justify-between gap-2">
+      <span class="text-slate-800">01. GỬI LỆNH API</span> <span id="stepIcon1" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
-    <div id="stepIndicator2" class="p-2 border-2 border-[#111111] bg-white/60 flex items-center justify-between gap-2">
-      <span>02. MÁY CHỦ</span> <span id="stepIcon2" class="uppercase text-zinc-500">[CHỜ]</span>
+    <div id="stepIndicator2" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+      <span class="text-slate-600">02. MÁY CHỦ</span> <span id="stepIcon2" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
-    <div id="stepIndicator3" class="p-2 border-2 border-[#111111] bg-white/60 flex items-center justify-between gap-2">
-      <span>03. SINH 100 TỪ</span> <span id="stepIcon3" class="uppercase text-zinc-500">[CHỜ]</span>
+    <div id="stepIndicator3" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+      <span class="text-slate-600">03. SINH 100 TỪ</span> <span id="stepIcon3" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
-    <div id="stepIndicator4" class="p-2 border-2 border-[#111111] bg-white/60 flex items-center justify-between gap-2">
-      <span>04. LƯU FILE TXT</span> <span id="stepIcon4" class="uppercase text-zinc-500">[CHỜ]</span>
+    <div id="stepIndicator4" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+      <span class="text-slate-600">04. LƯU FILE TXT</span> <span id="stepIcon4" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
-    <div id="stepIndicator5" class="p-2 border-2 border-[#111111] bg-white/60 flex items-center justify-between gap-2">
-      <span>05. ĐỒNG BỘ WEB</span> <span id="stepIcon5" class="uppercase text-zinc-500">[CHỜ]</span>
+    <div id="stepIndicator5" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+      <span class="text-slate-600">05. ĐỒNG BỘ WEB</span> <span id="stepIcon5" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
   </div>
 
-  <div id="liveWordTrackerBox" class="mt-4 bg-white border-2 border-[#111111] p-4">
-    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b-2 border-[#111111]">
+  <div id="liveWordTrackerBox" class="mt-4 bg-slate-50/70 rounded-xl border border-slate-200/80 p-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-200">
       <div class="flex items-center gap-2">
-        <span class="px-2 py-0.5 bg-[#111111] text-white font-mono-code text-xs font-extrabold">LUỒNG TỪ VỰNG</span>
-        <span id="liveTopicNameBadge" class="font-display font-extrabold text-sm text-[#111111]">Đang chuẩn bị chủ đề...</span>
+        <span class="px-2.5 py-0.5 bg-indigo-600 text-white font-mono-code text-xs font-bold rounded-full">LUỒNG TỪ VỰNG</span>
+        <span id="liveTopicNameBadge" class="font-display font-bold text-sm text-slate-900">Đang chuẩn bị chủ đề...</span>
       </div>
       <div class="flex items-center gap-2 font-mono-code text-xs">
-        <span id="liveWordCategoryBadge" class="px-2 py-0.5 font-bold border border-[#111111] bg-[#EAE5DA] text-[#111111]">A2-B2 GIAO TIẾP</span>
-        <span id="liveWordCounterBadge" class="px-2.5 py-0.5 font-extrabold bg-[#111111] text-white border border-[#111111]">0 / 100 TỪ (0%)</span>
+        <span id="liveWordCategoryBadge" class="px-2.5 py-0.5 font-bold border border-slate-200 bg-white text-slate-700 rounded-full">A2-B2 GIAO TIẾP</span>
+        <span id="liveWordCounterBadge" class="px-2.5 py-0.5 font-extrabold bg-slate-900 text-white rounded-full">0 / 100 TỪ (0%)</span>
       </div>
     </div>
 
-    <div id="liveCurrentWordCard" class="p-3 bg-[#F4F1EA] border-2 border-[#111111] mb-3">
+    <div id="liveCurrentWordCard" class="p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs mb-3">
       <div class="flex flex-wrap items-baseline justify-between gap-2">
         <div class="flex items-baseline gap-2.5">
-          <span class="text-xs font-mono-code font-bold text-zinc-500">ĐANG BIÊN SOẠN:</span>
-          <span id="liveCurrentWordName" class="text-lg sm:text-xl font-display font-extrabold text-[#0F766E]">Đang kết nối Gemini AI...</span>
-          <span id="liveCurrentWordIpa" class="text-sm font-mono-code font-bold text-[#1D4ED8]"></span>
+          <span class="text-xs font-mono-code font-bold text-slate-400">ĐANG BIÊN SOẠN:</span>
+          <span id="liveCurrentWordName" class="text-lg sm:text-xl font-display font-bold text-indigo-600">Đang kết nối Gemini AI...</span>
+          <span id="liveCurrentWordIpa" class="text-sm font-mono-code font-bold text-teal-600"></span>
         </div>
-        <span id="liveCurrentWordPlural" class="text-xs font-mono-code text-zinc-600"></span>
+        <span id="liveCurrentWordPlural" class="text-xs font-mono-code text-slate-500"></span>
       </div>
-      <div class="mt-1.5 text-sm font-bold text-[#0F766E]" id="liveCurrentWordVi">Vui lòng đợi trong giây lát...</div>
-      <div class="mt-1 text-xs text-zinc-700 italic" id="liveCurrentWordDef"></div>
-      <div class="mt-2 pt-2 border-t border-zinc-300 text-xs text-zinc-600 space-y-0.5 font-mono-code">
+      <div class="mt-1.5 text-sm font-bold text-emerald-700" id="liveCurrentWordVi">Vui lòng đợi trong giây lát...</div>
+      <div class="mt-1 text-xs text-slate-600 italic" id="liveCurrentWordDef"></div>
+      <div class="mt-2 pt-2 border-t border-slate-100 text-xs text-slate-600 space-y-0.5 font-mono-code">
         <div id="liveCurrentWordEx1"></div>
         <div id="liveCurrentWordEx2"></div>
       </div>
     </div>
 
     <div>
-      <div class="flex items-center justify-between text-xs font-mono-code font-bold text-zinc-600 mb-1.5">
+      <div class="flex items-center justify-between text-xs font-mono-code font-bold text-slate-500 mb-1.5">
         <span>DANH SÁCH TỪ VỰNG VỪA SINH RA TRONG CHỦ ĐỀ NÀY:</span>
-        <span>ĐÃ TẠO: <span id="liveStreamedCount">0</span> TỪ</span>
+        <span>ĐÃ TẠO: <span id="liveStreamedCount" class="text-indigo-600">0</span> TỪ</span>
       </div>
-      <div id="liveWordChipsContainer" class="max-h-36 overflow-y-auto p-2 bg-[#F4F1EA] border border-[#111111] flex flex-wrap gap-1.5">
-        <span class="text-xs text-zinc-500 italic">Các từ vựng mới sinh ra sẽ xuất hiện lần lượt tại đây...</span>
+      <div id="liveWordChipsContainer" class="max-h-36 overflow-y-auto p-2 bg-white rounded-lg border border-slate-200 flex flex-wrap gap-1.5">
+        <span class="text-xs text-slate-400 italic">Các từ vựng mới sinh ra sẽ xuất hiện lần lượt tại đây...</span>
       </div>
     </div>
   </div>
