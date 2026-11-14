@@ -141,14 +141,71 @@ def extract_and_generate_stats(db_path: Path):
     print(f"✓ Đã lọc khớp {len(target_deck_ids)} bộ bài mục tiêu (Deck chính và các Deck con).")
     id_list_str = ",".join(str(i) for i in target_deck_ids)
 
-    # 2. Thời gian và Ngày hôm nay
-    cur.execute("SELECT crt FROM col LIMIT 1;")
-    crt = cur.fetchone()[0]
-    crt_dt = datetime.datetime.fromtimestamp(crt, tz=datetime.timezone.utc).date()
-    now_utc = datetime.datetime.now(datetime.timezone.utc)
-    vn_now = now_utc + datetime.timedelta(hours=7)
-    today_day_idx = (now_utc.date() - crt_dt).days
-    start_of_today_ms = int(datetime.datetime.combine(now_utc.date(), datetime.time.min, tzinfo=datetime.timezone.utc).timestamp() * 1000)
+    # 2. Thời gian và Ngày hôm nay theo chuẩn Anki và múi giờ Việt Nam (UTC+7)
+    cur.execute("SELECT crt, conf FROM col LIMIT 1;")
+    col_row = cur.fetchone()
+    crt = col_row[0]
+    conf_raw = col_row[1] if len(col_row) > 1 else "{}"
+    try:
+        col_conf = json.loads(conf_raw) if conf_raw else {}
+    except Exception:
+        col_conf = {}
+    rollover = int(col_conf.get("rollover", 4)) # Giờ chuyển ngày của Anki (mặc định 4h sáng)
+
+    vn_tz = datetime.timezone(datetime.timedelta(hours=7))
+    vn_now = datetime.datetime.now(vn_tz)
+
+    # Nếu trước giờ rollover (ví dụ trước 4h sáng), ngày học thuộc về ngày hôm trước
+    if vn_now.hour < rollover:
+        study_date = vn_now.date() - datetime.timedelta(days=1)
+    else:
+        study_date = vn_now.date()
+
+    start_of_today_dt = datetime.datetime(study_date.year, study_date.month, study_date.day, rollover, 0, 0, tzinfo=vn_tz)
+    start_of_today_ms = int(start_of_today_dt.timestamp() * 1000)
+    today_day_idx = int((start_of_today_dt.timestamp() - crt) // 86400)
+
+    # Tính toán Chuỗi ngày học liên tục (Streak) chuẩn xác từ revlog
+    cur.execute(f"""
+        SELECT DISTINCT date((r.id / 1000 + 25200 - {rollover * 3600}), 'unixepoch') as study_day
+        FROM revlog r
+        JOIN cards c ON r.cid = c.id
+        WHERE c.did IN ({id_list_str})
+        ORDER BY study_day DESC;
+    """)
+    deck_studied_days = set(row[0] for row in cur.fetchall() if row[0])
+
+    cur.execute(f"""
+        SELECT DISTINCT date((r.id / 1000 + 25200 - {rollover * 3600}), 'unixepoch') as study_day
+        FROM revlog r
+        ORDER BY study_day DESC;
+    """)
+    all_studied_days = set(row[0] for row in cur.fetchall() if row[0])
+
+    def calc_streak(days_set, ref_date):
+        s = 0
+        cur_d = ref_date
+        if cur_d.isoformat() in days_set:
+            while cur_d.isoformat() in days_set:
+                s += 1
+                cur_d -= datetime.timedelta(days=1)
+        else:
+            cur_d = ref_date - datetime.timedelta(days=1)
+            while cur_d.isoformat() in days_set:
+                s += 1
+                cur_d -= datetime.timedelta(days=1)
+        return s
+
+    streak_deck = calc_streak(deck_studied_days, study_date)
+    streak_all = calc_streak(all_studied_days, study_date)
+    streak_days = max(streak_deck, streak_all)
+
+    # Tổng số lượt ôn tập toàn thời gian từ SQLite
+    cur.execute(f"SELECT count(*) FROM revlog r JOIN cards c ON r.cid = c.id WHERE c.did IN ({id_list_str});")
+    total_deck_reviews = cur.fetchone()[0] or 0
+
+    cur.execute("SELECT count(*) FROM revlog;")
+    total_collection_reviews = cur.fetchone()[0] or 0
 
     # 3. Hôm nay (Today)
     cur.execute(f"""
@@ -222,8 +279,9 @@ def extract_and_generate_stats(db_path: Path):
     days_studied_30 = 0
     total_reviews_30 = 0
     for d in range(29, -1, -1):
-        day_start = now_utc.date() - datetime.timedelta(days=d)
-        day_start_ms = int(datetime.datetime.combine(day_start, datetime.time.min, tzinfo=datetime.timezone.utc).timestamp() * 1000)
+        target_day = study_date - datetime.timedelta(days=d)
+        day_dt = datetime.datetime(target_day.year, target_day.month, target_day.day, rollover, 0, 0, tzinfo=vn_tz)
+        day_start_ms = int(day_dt.timestamp() * 1000)
         day_end_ms = day_start_ms + 86400000
 
         cur.execute(f"""
@@ -242,7 +300,7 @@ def extract_and_generate_stats(db_path: Path):
         total_reviews_30 += d_tot
         reviews_daily.append({
             "day_offset": -d,
-            "date": day_start.isoformat(),
+            "date": target_day.isoformat(),
             "total": d_tot,
             "mature": m_r,
             "young": y_r,
@@ -369,7 +427,7 @@ def extract_and_generate_stats(db_path: Path):
                 sum(CASE WHEN r.ease > 1 THEN 1 ELSE 0 END)
             FROM revlog r
             JOIN cards c ON r.cid = c.id
-            WHERE c.did IN ({id_list_str}) AND CAST(((r.id / 1000 + 25200) % 86400) / 3600 AS INT) = {h};
+            WHERE c.did IN ({id_list_str}) AND CAST(strftime('%H', (r.id / 1000 + 25200), 'unixepoch') AS INT) = {h};
         """)
         cnt, pass_cnt = [x or 0 for x in cur.fetchone()]
         p_rate = round(pass_cnt / cnt * 100.0, 1) if cnt > 0 else 0.0
@@ -400,14 +458,15 @@ def extract_and_generate_stats(db_path: Path):
     added_daily = []
     total_added_30 = 0
     for d in range(29, -1, -1):
-        day_start = now_utc.date() - datetime.timedelta(days=d)
-        day_start_ms = int(datetime.datetime.combine(day_start, datetime.time.min, tzinfo=datetime.timezone.utc).timestamp() * 1000)
+        target_day = study_date - datetime.timedelta(days=d)
+        day_dt = datetime.datetime(target_day.year, target_day.month, target_day.day, rollover, 0, 0, tzinfo=vn_tz)
+        day_start_ms = int(day_dt.timestamp() * 1000)
         day_end_ms = day_start_ms + 86400000
 
         cur.execute(f"SELECT count(*) FROM cards WHERE did IN ({id_list_str}) AND id >= {day_start_ms} AND id < {day_end_ms};")
         cnt = cur.fetchone()[0] or 0
         total_added_30 += cnt
-        added_daily.append({"day_offset": -d, "date": day_start.isoformat(), "count": cnt})
+        added_daily.append({"day_offset": -d, "date": target_day.isoformat(), "count": cnt})
 
     # 13. Tiến trình từng chủ đề con (Subdecks)
     cur.execute(f"""
@@ -443,10 +502,10 @@ def extract_and_generate_stats(db_path: Path):
         idx += 1
 
     # 14. Lịch hoạt động toàn năm (Calendar Heatmap)
-    one_year_ago_ms = int((now_utc - datetime.timedelta(days=365)).timestamp() * 1000)
+    one_year_ago_ms = int((vn_now - datetime.timedelta(days=365)).timestamp() * 1000)
     cur.execute(f"""
         SELECT 
-            date((r.id / 1000 + 25200), 'unixepoch') as rev_date,
+            date((r.id / 1000 + 25200 - {rollover * 3600}), 'unixepoch') as rev_date,
             count(*)
         FROM revlog r
         JOIN cards c ON r.cid = c.id
@@ -454,7 +513,7 @@ def extract_and_generate_stats(db_path: Path):
         GROUP BY rev_date
         ORDER BY rev_date;
     """)
-    calendar_heatmap = [{"date": r[0], "count": r[1]} for r in cur.fetchall()]
+    calendar_heatmap = [{"date": r[0], "count": r[1]} for r in cur.fetchall() if r[0]]
 
     conn.close()
 
@@ -463,12 +522,13 @@ def extract_and_generate_stats(db_path: Path):
         "deck_name": TARGET_DECK_BASE,
         "updated_at": vn_now.strftime("%Y-%m-%d %H:%M:%S"),
         "summary": {
-            "streak_days": 38,
+            "streak_days": streak_days,
             "days_studied_past_30": days_studied_30,
             "total_reviews_past_30": total_reviews_30,
             "avg_reviews_day": round(total_reviews_30 / max(1, days_studied_30)),
             "total_deck_cards": total_cards,
-            "total_all_time_reviews": 20741
+            "total_all_time_reviews": total_deck_reviews,
+            "total_collection_reviews": total_collection_reviews
         },
         "today": {
             "cards_studied": today_studied,

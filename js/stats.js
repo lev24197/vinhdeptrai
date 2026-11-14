@@ -50,8 +50,40 @@ async function loadAnkiStatsData(forceReload = false) {
   }
 
   try {
-    const res = await smartFetch('data/anki_stats.json');
-    currentAnkiStats = await res.json();
+    let loaded = false;
+    const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
+    const owner = localStorage.getItem('gh_owner') || 'lev24197';
+    const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
+    const branch = localStorage.getItem('gh_branch') || 'main';
+
+    // Khi ép làm mới (forceReload), ưu tiên tải dữ liệu mới nhất trực tiếp từ GitHub API (không bị cache CDN của GitHub Pages)
+    if (forceReload && token && owner && repo) {
+      try {
+        const ghApiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/data/anki_stats.json?ref=${branch}&t=${Date.now()}`;
+        const ghRes = await fetch(ghApiUrl, {
+          headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': `Bearer ${token}`
+          },
+          cache: 'no-store'
+        });
+        if (ghRes.ok) {
+          const ghData = await ghRes.json();
+          if (ghData && ghData.content) {
+            const rawText = decodeURIComponent(escape(atob(ghData.content.replace(/\s/g, ''))));
+            currentAnkiStats = JSON.parse(rawText);
+            loaded = true;
+          }
+        }
+      } catch (e) {
+        console.warn('Lỗi tải trực tiếp từ GitHub API, thử phương thức thông thường:', e);
+      }
+    }
+
+    if (!loaded) {
+      const res = await smartFetch('data/anki_stats.json');
+      currentAnkiStats = await res.json();
+    }
     renderAllStatsCharts(currentAnkiStats);
 
     if (statusBadge) {
@@ -1192,6 +1224,13 @@ function parseAnkiStatsText(text) {
     result.today.relearn = parseInt(lrrMatch[3], 10);
   }
 
+  const streakMatch = text.match(/(?:current\s+)?streak[:\s]+(\d+)/i) || 
+                      text.match(/chuỗi\s+(?:học)?[:\s]+(\d+)/i) ||
+                      text.match(/(\d+)\s+days?\s+streak/i);
+  if (streakMatch) {
+    result.summary.streak_days = parseInt(streakMatch[1], 10);
+  }
+
   const daysMatch = text.match(/Days\s+studied:\s*(\d+)\s+of\s+(\d+)/i);
   if (daysMatch) {
     result.summary.days_studied_past_30 = parseInt(daysMatch[1], 10);
@@ -1438,11 +1477,12 @@ function startPollingSyncRun(owner, repo, token, startTime) {
               showToastAlert('Đồng bộ AnkiWeb Cloud thành công! Dữ liệu đã cập nhật.', 'success');
             }
             localStorage.removeItem('anki_stats_override');
-            setTimeout(async () => {
-              await loadAnkiStatsData(true);
-              setBtnText('ĐỒNG BỘ ANKIWEB CLOUD', false);
+            // Tải dữ liệu mới nhất trực tiếp từ GitHub API ngay khi máy ảo hoàn thành
+            await loadAnkiStatsData(true);
+            setBtnText('ĐỒNG BỘ ANKIWEB CLOUD', false);
+            setTimeout(() => {
               closeSyncAnkiModal();
-            }, 2500);
+            }, 1200);
           } else {
             setBtnText('ĐỒNG BỘ THẤT BẠI', false);
             const errMsg = `Máy ảo báo lỗi (conclusion: ${recentRun.conclusion}). Vui lòng kiểm tra tài khoản ANKIWEB_USERNAME và ANKIWEB_PASSWORD trong GitHub Secrets!`;
