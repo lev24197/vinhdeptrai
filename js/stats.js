@@ -1253,22 +1253,10 @@ function openSyncAnkiModal() {
   }
   modal.classList.remove('hidden');
 
-  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
-  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
   const tokenStatus = document.getElementById('syncModalTokenStatus');
-  const tokenInput = document.getElementById('syncModalTokenInput');
   if (tokenStatus) {
-    if (proxyUrl) {
-      tokenStatus.innerText = 'ĐÃ CẤU HÌNH (SERVERLESS PROXY)';
-      tokenStatus.className = 'font-extrabold text-[#0F766E]';
-    } else if (token) {
-      tokenStatus.innerText = 'ĐÃ CẤU HÌNH (GITHUB PAT)';
-      tokenStatus.className = 'font-extrabold text-[#0F766E]';
-      if (tokenInput && !tokenInput.value) tokenInput.value = token;
-    } else {
-      tokenStatus.innerText = 'CHƯA CẤU HÌNH';
-      tokenStatus.className = 'font-extrabold text-[#BE123C]';
-    }
+    tokenStatus.innerText = 'ĐÃ TỰ ĐỘNG CẤU HÌNH SẴN';
+    tokenStatus.className = 'font-extrabold text-[#0F766E]';
   }
 
   const currentStatusEl = document.getElementById('syncModalCurrentStatus');
@@ -1284,28 +1272,10 @@ function closeSyncAnkiModal() {
 }
 
 async function executeCloudSyncFromModal() {
-  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
-  const tokenInput = document.getElementById('syncModalTokenInput');
-  const inputVal = tokenInput ? tokenInput.value.trim() : '';
-  if (inputVal) {
-    localStorage.setItem('gh_token', inputVal);
-  }
-  const token = inputVal || (typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || ''));
-  if (!proxyUrl && !token) {
-    alert("Vui lòng nhập GitHub Personal Access Token (PAT) hoặc cấu hình Proxy để kích hoạt máy ảo.");
-    if (tokenInput) tokenInput.focus();
-    return;
-  }
-  await executeCloudSyncProcess(token);
+  await executeCloudSyncProcess();
 }
 
 async function triggerAnkiWebSync() {
-  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
-  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
-  if (!proxyUrl && !token) {
-    openSyncAnkiModal();
-    return;
-  }
   await executeCloudSyncProcess();
 }
 
@@ -1313,17 +1283,11 @@ async function executeCloudSyncProcess(tokenOverride = '') {
   const owner = localStorage.getItem('gh_owner') || 'lev24197';
   const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const proxyUrl = typeof getSyncProxyUrl === 'function' ? getSyncProxyUrl() : (localStorage.getItem('sync_proxy_url') || '');
   const token = tokenOverride || (typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || ''));
   const btn = document.getElementById('btnSyncAnkiWeb');
   const modalBtn = document.getElementById('btnModalExecuteSync');
   const runStatusBox = document.getElementById('syncModalRunStatus');
   const badge = document.getElementById('ankiStatsSyncBadge');
-
-  if (!proxyUrl && !token) {
-    openSyncAnkiModal();
-    return;
-  }
 
   const setBtnText = (txt, disabled = true) => {
     if (btn) { btn.disabled = disabled; btn.innerText = txt; }

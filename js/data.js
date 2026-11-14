@@ -160,9 +160,9 @@ async function loadData(silent = false) {
     if (!silent) logToConsole('SUCCESS', 'DATABASE', `Đã nạp database ${DATABASE_FILE}: ${allTopics.length} chủ đề (cập nhật ${statusUpdatedAt || 'không rõ'}).`);
   } catch (err) {
     if (badge) {
-      badge.innerText = '[CHƯA KẾT NỐI] BẤM VÀO ĐÂY ĐỂ CẤU HÌNH API';
+      badge.innerText = '[CHƯA KẾT NỐI] BẤM VÀO ĐÂY ĐỂ THỬ LẠI';
       badge.className = 'text-xs font-mono-code font-bold px-3 py-1.5 bg-[#F4F1EA] text-[#BE123C] border-2 border-[#111111] cursor-pointer';
-      badge.onclick = () => { if (typeof openSettings === 'function') openSettings(); };
+      badge.onclick = () => { loadGlobalData(true); };
     }
     logToConsole('ERROR', 'DATABASE', `Không thể nạp database ${DATABASE_FILE}: ${err.message}. Kiểm tra GitHub Owner/Repo/Branch trong Cấu hình API.`);
   }

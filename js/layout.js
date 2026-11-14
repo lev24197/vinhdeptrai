@@ -36,9 +36,6 @@ function getSharedNavbarHTML() {
           <span>NHẬT KÝ HỆ THỐNG</span>
           <span id="consoleErrorBadge" class="hidden px-1.5 py-0.5 bg-[#BE123C] text-white text-xs font-mono-code font-extrabold">LỖI</span>
         </button>
-        <button onclick="openSettings()" class="neo-btn px-3.5 py-1.5 bg-white text-[#111111] hover:bg-[#EAE5DA] text-xs uppercase">
-          CẤU HÌNH API
-        </button>
       </div>
     </div>
 
