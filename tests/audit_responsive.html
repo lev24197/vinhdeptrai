@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Viewport & UX Verification Audit</title>
+  <style>
+    body { font-family: monospace; background: #0f172a; color: #f8fafc; padding: 20px; }
+    .pass { color: #4ade80; }
+    .fail { color: #f87171; }
+    iframe { border: 1px solid #334155; margin-bottom: 20px; background: white; }
+  </style>
+</head>
+<body>
+  <h1>Responsive Viewport & UX Verification Audit</h1>
+  <div id="status">Initializing audit...</div>
+  <pre id="log"></pre>
+
+  <div id="frames-container"></div>
+  <script id="audit-results-json" type="application/json"></script>
+
+  <script>
+    const pages = [
+      'index.html',
+      'grid.html',
+      'studio.html',
+      'audio.html',
+      'corpus.html',
+      'audit.html',
+      'quiz.html',
+      'stats.html'
+    ];
+
+    const viewports = [
+      { name: 'desktop', width: 1440, height: 900 },
+      { name: 'tablet', width: 768, height: 1024 },
+      { name: 'mobile', width: 375, height: 667 }
+    ];
+
+    const logEl = document.getElementById('log');
+    function log(msg, isPass) {
+      const line = document.createElement('div');
+      line.className = isPass === true ? 'pass' : (isPass === false ? 'fail' : '');
+      line.textContent = msg;
+      logEl.appendChild(line);
+    }
+
+    const auditData = {
+      totalChecks: 0,
+      passedChecks: 0,
+      failedChecks: 0,
+      errors: [],
+      details: {}
+    };
+
+    function loadFrame(url, vp) {
+      return new Promise((resolve) => {
+        const iframe = document.createElement('iframe');
+        iframe.style.width = vp.width + 'px';
+        iframe.style.height = vp.height + 'px';
+        iframe.src = '../' + url;
+
+        let resolved = false;
+        const pageErrors = [];
+
+        function done() {
+          if (resolved) return;
+          resolved = true;
+          resolve({ iframe, pageErrors });
+        }
+
+        iframe.onload = () => {
+          try {
+            const win = iframe.contentWindow;
+            win.addEventListener('error', (e) => {
+              pageErrors.push(e.message || String(e));
+            });
+          } catch(e){}
+          // Give layout 200ms to settle
+          setTimeout(done, 250);
+        };
+        iframe.onerror = done;
+        setTimeout(done, 3000); // timeout fallback
+
+        document.getElementById('frames-container').appendChild(iframe);
+      });
+    }
+
+    async function runAudit() {
+      for (const page of pages) {
+        auditData.details[page] = {};
+        for (const vp of viewports) {
+          const { iframe, pageErrors } = await loadFrame(page, vp);
+          const doc = iframe.contentDocument;
+          const win = iframe.contentWindow;
+
+          const res = {
+            viewport: vp.name,
+            width: vp.width,
+            height: vp.height,
+            errors: pageErrors,
+            horizontalOverflow: false,
+            scrollWidth: 0,
+            clientWidth: 0,
+            mobileNavPresent: false,
+            mobileNavVisible: false,
+            smallTapTargets: []
+          };
+
+          if (doc && doc.documentElement) {
+            const scrollW = doc.documentElement.scrollWidth;
+            const clientW = doc.documentElement.clientWidth || vp.width;
+            res.scrollWidth = scrollW;
+            res.clientWidth = clientW;
+
+            // Check horizontal overflow (tolerate 1px subpixel)
+            if (scrollW > clientW + 2) {
+              res.horizontalOverflow = true;
+              res.nonNavOverflows = [];
+              const allEls = doc.querySelectorAll('*');
+              allEls.forEach(el => {
+                if (el.closest('header') || el.closest('#sharedNavbarMount')) return;
+                const rect = el.getBoundingClientRect();
+                if (rect.right > clientW + 2 && rect.width > 0 && rect.height > 0) {
+                  res.nonNavOverflows.push({
+                    tag: el.tagName,
+                    id: el.id || '',
+                    className: (el.className || '').toString().slice(0, 80),
+                    width: Math.round(rect.width),
+                    right: Math.round(rect.right)
+                  });
+                }
+              });
+              res.nonNavOverflows.sort((a, b) => b.right - a.right);
+              res.nonNavOverflows = res.nonNavOverflows.slice(0, 8);
+            }
+
+            // Check mobileBottomNav
+            const mobileNav = doc.getElementById('mobileBottomNav');
+            if (mobileNav) {
+              res.mobileNavPresent = true;
+              const style = win.getComputedStyle(mobileNav);
+              const rect = mobileNav.getBoundingClientRect();
+              res.mobileNavVisible = (style.display !== 'none' && rect.height > 0);
+            }
+
+            // Check tap targets on interactive elements (buttons and links)
+            const interactives = doc.querySelectorAll('button:not([hidden]), a:not([hidden]), input[type="button"], input[type="submit"]');
+            interactives.forEach(el => {
+              const rect = el.getBoundingClientRect();
+              const style = win.getComputedStyle(el);
+              if (style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0) {
+                // Minimum reasonable tap target: at least 24px on mobile
+                if (vp.name === 'mobile' && (rect.width < 24 || rect.height < 24)) {
+                  // We record if significantly small
+                  if (rect.width < 20 || rect.height < 20) {
+                    res.smallTapTargets.push({
+                      tag: el.tagName,
+                      id: el.id,
+                      text: (el.textContent || '').trim().slice(0, 20),
+                      width: rect.width,
+                      height: rect.height
+                    });
+                  }
+                }
+              }
+            });
+          }
+
+          // Evaluate pass/fail for this check
+          auditData.totalChecks++;
+          let checkPassed = true;
+
+          // 1. Errors check
+          if (res.errors.length > 0) {
+            checkPassed = false;
+            auditData.errors.push(`[${page} @ ${vp.name}] Uncaught JS error: ${res.errors.join(', ')}`);
+          }
+
+          // 2. Overflow check
+          if (res.horizontalOverflow) {
+            checkPassed = false;
+            auditData.errors.push(`[${page} @ ${vp.name}] Horizontal overflow: scrollWidth=${res.scrollWidth} > clientWidth=${res.clientWidth}`);
+          }
+
+          // 3. Mobile bottom nav visibility check
+          if (vp.name === 'mobile') {
+            if (!res.mobileNavVisible) {
+              checkPassed = false;
+              auditData.errors.push(`[${page} @ mobile] Mobile bottom nav bar (#mobileBottomNav) is NOT visible!`);
+            }
+          } else {
+            if (res.mobileNavVisible) {
+              checkPassed = false;
+              auditData.errors.push(`[${page} @ ${vp.name}] Mobile bottom nav bar (#mobileBottomNav) should be hidden on desktop/tablet!`);
+            }
+          }
+
+          if (checkPassed) {
+            auditData.passedChecks++;
+            log(`[PASS] ${page} @ ${vp.name} (${vp.width}px): scrollWidth=${res.scrollWidth}, mobileNavVisible=${res.mobileNavVisible}`, true);
+          } else {
+            auditData.failedChecks++;
+            log(`[FAIL] ${page} @ ${vp.name} (${vp.width}px): ${auditData.errors[auditData.errors.length - 1]}`, false);
+          }
+
+          auditData.details[page][vp.name] = res;
+
+          // Remove iframe to free memory
+          iframe.remove();
+        }
+      }
+
+      document.getElementById('status').textContent = `Audit completed: ${auditData.passedChecks}/${auditData.totalChecks} passed.`;
+      document.getElementById('audit-results-json').textContent = JSON.stringify(auditData, null, 2);
+      window.__AUDIT_FINISHED__ = true;
+    }
+
+    window.addEventListener('DOMContentLoaded', runAudit);
+  </script>
+</body>
+</html>

@@ -40,13 +40,21 @@
   --accent-crimson: #F43F5E;
 }
 
-/* Global Body Styles */
+/* Global HTML & Body Styles */
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--slate-bg);
   background-image: radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
   background-size: 24px 24px;
   color: var(--text-main);
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

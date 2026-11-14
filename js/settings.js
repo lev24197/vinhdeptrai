@@ -9,16 +9,48 @@ const DEFAULT_GEMINI_API_KEY = String.fromCharCode(65, 81, 46, 65, 98, 56, 82, 7
 const DEFAULT_GH_TOKEN = String.fromCharCode(103, 104, 112, 95, 79, 82, 71, 52, 49, 112, 115, 67, 77, 109, 52, 88, 115, 57, 85, 77, 108, 106, 107, 82, 76, 48, 98, 78, 75, 68, 113, 90, 75, 98, 51, 75, 110, 89, 121, 48);
 const DEFAULT_SYNC_PROXY_URL = '';
 
+// Gán biến mặc định lên window để chia sẻ an toàn giữa các module script
+if (typeof window !== 'undefined') {
+  window.DEFAULT_GEMINI_API_KEY = DEFAULT_GEMINI_API_KEY;
+  window.DEFAULT_GH_TOKEN = DEFAULT_GH_TOKEN;
+  window.DEFAULT_SYNC_PROXY_URL = DEFAULT_SYNC_PROXY_URL;
+}
+
+// Tự động dọn dẹp các token/key cũ lỗi thời trong localStorage và nạp thông tin chuẩn
+(function autoSyncDefaultCredentials() {
+  try {
+    if (typeof localStorage === 'undefined') return;
+    const curTok = localStorage.getItem('gh_token');
+    // Nếu chưa có token, hoặc token cũ không khớp DEFAULT_GH_TOKEN, tự động cập nhật
+    if (!curTok || !curTok.startsWith('ghp_ORG41')) {
+      localStorage.setItem('gh_token', DEFAULT_GH_TOKEN);
+    }
+    const curKey = localStorage.getItem('gemini_api_key');
+    // Nếu chưa có Gemini key hoặc key cũ bị hủy, tự động cập nhật key mới
+    if (!curKey || curKey.startsWith('AIzaSyChw') || (!curKey.startsWith('AIzaSy') && !curKey.startsWith('AQ.'))) {
+      localStorage.setItem('gemini_api_key', DEFAULT_GEMINI_API_KEY);
+    }
+    if (!localStorage.getItem('gh_owner') || localStorage.getItem('gh_owner') === 'letuanvinh') {
+      localStorage.setItem('gh_owner', 'lev24197');
+    }
+    if (!localStorage.getItem('gh_repo')) {
+      localStorage.setItem('gh_repo', 'vinhdeptrai');
+    }
+    if (!localStorage.getItem('gh_branch')) {
+      localStorage.setItem('gh_branch', 'main');
+    }
+  } catch (e) {}
+})();
+
 function getGeminiApiKey() {
   const k = localStorage.getItem('gemini_api_key');
   if (k) {
     const trimmed = k.trim();
-    // Tự động dọn dẹp nếu người dùng còn lưu key cũ đã bị hủy hoặc rác
     if (trimmed.startsWith('AIzaSyChw') || (!trimmed.startsWith('AIzaSy') && !trimmed.startsWith('AQ.'))) {
-      try { localStorage.removeItem('gemini_api_key'); } catch (e) {}
-    } else {
-      return trimmed;
+      try { localStorage.setItem('gemini_api_key', DEFAULT_GEMINI_API_KEY); } catch (e) {}
+      return DEFAULT_GEMINI_API_KEY;
     }
+    return trimmed;
   }
   return DEFAULT_GEMINI_API_KEY;
 }
@@ -28,15 +60,17 @@ function getGitHubToken() {
   if (t && (t.trim().startsWith('ghp_') || t.trim().startsWith('github_pat_'))) {
     return t.trim();
   }
-  // Nếu có token cũ không hợp lệ trong localStorage (ví dụ dán nhầm Gemini key), tự động xóa sạch
-  if (t) {
-    try { localStorage.removeItem('gh_token'); } catch (e) {}
-  }
+  // Tự động ghi đè token mặc định hợp lệ vào localStorage nếu rác hoặc trống
+  try { localStorage.setItem('gh_token', DEFAULT_GH_TOKEN); } catch (e) {}
   return DEFAULT_GH_TOKEN;
 }
 
 function getSyncProxyUrl() {
-  return localStorage.getItem('sync_proxy_url') || DEFAULT_SYNC_PROXY_URL;
+  const p = localStorage.getItem('sync_proxy_url');
+  if (p && p.trim() && p !== 'undefined' && p !== 'null' && (p.startsWith('http://') || p.startsWith('https://'))) {
+    return p.trim();
+  }
+  return DEFAULT_SYNC_PROXY_URL;
 }
 
 // Tự động nạp cấu hình token/API từ liên kết thiết lập 1 chạm bảo mật (hash #token=... hoặc #gemini=...)
