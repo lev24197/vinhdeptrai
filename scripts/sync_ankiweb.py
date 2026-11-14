@@ -142,6 +142,10 @@ def extract_and_generate_stats(db_path: Path):
     id_list_str = ",".join(str(i) for i in target_deck_ids)
 
     # 2. Thời gian và Ngày hôm nay theo chuẩn Anki và múi giờ Việt Nam (UTC+7)
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+    vn_tz = datetime.timezone(datetime.timedelta(hours=7))
+    vn_now = now_utc + datetime.timedelta(hours=7)
+
     cur.execute("SELECT crt, conf FROM col LIMIT 1;")
     col_row = cur.fetchone()
     crt = col_row[0]
@@ -151,9 +155,6 @@ def extract_and_generate_stats(db_path: Path):
     except Exception:
         col_conf = {}
     rollover = int(col_conf.get("rollover", 4)) # Giờ chuyển ngày của Anki (mặc định 4h sáng)
-
-    vn_tz = datetime.timezone(datetime.timedelta(hours=7))
-    vn_now = datetime.datetime.now(vn_tz)
 
     # Nếu trước giờ rollover (ví dụ trước 4h sáng), ngày học thuộc về ngày hôm trước
     if vn_now.hour < rollover:
