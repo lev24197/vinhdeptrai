@@ -252,3 +252,77 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==========================================================================
+   GLOBAL TOP PROGRESS LOADING BAR (#globalTopProgressBar)
+   Height 3.5px • Indigo-500 -> Sky-400 -> Emerald-400 • Smooth Glow • 0.3s Cubic Bezier
+   ========================================================================== */
+
+@keyframes topBarGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes topBarPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.6), 0 0 3px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.95), 0 0 6px rgba(52, 211, 153, 0.8), 0 1px 3px rgba(99, 102, 241, 0.5);
+  }
+}
+
+@keyframes topBarIndeterminate {
+  0% {
+    left: 0%;
+    width: 0%;
+  }
+  50% {
+    left: 25%;
+    width: 65%;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}
+
+#globalTopProgressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  height: 3.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #6366f1 0%, #38bdf8 50%, #34d399 100%);
+  background-size: 200% 100%;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7), 0 0 4px rgba(99, 102, 241, 0.5);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  pointer-events: none;
+  opacity: 0;
+  animation: topBarGradientShift 2.5s ease infinite, topBarPulseGlow 2s ease-in-out infinite;
+}
+
+#globalTopProgressBar.opacity-100,
+#globalTopProgressBar.active,
+#globalTopProgressBar.loading {
+  opacity: 1 !important;
+}
+
+#globalTopProgressBar.indeterminate {
+  opacity: 1 !important;
+  animation: topBarIndeterminate 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite, topBarGradientShift 2.5s ease infinite, topBarPulseGlow 2s ease-in-out infinite;
+}
+
+#globalTopProgressBar.is-error {
+  background: linear-gradient(90deg, #f43f5e 0%, #fb7185 50%, #e11d48 100%);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.8), 0 0 4px rgba(225, 29, 72, 0.6);
+}

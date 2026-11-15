@@ -5,7 +5,7 @@
 <section id="liveRunnerBanner" class="hidden bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm transition-all mb-6">
   <div class="flex flex-wrap items-center justify-between gap-4 mb-3">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-0.5 bg-indigo-600 text-white font-mono-code text-xs font-bold uppercase rounded-full">TIẾN TRÌNH TRỰC TIẾP</span>
+      <span id="liveRunnerBadge" class="px-2.5 py-0.5 bg-indigo-600 text-white font-mono-code text-xs font-bold uppercase rounded-full">TIẾN TRÌNH TRỰC TIẾP</span>
       <h4 id="liveRunnerTitle" class="font-display font-bold text-sm sm:text-base uppercase tracking-wider text-slate-900">
         ĐANG CHẠY TIẾN TRÌNH TẠO TỪ VỰNG...
       </h4>
@@ -23,20 +23,20 @@
   </div>
 
   <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs font-mono-code font-bold">
-    <div id="stepIndicator1" class="p-2.5 border border-slate-200 rounded-xl bg-white shadow-2xs flex items-center justify-between gap-2">
-      <span class="text-slate-800">01. GỬI LỆNH API</span> <span id="stepIcon1" class="uppercase text-slate-400">[CHỜ]</span>
+    <div id="step-1" data-step="1" class="step-indicator p-2.5 border border-slate-200 rounded-xl bg-white shadow-2xs flex items-center justify-between gap-2">
+      <span id="stepIndicator1" data-step="1" class="text-slate-800">01. GỬI LỆNH API</span> <span id="stepIcon1" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
-    <div id="stepIndicator2" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
-      <span class="text-slate-600">02. MÁY CHỦ</span> <span id="stepIcon2" class="uppercase text-slate-400">[CHỜ]</span>
+    <div id="step-2" data-step="2" class="step-indicator p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+      <span id="stepIndicator2" data-step="2" class="text-slate-600">02. MÁY CHỦ</span> <span id="stepIcon2" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
-    <div id="stepIndicator3" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
-      <span class="text-slate-600">03. SINH 100 TỪ</span> <span id="stepIcon3" class="uppercase text-slate-400">[CHỜ]</span>
+    <div id="step-3" data-step="3" class="step-indicator p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+      <span id="stepIndicator3" data-step="3" class="text-slate-600">03. SINH 100 TỪ</span> <span id="stepIcon3" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
-    <div id="stepIndicator4" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
-      <span class="text-slate-600">04. LƯU FILE TXT</span> <span id="stepIcon4" class="uppercase text-slate-400">[CHỜ]</span>
+    <div id="step-4" data-step="4" class="step-indicator p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+      <span id="stepIndicator4" data-step="4" class="text-slate-600">04. LƯU FILE TXT</span> <span id="stepIcon4" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
-    <div id="stepIndicator5" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
-      <span class="text-slate-600">05. ĐỒNG BỘ WEB</span> <span id="stepIcon5" class="uppercase text-slate-400">[CHỜ]</span>
+    <div id="step-5" data-step="5" class="step-indicator p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+      <span id="stepIndicator5" data-step="5" class="text-slate-600">05. ĐỒNG BỘ WEB</span> <span id="stepIcon5" class="uppercase text-slate-400">[CHỜ]</span>
     </div>
   </div>
 

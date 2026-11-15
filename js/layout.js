@@ -13,6 +13,11 @@ function getActivePageFilename() {
 
 function getSharedNavbarHTML() {
   return `
+  <!-- GLOBAL TOP PROGRESS LOADING BAR CONTAINER -->
+  <div id="globalTopProgressBar" class="fixed top-0 left-0 right-0 z-[99999] pointer-events-none opacity-0" style="height: 3.5px; width: 0%;">
+    <div class="global-top-progress-inner h-full w-full"></div>
+  </div>
+
   <header class="bg-white/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-40 transition-all duration-200">
     <div class="max-w-[1440px] mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
       <a href="index.html" class="flex items-center gap-3 group">
@@ -100,7 +105,7 @@ function getSharedLiveRunnerHTML() {
   <section id="liveRunnerBanner" class="hidden bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm transition-all mb-6">
     <div class="flex flex-wrap items-center justify-between gap-4 mb-3">
       <div class="flex items-center gap-3">
-        <span class="px-2.5 py-0.5 bg-indigo-600 text-white font-mono-code text-xs font-bold uppercase rounded-full">TIẾN TRÌNH TRỰC TIẾP</span>
+        <span id="liveRunnerBadge" class="px-2.5 py-0.5 bg-indigo-600 text-white font-mono-code text-xs font-bold uppercase rounded-full">TIẾN TRÌNH TRỰC TIẾP</span>
         <h4 id="liveRunnerTitle" class="font-display font-bold text-sm sm:text-base uppercase tracking-wider text-slate-900">
           ĐANG CHẠY TIẾN TRÌNH TẠO TỪ VỰNG...
         </h4>
@@ -118,20 +123,20 @@ function getSharedLiveRunnerHTML() {
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs font-mono-code font-bold">
-      <div id="stepIndicator1" class="p-2.5 border border-slate-200 rounded-xl bg-white shadow-2xs flex items-center justify-between gap-2">
-        <span class="text-slate-800">01. GỬI LỆNH API</span> <span id="stepIcon1" class="uppercase text-slate-400">[CHỜ]</span>
+      <div id="step-1" data-step="1" class="step-indicator p-2.5 border border-slate-200 rounded-xl bg-white shadow-2xs flex items-center justify-between gap-2">
+        <span id="stepIndicator1" data-step="1" class="text-slate-800">01. GỬI LỆNH API</span> <span id="stepIcon1" class="uppercase text-slate-400">[CHỜ]</span>
       </div>
-      <div id="stepIndicator2" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
-        <span class="text-slate-600">02. MÁY CHỦ</span> <span id="stepIcon2" class="uppercase text-slate-400">[CHỜ]</span>
+      <div id="step-2" data-step="2" class="step-indicator p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+        <span id="stepIndicator2" data-step="2" class="text-slate-600">02. MÁY CHỦ</span> <span id="stepIcon2" class="uppercase text-slate-400">[CHỜ]</span>
       </div>
-      <div id="stepIndicator3" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
-        <span class="text-slate-600">03. SINH 100 TỪ</span> <span id="stepIcon3" class="uppercase text-slate-400">[CHỜ]</span>
+      <div id="step-3" data-step="3" class="step-indicator p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+        <span id="stepIndicator3" data-step="3" class="text-slate-600">03. SINH 100 TỪ</span> <span id="stepIcon3" class="uppercase text-slate-400">[CHỜ]</span>
       </div>
-      <div id="stepIndicator4" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
-        <span class="text-slate-600">04. LƯU FILE TXT</span> <span id="stepIcon4" class="uppercase text-slate-400">[CHỜ]</span>
+      <div id="step-4" data-step="4" class="step-indicator p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+        <span id="stepIndicator4" data-step="4" class="text-slate-600">04. LƯU FILE TXT</span> <span id="stepIcon4" class="uppercase text-slate-400">[CHỜ]</span>
       </div>
-      <div id="stepIndicator5" class="p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
-        <span class="text-slate-600">05. ĐỒNG BỘ WEB</span> <span id="stepIcon5" class="uppercase text-slate-400">[CHỜ]</span>
+      <div id="step-5" data-step="5" class="step-indicator p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 flex items-center justify-between gap-2">
+        <span id="stepIndicator5" data-step="5" class="text-slate-600">05. ĐỒNG BỘ WEB</span> <span id="stepIcon5" class="uppercase text-slate-400">[CHỜ]</span>
       </div>
     </div>
 
@@ -439,6 +444,19 @@ function getSharedCommonModalsHTML() {
 }
 
 function initSharedLayout() {
+  // 0. Gắn Global Top Progress Bar nếu chưa có trong DOM
+  if (!document.getElementById('globalTopProgressBar')) {
+    const topBar = document.createElement('div');
+    topBar.id = 'globalTopProgressBar';
+    topBar.className = 'fixed top-0 left-0 right-0 z-[99999] pointer-events-none opacity-0';
+    topBar.style.height = '3.5px';
+    topBar.style.width = '0%';
+    topBar.innerHTML = '<div class="global-top-progress-inner h-full w-full"></div>';
+    if (document.body) {
+      document.body.prepend(topBar);
+    }
+  }
+
   const navMount = document.getElementById('sharedNavbarMount');
   if (navMount) {
     navMount.innerHTML = getSharedNavbarHTML();
@@ -479,4 +497,56 @@ function initSharedLayout() {
     }
     modalsMount.innerHTML = html;
   }
+}
+
+// Alias initLayout to initSharedLayout for universal layout initialization
+function initLayout() {
+  initSharedLayout();
+}
+window.initLayout = initLayout;
+window.initSharedLayout = initSharedLayout;
+
+// Global top progress loading bar fallback controllers
+if (typeof window.updateGlobalLoadingBar !== 'function') {
+  window.updateGlobalLoadingBar = function(pct, title, isError) {
+    let bar = document.getElementById('globalTopProgressBar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'globalTopProgressBar';
+      bar.className = 'fixed top-0 left-0 right-0 z-[99999] pointer-events-none opacity-0';
+      bar.style.height = '3.5px';
+      bar.style.width = '0%';
+      bar.innerHTML = '<div class="global-top-progress-inner h-full w-full"></div>';
+      if (document.body) document.body.prepend(bar);
+    }
+    bar.classList.remove('opacity-0');
+    bar.classList.add('opacity-100');
+    if (isError) {
+      bar.classList.add('is-error');
+    } else {
+      bar.classList.remove('is-error');
+    }
+    if (pct === 'indeterminate') {
+      bar.classList.add('indeterminate');
+    } else {
+      bar.classList.remove('indeterminate');
+      const val = typeof pct === 'number' ? Math.min(100, Math.max(0, pct)) : (pct ? parseFloat(pct) : 0);
+      bar.style.width = `${val}%`;
+    }
+  };
+}
+
+if (typeof window.hideGlobalLoadingBar !== 'function') {
+  window.hideGlobalLoadingBar = function() {
+    const bar = document.getElementById('globalTopProgressBar');
+    if (!bar) return;
+    bar.style.width = '100%';
+    setTimeout(() => {
+      bar.classList.add('opacity-0');
+      bar.classList.remove('opacity-100', 'indeterminate', 'is-error');
+      setTimeout(() => {
+        bar.style.width = '0%';
+      }, 300);
+    }, 200);
+  };
 }
