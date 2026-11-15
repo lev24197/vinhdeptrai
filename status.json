@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14 23:23:57",
+  "updated_at": "2026-11-15 00:52:07",
   "topics": [
     {
       "stt": 1,
@@ -1138,10 +1138,10 @@
     {
       "stt": 127,
       "topic": "Dinh dưỡng học (Nutritional Science)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/127.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 00:52",
       "last_error": null
     },
     {
