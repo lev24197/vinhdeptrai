@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15 00:52:07",
+  "updated_at": "2026-11-15 00:56:07",
   "topics": [
     {
       "stt": 1,
@@ -1147,10 +1147,10 @@
     {
       "stt": 128,
       "topic": "Chăm sóc da liễu (Skin Care & Dermatology)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/128.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 00:56",
       "last_error": null
     },
     {
