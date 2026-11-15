@@ -197,6 +197,13 @@ async function openCurationModal(stt, topicVi) {
 
 // Gọi Gemini AI sinh 150 danh từ ứng viên ĐÚNG THỰC THỂ BẰNG 1 PROMPT DUY NHẤT
 async function fetch150CandidatesFromAI(stt, topicVi) {
+  if (typeof showLiveRunner === 'function') {
+    showLiveRunner(`AI ĐANG SINH 150 TỪ ỨNG VIÊN CHO CHỦ ĐỀ #${stt}: ${(topicVi || '').toUpperCase()}...`, 10, 1);
+  }
+  if (typeof updateGlobalLoadingBar === 'function') {
+    updateGlobalLoadingBar(10, 'AI ĐANG SINH 150 TỪ ỨNG VIÊN...');
+  }
+
   const container = document.getElementById('curationWordsContainer');
   if (container) {
     container.innerHTML = `
@@ -248,6 +255,13 @@ CÁC NGUYÊN TẮC BẮT BUỘC:
       throw new Error('Gemini không trả về danh sách từ hợp lệ');
     }
 
+    if (typeof showLiveRunner === 'function') {
+      showLiveRunner(`AI ĐANG SINH 150 TỪ ỨNG VIÊN... [ĐANG LỌC TRÙNG & CHUẨN HÓA DỮ LIỆU]`, 90, 2);
+    }
+    if (typeof updateGlobalLoadingBar === 'function') {
+      updateGlobalLoadingBar(90, 'AI ĐANG SINH 150 TỪ ỨNG VIÊN...');
+    }
+
     // Lọc trùng và chuẩn hóa
     const seen = new Set();
     const cleanList = [];
@@ -263,7 +277,20 @@ CÁC NGUYÊN TẮC BẮT BUỘC:
     curationSelectedWords.clear();
     saveCurationDraft();
     renderCurationWordsUI();
+
+    if (typeof showLiveRunner === 'function') {
+      showLiveRunner(`[HOÀN TẤT] AI ĐÃ SINH XONG ${cleanList.length} TỪ ỨNG VIÊN CHO CHỦ ĐỀ #${stt}!`, 100, 2, false);
+    }
+    if (typeof updateGlobalLoadingBar === 'function') {
+      updateGlobalLoadingBar(100, 'AI ĐANG SINH 150 TỪ ỨNG VIÊN (HOÀN TẤT)', false);
+    }
   } catch (err) {
+    if (typeof showLiveRunner === 'function') {
+      showLiveRunner(`[LỖI] KHÔNG THỂ TẢI DANH SÁCH 150 TỪ: ${err.message}`, 100, 1, true);
+    }
+    if (typeof updateGlobalLoadingBar === 'function') {
+      updateGlobalLoadingBar(100, 'Lỗi sinh 150 từ: ' + err.message, true);
+    }
     if (container) {
       container.innerHTML = `
         <div class="col-span-full p-12 text-center space-y-3">
@@ -575,9 +602,12 @@ async function proceedToGenerate100Details() {
 
   closeCurationModal();
 
-  // Khởi tạo Live Runner
+  // Khởi tạo Live Runner & Global Loading Bar
   if (typeof showLiveRunner === 'function') {
-    showLiveRunner(`[CHỌN LỌC] ĐANG TẠO CHI TIẾT 9 CỘT CHO 100 TỪ ĐÃ CHỌN (CHỦ ĐỀ #${stt}: ${topicVi.toUpperCase()})...`, 10, 2);
+    showLiveRunner(`AI ĐANG LÀM GIÀU DỮ LIỆU 100 TỪ CHI TIẾT (CHỦ ĐỀ #${stt}: ${topicVi.toUpperCase()})...`, 10, 2);
+  }
+  if (typeof updateGlobalLoadingBar === 'function') {
+    updateGlobalLoadingBar(10, 'AI ĐANG LÀM GIÀU DỮ LIỆU 100 TỪ CHI TIẾT...');
   }
   if (typeof resetLiveWordTracker === 'function') {
     resetLiveWordTracker(stt, topicVi);
@@ -603,7 +633,10 @@ async function proceedToGenerate100Details() {
       const progressPct = Math.round(15 + (b / chosenWords.length) * 70);
 
       if (typeof showLiveRunner === 'function') {
-        showLiveRunner(`[CHỌN LỌC] ĐANG SINH CHI TIẾT ĐỢT ${batchNum}/2 (${b + 1} - ${b + sliceWords.length} / 100 TỪ)...`, progressPct, 3);
+        showLiveRunner(`AI ĐANG LÀM GIÀU DỮ LIỆU 100 TỪ CHI TIẾT (ĐỢT ${batchNum}/2: ${b + 1} - ${b + sliceWords.length} / 100 TỪ)...`, progressPct, 3);
+      }
+      if (typeof updateGlobalLoadingBar === 'function') {
+        updateGlobalLoadingBar(progressPct, `AI ĐANG LÀM GIÀU DỮ LIỆU 100 TỪ CHI TIẾT (${progressPct}%)...`);
       }
 
       // Chuẩn bị thông tin gợi ý nghĩa tiếng Việt từ ứng viên đã chọn
@@ -649,6 +682,10 @@ Trả về đúng JSON Array gồm đúng ${sliceWords.length} objects theo đú
 
       for (const item of enrichedBatch) {
         fullItems.push(item);
+        const itemPct = Math.round(15 + (fullItems.length / chosenWords.length) * 70);
+        if (typeof updateGlobalLoadingBar === 'function') {
+          updateGlobalLoadingBar(itemPct, `AI ĐANG LÀM GIÀU DỮ LIỆU 100 TỪ CHI TIẾT (${fullItems.length}/100)...`);
+        }
         if (typeof updateLiveWordProgress === 'function') {
           updateLiveWordProgress(item, fullItems.length, 100, fullItems.length > 50 ? 'advanced' : 'conversational', topicVi);
         }
@@ -662,6 +699,9 @@ Trả về đúng JSON Array gồm đúng ${sliceWords.length} objects theo đú
     // Đóng gói định dạng chuẩn Anki 9 cột
     if (typeof showLiveRunner === 'function') {
       showLiveRunner(`[CHỌN LỌC] ĐANG ĐÓNG GÓI 9 CỘT TSV CHO 100 TỪ...`, 90, 4);
+    }
+    if (typeof updateGlobalLoadingBar === 'function') {
+      updateGlobalLoadingBar(90, `Đang đóng gói 9 cột TSV...`);
     }
 
     const lines = fullItems.slice(0, 100).map(item => {
@@ -684,6 +724,9 @@ Trả về đúng JSON Array gồm đúng ${sliceWords.length} objects theo đú
     if (owner && repo && ghToken && typeof pushFileToGitHub === 'function') {
       if (typeof showLiveRunner === 'function') {
         showLiveRunner(`[CHỌN LỌC] ĐANG LƯU FILE output/${stt}.txt LÊN GITHUB...`, 95, 5);
+      }
+      if (typeof updateGlobalLoadingBar === 'function') {
+        updateGlobalLoadingBar(95, `Đang lưu file output/${stt}.txt lên GitHub...`);
       }
       await pushFileToGitHub(`output/${stt}.txt`, tsvContent, `Generate topic #${stt} (${topicVi}) via 2-Stage Curation`);
       if (typeof logToConsole === 'function') {
@@ -742,9 +785,15 @@ Trả về đúng JSON Array gồm đúng ${sliceWords.length} objects theo đú
     if (typeof showLiveRunner === 'function') {
       showLiveRunner(`[HOÀN TẤT] ĐÃ TẠO XONG 100 TỪ QUA CHỌN LỌC CHO CHỦ ĐỀ #${stt}: ${topicVi.toUpperCase()}!`, 100, 5, false);
     }
+    if (typeof updateGlobalLoadingBar === 'function') {
+      updateGlobalLoadingBar(100, `Hoàn tất tạo 100 từ chủ đề #${stt}!`, false);
+    }
   } catch (err) {
     if (typeof showLiveRunner === 'function') {
       showLiveRunner(`[LỖI] KHI TẠO CHI TIẾT CHO CHỦ ĐỀ #${stt}: ${err.message}`, 100, 3, true);
+    }
+    if (typeof updateGlobalLoadingBar === 'function') {
+      updateGlobalLoadingBar(100, `Lỗi: ${err.message}`, true);
     }
     if (typeof logToConsole === 'function') {
       logToConsole('ERROR', 'CURATION_FAIL', `Chủ đề #${stt} (${topicVi}) thất bại: ${err.message}`);

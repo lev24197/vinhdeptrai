@@ -223,14 +223,14 @@ function renderTable() {
               <button onclick="openCurationModal(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-1 bg-white text-[#D97706] border border-[#D97706] text-xs uppercase" title="Tùy chọn 2: Tạo lại qua lọc chọn 100 trong 150 từ">
                 LỌC LẠI
               </button>
-              <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-1 bg-[#EAE5DA] text-[#111111] text-xs uppercase" title="Tạo lại trực tiếp trên trình duyệt">
+              <button onclick="handleTopicQuickGenerate(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-1 bg-[#EAE5DA] text-[#111111] text-xs uppercase" title="Tạo lại trực tiếp trên trình duyệt">
                 TẠO LẠI
               </button>
             ` : `
               <button onclick="openCurationModal(${t.stt}, '${safeTopic}')" class="neo-btn px-2.5 py-1 bg-[#D97706] text-white text-xs uppercase" title="Tùy chọn 2: Lọc chọn 100 từ trong 150 từ trước khi tạo">
                 LỌC 100/150 TỪ
               </button>
-              <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="neo-btn px-3 py-1 bg-[#111111] text-white text-xs uppercase" title="Tạo ngay 100 từ trực tiếp trên trình duyệt">
+              <button onclick="handleTopicQuickGenerate(${t.stt}, '${safeTopic}')" class="neo-btn px-3 py-1 bg-[#111111] text-white text-xs uppercase" title="Tạo ngay 100 từ trực tiếp trên trình duyệt">
                 TẠO 100 TỪ (AI)
               </button>
             `}
@@ -408,7 +408,7 @@ function updateUpcomingScheduleUI() {
             <span class="text-xs font-mono-code font-bold ${isFix ? 'text-[#D97706]' : 'text-[#0F766E]'} uppercase">
               ${isFix ? '[ƯU TIÊN SỬA]' : `[VỊ TRÍ ${idx + 1}/3]`}
             </span>
-            <button onclick="generateSingleInBrowser(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-0.5 bg-white text-[#111111] text-xs font-mono-code uppercase hover:bg-[#EAE5DA]" title="Tạo ngay chủ đề này trên trình duyệt">
+            <button onclick="handleTopicQuickGenerate(${t.stt}, '${safeTopic}')" class="neo-btn px-2 py-0.5 bg-white text-[#111111] text-xs font-mono-code uppercase hover:bg-[#EAE5DA]" title="Tạo ngay chủ đề này trên trình duyệt">
               TẠO NGAY
             </button>
           </div>
@@ -431,3 +431,16 @@ function initAutoScheduleCountdown() {
     }
   }, 1000);
 }
+
+function handleTopicQuickGenerate(stt, topicVi) {
+  if (typeof showLiveRunner === 'function') {
+    showLiveRunner(`[BẮT ĐẦU] ĐANG KHỞI ĐỘNG CHỦ ĐỀ #${stt}: ${(topicVi || '').toUpperCase()}...`, 5, 1);
+  }
+  if (typeof updateGlobalLoadingBar === 'function') {
+    updateGlobalLoadingBar(5, `Đang khởi động chủ đề #${stt}...`);
+  }
+  if (typeof generateSingleInBrowser === 'function') {
+    generateSingleInBrowser(stt, topicVi);
+  }
+}
+window.handleTopicQuickGenerate = handleTopicQuickGenerate;

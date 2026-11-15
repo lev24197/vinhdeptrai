@@ -1,34 +1,188 @@
 // ==================== ĐIỀU KHIỂN GITHUB ACTIONS & TẠO TỪ REAL-TIME ====================
 
-function showLiveRunner(title, pct, stepIndex, isError = false) {
-  const banner = document.getElementById('liveRunnerBanner');
-  const bar = document.getElementById('liveRunnerBar');
-  const badge = document.getElementById('liveRunnerBadge');
-  if (!banner || !bar || !badge) return;
+// ==================== GLOBAL TOP PROGRESS BAR & RUNNER CONTROLLERS ====================
 
-  banner.classList.remove('hidden');
-  document.getElementById('liveRunnerTitle').innerText = title;
-  bar.style.width = `${pct}%`;
-  bar.innerText = `${pct}%`;
+function getOrCreateGlobalTopProgressBar() {
+  let bar = document.getElementById('globalTopProgressBar');
+  if (!bar) {
+    bar = document.createElement('div');
+    bar.id = 'globalTopProgressBar';
+    bar.setAttribute('role', 'progressbar');
+    bar.setAttribute('aria-valuemin', '0');
+    bar.setAttribute('aria-valuemax', '100');
+    bar.setAttribute('aria-valuenow', '0');
+    bar.className = 'fixed top-0 left-0 right-0 h-[3.5px] z-[99999] pointer-events-none transition-all duration-300';
+    bar.style.position = 'fixed';
+    bar.style.top = '0';
+    bar.style.left = '0';
+    bar.style.right = '0';
+    bar.style.height = '3.5px';
+    bar.style.zIndex = '99999';
+    bar.style.width = '0%';
+    bar.style.pointerEvents = 'none';
+    bar.style.transition = 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease';
+    bar.style.opacity = '0';
+    bar.style.background = 'linear-gradient(90deg, #6366f1, #38bdf8, #34d399)';
+    bar.style.boxShadow = '0 0 10px rgba(99, 102, 241, 0.5)';
+    if (document.body) {
+      document.body.prepend(bar);
+    }
+  }
+  return bar;
+}
+
+function updateGlobalLoadingBar(pct, title = '', isError = false) {
+  let el = document.getElementById('globalTopProgressBar');
+  if (!el) {
+    el = getOrCreateGlobalTopProgressBar();
+  }
+  if (!el) return;
+
+  const clampedPct = Math.max(0, Math.min(100, Math.round(Number(pct) || 0)));
+  el.setAttribute('aria-valuenow', String(clampedPct));
+  if (title) el.setAttribute('title', title);
+
+  const inner = el.querySelector('[role="progressbar"], .progress-bar, div') || el;
+
+  el.style.opacity = '1';
+  el.classList.remove('hidden');
+
+  if (inner !== el) {
+    el.style.width = '100%';
+    inner.style.width = `${clampedPct}%`;
+  } else {
+    el.style.width = `${clampedPct}%`;
+  }
 
   if (isError) {
-    bar.className = 'h-full bg-[#BE123C] transition-all duration-300 flex items-center justify-end pr-2 text-xs font-mono-code font-extrabold text-white';
-    badge.className = 'tid-badge-num bg-[#F05332]';
-    badge.innerText = 'ERROR';
+    const errorBg = 'linear-gradient(90deg, #ef4444, #dc2626, #b91c1c)';
+    inner.style.background = errorBg;
+    inner.style.boxShadow = '0 0 12px rgba(239, 68, 68, 0.7)';
+    if (inner.classList) {
+      inner.classList.add('bg-rose-600');
+    }
   } else {
-    bar.className = 'h-full bg-[#0F766E] transition-all duration-500 flex items-center justify-end pr-2 text-xs font-mono-code font-extrabold text-white';
-    badge.className = 'tid-badge-num bg-blue-600';
-    badge.innerText = 'LIVE RUNNER';
+    if (clampedPct >= 100) {
+      const finishBg = 'linear-gradient(90deg, #10b981, #059669)';
+      inner.style.background = finishBg;
+      inner.style.boxShadow = '0 0 12px rgba(16, 185, 129, 0.7)';
+    } else {
+      const activeBg = 'linear-gradient(90deg, #6366f1, #38bdf8, #34d399)';
+      inner.style.background = activeBg;
+      inner.style.boxShadow = '0 0 10px rgba(99, 102, 241, 0.5)';
+    }
   }
 
-  for (let i = 1; i <= 5; i++) {
-    const el = document.getElementById('step-' + i);
-    if (!el) continue;
-    if (i < stepIndex) el.className = 'p-1.5 border border-[#111] bg-[#169C64] text-white';
-    else if (i === stepIndex) el.className = isError ? 'p-1.5 border border-[#111] bg-[#F05332] text-white' : 'p-1.5 border-2 border-[#111] bg-[#FFE787] text-[#111]';
-    else el.className = 'p-1.5 border border-[#111] bg-slate-100 text-slate-400';
+  if (clampedPct >= 100 && !isError) {
+    setTimeout(() => {
+      if (el.getAttribute('aria-valuenow') === '100') {
+        hideGlobalLoadingBar();
+      }
+    }, 1200);
   }
 }
+
+function hideGlobalLoadingBar() {
+  const el = document.getElementById('globalTopProgressBar');
+  if (!el) return;
+  el.style.opacity = '0';
+  setTimeout(() => {
+    if (el.style.opacity === '0') {
+      const inner = el.querySelector('[role="progressbar"], .progress-bar, div') || el;
+      inner.style.width = '0%';
+      el.setAttribute('aria-valuenow', '0');
+    }
+  }, 350);
+}
+
+window.getOrCreateGlobalTopProgressBar = getOrCreateGlobalTopProgressBar;
+window.updateGlobalLoadingBar = updateGlobalLoadingBar;
+window.hideGlobalLoadingBar = hideGlobalLoadingBar;
+
+function showLiveRunner(title, pct, stepIndex, isError = false) {
+  // Luôn cập nhật thanh tiến trình top bar toàn cục
+  updateGlobalLoadingBar(pct, title, isError);
+
+  const banner = document.getElementById('liveRunnerBanner');
+  if (!banner) return;
+
+  const wasHidden = banner.classList.contains('hidden') || banner.style.display === 'none';
+  banner.classList.remove('hidden');
+  banner.style.display = '';
+
+  // Cuộn mượt đến banner khi mới bắt đầu chạy tiến trình
+  if (wasHidden || stepIndex === 1 || pct <= 15) {
+    try {
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } catch (e) {}
+  }
+
+  const titleEl = document.getElementById('liveRunnerTitle');
+  if (titleEl) titleEl.innerText = title;
+
+  const bar = document.getElementById('liveRunnerBar');
+  if (bar) {
+    bar.style.width = `${pct}%`;
+    bar.innerText = `${pct}%`;
+
+    if (isError) {
+      bar.className = 'h-full bg-rose-600 transition-all duration-300 flex items-center justify-end pr-2 text-xs font-mono-code font-extrabold text-white rounded-full';
+    } else {
+      bar.className = 'h-full bg-gradient-to-r from-indigo-500 to-emerald-500 transition-all duration-500 flex items-center justify-end pr-2 text-xs font-mono-code font-extrabold text-white rounded-full';
+    }
+  }
+
+  const badge = document.getElementById('liveRunnerBadge');
+  if (badge) {
+    if (isError) {
+      badge.className = 'px-2.5 py-0.5 bg-rose-600 text-white font-mono-code text-xs font-bold uppercase rounded-full';
+      badge.innerText = 'ERROR';
+    } else {
+      badge.className = 'px-2.5 py-0.5 bg-indigo-600 text-white font-mono-code text-xs font-bold uppercase rounded-full';
+      badge.innerText = 'LIVE RUNNER';
+    }
+  }
+
+  // Cập nhật cả 2 chuẩn hiển thị bước: step-i (legacy) và stepIndicatorI (modern clean SaaS)
+  for (let i = 1; i <= 5; i++) {
+    const elLegacy = document.getElementById('step-' + i);
+    const elModern = document.getElementById('stepIndicator' + i);
+    const iconEl = document.getElementById('stepIcon' + i);
+    const elements = [elLegacy, elModern].filter(Boolean);
+    if (elements.length === 0) continue;
+
+    const isPast = i < stepIndex;
+    const isCurrent = i === stepIndex;
+
+    elements.forEach(el => {
+      if (isPast) {
+        el.className = 'p-2.5 border border-emerald-500/80 rounded-xl bg-emerald-50 text-emerald-800 font-bold flex items-center justify-between gap-2 transition-all';
+      } else if (isCurrent) {
+        if (isError) {
+          el.className = 'p-2.5 border border-rose-500 rounded-xl bg-rose-50 text-rose-800 font-bold flex items-center justify-between gap-2 animate-pulse transition-all';
+        } else {
+          el.className = 'p-2.5 border-2 border-indigo-600 rounded-xl bg-indigo-50 text-indigo-900 font-extrabold flex items-center justify-between gap-2 shadow-xs transition-all';
+        }
+      } else {
+        el.className = 'p-2.5 border border-slate-200/70 rounded-xl bg-slate-50/70 text-slate-500 flex items-center justify-between gap-2 transition-all';
+      }
+    });
+
+    if (iconEl) {
+      if (isPast) {
+        iconEl.textContent = '✓ XONG';
+        iconEl.className = 'uppercase text-emerald-600 font-extrabold text-[10px]';
+      } else if (isCurrent) {
+        iconEl.textContent = isError ? '✕ LỖI' : '● ĐANG CHẠY';
+        iconEl.className = isError ? 'uppercase text-rose-600 font-extrabold text-[10px]' : 'uppercase text-indigo-600 font-extrabold text-[10px] animate-pulse';
+      } else {
+        iconEl.textContent = '[CHỜ]';
+        iconEl.className = 'uppercase text-slate-400 font-normal text-[10px]';
+      }
+    }
+  }
+}
+window.showLiveRunner = showLiveRunner;
 
 async function triggerWorkflow(batchSize, targetStt) {
   activeWorkflowTargetStt = targetStt || '';
@@ -150,7 +304,7 @@ async function pollGitHubActionSteps() {
           if (defEl) defEl.innerText = 'Gemini 3.1 Flash Lite đang tạo đủ 9 trường chuẩn Anki. Sau khi hoàn thành, toàn bộ 100 từ sẽ xuất hiện ngay tại đây.';
         } else if (stepName.includes('Commit')) {
           pct = 92;
-          stepIdx = 5;
+          stepIdx = 4;
           showLiveRunner('ĐANG GHI DỮ LIỆU: COMMIT & PUSH LÊN GITHUB REPO...', pct, stepIdx);
         } else {
           showLiveRunner('ĐANG CHẠY BƯỚC: ' + stepName.toUpperCase(), pct, stepIdx);
@@ -247,6 +401,8 @@ function triggerCustomBatch() {
 async function generateDirectlyInBrowser() {
   const pending = allTopics.find(t => t.status !== 'completed');
   if (!pending) { alert('Tất cả chủ đề đều đã được tạo!'); return; }
+  showLiveRunner(`[BẮT ĐẦU] ĐANG KHỞI ĐỘNG CHỦ ĐỀ #${pending.stt}: ${pending.topic.toUpperCase()}`, 5, 1);
+  updateGlobalLoadingBar(5, `Bắt đầu tạo chủ đề #${pending.stt}...`);
   await generateSingleInBrowser(pending.stt, pending.topic);
 }
 
@@ -327,19 +483,24 @@ function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = 'c
   if (trackerBox) trackerBox.classList.remove('hidden');
 
   const pct = Math.min(100, Math.round((currentCount / totalTarget) * 100));
+  const streamPct = Math.max(10, Math.min(88, Math.round(10 + (currentCount / totalTarget) * 78)));
+  const modeLabel = mode === 'advanced' ? 'CHUYÊN SÂU C1-C2' : 'GIAO TIẾP A2-B2';
+  const streamTitle = '[ĐANG TẠO TỪ VỰNG] ' + (topicVi ? topicVi.toUpperCase() + ' • ' : '') + '[' + currentCount + '/' + totalTarget + ' TỪ - ' + modeLabel + ']';
+
+  showLiveRunner(streamTitle, streamPct, 3);
+  updateGlobalLoadingBar(streamPct, `Đang sinh từ #${currentCount}/${totalTarget}...`);
 
   // Cập nhật thanh loading bar chính
   const bar = document.getElementById('liveRunnerBar');
   if (bar) {
-    bar.style.width = pct + '%';
-    bar.innerText = pct + '% (' + currentCount + '/' + totalTarget + ' từ)';
+    bar.style.width = streamPct + '%';
+    bar.innerText = streamPct + '% (' + currentCount + '/' + totalTarget + ' từ)';
   }
 
   // Cập nhật Title chính
   const titleEl = document.getElementById('liveRunnerTitle');
   if (titleEl) {
-    const modeLabel = mode === 'advanced' ? 'CHUYÊN SÂU C1-C2' : 'GIAO TIẾP A2-B2';
-    titleEl.innerText = '[ĐANG TẠO TỪ VỰNG] ' + (topicVi ? topicVi.toUpperCase() + ' • ' : '') + '[' + currentCount + '/' + totalTarget + ' TỪ - ' + modeLabel + ']';
+    titleEl.innerText = streamTitle;
   }
 
   // Cập nhật Badge số lượng
@@ -472,6 +633,11 @@ async function callGeminiApiWithFallback(prompt, geminiKey, temperature = 0.65) 
 }
 
 async function generateSingleInBrowser(stt, topicVi) {
+  runnerStartTime = Date.now();
+  showLiveRunner('[WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #' + stt + ': ' + (topicVi || '').toUpperCase(), 5, 1);
+  updateGlobalLoadingBar(5, 'Khởi tạo chủ đề #' + stt + '...');
+  resetLiveWordTracker(stt, topicVi);
+
   let geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || '');
   const owner = (localStorage.getItem('gh_owner') && localStorage.getItem('gh_owner') !== 'letuanvinh') ? localStorage.getItem('gh_owner') : 'lev24197';
   const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
@@ -492,9 +658,6 @@ async function generateSingleInBrowser(stt, topicVi) {
     }
   }
 
-  runnerStartTime = Date.now();
-  showLiveRunner('[WEB REAL-TIME] ĐANG KHỞI TẠO CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase(), 5, 1);
-  resetLiveWordTracker(stt, topicVi);
   logToConsole('INFO', 'WEB_GEN', 'Bắt đầu tạo trực tiếp chủ đề #' + stt + ' (' + topicVi + ') bằng model ' + preferredModel + '...');
 
   try {
@@ -623,6 +786,7 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
     const collectedNouns = finalItems;
 
     showLiveRunner('ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ' + collectedNouns.length + ' TỪ VỰNG...', 90, 4);
+    updateGlobalLoadingBar(90, 'Đang đóng gói 9 cột TSV...');
     const lines = collected.map(item => {
       const w = String(item.word || '').trim().toLowerCase();
       const cloze = makeClozeJS(w);
@@ -645,17 +809,19 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
     const viEl = document.getElementById('liveCurrentWordVi');
     if (viEl) viEl.innerText = 'Chủ đề #' + stt + ': ' + topicVi;
     const defEl = document.getElementById('liveCurrentWordDef');
-    if (defEl) defEl.innerText = 'Đầy đủ 50 từ giao tiếp (A2-B2) và 50 từ chuyên sâu (C1-C2). Dữ liệu đã sẵn sàng để nhập vào Anki.';
+    if (defEl) defEl.innerText = 'Đầy đủ 50 từ giao tiếp (A2-B2) và 50 từ chuyên sâu (C1-C2). Dữ liệu đã sẵn sàng để học và nhập Anki.';
 
     // Nếu có cấu hình GitHub Token thì đẩy thẳng file lên Repo và cập nhật status.json
     if (owner && repo && ghToken) {
       showLiveRunner('ĐANG LƯU FILE output/' + stt + '.txt LÊN GITHUB...', 95, 5);
+      updateGlobalLoadingBar(95, 'Đang lưu output/' + stt + '.txt lên GitHub...');
       await pushFileToGitHub('output/' + stt + '.txt', tsvContent, 'Generate topic #' + stt + ' (' + topicVi + ') via Web Studio');
       logToConsole('SUCCESS', 'GITHUB_COMMIT', 'Đã lưu output/' + stt + '.txt (' + lines.length + ' từ) lên GitHub!');
 
       // Tự động đồng bộ status.json lên GitHub
       try {
         showLiveRunner('ĐANG CẬP NHẬT status.json LÊN GITHUB...', 98, 5);
+        updateGlobalLoadingBar(98, 'Đang cập nhật status.json...');
         const statusRes = await fetch('https://api.github.com/repos/' + owner + '/' + repo + '/contents/status.json?ref=' + branch, {
           headers: { 'Authorization': 'Bearer ' + ghToken }
         });
@@ -700,8 +866,10 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
     renderGridMap();
     applyFiltersAndRender();
     showLiveRunner('[HOÀN TẤT] CHỦ ĐỀ #' + stt + ': ' + topicVi.toUpperCase() + ' (' + lines.length + ' TỪ)!', 100, 5, false);
+    updateGlobalLoadingBar(100, 'Hoàn tất chủ đề #' + stt + '!', false);
   } catch (e) {
     showLiveRunner('[LỖI] KHI TẠO CHỦ ĐỀ #' + stt + ': ' + e.message, 100, 3, true);
+    updateGlobalLoadingBar(100, 'Lỗi: ' + e.message, true);
     logToConsole('ERROR', 'WEB_GEN_FAIL', 'Chủ đề #' + stt + ' (' + topicVi + ') thất bại: ' + e.message);
     toggleConsoleDrawer(true);
   }
