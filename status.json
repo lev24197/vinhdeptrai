@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14 15:36:26",
+  "updated_at": "2026-11-15 00:56:07",
   "topics": [
     {
       "stt": 1,
@@ -1129,28 +1129,28 @@
     {
       "stt": 126,
       "topic": "Vệ sinh an toàn thực phẩm (Food Safety)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/126.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-14 23:23",
       "last_error": null
     },
     {
       "stt": 127,
       "topic": "Dinh dưỡng học (Nutritional Science)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/127.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 00:52",
       "last_error": null
     },
     {
       "stt": 128,
       "topic": "Chăm sóc da liễu (Skin Care & Dermatology)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/128.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 00:56",
       "last_error": null
     },
     {
