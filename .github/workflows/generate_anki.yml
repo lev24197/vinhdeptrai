@@ -2,13 +2,8 @@ name: Auto Generate Anki Topics
 
 on:
   schedule:
-    # Tự động chạy 4 khung giờ Việt Nam (UTC+7) mỗi ngày:
-    # 09:15 Sáng VN -> 02:15 UTC
-    # 12:15 Trưa VN  -> 05:15 UTC
-    # 15:15 Chiều VN -> 08:15 UTC
-    # 18:15 Chiều VN -> 11:15 UTC
-    # Lưu ý: Chạy vào phút thứ 15 để tránh nghẽn hàng đợi máy ảo GitHub Actions lúc đầu giờ tròn (phút 00)
-    - cron: '15 2,5,8,11 * * *'
+    # Tự động chạy hàng giờ tại phút thứ 15 (tránh nghẽn đầu giờ)
+    - cron: '15 * * * *'
   workflow_dispatch:
     inputs:
       batch_size:

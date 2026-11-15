@@ -71,26 +71,8 @@ def clean_field(text: str) -> str:
 
 cached_working_model = None
 
-def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt: int, mode_desc: str = "core varieties, primary types, essential elements, and common forms", temperature: float = 0.65) -> list[NounItem]:
+def fetch_nouns_from_gemini(client, prompt: str, stt: int, step_label: str, temperature: float = 0.65) -> list[NounItem]:
     global cached_working_model
-    exclude_str = ", ".join(exclude_words) if exclude_words else "None"
-
-    prompt = (
-        f"Generate a JSON list of exactly {count} distinct English singular nouns related to '{topic_vi}'.\n"
-        f"Focus specifically on: {mode_desc}.\n"
-        f"CRITICAL DOMAIN RULES:\n"
-        f"1. Every single word MUST directly and concretely belong to the domain/category of '{topic_vi}'.\n"
-        f"2. Authentic concrete English nouns only (NO adjectives, NO verbs).\n"
-        f"3. ABSOLUTELY FORBIDDEN: Generic essay buzzwords ('paradigm', 'efficacy', 'sustainability', 'resilience', 'framework', 'feasibility', 'stakeholder', 'optimization').\n"
-        f"STRICTLY DO NOT REPEAT ANY of these already generated words ({len(exclude_words)} words): {exclude_str}.\n"
-        f"Requirements:\n"
-        f"- 'word': lowercase singular noun.\n"
-        f"- 'ipa': standard American IPA inside slashes /.../.\n"
-        f"- 'definition': concise English definition.\n"
-        f"- 'meaning_vi': accurate Vietnamese translation matching the topic context.\n"
-        f"- 'plural': plural noun form.\n"
-        f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
-    )
     models_to_try = [
         cached_working_model,
         "gemini-3.1-flash-lite",
@@ -123,79 +105,103 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
         except Exception as e:
             err_msg = f"{model_name}: {str(e)}"
             err_history.append(err_msg)
-            append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} ({mode_desc[:25]}) lỗi: {str(e)[:120]}. Đang thử model tiếp theo...", stt)
+            append_run_log("WARNING", f"API_RETRY ({model_name})", f"Chủ đề #{stt} [{step_label}] lỗi: {str(e)[:120]}. Đang thử model tiếp theo...", stt)
             time.sleep(1)
     combined_err = " | ".join(err_history)
-    raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt}. Chi tiết lỗi: {combined_err}")
+    raise RuntimeError(f"Không thể gọi Gemini API cho chủ đề #{stt} [{step_label}]. Chi tiết lỗi: {combined_err}")
 
 def print_cli_progress(current: int, total: int, stt: int, topic: str, item: NounItem, mode_tag: str):
-    pct = int(current * 100 / total)
+    cur = min(current, total)
+    pct = int(cur * 100 / total)
     bar_len = 20
-    filled = int(bar_len * current // total)
+    filled = int(bar_len * cur // total)
     bar = "█" * filled + "░" * (bar_len - filled)
     clean_mean = item.meaning_vi[:35] if len(item.meaning_vi) > 35 else item.meaning_vi
-    print(f"[{bar}] {current:03d}/{total:03d} ({pct:3d}%) [{mode_tag}] #{stt} | {item.word:<18} {item.ipa:<18} -> {clean_mean}")
+    print(f"[{bar}] {cur:03d}/{total:03d} ({pct:3d}%) [{mode_tag}] #{stt} | {item.word:<18} {item.ipa:<18} -> {clean_mean}")
 
 def generate_100_nouns(client, topic_vi: str, stt: int) -> list[NounItem]:
     seen = set()
     collected: list[NounItem] = []
 
-    facets = [
-        ("Cốt lõi & Phổ biến", "A2-B2 Cốt lõi", "core varieties, primary types, essential items, and common forms", 30),
-        ("Chuyên sâu & Đặc trưng", "B2-C1 Chuyên sâu", "specialized sub-types, regional varieties, prized cultivars, and distinct styles", 30),
-        ("Chế biến & Thành phẩm", "C1 Thành phẩm", "culinary preparations, finished products, commercial cuts, forms, and presentations", 25),
-        ("Thành phần & Dụng cụ", "C1-C2 Dụng cụ & Nguyên liệu", "key ingredients, essential components, characteristic tools, and domain-specific elements", 25),
-    ]
+    # Prompt 1: Yêu cầu trực tiếp Gemini 105 danh từ số ít chuẩn chủ đề
+    append_run_log("INFO", "PROMPT_1_START", f"Chủ đề #{stt} ({topic_vi}): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề...", stt)
+    prompt_1 = (
+        f"Generate a comprehensive JSON list of exactly 105 distinct English singular nouns strictly belonging to the topic '{topic_vi}'.\n"
+        f"STRICT RULES:\n"
+        f"1. Every single word MUST directly and concretely belong to the topic/category of '{topic_vi}'. Stick tightly to the topic without rambling or straying.\n"
+        f"2. Authentic concrete English nouns only (singular form; NO adjectives, NO verbs, NO broad abstract concepts).\n"
+        f"3. ABSOLUTELY FORBIDDEN: Generic abstract buzzwords (such as 'paradigm', 'efficacy', 'sustainability', 'resilience', 'framework', 'feasibility', 'stakeholder', 'optimization', 'aspect', 'factor', 'methodology', 'concept').\n"
+        f"4. Provide a rich, exhaustive variety of specific physical objects, entities, tools, equipment, varieties, types, cuts, components, or elements that specifically characterize '{topic_vi}'.\n"
+        f"Requirements for each item:\n"
+        f"- 'word': lowercase singular noun.\n"
+        f"- 'ipa': standard American IPA inside slashes /.../.\n"
+        f"- 'definition': concise English definition.\n"
+        f"- 'meaning_vi': accurate Vietnamese translation matching the topic context.\n"
+        f"- 'plural': plural noun form.\n"
+        f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
+    )
 
-    for facet_name, tag, facet_desc, target_count in facets:
-        if len(collected) >= 100:
-            break
-        append_run_log("INFO", "FACET_START", f"Chủ đề #{stt}: Bắt đầu phân diện [{facet_name}] ({target_count} từ, đã có {len(collected)}/100)", stt)
-        try:
-            batch = fetch_batch(client, topic_vi, target_count, list(seen), stt, mode_desc=facet_desc, temperature=0.65)
-            for item in batch:
-                w = item.word.strip().lower()
-                if w and w not in seen:
-                    seen.add(w)
-                    collected.append(item)
-                    print_cli_progress(len(collected), 100, stt, topic_vi, item, tag)
-                    if len(collected) >= 100:
-                        break
-        except Exception as e:
-            append_run_log("WARNING", "FACET_ERR", f"Phân diện {facet_name} gặp lỗi: {e}", stt)
-        time.sleep(1)
+    try:
+        batch_1 = fetch_nouns_from_gemini(client, prompt_1, stt, "Prompt 1", temperature=0.65)
+        for item in batch_1:
+            w = item.word.strip().lower()
+            if w and w not in seen:
+                seen.add(w)
+                collected.append(item)
+                print_cli_progress(len(collected), 100, stt, topic_vi, item, "Prompt 1")
+                if len(collected) >= 100:
+                    break
+    except Exception as e:
+        append_run_log("WARNING", "PROMPT_1_ERR", f"Chủ đề #{stt}: Prompt 1 gặp lỗi: {e}", stt)
 
-    topup_attempt = 0
-    angles = [
-        "lesser-known international varieties, regional specialties, and cultural traditions",
-        "specialized tools, equipment, containers, and apparatus used in this field",
-        "raw ingredients, base materials, extracts, and flavorings associated with this category",
-        "historical varieties, artisanal crafts, and professional techniques related to this topic",
-    ]
-    while len(collected) < 100 and topup_attempt < 15:
-        topup_attempt += 1
-        needed = 100 - len(collected)
-        ask_count = min(30, max(needed + 5, 12))
-        angle = angles[(topup_attempt - 1) % len(angles)]
-        append_run_log("WARNING", f"TOPUP_BATCH_{topup_attempt}", f"Chủ đề #{stt}: Bù đắp {needed} từ còn thiếu (Đang có: {len(collected)}/100)...", stt)
-        try:
-            batch = fetch_batch(client, topic_vi, ask_count, list(seen), stt, mode_desc=angle, temperature=0.75)
-            for item in batch:
-                w = item.word.strip().lower()
-                if w and w not in seen:
-                    seen.add(w)
-                    collected.append(item)
-                    print_cli_progress(len(collected), 100, stt, topic_vi, item, f"Bù đắp {topup_attempt}")
-                    if len(collected) >= 100:
-                        break
-        except Exception as e:
-            append_run_log("WARNING", "TOPUP_ERR", f"Lỗi bù đắp đợt {topup_attempt}: {e}", stt)
-        time.sleep(1)
+    # Nếu Prompt 1 trả về >= 100 từ hợp lệ -> Cắt đúng 100 từ và hoàn tất ngay lập tức (1 prompt duy nhất!)
+    if len(collected) >= 100:
+        collected = collected[:100]
+        append_run_log("SUCCESS", "PROMPT_1_DONE", f"Chủ đề #{stt} ({topic_vi}): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!", stt)
+        append_run_log("SUCCESS", "COLLECT_DONE", f"Chủ đề #{stt}: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề.", stt)
+        return collected
+
+    # Prompt 2: Chỉ chạy khi Prompt 1 gom được ít hơn 100 từ (yêu cầu 100 từ và loại trừ từ đã có)
+    remaining = 100 - len(collected)
+    append_run_log("INFO", "PROMPT_2_START", f"Chủ đề #{stt} ({topic_vi}): Prompt 1 đạt {len(collected)}/100 từ (còn thiếu {remaining}). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ...", stt)
+    exclude_str = ", ".join(sorted(seen))
+    prompt_2 = (
+        f"Generate a JSON list of exactly 100 distinct English singular nouns strictly belonging to the topic '{topic_vi}'.\n"
+        f"CRITICAL DOMAIN RULES:\n"
+        f"1. Every single word MUST directly and concretely belong to the domain/category of '{topic_vi}'. Stick tightly to the topic without rambling.\n"
+        f"2. Authentic concrete English nouns only (singular form; NO adjectives, NO verbs, NO generic abstract buzzwords).\n"
+        f"3. ABSOLUTELY FORBIDDEN: Generic essay buzzwords ('paradigm', 'efficacy', 'sustainability', 'resilience', 'framework', 'feasibility', 'stakeholder', 'optimization', 'aspect', 'factor', 'methodology', 'concept').\n"
+        f"4. STRICTLY DO NOT REPEAT ANY of these {len(seen)} already collected words: {exclude_str}.\n"
+        f"5. Provide additional specific, concrete items, tools, equipment, specialized varieties, components, or products in '{topic_vi}' to fill the remaining vocabulary set.\n"
+        f"Requirements for each item:\n"
+        f"- 'word': lowercase singular noun.\n"
+        f"- 'ipa': standard American IPA inside slashes /.../.\n"
+        f"- 'definition': concise English definition.\n"
+        f"- 'meaning_vi': accurate Vietnamese translation matching the topic context.\n"
+        f"- 'plural': plural noun form.\n"
+        f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
+    )
+
+    try:
+        batch_2 = fetch_nouns_from_gemini(client, prompt_2, stt, "Prompt 2", temperature=0.75)
+        for item in batch_2:
+            w = item.word.strip().lower()
+            if w and w not in seen:
+                seen.add(w)
+                collected.append(item)
+                print_cli_progress(len(collected), 100, stt, topic_vi, item, "Prompt 2")
+                if len(collected) >= 100:
+                    break
+    except Exception as e:
+        append_run_log("WARNING", "PROMPT_2_ERR", f"Chủ đề #{stt}: Prompt 2 gặp lỗi: {e}", stt)
+
+    # Tối đa 2 prompt total. Không bao giờ có prompt 3 hay vòng lặp while
+    if len(collected) < 100:
+        append_run_log("ERROR", "INCOMPLETE", f"Chủ đề #{stt} ({topic_vi}): Sau 2 prompts chỉ đạt {len(collected)}/100 từ!", stt)
+        raise ValueError(f"Chủ đề #{stt} ({topic_vi}) chỉ tạo được {len(collected)}/100 từ sau tối đa 2 prompts!")
 
     collected = collected[:100]
-    if len(collected) < 100:
-        raise ValueError(f"Chủ đề #{stt} ({topic_vi}) chỉ tạo được {len(collected)}/100 từ sau nhiều lần thử lại!")
-
+    append_run_log("SUCCESS", "PROMPT_2_DONE", f"Chủ đề #{stt} ({topic_vi}): Hoàn thành 100 từ sau Prompt 2.", stt)
     append_run_log("SUCCESS", "COLLECT_DONE", f"Chủ đề #{stt}: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề.", stt)
     return collected
 
