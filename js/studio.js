@@ -142,7 +142,7 @@ function printCurrentTopicSheet() {
         <button onclick="window.print()" style="padding: 8px 16px; background: #111111; color: white; border: 2px solid #111111; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 12px;">IN HOẶC LƯU PDF</button>
       </div>
       <h1>${title}</h1>
-      <p>BỘ TỪ ĐIỂN 100 TỪ VỰNG CHUẨN ANKI (50 TỪ GIAO TIẾP A2-B2 & 50 TỪ NÂNG CAO C1-C2)</p>
+      <p>BỘ TỪ ĐIỂN 100 TỪ VỰNG CHUẨN ANKI BÁM SÁT CHỦ ĐỀ</p>
       <table>
         <thead>
           <tr><th>STT</th><th>TỪ VỰNG & IPA</th><th>NGHĨA TIẾNG VIỆT</th><th>ĐỊNH NGHĨA TIẾNG ANH</th><th>VÍ DỤ THỰC TẾ</th></tr>
@@ -222,8 +222,8 @@ function renderPreviewTable() {
     tbody.innerHTML = filtered.map(({ cols, idx }) => {
       const isConversational = idx < 50;
       const badge = isConversational
-        ? `<span class="inline-block px-1.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#0F766E] border border-[#0F766E] mb-1">A2-B2 GIAO TIẾP</span>`
-        : `<span class="inline-block px-1.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#7C3AED] border border-[#7C3AED] mb-1">C1-C2 NÂNG CAO</span>`;
+        ? `<span class="inline-block px-1.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#0F766E] border border-[#0F766E] mb-1">PHẦN 1 (1-50)</span>`
+        : `<span class="inline-block px-1.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#7C3AED] border border-[#7C3AED] mb-1">PHẦN 2 (51-100)</span>`;
       const safeWord = (cols[0] || '').replace(/'/g, "\\'");
 
       return `
@@ -408,7 +408,7 @@ function renderFlashcard() {
   const isConv = currentFlashcardIdx < 50;
   const catEl = document.getElementById('fcCategoryBadge');
   if (catEl) {
-    catEl.innerText = isConv ? 'PHẦN 1: GIAO TIẾP (A2-B2)' : 'PHẦN 2: NÂNG CAO (C1-C2)';
+    catEl.innerText = isConv ? 'PHẦN 1 (TỪ 1-50)' : 'PHẦN 2 (TỪ 51-100)';
     catEl.className = isConv
       ? 'px-2.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#0F766E] border border-[#0F766E] mb-3 uppercase'
       : 'px-2.5 py-0.5 text-xs font-mono-code font-bold bg-[#EAE5DA] text-[#7C3AED] border border-[#7C3AED] mb-3 uppercase';

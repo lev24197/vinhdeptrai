@@ -285,13 +285,8 @@ async function pollGitHubActionSteps() {
 
           const catBadge = document.getElementById('liveWordCategoryBadge');
           if (catBadge) {
-            if (estWords < 50) {
-              catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-emerald-100 text-emerald-900';
-              catBadge.innerText = 'A2-B2 Giao tiếp (~' + estWords + '/50)';
-            } else {
-              catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-purple-100 text-purple-900';
-              catBadge.innerText = 'C1-C2 Nâng cao (~' + (estWords - 50) + '/50)';
-            }
+            catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-indigo-100 text-indigo-900';
+            catBadge.innerText = '100 từ chuẩn (~' + estWords + '/100)';
           }
 
           const nameEl = document.getElementById('liveCurrentWordName');
@@ -387,7 +382,7 @@ async function syncCompletedWordsFromGitHub(owner, repo, branch, token, targetSt
     if (viEl) viEl.innerText = 'Đã lưu file output/' + stt + '.txt lên GitHub thành công';
 
     const defEl = document.getElementById('liveCurrentWordDef');
-    if (defEl) defEl.innerText = 'Gồm 50 từ giao tiếp (A2-B2) và 50 từ chuyên sâu (C1-C2). Dữ liệu đã sẵn sàng để học và nhập Anki.';
+    if (defEl) defEl.innerText = '100 danh từ chuẩn bám sát chủ đề. Dữ liệu đã sẵn sàng để học và nhập Anki.';
   } catch (e) {
     console.warn('Lỗi đồng bộ từ vựng sau GitHub Run:', e);
   }
@@ -416,8 +411,8 @@ function resetLiveWordTracker(stt, topicVi) {
 
   const catBadge = document.getElementById('liveWordCategoryBadge');
   if (catBadge) {
-    catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-emerald-100 text-emerald-900';
-    catBadge.innerText = 'A2-B2 Giao tiếp';
+    catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-indigo-100 text-indigo-900';
+    catBadge.innerText = '100 từ chuẩn bám sát chủ đề';
   }
 
   const topicBadge = document.getElementById('liveTopicNameBadge');
@@ -454,7 +449,7 @@ function resetLiveWordTracker(stt, topicVi) {
 }
 
 function showBatchCallingStatus(stt, topicVi, currentCount, target, batchNum, mode) {
-  const modeLabel = mode === 'advanced' ? 'C1-C2 Nâng cao' : 'A2-B2 Giao tiếp';
+  const modeLabel = mode || '100 từ chuẩn';
   const startNum = currentCount + 1;
   const endNum = Math.min(target, currentCount + 10);
 
@@ -478,13 +473,13 @@ function showBatchCallingStatus(stt, topicVi, currentCount, target, batchNum, mo
   if (defEl) defEl.innerText = 'Mô hình Gemini 3.1 Flash Lite đang phân tích ngữ cảnh, tra cứu phiên âm US IPA và tạo câu ví dụ...';
 }
 
-function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = 'conversational', topicVi = '') {
+function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = '100 từ chuẩn', topicVi = '') {
   const trackerBox = document.getElementById('liveWordTrackerBox');
   if (trackerBox) trackerBox.classList.remove('hidden');
 
   const pct = Math.min(100, Math.round((currentCount / totalTarget) * 100));
   const streamPct = Math.max(10, Math.min(88, Math.round(10 + (currentCount / totalTarget) * 78)));
-  const modeLabel = mode === 'advanced' ? 'CHUYÊN SÂU C1-C2' : 'GIAO TIẾP A2-B2';
+  const modeLabel = mode || '100 TỪ CHUẨN';
   const streamTitle = '[ĐANG TẠO TỪ VỰNG] ' + (topicVi ? topicVi.toUpperCase() + ' • ' : '') + '[' + currentCount + '/' + totalTarget + ' TỪ - ' + modeLabel + ']';
 
   showLiveRunner(streamTitle, streamPct, 3);
@@ -509,16 +504,11 @@ function updateLiveWordProgress(item, currentCount, totalTarget = 100, mode = 'c
     counterBadge.innerText = currentCount + ' / ' + totalTarget + ' từ (' + pct + '%)';
   }
 
-  // Cập nhật Phân loại A2-B2 hay C1-C2
+  // Cập nhật Phân loại
   const catBadge = document.getElementById('liveWordCategoryBadge');
   if (catBadge) {
-    if (mode === 'advanced') {
-      catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-purple-100 text-purple-900';
-      catBadge.innerText = 'C1-C2 Nâng cao';
-    } else {
-      catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-emerald-100 text-emerald-900';
-      catBadge.innerText = 'A2-B2 Giao tiếp';
-    }
+    catBadge.className = 'px-2 py-0.5 font-bold border border-[#111] bg-indigo-100 text-indigo-900';
+    catBadge.innerText = mode || '100 từ chuẩn';
   }
 
   // Hiển thị chi tiết từ đang tạo
@@ -664,119 +654,90 @@ async function generateSingleInBrowser(stt, topicVi) {
     const collected = [];
     const seen = new Set();
 
-    // 4 Phân diện ngữ nghĩa tự nhiên của mọi chủ đề để khai thác trọn vẹn 100 từ độc nhất
-    const facets = [
-      {
-        name: 'Cốt lõi & Phổ biến',
-        tag: 'A2-B2 Cốt lõi',
-        desc: 'core varieties, primary types, essential elements, and common forms',
-        targetCount: 30
-      },
-      {
-        name: 'Chuyên sâu & Đặc trưng',
-        tag: 'B2-C1 Chuyên sâu',
-        desc: 'specialized sub-types, regional varieties, prized cultivars, and distinct styles',
-        targetCount: 30
-      },
-      {
-        name: 'Chế biến & Thành phẩm',
-        tag: 'C1 Thành phẩm',
-        desc: 'culinary preparations, finished products, commercial cuts, forms, and presentations',
-        targetCount: 25
-      },
-      {
-        name: 'Thành phần, Nguyên liệu & Dụng cụ',
-        tag: 'C1-C2 Dụng cụ & Nguyên liệu',
-        desc: 'key ingredients, essential components, characteristic tools, and domain-specific elements',
-        targetCount: 25
+    // PROMPT 1: Yêu cầu 105 danh từ tiếng Anh số ít riêng biệt bám sát chủ đề topicVi
+    showBatchCallingStatus(stt, topicVi, collected.length, 100, 1, '100 danh từ chuẩn');
+    logToConsole('INFO', 'WEB_GEN_PROMPT1', 'Đang gửi Prompt 1 yêu cầu 105 danh từ bám sát chủ đề "' + topicVi + '"...');
+
+    const prompt1 = `Generate a JSON array of 105 distinct English singular nouns strictly belonging to the topic/category: "${topicVi}".
+CRITICAL DOMAIN RULES:
+1. Every word MUST directly, authentically, and concretely belong to the domain/category of "${topicVi}".
+2. Concrete English singular nouns only (NO adjectives, NO verbs, NO adverbs).
+3. ABSOLUTELY FORBIDDEN: General academic meta-words or abstract essay buzzwords ("paradigm", "efficacy", "sustainability", "resilience", "framework", "feasibility", "stakeholder", "amelioration", "optimization").
+Each object in the array must have the following exact keys:
+"word": English singular noun (lowercase),
+"ipa": US phonetic transcription enclosed in slashes (e.g. /.../),
+"definition": concise English definition,
+"meaning_vi": natural Vietnamese translation of the noun in this specific topic context,
+"plural": plural form of the noun,
+"example_1": natural contextual English sentence using the word,
+"example_2": another natural contextual English sentence using the word.
+Return ONLY the raw valid JSON array.`;
+
+    try {
+      const items1 = await callGeminiApiWithFallback(prompt1, geminiKey, 0.65);
+      if (Array.isArray(items1)) {
+        for (const item of items1) {
+          const w = String(item.word || '').trim().toLowerCase();
+          if (w && !seen.has(w)) {
+            seen.add(w);
+            collected.push(item);
+            updateLiveWordProgress(item, collected.length, 100, '100 từ chuẩn', topicVi);
+            await new Promise(r => setTimeout(r, 40));
+            if (collected.length >= 100) break;
+          }
+        }
       }
-    ];
+    } catch (e1) {
+      logToConsole('WARNING', 'PROMPT1_ERR', 'Prompt 1 gặp lỗi: ' + e1.message);
+    }
 
-    // PHA 1: Quét 4 phân diện chính (mỗi phân diện 25-30 từ, tổng 110 từ)
-    for (let i = 0; i < facets.length; i++) {
-      if (collected.length >= 100) break;
-      const facet = facets[i];
+    logToConsole('INFO', 'WEB_GEN_P1_STATUS', 'Kết quả Prompt 1: Đã thu thập ' + collected.length + '/100 từ.');
 
-      showBatchCallingStatus(stt, topicVi, collected.length, 100, i + 1, facet.name);
-      logToConsole('INFO', 'WEB_GEN_FACET', 'Đang xin đợt ' + (i + 1) + '/4 [' + facet.name + '] (' + facet.targetCount + ' từ, đã có ' + collected.length + '/100)...');
+    // PROMPT 2: Chỉ chạy khi Prompt 1 chưa đủ 100 từ, tối đa 2 prompts tổng cộng
+    if (collected.length < 100) {
+      const needed = 100 - collected.length;
+      showBatchCallingStatus(stt, topicVi, collected.length, 100, 2, 'Bù đắp từ vựng');
+      logToConsole('WARNING', 'WEB_GEN_PROMPT2', 'Đang gửi Prompt 2 để bù đắp (cần thêm ' + needed + ' từ, hiện có ' + collected.length + '/100)...');
 
       const excludeStr = seen.size > 0 ? `STRICTLY DO NOT REPEAT ANY of these already generated words (${seen.size} words): ${[...seen].join(', ')}.\n` : '';
-      const prompt = `Generate a JSON array of ${facet.targetCount} distinct English singular nouns related to "${topicVi}".
-Focus specifically on: ${facet.desc}.
+      const prompt2 = `Generate a JSON array of 100 distinct English singular nouns strictly belonging to the topic/category: "${topicVi}".
 CRITICAL DOMAIN RULES:
-1. Every word MUST directly and concretely belong to the domain/category of "${topicVi}".
-2. Concrete English nouns only (NO adjectives, NO verbs).
+1. Every word MUST directly, authentically, and concretely belong to the domain/category of "${topicVi}".
+2. Concrete English singular nouns only (NO adjectives, NO verbs, NO adverbs).
 3. ABSOLUTELY FORBIDDEN: General academic meta-words or abstract essay buzzwords ("paradigm", "efficacy", "sustainability", "resilience", "framework", "feasibility", "stakeholder", "amelioration", "optimization").
-${excludeStr}Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
+${excludeStr}Each object in the array must have the following exact keys:
+"word": English singular noun (lowercase),
+"ipa": US phonetic transcription enclosed in slashes (e.g. /.../),
+"definition": concise English definition,
+"meaning_vi": natural Vietnamese translation of the noun in this specific topic context,
+"plural": plural form of the noun,
+"example_1": natural contextual English sentence using the word,
+"example_2": another natural contextual English sentence using the word.
+Return ONLY the raw valid JSON array.`;
 
       try {
-        const items = await callGeminiApiWithFallback(prompt, geminiKey, 0.65);
-        if (Array.isArray(items)) {
-          for (const item of items) {
+        const items2 = await callGeminiApiWithFallback(prompt2, geminiKey, 0.75);
+        if (Array.isArray(items2)) {
+          for (const item of items2) {
             const w = String(item.word || '').trim().toLowerCase();
             if (w && !seen.has(w)) {
               seen.add(w);
               collected.push(item);
-              updateLiveWordProgress(item, collected.length, 100, facet.tag, topicVi);
+              updateLiveWordProgress(item, collected.length, 100, 'Bù đắp từ vựng', topicVi);
               await new Promise(r => setTimeout(r, 40));
               if (collected.length >= 100) break;
             }
           }
         }
-      } catch (e) {
-        logToConsole('WARNING', 'FACET_RETRY', 'Phân diện ' + facet.name + ' gặp lỗi (' + e.message + '), chuyển tiếp phân diện tiếp theo...');
-      }
-    }
-    logToConsole('SUCCESS', 'FACETS_OK', 'Hoàn tất quét 4 phân diện. Đã có: ' + collected.length + '/100 từ.');
-
-    // PHA 2: VÒNG LẶP BẢO HIỂM THÔNG MINH (SAFETY TOP-UP LOOP) - BẮT BUỘC ĐẠT ĐỦ ĐÚNG 100 TỪ
-    let topupAttempt = 0;
-    const maxTopupAttempts = 15;
-    while (collected.length < 100 && topupAttempt < maxTopupAttempts) {
-      topupAttempt++;
-      const needed = 100 - collected.length;
-      const askCount = Math.max(12, Math.min(25, needed + 5));
-
-      showBatchCallingStatus(stt, topicVi, collected.length, 100, topupAttempt, 'Bảo hiểm bù đắp');
-      logToConsole('WARNING', 'WEB_GEN_TOPUP', '[Bảo hiểm 100 từ] Đang bù đắp đợt ' + topupAttempt + ' (cần thêm ' + needed + ' từ, hiện có ' + collected.length + '/100)...');
-
-      const angles = [
-        'lesser-known international varieties, regional specialties, and cultural traditions',
-        'specialized tools, equipment, containers, and apparatus used in this field',
-        'raw ingredients, base materials, extracts, and flavorings associated with this category',
-        'historical varieties, artisanal crafts, and professional techniques related to this topic'
-      ];
-      const angle = angles[(topupAttempt - 1) % angles.length];
-
-      const prompt = `Generate a JSON array of ${askCount} MORE distinct English singular nouns related to "${topicVi}".
-Focus on: ${angle}.
-CRITICAL: Every word MUST be an authentic concrete noun directly belonging to "${topicVi}".
-STRICTLY DO NOT REPEAT ANY of these existing words: ${[...seen].join(', ')}.
-Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "definition", "meaning_vi", "plural", "example_1", "example_2". Return ONLY valid JSON array.`;
-
-      try {
-        const items = await callGeminiApiWithFallback(prompt, geminiKey, 0.75);
-        if (Array.isArray(items)) {
-          for (const item of items) {
-            const w = String(item.word || '').trim().toLowerCase();
-            if (w && !seen.has(w)) {
-              seen.add(w);
-              collected.push(item);
-              updateLiveWordProgress(item, collected.length, 100, 'Bù đắp ' + topupAttempt, topicVi);
-              await new Promise(r => setTimeout(r, 40));
-              if (collected.length >= 100) break;
-            }
-          }
-        }
-      } catch (e) {
-        logToConsole('WARNING', 'TOPUP_ERR', 'Đợt bù đắp ' + topupAttempt + ' lỗi: ' + e.message);
+      } catch (e2) {
+        logToConsole('WARNING', 'PROMPT2_ERR', 'Prompt 2 gặp lỗi: ' + e2.message);
       }
     }
 
     // Khóa cắt chuẩn xác đúng 100 từ
     const finalItems = collected.slice(0, 100);
     if (finalItems.length < 100) {
-      const errMsg = 'Chủ đề #' + stt + ' (' + topicVi + ') sau các đợt bù đắp chỉ đạt ' + finalItems.length + '/100 từ. Vui lòng bấm tạo lại!';
+      const errMsg = 'Chủ đề #' + stt + ' (' + topicVi + ') chỉ đạt ' + finalItems.length + '/100 từ. Vui lòng bấm tạo lại!';
       logToConsole('ERROR', 'INCOMPLETE_BLOCKED', errMsg);
       showLiveRunner('[THẤT BẠI] CHỈ ĐẠT ' + finalItems.length + '/100 TỪ', 100, 5, true);
       alert(errMsg);
@@ -787,7 +748,7 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
 
     showLiveRunner('ĐANG ĐÓNG GÓI 9 CỘT TSV CHO ' + collectedNouns.length + ' TỪ VỰNG...', 90, 4);
     updateGlobalLoadingBar(90, 'Đang đóng gói 9 cột TSV...');
-    const lines = collected.map(item => {
+    const lines = finalItems.map(item => {
       const w = String(item.word || '').trim().toLowerCase();
       const cloze = makeClozeJS(w);
       let ipa = String(item.ipa || '').trim();
@@ -809,7 +770,7 @@ Each object must have exact keys: "word", "ipa" (enclosed in slashes /.../), "de
     const viEl = document.getElementById('liveCurrentWordVi');
     if (viEl) viEl.innerText = 'Chủ đề #' + stt + ': ' + topicVi;
     const defEl = document.getElementById('liveCurrentWordDef');
-    if (defEl) defEl.innerText = 'Đầy đủ 50 từ giao tiếp (A2-B2) và 50 từ chuyên sâu (C1-C2). Dữ liệu đã sẵn sàng để học và nhập Anki.';
+    if (defEl) defEl.innerText = '100 danh từ chuẩn bám sát chủ đề. Dữ liệu đã sẵn sàng để học và nhập Anki.';
 
     // Nếu có cấu hình GitHub Token thì đẩy thẳng file lên Repo và cập nhật status.json
     if (owner && repo && ghToken) {
