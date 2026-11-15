@@ -59,6 +59,9 @@ function updateDashboardUI() {
   if (typeof initAutoScheduleCountdown === 'function') {
     initAutoScheduleCountdown();
   }
+  if (typeof renderIndexDashboardAnkiStats === 'function' && typeof currentAnkiStats !== 'undefined' && currentAnkiStats) {
+    renderIndexDashboardAnkiStats(currentAnkiStats);
+  }
 }
 
 function setStatusFilter(status) {

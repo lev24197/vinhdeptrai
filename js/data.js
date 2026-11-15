@@ -141,6 +141,11 @@ async function loadData(silent = false) {
     if (typeof updateDashboardUI === 'function') updateDashboardUI();
     if (typeof renderGridMap === 'function') renderGridMap();
 
+    // Tự động nạp thống kê Anki thời gian thực nếu trang có bảng điều khiển Anki (như index.html)
+    if (document.getElementById('indexAnkiStreak') && typeof loadAnkiStatsData === 'function') {
+      loadAnkiStatsData();
+    }
+
     // Khởi tạo tự động cho các trang chức năng chuyên biệt
     const activePage = typeof getActivePageFilename === 'function' ? getActivePageFilename() : 'index.html';
     if (activePage === 'studio.html' && typeof initStudioPage === 'function') initStudioPage();

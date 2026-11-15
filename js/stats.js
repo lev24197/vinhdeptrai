@@ -135,6 +135,7 @@ async function loadAnkiStatsData(forceReload = false) {
   if (localOverride) {
     try {
       currentAnkiStats = JSON.parse(localOverride);
+      if (typeof window !== 'undefined') window.currentAnkiStats = currentAnkiStats;
       renderAllStatsCharts(currentAnkiStats);
       if (statusBadge) {
         statusBadge.innerText = `[BỘ NHỚ TRÌNH DUYỆT] CẬP NHẬT: ${currentAnkiStats.updated_at || 'MỚI DÁN'}`;
@@ -181,6 +182,7 @@ async function loadAnkiStatsData(forceReload = false) {
       const res = await (typeof smartFetch === 'function' ? smartFetch('data/anki_stats.json') : fetch('data/anki_stats.json'));
       currentAnkiStats = await res.json();
     }
+    if (typeof window !== 'undefined') window.currentAnkiStats = currentAnkiStats;
     renderAllStatsCharts(currentAnkiStats);
 
     if (statusBadge) {
@@ -245,6 +247,71 @@ function renderSummaryAndToday(data) {
   setTxt('summaryDaysStudied', `${s.days_studied_past_30 || 30} / 30 NGÀY`);
   setTxt('summaryTotalReviews', Number(s.total_reviews_past_30 || 18804).toLocaleString('vi-VN'));
   setTxt('summaryAvgDailyReviews', `${s.avg_reviews_day || 626} THẺ / NGÀY`);
+
+  // Đồng bộ thời gian thực cho Bảng điều khiển Anki trên Trang chủ index.html
+  renderIndexDashboardAnkiStats(data);
+}
+
+// ----------------------------------------------------------------------------
+// 1.1. BẢNG ĐIỀU KHIỂN ÔN TẬP ANKI TRÊN TRANG CHỦ (INDEX.HTML REAL-TIME SYNC)
+// ----------------------------------------------------------------------------
+function renderIndexDashboardAnkiStats(data) {
+  if (!data) return;
+  const t = data.today || {};
+  const s = data.summary || {};
+  const cc = data.card_counts || {};
+  const ret = data.retention || {};
+
+  const setTxt = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.innerText = val !== undefined && val !== null ? val : '--';
+  };
+
+  // 1. Chuỗi học (Streak)
+  const streakVal = s.streak_days !== undefined ? s.streak_days : 38;
+  setTxt('indexAnkiStreak', `${streakVal} NGÀY`);
+  const daysStudied = s.days_studied_past_30 || 30;
+  const streakRate = Math.round((daysStudied / 30) * 100);
+  setTxt('indexAnkiStreakSub', `Học liên tục ${streakRate}% (${daysStudied}/30 ngày)`);
+
+  // 2. Hôm nay đã học
+  const cardsToday = Number(t.cards_studied || 0).toLocaleString('vi-VN');
+  setTxt('indexAnkiTodayCards', `${cardsToday} THẺ`);
+  const timeMin = t.time_minutes ? `${t.time_minutes} phút` : '0 phút';
+  const speed = t.seconds_per_card ? ` (${t.seconds_per_card}s/thẻ)` : '';
+  setTxt('indexAnkiTodaySub', `${timeMin}${speed}`);
+
+  // 3. Độ nhớ Retention (lấy thẻ Review thực tế 30 ngày qua hoặc tuần qua)
+  let retPct = '89.7%';
+  if (ret.last_month && ret.last_month.total && ret.last_month.total !== 'N/A') {
+    retPct = ret.last_month.total;
+  } else if (ret.last_week && ret.last_week.total && ret.last_week.total !== 'N/A') {
+    retPct = ret.last_week.total;
+  } else if (ret.yesterday && ret.yesterday.total && ret.yesterday.total !== 'N/A') {
+    retPct = ret.yesterday.total;
+  }
+  setTxt('indexAnkiRetention', retPct);
+  setTxt('indexAnkiRetentionSub', 'Pass rate thẻ Review (FSRS)');
+
+  // 4. Tổng kho bộ bài
+  const totalCards = cc.total || s.total_deck_cards || 12300;
+  setTxt('indexAnkiTotalCards', `${Number(totalCards).toLocaleString('vi-VN')} THẺ`);
+  const matureCards = Number(cc.mature || 4128).toLocaleString('vi-VN');
+  setTxt('indexAnkiTotalSub', `${matureCards} thẻ Mature (≥21d)`);
+
+  // Badge trạng thái cập nhật trên trang chủ
+  const syncBadge = document.getElementById('indexAnkiSyncBadge');
+  if (syncBadge) {
+    const isOverride = typeof localStorage !== 'undefined' ? localStorage.getItem('anki_stats_override') : null;
+    const updateTime = data.updated_at ? (data.updated_at.split(' ')[1] || data.updated_at) : 'MỚI';
+    if (isOverride) {
+      syncBadge.innerText = `[BỘ NHỚ TRÌNH DUYỆT] ${updateTime}`;
+      syncBadge.className = 'px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200/60 text-xs font-mono-code font-bold uppercase';
+    } else {
+      syncBadge.innerText = `[ĐỒNG BỘ CLOUD] ${data.updated_at || 'MỚI NHẤT'}`;
+      syncBadge.className = 'px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200/80 text-xs font-mono-code font-semibold uppercase';
+    }
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -1754,3 +1821,5 @@ window.showStatsTooltip = showStatsTooltip;
 window.hideStatsTooltip = hideStatsTooltip;
 window.runFsrsSimulationWeb = runFsrsSimulationWeb;
 window.resetFsrsSimulatorWeb = resetFsrsSimulatorWeb;
+window.renderIndexDashboardAnkiStats = renderIndexDashboardAnkiStats;
+

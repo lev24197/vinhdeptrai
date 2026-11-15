@@ -173,12 +173,15 @@
     <section class="rounded-2xl p-6 bg-white border border-slate-200/80 shadow-sm space-y-5">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
         <div>
-          <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center gap-2">
             <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-mono-code font-bold uppercase">
               TIẾN ĐỘ THỰC TẾ TRÊN ĐIỆN THOẠI
             </span>
             <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-xs font-mono-code font-bold uppercase">
               THUẬT TOÁN FSRS
+            </span>
+            <span id="indexAnkiSyncBadge" class="px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/60 text-xs font-mono-code font-semibold">
+              [ĐỒNG BỘ CLOUD] ĐANG NẠP...
             </span>
           </div>
           <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg uppercase tracking-tight mt-1.5">
@@ -194,23 +197,23 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 text-xs font-mono-code">
         <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:shadow-xs transition-all">
           <span class="font-bold text-slate-500 uppercase">CHUỖI HỌC (STREAK):</span>
-          <div class="text-2xl font-display font-extrabold text-emerald-600 mt-1">38 NGÀY</div>
-          <span class="text-xs text-slate-400">Học liên tục 100%</span>
+          <div id="indexAnkiStreak" class="text-2xl font-display font-extrabold text-emerald-600 mt-1">--</div>
+          <span id="indexAnkiStreakSub" class="text-xs text-slate-400">Học liên tục 100%</span>
         </div>
         <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:shadow-xs transition-all">
           <span class="font-bold text-slate-500 uppercase">HÔM NAY ĐÃ HỌC:</span>
-          <div class="text-2xl font-display font-extrabold text-slate-900 mt-1">108 THẺ</div>
-          <span class="text-xs text-slate-400">12.93 phút (7.18s/thẻ)</span>
+          <div id="indexAnkiTodayCards" class="text-2xl font-display font-extrabold text-slate-900 mt-1">--</div>
+          <span id="indexAnkiTodaySub" class="text-xs text-slate-400">--</span>
         </div>
         <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:shadow-xs transition-all">
           <span class="font-bold text-slate-500 uppercase">ĐỘ NHỚ RETENTION:</span>
-          <div class="text-2xl font-display font-extrabold text-blue-600 mt-1">89.7%</div>
-          <span class="text-xs text-slate-400">Pass rate thẻ Review</span>
+          <div id="indexAnkiRetention" class="text-2xl font-display font-extrabold text-blue-600 mt-1">--</div>
+          <span id="indexAnkiRetentionSub" class="text-xs text-slate-400">Pass rate thẻ Review</span>
         </div>
         <div class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:shadow-xs transition-all">
           <span class="font-bold text-slate-500 uppercase">TỔNG KHO BỘ BÀI:</span>
-          <div class="text-2xl font-display font-extrabold text-amber-600 mt-1">12.300 THẺ</div>
-          <span class="text-xs text-slate-400">4.128 thẻ Mature (&ge;21d)</span>
+          <div id="indexAnkiTotalCards" class="text-2xl font-display font-extrabold text-amber-600 mt-1">--</div>
+          <span id="indexAnkiTotalSub" class="text-xs text-slate-400">--</span>
         </div>
       </div>
     </section>
@@ -357,20 +360,20 @@
   <div id="sharedModalsMount"></div>
 
   <!-- MODULAR JAVASCRIPT ARCHITECTURE -->
-  <script src="js/data.js"></script>
-  <script src="js/layout.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/export.js"></script>
-  <script src="js/audio.js"></script>
-  <script src="js/dashboard.js"></script>
-  <script src="js/grid.js"></script>
-  <script src="js/studio.js"></script>
-  <script src="js/corpus.js"></script>
-  <script src="js/audit.js"></script>
-  <script src="js/quiz.js"></script>
-  <script src="js/stats.js"></script>
-  <script src="js/actions.js"></script>
-  <script src="js/curation.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/data.js?v=2.0.3"></script>
+  <script src="js/layout.js?v=2.0.3"></script>
+  <script src="js/settings.js?v=2.0.3"></script>
+  <script src="js/export.js?v=2.0.3"></script>
+  <script src="js/audio.js?v=2.0.3"></script>
+  <script src="js/dashboard.js?v=2.0.3"></script>
+  <script src="js/grid.js?v=2.0.3"></script>
+  <script src="js/studio.js?v=2.0.3"></script>
+  <script src="js/corpus.js?v=2.0.3"></script>
+  <script src="js/audit.js?v=2.0.3"></script>
+  <script src="js/quiz.js?v=2.0.3"></script>
+  <script src="js/stats.js?v=2.0.3"></script>
+  <script src="js/actions.js?v=2.0.3"></script>
+  <script src="js/curation.js?v=2.0.3"></script>
+  <script src="js/app.js?v=2.0.3"></script>
 </body>
 </html>
