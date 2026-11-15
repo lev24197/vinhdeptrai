@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15 21:57:12",
+  "updated_at": "2026-11-15 22:23:01",
   "topics": [
     {
       "stt": 1,
@@ -1219,28 +1219,28 @@
     {
       "stt": 136,
       "topic": "Sân vườn và Ban công (Gardens & Balconies)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/136.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts!"
     },
     {
       "stt": 137,
       "topic": "An ninh nhà ở (Home Security)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/137.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 22:22",
       "last_error": null
     },
     {
       "stt": 138,
       "topic": "Các phòng chức năng (Functional Rooms)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/138.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 22:23",
       "last_error": null
     },
     {

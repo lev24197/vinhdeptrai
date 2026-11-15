@@ -1,5 +1,96 @@
 [
   {
+    "time": "2026-11-15 22:23:01",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 138,
+    "message": "Hoàn thành chủ đề #138 (Các phòng chức năng (Functional Rooms)) với 100 từ."
+  },
+  {
+    "time": "2026-11-15 22:23:01",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 138,
+    "message": "Chủ đề #138: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-15 22:23:01",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 138,
+    "message": "Chủ đề #138 (Các phòng chức năng (Functional Rooms)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-15 22:22:32",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 138,
+    "message": "Chủ đề #138 (Các phòng chức năng (Functional Rooms)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-15 22:22:32",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 137,
+    "message": "Hoàn thành chủ đề #137 (An ninh nhà ở (Home Security)) với 100 từ."
+  },
+  {
+    "time": "2026-11-15 22:22:32",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 137,
+    "message": "Chủ đề #137: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-15 22:22:32",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 137,
+    "message": "Chủ đề #137 (An ninh nhà ở (Home Security)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-15 22:22:07",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 137,
+    "message": "Chủ đề #137 (An ninh nhà ở (Home Security)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-15 22:22:07",
+    "level": "ERROR",
+    "step": "FAIL_TOPIC",
+    "stt": 136,
+    "message": "Lỗi khi tạo chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts!"
+  },
+  {
+    "time": "2026-11-15 22:22:07",
+    "level": "ERROR",
+    "step": "INCOMPLETE",
+    "stt": 136,
+    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Sau 2 prompts chỉ đạt 81/100 từ!"
+  },
+  {
+    "time": "2026-11-15 22:21:44",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 136,
+    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Prompt 1 đạt 79/100 từ (còn thiếu 21). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-15 22:21:23",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 136,
+    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-15 22:21:23",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [136, 137, 138]"
+  },
+  {
     "time": "2026-11-15 21:57:12",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",
