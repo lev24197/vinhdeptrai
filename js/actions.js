@@ -478,7 +478,7 @@ async function generateSingleInBrowser(stt, topicVi) {
   const branch = localStorage.getItem('gh_branch') || 'main';
   const fallbackTok = typeof DEFAULT_GH_TOKEN !== 'undefined' ? DEFAULT_GH_TOKEN : (typeof window !== 'undefined' && window.DEFAULT_GH_TOKEN ? window.DEFAULT_GH_TOKEN : '');
   const ghToken = (typeof getGitHubToken === 'function' ? getGitHubToken() : '') || (localStorage.getItem('gh_token') || '') || fallbackTok;
-  const preferredModel = localStorage.getItem('gemini_model') || 'gemini-2.5-flash';
+  const preferredModel = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
 
   if (!geminiKey) {
     const inputKey = prompt('Để tạo từ vựng trực tiếp trên Web và thấy ngay từng từ sinh ra trong 2 giây, vui lòng dán Gemini API Key (Tier 1) của bạn vào đây:');
