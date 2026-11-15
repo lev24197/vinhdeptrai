@@ -32,10 +32,11 @@ function showLiveRunner(title, pct, stepIndex, isError = false) {
 
 async function triggerWorkflow(batchSize, targetStt) {
   activeWorkflowTargetStt = targetStt || '';
-  const owner = localStorage.getItem('gh_owner');
-  const repo = localStorage.getItem('gh_repo');
+  const owner = (localStorage.getItem('gh_owner') && localStorage.getItem('gh_owner') !== 'letuanvinh') ? localStorage.getItem('gh_owner') : 'lev24197';
+  const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
+  const fallbackTok = typeof DEFAULT_GH_TOKEN !== 'undefined' ? DEFAULT_GH_TOKEN : (typeof window !== 'undefined' && window.DEFAULT_GH_TOKEN ? window.DEFAULT_GH_TOKEN : '');
+  const token = (typeof getGitHubToken === 'function' ? getGitHubToken() : '') || (localStorage.getItem('gh_token') || '') || fallbackTok;
 
   if (!owner || !repo || !token) {
     alert('Vui lòng bấm "Cấu hình API" và điền Owner, Repo, GitHub Token trước!');
@@ -74,9 +75,10 @@ async function triggerWorkflow(batchSize, targetStt) {
 }
 
 async function pollGitHubActionSteps() {
-  const owner = localStorage.getItem('gh_owner');
-  const repo = localStorage.getItem('gh_repo');
-  const token = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
+  const owner = (localStorage.getItem('gh_owner') && localStorage.getItem('gh_owner') !== 'letuanvinh') ? localStorage.getItem('gh_owner') : 'lev24197';
+  const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
+  const fallbackTok = typeof DEFAULT_GH_TOKEN !== 'undefined' ? DEFAULT_GH_TOKEN : (typeof window !== 'undefined' && window.DEFAULT_GH_TOKEN ? window.DEFAULT_GH_TOKEN : '');
+  const token = (typeof getGitHubToken === 'function' ? getGitHubToken() : '') || (localStorage.getItem('gh_token') || '') || fallbackTok;
   const branch = localStorage.getItem('gh_branch') || 'main';
   if (!owner || !repo) return;
 
@@ -471,11 +473,12 @@ async function callGeminiApiWithFallback(prompt, geminiKey, temperature = 0.65) 
 
 async function generateSingleInBrowser(stt, topicVi) {
   let geminiKey = typeof getGeminiApiKey === 'function' ? getGeminiApiKey() : (localStorage.getItem('gemini_api_key') || '');
-  const owner = localStorage.getItem('gh_owner');
-  const repo = localStorage.getItem('gh_repo');
+  const owner = (localStorage.getItem('gh_owner') && localStorage.getItem('gh_owner') !== 'letuanvinh') ? localStorage.getItem('gh_owner') : 'lev24197';
+  const repo = localStorage.getItem('gh_repo') || 'vinhdeptrai';
   const branch = localStorage.getItem('gh_branch') || 'main';
-  const ghToken = typeof getGitHubToken === 'function' ? getGitHubToken() : (localStorage.getItem('gh_token') || '');
-  const preferredModel = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
+  const fallbackTok = typeof DEFAULT_GH_TOKEN !== 'undefined' ? DEFAULT_GH_TOKEN : (typeof window !== 'undefined' && window.DEFAULT_GH_TOKEN ? window.DEFAULT_GH_TOKEN : '');
+  const ghToken = (typeof getGitHubToken === 'function' ? getGitHubToken() : '') || (localStorage.getItem('gh_token') || '') || fallbackTok;
+  const preferredModel = localStorage.getItem('gemini_model') || 'gemini-2.5-flash';
 
   if (!geminiKey) {
     const inputKey = prompt('Để tạo từ vựng trực tiếp trên Web và thấy ngay từng từ sinh ra trong 2 giây, vui lòng dán Gemini API Key (Tier 1) của bạn vào đây:');

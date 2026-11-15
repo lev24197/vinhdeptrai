@@ -91,11 +91,14 @@ def fetch_batch(client, topic_vi: str, count: int, exclude_words: list[str], stt
         f"- 'plural': plural noun form.\n"
         f"- 'example_1' and 'example_2': two distinct, complete example sentences in English demonstrating natural usage (do not number them)."
     )
+    models_to_try = [
+        cached_working_model,
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
-        "gemini-1.5-flash",
-        cached_working_model,
+        "gemini-flash-latest",
+        "gemini-flash-lite-latest",
         "gemini-2.0-flash",
+        "gemini-1.5-flash",
     ]
     models_to_try = [m for m in dict.fromkeys(models_to_try) if m]
     err_history = []
