@@ -1,5 +1,250 @@
 [
   {
+    "time": "2026-11-15 21:57:12",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 134,
+    "message": "Hoàn thành chủ đề #134 (Kiến trúc nội thất (Interior Design)) với 100 từ."
+  },
+  {
+    "time": "2026-11-15 21:57:12",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 134,
+    "message": "Chủ đề #134: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-15 21:57:06",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_3",
+    "stt": 134,
+    "message": "Chủ đề #134: Bù đắp 1 từ còn thiếu (Đang có: 99/100)..."
+  },
+  {
+    "time": "2026-11-15 21:56:55",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_2",
+    "stt": 134,
+    "message": "Chủ đề #134: Bù đắp 31 từ còn thiếu (Đang có: 69/100)..."
+  },
+  {
+    "time": "2026-11-15 21:56:43",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_1",
+    "stt": 134,
+    "message": "Chủ đề #134: Bù đắp 48 từ còn thiếu (Đang có: 52/100)..."
+  },
+  {
+    "time": "2026-11-15 21:56:35",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 134,
+    "message": "Chủ đề #134: Bắt đầu phân diện [Thành phần & Dụng cụ] (25 từ, đã có 52/100)"
+  },
+  {
+    "time": "2026-11-15 21:56:26",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 134,
+    "message": "Chủ đề #134: Bắt đầu phân diện [Chế biến & Thành phẩm] (25 từ, đã có 52/100)"
+  },
+  {
+    "time": "2026-11-15 21:56:16",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 134,
+    "message": "Chủ đề #134: Bắt đầu phân diện [Chuyên sâu & Đặc trưng] (30 từ, đã có 30/100)"
+  },
+  {
+    "time": "2026-11-15 21:56:06",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 134,
+    "message": "Chủ đề #134: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
+  },
+  {
+    "time": "2026-11-15 21:56:06",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 133,
+    "message": "Hoàn thành chủ đề #133 (Vật dụng dọn dẹp (Cleaning Supplies)) với 100 từ."
+  },
+  {
+    "time": "2026-11-15 21:56:06",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 133,
+    "message": "Chủ đề #133: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-15 21:55:59",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_3",
+    "stt": 133,
+    "message": "Chủ đề #133: Bù đắp 11 từ còn thiếu (Đang có: 89/100)..."
+  },
+  {
+    "time": "2026-11-15 21:55:51",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_2",
+    "stt": 133,
+    "message": "Chủ đề #133: Bù đắp 13 từ còn thiếu (Đang có: 87/100)..."
+  },
+  {
+    "time": "2026-11-15 21:55:40",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_1",
+    "stt": 133,
+    "message": "Chủ đề #133: Bù đắp 26 từ còn thiếu (Đang có: 74/100)..."
+  },
+  {
+    "time": "2026-11-15 21:55:31",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 133,
+    "message": "Chủ đề #133: Bắt đầu phân diện [Thành phần & Dụng cụ] (25 từ, đã có 66/100)"
+  },
+  {
+    "time": "2026-11-15 21:55:23",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 133,
+    "message": "Chủ đề #133: Bắt đầu phân diện [Chế biến & Thành phẩm] (25 từ, đã có 41/100)"
+  },
+  {
+    "time": "2026-11-15 21:55:11",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 133,
+    "message": "Chủ đề #133: Bắt đầu phân diện [Chuyên sâu & Đặc trưng] (30 từ, đã có 30/100)"
+  },
+  {
+    "time": "2026-11-15 21:55:02",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 133,
+    "message": "Chủ đề #133: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
+  },
+  {
+    "time": "2026-11-15 21:55:02",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 132,
+    "message": "Hoàn thành chủ đề #132 (Hệ thống điện nước (Plumbing & Electrical)) với 100 từ."
+  },
+  {
+    "time": "2026-11-15 21:55:02",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 132,
+    "message": "Chủ đề #132: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-15 21:54:57",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_10",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 4 từ còn thiếu (Đang có: 96/100)..."
+  },
+  {
+    "time": "2026-11-15 21:54:49",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_9",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 8 từ còn thiếu (Đang có: 92/100)..."
+  },
+  {
+    "time": "2026-11-15 21:54:41",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_8",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
+  },
+  {
+    "time": "2026-11-15 21:54:35",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_7",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
+  },
+  {
+    "time": "2026-11-15 21:54:28",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_6",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
+  },
+  {
+    "time": "2026-11-15 21:54:20",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_5",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 14 từ còn thiếu (Đang có: 86/100)..."
+  },
+  {
+    "time": "2026-11-15 21:54:12",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_4",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 15 từ còn thiếu (Đang có: 85/100)..."
+  },
+  {
+    "time": "2026-11-15 21:54:04",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_3",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 16 từ còn thiếu (Đang có: 84/100)..."
+  },
+  {
+    "time": "2026-11-15 21:53:53",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_2",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 33 từ còn thiếu (Đang có: 67/100)..."
+  },
+  {
+    "time": "2026-11-15 21:53:41",
+    "level": "WARNING",
+    "step": "TOPUP_BATCH_1",
+    "stt": 132,
+    "message": "Chủ đề #132: Bù đắp 36 từ còn thiếu (Đang có: 64/100)..."
+  },
+  {
+    "time": "2026-11-15 21:53:32",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 132,
+    "message": "Chủ đề #132: Bắt đầu phân diện [Thành phần & Dụng cụ] (25 từ, đã có 56/100)"
+  },
+  {
+    "time": "2026-11-15 21:53:22",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 132,
+    "message": "Chủ đề #132: Bắt đầu phân diện [Chế biến & Thành phẩm] (25 từ, đã có 52/100)"
+  },
+  {
+    "time": "2026-11-15 21:53:11",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 132,
+    "message": "Chủ đề #132: Bắt đầu phân diện [Chuyên sâu & Đặc trưng] (30 từ, đã có 29/100)"
+  },
+  {
+    "time": "2026-11-15 21:53:01",
+    "level": "INFO",
+    "step": "FACET_START",
+    "stt": 132,
+    "message": "Chủ đề #132: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
+  },
+  {
+    "time": "2026-11-15 21:53:01",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [132, 133, 134]"
+  },
+  {
     "time": "2026-11-15 21:30:26",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",

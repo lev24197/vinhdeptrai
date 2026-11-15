@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15 21:30:26",
+  "updated_at": "2026-11-15 21:57:12",
   "topics": [
     {
       "stt": 1,
@@ -1183,28 +1183,28 @@
     {
       "stt": 132,
       "topic": "Hệ thống điện nước (Plumbing & Electrical)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/132.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 21:55",
       "last_error": null
     },
     {
       "stt": 133,
       "topic": "Vật dụng dọn dẹp (Cleaning Supplies)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/133.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 21:56",
       "last_error": null
     },
     {
       "stt": 134,
       "topic": "Kiến trúc nội thất (Interior Design)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/134.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-15 21:57",
       "last_error": null
     },
     {
