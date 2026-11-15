@@ -1,5 +1,110 @@
 [
   {
+    "time": "2026-11-16 04:03:49",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 140,
+    "message": "Hoàn thành chủ đề #140 (Chuyển nhà và Đóng gói (Moving & Packing)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 04:03:49",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 140,
+    "message": "Chủ đề #140: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 04:03:49",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 140,
+    "message": "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving & Packing)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 04:03:28",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 140,
+    "message": "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving & Packing)): Prompt 1 đạt 97/100 từ (còn thiếu 3). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 04:03:08",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 140,
+    "message": "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving & Packing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 04:03:08",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 139,
+    "message": "Hoàn thành chủ đề #139 (Vật liệu lát sàn và tường (Flooring & Wall Materials)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 04:03:08",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 139,
+    "message": "Chủ đề #139: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 04:03:08",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 139,
+    "message": "Chủ đề #139 (Vật liệu lát sàn và tường (Flooring & Wall Materials)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 04:02:42",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 139,
+    "message": "Chủ đề #139 (Vật liệu lát sàn và tường (Flooring & Wall Materials)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 04:02:42",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 136,
+    "message": "Hoàn thành chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 04:02:42",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 136,
+    "message": "Chủ đề #136: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 04:02:42",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 136,
+    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 04:02:15",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 136,
+    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Prompt 1 đạt 93/100 từ (còn thiếu 7). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 04:01:55",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 136,
+    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 04:01:55",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [136, 139, 140]"
+  },
+  {
     "time": "2026-11-15 22:23:01",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",

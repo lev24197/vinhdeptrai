@@ -1,0 +1,100 @@
+box	b_x	/bɑks/	[sound:box.mp3]	a container with a flat base and sides, typically square or rectangular	thùng carton	thùng carton	boxes	1. I need a sturdy box for my books. <br>2. Pack the kitchenware in a separate box.
+carton	c____n	/ˈkɑrtən/	[sound:carton.mp3]	a light box or container made of pasteboard or heavy paper	thùng giấy	thùng giấy	cartons	1. Seal the carton with heavy-duty tape. <br>2. We bought a dozen cartons for the move.
+tape	t__e	/teɪp/	[sound:tape.mp3]	a long, narrow strip of adhesive material used for fastening	băng keo	băng keo	tapes	1. Use packing tape to secure the bottom of the box. <br>2. The roll of tape is almost empty.
+bubble	b____e	/ˈbʌbəl/	[sound:bubble.mp3]	a thin film of liquid or plastic containing air, used for cushioning	xốp hơi	xốp hơi	bubbles	1. Wrap the fragile vase in bubble wrap. <br>2. Pop the bubbles to relieve your stress.
+crate	c___e	/kreɪt/	[sound:crate.mp3]	a slatted wooden or plastic case used for transporting goods	thùng gỗ	thùng gỗ	crates	1. The heavy tools were placed in a wooden crate. <br>2. We rented a crate for the fragile equipment.
+dolly	d___y	/ˈdɑli/	[sound:dolly.mp3]	a low platform on wheels used for moving heavy objects	xe đẩy hàng	xe đẩy hàng	dollies	1. Load the washing machine onto the dolly. <br>2. The dolly makes moving heavy furniture much easier.
+blanket	b_____t	/ˈblæŋkɪt/	[sound:blanket.mp3]	a large piece of fabric used to protect furniture from scratches	chăn bảo vệ đồ đạc	chăn bảo vệ đồ đạc	blankets	1. Cover the sofa with a moving blanket. <br>2. Use a thick blanket to prevent dents during transit.
+label	l___l	/ˈleɪbəl/	[sound:label.mp3]	a piece of paper attached to an object to give information about it	nhãn dán	nhãn dán	labels	1. Write the room name on the label. <br>2. Attach a fragile label to the box.
+marker	m____r	/ˈmɑrkər/	[sound:marker.mp3]	a felt-tip pen used for writing on boxes	bút lông	bút lông	markers	1. Use a permanent marker to label your boxes. <br>2. I lost my black marker while packing the kitchen.
+wrap	w__p	/ræp/	[sound:wrap.mp3]	a material used to cover or protect an object	giấy gói	giấy gói	wraps	1. Use plastic wrap to keep the drawers shut. <br>2. The wrap protected the mirror from cracks.
+padding	p_____g	/ˈpædɪŋ/	[sound:padding.mp3]	material used to provide a soft covering or filling	vật liệu đệm	vật liệu đệm	paddings	1. Add extra padding to the corners of the box. <br>2. The padding kept the glassware safe.
+truck	t___k	/trʌk/	[sound:truck.mp3]	a large motor vehicle used for transporting goods	xe tải	xe tải	trucks	1. The moving truck arrived at eight in the morning. <br>2. We filled the entire truck with our belongings.
+van	v_n	/væn/	[sound:van.mp3]	a medium-sized motor vehicle for transporting goods or people	xe tải nhỏ	xe tải nhỏ	vans	1. We rented a van to move the smaller items. <br>2. Pack the van carefully to maximize space.
+strap	s___p	/stræp/	[sound:strap.mp3]	a strip of leather or fabric used to fasten objects together	dây đai	dây đai	straps	1. Secure the piano with a heavy-duty strap. <br>2. Tighten the strap so the load does not shift.
+pallet	p____t	/ˈpælət/	[sound:pallet.mp3]	a flat transport structure that supports goods in a stable fashion	pallet/kệ gỗ	pallet/kệ gỗ	pallets	1. The boxes are stacked on a wooden pallet. <br>2. Use a forklift to move the loaded pallet.
+bin	b_n	/bɪn/	[sound:bin.mp3]	a plastic container used for storage and moving	thùng nhựa	thùng nhựa	bins	1. Store your winter clothes in a plastic bin. <br>2. These bins are stackable and very durable.
+cutter	c____r	/ˈkʌtər/	[sound:cutter.mp3]	a tool used for cutting tape or cardboard	dao rọc giấy	dao rọc giấy	cutters	1. Be careful when using a box cutter. <br>2. The cutter blade needs to be replaced.
+divider	d_____r	/dɪˈvaɪdər/	[sound:divider.mp3]	a partition used to separate items inside a box	vách ngăn	vách ngăn	dividers	1. Use a cardboard divider to keep the glasses separated. <br>2. The divider prevents fragile items from touching.
+corner	c____r	/ˈkɔrnər/	[sound:corner.mp3]	a protective piece placed on the edges of furniture	miếng bảo vệ góc	miếng bảo vệ góc	corners	1. Apply a plastic corner to protect the table edge. <br>2. The corners prevented damage during the move.
+rope	r__e	/roʊp/	[sound:rope.mp3]	a strong, thick cord used for tying down items	dây thừng	dây thừng	ropes	1. Tie the mattress down with a strong rope. <br>2. Check the rope for any signs of wear.
+rack	r__k	/ræk/	[sound:rack.mp3]	a framework for holding items during transport	giá đỡ	giá đỡ	racks	1. The clothing rack is perfect for moving hanging garments. <br>2. Secure the rack inside the truck.
+bag	b_g	/bæɡ/	[sound:bag.mp3]	a flexible container for carrying items	túi	túi	bags	1. Pack your linens into a heavy-duty bag. <br>2. I used a vacuum bag to save space.
+cushion	c_____n	/ˈkʊʃən/	[sound:cushion.mp3]	a soft object used to protect fragile items	đệm lót	đệm lót	cushions	1. Use a soft cushion between the plates. <br>2. The cushion prevents scratches on the surface.
+tote	t__e	/toʊt/	[sound:tote.mp3]	a large, sturdy bag or box for carrying goods	túi đựng đồ	túi đựng đồ	totes	1. I packed my books into a plastic tote. <br>2. The tote has handles for easy carrying.
+cart	c__t	/kɑrt/	[sound:cart.mp3]	a vehicle with wheels used for moving heavy loads	xe kéo	xe kéo	carts	1. The building has a cart for residents to use. <br>2. Load the boxes onto the cart for easy transport.
+cover	c___r	/ˈkʌvər/	[sound:cover.mp3]	a protective layer for furniture or appliances	vỏ bọc	vỏ bọc	covers	1. Put a cover on the refrigerator to prevent scratches. <br>2. The dust cover keeps the furniture clean.
+seal	s__l	/sil/	[sound:seal.mp3]	a device or material used to close a box securely	niêm phong	niêm phong	seals	1. The security seal on the box was broken. <br>2. Ensure the tape creates a tight seal.
+foam	f__m	/foʊm/	[sound:foam.mp3]	a lightweight material used for cushioning fragile items	xốp	xốp	foams	1. Pack the electronics in protective foam. <br>2. The foam absorbs shock during the move.
+sheet	s___t	/ʃit/	[sound:sheet.mp3]	a thin piece of protective material	tấm lót	tấm lót	sheets	1. Place a sheet of cardboard between the frames. <br>2. Use a foam sheet to wrap the mirror.
+clasp	c___p	/klæsp/	[sound:clasp.mp3]	a device used for fastening things together	khóa cài	khóa cài	clasps	1. Secure the container with a sturdy clasp. <br>2. The clasp keeps the lid closed tightly.
+lock	l__k	/lɑk/	[sound:lock.mp3]	a mechanism used to secure a container	ổ khóa	ổ khóa	locks	1. Put a lock on the storage box. <br>2. The lock ensures the contents remain safe.
+ramp	r__p	/ræmp/	[sound:ramp.mp3]	a sloped surface for moving items into a vehicle	cầu dẫn	cầu dẫn	ramps	1. Roll the cart up the ramp into the truck. <br>2. The ramp makes loading heavy items easier.
+handle	h____e	/ˈhændəl/	[sound:handle.mp3]	a part of an object designed to be held or carried	tay cầm	tay cầm	handles	1. The box has handles for easier lifting. <br>2. Make sure to grip the handle firmly.
+sleeve	s____e	/sliv/	[sound:sleeve.mp3]	a protective cover for flat items like records or photos	vỏ bọc bảo vệ	vỏ bọc bảo vệ	sleeves	1. Put the vinyl record in a protective sleeve. <br>2. Use a plastic sleeve for important documents.
+net	n_t	/nɛt/	[sound:net.mp3]	a mesh of rope or string used to secure cargo	lưới chằng hàng	lưới chằng hàng	nets	1. Use a cargo net to keep items in place. <br>2. The net prevents boxes from sliding around.
+anchor	a____r	/ˈæŋkər/	[sound:anchor.mp3]	a device used to secure items to the truck wall	móc neo	móc neo	anchors	1. Attach the rope to the metal anchor. <br>2. The anchors keep the load from shifting.
+dunnage	d_____e	/ˈdʌnɪdʒ/	[sound:dunnage.mp3]	material used to protect goods during transport	vật liệu chèn lót	vật liệu chèn lót	dunnages	1. Use dunnage to fill the empty space in the box. <br>2. Proper dunnage prevents items from breaking.
+insert	i____t	/ˈɪnsɜrt/	[sound:insert.mp3]	a piece of material placed inside a box for structure	miếng chèn	miếng chèn	inserts	1. The foam insert keeps the camera secure. <br>2. Check the insert for proper fit.
+base	b__e	/beɪs/	[sound:base.mp3]	the bottom part of a container	đáy thùng	đáy thùng	bases	1. Reinforce the base of the box with tape. <br>2. The base must be strong enough for the weight.
+lid	l_d	/lɪd/	[sound:lid.mp3]	the top part used to close a box	nắp thùng	nắp thùng	lids	1. Press the lid down until it clicks. <br>2. Tape the lid to keep it closed during transport.
+frame	f___e	/freɪm/	[sound:frame.mp3]	a structure used to support or protect items	khung bảo vệ	khung bảo vệ	frames	1. Use a wooden frame to protect the glass top. <br>2. The metal frame is very durable.
+hanger	h____r	/ˈhæŋər/	[sound:hanger.mp3]	a device for hanging clothes in a wardrobe box	móc treo quần áo	móc treo quần áo	hangers	1. Hang your shirts on the hanger inside the box. <br>2. Pack the hangers carefully to avoid tangles.
+casing	c____g	/ˈkeɪsɪŋ/	[sound:casing.mp3]	a protective outer covering for an object	vỏ bọc ngoài	vỏ bọc ngoài	casings	1. The casing protects the monitor from dust. <br>2. Remove the casing once you arrive.
+skid	s__d	/skɪd/	[sound:skid.mp3]	a low platform used for moving heavy objects	tấm trượt	tấm trượt	skids	1. Load the heavy machinery onto the skid. <br>2. The skid helps slide the item across the floor.
+clamp	c___p	/klæmp/	[sound:clamp.mp3]	a tool used to hold items tightly together	kẹp	kẹp	clamps	1. Use a clamp to secure the table legs. <br>2. The clamp holds the pieces in position.
+bolt	b__t	/boʊlt/	[sound:bolt.mp3]	a metal fastener used to secure furniture parts	bu lông	bu lông	bolts	1. Keep all the bolts in a small bag. <br>2. Tighten the bolt with a wrench.
+nut	n_t	/nʌt/	[sound:nut.mp3]	a small piece of metal used with a bolt	đai ốc	đai ốc	nuts	1. Don't lose the nut for the table leg. <br>2. The nut keeps the bolt in place.
+screw	s___w	/skru/	[sound:screw.mp3]	a metal fastener used for assembly	ốc vít	ốc vít	screws	1. Remove the screws before disassembling the bed. <br>2. Put the screws in a labeled envelope.
+wrench	w____h	/rɛntʃ/	[sound:wrench.mp3]	a tool for tightening bolts and nuts	cờ lê	cờ lê	wrenches	1. Use a wrench to take apart the desk. <br>2. Keep the wrench handy during the move.
+screwdriver	s_________r	/ˈskruˌdraɪvər/	[sound:screwdriver.mp3]	a tool used for turning screws	tua vít	tua vít	screwdrivers	1. I need a screwdriver to remove the handle. <br>2. Pack the screwdriver in your tool kit.
+tape-gun	t______n	/ˈteɪp ɡʌn/	[sound:tape-gun.mp3]	a dispenser for packing tape	dụng cụ dán băng keo	dụng cụ dán băng keo	tape-guns	1. The tape-gun makes sealing boxes faster. <br>2. Load a new roll into the tape-gun.
+labeler	l_____r	/ˈleɪbələr/	[sound:labeler.mp3]	a machine for printing labels	máy in nhãn	máy in nhãn	labelers	1. Use the labeler to create clear tags. <br>2. The labeler is battery-operated.
+baggage	b_____e	/ˈbæɡɪdʒ/	[sound:baggage.mp3]	items packed for moving	hành lý	hành lý	baggages	1. Load your baggage into the van. <br>2. Check your baggage for any loose items.
+cushioning	c________g	/ˈkʊʃənɪŋ/	[sound:cushioning.mp3]	material used to absorb shock	lớp đệm	lớp đệm	cushionings	1. Ensure there is enough cushioning in the box. <br>2. The cushioning protects the delicate china.
+edge	e__e	/ɛdʒ/	[sound:edge.mp3]	a protective guard for furniture edges	miếng bảo vệ cạnh	miếng bảo vệ cạnh	edges	1. Attach an edge guard to the table. <br>2. The edge protects the corners from damage.
+enclosure	e_______e	/ɪnˈkloʊʒər/	[sound:enclosure.mp3]	a container that surrounds an object	vỏ bao bọc	vỏ bao bọc	enclosures	1. The wooden enclosure keeps the sculpture safe. <br>2. The enclosure is custom-made.
+fastener	f______r	/ˈfæsnər/	[sound:fastener.mp3]	a device that holds things together	thiết bị cố định	thiết bị cố định	fasteners	1. Check all the fasteners on the truck. <br>2. The fasteners keep the load secure.
+filler	f____r	/ˈfɪlər/	[sound:filler.mp3]	material used to fill gaps in a box	vật liệu chèn	vật liệu chèn	fillers	1. Use packing peanuts as a filler. <br>2. The filler prevents the contents from shifting.
+glove	g___e	/ɡlʌv/	[sound:glove.mp3]	hand protection for moving heavy items	găng tay	găng tay	gloves	1. Wear gloves to get a better grip. <br>2. The gloves protect your hands from splinters.
+guard	g___d	/ɡɑrd/	[sound:guard.mp3]	a protective cover for items	miếng chắn bảo vệ	miếng chắn bảo vệ	guards	1. The plastic guard prevents scratching. <br>2. Place a guard on the fragile surface.
+hook	h__k	/hʊk/	[sound:hook.mp3]	a curved device for hanging or securing items	móc treo	móc treo	hooks	1. Attach the strap to the metal hook. <br>2. The hook holds the heavy bag in place.
+inventory	i_______y	/ˈɪnvəntɔri/	[sound:inventory.mp3]	a list of items being moved	bản kiểm kê	bản kiểm kê	inventories	1. Keep an inventory of every box. <br>2. The inventory helps track our belongings.
+jack	j__k	/dʒæk/	[sound:jack.mp3]	a tool for lifting heavy furniture	kích nâng	kích nâng	jacks	1. Use the jack to lift the heavy cabinet. <br>2. The jack is essential for heavy furniture.
+key	k_y	/ki/	[sound:key.mp3]	a tool to unlock storage containers	chìa khóa	chìa khóa	keys	1. Keep the key to the storage unit safe. <br>2. I lost the key to the padlock.
+layer	l___r	/ˈleɪər/	[sound:layer.mp3]	a level of material in a box	lớp lót	lớp lót	layers	1. Add a layer of bubble wrap between items. <br>2. The first layer should be the heaviest items.
+lift	l__t	/lɪft/	[sound:lift.mp3]	a device for hoisting heavy objects	thiết bị nâng	thiết bị nâng	lifts	1. The hydraulic lift makes moving easy. <br>2. Use the lift to load the appliance.
+liner	l___r	/ˈlaɪnər/	[sound:liner.mp3]	a protective inner layer for a box	lớp lót trong	lớp lót trong	liners	1. Place a plastic liner in the bin. <br>2. The liner prevents moisture damage.
+load	l__d	/loʊd/	[sound:load.mp3]	the items being carried	hàng hóa	hàng hóa	loads	1. Secure the load before driving. <br>2. The load is too heavy for one person.
+mat	m_t	/mæt/	[sound:mat.mp3]	a floor covering used during moving	thảm trải sàn	thảm trải sàn	mats	1. Put a mat down to protect the floor. <br>2. The mat prevents the furniture from slipping.
+mesh	m__h	/mɛʃ/	[sound:mesh.mp3]	a material used to wrap or bag items	lưới bọc	lưới bọc	meshes	1. The mesh bag is great for small parts. <br>2. Use a mesh cover for the fragile item.
+pad	p_d	/pæd/	[sound:pad.mp3]	a protective piece of foam or fabric	miếng đệm	miếng đệm	pads	1. Place a pad under the lamp. <br>2. The pads protect the furniture finish.
+paper	p___r	/ˈpeɪpər/	[sound:paper.mp3]	packing paper for wrapping dishes	giấy gói	giấy gói	papers	1. Use soft paper to wrap the plates. <br>2. The paper is acid-free for photos.
+peanuts	p_____s	/ˈpinʌts/	[sound:peanuts.mp3]	small foam pieces for filling boxes	hạt xốp chèn hàng	hạt xốp chèn hàng	peanuts	1. Fill the gaps with packing peanuts. <br>2. The peanuts keep the item centered.
+pouch	p___h	/paʊtʃ/	[sound:pouch.mp3]	a small bag for parts or screws	túi nhỏ	túi nhỏ	pouches	1. Put the screws in a plastic pouch. <br>2. The pouch keeps small parts together.
+protector	p_______r	/prəˈtɛktər/	[sound:protector.mp3]	an item used to guard against damage	vật bảo vệ	vật bảo vệ	protectors	1. Use a corner protector on the desk. <br>2. The protector prevents dents.
+reel	r__l	/ril/	[sound:reel.mp3]	a cylinder for holding tape or rope	cuộn	cuộn	reels	1. The tape is on a plastic reel. <br>2. Pull the rope from the reel.
+roll	r__l	/roʊl/	[sound:roll.mp3]	a cylinder of tape or wrap	cuộn	cuộn	rolls	1. I need another roll of bubble wrap. <br>2. The roll of tape is very long.
+sealant	s_____t	/ˈsilənt/	[sound:sealant.mp3]	a substance used to seal gaps	chất niêm phong	chất niêm phong	sealants	1. Use a sealant for the container. <br>2. The sealant keeps out moisture.
+separator	s_______r	/ˈsɛpəreɪtər/	[sound:separator.mp3]	an object to keep things apart	vật ngăn cách	vật ngăn cách	separators	1. The separator prevents breakage. <br>2. Place a separator between the items.
+sheeting	s______g	/ˈʃitɪŋ/	[sound:sheeting.mp3]	protective plastic sheets	tấm nhựa bảo vệ	tấm nhựa bảo vệ	sheetings	1. Use plastic sheeting to cover the sofa. <br>2. The sheeting is waterproof.
+shelf	s___f	/ʃɛlf/	[sound:shelf.mp3]	a surface for holding items	kệ	kệ	shelves	1. Clear the shelf before packing. <br>2. The shelf is full of books.
+shred	s___d	/ʃrɛd/	[sound:shred.mp3]	shredded paper used as filler	giấy vụn chèn hàng	giấy vụn chèn hàng	shreds	1. Use paper shreds for cushioning. <br>2. The shreds are eco-friendly.
+slider	s____r	/ˈslaɪdər/	[sound:slider.mp3]	a device to help slide furniture	miếng trượt	miếng trượt	sliders	1. Put sliders under the couch legs. <br>2. The sliders make moving easy.
+space	s___e	/speɪs/	[sound:space.mp3]	the area inside a box	không gian	không gian	spaces	1. Maximize the space in the box. <br>2. Fill the extra space with paper.
+stack	s___k	/stæk/	[sound:stack.mp3]	a pile of boxes	chồng/đống	chồng/đống	stacks	1. The stack of boxes is too high. <br>2. Organize the stack by room.
+stand	s___d	/stænd/	[sound:stand.mp3]	a support for an object	giá đỡ	giá đỡ	stands	1. Pack the stand separately. <br>2. The stand is made of metal.
+storage	s_____e	/ˈstɔrɪdʒ/	[sound:storage.mp3]	a place for keeping things	kho lưu trữ	kho lưu trữ	storages	1. The storage unit is climate-controlled. <br>2. We need more storage space.
+support	s_____t	/səˈpɔrt/	[sound:support.mp3]	a beam or brace for stability	thanh chống	thanh chống	supports	1. Add a support under the heavy item. <br>2. The support keeps the box stable.
+tag	t_g	/tæɡ/	[sound:tag.mp3]	a label for identification	thẻ ghi chú	thẻ ghi chú	tags	1. Attach a tag to every bag. <br>2. The tag has the destination address.
+tarp	t__p	/tɑrp/	[sound:tarp.mp3]	a waterproof cover	bạt che	bạt che	tarps	1. Cover the items with a tarp. <br>2. The tarp protects against rain.
+tool	t__l	/tul/	[sound:tool.mp3]	an instrument for work	dụng cụ	dụng cụ	tools	1. Pack your tools in a separate box. <br>2. The tool kit is essential.
+tray	t__y	/treɪ/	[sound:tray.mp3]	a shallow container	khay	khay	trays	1. Use a tray for small parts. <br>2. The tray keeps items organized.
+tub	t_b	/tʌb/	[sound:tub.mp3]	a large plastic container	thùng nhựa lớn	thùng nhựa lớn	tubs	1. Use a tub for the kitchen items. <br>2. The tub has a locking lid.
+unit	u__t	/ˈjunɪt/	[sound:unit.mp3]	a storage space	đơn vị lưu trữ	đơn vị lưu trữ	units	1. The storage unit is very clean. <br>2. We rented a small unit.
+wall	w__l	/wɔl/	[sound:wall.mp3]	the side of a container	thành thùng	thành thùng	walls	1. The walls of the box are thick. <br>2. Check the wall for any holes.
+wedge	w___e	/wɛdʒ/	[sound:wedge.mp3]	a piece to keep things still	miếng chèn	miếng chèn	wedges	1. Use a wedge to stop the item from moving. <br>2. The wedge is made of foam.
+weight	w____t	/weɪt/	[sound:weight.mp3]	the heaviness of an object	trọng lượng	trọng lượng	weights	1. Check the weight of the box. <br>2. The weight is distributed evenly.
+appliance	a_______e	/əˈplaɪ.əns/	[sound:appliance.mp3]	A machine or device designed to perform a specific task, often found in a home.	thiết bị gia dụng	thiết bị gia dụng	appliances	1. We need a special dolly to move the heavy appliance. <br>2. Each appliance was wrapped in thick plastic to prevent scratching.
+wardrobe	w______e	/ˈwɔːr.droʊb/	[sound:wardrobe.mp3]	A tall cabinet or portable box for hanging clothes during a move.	tủ quần áo di động	tủ quần áo di động	wardrobes	1. We bought a cardboard wardrobe to keep our suits wrinkle-free. <br>2. Hang your coats inside the wardrobe box before sealing it.
+mattress	m______s	/ˈmætrəs/	[sound:mattress.mp3]	A large rectangular pad for sleeping that requires a protective cover.	đệm	đệm	mattresses	1. Place the mattress in a heavy-duty plastic bag to keep it clean. <br>2. It is difficult to carry a mattress without a proper handle.

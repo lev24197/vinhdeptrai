@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15 22:23:01",
+  "updated_at": "2026-11-16 04:03:49",
   "topics": [
     {
       "stt": 1,
@@ -1219,11 +1219,11 @@
     {
       "stt": 136,
       "topic": "Sân vườn và Ban công (Gardens & Balconies)",
-      "status": "failed",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/136.txt",
-      "generated_at": null,
-      "last_error": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts!"
+      "generated_at": "2026-11-16 04:02",
+      "last_error": null
     },
     {
       "stt": 137,
@@ -1246,19 +1246,19 @@
     {
       "stt": 139,
       "topic": "Vật liệu lát sàn và tường (Flooring & Wall Materials)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/139.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 04:03",
       "last_error": null
     },
     {
       "stt": 140,
       "topic": "Chuyển nhà và Đóng gói (Moving & Packing)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/140.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 04:03",
       "last_error": null
     },
     {
