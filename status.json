@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 01:11:45",
+    "updated_at":  "2026-11-17 01:33:48",
     "topics":  [
                    {
                        "stt":  1,
@@ -1579,47 +1579,47 @@
                    {
                        "stt":  176,
                        "topic":  "Kế toán kiểm toán (Auditing \u0026 Accounting)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/176.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:22",
+                       "last_error":  null
                    },
                    {
                        "stt":  177,
                        "topic":  "Quản lý rủi ro (Risk Management)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/177.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 49/100 từ cho chủ đề #177"
+                       "generated_at":  "2026-11-17 01:23",
+                       "last_error":  null
                    },
                    {
                        "stt":  178,
                        "topic":  "Khởi tạo doanh nghiệp (Business Formation)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/178.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:24",
+                       "last_error":  null
                    },
                    {
                        "stt":  179,
                        "topic":  "Chiến lược giá (Pricing Strategy)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/179.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:24",
+                       "last_error":  null
                    },
                    {
                        "stt":  180,
                        "topic":  "Phân tích dữ liệu kinh doanh (Business Data Analysis)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/180.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:26",
+                       "last_error":  null
                    },
                    {
                        "stt":  181,
@@ -1660,11 +1660,11 @@
                    {
                        "stt":  185,
                        "topic":  "Các bộ phận xe hơi (Car Parts)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/185.txt",
-                       "generated_at":  null,
-                       "last_error":  "Invalid JSON primitive: ."
+                       "generated_at":  "2026-11-17 01:26",
+                       "last_error":  null
                    },
                    {
                        "stt":  186,
@@ -1696,11 +1696,11 @@
                    {
                        "stt":  189,
                        "topic":  "Tai nạn và Bảo hiểm (Accidents \u0026 Insurance)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/189.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:27",
+                       "last_error":  null
                    },
                    {
                        "stt":  190,
@@ -1714,20 +1714,20 @@
                    {
                        "stt":  191,
                        "topic":  "Du lịch sinh thái (Ecotourism)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/191.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:27",
+                       "last_error":  null
                    },
                    {
                        "stt":  192,
                        "topic":  "Thủ tục hải quan (Customs Procedures)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/192.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 99/100 từ cho chủ đề #192"
+                       "generated_at":  "2026-11-17 01:29",
+                       "last_error":  null
                    },
                    {
                        "stt":  193,
@@ -1777,20 +1777,20 @@
                    {
                        "stt":  198,
                        "topic":  "Đại lý du lịch (Travel Agencies)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/198.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 38/100 từ cho chủ đề #198"
+                       "generated_at":  "2026-11-17 01:29",
+                       "last_error":  null
                    },
                    {
                        "stt":  199,
                        "topic":  "Đồ dùng sinh tồn (Survival Gear)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/199.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:30",
+                       "last_error":  null
                    },
                    {
                        "stt":  200,
@@ -1822,38 +1822,38 @@
                    {
                        "stt":  203,
                        "topic":  "Dụng cụ vẽ tranh (Painting Materials)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/203.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 11/100 từ cho chủ đề #203"
+                       "generated_at":  "2026-11-17 01:30",
+                       "last_error":  null
                    },
                    {
                        "stt":  204,
                        "topic":  "Đồ họa máy tính (Computer Graphics)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/204.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:32",
+                       "last_error":  null
                    },
                    {
                        "stt":  205,
                        "topic":  "Truyền hình thực tế (Reality TV)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/205.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 63/100 từ cho chủ đề #205"
+                       "generated_at":  "2026-11-17 01:32",
+                       "last_error":  null
                    },
                    {
                        "stt":  206,
                        "topic":  "Kịch bản và Sản xuất phim (Screenwriting \u0026 Production)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/206.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:33",
+                       "last_error":  null
                    },
                    {
                        "stt":  207,

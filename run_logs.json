@@ -1,5 +1,229 @@
 ﻿[
     {
+        "time":  "2026-11-17 01:33:48",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  206,
+        "message":  "Hoàn thành chủ đề #206: Kịch bản và Sản xuất phim (Screenwriting \u0026 Production) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 01:32:26",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  207,
+        "message":  "Khởi chạy luồng xử lý chủ đề #207: Thể loại âm nhạc (Music Genres)"
+    },
+    {
+        "time":  "2026-11-17 01:32:26",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  205,
+        "message":  "Hoàn thành chủ đề #205: Truyền hình thực tế (Reality TV) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 01:32:16",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  206,
+        "message":  "Khởi chạy luồng xử lý chủ đề #206: Kịch bản và Sản xuất phim (Screenwriting \u0026 Production)"
+    },
+    {
+        "time":  "2026-11-17 01:32:16",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  204,
+        "message":  "Hoàn thành chủ đề #204: Đồ họa máy tính (Computer Graphics) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 01:30:59",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  205,
+        "message":  "Khởi chạy luồng xử lý chủ đề #205: Truyền hình thực tế (Reality TV)"
+    },
+    {
+        "time":  "2026-11-17 01:30:59",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  203,
+        "message":  "Hoàn thành chủ đề #203: Dụng cụ vẽ tranh (Painting Materials) (100 từ, 93s)"
+    },
+    {
+        "time":  "2026-11-17 01:30:46",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  204,
+        "message":  "Khởi chạy luồng xử lý chủ đề #204: Đồ họa máy tính (Computer Graphics)"
+    },
+    {
+        "time":  "2026-11-17 01:30:46",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  199,
+        "message":  "Hoàn thành chủ đề #199: Đồ dùng sinh tồn (Survival Gear) (100 từ, 93s)"
+    },
+    {
+        "time":  "2026-11-17 01:29:27",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  203,
+        "message":  "Khởi chạy luồng xử lý chủ đề #203: Dụng cụ vẽ tranh (Painting Materials)"
+    },
+    {
+        "time":  "2026-11-17 01:29:27",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  198,
+        "message":  "Hoàn thành chủ đề #198: Đại lý du lịch (Travel Agencies) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 01:29:14",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  199,
+        "message":  "Khởi chạy luồng xử lý chủ đề #199: Đồ dùng sinh tồn (Survival Gear)"
+    },
+    {
+        "time":  "2026-11-17 01:29:14",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  192,
+        "message":  "Hoàn thành chủ đề #192: Thủ tục hải quan (Customs Procedures) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 01:27:54",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  198,
+        "message":  "Khởi chạy luồng xử lý chủ đề #198: Đại lý du lịch (Travel Agencies)"
+    },
+    {
+        "time":  "2026-11-17 01:27:54",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  191,
+        "message":  "Hoàn thành chủ đề #191: Du lịch sinh thái (Ecotourism) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 01:27:41",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  192,
+        "message":  "Khởi chạy luồng xử lý chủ đề #192: Thủ tục hải quan (Customs Procedures)"
+    },
+    {
+        "time":  "2026-11-17 01:27:41",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  189,
+        "message":  "Hoàn thành chủ đề #189: Tai nạn và Bảo hiểm (Accidents \u0026 Insurance) (100 từ, 99s)"
+    },
+    {
+        "time":  "2026-11-17 01:26:19",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  191,
+        "message":  "Khởi chạy luồng xử lý chủ đề #191: Du lịch sinh thái (Ecotourism)"
+    },
+    {
+        "time":  "2026-11-17 01:26:19",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  185,
+        "message":  "Hoàn thành chủ đề #185: Các bộ phận xe hơi (Car Parts) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 01:26:03",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  189,
+        "message":  "Khởi chạy luồng xử lý chủ đề #189: Tai nạn và Bảo hiểm (Accidents \u0026 Insurance)"
+    },
+    {
+        "time":  "2026-11-17 01:26:03",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  180,
+        "message":  "Hoàn thành chủ đề #180: Phân tích dữ liệu kinh doanh (Business Data Analysis) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 01:24:49",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  185,
+        "message":  "Khởi chạy luồng xử lý chủ đề #185: Các bộ phận xe hơi (Car Parts)"
+    },
+    {
+        "time":  "2026-11-17 01:24:49",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  179,
+        "message":  "Hoàn thành chủ đề #179: Chiến lược giá (Pricing Strategy) (100 từ, 101s)"
+    },
+    {
+        "time":  "2026-11-17 01:24:27",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  180,
+        "message":  "Khởi chạy luồng xử lý chủ đề #180: Phân tích dữ liệu kinh doanh (Business Data Analysis)"
+    },
+    {
+        "time":  "2026-11-17 01:24:27",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  178,
+        "message":  "Hoàn thành chủ đề #178: Khởi tạo doanh nghiệp (Business Formation) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 01:23:08",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  179,
+        "message":  "Khởi chạy luồng xử lý chủ đề #179: Chiến lược giá (Pricing Strategy)"
+    },
+    {
+        "time":  "2026-11-17 01:23:08",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  177,
+        "message":  "Hoàn thành chủ đề #177: Quản lý rủi ro (Risk Management) (100 từ, 101s)"
+    },
+    {
+        "time":  "2026-11-17 01:22:52",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  178,
+        "message":  "Khởi chạy luồng xử lý chủ đề #178: Khởi tạo doanh nghiệp (Business Formation)"
+    },
+    {
+        "time":  "2026-11-17 01:22:52",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  176,
+        "message":  "Hoàn thành chủ đề #176: Kế toán kiểm toán (Auditing \u0026 Accounting) (100 từ, 85s)"
+    },
+    {
+        "time":  "2026-11-17 01:21:27",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  177,
+        "message":  "Khởi chạy luồng xử lý chủ đề #177: Quản lý rủi ro (Risk Management)"
+    },
+    {
+        "time":  "2026-11-17 01:21:26",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  176,
+        "message":  "Khởi chạy luồng xử lý chủ đề #176: Kế toán kiểm toán (Auditing \u0026 Accounting)"
+    },
+    {
+        "time":  "2026-11-17 01:15:59",
+        "level":  "INFO",
+        "step":  "START_TOPIC",
+        "stt":  176,
+        "message":  "Bắt đầu Pipeline Lai cho chủ đề #176 - Kế toán kiểm toán (Auditing \u0026 Accounting)"
+    },
+    {
         "time":  "2026-11-17 01:11:45",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1389,13 +1613,6 @@
         "time":  "2026-11-15 21:54:35",
         "level":  "WARNING",
         "step":  "TOPUP_BATCH_7",
-        "stt":  132,
-        "message":  "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:54:28",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_6",
         "stt":  132,
         "message":  "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
     }
