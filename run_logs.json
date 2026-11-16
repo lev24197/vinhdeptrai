@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 04:23:08",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  455,
+        "message":  "Hoàn thành chủ đề #455: Gửi lời cảm ơn (Expressing Gratitude) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 04:22:04",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  456,
+        "message":  "Khởi chạy luồng xử lý chủ đề #456: Xin lỗi chân thành (Sincere Apologies)"
+    },
+    {
+        "time":  "2026-11-17 04:22:04",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  454,
+        "message":  "Hoàn thành chủ đề #454: Phàn nàn và Khiếu nại (Complaints) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 04:21:35",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  455,
+        "message":  "Khởi chạy luồng xử lý chủ đề #455: Gửi lời cảm ơn (Expressing Gratitude)"
+    },
+    {
+        "time":  "2026-11-17 04:21:35",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  453,
+        "message":  "Hoàn thành chủ đề #453: Đưa ra lời khuyên (Giving Advice) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 04:20:31",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  454,
+        "message":  "Khởi chạy luồng xử lý chủ đề #454: Phàn nàn và Khiếu nại (Complaints)"
+    },
+    {
+        "time":  "2026-11-17 04:20:31",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  452,
+        "message":  "Hoàn thành chủ đề #452: Bày tỏ sự từ chối (Refusal \u0026 Rejection) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 04:20:03",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  453,
+        "message":  "Khởi chạy luồng xử lý chủ đề #453: Đưa ra lời khuyên (Giving Advice)"
+    },
+    {
+        "time":  "2026-11-17 04:20:03",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  451,
+        "message":  "Hoàn thành chủ đề #451: Thể hiện sự đồng tình (Expressing Agreement) (99 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 04:19:02",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  452,
+        "message":  "Khởi chạy luồng xử lý chủ đề #452: Bày tỏ sự từ chối (Refusal \u0026 Rejection)"
+    },
+    {
+        "time":  "2026-11-17 04:19:02",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  450,
+        "message":  "Hoàn thành chủ đề #450: Chữ ký số (Digital Signatures) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 04:18:30",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  451,
+        "message":  "Khởi chạy luồng xử lý chủ đề #451: Thể hiện sự đồng tình (Expressing Agreement)"
+    },
+    {
+        "time":  "2026-11-17 04:18:30",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  449,
+        "message":  "Hoàn thành chủ đề #449: Sao lưu dữ liệu (Data Backup) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 04:17:38",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  450,
+        "message":  "Khởi chạy luồng xử lý chủ đề #450: Chữ ký số (Digital Signatures)"
+    },
+    {
+        "time":  "2026-11-17 04:17:38",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  448,
+        "message":  "Hoàn thành chủ đề #448: Phần mềm diệt virus (Antivirus Software) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 04:17:04",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  449,
+        "message":  "Khởi chạy luồng xử lý chủ đề #449: Sao lưu dữ liệu (Data Backup)"
+    },
+    {
+        "time":  "2026-11-17 04:17:04",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  447,
+        "message":  "Hoàn thành chủ đề #447: Bảo mật mật khẩu (Password Security) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 04:16:14",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  448,
+        "message":  "Khởi chạy luồng xử lý chủ đề #448: Phần mềm diệt virus (Antivirus Software)"
+    },
+    {
+        "time":  "2026-11-17 04:16:14",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  446,
+        "message":  "Hoàn thành chủ đề #446: Chỉnh sửa video (Video Editing) (100 từ, 93s)"
+    },
+    {
+        "time":  "2026-11-17 04:15:37",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  447,
+        "message":  "Khởi chạy luồng xử lý chủ đề #447: Bảo mật mật khẩu (Password Security)"
+    },
+    {
+        "time":  "2026-11-17 04:15:37",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  445,
+        "message":  "Hoàn thành chủ đề #445: Thiết kế đồ họa (Graphic Design Tools) (100 từ, 87s)"
+    },
+    {
+        "time":  "2026-11-17 04:14:42",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  446,
+        "message":  "Khởi chạy luồng xử lý chủ đề #446: Chỉnh sửa video (Video Editing)"
+    },
+    {
+        "time":  "2026-11-17 04:14:41",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  444,
+        "message":  "Hoàn thành chủ đề #444: Lưu trữ đám mây (Cloud Storage) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 04:14:10",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  445,
+        "message":  "Khởi chạy luồng xử lý chủ đề #445: Thiết kế đồ họa (Graphic Design Tools)"
+    },
+    {
+        "time":  "2026-11-17 04:14:10",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  443,
+        "message":  "Hoàn thành chủ đề #443: Nền tảng họp trực tuyến (Video Conferencing) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 04:13:15",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  444,
+        "message":  "Khởi chạy luồng xử lý chủ đề #444: Lưu trữ đám mây (Cloud Storage)"
+    },
+    {
+        "time":  "2026-11-17 04:13:15",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  442,
+        "message":  "Hoàn thành chủ đề #442: Công cụ quản lý dự án (Project Management Tools) (100 từ, 87s)"
+    },
+    {
+        "time":  "2026-11-17 04:12:41",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  443,
+        "message":  "Khởi chạy luồng xử lý chủ đề #443: Nền tảng họp trực tuyến (Video Conferencing)"
+    },
+    {
+        "time":  "2026-11-17 04:12:41",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  441,
+        "message":  "Hoàn thành chủ đề #441: Phần mềm văn phòng (Office Suites) (100 từ, 88s)"
+    },
+    {
+        "time":  "2026-11-17 04:11:48",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  442,
+        "message":  "Khởi chạy luồng xử lý chủ đề #442: Công cụ quản lý dự án (Project Management Tools)"
+    },
+    {
         "time":  "2026-11-17 04:11:43",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "SPAWN_WORKER",
         "stt":  307,
         "message":  "Khởi chạy luồng xử lý chủ đề #307: Núi lửa và Động đất (Volcanoes \u0026 Earthquakes)"
-    },
-    {
-        "time":  "2026-11-17 02:29:06",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  305,
-        "message":  "Hoàn thành chủ đề #305: Khoáng sản và Kim loại quý (Minerals \u0026 Precious Metals) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:28:32",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  306,
-        "message":  "Khởi chạy luồng xử lý chủ đề #306: Lớp vỏ trái đất (Earth\u0027s Crust)"
-    },
-    {
-        "time":  "2026-11-17 02:28:32",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  304,
-        "message":  "Hoàn thành chủ đề #304: Địa chất học (Geology) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:27:34",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  305,
-        "message":  "Khởi chạy luồng xử lý chủ đề #305: Khoáng sản và Kim loại quý (Minerals \u0026 Precious Metals)"
-    },
-    {
-        "time":  "2026-11-17 02:27:34",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  303,
-        "message":  "Hoàn thành chủ đề #303: Hố đen và Tinh vân (Black Holes \u0026 Nebulas) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 02:26:59",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  304,
-        "message":  "Khởi chạy luồng xử lý chủ đề #304: Địa chất học (Geology)"
-    },
-    {
-        "time":  "2026-11-17 02:26:59",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  302,
-        "message":  "Hoàn thành chủ đề #302: Các chòm sao (Constellations) (100 từ, 83s)"
-    },
-    {
-        "time":  "2026-11-17 02:26:04",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  303,
-        "message":  "Khởi chạy luồng xử lý chủ đề #303: Hố đen và Tinh vân (Black Holes \u0026 Nebulas)"
-    },
-    {
-        "time":  "2026-11-17 02:26:04",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  301,
-        "message":  "Hoàn thành chủ đề #301: Hệ mặt trời (The Solar System) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:25:36",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  302,
-        "message":  "Khởi chạy luồng xử lý chủ đề #302: Các chòm sao (Constellations)"
-    },
-    {
-        "time":  "2026-11-17 02:25:36",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  300,
-        "message":  "Hoàn thành chủ đề #300: Toán tài chính (Financial Mathematics) (99 từ, 90s)"
-    },
-    {
-        "time":  "2026-11-17 02:24:32",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  301,
-        "message":  "Khởi chạy luồng xử lý chủ đề #301: Hệ mặt trời (The Solar System)"
-    },
-    {
-        "time":  "2026-11-17 02:24:32",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  299,
-        "message":  "Hoàn thành chủ đề #299: Mã hóa và Mật mã (Cryptography) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 02:24:06",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  300,
-        "message":  "Khởi chạy luồng xử lý chủ đề #300: Toán tài chính (Financial Mathematics)"
-    },
-    {
-        "time":  "2026-11-17 02:24:06",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  298,
-        "message":  "Hoàn thành chủ đề #298: Lập luận logic (Logical Reasoning) (99 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:23:02",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  299,
-        "message":  "Khởi chạy luồng xử lý chủ đề #299: Mã hóa và Mật mã (Cryptography)"
-    },
-    {
-        "time":  "2026-11-17 02:23:02",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  297,
-        "message":  "Hoàn thành chủ đề #297: Trò chơi tư duy (Mind Games \u0026 Puzzles) (100 từ, 98s)"
-    },
-    {
-        "time":  "2026-11-17 02:22:34",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  298,
-        "message":  "Khởi chạy luồng xử lý chủ đề #298: Lập luận logic (Logical Reasoning)"
-    },
-    {
-        "time":  "2026-11-17 02:22:34",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  296,
-        "message":  "Hoàn thành chủ đề #296: Biểu đồ và Đồ thị (Charts \u0026 Graphs) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 02:21:24",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  297,
-        "message":  "Khởi chạy luồng xử lý chủ đề #297: Trò chơi tư duy (Mind Games \u0026 Puzzles)"
-    },
-    {
-        "time":  "2026-11-17 02:21:24",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  295,
-        "message":  "Hoàn thành chủ đề #295: Các phép tính cơ bản (Basic Arithmetic) (99 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 02:21:04",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  296,
-        "message":  "Khởi chạy luồng xử lý chủ đề #296: Biểu đồ và Đồ thị (Charts \u0026 Graphs)"
-    },
-    {
-        "time":  "2026-11-17 02:21:04",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  294,
-        "message":  "Hoàn thành chủ đề #294: Đơn vị tiền tệ và Quy đổi (Currencies \u0026 Conversion) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:19:48",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  295,
-        "message":  "Khởi chạy luồng xử lý chủ đề #295: Các phép tính cơ bản (Basic Arithmetic)"
-    },
-    {
-        "time":  "2026-11-17 02:19:48",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  293,
-        "message":  "Hoàn thành chủ đề #293: Xác suất thống kê (Probability \u0026 Statistics) (100 từ, 101s)"
-    },
-    {
-        "time":  "2026-11-17 02:19:32",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  294,
-        "message":  "Khởi chạy luồng xử lý chủ đề #294: Đơn vị tiền tệ và Quy đổi (Currencies \u0026 Conversion)"
-    },
-    {
-        "time":  "2026-11-17 02:19:32",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  292,
-        "message":  "Hoàn thành chủ đề #292: Đại số và Phương trình (Algebra \u0026 Equations) (100 từ, 90s)"
-    },
-    {
-        "time":  "2026-11-17 02:18:07",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  293,
-        "message":  "Khởi chạy luồng xử lý chủ đề #293: Xác suất thống kê (Probability \u0026 Statistics)"
-    },
-    {
-        "time":  "2026-11-17 02:18:06",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  291,
-        "message":  "Hoàn thành chủ đề #291: Hình học và Không gian (Geometry \u0026 Space) (100 từ, 102s)"
-    },
-    {
-        "time":  "2026-11-17 02:18:02",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  292,
-        "message":  "Khởi chạy luồng xử lý chủ đề #292: Đại số và Phương trình (Algebra \u0026 Equations)"
     }
 ]
