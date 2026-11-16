@@ -563,18 +563,15 @@ let cachedWorkingModel = null;
 
 // Hàm gọi Gemini API đa model với cơ chế Fallback tự động & bóc tách JSON an toàn
 async function callGeminiApiWithFallback(prompt, geminiKey, temperature = 0.65) {
-  const preferredModel = localStorage.getItem('gemini_model') || 'gemini-3.1-flash-lite';
+  const preferredModel = localStorage.getItem('gemini_model') || 'gemini-2.5-flash-lite';
   const candidateModels = [
     cachedWorkingModel,
     preferredModel,
-    'gemini-3.1-flash-lite',
-    'gemini-3.1-flash-lite-preview',
-    'gemini-3-flash',
-    'gemini-3-flash-preview',
-    'gemini-2.5-flash',
     'gemini-2.5-flash-lite',
-    'gemini-2.0-flash',
-    'gemini-1.5-flash'
+    'gemini-1.5-flash',
+    'gemini-flash-lite-latest',
+    'gemini-3.1-flash-lite',
+    'gemini-2.0-flash'
   ].filter(Boolean);
 
   const models = [...new Set(candidateModels)];

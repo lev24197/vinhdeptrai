@@ -403,10 +403,9 @@ function getSharedCommonModalsHTML() {
           <input id="geminiKeyInput" type="password" placeholder="Gemini API Key..." class="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white font-mono-code mb-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500" />
           <label class="block font-mono-code font-bold text-slate-800 mb-1.5 uppercase">Mô Hình Gemini AI:</label>
           <select id="geminiModelSelect" class="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500">
-            <option value="gemini-3.1-flash-lite">Gemini 3.1 Flash Lite (Nhanh nhất - Khuyên dùng)</option>
-            <option value="gemini-3-flash">Gemini 3 Flash (Cân bằng Tốc độ & Độ sâu)</option>
-            <option value="gemini-2.5-flash">Gemini 2.5 Flash (Ổn định cao)</option>
-            <option value="gemini-2.5-flash-lite">Gemini 2.5 Flash Lite (Siêu nhẹ)</option>
+            <option value="gemini-2.5-flash-lite" selected>Gemini 2.5 Flash Lite (Siêu rẻ / Tiết kiệm nhất)</option>
+            <option value="gemini-1.5-flash">Gemini 1.5 Flash (Tiết kiệm token)</option>
+            <option value="gemini-3.1-flash-lite">Gemini 3.1 Flash Lite</option>
           </select>
         </div>
 

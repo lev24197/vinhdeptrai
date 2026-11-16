@@ -73,17 +73,15 @@ cached_working_model = None
 
 def fetch_nouns_from_gemini(client, prompt: str, stt: int, step_label: str, temperature: float = 0.65) -> list[NounItem]:
     global cached_working_model
+    # CHI DUNG MODEL GIA SIEU RE HOAC FREE TIER ($0.30 - $0.40/1M tokens)
+    # TUYET DOI LOAI BO CAC MODEL DAT TIEN (NHU GEMINI-2.5-FLASH $2.50/1M)
     models_to_try = [
         cached_working_model,
-        "gemini-3.1-flash-lite",
-        "gemini-3.1-flash-lite-preview",
-        "gemini-3-flash-preview",
-        "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
-        "gemini-flash-latest",
-        "gemini-flash-lite-latest",
-        "gemini-2.0-flash",
         "gemini-1.5-flash",
+        "gemini-flash-lite-latest",
+        "gemini-3.1-flash-lite",
+        "gemini-2.0-flash",
     ]
     models_to_try = [m for m in dict.fromkeys(models_to_try) if m]
     err_history = []
