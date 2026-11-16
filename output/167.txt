@@ -1,0 +1,100 @@
+agenda	a____a	/əˈdʒɛn.də/	[sound:agenda.mp3]	A list of items to be discussed at a formal meeting	chương trình nghị sự	chương trình nghị sự	agendas	1. The chairman distributed the agenda before the meeting started. <br>2. Please add this item to the agenda for our next discussion.
+projector	p_______r	/prəˈdʒɛk.tɚ/	[sound:projector.mp3]	A device used to project an image onto a surface	máy chiếu	máy chiếu	projectors	1. The projector is not working properly today. <br>2. Connect your laptop to the projector to start the presentation.
+microphone	m________e	/ˈmaɪ.kroʊ.foʊn/	[sound:microphone.mp3]	An instrument for converting sound waves into electrical energy	micrô	micrô	microphones	1. Please speak closer to the microphone so everyone can hear. <br>2. The microphone battery died during the speech.
+whiteboard	w________d	/ˈwaɪt.bɔːrd/	[sound:whiteboard.mp3]	A glossy white surface used for non-permanent markings	bảng trắng	bảng trắng	whiteboards	1. He drew the flowchart on the whiteboard. <br>2. We need more markers for the whiteboard.
+handout	h_____t	/ˈhæn.daʊt/	[sound:handout.mp3]	A document given to attendees during a presentation	tài liệu phát tay	tài liệu phát tay	handouts	1. Make sure every attendee receives a handout. <br>2. The handout contains all the key statistics.
+podium	p____m	/ˈpoʊ.di.əm/	[sound:podium.mp3]	A small platform on which a person may stand to be seen by an audience	bục phát biểu	bục phát biểu	podiums	1. She stood behind the podium to deliver her address. <br>2. The speaker adjusted the microphone on the podium.
+flipchart	f_______t	/ˈflɪp.tʃɑːrt/	[sound:flipchart.mp3]	A pad of large paper sheets on a stand for presentations	bảng kẹp giấy	bảng kẹp giấy	flipcharts	1. Use the flipchart to brainstorm ideas with the team. <br>2. The flipchart sheets were filled with notes from the session.
+marker	m____r	/ˈmɑːr.kɚ/	[sound:marker.mp3]	A felt-tip pen used for writing on boards	bút lông bảng	bút lông bảng	markers	1. Do you have a black marker for the whiteboard? <br>2. The marker ran out of ink halfway through the meeting.
+pointer	p_____r	/ˈpɔɪn.t̬ɚ/	[sound:pointer.mp3]	A rod used to indicate items on a screen or board	cây chỉ bảng	cây chỉ bảng	pointers	1. She used a laser pointer to highlight the data. <br>2. The pointer is missing from the conference room.
+speaker	s_____r	/ˈspiː.kɚ/	[sound:speaker.mp3]	A person who delivers a speech or presentation	diễn giả	diễn giả	speakers	1. The main speaker will arrive at ten o'clock. <br>2. We invited a guest speaker to discuss market trends.
+monitor	m_____r	/ˈmɑː.nə.t̬ɚ/	[sound:monitor.mp3]	A screen used to display visual information	màn hình	màn hình	monitors	1. The presentation looks clear on this monitor. <br>2. Please connect the second monitor for the video call.
+chair	c___r	/tʃer/	[sound:chair.mp3]	A seat used by people during a meeting	ghế	ghế	chairs	1. Please pull up an extra chair for the late arrival. <br>2. The conference room needs more chairs for the large group.
+table	t___e	/ˈteɪ.bəl/	[sound:table.mp3]	A piece of furniture with a flat top used for meetings	bàn	bàn	tables	1. We gathered around the large table to discuss the plan. <br>2. The meeting table is too small for twelve people.
+notebook	n______k	/ˈnoʊt.bʊk/	[sound:notebook.mp3]	A book with blank pages for writing notes	sổ tay	sổ tay	notebooks	1. She kept her notebook open to jot down key points. <br>2. Bring your notebook to the briefing tomorrow.
+pen	p_n	/pɛn/	[sound:pen.mp3]	An instrument for writing with ink	bút	bút	pens	1. Does anyone have a spare pen I can borrow? <br>2. I left my pen in the boardroom.
+laptop	l____p	/ˈlæp.tɑːp/	[sound:laptop.mp3]	A portable computer used for presentations	máy tính xách tay	máy tính xách tay	laptops	1. Please bring your laptop to the team meeting. <br>2. My laptop battery is low, so I need a charger.
+charger	c_____r	/ˈtʃɑːr.dʒɚ/	[sound:charger.mp3]	A device for charging a battery	bộ sạc	bộ sạc	chargers	1. I forgot to bring my laptop charger to the office. <br>2. Is there a universal charger available in the room?
+adapter	a_____r	/əˈdæp.t̬ɚ/	[sound:adapter.mp3]	A device for connecting two different pieces of equipment	bộ chuyển đổi	bộ chuyển đổi	adapters	1. We need an HDMI adapter to connect the screen. <br>2. The adapter is incompatible with this model.
+cable	c___e	/ˈkeɪ.bəl/	[sound:cable.mp3]	A thick wire used for connecting electronic devices	dây cáp	dây cáp	cables	1. The video cable is loose behind the monitor. <br>2. Please secure the power cable to avoid tripping.
+remote	r____e	/rɪˈmoʊt/	[sound:remote.mp3]	A device used to control slides from a distance	điều khiển từ xa	điều khiển từ xa	remotes	1. Use the remote to advance to the next slide. <br>2. The slide remote is not responding to the clicker.
+clicker	c_____r	/ˈklɪk.ɚ/	[sound:clicker.mp3]	A handheld device for changing slides in a presentation	thiết bị chuyển slide	thiết bị chuyển slide	clickers	1. The presenter used a clicker to control the slideshow. <br>2. I need to find the clicker before the presentation starts.
+slideshow	s_______w	/ˈslaɪd.ʃoʊ/	[sound:slideshow.mp3]	A presentation of a series of images or data slides	bài trình chiếu	bài trình chiếu	slideshows	1. The slideshow was very informative and well-designed. <br>2. Please upload the slideshow to the shared drive.
+slide	s___e	/slaɪd/	[sound:slide.mp3]	A single page in a presentation deck	trang trình chiếu	trang trình chiếu	slides	1. Can you go back to the previous slide? <br>2. The final slide summarizes our main goal.
+graph	g___h	/ɡræf/	[sound:graph.mp3]	A diagram showing the relationship between variables	biểu đồ	biểu đồ	graphs	1. The graph shows a significant increase in sales. <br>2. Include a graph in the report to illustrate the data.
+chart	c___t	/tʃɑːrt/	[sound:chart.mp3]	A sheet of information in the form of a table or diagram	bảng biểu	bảng biểu	charts	1. The pie chart displays the budget allocation. <br>2. Check the chart on the wall for the current progress.
+report	r____t	/rɪˈpɔːrt/	[sound:report.mp3]	A document providing information or results	báo cáo	báo cáo	reports	1. The quarterly report is due on Friday. <br>2. Please print the report for the meeting attendees.
+folder	f____r	/ˈfoʊl.dɚ/	[sound:folder.mp3]	A container for holding loose papers	tệp hồ sơ	tệp hồ sơ	folders	1. The meeting materials are in the blue folder. <br>2. Put the handout in your folder for later review.
+envelope	e______e	/ˈɛn.və.loʊp/	[sound:envelope.mp3]	A paper container for letters or documents	phong bì	phong bì	envelopes	1. The agenda was sent in a sealed envelope. <br>2. She handed him an envelope containing the meeting minutes.
+minute	m____e	/ˈmɪn.ɪt/	[sound:minute.mp3]	The official written record of a meeting	biên bản cuộc họp	biên bản cuộc họp	minutes	1. Who is responsible for taking the minutes today? <br>2. I will review the minutes before they are circulated.
+transcript	t________t	/ˈtræn.skrɪpt/	[sound:transcript.mp3]	A written record of spoken words	bản ghi chép	bản ghi chép	transcripts	1. We need a transcript of the conference call. <br>2. The transcript confirms what was agreed upon.
+briefcase	b_______e	/ˈbriːf.keɪs/	[sound:briefcase.mp3]	A flat case for carrying documents	cặp tài liệu	cặp tài liệu	briefcases	1. He carried his laptop in his briefcase. <br>2. Empty your briefcase to find the missing contract.
+badge	b___e	/bædʒ/	[sound:badge.mp3]	A tag worn to identify a person at a conference	thẻ tên	thẻ tên	badges	1. Please wear your attendee badge at all times. <br>2. The badge allows access to the conference hall.
+lanyard	l_____d	/ˈlæn.jɚd/	[sound:lanyard.mp3]	A cord worn around the neck to hold an ID badge	dây đeo thẻ	dây đeo thẻ	lanyards	1. The lanyard matches the company colors. <br>2. Don't lose your lanyard during the break.
+coffee	c____e	/ˈkɑː.fi/	[sound:coffee.mp3]	A hot drink often served during meeting breaks	cà phê	cà phê	coffees	1. There will be coffee available in the lobby. <br>2. Let's grab a coffee before the session begins.
+water	w___r	/ˈwɑː.t̬ɚ/	[sound:water.mp3]	A beverage provided for meeting participants	nước uống	nước uống	waters	1. Please ensure there is fresh water for the speakers. <br>2. The water bottle was left on the table.
+snack	s___k	/snæk/	[sound:snack.mp3]	Small food items provided during a meeting break	đồ ăn nhẹ	đồ ăn nhẹ	snacks	1. The snacks were served during the morning session. <br>2. We need to order more snacks for the afternoon break.
+tray	t__y	/treɪ/	[sound:tray.mp3]	A flat object used for carrying food or documents	khay	khay	trays	1. The waiter brought a tray of water to the room. <br>2. Place the document tray on the side table.
+cup	c_p	/kʌp/	[sound:cup.mp3]	A container for drinking liquids	cốc	cốc	cups	1. Can I have a cup of coffee? <br>2. Please clear the empty cups from the table.
+glass	g___s	/ɡlæs/	[sound:glass.mp3]	A container for drinking water	ly thủy tinh	ly thủy tinh	glasses	1. She filled her glass with cold water. <br>2. The glass broke on the floor during the meeting.
+pitcher	p_____r	/ˈpɪtʃ.ɚ/	[sound:pitcher.mp3]	A container for pouring water or other drinks	bình đựng nước	bình đựng nước	pitchers	1. The pitcher of water is empty. <br>2. Ask for another pitcher to be brought to the room.
+napkin	n____n	/ˈnæp.kɪn/	[sound:napkin.mp3]	A piece of paper used for cleaning the mouth	khăn giấy	khăn giấy	napkins	1. There is a stack of napkins on the snack table. <br>2. Use a napkin to clean the spill.
+clock	c___k	/klɑːk/	[sound:clock.mp3]	A device for telling time during a meeting	đồng hồ	đồng hồ	clocks	1. The clock on the wall says we are out of time. <br>2. Check the clock to ensure we finish on schedule.
+timer	t___r	/ˈtaɪ.mɚ/	[sound:timer.mp3]	A device used to track presentation time	đồng hồ đếm ngược	đồng hồ đếm ngược	timers	1. Set the timer for twenty minutes. <br>2. The timer will alert us when the session ends.
+sign	s__n	/saɪn/	[sound:sign.mp3]	A notice or board displaying information	biển báo	biển báo	signs	1. The sign points to the conference room. <br>2. We need a sign to welcome the guests.
+banner	b____r	/ˈbæn.ɚ/	[sound:banner.mp3]	A long strip of cloth with a slogan or logo	băng rôn	băng rôn	banners	1. The company banner is hanging in the lobby. <br>2. The banner displays the event name.
+poster	p____r	/ˈpoʊ.stɚ/	[sound:poster.mp3]	A large printed picture or notice	áp phích	áp phích	posters	1. The poster explains the project details. <br>2. Hang the poster near the entrance.
+brochure	b______e	/broʊˈʃʊr/	[sound:brochure.mp3]	A small booklet containing information	tờ rơi quảng cáo	tờ rơi quảng cáo	brochures	1. Pick up a brochure at the registration desk. <br>2. The brochure details all the session topics.
+nameplate	n_______e	/ˈneɪm.pleɪt/	[sound:nameplate.mp3]	A sign showing a person's name on a desk	bảng tên để bàn	bảng tên để bàn	nameplates	1. The nameplate identifies where the director sits. <br>2. Make sure every nameplate is in the right place.
+card	c__d	/kɑːrd/	[sound:card.mp3]	A small piece of stiff paper with contact details	danh thiếp	danh thiếp	cards	1. Exchange business cards after the meeting. <br>2. I left my card with the secretary.
+list	l__t	/lɪst/	[sound:list.mp3]	A series of names or items	danh sách	danh sách	lists	1. Check the attendance list before we start. <br>2. The list of speakers is quite long.
+form	f__m	/fɔːrm/	[sound:form.mp3]	A document with spaces for information	mẫu đơn	mẫu đơn	forms	1. Please fill out the feedback form. <br>2. The registration form is available online.
+pencil	p____l	/ˈpɛn.səl/	[sound:pencil.mp3]	A writing instrument with a graphite core	bút chì	bút chì	pencils	1. Use a pencil if you need to erase your notes. <br>2. The pencil sharpener is in the supply closet.
+eraser	e____r	/ɪˈreɪ.sɚ/	[sound:eraser.mp3]	A tool for removing pencil marks	cục tẩy	cục tẩy	erasers	1. I need an eraser for these sketches. <br>2. The eraser is worn down.
+stapler	s_____r	/ˈsteɪ.plɚ/	[sound:stapler.mp3]	A device for joining papers together	dập ghim	dập ghim	staplers	1. The stapler is empty. <br>2. Use the stapler to attach the pages.
+clip	c__p	/klɪp/	[sound:clip.mp3]	A device for holding papers together	kẹp giấy	kẹp giấy	clips	1. Use a paper clip to hold the report together. <br>2. I have a box of clips on my desk.
+binder	b____r	/ˈbaɪn.dɚ/	[sound:binder.mp3]	A cover for holding loose papers together	bìa còng	bìa còng	binders	1. Organize all the documents in the binder. <br>2. The binder is too full to close.
+file	f__e	/faɪl/	[sound:file.mp3]	A collection of papers on a specific subject	hồ sơ	hồ sơ	files	1. The project file is on the server. <br>2. Please bring the client file to the meeting.
+stamp	s___p	/stæmp/	[sound:stamp.mp3]	A mark or tool for marking documents	con dấu	con dấu	stamps	1. The official stamp is required for this contract. <br>2. The stamp ink is dry.
+desk	d__k	/dɛsk/	[sound:desk.mp3]	A table used for working	bàn làm việc	bàn làm việc	desks	1. Clear your desk before the meeting. <br>2. His desk is full of papers.
+lamp	l__p	/læmp/	[sound:lamp.mp3]	A device for providing light	đèn bàn	đèn bàn	lamps	1. The lamp on the desk provides good light. <br>2. Turn off the lamp when you leave.
+cabinet	c_____t	/ˈkæb.ən.ɪt/	[sound:cabinet.mp3]	A piece of furniture for storage	tủ hồ sơ	tủ hồ sơ	cabinets	1. The file is in the cabinet. <br>2. Lock the cabinet after taking the documents.
+shelf	s___f	/ʃɛlf/	[sound:shelf.mp3]	A flat surface for storing items	kệ	kệ	shelves	1. The reports are on the top shelf. <br>2. Clear the shelf for the new binders.
+drawer	d____r	/drɔːr/	[sound:drawer.mp3]	A sliding storage compartment	ngăn kéo	ngăn kéo	drawers	1. The pens are in the top drawer. <br>2. I keep my notebooks in the desk drawer.
+phone	p___e	/foʊn/	[sound:phone.mp3]	A device for communication	điện thoại	điện thoại	phones	1. Please silence your phone during the meeting. <br>2. The conference phone is on the table.
+headset	h_____t	/ˈhɛd.sɛt/	[sound:headset.mp3]	A pair of headphones with a microphone	tai nghe có mic	tai nghe có mic	headsets	1. Use your headset for the video conference. <br>2. The headset wire is broken.
+camera	c____a	/ˈkæm.rə/	[sound:camera.mp3]	A device for taking pictures or video	máy quay	máy quay	cameras	1. The camera is focused on the speaker. <br>2. Adjust the camera for a better view.
+screen	s____n	/skriːn/	[sound:screen.mp3]	A surface for displaying images	màn hình chiếu	màn hình chiếu	screens	1. The projection screen is too low. <br>2. Clean the screen before the meeting.
+curtain	c_____n	/ˈkɝː.tən/	[sound:curtain.mp3]	A piece of cloth for covering windows	rèm cửa	rèm cửa	curtains	1. Close the curtains to reduce glare. <br>2. The curtains are blocking the light.
+blinds	b____s	/blaɪndz/	[sound:blinds.mp3]	Covers for windows to control light	mành cửa	mành cửa	blinds	1. Lower the blinds for the presentation. <br>2. The blinds are stuck halfway.
+door	d__r	/dɔːr/	[sound:door.mp3]	A hinged barrier to a room	cửa	cửa	doors	1. Please close the door to reduce noise. <br>2. The meeting room door is locked.
+key	k_y	/kiː/	[sound:key.mp3]	A tool for opening a lock	chìa khóa	chìa khóa	keys	1. The key to the meeting room is at the desk. <br>2. I lost my key to the office.
+light	l___t	/laɪt/	[sound:light.mp3]	A source of illumination	đèn	đèn	lights	1. Turn on the lights in the conference room. <br>2. The light is too bright for the screen.
+switch	s____h	/swɪtʃ/	[sound:switch.mp3]	A device for controlling electricity	công tắc	công tắc	switches	1. Where is the light switch? <br>2. Flip the switch to dim the lights.
+outlet	o____t	/ˈaʊt.lət/	[sound:outlet.mp3]	A socket for electrical power	ổ cắm điện	ổ cắm điện	outlets	1. Plug the laptop into the wall outlet. <br>2. The outlet is behind the cabinet.
+fan	f_n	/fæn/	[sound:fan.mp3]	A device for cooling the air	quạt	quạt	fans	1. Turn on the fan, it is hot in here. <br>2. The fan is very noisy.
+ac	ac	/ˌeɪˈsiː/	[sound:ac.mp3]	A system for cooling the air	máy lạnh	máy lạnh	acs	1. Adjust the AC to a comfortable temperature. <br>2. The AC is not working well today.
+thermostat	t________t	/ˈθɝː.mə.stæt/	[sound:thermostat.mp3]	A device for regulating temperature	bộ điều chỉnh nhiệt độ	bộ điều chỉnh nhiệt độ	thermostats	1. Set the thermostat to twenty degrees. <br>2. The thermostat is behind the door.
+carpet	c____t	/ˈkɑːr.pɪt/	[sound:carpet.mp3]	A floor covering	thảm	thảm	carpets	1. The carpet in the meeting room is stained. <br>2. We are getting a new carpet next week.
+rug	r_g	/rʌɡ/	[sound:rug.mp3]	A small floor covering	tấm thảm	tấm thảm	rugs	1. The rug is a tripping hazard. <br>2. Place the rug under the table.
+wall	w__l	/wɔːl/	[sound:wall.mp3]	A vertical structure forming a room	tường	tường	walls	1. Hang the chart on the wall. <br>2. The walls are painted white.
+ceiling	c_____g	/ˈsiː.lɪŋ/	[sound:ceiling.mp3]	The overhead interior surface	trần nhà	trần nhà	ceilings	1. The projector is mounted on the ceiling. <br>2. The ceiling lights are flickering.
+floor	f___r	/flɔːr/	[sound:floor.mp3]	The lower surface of a room	sàn nhà	sàn nhà	floors	1. The floor is slippery. <br>2. We have a meeting on the second floor.
+window	w____w	/ˈwɪn.doʊ/	[sound:window.mp3]	An opening in a wall for light	cửa sổ	cửa sổ	windows	1. Open the window for fresh air. <br>2. The window offers a view of the city.
+hallway	h_____y	/ˈhɑːl.weɪ/	[sound:hallway.mp3]	A corridor connecting rooms	hành lang	hành lang	hallways	1. The meeting room is down the hallway. <br>2. Wait in the hallway until the meeting starts.
+lobby	l___y	/ˈlɑː.bi/	[sound:lobby.mp3]	An entrance area	sảnh chờ	sảnh chờ	lobbies	1. Meet me in the lobby. <br>2. The guests are waiting in the lobby.
+elevator	e______r	/ˈɛl.ə.veɪ.t̬ɚ/	[sound:elevator.mp3]	A machine for moving between floors	thang máy	thang máy	elevators	1. Take the elevator to the fifth floor. <br>2. The elevator is out of service.
+stairs	s____s	/sterz/	[sound:stairs.mp3]	A set of steps for moving between floors	cầu thang	cầu thang	stairs	1. Walk up the stairs to the meeting room. <br>2. The stairs are blocked for maintenance.
+reception	r_______n	/rɪˈsɛp.ʃən/	[sound:reception.mp3]	The area where visitors are greeted	quầy lễ tân	quầy lễ tân	receptions	1. Check in at the reception. <br>2. The reception is busy today.
+map	m_p	/mæp/	[sound:map.mp3]	A visual representation of an area	bản đồ	bản đồ	maps	1. The map shows the office layout. <br>2. Look at the map to find the room.
+directory	d_______y	/dɪˈrek.tɚ.i/	[sound:directory.mp3]	A list of room locations	bảng chỉ dẫn	bảng chỉ dẫn	directories	1. Check the directory in the lobby. <br>2. The directory is updated daily.
+caterer	c_____r	/ˈkeɪ.t̬ɚ.ɚ/	[sound:caterer.mp3]	A person who provides food for events	người phục vụ ăn uống	người phục vụ ăn uống	caterers	1. The caterer will arrive at noon. <br>2. Ask the caterer for more coffee.
+menu	m__u	/ˈmɛn.juː/	[sound:menu.mp3]	A list of food options	thực đơn	thực đơn	menus	1. The menu for the lunch break is set. <br>2. Check the menu for options.
+plate	p___e	/pleɪt/	[sound:plate.mp3]	A flat dish for food	đĩa	đĩa	plates	1. Take a plate from the stack. <br>2. The plates are clean.
+fork	f__k	/fɔːrk/	[sound:fork.mp3]	A tool for eating	nĩa	nĩa	forks	1. Do you need a fork for your meal? <br>2. The forks are on the table.
+spoon	s___n	/spuːn/	[sound:spoon.mp3]	A tool for eating	thìa	thìa	spoons	1. Use a spoon for your coffee. <br>2. The spoons are in the drawer.
+knife	k___e	/naɪf/	[sound:knife.mp3]	A tool for cutting	dao	dao	knives	1. Use the knife to cut the fruit. <br>2. The knives are sharp.
+bottle	b____e	/ˈbɑːt̬.əl/	[sound:bottle.mp3]	A container for liquids	chai	chai	bottles	1. Each person gets a bottle of water. <br>2. Recycle the empty bottle.
+bin	b_n	/bɪn/	[sound:bin.mp3]	A container for trash	thùng rác	thùng rác	bins	1. Throw the paper in the bin. <br>2. The bin is overflowing.
+box	b_x	/bɑːks/	[sound:box.mp3]	A container for storage	hộp	hộp	boxes	1. The supplies are in that box. <br>2. Empty the box after use.
+bag	b_g	/bæɡ/	[sound:bag.mp3]	A soft container	túi	túi	bags	1. Keep your bag under your seat. <br>2. The bag is heavy.

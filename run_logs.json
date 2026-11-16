@@ -1,5 +1,96 @@
 [
   {
+    "time": "2026-11-16 13:05:03",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 167,
+    "message": "Hoàn thành chủ đề #167 (Họp hành và Thuyết trình (Meetings & Presentations)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 13:05:03",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 167,
+    "message": "Chủ đề #167: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 13:05:03",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 167,
+    "message": "Chủ đề #167 (Họp hành và Thuyết trình (Meetings & Presentations)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 13:04:44",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 167,
+    "message": "Chủ đề #167 (Họp hành và Thuyết trình (Meetings & Presentations)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 13:04:44",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 166,
+    "message": "Hoàn thành chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 13:04:44",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 166,
+    "message": "Chủ đề #166: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 13:04:44",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 166,
+    "message": "Chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 13:04:19",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 166,
+    "message": "Chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 13:04:19",
+    "level": "ERROR",
+    "step": "FAIL_TOPIC",
+    "stt": 165,
+    "message": "Lỗi khi tạo chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)): Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)) chỉ tạo được 48/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)) chỉ tạo được 48/100 từ sau tối đa 2 prompts!"
+  },
+  {
+    "time": "2026-11-16 13:04:19",
+    "level": "ERROR",
+    "step": "INCOMPLETE",
+    "stt": 165,
+    "message": "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)): Sau 2 prompts chỉ đạt 48/100 từ!"
+  },
+  {
+    "time": "2026-11-16 13:03:59",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 165,
+    "message": "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)): Prompt 1 đạt 20/100 từ (còn thiếu 80). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 13:03:40",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 165,
+    "message": "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 13:03:40",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [165, 166, 167]"
+  },
+  {
     "time": "2026-11-16 13:01:53",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",
@@ -1307,96 +1398,5 @@
     "step": "FACET_START",
     "stt": 132,
     "message": "Chủ đề #132: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
-  },
-  {
-    "time": "2026-11-15 21:53:01",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [132, 133, 134]"
-  },
-  {
-    "time": "2026-11-15 21:30:26",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 131,
-    "message": "Hoàn thành chủ đề #131 (Dụng cụ làm vườn (Gardening Tools)) với 100 từ."
-  },
-  {
-    "time": "2026-11-15 21:30:26",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 131,
-    "message": "Chủ đề #131: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-15 21:30:20",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_5",
-    "stt": 131,
-    "message": "Chủ đề #131: Bù đắp 4 từ còn thiếu (Đang có: 96/100)..."
-  },
-  {
-    "time": "2026-11-15 21:30:14",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_4",
-    "stt": 131,
-    "message": "Chủ đề #131: Bù đắp 6 từ còn thiếu (Đang có: 94/100)..."
-  },
-  {
-    "time": "2026-11-15 21:30:08",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_3",
-    "stt": 131,
-    "message": "Chủ đề #131: Bù đắp 8 từ còn thiếu (Đang có: 92/100)..."
-  },
-  {
-    "time": "2026-11-15 21:29:56",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_2",
-    "stt": 131,
-    "message": "Chủ đề #131: Bù đắp 38 từ còn thiếu (Đang có: 62/100)..."
-  },
-  {
-    "time": "2026-11-15 21:29:44",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_1",
-    "stt": 131,
-    "message": "Chủ đề #131: Bù đắp 59 từ còn thiếu (Đang có: 41/100)..."
-  },
-  {
-    "time": "2026-11-15 21:29:35",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 131,
-    "message": "Chủ đề #131: Bắt đầu phân diện [Thành phần & Dụng cụ] (25 từ, đã có 38/100)"
-  },
-  {
-    "time": "2026-11-15 21:29:26",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 131,
-    "message": "Chủ đề #131: Bắt đầu phân diện [Chế biến & Thành phẩm] (25 từ, đã có 29/100)"
-  },
-  {
-    "time": "2026-11-15 21:29:14",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 131,
-    "message": "Chủ đề #131: Bắt đầu phân diện [Chuyên sâu & Đặc trưng] (30 từ, đã có 29/100)"
-  },
-  {
-    "time": "2026-11-15 21:29:03",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 131,
-    "message": "Chủ đề #131: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
-  },
-  {
-    "time": "2026-11-15 21:29:03",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 130,
-    "message": "Hoàn thành chủ đề #130 (Thuốc và Dược phẩm (Medicine & Pharmaceuticals)) với 100 từ."
   }
 ]
