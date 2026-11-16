@@ -22,7 +22,10 @@ param(
     [string]$GeminiApiKey = "",
 
     [Parameter(Mandatory=$false)]
-    [switch]$SkipAudioDownload
+    [switch]$SkipAudioDownload,
+
+    [Parameter(Mandatory=$false)]
+    [switch]$NoStatusUpdate
 )
 
 $ErrorActionPreference = "Stop"
@@ -75,6 +78,8 @@ if ($topicsToProcess.Count -eq 0) {
 }
 
 function Append-RunLog($level, $step, $message, $stt) {
+    Write-Host "[$level] [$step] $message" -ForegroundColor $(if ($level -eq "SUCCESS") { "Green" } elseif ($level -eq "WARNING") { "Yellow" } elseif ($level -eq "ERROR") { "Red" } else { "Cyan" })
+    if ($NoStatusUpdate) { return }
     $logFile = "run_logs.json"
     $logs = @()
     if (Test-Path $logFile) {
@@ -93,7 +98,6 @@ function Append-RunLog($level, $step, $message, $stt) {
     $logs = @($newEntry) + @($logs)
     if ($logs.Count -gt 200) { $logs = $logs[0..199] }
     $logs | ConvertTo-Json -Depth 5 | Out-File -FilePath $logFile -Encoding utf8
-    Write-Host "[$level] [$step] $message" -ForegroundColor $(if ($level -eq "SUCCESS") { "Green" } elseif ($level -eq "WARNING") { "Yellow" } elseif ($level -eq "ERROR") { "Red" } else { "Cyan" })
 }
 
 function Make-Cloze($word) {
@@ -295,18 +299,22 @@ Only output the raw JSON array without any markdown wrappers or comments.
     }
 
     # BƯỚC 5: Cập nhật status.json và run_logs.json
-    $foundEntry = $statusData.topics | Where-Object { $_.stt -eq $stt }
-    if ($foundEntry) {
-        $foundEntry.status = "completed"
-        $foundEntry.word_count = $lines.Count
-        $foundEntry.file_path = $txtPath
-        $foundEntry.generated_at = (Get-Date).ToString("yyyy-MM-dd HH:mm")
-        $foundEntry.last_error = $null
-    }
-    $statusData.updated_at = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
-    $statusData | ConvertTo-Json -Depth 6 | Out-File -FilePath $statusFile -Encoding utf8
+    if (-not $NoStatusUpdate) {
+        $foundEntry = $statusData.topics | Where-Object { $_.stt -eq $stt }
+        if ($foundEntry) {
+            $foundEntry.status = "completed"
+            $foundEntry.word_count = $lines.Count
+            $foundEntry.file_path = $txtPath
+            $foundEntry.generated_at = (Get-Date).ToString("yyyy-MM-dd HH:mm")
+            $foundEntry.last_error = $null
+        }
+        $statusData.updated_at = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
+        $statusData | ConvertTo-Json -Depth 6 | Out-File -FilePath $statusFile -Encoding utf8
 
-    Append-RunLog "SUCCESS" "TOPIC_COMPLETED" "Hoàn thành chủ đề #${stt} - $topicName với $($lines.Count) từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)." $stt
+        Append-RunLog "SUCCESS" "TOPIC_COMPLETED" "Hoàn thành chủ đề #${stt} - $topicName với $($lines.Count) từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)." $stt
+    } else {
+        Write-Host "  -> [NoStatusUpdate] Đã tạo xong file $txtPath ($($lines.Count) từ)" -ForegroundColor Green
+    }
 }
 
 Write-Host "`n=================================================================" -ForegroundColor Green
