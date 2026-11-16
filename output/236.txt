@@ -1,0 +1,100 @@
+producer	p______r	/prəˈduːsər/	[sound:producer.mp3]	an organism that produces its own food through photosynthesis	sinh vật sản xuất	sinh vật sản xuất	producers	1. The green plant acts as a producer in the forest. <br>2. Producers are the foundation of every food chain.
+consumer	c______r	/kənˈsuːmər/	[sound:consumer.mp3]	an organism that obtains energy by feeding on other organisms	sinh vật tiêu thụ	sinh vật tiêu thụ	consumers	1. A rabbit is a primary consumer. <br>2. Secondary consumers eat the herbivores.
+decomposer	d________r	/ˌdiːkəmˈpoʊzər/	[sound:decomposer.mp3]	an organism that breaks down dead organic material	sinh vật phân hủy	sinh vật phân hủy	decomposers	1. The fungus serves as a decomposer in the soil. <br>2. Decomposers recycle nutrients back into the ecosystem.
+predator	p______r	/ˈprɛdətər/	[sound:predator.mp3]	an animal that hunts and kills other animals for food	động vật ăn thịt	động vật ăn thịt	predators	1. The lion is a top predator in the savanna. <br>2. Predators control the population of prey species.
+prey	p__y	/preɪ/	[sound:prey.mp3]	an animal that is hunted and killed by another for food	con mồi	con mồi	prey	1. The hawk spotted its prey from high above. <br>2. Camouflage helps the prey hide from danger.
+herbivore	h_______e	/ˈhɜːrbɪvɔːr/	[sound:herbivore.mp3]	an animal that feeds on plants	động vật ăn cỏ	động vật ăn cỏ	herbivores	1. The deer is a gentle herbivore. <br>2. Herbivores have specialized teeth for grinding leaves.
+carnivore	c_______e	/ˈkɑːrnɪvɔːr/	[sound:carnivore.mp3]	an animal that feeds on meat	động vật ăn thịt	động vật ăn thịt	carnivores	1. The wolf is a social carnivore. <br>2. Carnivores occupy the higher levels of the food chain.
+omnivore	o______e	/ˈɑːmnɪvɔːr/	[sound:omnivore.mp3]	an animal that eats both plants and animals	động vật ăn tạp	động vật ăn tạp	omnivores	1. The bear is a well-known omnivore. <br>2. Humans are classified as omnivores.
+scavenger	s_______r	/ˈskævɪndʒər/	[sound:scavenger.mp3]	an animal that feeds on carrion or dead plant material	động vật ăn xác thối	động vật ăn xác thối	scavengers	1. The vulture is a common scavenger. <br>2. Scavengers clean up the environment by eating remains.
+trophic	t_____c	/ˈtrɒfɪk/	[sound:trophic.mp3]	a level in a food chain defined by how an organism gets energy	bậc dinh dưỡng	bậc dinh dưỡng	trophics	1. Energy decreases as it moves up each trophic level. <br>2. The first trophic level consists of plants.
+autotroph	a_______h	/ˈɔːtətrɒf/	[sound:autotroph.mp3]	an organism capable of synthesizing its own food	sinh vật tự dưỡng	sinh vật tự dưỡng	autotrophs	1. Algae act as an autotroph in aquatic chains. <br>2. Autotrophs convert sunlight into chemical energy.
+heterotroph	h_________h	/ˈhɛtərətrɒf/	[sound:heterotroph.mp3]	an organism that cannot produce its own food	sinh vật dị dưỡng	sinh vật dị dưỡng	heterotrophs	1. Every animal is a heterotroph. <br>2. Heterotrophs rely on other organisms for nutrition.
+detritivore	d_________e	/dɪˈtraɪtɪvɔːr/	[sound:detritivore.mp3]	an organism that feeds on detritus or organic waste	sinh vật ăn mùn bã	sinh vật ăn mùn bã	detritivores	1. The earthworm is a vital detritivore in the soil. <br>2. Detritivores process dead leaves and organic matter.
+parasite	p______e	/ˈpærəsaɪt/	[sound:parasite.mp3]	an organism that lives on or in a host to get nutrients	ký sinh trùng	ký sinh trùng	parasites	1. The tick is a common parasite. <br>2. Parasites harm their hosts by draining resources.
+host	h__t	/hoʊst/	[sound:host.mp3]	an organism that supports a parasite	vật chủ	vật chủ	hosts	1. The dog serves as a host for the flea. <br>2. A parasite often weakens its host.
+niche	n___e	/nɪtʃ/	[sound:niche.mp3]	the specific role an organism plays in its ecosystem	ổ sinh thái	ổ sinh thái	niches	1. The owl occupies a nocturnal predator niche. <br>2. Each species has a unique niche in the food web.
+habitat	h_____t	/ˈhæbɪtæt/	[sound:habitat.mp3]	the natural home of an organism	môi trường sống	môi trường sống	habitats	1. The forest provides a habitat for many animals. <br>2. Loss of habitat disrupts the food chain.
+ecosystem	e_______m	/ˈiːkoʊsɪstəm/	[sound:ecosystem.mp3]	a community of interacting organisms and their environment	hệ sinh thái	hệ sinh thái	ecosystems	1. The pond is a self-contained ecosystem. <br>2. Energy flows through the entire ecosystem.
+biomass	b_____s	/ˈbaɪoʊmæs/	[sound:biomass.mp3]	the total mass of organisms in a given area	sinh khối	sinh khối	biomasses	1. The pyramid shows the biomass at each level. <br>2. Higher trophic levels have less biomass.
+energy	e____y	/ˈɛnərdʒi/	[sound:energy.mp3]	the power derived from food for biological processes	năng lượng	năng lượng	energies	1. Sunlight provides the initial energy for the chain. <br>2. Energy is lost as heat between levels.
+sunlight	s______t	/ˈsʌnlaɪt/	[sound:sunlight.mp3]	the primary source of energy for most food chains	ánh sáng mặt trời	ánh sáng mặt trời	sunlights	1. Plants capture sunlight to perform photosynthesis. <br>2. Without sunlight, the food chain would collapse.
+chlorophyll	c_________l	/ˈklɔːrəfɪl/	[sound:chlorophyll.mp3]	the green pigment in plants used to absorb light	diệp lục	diệp lục	chlorophylls	1. Chlorophyll is essential for plant energy production. <br>2. Plants use chlorophyll to trap solar energy.
+photosynthesis	p____________s	/ˌfoʊtoʊˈsɪnθəsɪs/	[sound:photosynthesis.mp3]	the process by which plants make food	quang hợp	quang hợp	photosyntheses	1. Photosynthesis is the start of the food chain. <br>2. Oxygen is a byproduct of photosynthesis.
+nutrient	n______t	/ˈnuːtriənt/	[sound:nutrient.mp3]	a substance that provides nourishment for growth	chất dinh dưỡng	chất dinh dưỡng	nutrients	1. Soil provides nutrients to the plants. <br>2. Animals obtain nutrients from their food.
+web	w_b	/wɛb/	[sound:web.mp3]	a complex network of interconnected food chains	lưới thức ăn	lưới thức ăn	webs	1. A food web is more stable than a single chain. <br>2. The web shows how animals are linked.
+chain	c___n	/tʃeɪn/	[sound:chain.mp3]	a linear sequence of organisms eating each other	chuỗi thức ăn	chuỗi thức ăn	chains	1. The grass-rabbit-fox is a simple food chain. <br>2. Every link in the chain is important.
+population	p________n	/ˌpɒpjuˈleɪʃən/	[sound:population.mp3]	the number of individuals of a species in an area	quần thể	quần thể	populations	1. The predator population depends on the prey. <br>2. Changes in population affect the food chain.
+community	c_______y	/kəˈmjuːnəti/	[sound:community.mp3]	all the populations of different species in an area	quần xã	quần xã	communities	1. The forest community relies on complex interactions. <br>2. The community structure defines the food web.
+apex	a__x	/ˈeɪpɛks/	[sound:apex.mp3]	the top predator in a food chain	đỉnh chuỗi thức ăn	đỉnh chuỗi thức ăn	apexes	1. The shark is an apex predator. <br>2. Apex species have no natural enemies.
+organism	o______m	/ˈɔːrɡənɪzəm/	[sound:organism.mp3]	any individual living thing	sinh vật	sinh vật	organisms	1. Every organism plays a role in the cycle. <br>2. Microscopic organisms are part of the food web.
+alga	a__a	/ˈældʒə/	[sound:alga.mp3]	a simple non-flowering plant of a large group	tảo	tảo	algae	1. Alga is a primary producer in the lake. <br>2. Fish feed on the alga.
+plankton	p______n	/ˈplæŋktən/	[sound:plankton.mp3]	microscopic organisms drifting in water	sinh vật phù du	sinh vật phù du	planktons	1. Plankton forms the base of the marine food chain. <br>2. Whales consume massive amounts of plankton.
+fungus	f____s	/ˈfʌŋɡəs/	[sound:fungus.mp3]	an organism that feeds on organic matter	nấm	nấm	fungi	1. The fungus breaks down the fallen log. <br>2. Fungi act as essential decomposers.
+bacteria	b______a	/bækˈtɪəriə/	[sound:bacteria.mp3]	microscopic organisms that decompose waste	vi khuẩn	vi khuẩn	bacteria	1. Bacteria help break down dead matter. <br>2. Some bacteria are producers in deep-sea vents.
+carrion	c_____n	/ˈkæriən/	[sound:carrion.mp3]	the decaying flesh of dead animals	xác thối	xác thối	carrions	1. The scavenger found carrion on the road. <br>2. Carrion provides food for many insects.
+detritus	d______s	/dɪˈtraɪtəs/	[sound:detritus.mp3]	waste or debris of any kind	mùn bã	mùn bã	detrituses	1. Detritus accumulates on the forest floor. <br>2. Detritivores feed on the detritus.
+leaf	l__f	/liːf/	[sound:leaf.mp3]	the part of a plant that performs photosynthesis	lá	lá	leaves	1. The caterpillar eats the green leaf. <br>2. The leaf is the primary food source for herbivores.
+root	r__t	/ruːt/	[sound:root.mp3]	the part of a plant that absorbs water and nutrients	rễ	rễ	roots	1. The plant absorbs nutrients through its root. <br>2. Some animals feed on the root of the plant.
+seed	s__d	/siːd/	[sound:seed.mp3]	the unit of reproduction for plants	hạt	hạt	seeds	1. Birds often feed on the seed of the grass. <br>2. The seed provides energy for the developing plant.
+insect	i____t	/ˈɪnsɛkt/	[sound:insect.mp3]	a small arthropod that serves as a food source	côn trùng	côn trùng	insects	1. The frog eats the insect. <br>2. Insects are a crucial part of the food web.
+larva	l___a	/ˈlɑːrvə/	[sound:larva.mp3]	the immature form of an insect	ấu trùng	ấu trùng	larvae	1. The bird feeds the larva to its chicks. <br>2. The larva consumes leaves for growth.
+fish	f__h	/fɪʃ/	[sound:fish.mp3]	a cold-blooded animal that lives in water	cá	cá	fish	1. The fish is a secondary consumer. <br>2. Larger fish eat smaller fish.
+bird	b__d	/bɜːrd/	[sound:bird.mp3]	a vertebrate that may be a predator or prey	chim	chim	birds	1. The bird catches the worm. <br>2. The hawk is a bird that eats other birds.
+mammal	m____l	/ˈmæməl/	[sound:mammal.mp3]	a warm-blooded vertebrate	động vật có vú	động vật có vú	mammals	1. The wolf is a mammal that hunts in packs. <br>2. Mammals occupy various levels in the food chain.
+reptile	r_____e	/ˈrɛptaɪl/	[sound:reptile.mp3]	a cold-blooded vertebrate	bò sát	bò sát	reptiles	1. The snake is a reptile that eats rodents. <br>2. Reptiles are often both predators and prey.
+amphibian	a_______n	/æmˈfɪbiən/	[sound:amphibian.mp3]	a cold-blooded vertebrate that lives in water and on land	động vật lưỡng cư	động vật lưỡng cư	amphibians	1. The frog is an amphibian in the food chain. <br>2. Amphibians eat insects and small fish.
+crustacean	c________n	/krʌˈsteɪʃən/	[sound:crustacean.mp3]	an aquatic arthropod	động vật giáp xác	động vật giáp xác	crustaceans	1. The crab is a crustacean that scavenges. <br>2. Fish often feed on small crustaceans.
+mollusk	m_____k	/ˈmɒləsk/	[sound:mollusk.mp3]	an invertebrate with a soft body	động vật thân mềm	động vật thân mềm	mollusks	1. The snail is a mollusk that eats plants. <br>2. Sea otters eat the mollusk.
+grass	g___s	/ɡræs/	[sound:grass.mp3]	a common producer in terrestrial chains	cỏ	cỏ	grasses	1. Grass is the primary producer for the cow. <br>2. The grass grows using sunlight.
+shrub	s___b	/ʃrʌb/	[sound:shrub.mp3]	a woody plant smaller than a tree	cây bụi	cây bụi	shrubs	1. The rabbit hides under the shrub. <br>2. Deer eat the berries from the shrub.
+tree	t__e	/triː/	[sound:tree.mp3]	a tall woody plant	cây thân gỗ	cây thân gỗ	trees	1. The tree provides leaves for the giraffe. <br>2. The tree is a major producer in the forest.
+flower	f____r	/ˈflaʊər/	[sound:flower.mp3]	the reproductive part of a plant	hoa	hoa	flowers	1. The bee visits the flower for nectar. <br>2. The flower produces seeds.
+fruit	f___t	/fruːt/	[sound:fruit.mp3]	the sweet product of a plant	quả	quả	fruits	1. The monkey eats the fruit from the tree. <br>2. Fruit provides energy for many animals.
+nectar	n____r	/ˈnɛktər/	[sound:nectar.mp3]	a sugary fluid produced by flowers	mật hoa	mật hoa	nectars	1. The butterfly drinks the nectar. <br>2. Nectar is a source of energy for pollinators.
+pollen	p____n	/ˈpɒlən/	[sound:pollen.mp3]	a fine powder produced by flowers	phấn hoa	phấn hoa	pollens	1. The bee carries pollen from flower to flower. <br>2. Pollen is essential for reproduction.
+water	w___r	/ˈwɔːtər/	[sound:water.mp3]	a vital resource for all organisms in the food chain	nước	nước	waters	1. Water is necessary for plant growth. <br>2. Animals need water to survive.
+soil	s__l	/sɔɪl/	[sound:soil.mp3]	the material where plants grow	đất	đất	soils	1. The soil contains nutrients for the plant. <br>2. Decomposers live in the soil.
+oxygen	o____n	/ˈɒksɪdʒən/	[sound:oxygen.mp3]	a gas produced by plants	ô-xy	ô-xy	oxygens	1. Plants release oxygen during photosynthesis. <br>2. Animals need oxygen for respiration.
+carbon	c____n	/ˈkɑːrbən/	[sound:carbon.mp3]	an element used by plants for growth	các-bon	các-bon	carbons	1. Plants absorb carbon from the atmosphere. <br>2. Carbon is the basis of all organic matter.
+heat	h__t	/hiːt/	[sound:heat.mp3]	the form of energy lost during transfer	nhiệt	nhiệt	heats	1. Energy is lost as heat in the chain. <br>2. Heat is a byproduct of metabolism.
+metabolism	m________m	/məˈtæbəlɪzəm/	[sound:metabolism.mp3]	the chemical processes in an organism	quá trình trao đổi chất	quá trình trao đổi chất	metabolisms	1. Metabolism converts food into energy. <br>2. The rate of metabolism varies by species.
+respiration	r_________n	/ˌrɛspəˈreɪʃən/	[sound:respiration.mp3]	the process of breathing and energy release	hô hấp	hô hấp	respirations	1. Respiration is vital for all consumers. <br>2. Plants also perform respiration.
+competition	c_________n	/ˌkɒmpəˈtɪʃən/	[sound:competition.mp3]	the struggle for resources	cạnh tranh	cạnh tranh	competitions	1. Competition for food is fierce. <br>2. Competition shapes the food web.
+symbiosis	s_______s	/ˌsɪmbaɪˈoʊsɪs/	[sound:symbiosis.mp3]	a close relationship between two species	cộng sinh	cộng sinh	symbioses	1. Symbiosis can be beneficial to both species. <br>2. The clownfish has a symbiosis with the anemone.
+anemone	a_____e	/əˈnɛməni/	[sound:anemone.mp3]	a marine animal that lives in symbiosis	hải quỳ	hải quỳ	anemones	1. The anemone protects the fish. <br>2. The fish provides food for the anemone.
+coralline	c_______e	/ˈkɒrəlaɪn/	[sound:coralline.mp3]	a type of algae that acts as a producer	tảo san hô	tảo san hô	corallines	1. Coralline algae are important producers. <br>2. Many fish graze on coralline algae.
+zooplankton	z_________n	/ˌzoʊəˈplæŋktən/	[sound:zooplankton.mp3]	animal plankton	động vật phù du	động vật phù du	zooplanktons	1. Zooplankton is a secondary consumer. <br>2. Small fish consume zooplankton.
+phytoplankton	p___________n	/ˌfaɪtoʊˈplæŋktən/	[sound:phytoplankton.mp3]	plant plankton	thực vật phù du	thực vật phù du	phytoplanktons	1. Phytoplankton is a primary producer. <br>2. Phytoplankton uses light to make food.
+worm	w__m	/wɜːrm/	[sound:worm.mp3]	an invertebrate that acts as a detritivore	giun	giun	worms	1. The worm feeds on decaying leaves. <br>2. Worms are vital to soil health.
+mite	m__e	/maɪt/	[sound:mite.mp3]	a tiny arachnid that decomposes matter	con mạt	con mạt	mites	1. The mite feeds on organic debris. <br>2. Mites are common in the soil.
+beetle	b____e	/ˈbiːtəl/	[sound:beetle.mp3]	an insect that can be a scavenger	bọ cánh cứng	bọ cánh cứng	beetles	1. The beetle eats the dead insect. <br>2. Some beetles are predators.
+vulture	v_____e	/ˈvʌltʃər/	[sound:vulture.mp3]	a bird that eats carrion	kền kền	kền kền	vultures	1. The vulture is an efficient scavenger. <br>2. Vultures prevent the spread of disease.
+hyena	h___a	/haɪˈiːnə/	[sound:hyena.mp3]	a mammal that is both a hunter and scavenger	linh cẩu	linh cẩu	hyenas	1. The hyena hunts in groups. <br>2. Hyenas also consume carrion.
+lion	l__n	/ˈlaɪən/	[sound:lion.mp3]	a top predator in the savanna	sư tử	sư tử	lions	1. The lion hunts the zebra. <br>2. Lions are apex predators.
+zebra	z___a	/ˈziːbrə/	[sound:zebra.mp3]	a herbivore that eats grass	ngựa vằn	ngựa vằn	zebras	1. The zebra is a primary consumer. <br>2. Lions prey on the zebra.
+grasshopper	g_________r	/ˈɡræshɒpər/	[sound:grasshopper.mp3]	a herbivore that eats plants	châu chấu	châu chấu	grasshoppers	1. The grasshopper feeds on the grass. <br>2. Birds eat the grasshopper.
+frog	f__g	/frɒɡ/	[sound:frog.mp3]	a secondary consumer that eats insects	ếch	ếch	frogs	1. The frog catches the grasshopper. <br>2. Snakes eat the frog.
+snake	s___e	/sneɪk/	[sound:snake.mp3]	a predator that eats small animals	rắn	rắn	snakes	1. The snake is a secondary consumer. <br>2. Hawks eat the snake.
+hawk	h__k	/hɔːk/	[sound:hawk.mp3]	a bird of prey	diều hâu	diều hâu	hawks	1. The hawk is an apex predator. <br>2. The hawk hunts from the sky.
+rabbit	r____t	/ˈræbɪt/	[sound:rabbit.mp3]	a herbivore that eats grass	thỏ	thỏ	rabbits	1. The rabbit is a primary consumer. <br>2. Foxes hunt the rabbit.
+fox	f_x	/fɒks/	[sound:fox.mp3]	a predator that eats rabbits	cáo	cáo	foxes	1. The fox is a secondary consumer. <br>2. The fox tracks its prey.
+wolf	w__f	/wʊlf/	[sound:wolf.mp3]	a predator that hunts in packs	sói	sói	wolves	1. The wolf hunts deer. <br>2. Wolves are important predators.
+deer	d__r	/dɪər/	[sound:deer.mp3]	a herbivore that eats plants	hươu	hươu	deer	1. The deer eats leaves from the shrub. <br>2. Wolves prey on the deer.
+shark	s___k	/ʃɑːrk/	[sound:shark.mp3]	an apex predator in the ocean	cá mập	cá mập	sharks	1. The shark eats smaller fish. <br>2. Sharks are at the top of the food chain.
+whale	w___e	/weɪl/	[sound:whale.mp3]	a large mammal that eats plankton	cá voi	cá voi	whales	1. The whale consumes large amounts of plankton. <br>2. The whale is a secondary consumer.
+krill	k___l	/krɪl/	[sound:krill.mp3]	a small crustacean eaten by whales	tôm krill	tôm krill	krill	1. The whale feeds on the krill. <br>2. Krill is a primary consumer.
+seal	s__l	/siːl/	[sound:seal.mp3]	a predator that eats fish	hải cẩu	hải cẩu	seals	1. The seal is a secondary consumer. <br>2. Sharks hunt the seal.
+penguin	p_____n	/ˈpɛŋɡwɪn/	[sound:penguin.mp3]	a bird that eats fish	chim cánh cụt	chim cánh cụt	penguins	1. The penguin hunts for fish. <br>2. Seals eat the penguin.
+caterpillar	c_________r	/ˈkætərpɪlər/	[sound:caterpillar.mp3]	a herbivore that eats leaves	sâu bướm	sâu bướm	caterpillars	1. The caterpillar eats the leaf. <br>2. Birds eat the caterpillar.
+butterfly	b_______y	/ˈbʌtərflaɪ/	[sound:butterfly.mp3]	an insect that drinks nectar	bướm	bướm	butterflies	1. The butterfly visits the flower. <br>2. Butterflies are pollinators.
+spider	s____r	/ˈspaɪdər/	[sound:spider.mp3]	a predator that eats insects	nhện	nhện	spiders	1. The spider catches the insect in its web. <br>2. Spiders are important predators.
+fly	f_y	/flaɪ/	[sound:fly.mp3]	an insect that can be a scavenger	ruồi	ruồi	flies	1. The fly feeds on waste. <br>2. Frogs eat the fly.
+mouse	m___e	/maʊs/	[sound:mouse.mp3]	a small herbivore	chuột	chuột	mice	1. The mouse eats seeds. <br>2. Owls hunt the mouse.
+owl	o_l	/aʊl/	[sound:owl.mp3]	a nocturnal bird of prey	cú	cú	owls	1. The owl hunts the mouse. <br>2. Owls are apex predators.
+bear	b__r	/bɛər/	[sound:bear.mp3]	an omnivore	gấu	gấu	bears	1. The bear eats berries and fish. <br>2. Bears are large omnivores.
+berry	b___y	/ˈbɛri/	[sound:berry.mp3]	a fruit eaten by herbivores	quả mọng	quả mọng	berries	1. The bird eats the berry. <br>2. Bears forage for the berry.
+nut	n_t	/nʌt/	[sound:nut.mp3]	a food source for many animals	hạt	hạt	nuts	1. The squirrel eats the nut. <br>2. Nuts are energy-rich food.
+squirrel	s______l	/ˈskwɜːrəl/	[sound:squirrel.mp3]	a herbivore that eats nuts	sóc	sóc	squirrels	1. The squirrel gathers the nut. <br>2. Hawks hunt the squirrel.
+cow	c_w	/kaʊ/	[sound:cow.mp3]	a herbivore that eats grass	bò	bò	cows	1. The cow grazes on the grass. <br>2. Cows are primary consumers.
+grassland	g_______d	/ˈɡræslænd/	[sound:grassland.mp3]	an ecosystem dominated by grass	đồng cỏ	đồng cỏ	grasslands	1. The grassland is home to many herbivores. <br>2. The food chain in the grassland is complex.

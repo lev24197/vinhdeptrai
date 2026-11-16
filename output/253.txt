@@ -1,0 +1,100 @@
+graph	g___h	/ɡræf/	[sound:graph.mp3]	a structure consisting of a set of vertices and edges	đồ thị	đồ thị	graphs	1. The search algorithm traverses the graph. <br>2. Each node in the graph represents a state.
+node	n__e	/noʊd/	[sound:node.mp3]	a point or vertex in a network or graph	nút	nút	nodes	1. The algorithm visits each node once. <br>2. The start node is the initial state.
+edge	e__e	/ɛdʒ/	[sound:edge.mp3]	a connection between two nodes in a graph	cạnh	cạnh	edges	1. The edge connects two adjacent states. <br>2. Each edge has a specific weight.
+tree	t__e	/tri/	[sound:tree.mp3]	a connected graph with no cycles	cây	cây	trees	1. The search tree expands level by level. <br>2. A binary tree is a common structure.
+queue	q___e	/kju/	[sound:queue.mp3]	a first-in-first-out data structure used for frontier management	hàng đợi	hàng đợi	queues	1. Breadth-first search uses a queue. <br>2. The queue stores the frontier nodes.
+stack	s___k	/stæk/	[sound:stack.mp3]	a last-in-first-out data structure used for backtracking	ngăn xếp	ngăn xếp	stacks	1. Depth-first search relies on a stack. <br>2. The stack tracks the current path.
+heap	h__p	/hip/	[sound:heap.mp3]	a tree-based data structure used for priority management	đống	đống	heaps	1. A min-heap helps select the lowest cost node. <br>2. The heap maintains the priority queue.
+frontier	f______r	/ˈfrʌntɪr/	[sound:frontier.mp3]	the set of nodes discovered but not yet expanded	tập biên	tập biên	frontiers	1. The frontier expands as the algorithm progresses. <br>2. An empty frontier indicates search failure.
+path	p__h	/pæθ/	[sound:path.mp3]	a sequence of edges connecting a series of nodes	đường đi	đường đi	paths	1. The shortest path is found using A*. <br>2. The path cost is calculated at each step.
+cycle	c___e	/ˈsaɪkəl/	[sound:cycle.mp3]	a path that starts and ends at the same node	chu trình	chu trình	cycles	1. The algorithm detects a cycle to avoid infinite loops. <br>2. Graphs without a cycle are easier to search.
+heuristic	h_______c	/hjuˈrɪstɪk/	[sound:heuristic.mp3]	a function estimating the cost from a node to the goal	hàm heuristic	hàm heuristic	heuristics	1. A good heuristic speeds up the search. <br>2. The admissible heuristic ensures optimality.
+weight	w____t	/weɪt/	[sound:weight.mp3]	a numerical value assigned to an edge	trọng số	trọng số	weights	1. The edge weight represents the distance. <br>2. Negative weights complicate the search.
+root	r__t	/rut/	[sound:root.mp3]	the top node of a tree structure	gốc	gốc	roots	1. The search begins at the root. <br>2. The root has no parent node.
+leaf	l__f	/lif/	[sound:leaf.mp3]	a node with no children in a tree	lá	lá	leaves	1. The algorithm reaches a leaf node. <br>2. Every path ends at a leaf.
+depth	d___h	/dɛpθ/	[sound:depth.mp3]	the level of a node in a search tree	độ sâu	độ sâu	depths	1. The maximum depth limits the search. <br>2. The node is at depth three.
+goal	g__l	/ɡoʊl/	[sound:goal.mp3]	the target state to be reached by the search	đích	đích	goals	1. The search terminates at the goal. <br>2. Multiple goals may exist in the graph.
+state	s___e	/steɪt/	[sound:state.mp3]	a specific configuration of a problem	trạng thái	trạng thái	states	1. The initial state is defined clearly. <br>2. The algorithm explores every reachable state.
+successor	s_______r	/səkˈsɛsər/	[sound:successor.mp3]	a node reachable from the current node	nút kế tiếp	nút kế tiếp	successors	1. The function generates every successor. <br>2. The successor is added to the frontier.
+cost	c__t	/kɔst/	[sound:cost.mp3]	the numerical value associated with a path	chi phí	chi phí	costs	1. The path cost is minimized. <br>2. The algorithm compares the total cost.
+branch	b____h	/bræntʃ/	[sound:branch.mp3]	a path segment connecting a parent to a child	nhánh	nhánh	branches	1. The algorithm explores a new branch. <br>2. The branching factor affects performance.
+parent	p____t	/ˈpɛrənt/	[sound:parent.mp3]	a node that is directly connected to a child node	nút cha	nút cha	parents	1. The parent stores the path to the child. <br>2. Every node except the root has a parent.
+child	c___d	/tʃaɪld/	[sound:child.mp3]	a node that is directly connected to a parent node	nút con	nút con	children	1. The child node is generated from the state. <br>2. A parent can have multiple children.
+backtracking	b__________g	/ˈbækˌtrækɪŋ/	[sound:backtracking.mp3]	the process of returning to a previous node	quay lui	quay lui	backtrackings	1. The search uses backtracking to find a solution. <br>2. Backtracking is essential for constraint satisfaction.
+adjacency	a_______y	/əˈdʒeɪsənsi/	[sound:adjacency.mp3]	the state of being directly connected	sự kề	sự kề	adjacencies	1. The adjacency list represents the graph. <br>2. The adjacency matrix is sparse.
+matrix	m____x	/ˈmeɪtrɪks/	[sound:matrix.mp3]	a two-dimensional array representing graph connections	ma trận	ma trận	matrices	1. The adjacency matrix stores edge weights. <br>2. The matrix size depends on the node count.
+list	l__t	/lɪst/	[sound:list.mp3]	a sequence of elements used for storage	danh sách	danh sách	lists	1. The open list tracks unexplored nodes. <br>2. The closed list prevents redundant visits.
+map	m_p	/mæp/	[sound:map.mp3]	a representation of locations and connections	bản đồ	bản đồ	maps	1. The map provides the search space. <br>2. The algorithm finds a route on the map.
+grid	g__d	/ɡrɪd/	[sound:grid.mp3]	a regular network of nodes in rows and columns	lưới	lưới	grids	1. The grid allows movement in four directions. <br>2. Obstacles occupy cells in the grid.
+cell	c__l	/sɛl/	[sound:cell.mp3]	a single unit in a grid	ô	ô	cells	1. The algorithm visits each cell. <br>2. The goal is in a blocked cell.
+obstacle	o______e	/ˈɑbstəkəl/	[sound:obstacle.mp3]	an impassable node in a search space	vật cản	vật cản	obstacles	1. The path must avoid the obstacle. <br>2. The obstacle blocks the shortest path.
+iterator	i______r	/ˈɪtəˌreɪtər/	[sound:iterator.mp3]	a tool to traverse a data structure	bộ lặp	bộ lặp	iterators	1. The iterator visits each neighbor. <br>2. The list iterator handles node traversal.
+pointer	p_____r	/ˈpɔɪntər/	[sound:pointer.mp3]	a reference to a memory address of a node	con trỏ	con trỏ	pointers	1. The pointer references the parent node. <br>2. The algorithm updates the pointer.
+complexity	c________y	/kəmˈplɛksɪti/	[sound:complexity.mp3]	the computational resources required by an algorithm	độ phức tạp	độ phức tạp	complexities	1. The time complexity is linear. <br>2. Space complexity is a concern for large trees.
+optimality	o________y	/ˌɒptɪˈmæləti/	[sound:optimality.mp3]	the quality of finding the best solution	tính tối ưu	tính tối ưu	optimalities	1. Optimality is guaranteed by this algorithm. <br>2. The algorithm sacrifices optimality for speed.
+completeness	c__________s	/kəmˈpliːtnəs/	[sound:completeness.mp3]	the ability to find a solution if one exists	tính đầy đủ	tính đầy đủ	completenesses	1. Completeness is a key requirement. <br>2. The search lacks completeness on infinite graphs.
+recursion	r_______n	/rɪˈkɜːrʒən/	[sound:recursion.mp3]	a method where the solution depends on smaller instances	đệ quy	đệ quy	recursions	1. The recursion depth is limited. <br>2. The algorithm uses recursion for tree traversal.
+loop	l__p	/lup/	[sound:loop.mp3]	a sequence of instructions that repeats	vòng lặp	vòng lặp	loops	1. The main loop continues until the goal is found. <br>2. The algorithm avoids an infinite loop.
+constraint	c________t	/kənˈstreɪnt/	[sound:constraint.mp3]	a condition that must be satisfied	ràng buộc	ràng buộc	constraints	1. The constraint limits the search space. <br>2. Each step must satisfy the constraint.
+solution	s______n	/səˈluːʃən/	[sound:solution.mp3]	a valid path from start to goal	lời giải	lời giải	solutions	1. The algorithm returns the optimal solution. <br>2. No solution exists for this graph.
+value	v___e	/ˈvælju/	[sound:value.mp3]	a numerical result or assigned property	giá trị	giá trị	values	1. The heuristic value guides the search. <br>2. The cost value is updated.
+distance	d______e	/ˈdɪstəns/	[sound:distance.mp3]	the measure of separation between two nodes	khoảng cách	khoảng cách	distances	1. The distance is calculated using coordinates. <br>2. The shortest distance is the goal.
+coordinate	c________e	/koʊˈɔːrdɪnət/	[sound:coordinate.mp3]	a position in a grid or space	tọa độ	tọa độ	coordinates	1. The coordinate defines the node position. <br>2. Each coordinate pair is unique.
+direction	d_______n	/dɪˈrɛkʃən/	[sound:direction.mp3]	a path of movement in the search space	hướng	hướng	directions	1. The algorithm checks all four directions. <br>2. The search moves in a specific direction.
+boundary	b______y	/ˈbaʊndəri/	[sound:boundary.mp3]	the edge of the search space	biên	biên	boundaries	1. The search hits the grid boundary. <br>2. The boundary limits the exploration.
+subset	s____t	/ˈsʌbsɛt/	[sound:subset.mp3]	a smaller part of a set of nodes	tập con	tập con	subsets	1. The algorithm explores a subset of nodes. <br>2. The subset represents the visited states.
+iteration	i_______n	/ˌɪtəˈreɪʃən/	[sound:iteration.mp3]	a single pass through a loop	lần lặp	lần lặp	iterations	1. The iteration finishes when the queue is empty. <br>2. The search takes several iterations.
+variable	v______e	/ˈvɛriəbəl/	[sound:variable.mp3]	a storage location for a value	biến	biến	variables	1. The variable stores the current node. <br>2. The algorithm updates the cost variable.
+memory	m____y	/ˈmɛməri/	[sound:memory.mp3]	the space used to store nodes and paths	bộ nhớ	bộ nhớ	memories	1. The algorithm consumes memory. <br>2. Limited memory affects the search depth.
+time	t__e	/taɪm/	[sound:time.mp3]	the duration taken to complete the search	thời gian	thời gian	times	1. The time taken depends on the graph size. <br>2. Execution time is measured in milliseconds.
+performance	p_________e	/pərˈfɔːrməns/	[sound:performance.mp3]	the efficiency of the search algorithm	hiệu năng	hiệu năng	performances	1. The performance is excellent. <br>2. Search performance varies with heuristics.
+input	i___t	/ˈɪnpʊt/	[sound:input.mp3]	the data provided to the algorithm	đầu vào	đầu vào	inputs	1. The input is a graph structure. <br>2. The algorithm processes the input.
+output	o____t	/ˈaʊtpʊt/	[sound:output.mp3]	the result produced by the algorithm	đầu ra	đầu ra	outputs	1. The output is the shortest path. <br>2. The algorithm generates the output.
+instance	i______e	/ˈɪnstəns/	[sound:instance.mp3]	a specific case of a problem	trường hợp	trường hợp	instances	1. The algorithm solves this instance. <br>2. Each instance has a different graph.
+comparison	c________n	/kəmˈpærɪsən/	[sound:comparison.mp3]	the act of checking two values	sự so sánh	sự so sánh	comparisons	1. The comparison determines the next node. <br>2. The algorithm performs many comparisons.
+traversal	t_______l	/trəˈvɜːrsəl/	[sound:traversal.mp3]	the process of visiting nodes in a graph	sự duyệt	sự duyệt	traversals	1. The traversal visits every reachable node. <br>2. Depth-first traversal is recursive.
+search	s____h	/sɜːrtʃ/	[sound:search.mp3]	the process of finding a node or path	tìm kiếm	tìm kiếm	searches	1. The search begins at the start node. <br>2. The search is exhaustive.
+expansion	e_______n	/ɪkˈspænʃən/	[sound:expansion.mp3]	the process of generating successors of a node	sự mở rộng	sự mở rộng	expansions	1. Each expansion adds nodes to the frontier. <br>2. The expansion is limited by the graph.
+order	o___r	/ˈɔːrdər/	[sound:order.mp3]	the sequence in which nodes are visited	thứ tự	thứ tự	orders	1. The visitation order is important. <br>2. The order depends on the algorithm.
+base	b__e	/beɪs/	[sound:base.mp3]	the starting point or foundation	cơ sở	cơ sở	bases	1. The base case stops the recursion. <br>2. The graph serves as the base for the search.
+case	c__e	/keɪs/	[sound:case.mp3]	a specific scenario	trường hợp	trường hợp	cases	1. The worst case is exponential. <br>2. The average case is much faster.
+condition	c_______n	/kənˈdɪʃən/	[sound:condition.mp3]	a requirement for an action	điều kiện	điều kiện	conditions	1. The condition checks for the goal state. <br>2. The loop continues under this condition.
+rule	r__e	/rul/	[sound:rule.mp3]	a principle for state transitions	quy tắc	quy tắc	rules	1. The transition rule defines the edges. <br>2. The algorithm follows a strict rule.
+step	s__p	/stɛp/	[sound:step.mp3]	a single action in the search process	bước	bước	steps	1. Each step moves to a neighbor. <br>2. The search takes ten steps.
+sequence	s______e	/ˈsiːkwəns/	[sound:sequence.mp3]	an ordered list of nodes	chuỗi	chuỗi	sequences	1. The sequence forms a path. <br>2. The algorithm generates a sequence.
+level	l___l	/ˈlɛvəl/	[sound:level.mp3]	the depth of nodes in a tree	cấp	cấp	levels	1. The algorithm processes level by level. <br>2. The goal is at the third level.
+branching	b_______g	/ˈbræntʃɪŋ/	[sound:branching.mp3]	the number of children per node	sự phân nhánh	sự phân nhánh	branchings	1. The branching factor is constant. <br>2. High branching increases complexity.
+weighting	w_______g	/ˈweɪtɪŋ/	[sound:weighting.mp3]	the assignment of costs to edges	sự gán trọng số	sự gán trọng số	weightings	1. The weighting affects the shortest path. <br>2. Uniform weighting simplifies the search.
+dimension	d_______n	/dɪˈmɛnʃən/	[sound:dimension.mp3]	a measure of spatial extent	chiều	chiều	dimensions	1. The grid has two dimensions. <br>2. The search space has many dimensions.
+size	s__e	/saɪz/	[sound:size.mp3]	the magnitude of the search space	kích thước	kích thước	sizes	1. The graph size is large. <br>2. The frontier size is dynamic.
+discovery	d_______y	/dɪˈskʌvəri/	[sound:discovery.mp3]	the act of finding a node	sự khám phá	sự khám phá	discoveries	1. The discovery of a cycle ends the path. <br>2. The discovery happens during expansion.
+visit	v___t	/ˈvɪzɪt/	[sound:visit.mp3]	the action of processing a node	lần duyệt	lần duyệt	visits	1. Each node has one visit. <br>2. The visit marks the node as explored.
+set	s_t	/sɛt/	[sound:set.mp3]	a collection of distinct nodes	tập hợp	tập hợp	sets	1. The set of visited nodes is stored. <br>2. The frontier is a set of nodes.
+collection	c________n	/kəˈlɛkʃən/	[sound:collection.mp3]	a group of items	tập hợp	tập hợp	collections	1. The collection holds the frontier. <br>2. A collection of edges forms a path.
+representation	r____________n	/ˌrɛprɪzɛnˈteɪʃən/	[sound:representation.mp3]	the way a graph is stored	cách biểu diễn	cách biểu diễn	representations	1. The matrix is a common representation. <br>2. The list representation is memory efficient.
+implementation	i____________n	/ˌɪmpləmɛnˈteɪʃən/	[sound:implementation.mp3]	the realization of an algorithm in code	cách cài đặt	cách cài đặt	implementations	1. The implementation uses a priority queue. <br>2. The implementation is recursive.
+data	d__a	/ˈdeɪtə/	[sound:data.mp3]	information processed by the algorithm	dữ liệu	dữ liệu	data	1. The data defines the graph structure. <br>2. The algorithm processes the data.
+structure	s_______e	/ˈstrʌktʃər/	[sound:structure.mp3]	the organization of data	cấu trúc	cấu trúc	structures	1. The graph is a complex structure. <br>2. The data structure stores the frontier.
+information	i_________n	/ˌɪnfərˈmeɪʃən/	[sound:information.mp3]	knowledge about the graph	thông tin	thông tin	informations	1. The heuristic provides information. <br>2. The search uses available information.
+logic	l___c	/ˈlɒdʒɪk/	[sound:logic.mp3]	the reasoning behind the algorithm	logic	logic	logics	1. The logic dictates the next step. <br>2. The search logic is sound.
+process	p_____s	/ˈprɒsɛs/	[sound:process.mp3]	a series of actions	quá trình	quá trình	processes	1. The process repeats until the goal. <br>2. The search process is deterministic.
+method	m____d	/ˈmɛθəd/	[sound:method.mp3]	a way of performing a search	phương pháp	phương pháp	methods	1. The method uses a heuristic. <br>2. This method is efficient.
+technique	t_______e	/tɛkˈniːk/	[sound:technique.mp3]	a specific skill or procedure	kỹ thuật	kỹ thuật	techniques	1. The technique avoids cycles. <br>2. The search technique is robust.
+strategy	s______y	/ˈstrætədʒi/	[sound:strategy.mp3]	a plan for searching	chiến lược	chiến lược	strategies	1. The strategy determines node expansion. <br>2. The search strategy is greedy.
+design	d____n	/dɪˈzaɪn/	[sound:design.mp3]	the plan of the algorithm	thiết kế	thiết kế	designs	1. The design includes a priority queue. <br>2. The algorithm design is simple.
+model	m___l	/ˈmɒdəl/	[sound:model.mp3]	a representation of the problem	mô hình	mô hình	models	1. The model uses a graph. <br>2. The search model is accurate.
+simulation	s________n	/ˌsɪmjʊˈleɪʃən/	[sound:simulation.mp3]	the imitation of a search process	mô phỏng	mô phỏng	simulations	1. The simulation shows the path. <br>2. The simulation runs in real time.
+test	t__t	/tɛst/	[sound:test.mp3]	a trial of the algorithm	kiểm thử	kiểm thử	tests	1. The test uses a large graph. <br>2. The algorithm passes the test.
+result	r____t	/rɪˈzʌlt/	[sound:result.mp3]	the outcome of the search	kết quả	kết quả	results	1. The result is a path. <br>2. The results are consistent.
+error	e___r	/ˈɛrər/	[sound:error.mp3]	a mistake in the search	lỗi	lỗi	errors	1. The error occurs in the queue. <br>2. The algorithm handles the error.
+failure	f_____e	/ˈfeɪljər/	[sound:failure.mp3]	the inability to find a solution	sự thất bại	sự thất bại	failures	1. The failure indicates no path. <br>2. The search ends in failure.
+success	s_____s	/səkˈsɛs/	[sound:success.mp3]	the attainment of the goal	sự thành công	sự thành công	successes	1. The success is guaranteed. <br>2. The algorithm reports success.
+status	s____s	/ˈsteɪtəs/	[sound:status.mp3]	the condition of a node	trạng thái	trạng thái	statuses	1. The status is marked as visited. <br>2. The node status is updated.
+type	t__e	/taɪp/	[sound:type.mp3]	a kind of algorithm or node	loại	loại	types	1. The search type is informed. <br>2. The node type matters.
+part	p__t	/pɑːrt/	[sound:part.mp3]	a segment of the algorithm	phần	phần	parts	1. The expansion is a key part. <br>2. The search has three parts.
+component	c_______t	/kəmˈpoʊnənt/	[sound:component.mp3]	a piece of the search system	thành phần	thành phần	components	1. The queue is a component. <br>2. Each component is tested.
+element	e_____t	/ˈɛlɪmənt/	[sound:element.mp3]	a single item in a set	phần tử	phần tử	elements	1. The element is a node. <br>2. The set contains many elements.
+unit	u__t	/ˈjuːnɪt/	[sound:unit.mp3]	a single measurement or node	đơn vị	đơn vị	units	1. The unit of cost is distance. <br>2. Each unit is processed.
+range	r___e	/reɪndʒ/	[sound:range.mp3]	the scope of the search	phạm vi	phạm vi	ranges	1. The range covers the whole graph. <br>2. The search range is limited.
+limit	l___t	/ˈlɪmɪt/	[sound:limit.mp3]	a boundary on the search	giới hạn	giới hạn	limits	1. The limit is set to the depth. <br>2. The algorithm reaches its limit.
+point	p___t	/pɔɪnt/	[sound:point.mp3]	a specific location	điểm	điểm	points	1. The start point is defined. <br>2. The algorithm reaches the point.

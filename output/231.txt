@@ -1,0 +1,100 @@
+lion	l__n	/ˈlaɪən/	[sound:lion.mp3]	a large cat native to Africa and India	sư tử	sư tử	lions	1. The lion roared loudly in the savanna. <br>2. A lion is often called the king of the jungle.
+tiger	t___r	/ˈtaɪɡər/	[sound:tiger.mp3]	a large striped cat found in Asia	hổ	hổ	tigers	1. The tiger stalked its prey through the tall grass. <br>2. Siberian tigers are known for their thick fur.
+elephant	e______t	/ˈɛləfənt/	[sound:elephant.mp3]	a large herbivorous mammal with a trunk	voi	voi	elephants	1. The elephant used its trunk to drink water. <br>2. Elephants are highly intelligent social animals.
+giraffe	g_____e	/dʒəˈræf/	[sound:giraffe.mp3]	a tall African mammal with a long neck	hươu cao cổ	hươu cao cổ	giraffes	1. The giraffe reached for leaves at the top of the tree. <br>2. A giraffe has a very long tongue.
+zebra	z___a	/ˈziːbrə/	[sound:zebra.mp3]	an African wild horse with black and white stripes	ngựa vằn	ngựa vằn	zebras	1. The zebra grazed on the open plains. <br>2. Each zebra has a unique pattern of stripes.
+monkey	m____y	/ˈmʌŋki/	[sound:monkey.mp3]	a primate with a long tail	khỉ	khỉ	monkeys	1. The monkey swung from branch to branch. <br>2. Monkeys are known for their playful behavior.
+kangaroo	k______o	/ˌkæŋɡəˈruː/	[sound:kangaroo.mp3]	an Australian marsupial that moves by hopping	chuột túi	chuột túi	kangaroos	1. The kangaroo carried its joey in a pouch. <br>2. Kangaroos are native to Australia.
+bear	b__r	/bɛər/	[sound:bear.mp3]	a large heavy mammal with thick fur	gấu	gấu	bears	1. The bear caught a fish in the river. <br>2. Bears often hibernate during the winter months.
+wolf	w__f	/wʊlf/	[sound:wolf.mp3]	a wild carnivorous mammal of the dog family	sói	sói	wolves	1. The wolf howled at the moon. <br>2. A wolf lives in a pack.
+fox	f_x	/fɒks/	[sound:fox.mp3]	a small carnivorous mammal with a bushy tail	cáo	cáo	foxes	1. The fox sneaked into the chicken coop. <br>2. A fox is known for being very clever.
+rabbit	r____t	/ˈræbɪt/	[sound:rabbit.mp3]	a small burrowing mammal with long ears	thỏ	thỏ	rabbits	1. The rabbit hopped across the garden. <br>2. Rabbits eat many types of vegetables.
+deer	d__r	/dɪər/	[sound:deer.mp3]	a hoofed grazing animal, the male of which usually has antlers	hươu	hươu	deer	1. A deer ran across the road. <br>2. The deer grazed quietly in the forest clearing.
+whale	w___e	/weɪl/	[sound:whale.mp3]	a very large marine mammal	cá voi	cá voi	whales	1. The whale breached the surface of the ocean. <br>2. Blue whales are the largest animals on Earth.
+dolphin	d_____n	/ˈdɒlfɪn/	[sound:dolphin.mp3]	a highly intelligent marine mammal	cá heo	cá heo	dolphins	1. The dolphin jumped through the hoop. <br>2. Dolphins are known for their playful nature.
+bat	b_t	/bæt/	[sound:bat.mp3]	a flying mammal that is active at night	dơi	dơi	bats	1. The bat flew out of the cave at dusk. <br>2. Bats use echolocation to navigate in the dark.
+hippopotamus	h__________s	/ˌhɪpəˈpɒtəməs/	[sound:hippopotamus.mp3]	a large thick-skinned African mammal that lives in water	hà mã	hà mã	hippopotamuses	1. The hippopotamus spent most of the day in the river. <br>2. A hippopotamus can be very aggressive.
+rhinoceros	r________s	/raɪˈnɒsərəs/	[sound:rhinoceros.mp3]	a large mammal with one or two horns on its nose	tê giác	tê giác	rhinoceroses	1. The rhinoceros grazed on the savanna. <br>2. The rhinoceros has very thick skin.
+leopard	l_____d	/ˈlɛpərd/	[sound:leopard.mp3]	a large cat with a spotted coat	báo hoa mai	báo hoa mai	leopards	1. The leopard climbed the tree with its prey. <br>2. A leopard is a solitary hunter.
+cheetah	c_____h	/ˈtʃiːtə/	[sound:cheetah.mp3]	a large spotted cat that is the fastest land animal	báo săn	báo săn	cheetahs	1. The cheetah sprinted across the plain. <br>2. A cheetah can reach incredible speeds.
+camel	c___l	/ˈkæməl/	[sound:camel.mp3]	a large desert animal with one or two humps	lạc đà	lạc đà	camels	1. The camel traveled across the hot desert. <br>2. Camels can store fat in their humps.
+gorilla	g_____a	/ɡəˈrɪlə/	[sound:gorilla.mp3]	a powerful ape native to Africa	khỉ đột	khỉ đột	gorillas	1. The gorilla beat its chest in the jungle. <br>2. Gorillas live in small family groups.
+chimpanzee	c________e	/ˌtʃɪmpænˈziː/	[sound:chimpanzee.mp3]	a small African ape closely related to humans	tinh tinh	tinh tinh	chimpanzees	1. The chimpanzee used a stick to find termites. <br>2. Chimpanzees are very social animals.
+koala	k___a	/koʊˈɑːlə/	[sound:koala.mp3]	an Australian marsupial that eats eucalyptus leaves	gấu túi	gấu túi	koalas	1. The koala slept in the eucalyptus tree. <br>2. Koalas are native to Australia.
+panda	p___a	/ˈpændə/	[sound:panda.mp3]	a large bear-like mammal with black and white fur	gấu trúc	gấu trúc	pandas	1. The panda ate bamboo in the forest. <br>2. Giant pandas are a vulnerable species.
+seal	s__l	/siːl/	[sound:seal.mp3]	a marine mammal with flippers	hải cẩu	hải cẩu	seals	1. The seal rested on the icy shore. <br>2. Seals are excellent swimmers.
+walrus	w____s	/ˈwɔːlrəs/	[sound:walrus.mp3]	a large marine mammal with long tusks	hải mã	hải mã	walruses	1. The walrus rested on the ice floe. <br>2. A walrus uses its tusks to haul itself out of the water.
+otter	o___r	/ˈɒtər/	[sound:otter.mp3]	a playful semi-aquatic mammal	rái cá	rái cá	otters	1. The otter swam in the river. <br>2. Otters are known for holding hands while sleeping.
+beaver	b____r	/ˈbiːvər/	[sound:beaver.mp3]	a large rodent known for building dams	hải ly	hải ly	beavers	1. The beaver built a dam across the stream. <br>2. A beaver has a flat, scaly tail.
+squirrel	s______l	/ˈskwɜːrəl/	[sound:squirrel.mp3]	a small rodent with a bushy tail	sóc	sóc	squirrels	1. The squirrel buried an acorn in the ground. <br>2. Squirrels are very quick climbers.
+mouse	m___e	/maʊs/	[sound:mouse.mp3]	a small rodent with a long tail	chuột	chuột	mice	1. The mouse scurried across the floor. <br>2. A mouse is a very small mammal.
+rat	r_t	/ræt/	[sound:rat.mp3]	a rodent larger than a mouse	chuột cống	chuột cống	rats	1. The rat hid behind the trash can. <br>2. Rats are very adaptable animals.
+hamster	h_____r	/ˈhæmstər/	[sound:hamster.mp3]	a small rodent often kept as a pet	chuột hamster	chuột hamster	hamsters	1. The hamster ran on its wheel. <br>2. A hamster stores food in its cheeks.
+hedgehog	h______g	/ˈhɛdʒhɒɡ/	[sound:hedgehog.mp3]	a small mammal with spines on its back	nhím kiểng	nhím kiểng	hedgehogs	1. The hedgehog curled into a ball to protect itself. <br>2. A hedgehog has many sharp spines.
+porcupine	p_______e	/ˈpɔːrkjupaɪn/	[sound:porcupine.mp3]	a rodent with sharp quills	con nhím	con nhím	porcupines	1. The porcupine raised its quills when threatened. <br>2. A porcupine is a slow-moving animal.
+sloth	s___h	/slɒθ/	[sound:sloth.mp3]	a slow-moving tropical mammal	con lười	con lười	sloths	1. The sloth hung from the tree branch. <br>2. Sloths are famous for their slow movement.
+raccoon	r_____n	/ræˈkuːn/	[sound:raccoon.mp3]	a nocturnal mammal with a ringed tail and mask	gấu mèo	gấu mèo	raccoons	1. The raccoon looked for food in the trash. <br>2. A raccoon has very dexterous paws.
+skunk	s___k	/skʌŋk/	[sound:skunk.mp3]	a mammal known for its strong-smelling spray	chồn hôi	chồn hôi	skunks	1. The skunk sprayed its scent to defend itself. <br>2. A skunk has a distinct black and white coat.
+badger	b____r	/ˈbædʒər/	[sound:badger.mp3]	a burrowing mammal with a striped face	lửng	lửng	badgers	1. The badger dug a burrow in the ground. <br>2. Badgers are nocturnal animals.
+hyena	h___a	/haɪˈiːnə/	[sound:hyena.mp3]	a carnivorous mammal known for its laugh-like call	linh cẩu	linh cẩu	hyenas	1. The hyena scavenged for food. <br>2. Hyenas live in large social groups.
+jackal	j____l	/ˈdʒækəl/	[sound:jackal.mp3]	a wild dog-like mammal	chó rừng	chó rừng	jackals	1. The jackal howled in the night. <br>2. Jackals are opportunistic feeders.
+moose	m___e	/muːs/	[sound:moose.mp3]	a large deer found in northern forests	nai sừng tấm	nai sừng tấm	moose	1. The moose waded through the lake. <br>2. A male moose has large antlers.
+elk	e_k	/ɛlk/	[sound:elk.mp3]	a large species of deer	nai	nai	elk	1. The elk grazed in the meadow. <br>2. Elk are known for their bugling calls.
+bison	b___n	/ˈbaɪsən/	[sound:bison.mp3]	a large wild ox with a shaggy coat	bò rừng	bò rừng	bison	1. The bison roamed the plains. <br>2. A bison is a very powerful animal.
+buffalo	b_____o	/ˈbʌfəloʊ/	[sound:buffalo.mp3]	a large wild ox	trâu	trâu	buffaloes	1. The buffalo drank from the watering hole. <br>2. Water buffaloes are often used for farming.
+antelope	a______e	/ˈæntɪloʊp/	[sound:antelope.mp3]	a swift-running deer-like mammal	linh dương	linh dương	antelopes	1. The antelope ran across the savanna. <br>2. Antelopes are very fast animals.
+gazelle	g_____e	/ɡəˈzɛl/	[sound:gazelle.mp3]	a small graceful antelope	linh dương gazelle	linh dương gazelle	gazelles	1. The gazelle leaped over the bushes. <br>2. Gazelles are known for their speed.
+llama	l___a	/ˈlɑːmə/	[sound:llama.mp3]	a South American pack animal	lạc đà không bướu	lạc đà không bướu	llamas	1. The llama carried packs up the mountain. <br>2. Llamas are related to camels.
+alpaca	a____a	/ælˈpækə/	[sound:alpaca.mp3]	a South American mammal valued for its wool	lạc đà alpaca	lạc đà alpaca	alpacas	1. The alpaca had very soft wool. <br>2. Alpacas are often kept for their fiber.
+platypus	p______s	/ˈplætɪpəs/	[sound:platypus.mp3]	an egg-laying mammal with a bill like a duck	thú mỏ vịt	thú mỏ vịt	platypuses	1. The platypus swam in the river. <br>2. A platypus is a unique mammal.
+echidna	e_____a	/ɪˈkɪdnə/	[sound:echidna.mp3]	an egg-laying mammal with spines	thú lông nhím	thú lông nhím	echidnas	1. The echidna searched for ants. <br>2. An echidna is also known as a spiny anteater.
+wombat	w____t	/ˈwɒmbæt/	[sound:wombat.mp3]	a sturdy burrowing Australian marsupial	gấu túi wombat	gấu túi wombat	wombats	1. The wombat dug a burrow. <br>2. Wombats have very strong claws.
+tasmanian devil	t_______n d___l	/tæzˈmeɪniən ˈdɛvəl/	[sound:tasmanian_devil.mp3]	a carnivorous Australian marsupial	quỷ Tasmania	quỷ Tasmania	tasmanian devils	1. The Tasmanian devil is known for its loud screech. <br>2. Tasmanian devils are native to Tasmania.
+meerkat	m_____t	/ˈmɪərkæt/	[sound:meerkat.mp3]	a small burrowing mongoose	cầy meerkat	cầy meerkat	meerkats	1. The meerkat stood guard on its hind legs. <br>2. Meerkats live in large colonies.
+mongoose	m______e	/ˈmɒŋɡuːs/	[sound:mongoose.mp3]	a small carnivorous mammal known for fighting snakes	cầy mangut	cầy mangut	mongooses	1. The mongoose attacked the snake. <br>2. Mongooses are very quick.
+lemur	l___r	/ˈliːmər/	[sound:lemur.mp3]	a primate native to Madagascar	vượn cáo	vượn cáo	lemurs	1. The lemur jumped between trees. <br>2. Lemurs have large, expressive eyes.
+orangutan	o_______n	/əˈræŋətæn/	[sound:orangutan.mp3]	a large red-haired ape	đười ươi	đười ươi	orangutans	1. The orangutan swung through the canopy. <br>2. Orangutans are highly intelligent.
+baboon	b____n	/bəˈbuːn/	[sound:baboon.mp3]	a large monkey with a dog-like face	khỉ đầu chó	khỉ đầu chó	baboons	1. The baboon groomed its friend. <br>2. Baboons live in large troops.
+manatee	m_____e	/ˈmænətiː/	[sound:manatee.mp3]	a large aquatic mammal	lợn biển	lợn biển	manatees	1. The manatee grazed on sea grass. <br>2. Manatees are often called sea cows.
+dugong	d____g	/ˈduːɡɒŋ/	[sound:dugong.mp3]	a marine mammal similar to a manatee	cá cúi	cá cúi	dugongs	1. The dugong swam in the shallow water. <br>2. Dugongs are herbivores.
+narwhal	n_____l	/ˈnɑːrwəl/	[sound:narwhal.mp3]	a whale with a long tusk	kỳ lân biển	kỳ lân biển	narwhals	1. The narwhal swam under the arctic ice. <br>2. A male narwhal has a long, spiral tusk.
+orca	o__a	/ˈɔːrkə/	[sound:orca.mp3]	a large predatory whale	cá voi sát thủ	cá voi sát thủ	orcas	1. The orca hunted in a pod. <br>2. Orcas are also known as killer whales.
+anteater	a______r	/ˈæntiːtər/	[sound:anteater.mp3]	a mammal that feeds on ants	thú ăn kiến	thú ăn kiến	anteaters	1. The anteater used its long tongue to eat ants. <br>2. An anteater has a very long snout.
+armadillo	a_______o	/ˌɑːrməˈdɪloʊ/	[sound:armadillo.mp3]	a mammal with a hard leathery shell	tê tê	tê tê	armadillos	1. The armadillo rolled into a ball. <br>2. An armadillo has a protective shell.
+tapir	t___r	/ˈteɪpər/	[sound:tapir.mp3]	a large herbivorous mammal with a short trunk	heo vòi	heo vòi	tapirs	1. The tapir walked through the forest. <br>2. Tapirs are related to horses and rhinos.
+wildebeest	w________t	/ˈwɪldəbiːst/	[sound:wildebeest.mp3]	a large African antelope	linh dương đầu bò	linh dương đầu bò	wildebeests	1. The wildebeest migrated across the plain. <br>2. Wildebeests travel in large herds.
+yak	y_k	/jæk/	[sound:yak.mp3]	a long-haired ox found in the Himalayas	bò yak	bò yak	yaks	1. The yak climbed the mountain path. <br>2. Yaks are well-adapted to cold climates.
+ferret	f____t	/ˈfɛrɪt/	[sound:ferret.mp3]	a domesticated polecat	chồn sương	chồn sương	ferrets	1. The ferret played with a toy. <br>2. Ferrets are very curious animals.
+mink	m__k	/mɪŋk/	[sound:mink.mp3]	a semi-aquatic mammal with valuable fur	chồn mink	chồn mink	minks	1. The mink swam in the stream. <br>2. Minks are known for their soft fur.
+weasel	w____l	/ˈwiːzəl/	[sound:weasel.mp3]	a small slender carnivorous mammal	chồn	chồn	weasels	1. The weasel moved quickly through the grass. <br>2. Weasels are excellent hunters.
+mole	m__e	/moʊl/	[sound:mole.mp3]	a small burrowing mammal	chuột chũi	chuột chũi	moles	1. The mole dug tunnels underground. <br>2. A mole has very large front paws for digging.
+shrew	s___w	/ʃruː/	[sound:shrew.mp3]	a small insectivorous mammal	chuột chù	chuột chù	shrews	1. The shrew scurried under the leaves. <br>2. Shrews have very fast heart rates.
+vole	v__e	/voʊl/	[sound:vole.mp3]	a small rodent similar to a mouse	chuột đồng	chuột đồng	voles	1. The vole lived in a grassy field. <br>2. Voles can reproduce very quickly.
+gopher	g____r	/ˈɡoʊfər/	[sound:gopher.mp3]	a burrowing rodent	chuột túi má	chuột túi má	gophers	1. The gopher dug a hole in the lawn. <br>2. Gophers are known for their cheek pouches.
+chipmunk	c______k	/ˈtʃɪpmʌŋk/	[sound:chipmunk.mp3]	a small striped rodent	sóc chuột	sóc chuột	chipmunks	1. The chipmunk gathered seeds. <br>2. Chipmunks have stripes on their backs.
+groundhog	g_______g	/ˈɡraʊndhɒɡ/	[sound:groundhog.mp3]	a large burrowing rodent	chuột chũi	chuột chũi	groundhogs	1. The groundhog came out of its hole. <br>2. Groundhogs hibernate in the winter.
+capybara	c______a	/ˌkæpiˈbɑːrə/	[sound:capybara.mp3]	the largest rodent in the world	chuột lang nước	chuột lang nước	capybaras	1. The capybara rested by the river. <br>2. Capybaras are very social animals.
+guinea pig	g____a p_g	/ˈɡɪni pɪɡ/	[sound:guinea_pig.mp3]	a small rodent popular as a pet	chuột lang	chuột lang	guinea pigs	1. The guinea pig squeaked for food. <br>2. Guinea pigs are native to South America.
+chinchilla	c________a	/tʃɪnˈtʃɪlə/	[sound:chinchilla.mp3]	a small rodent with soft fur	sóc chinchilla	sóc chinchilla	chinchillas	1. The chinchilla has very thick fur. <br>2. Chinchillas are native to the Andes mountains.
+possum	p____m	/ˈpɒsəm/	[sound:possum.mp3]	a marsupial that plays dead when threatened	thú có túi	thú có túi	possums	1. The possum climbed the tree. <br>2. Possums are nocturnal.
+opossum	o_____m	/əˈpɒsəm/	[sound:opossum.mp3]	a North American marsupial	thú có túi opossum	thú có túi opossum	opossums	1. The opossum scavenged for food. <br>2. An opossum has a long, prehensile tail.
+sugar glider	s___r g____r	/ˈʃʊɡər ˈɡlaɪdər/	[sound:sugar_glider.mp3]	a small gliding marsupial	sóc bay	sóc bay	sugar gliders	1. The sugar glider leaped into the air. <br>2. A sugar glider can glide between trees.
+quokka	q____a	/ˈkwɒkə/	[sound:quokka.mp3]	a small Australian marsupial	chuột túi quokka	chuột túi quokka	quokkas	1. The quokka is known for its happy expression. <br>2. Quokkas are found on Rottnest Island.
+hyrax	h___x	/ˈhaɪræks/	[sound:hyrax.mp3]	a small herbivorous mammal	thỏ đá	thỏ đá	hyraxes	1. The hyrax sat on a rock. <br>2. Hyraxes look like large rodents but are related to elephants.
+aardvark	a______k	/ˈɑːrdvɑːrk/	[sound:aardvark.mp3]	a nocturnal African mammal that eats ants	lợn đất	lợn đất	aardvarks	1. The aardvark dug into the termite mound. <br>2. An aardvark has a long snout and big ears.
+pangolin	p______n	/pæŋˈɡoʊlɪn/	[sound:pangolin.mp3]	a mammal covered in large scales	tê tê	tê tê	pangolins	1. The pangolin rolled into a ball. <br>2. A pangolin is covered in protective scales.
+gibbon	g____n	/ˈɡɪbən/	[sound:gibbon.mp3]	a small slender ape	vượn	vượn	gibbons	1. The gibbon swung through the canopy. <br>2. Gibbons are known for their loud calls.
+macaque	m_____e	/məˈkæk/	[sound:macaque.mp3]	a type of Old World monkey	khỉ macaque	khỉ macaque	macaques	1. The macaque groomed its baby. <br>2. Macaques are very adaptable primates.
+mandrill	m______l	/ˈmændrɪl/	[sound:mandrill.mp3]	a large, colorful monkey	khỉ mặt chó	khỉ mặt chó	mandrills	1. The mandrill has a very colorful face. <br>2. Mandrills are impressive primates.
+sloth bear	s___h b__r	/slɒθ bɛər/	[sound:sloth_bear.mp3]	a bear native to the Indian subcontinent	gấu lười	gấu lười	sloth bears	1. The sloth bear looked for termites. <br>2. Sloth bears have long, shaggy hair.
+sun bear	s_n b__r	/sʌn bɛər/	[sound:sun_bear.mp3]	the smallest species of bear	gấu chó	gấu chó	sun bears	1. The sun bear climbed a tree. <br>2. Sun bears are native to Southeast Asia.
+polar bear	p___r b__r	/ˈpoʊlər bɛər/	[sound:polar_bear.mp3]	a large white bear living in the Arctic	gấu trắng	gấu trắng	polar bears	1. The polar bear walked on the ice. <br>2. Polar bears are excellent swimmers.
+black bear	b___k b__r	/blæk bɛər/	[sound:black_bear.mp3]	a common North American bear	gấu đen	gấu đen	black bears	1. The black bear climbed the tree. <br>2. Black bears are very common in forests.
+brown bear	b___n b__r	/braʊn bɛər/	[sound:brown_bear.mp3]	a large bear found in North America and Eurasia	gấu nâu	gấu nâu	brown bears	1. The brown bear caught a fish. <br>2. A brown bear can be very large.
+coyote	c____e	/ˈkaɪoʊti/	[sound:coyote.mp3]	a North American wild dog	chó sói đồng cỏ	chó sói đồng cỏ	coyotes	1. The coyote howled in the night. <br>2. Coyotes are very clever animals.
+dingo	d___o	/ˈdɪŋɡoʊ/	[sound:dingo.mp3]	a wild dog native to Australia	chó dingo	chó dingo	dingoes	1. The dingo ran across the desert. <br>2. Dingoes are native to Australia.
+serval	s____l	/ˈsɜːrvəl/	[sound:serval.mp3]	a medium-sized African wild cat	mèo serval	mèo serval	servals	1. The serval jumped to catch a bird. <br>2. Servals have very large ears.
+caracal	c_____l	/ˈkærəkæl/	[sound:caracal.mp3]	a medium-sized wild cat with tufted ears	mèo caracal	mèo caracal	caracals	1. The caracal leaped into the air. <br>2. Caracals are known for their tufted ears.
+lynx	l__x	/lɪŋks/	[sound:lynx.mp3]	a wild cat with tufted ears and a short tail	linh miêu	linh miêu	lynxes	1. The lynx walked through the snow. <br>2. A lynx is a solitary hunter.
+jaguar	j____r	/ˈdʒæɡwɑːr/	[sound:jaguar.mp3]	a large cat found in the Americas	báo đốm	báo đốm	jaguars	1. The jaguar hunted in the jungle. <br>2. Jaguars are excellent swimmers.
+cougar	c____r	/ˈkuːɡər/	[sound:cougar.mp3]	a large cat native to the Americas	báo sư tử	báo sư tử	cougars	1. The cougar stalked its prey. <br>2. A cougar is also known as a mountain lion.

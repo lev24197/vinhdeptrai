@@ -1,0 +1,100 @@
+protein	p_____n	/ˈproʊtiːn/	[sound:protein.mp3]	a nutrient essential for muscle tissue repair and growth	chất đạm	chất đạm	proteins	1. Athletes require adequate protein for muscle recovery. <br>2. She consumed a protein shake after her workout.
+carbohydrate	c__________e	/ˌkɑːrboʊˈhaɪdreɪt/	[sound:carbohydrate.mp3]	a macronutrient that serves as the body's primary energy source	chất bột đường	chất bột đường	carbohydrates	1. The runner loaded on carbohydrate before the marathon. <br>2. Complex carbohydrate provides sustained energy.
+electrolyte	e_________e	/ɪˈlektrəlaɪt/	[sound:electrolyte.mp3]	a mineral that carries an electric charge and regulates hydration	chất điện giải	chất điện giải	electrolytes	1. He added an electrolyte tablet to his water bottle. <br>2. Sweating causes a significant loss of electrolyte.
+creatine	c______e	/ˈkriːətiːn/	[sound:creatine.mp3]	a compound used to supply energy to muscle and nerve cells	creatine	creatine	creatines	1. He takes creatine to improve his explosive power. <br>2. Creatine is a popular supplement among weightlifters.
+caffeine	c______e	/kæˈfiːn/	[sound:caffeine.mp3]	a stimulant used to increase alertness and endurance	caffeine	caffeine	caffeines	1. The athlete consumed caffeine to boost performance. <br>2. Caffeine can help reduce perceived exertion.
+glucose	g_____e	/ˈɡluːkoʊs/	[sound:glucose.mp3]	a simple sugar that is the main source of energy for the body	đường glucose	đường glucose	glucoses	1. The body breaks down glycogen into glucose for fuel. <br>2. He monitored his blood glucose levels during the race.
+glycogen	g______n	/ˈɡlaɪkədʒən/	[sound:glycogen.mp3]	the stored form of glucose in the liver and muscles	glycogen	glycogen	glycogens	1. Muscle glycogen stores are depleted during intense exercise. <br>2. Carbohydrate intake helps replenish glycogen.
+supplement	s________t	/ˈsʌplɪmənt/	[sound:supplement.mp3]	a product intended to augment the diet	thực phẩm bổ sung	thực phẩm bổ sung	supplements	1. He takes a vitamin supplement every morning. <br>2. The athlete checked if the supplement was banned.
+amino	a___o	/əˈmiːnoʊ/	[sound:amino.mp3]	a building block of protein	axit amin	axit amin	aminos	1. Leucine is an essential amino for muscle synthesis. <br>2. He drinks an amino blend during his training.
+hydration	h_______n	/haɪˈdreɪʃən/	[sound:hydration.mp3]	the process of maintaining adequate water levels in the body	sự bù nước	sự bù nước	hydrations	1. Proper hydration is critical for performance. <br>2. He tracks his hydration status daily.
+fat	f_t	/fæt/	[sound:fat.mp3]	a macronutrient used for energy storage and hormone production	chất béo	chất béo	fats	1. Healthy fat is essential for long-duration activities. <br>2. The athlete reduced his intake of saturated fat.
+magnesium	m_______m	/mæɡˈniːziəm/	[sound:magnesium.mp3]	a mineral involved in muscle contraction and relaxation	magie	magie	magnesiums	1. Magnesium helps prevent muscle cramps. <br>2. He takes magnesium before bed to aid recovery.
+sodium	s____m	/ˈsoʊdiəm/	[sound:sodium.mp3]	a mineral lost through sweat that maintains fluid balance	natri	natri	sodiums	1. The sports drink contains a high amount of sodium. <br>2. Sodium intake is important for endurance athletes.
+potassium	p_______m	/pəˈtæsiəm/	[sound:potassium.mp3]	a mineral that assists in nerve function and muscle contraction	kali	kali	potassiums	1. Bananas are a good source of potassium. <br>2. Low potassium can lead to muscle weakness.
+calcium	c_____m	/ˈkælsiəm/	[sound:calcium.mp3]	a mineral necessary for bone health and muscle function	canxi	canxi	calciums	1. Calcium is vital for maintaining bone density. <br>2. He drinks milk to increase his calcium intake.
+iron	i__n	/ˈaɪərn/	[sound:iron.mp3]	a mineral that transports oxygen in the blood	sắt	sắt	irons	1. Iron deficiency can cause fatigue in runners. <br>2. The athlete consumes red meat for iron.
+zinc	z__c	/zɪŋk/	[sound:zinc.mp3]	a mineral that supports immune function and protein synthesis	kẽm	kẽm	zincs	1. Zinc is important for recovery after training. <br>2. He takes a zinc supplement to support his immune system.
+vitamin	v_____n	/ˈvaɪtəmɪn/	[sound:vitamin.mp3]	an organic compound required in small quantities for health	vitamin	vitamin	vitamins	1. The athlete takes a multivitamin daily. <br>2. Vitamin D is crucial for bone health.
+bar	b_r	/bɑːr/	[sound:bar.mp3]	a portable food item, often containing protein or grains	thanh năng lượng	thanh năng lượng	bars	1. He ate a protein bar after his lifting session. <br>2. She keeps an energy bar in her gym bag.
+gel	g_l	/dʒɛl/	[sound:gel.mp3]	a concentrated carbohydrate source used during exercise	gel năng lượng	gel năng lượng	gels	1. He consumed an energy gel at the halfway point. <br>2. The gel provides a quick spike in glucose.
+shake	s___e	/ʃeɪk/	[sound:shake.mp3]	a liquid drink made by blending powder with water or milk	thức uống dinh dưỡng	thức uống dinh dưỡng	shakes	1. He prepared a protein shake after the game. <br>2. A recovery shake helps rebuild muscle.
+meal	m__l	/miːl/	[sound:meal.mp3]	a portion of food eaten at a specific time	bữa ăn	bữa ăn	meals	1. His pre-game meal consisted of pasta and chicken. <br>2. A balanced meal is essential for endurance.
+snack	s___k	/snæk/	[sound:snack.mp3]	a small amount of food eaten between meals	bữa ăn nhẹ	bữa ăn nhẹ	snacks	1. A healthy snack helps maintain energy levels. <br>2. He packed a nut snack for his hike.
+calorie	c_____e	/ˈkæləri/	[sound:calorie.mp3]	a unit of energy provided by food	calo	calo	calories	1. The athlete needs extra calorie intake for training. <br>2. He tracks every calorie he consumes.
+fiber	f___r	/ˈfaɪbər/	[sound:fiber.mp3]	a plant-based carbohydrate that aids digestion	chất xơ	chất xơ	fibers	1. High fiber intake can cause stomach issues during runs. <br>2. He eats oats to increase his fiber.
+omega	o___a	/oʊˈmeɪɡə/	[sound:omega.mp3]	a type of fatty acid beneficial for inflammation reduction	omega	omega	omegas	1. He takes an omega supplement for joint health. <br>2. Fish oil is rich in omega fatty acids.
+leucine	l_____e	/ˈluːsiːn/	[sound:leucine.mp3]	an essential amino acid that triggers muscle protein synthesis	leucine	leucine	leucines	1. Leucine is the most important amino for muscle growth. <br>2. He adds extra leucine to his shake.
+glutamine	g_______e	/ˈɡluːtəmiːn/	[sound:glutamine.mp3]	an amino acid that supports recovery and immune health	glutamine	glutamine	glutamines	1. Glutamine helps reduce muscle soreness. <br>2. He takes glutamine after intense training.
+beta-alanine	b__________e	/ˌbeɪtəˈæləniːn/	[sound:beta-alanine.mp3]	a supplement that helps buffer acid in muscles	beta-alanine	beta-alanine	beta-alanines	1. Beta-alanine can cause a tingling sensation. <br>2. He uses beta-alanine to improve his sprint capacity.
+nitrate	n_____e	/ˈnaɪtreɪt/	[sound:nitrate.mp3]	a compound, often from beetroot, that improves blood flow	nitrate	nitrate	nitrates	1. Beetroot juice is a natural source of nitrate. <br>2. Nitrate supplementation improves oxygen efficiency.
+beetroot	b______t	/ˈbiːtruːt/	[sound:beetroot.mp3]	a vegetable used to increase nitric oxide levels	củ dền	củ dền	beetroots	1. He drinks beetroot juice before his cycling race. <br>2. Beetroot contains high levels of dietary nitrate.
+colostrum	c_______m	/kəˈlɒstrəm/	[sound:colostrum.mp3]	a supplement sometimes used for immune support	sữa non	sữa non	colostrums	1. Some athletes use colostrum to boost immunity. <br>2. Colostrum is rich in growth factors.
+casein	c____n	/ˈkeɪsiːn/	[sound:casein.mp3]	a slow-digesting milk protein	casein	casein	caseins	1. He drinks a casein shake before sleeping. <br>2. Casein provides a steady release of amino acids.
+whey	w__y	/weɪ/	[sound:whey.mp3]	a fast-digesting milk protein	whey	whey	wheys	1. Whey is the most common post-workout protein. <br>2. He prefers isolate whey for faster absorption.
+isolate	i_____e	/ˈaɪsəleɪt/	[sound:isolate.mp3]	a highly refined form of protein powder	protein cô lập	protein cô lập	isolates	1. Whey isolate contains very little lactose. <br>2. He chooses isolate for its purity.
+hydrolysate	h_________e	/haɪˈdrɒləseɪt/	[sound:hydrolysate.mp3]	a pre-digested form of protein	protein thủy phân	protein thủy phân	hydrolysates	1. Whey hydrolysate is absorbed very quickly. <br>2. The athlete uses hydrolysate for rapid recovery.
+collagen	c______n	/ˈkɒlədʒən/	[sound:collagen.mp3]	a protein supplement used for joint and tendon health	collagen	collagen	collagens	1. Collagen supports tendon repair. <br>2. He takes collagen to prevent knee pain.
+maltodextrin	m__________n	/ˌmæltəˈdekstrɪn/	[sound:maltodextrin.mp3]	a fast-digesting carbohydrate powder	maltodextrin	maltodextrin	maltodextrins	1. He adds maltodextrin to his sports drink. <br>2. Maltodextrin provides quick energy.
+dextrose	d______e	/ˈdekstroʊs/	[sound:dextrose.mp3]	a simple sugar used to spike insulin for recovery	dextrose	dextrose	dextroses	1. Dextrose is often used in post-workout drinks. <br>2. He mixes dextrose with his protein.
+fructose	f______e	/ˈfrʌktoʊs/	[sound:fructose.mp3]	a sugar found in fruit used in energy blends	đường trái cây	đường trái cây	fructoses	1. A mix of glucose and fructose improves absorption. <br>2. Fructose is a common ingredient in gels.
+sucrose	s_____e	/ˈsuːkroʊs/	[sound:sucrose.mp3]	table sugar, used as an energy source	đường mía	đường mía	sucroses	1. Sucrose provides a quick source of energy. <br>2. He avoids excessive sucrose in his diet.
+salt	s__t	/sɔːlt/	[sound:salt.mp3]	sodium chloride used to replace losses in sweat	muối	muối	salts	1. He added a pinch of salt to his water. <br>2. Salt tablets help prevent hyponatremia.
+water	w___r	/ˈwɔːtər/	[sound:water.mp3]	the primary fluid for human hydration	nước	nước	waters	1. Water is essential for performance. <br>2. He drinks plenty of water throughout the day.
+liquid	l____d	/ˈlɪkwɪd/	[sound:liquid.mp3]	a fluid form of nutrition	chất lỏng	chất lỏng	liquids	1. He prefers liquid nutrition during long races. <br>2. The athlete needs to consume more liquid.
+powder	p____r	/ˈpaʊdər/	[sound:powder.mp3]	a dry form of a supplement	bột	bột	powders	1. He mixes the protein powder with milk. <br>2. The powder is easy to carry.
+capsule	c_____e	/ˈkæpsjuːl/	[sound:capsule.mp3]	a small container for a supplement	viên nang	viên nang	capsules	1. He takes his caffeine in capsule form. <br>2. The capsule is easy to swallow.
+tablet	t____t	/ˈtæblɪt/	[sound:tablet.mp3]	a compressed solid supplement	viên nén	viên nén	tablets	1. He took a salt tablet during the marathon. <br>2. The tablet dissolved in his water.
+fruit	f___t	/fruːt/	[sound:fruit.mp3]	a natural source of vitamins and sugar	trái cây	trái cây	fruits	1. He eats fresh fruit for recovery. <br>2. Banana is a great fruit for athletes.
+vegetable	v_______e	/ˈvedʒtəbəl/	[sound:vegetable.mp3]	a plant source of micronutrients	rau củ	rau củ	vegetables	1. He includes a vegetable in every meal. <br>2. Green vegetable is rich in minerals.
+meat	m__t	/miːt/	[sound:meat.mp3]	an animal source of protein	thịt	thịt	meats	1. He eats lean meat for muscle repair. <br>2. Red meat is a good source of iron.
+fish	f__h	/fɪʃ/	[sound:fish.mp3]	a source of protein and omega fats	cá	cá	fishes	1. He eats fish twice a week. <br>2. Salmon is a great fish for athletes.
+egg	e_g	/ɛɡ/	[sound:egg.mp3]	a high-quality protein source	trứng	trứng	eggs	1. He eats an egg for breakfast. <br>2. Egg white is pure protein.
+nut	n_t	/nʌt/	[sound:nut.mp3]	a source of healthy fat	hạt	hạt	nuts	1. He snacks on a nut during the day. <br>2. Almond is a popular nut for athletes.
+seed	s__d	/siːd/	[sound:seed.mp3]	a source of micronutrients and fats	hạt giống	hạt giống	seeds	1. He adds a chia seed to his porridge. <br>2. Flax seed is rich in omega-3.
+grain	g___n	/ɡreɪn/	[sound:grain.mp3]	a source of complex carbohydrates	ngũ cốc	ngũ cốc	grains	1. He prefers a whole grain for energy. <br>2. Oats is a common grain for athletes.
+dairy	d___y	/ˈdɛri/	[sound:dairy.mp3]	a source of protein and calcium	sản phẩm từ sữa	sản phẩm từ sữa	dairies	1. He consumes dairy after training. <br>2. Yogurt is a popular dairy product.
+yogurt	y____t	/ˈjoʊɡərt/	[sound:yogurt.mp3]	a fermented dairy product	sữa chua	sữa chua	yogurts	1. He eats yogurt with berries. <br>2. Greek yogurt is high in protein.
+milk	m__k	/mɪlk/	[sound:milk.mp3]	a liquid source of protein and carbs	sữa	sữa	milks	1. He drinks milk after his workout. <br>2. Chocolate milk is a good recovery drink.
+honey	h___y	/ˈhʌni/	[sound:honey.mp3]	a natural sugar source for energy	mật ong	mật ong	honeys	1. He adds honey to his oatmeal. <br>2. Honey is a natural energy booster.
+tea	t_a	/tiː/	[sound:tea.mp3]	a beverage containing caffeine and antioxidants	trà	trà	teas	1. He drinks green tea before his run. <br>2. Tea is a healthy alternative to coffee.
+coffee	c____e	/ˈkɔːfi/	[sound:coffee.mp3]	a caffeinated drink	cà phê	cà phê	coffees	1. He has a cup of coffee before training. <br>2. Coffee helps improve his endurance.
+juice	j___e	/dʒuːs/	[sound:juice.mp3]	a liquid source of sugar and vitamins	nước ép	nước ép	juices	1. He drinks orange juice for vitamin C. <br>2. Beetroot juice improves blood flow.
+smoothie	s______e	/ˈsmuːði/	[sound:smoothie.mp3]	a blended drink with fruits and protein	sinh tố	sinh tố	smoothies	1. He makes a smoothie after the gym. <br>2. A fruit smoothie is refreshing.
+porridge	p______e	/ˈpɔːrɪdʒ/	[sound:porridge.mp3]	a warm oat-based meal	cháo yến mạch	cháo yến mạch	porridges	1. He eats porridge for breakfast. <br>2. Porridge provides long-lasting energy.
+pasta	p___a	/ˈpɑːstə/	[sound:pasta.mp3]	a carbohydrate-rich meal	mì ống	mì ống	pastas	1. He eats pasta the night before a race. <br>2. Pasta is a staple for endurance athletes.
+rice	r__e	/raɪs/	[sound:rice.mp3]	a common carbohydrate source	cơm	cơm	rices	1. He eats white rice after training. <br>2. Brown rice is a complex carbohydrate.
+bread	b___d	/brɛd/	[sound:bread.mp3]	a carbohydrate source	bánh mì	bánh mì	breads	1. He eats bread with his meal. <br>2. Whole wheat bread is healthy.
+potato	p____o	/pəˈteɪtoʊ/	[sound:potato.mp3]	a starchy vegetable	khoai tây	khoai tây	potatoes	1. He eats a baked potato for dinner. <br>2. Potato is a good source of potassium.
+yam	y_m	/jæm/	[sound:yam.mp3]	a starchy root vegetable	khoai lang	khoai lang	yams	1. He prefers yam over potato. <br>2. Yam provides steady energy.
+avocado	a_____o	/ˌævəˈkɑːdoʊ/	[sound:avocado.mp3]	a fruit high in healthy fats	quả bơ	quả bơ	avocados	1. He eats avocado on toast. <br>2. Avocado is a good source of fat.
+oil	o_l	/ɔɪl/	[sound:oil.mp3]	a fat source	dầu	dầu	oils	1. He uses olive oil in his cooking. <br>2. Fish oil is a common supplement.
+butter	b____r	/ˈbʌtər/	[sound:butter.mp3]	a fat source	bơ	bơ	butters	1. He uses peanut butter on his bread. <br>2. Butter is a source of fat.
+sugar	s___r	/ˈʃʊɡər/	[sound:sugar.mp3]	a simple carbohydrate	đường	đường	sugars	1. He avoids excess sugar. <br>2. Sugar provides quick energy.
+spice	s___e	/spaɪs/	[sound:spice.mp3]	a flavoring for food	gia vị	gia vị	spices	1. He adds spice to his meal. <br>2. Turmeric is a beneficial spice.
+herb	h__b	/hɜːrb/	[sound:herb.mp3]	a plant used for flavoring	thảo mộc	thảo mộc	herbs	1. He adds an herb to his dish. <br>2. Fresh herb adds flavor.
+bottle	b____e	/ˈbɒtl/	[sound:bottle.mp3]	a container for fluids	bình nước	bình nước	bottles	1. He carries a water bottle. <br>2. He refilled his bottle.
+cup	c_p	/kʌp/	[sound:cup.mp3]	a drinking vessel	cốc	cốc	cups	1. He drank a cup of tea. <br>2. He measured the powder in a cup.
+bowl	b__l	/boʊl/	[sound:bowl.mp3]	a vessel for food	bát	bát	bowls	1. He ate a bowl of porridge. <br>2. He prepared a bowl of fruit.
+spoon	s___n	/spuːn/	[sound:spoon.mp3]	a tool for eating	thìa	thìa	spoons	1. He used a spoon to eat his yogurt. <br>2. He measured the powder with a spoon.
+scale	s___e	/skeɪl/	[sound:scale.mp3]	a tool to weigh food	cân	cân	scales	1. He uses a scale to weigh his food. <br>2. The scale is accurate.
+blender	b_____r	/ˈblendər/	[sound:blender.mp3]	a machine to mix food	máy xay	máy xay	blenders	1. He uses a blender for his shake. <br>2. The blender is powerful.
+fridge	f____e	/frɪdʒ/	[sound:fridge.mp3]	a place to store food	tủ lạnh	tủ lạnh	fridges	1. He stores his food in the fridge. <br>2. The fridge is full.
+pantry	p____y	/ˈpæntri/	[sound:pantry.mp3]	a place to store dry food	tủ để đồ khô	tủ để đồ khô	pantries	1. He keeps his supplements in the pantry. <br>2. The pantry is organized.
+diet	d__t	/ˈdaɪət/	[sound:diet.mp3]	the habitual food intake	chế độ ăn	chế độ ăn	diets	1. He follows a strict diet. <br>2. The athlete changed his diet.
+nutrition	n_______n	/nuˈtrɪʃən/	[sound:nutrition.mp3]	the study of food and health	dinh dưỡng	dinh dưỡng	nutritions	1. He studies nutrition. <br>2. The nutrition plan is effective.
+plan	p__n	/plæn/	[sound:plan.mp3]	a structured food schedule	kế hoạch	kế hoạch	plans	1. He follows a nutrition plan. <br>2. The plan is simple.
+menu	m__u	/ˈmɛnjuː/	[sound:menu.mp3]	a list of food items	thực đơn	thực đơn	menus	1. He created a menu for the week. <br>2. The menu is balanced.
+goal	g__l	/ɡoʊl/	[sound:goal.mp3]	a target for health or performance	mục tiêu	mục tiêu	goals	1. His goal is to gain muscle. <br>2. The goal is clear.
+recovery	r______y	/rɪˈkʌvəri/	[sound:recovery.mp3]	the process of healing after exercise	sự phục hồi	sự phục hồi	recoveries	1. He prioritizes recovery. <br>2. The recovery was fast.
+performance	p_________e	/pərˈfɔːrməns/	[sound:performance.mp3]	the execution of a sports task	hiệu suất	hiệu suất	performances	1. Nutrition impacts performance. <br>2. His performance improved.
+energy	e____y	/ˈɛnərdʒi/	[sound:energy.mp3]	the capacity to do work	năng lượng	năng lượng	energies	1. He needs energy for the race. <br>2. The energy level is high.
+stamina	s_____a	/ˈstæmɪnə/	[sound:stamina.mp3]	the ability to sustain effort	sức bền	sức bền	staminas	1. He wants to improve his stamina. <br>2. Stamina is important.
+strength	s______h	/strɛŋkθ/	[sound:strength.mp3]	the capacity to exert force	sức mạnh	sức mạnh	strengths	1. He trains for strength. <br>2. His strength is increasing.
+body	b__y	/ˈbɒdi/	[sound:body.mp3]	the human physical form	cơ thể	cơ thể	bodies	1. He fuels his body well. <br>2. The body needs rest.
+muscle	m____e	/ˈmʌsəl/	[sound:muscle.mp3]	a tissue that contracts for movement	cơ bắp	cơ bắp	muscles	1. He wants to build muscle. <br>2. The muscle is sore.
+bone	b__e	/boʊn/	[sound:bone.mp3]	a structure of the skeleton	xương	xương	bones	1. Calcium is good for the bone. <br>2. The bone is strong.
+joint	j___t	/dʒɔɪnt/	[sound:joint.mp3]	a connection between bones	khớp	khớp	joints	1. He takes care of his joint. <br>2. The joint is flexible.
+tendon	t____n	/ˈtɛndən/	[sound:tendon.mp3]	a tissue connecting muscle to bone	gân	gân	tendons	1. He injured his tendon. <br>2. Collagen helps the tendon.
+blood	b___d	/blʌd/	[sound:blood.mp3]	the fluid circulating in the body	máu	máu	bloods	1. He monitors his blood sugar. <br>2. The blood carries oxygen.
+almond	a____d	/ˈɑːmənd/	[sound:almond.mp3]	An edible oval nut of a tree that is a good source of healthy fats for athletes.	hạnh nhân	hạnh nhân	almonds	1. Eating an almond can provide quick energy. <br>2. She added an almond to her trail mix.
