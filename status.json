@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 01:55:32",
+    "updated_at":  "2026-11-17 02:05:59",
     "topics":  [
                    {
                        "stt":  1,
@@ -2344,137 +2344,137 @@
                    {
                        "stt":  261,
                        "topic":  "Hệ thống bầu cử (Electoral Systems)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/261.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:55",
+                       "last_error":  null
                    },
                    {
                        "stt":  262,
                        "topic":  "Quan hệ quốc tế (International Relations)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/262.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:57",
+                       "last_error":  null
                    },
                    {
                        "stt":  263,
                        "topic":  "Luật dân sự (Civil Law)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/263.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:57",
+                       "last_error":  null
                    },
                    {
                        "stt":  264,
                        "topic":  "Luật hình sự (Criminal Law)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/264.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:58",
+                       "last_error":  null
                    },
                    {
                        "stt":  265,
                        "topic":  "Nhân quyền (Human Rights)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/265.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:59",
+                       "last_error":  null
                    },
                    {
                        "stt":  266,
                        "topic":  "Quốc hội và Lập pháp (Parliament \u0026 Legislature)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/266.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:00",
+                       "last_error":  null
                    },
                    {
                        "stt":  267,
                        "topic":  "Chính sách công (Public Policy)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/267.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:00",
+                       "last_error":  null
                    },
                    {
                        "stt":  268,
                        "topic":  "Nhập cư và Tị nạn (Immigration \u0026 Asylum)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/268.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:01",
+                       "last_error":  null
                    },
                    {
                        "stt":  269,
                        "topic":  "Tòa án và Thẩm phán (Courts \u0026 Judges)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/269.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:01",
+                       "last_error":  null
                    },
                    {
                        "stt":  270,
                        "topic":  "Tội phạm mạng (Cybercrimes)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/270.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:02",
+                       "last_error":  null
                    },
                    {
                        "stt":  271,
                        "topic":  "Các nền văn minh cổ đại (Ancient Civilizations)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/271.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:03",
+                       "last_error":  null
                    },
                    {
                        "stt":  272,
                        "topic":  "Cách mạng công nghiệp (Industrial Revolutions)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/272.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:04",
+                       "last_error":  null
                    },
                    {
                        "stt":  273,
                        "topic":  "Chiến tranh thế giới (World Wars)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/273.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:04",
+                       "last_error":  null
                    },
                    {
                        "stt":  274,
                        "topic":  "Giai cấp xã hội (Social Classes)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/274.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:05",
+                       "last_error":  null
                    },
                    {
                        "stt":  275,
                        "topic":  "Bất bình đẳng giới (Gender Inequality)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/275.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:05",
+                       "last_error":  null
                    },
                    {
                        "stt":  276,

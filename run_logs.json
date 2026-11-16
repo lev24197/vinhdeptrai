@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 02:05:59",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  275,
+        "message":  "Hoàn thành chủ đề #275: Bất bình đẳng giới (Gender Inequality) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:05:55",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  276,
+        "message":  "Khởi chạy luồng xử lý chủ đề #276: Phong trào lao động (Labor Movements)"
+    },
+    {
+        "time":  "2026-11-17 02:05:54",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  274,
+        "message":  "Hoàn thành chủ đề #274: Giai cấp xã hội (Social Classes) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:04:26",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  275,
+        "message":  "Khởi chạy luồng xử lý chủ đề #275: Bất bình đẳng giới (Gender Inequality)"
+    },
+    {
+        "time":  "2026-11-17 02:04:25",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  274,
+        "message":  "Khởi chạy luồng xử lý chủ đề #274: Giai cấp xã hội (Social Classes)"
+    },
+    {
+        "time":  "2026-11-17 02:04:25",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  273,
+        "message":  "Hoàn thành chủ đề #273: Chiến tranh thế giới (World Wars) (100 từ, 85s)"
+    },
+    {
+        "time":  "2026-11-17 02:04:25",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  272,
+        "message":  "Hoàn thành chủ đề #272: Cách mạng công nghiệp (Industrial Revolutions) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:03:00",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  273,
+        "message":  "Khởi chạy luồng xử lý chủ đề #273: Chiến tranh thế giới (World Wars)"
+    },
+    {
+        "time":  "2026-11-17 02:03:00",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  271,
+        "message":  "Hoàn thành chủ đề #271: Các nền văn minh cổ đại (Ancient Civilizations) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:02:53",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  272,
+        "message":  "Khởi chạy luồng xử lý chủ đề #272: Cách mạng công nghiệp (Industrial Revolutions)"
+    },
+    {
+        "time":  "2026-11-17 02:02:53",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  270,
+        "message":  "Hoàn thành chủ đề #270: Tội phạm mạng (Cybercrimes) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:01:30",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  271,
+        "message":  "Khởi chạy luồng xử lý chủ đề #271: Các nền văn minh cổ đại (Ancient Civilizations)"
+    },
+    {
+        "time":  "2026-11-17 02:01:30",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  268,
+        "message":  "Hoàn thành chủ đề #268: Nhập cư và Tị nạn (Immigration \u0026 Asylum) (100 từ, 91s)"
+    },
+    {
+        "time":  "2026-11-17 02:01:26",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  270,
+        "message":  "Khởi chạy luồng xử lý chủ đề #270: Tội phạm mạng (Cybercrimes)"
+    },
+    {
+        "time":  "2026-11-17 02:01:26",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  269,
+        "message":  "Hoàn thành chủ đề #269: Tòa án và Thẩm phán (Courts \u0026 Judges) (100 từ, 70s)"
+    },
+    {
+        "time":  "2026-11-17 02:00:16",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  269,
+        "message":  "Khởi chạy luồng xử lý chủ đề #269: Tòa án và Thẩm phán (Courts \u0026 Judges)"
+    },
+    {
+        "time":  "2026-11-17 02:00:16",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  267,
+        "message":  "Hoàn thành chủ đề #267: Chính sách công (Public Policy) (100 từ, 71s)"
+    },
+    {
+        "time":  "2026-11-17 02:00:00",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  268,
+        "message":  "Khởi chạy luồng xử lý chủ đề #268: Nhập cư và Tị nạn (Immigration \u0026 Asylum)"
+    },
+    {
+        "time":  "2026-11-17 02:00:00",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  266,
+        "message":  "Hoàn thành chủ đề #266: Quốc hội và Lập pháp (Parliament \u0026 Legislature) (100 từ, 87s)"
+    },
+    {
+        "time":  "2026-11-17 01:59:04",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  267,
+        "message":  "Khởi chạy luồng xử lý chủ đề #267: Chính sách công (Public Policy)"
+    },
+    {
+        "time":  "2026-11-17 01:59:04",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  265,
+        "message":  "Hoàn thành chủ đề #265: Nhân quyền (Human Rights) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 01:58:33",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  266,
+        "message":  "Khởi chạy luồng xử lý chủ đề #266: Quốc hội và Lập pháp (Parliament \u0026 Legislature)"
+    },
+    {
+        "time":  "2026-11-17 01:58:33",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  264,
+        "message":  "Hoàn thành chủ đề #264: Luật hình sự (Criminal Law) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 01:57:35",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  265,
+        "message":  "Khởi chạy luồng xử lý chủ đề #265: Nhân quyền (Human Rights)"
+    },
+    {
+        "time":  "2026-11-17 01:57:35",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  263,
+        "message":  "Hoàn thành chủ đề #263: Luật dân sự (Civil Law) (100 từ, 114s)"
+    },
+    {
+        "time":  "2026-11-17 01:57:04",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  264,
+        "message":  "Khởi chạy luồng xử lý chủ đề #264: Luật hình sự (Criminal Law)"
+    },
+    {
+        "time":  "2026-11-17 01:57:03",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  262,
+        "message":  "Hoàn thành chủ đề #262: Quan hệ quốc tế (International Relations) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 01:55:41",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  263,
+        "message":  "Khởi chạy luồng xử lý chủ đề #263: Luật dân sự (Civil Law)"
+    },
+    {
+        "time":  "2026-11-17 01:55:41",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  261,
+        "message":  "Hoàn thành chủ đề #261: Hệ thống bầu cử (Electoral Systems) (100 từ, 85s)"
+    },
+    {
+        "time":  "2026-11-17 01:55:37",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  262,
+        "message":  "Khởi chạy luồng xử lý chủ đề #262: Quan hệ quốc tế (International Relations)"
+    },
+    {
         "time":  "2026-11-17 01:55:32",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,152 +2098,5 @@
         "step":  "TOPUP_BATCH_3",
         "stt":  134,
         "message":  "Chủ đề #134: Bù đắp 1 từ còn thiếu (Đang có: 99/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:56:55",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_2",
-        "stt":  134,
-        "message":  "Chủ đề #134: Bù đắp 31 từ còn thiếu (Đang có: 69/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:56:43",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_1",
-        "stt":  134,
-        "message":  "Chủ đề #134: Bù đắp 48 từ còn thiếu (Đang có: 52/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:56:35",
-        "level":  "INFO",
-        "step":  "FACET_START",
-        "stt":  134,
-        "message":  "Chủ đề #134: Bắt đầu phân diện [Thành phần \u0026 Dụng cụ] (25 từ, đã có 52/100)"
-    },
-    {
-        "time":  "2026-11-15 21:56:26",
-        "level":  "INFO",
-        "step":  "FACET_START",
-        "stt":  134,
-        "message":  "Chủ đề #134: Bắt đầu phân diện [Chế biến \u0026 Thành phẩm] (25 từ, đã có 52/100)"
-    },
-    {
-        "time":  "2026-11-15 21:56:16",
-        "level":  "INFO",
-        "step":  "FACET_START",
-        "stt":  134,
-        "message":  "Chủ đề #134: Bắt đầu phân diện [Chuyên sâu \u0026 Đặc trưng] (30 từ, đã có 30/100)"
-    },
-    {
-        "time":  "2026-11-15 21:56:06",
-        "level":  "INFO",
-        "step":  "FACET_START",
-        "stt":  134,
-        "message":  "Chủ đề #134: Bắt đầu phân diện [Cốt lõi \u0026 Phổ biến] (30 từ, đã có 0/100)"
-    },
-    {
-        "time":  "2026-11-15 21:56:06",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  133,
-        "message":  "Hoàn thành chủ đề #133 (Vật dụng dọn dẹp (Cleaning Supplies)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-15 21:56:06",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  133,
-        "message":  "Chủ đề #133: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-15 21:55:59",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_3",
-        "stt":  133,
-        "message":  "Chủ đề #133: Bù đắp 11 từ còn thiếu (Đang có: 89/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:55:51",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_2",
-        "stt":  133,
-        "message":  "Chủ đề #133: Bù đắp 13 từ còn thiếu (Đang có: 87/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:55:40",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_1",
-        "stt":  133,
-        "message":  "Chủ đề #133: Bù đắp 26 từ còn thiếu (Đang có: 74/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:55:31",
-        "level":  "INFO",
-        "step":  "FACET_START",
-        "stt":  133,
-        "message":  "Chủ đề #133: Bắt đầu phân diện [Thành phần \u0026 Dụng cụ] (25 từ, đã có 66/100)"
-    },
-    {
-        "time":  "2026-11-15 21:55:23",
-        "level":  "INFO",
-        "step":  "FACET_START",
-        "stt":  133,
-        "message":  "Chủ đề #133: Bắt đầu phân diện [Chế biến \u0026 Thành phẩm] (25 từ, đã có 41/100)"
-    },
-    {
-        "time":  "2026-11-15 21:55:11",
-        "level":  "INFO",
-        "step":  "FACET_START",
-        "stt":  133,
-        "message":  "Chủ đề #133: Bắt đầu phân diện [Chuyên sâu \u0026 Đặc trưng] (30 từ, đã có 30/100)"
-    },
-    {
-        "time":  "2026-11-15 21:55:02",
-        "level":  "INFO",
-        "step":  "FACET_START",
-        "stt":  133,
-        "message":  "Chủ đề #133: Bắt đầu phân diện [Cốt lõi \u0026 Phổ biến] (30 từ, đã có 0/100)"
-    },
-    {
-        "time":  "2026-11-15 21:55:02",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  132,
-        "message":  "Hoàn thành chủ đề #132 (Hệ thống điện nước (Plumbing \u0026 Electrical)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-15 21:55:02",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  132,
-        "message":  "Chủ đề #132: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-15 21:54:57",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_10",
-        "stt":  132,
-        "message":  "Chủ đề #132: Bù đắp 4 từ còn thiếu (Đang có: 96/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:54:49",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_9",
-        "stt":  132,
-        "message":  "Chủ đề #132: Bù đắp 8 từ còn thiếu (Đang có: 92/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:54:41",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_8",
-        "stt":  132,
-        "message":  "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:54:35",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_7",
-        "stt":  132,
-        "message":  "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
     }
 ]
