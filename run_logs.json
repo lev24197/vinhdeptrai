@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 02:29:06",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  305,
+        "message":  "Hoàn thành chủ đề #305: Khoáng sản và Kim loại quý (Minerals \u0026 Precious Metals) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:28:32",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  306,
+        "message":  "Khởi chạy luồng xử lý chủ đề #306: Lớp vỏ trái đất (Earth\u0027s Crust)"
+    },
+    {
+        "time":  "2026-11-17 02:28:32",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  304,
+        "message":  "Hoàn thành chủ đề #304: Địa chất học (Geology) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:27:34",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  305,
+        "message":  "Khởi chạy luồng xử lý chủ đề #305: Khoáng sản và Kim loại quý (Minerals \u0026 Precious Metals)"
+    },
+    {
+        "time":  "2026-11-17 02:27:34",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  303,
+        "message":  "Hoàn thành chủ đề #303: Hố đen và Tinh vân (Black Holes \u0026 Nebulas) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:26:59",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  304,
+        "message":  "Khởi chạy luồng xử lý chủ đề #304: Địa chất học (Geology)"
+    },
+    {
+        "time":  "2026-11-17 02:26:59",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  302,
+        "message":  "Hoàn thành chủ đề #302: Các chòm sao (Constellations) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 02:26:04",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  303,
+        "message":  "Khởi chạy luồng xử lý chủ đề #303: Hố đen và Tinh vân (Black Holes \u0026 Nebulas)"
+    },
+    {
+        "time":  "2026-11-17 02:26:04",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  301,
+        "message":  "Hoàn thành chủ đề #301: Hệ mặt trời (The Solar System) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:25:36",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  302,
+        "message":  "Khởi chạy luồng xử lý chủ đề #302: Các chòm sao (Constellations)"
+    },
+    {
+        "time":  "2026-11-17 02:25:36",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  300,
+        "message":  "Hoàn thành chủ đề #300: Toán tài chính (Financial Mathematics) (99 từ, 90s)"
+    },
+    {
+        "time":  "2026-11-17 02:24:32",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  301,
+        "message":  "Khởi chạy luồng xử lý chủ đề #301: Hệ mặt trời (The Solar System)"
+    },
+    {
+        "time":  "2026-11-17 02:24:32",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  299,
+        "message":  "Hoàn thành chủ đề #299: Mã hóa và Mật mã (Cryptography) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:24:06",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  300,
+        "message":  "Khởi chạy luồng xử lý chủ đề #300: Toán tài chính (Financial Mathematics)"
+    },
+    {
+        "time":  "2026-11-17 02:24:06",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  298,
+        "message":  "Hoàn thành chủ đề #298: Lập luận logic (Logical Reasoning) (99 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:23:02",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  299,
+        "message":  "Khởi chạy luồng xử lý chủ đề #299: Mã hóa và Mật mã (Cryptography)"
+    },
+    {
+        "time":  "2026-11-17 02:23:02",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  297,
+        "message":  "Hoàn thành chủ đề #297: Trò chơi tư duy (Mind Games \u0026 Puzzles) (100 từ, 98s)"
+    },
+    {
+        "time":  "2026-11-17 02:22:34",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  298,
+        "message":  "Khởi chạy luồng xử lý chủ đề #298: Lập luận logic (Logical Reasoning)"
+    },
+    {
+        "time":  "2026-11-17 02:22:34",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  296,
+        "message":  "Hoàn thành chủ đề #296: Biểu đồ và Đồ thị (Charts \u0026 Graphs) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:21:24",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  297,
+        "message":  "Khởi chạy luồng xử lý chủ đề #297: Trò chơi tư duy (Mind Games \u0026 Puzzles)"
+    },
+    {
+        "time":  "2026-11-17 02:21:24",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  295,
+        "message":  "Hoàn thành chủ đề #295: Các phép tính cơ bản (Basic Arithmetic) (99 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 02:21:04",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  296,
+        "message":  "Khởi chạy luồng xử lý chủ đề #296: Biểu đồ và Đồ thị (Charts \u0026 Graphs)"
+    },
+    {
+        "time":  "2026-11-17 02:21:04",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  294,
+        "message":  "Hoàn thành chủ đề #294: Đơn vị tiền tệ và Quy đổi (Currencies \u0026 Conversion) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:19:48",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  295,
+        "message":  "Khởi chạy luồng xử lý chủ đề #295: Các phép tính cơ bản (Basic Arithmetic)"
+    },
+    {
+        "time":  "2026-11-17 02:19:48",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  293,
+        "message":  "Hoàn thành chủ đề #293: Xác suất thống kê (Probability \u0026 Statistics) (100 từ, 101s)"
+    },
+    {
+        "time":  "2026-11-17 02:19:32",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  294,
+        "message":  "Khởi chạy luồng xử lý chủ đề #294: Đơn vị tiền tệ và Quy đổi (Currencies \u0026 Conversion)"
+    },
+    {
+        "time":  "2026-11-17 02:19:32",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  292,
+        "message":  "Hoàn thành chủ đề #292: Đại số và Phương trình (Algebra \u0026 Equations) (100 từ, 90s)"
+    },
+    {
+        "time":  "2026-11-17 02:18:07",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  293,
+        "message":  "Khởi chạy luồng xử lý chủ đề #293: Xác suất thống kê (Probability \u0026 Statistics)"
+    },
+    {
+        "time":  "2026-11-17 02:18:06",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  291,
+        "message":  "Hoàn thành chủ đề #291: Hình học và Không gian (Geometry \u0026 Space) (100 từ, 102s)"
+    },
+    {
+        "time":  "2026-11-17 02:18:02",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  292,
+        "message":  "Khởi chạy luồng xử lý chủ đề #292: Đại số và Phương trình (Algebra \u0026 Equations)"
+    },
+    {
         "time":  "2026-11-17 02:17:58",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "PROMPT_1_START",
         "stt":  147,
         "message":  "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 07:59:29",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [147, 148, 149]"
-    },
-    {
-        "time":  "2026-11-16 07:30:00",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  146,
-        "message":  "Hoàn thành chủ đề #146 (Đồ lót và Đồ ngủ (Underwear \u0026 Sleepwear)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 07:30:00",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  146,
-        "message":  "Chủ đề #146: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 07:30:00",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  146,
-        "message":  "Chủ đề #146 (Đồ lót và Đồ ngủ (Underwear \u0026 Sleepwear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 07:29:39",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  146,
-        "message":  "Chủ đề #146 (Đồ lót và Đồ ngủ (Underwear \u0026 Sleepwear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 07:29:39",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  145,
-        "message":  "Hoàn thành chủ đề #145 (Trang sức và Kim hoàn (Jewelry)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 07:29:39",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  145,
-        "message":  "Chủ đề #145: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 07:29:39",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  145,
-        "message":  "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 07:29:16",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  145,
-        "message":  "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Prompt 1 đạt 97/100 từ (còn thiếu 3). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 07:28:57",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  145,
-        "message":  "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 07:28:57",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  144,
-        "message":  "Hoàn thành chủ đề #144 (Giày dép các loại (Footwear)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 07:28:57",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  144,
-        "message":  "Chủ đề #144: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 07:28:57",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  144,
-        "message":  "Chủ đề #144 (Giày dép các loại (Footwear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 07:28:36",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  144,
-        "message":  "Chủ đề #144 (Giày dép các loại (Footwear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 07:28:36",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [144, 145, 146]"
-    },
-    {
-        "time":  "2026-11-16 07:25:06",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  143,
-        "message":  "Hoàn thành chủ đề #143 (Thời trang trẻ em (Children\u0027s Wear)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 07:25:06",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  143,
-        "message":  "Chủ đề #143: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 07:25:06",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  143,
-        "message":  "Chủ đề #143 (Thời trang trẻ em (Children\u0027s Wear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 07:24:41",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  143,
-        "message":  "Chủ đề #143 (Thời trang trẻ em (Children\u0027s Wear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 07:24:41",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  142,
-        "message":  "Hoàn thành chủ đề #142 (Trang phục nữ (Women\u0027s Clothing)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 07:24:41",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  142,
-        "message":  "Chủ đề #142: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 07:24:41",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  142,
-        "message":  "Chủ đề #142 (Trang phục nữ (Women\u0027s Clothing)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 07:24:25",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  142,
-        "message":  "Chủ đề #142 (Trang phục nữ (Women\u0027s Clothing)): Prompt 1 đạt 43/100 từ (còn thiếu 57). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 07:24:08",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  142,
-        "message":  "Chủ đề #142 (Trang phục nữ (Women\u0027s Clothing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 07:24:08",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  141,
-        "message":  "Hoàn thành chủ đề #141 (Trang phục nam (Men\u0027s Clothing)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 07:24:08",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  141,
-        "message":  "Chủ đề #141: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 07:24:08",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  141,
-        "message":  "Chủ đề #141 (Trang phục nam (Men\u0027s Clothing)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 07:23:42",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  141,
-        "message":  "Chủ đề #141 (Trang phục nam (Men\u0027s Clothing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 07:23:42",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [141, 142, 143]"
-    },
-    {
-        "time":  "2026-11-16 04:03:49",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  140,
-        "message":  "Hoàn thành chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)) với 100 từ."
     }
 ]

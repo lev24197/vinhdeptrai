@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 02:17:58",
+    "updated_at":  "2026-11-17 02:29:06",
     "topics":  [
                    {
                        "stt":  1,
@@ -2614,136 +2614,136 @@
                    {
                        "stt":  291,
                        "topic":  "Hình học và Không gian (Geometry \u0026 Space)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/291.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:18",
+                       "last_error":  null
                    },
                    {
                        "stt":  292,
                        "topic":  "Đại số và Phương trình (Algebra \u0026 Equations)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/292.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:19",
+                       "last_error":  null
                    },
                    {
                        "stt":  293,
                        "topic":  "Xác suất thống kê (Probability \u0026 Statistics)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/293.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:19",
+                       "last_error":  null
                    },
                    {
                        "stt":  294,
                        "topic":  "Đơn vị tiền tệ và Quy đổi (Currencies \u0026 Conversion)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/294.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:21",
+                       "last_error":  null
                    },
                    {
                        "stt":  295,
                        "topic":  "Các phép tính cơ bản (Basic Arithmetic)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  99,
                        "file_path":  "output/295.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:21",
+                       "last_error":  null
                    },
                    {
                        "stt":  296,
                        "topic":  "Biểu đồ và Đồ thị (Charts \u0026 Graphs)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/296.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:22",
+                       "last_error":  null
                    },
                    {
                        "stt":  297,
                        "topic":  "Trò chơi tư duy (Mind Games \u0026 Puzzles)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/297.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:23",
+                       "last_error":  null
                    },
                    {
                        "stt":  298,
                        "topic":  "Lập luận logic (Logical Reasoning)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  99,
                        "file_path":  "output/298.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:24",
+                       "last_error":  null
                    },
                    {
                        "stt":  299,
                        "topic":  "Mã hóa và Mật mã (Cryptography)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/299.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:24",
+                       "last_error":  null
                    },
                    {
                        "stt":  300,
                        "topic":  "Toán tài chính (Financial Mathematics)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  99,
                        "file_path":  "output/300.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:25",
+                       "last_error":  null
                    },
                    {
                        "stt":  301,
                        "topic":  "Hệ mặt trời (The Solar System)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/301.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 02:26",
                        "last_error":  null
                    },
                    {
                        "stt":  302,
                        "topic":  "Các chòm sao (Constellations)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/302.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 02:26",
                        "last_error":  null
                    },
                    {
                        "stt":  303,
                        "topic":  "Hố đen và Tinh vân (Black Holes \u0026 Nebulas)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/303.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 02:27",
                        "last_error":  null
                    },
                    {
                        "stt":  304,
                        "topic":  "Địa chất học (Geology)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/304.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 02:28",
                        "last_error":  null
                    },
                    {
                        "stt":  305,
                        "topic":  "Khoáng sản và Kim loại quý (Minerals \u0026 Precious Metals)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/305.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 02:29",
                        "last_error":  null
                    },
                    {
