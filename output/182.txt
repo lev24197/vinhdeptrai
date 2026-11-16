@@ -1,0 +1,100 @@
+sign	s__n	/saɪn/	[sound:sign.mp3]	a board or object displaying information or instructions for drivers	biển báo	biển báo	signs	1. You must obey every traffic sign on the road. <br>2. The stop sign was hidden behind a tree.
+signal	s____l	/ˈsɪɡnəl/	[sound:signal.mp3]	a light or device used to give instructions to drivers	tín hiệu	tín hiệu	signals	1. The turn signal indicates your intention to change lanes. <br>2. Wait for the traffic signal to turn green.
+intersection	i__________n	/ˌɪntərˈsekʃən/	[sound:intersection.mp3]	a place where two or more roads meet	giao lộ	giao lộ	intersections	1. Slow down as you approach the intersection. <br>2. The accident occurred at the busy intersection.
+lane	l__e	/leɪn/	[sound:lane.mp3]	a part of a road marked by painted lines for a single line of vehicles	làn đường	làn đường	lanes	1. Stay in your lane while driving on the highway. <br>2. He switched to the left lane to overtake the truck.
+roundabout	r________t	/ˈraʊndəbaʊt/	[sound:roundabout.mp3]	a road junction where traffic moves in one direction around a central island	vòng xuyến	vòng xuyến	roundabouts	1. Yield to traffic already inside the roundabout. <br>2. Take the third exit at the roundabout.
+crosswalk	c_______k	/ˈkrɔːswɔːk/	[sound:crosswalk.mp3]	a marked part of a road where pedestrians have the right of way	vạch kẻ đường cho người đi bộ	vạch kẻ đường cho người đi bộ	crosswalks	1. Drivers must stop for pedestrians in the crosswalk. <br>2. Always use the crosswalk to cross the street safely.
+curb	c__b	/kɜːrb/	[sound:curb.mp3]	a stone or concrete edge along the side of a road	vỉa hè	vỉa hè	curbs	1. Do not park your car too close to the curb. <br>2. The tire hit the curb while he was parking.
+median	m____n	/ˈmiːdiən/	[sound:median.mp3]	the strip of land separating lanes of traffic moving in opposite directions	dải phân cách	dải phân cách	medians	1. The car veered off the road and hit the median. <br>2. Planting trees in the median helps reduce glare.
+shoulder	s______r	/ˈʃoʊldər/	[sound:shoulder.mp3]	the side area of a road used for emergencies	lề đường	lề đường	shoulders	1. Pull over to the shoulder if your car breaks down. <br>2. Driving on the shoulder is illegal in most cases.
+speedometer	s_________r	/spiˈdɑːmɪtər/	[sound:speedometer.mp3]	an instrument that shows the speed of a vehicle	đồng hồ tốc độ	đồng hồ tốc độ	speedometers	1. Check your speedometer to ensure you are within the limit. <br>2. The speedometer was broken, so he guessed his speed.
+headlight	h_______t	/ˈhedlaɪt/	[sound:headlight.mp3]	a powerful light at the front of a vehicle	đèn pha	đèn pha	headlights	1. Turn on your headlights at dusk. <br>2. One of his headlights is burnt out.
+taillight	t_______t	/ˈteɪllaɪt/	[sound:taillight.mp3]	a red light at the back of a vehicle	đèn hậu	đèn hậu	taillights	1. Your left taillight is not working. <br>2. The red glow of the taillights warned the driver behind.
+seatbelt	s______t	/ˈsiːtbelt/	[sound:seatbelt.mp3]	a safety strap used to hold a passenger in place	dây an toàn	dây an toàn	seatbelts	1. Fasten your seatbelt before starting the engine. <br>2. Wearing a seatbelt saves lives in accidents.
+helmet	h____t	/ˈhelmɪt/	[sound:helmet.mp3]	a hard hat worn to protect the head while riding a motorcycle	mũ bảo hiểm	mũ bảo hiểm	helmets	1. It is mandatory to wear a helmet while riding a bike. <br>2. He forgot to strap his helmet securely.
+license	l_____e	/ˈlaɪsəns/	[sound:license.mp3]	an official document permitting a person to drive	giấy phép lái xe	giấy phép lái xe	licenses	1. You must carry your driver's license at all times. <br>2. He passed the test and received his license.
+registration	r__________n	/ˌredʒɪˈstreɪʃən/	[sound:registration.mp3]	the official recording of a vehicle with the government	giấy đăng ký xe	giấy đăng ký xe	registrations	1. Show the officer your vehicle registration. <br>2. The registration expires at the end of the month.
+brake	b___e	/breɪk/	[sound:brake.mp3]	a device for slowing or stopping a vehicle	phanh	phanh	brakes	1. Apply the brake gently to avoid skidding. <br>2. The car's brakes failed on the steep hill.
+clutch	c____h	/klʌtʃ/	[sound:clutch.mp3]	a pedal used to change gears in a manual vehicle	côn	côn	clutches	1. Press the clutch before shifting gears. <br>2. He released the clutch too quickly and stalled.
+accelerator	a_________r	/ækˈseləreɪtər/	[sound:accelerator.mp3]	a pedal that controls the speed of the engine	bàn đạp ga	bàn đạp ga	accelerators	1. Press the accelerator to increase speed. <br>2. His foot slipped off the accelerator.
+mirror	m____r	/ˈmɪrər/	[sound:mirror.mp3]	a glass surface used to see behind or to the side of a vehicle	gương chiếu hậu	gương chiếu hậu	mirrors	1. Check your rearview mirror before turning. <br>2. Adjust the side mirror to eliminate blind spots.
+windshield	w________d	/ˈwɪndʃiːld/	[sound:windshield.mp3]	the front glass window of a vehicle	kính chắn gió	kính chắn gió	windshields	1. Clean your windshield for better visibility. <br>2. A stone cracked the windshield while driving.
+wiper	w___r	/ˈwaɪpər/	[sound:wiper.mp3]	a device that clears rain or snow from the windshield	cần gạt nước	cần gạt nước	wipers	1. Turn on the wiper during the rainstorm. <br>2. The wiper blade needs to be replaced.
+horn	h__n	/hɔːrn/	[sound:horn.mp3]	a device that makes a loud noise as a warning	còi xe	còi xe	horns	1. Do not honk your horn unless necessary. <br>2. He pressed the horn to alert the pedestrian.
+tire	t__e	/ˈtaɪər/	[sound:tire.mp3]	a rubber ring filled with air that fits around a wheel	lốp xe	lốp xe	tires	1. Check the air pressure in your tire regularly. <br>2. The flat tire caused the car to swerve.
+wheel	w___l	/wiːl/	[sound:wheel.mp3]	a circular object that rotates on an axle	bánh xe	bánh xe	wheels	1. The steering wheel controls the direction of the car. <br>2. The car has four wheels and a spare.
+exhibit	e_____t	/ɪɡˈzɪbɪt/	[sound:exhibit.mp3]	a sign or object showing a rule or warning	biển báo hiệu	biển báo hiệu	exhibits	1. The road exhibit clearly states the speed limit. <br>2. He ignored the traffic exhibit posted at the entrance.
+pavement	p______t	/ˈpeɪvmənt/	[sound:pavement.mp3]	the hard surface of a road or sidewalk	mặt đường	mặt đường	pavements	1. The pavement was slippery after the rain. <br>2. He walked along the pavement to reach the shop.
+highway	h_____y	/ˈhaɪweɪ/	[sound:highway.mp3]	a main road for fast traffic	đường cao tốc	đường cao tốc	highways	1. The speed limit on the highway is high. <br>2. He is driving on the interstate highway.
+junction	j______n	/ˈdʒʌŋkʃən/	[sound:junction.mp3]	a point where two or more roads meet	ngã ba/ngã tư	ngã ba/ngã tư	junctions	1. There is a major junction ahead. <br>2. Turn left at the next junction.
+overpass	o______s	/ˈoʊvərpæs/	[sound:overpass.mp3]	a bridge that carries one road over another	cầu vượt	cầu vượt	overpasses	1. The truck got stuck under the low overpass. <br>2. Take the overpass to avoid the traffic light.
+tunnel	t____l	/ˈtʌnəl/	[sound:tunnel.mp3]	a passage through a hill or under a road	đường hầm	đường hầm	tunnels	1. Turn on your lights before entering the tunnel. <br>2. The tunnel is closed for maintenance.
+bridge	b____e	/brɪdʒ/	[sound:bridge.mp3]	a structure built over a river or road	cầu	cầu	bridges	1. The bridge is narrow, so drive slowly. <br>2. He crossed the bridge to enter the city.
+parking	p_____g	/ˈpɑːrkɪŋ/	[sound:parking.mp3]	an area for leaving vehicles	bãi đỗ xe	bãi đỗ xe	parkings	1. Find a safe parking space. <br>2. The parking lot is full today.
+garage	g____e	/ɡəˈrɑːʒ/	[sound:garage.mp3]	a building for storing vehicles	ga-ra	ga-ra	garages	1. Park the car inside the garage. <br>2. The garage door was left open.
+meter	m___r	/ˈmiːtər/	[sound:meter.mp3]	a device for measuring parking time	đồng hồ tính giờ đỗ xe	đồng hồ tính giờ đỗ xe	meters	1. You need to feed the meter to avoid a fine. <br>2. The parking meter expired five minutes ago.
+fine	f__e	/faɪn/	[sound:fine.mp3]	a penalty for breaking a traffic rule	tiền phạt	tiền phạt	fines	1. He had to pay a fine for speeding. <br>2. The fine for illegal parking is expensive.
+ticket	t____t	/ˈtɪkɪt/	[sound:ticket.mp3]	a notice of a traffic violation	vé phạt	vé phạt	tickets	1. The officer gave him a ticket for running a red light. <br>2. He received a speeding ticket in the mail.
+patrol	p____l	/pəˈtroʊl/	[sound:patrol.mp3]	a person or vehicle that monitors traffic	đội tuần tra	đội tuần tra	patrols	1. The highway patrol is watching for speeders. <br>2. He saw a police patrol car nearby.
+officer	o_____r	/ˈɔːfɪsər/	[sound:officer.mp3]	a police person who enforces traffic laws	cảnh sát giao thông	cảnh sát giao thông	officers	1. The officer signaled for him to pull over. <br>2. Follow the instructions of the traffic officer.
+barrier	b_____r	/ˈbæriər/	[sound:barrier.mp3]	a fence or object that blocks a road	rào chắn	rào chắn	barriers	1. The crash barrier prevented the car from falling. <br>2. The road is blocked by a safety barrier.
+cone	c__e	/koʊn/	[sound:cone.mp3]	a plastic object used to mark road work	cọc tiêu	cọc tiêu	cones	1. The orange cone marks the construction zone. <br>2. Move the cones to clear the path.
+detour	d____r	/ˈdiːtʊr/	[sound:detour.mp3]	a different route taken when a road is closed	đường vòng	đường vòng	detours	1. Follow the detour signs to reach the destination. <br>2. The detour added ten minutes to his trip.
+exit	e__t	/ˈeɡzɪt/	[sound:exit.mp3]	the way out of a highway	lối ra	lối ra	exits	1. Take the next exit for the airport. <br>2. He missed his exit and had to drive further.
+entrance	e______e	/ˈentrəns/	[sound:entrance.mp3]	the way onto a highway	lối vào	lối vào	entrances	1. The highway entrance is just ahead. <br>2. Be careful when merging at the entrance.
+ramp	r__p	/ræmp/	[sound:ramp.mp3]	a sloping road connecting two levels	đường dốc	đường dốc	ramps	1. Speed up while driving on the entrance ramp. <br>2. The exit ramp is quite steep.
+pedestrian	p________n	/pəˈdestriən/	[sound:pedestrian.mp3]	a person walking on the road or sidewalk	người đi bộ	người đi bộ	pedestrians	1. Pedestrians have the right of way at the crossing. <br>2. Watch out for pedestrians in the city center.
+cyclist	c_____t	/ˈsaɪklɪst/	[sound:cyclist.mp3]	a person riding a bicycle	người đi xe đạp	người đi xe đạp	cyclists	1. Cyclists should stay in the bike lane. <br>2. The driver must respect the safety of cyclists.
+biker	b___r	/ˈbaɪkər/	[sound:biker.mp3]	a person riding a motorcycle	người đi xe máy	người đi xe máy	bikers	1. The biker wore a protective jacket. <br>2. Bikers must follow the same rules as cars.
+truck	t___k	/trʌk/	[sound:truck.mp3]	a large vehicle for carrying goods	xe tải	xe tải	trucks	1. Heavy trucks are not allowed on this road. <br>2. The truck driver checked his mirrors.
+bus	b_s	/bʌs/	[sound:bus.mp3]	a large vehicle for public transport	xe buýt	xe buýt	buses	1. Give way to the bus pulling out of the stop. <br>2. The bus lane is for public transport only.
+taxi	t__i	/ˈtæksi/	[sound:taxi.mp3]	a vehicle that carries passengers for a fare	xe taxi	xe taxi	taxis	1. The taxi stopped to pick up a passenger. <br>2. Taxis are allowed to use the bus lane.
+van	v_n	/væn/	[sound:van.mp3]	a medium-sized vehicle for goods or people	xe tải nhỏ	xe tải nhỏ	vans	1. The delivery van parked in the loading zone. <br>2. He drove his van to the warehouse.
+trailer	t_____r	/ˈtreɪlər/	[sound:trailer.mp3]	a vehicle towed by another	xe kéo	xe kéo	trailers	1. The trailer is too long for this turn. <br>2. Secure the load in the trailer before driving.
+engine	e____e	/ˈendʒɪn/	[sound:engine.mp3]	the machine that provides power to a vehicle	động cơ	động cơ	engines	1. Turn off the engine while waiting at the crossing. <br>2. The engine overheated during the trip.
+battery	b_____y	/ˈbætri/	[sound:battery.mp3]	the power source for the vehicle's electrical system	ắc quy	ắc quy	batteries	1. The car won't start because the battery is dead. <br>2. Check the battery connections regularly.
+fuel	f__l	/ˈfjuːəl/	[sound:fuel.mp3]	gasoline or petrol for the engine	nhiên liệu	nhiên liệu	fuels	1. Stop at the station for more fuel. <br>2. Check the fuel gauge before a long drive.
+tank	t__k	/tæŋk/	[sound:tank.mp3]	the container for fuel	bình xăng	bình xăng	tanks	1. Fill the tank with unleaded gas. <br>2. The fuel tank is almost empty.
+hood	h__d	/hʊd/	[sound:hood.mp3]	the metal cover over the engine	nắp ca-pô	nắp ca-pô	hoods	1. Open the hood to check the oil. <br>2. The hood was dented in the accident.
+trunk	t___k	/trʌŋk/	[sound:trunk.mp3]	the storage compartment of a car	cốp xe	cốp xe	trunks	1. Put your luggage in the trunk. <br>2. The trunk latch is stuck.
+dashboard	d_______d	/ˈdæʃbɔːrd/	[sound:dashboard.mp3]	the panel in front of the driver	bảng điều khiển	bảng điều khiển	dashboards	1. The warning light on the dashboard turned on. <br>2. He keeps his GPS on the dashboard.
+gear	g__r	/ɡɪr/	[sound:gear.mp3]	a mechanism for changing the speed of the engine	số	số	gears	1. Shift into a lower gear on the hill. <br>2. The car is stuck in first gear.
+steering	s______g	/ˈstɪrɪŋ/	[sound:steering.mp3]	the mechanism used to control the car's direction	hệ thống lái	hệ thống lái	steerings	1. The steering felt loose on the highway. <br>2. Check the steering fluid level.
+suspension	s________n	/səˈspenʃən/	[sound:suspension.mp3]	the system of springs that absorbs road shocks	hệ thống treo	hệ thống treo	suspensions	1. The car needs a new suspension. <br>2. The rough road damaged the suspension.
+exhaust	e_____t	/ɪɡˈzɔːst/	[sound:exhaust.mp3]	the pipe that releases waste gases	ống xả	ống xả	exhausts	1. The car emits thick black smoke from the exhaust. <br>2. The exhaust pipe is loose.
+radiator	r______r	/ˈreɪdieɪtər/	[sound:radiator.mp3]	a device that cools the engine	két nước làm mát	két nước làm mát	radiators	1. The radiator leaked coolant on the road. <br>2. Check the radiator before a long trip.
+bumper	b____r	/ˈbʌmpər/	[sound:bumper.mp3]	a bar at the front or back of a vehicle to protect it	cản xe	cản xe	bumpers	1. The bumper was scratched in the parking lot. <br>2. He hit the bumper of the car in front.
+fender	f____r	/ˈfendər/	[sound:fender.mp3]	the metal part over the wheel	chắn bùn	chắn bùn	fenders	1. The fender was bent during the collision. <br>2. He repaired the dent in the fender.
+plate	p___e	/pleɪt/	[sound:plate.mp3]	a metal sign showing the vehicle's registration number	biển số xe	biển số xe	plates	1. The police noted down his license plate. <br>2. Make sure your license plate is visible.
+key	k_y	/kiː/	[sound:key.mp3]	a tool for starting the vehicle	chìa khóa	chìa khóa	keys	1. Insert the key into the ignition. <br>2. He lost his car keys.
+ignition	i______n	/ɪɡˈnɪʃən/	[sound:ignition.mp3]	the switch that starts the engine	ổ khóa điện	ổ khóa điện	ignitions	1. Turn the key in the ignition. <br>2. The ignition failed to start the engine.
+alarm	a___m	/əˈlɑːrm/	[sound:alarm.mp3]	a device that warns of theft	còi báo động	còi báo động	alarms	1. The car alarm went off by mistake. <br>2. He set the car alarm before leaving.
+lock	l__k	/lɑːk/	[sound:lock.mp3]	a device to secure the doors	khóa cửa	khóa cửa	locks	1. Make sure you engage the door locks. <br>2. The central lock is broken.
+window	w____w	/ˈwɪndoʊ/	[sound:window.mp3]	a glass opening on the side of a vehicle	cửa sổ xe	cửa sổ xe	windows	1. Roll down the window to pay the toll. <br>2. The car window was tinted.
+door	d__r	/dɔːr/	[sound:door.mp3]	the part used to enter the vehicle	cửa xe	cửa xe	doors	1. Close the car door firmly. <br>2. He opened the door to get out.
+seat	s__t	/siːt/	[sound:seat.mp3]	the place where a person sits	ghế ngồi	ghế ngồi	seats	1. Adjust the seat for comfort. <br>2. He pushed the seat back.
+roof	r__f	/ruːf/	[sound:roof.mp3]	the top cover of a vehicle	nóc xe	nóc xe	roofs	1. He tied the box to the roof of the car. <br>2. The car has a sunroof.
+glovebox	g______x	/ˈɡlʌvbɑːks/	[sound:glovebox.mp3]	a small compartment in the dashboard	hộp đựng đồ	hộp đựng đồ	gloveboxes	1. Keep your registration in the glovebox. <br>2. He opened the glovebox to find his map.
+floor	f___r	/flɔːr/	[sound:floor.mp3]	the bottom part of the car interior	sàn xe	sàn xe	floors	1. He dropped his keys on the floor. <br>2. The floor mats are dirty.
+pedal	p___l	/ˈpedl/	[sound:pedal.mp3]	a lever operated by the foot	bàn đạp	bàn đạp	pedals	1. The brake pedal is very responsive. <br>2. Keep your foot on the gas pedal.
+switch	s____h	/swɪtʃ/	[sound:switch.mp3]	a control for lights or wipers	công tắc	công tắc	switches	1. The light switch is on the side. <br>2. He flipped the switch for the headlights.
+gauge	g___e	/ɡeɪdʒ/	[sound:gauge.mp3]	a device for measuring levels	đồng hồ đo	đồng hồ đo	gauges	1. The fuel gauge is showing empty. <br>2. Check the temperature gauge.
+light	l___t	/laɪt/	[sound:light.mp3]	a device for illumination	đèn	đèn	lights	1. The dashboard lights came on. <br>2. Turn on the interior light.
+map	m_p	/mæp/	[sound:map.mp3]	a guide for navigation	bản đồ	bản đồ	maps	1. He followed the map to the city. <br>2. Check the map for the best route.
+compass	c_____s	/ˈkʌmpəs/	[sound:compass.mp3]	an instrument for finding direction	la bàn	la bàn	compasses	1. The digital compass shows the direction. <br>2. He used a compass to navigate.
+jack	j__k	/dʒæk/	[sound:jack.mp3]	a tool for lifting a vehicle to change a tire	kích xe	kích xe	jacks	1. Use the jack to lift the car. <br>2. The jack is stored in the trunk.
+wrench	w____h	/rentʃ/	[sound:wrench.mp3]	a tool for tightening bolts	cờ-lê	cờ-lê	wrenches	1. He used a wrench to loosen the lug nuts. <br>2. A tire wrench is essential for emergencies.
+pump	p__p	/pʌmp/	[sound:pump.mp3]	a device for inflating tires	bơm	bơm	pumps	1. Use the air pump to inflate the tire. <br>2. The gas pump is broken.
+oil	o_l	/ɔɪl/	[sound:oil.mp3]	a liquid used to lubricate the engine	dầu nhớt	dầu nhớt	oils	1. Check the engine oil level. <br>2. Change the oil every five thousand miles.
+filter	f____r	/ˈfɪltər/	[sound:filter.mp3]	a device to clean the oil or air	bộ lọc	bộ lọc	filters	1. Replace the oil filter regularly. <br>2. The air filter is clogged with dust.
+belt	b__t	/belt/	[sound:belt.mp3]	a strap used for the engine	dây curoa	dây curoa	belts	1. The fan belt is making a noise. <br>2. Check the timing belt for wear.
+hose	h__e	/hoʊz/	[sound:hose.mp3]	a tube for carrying fluids	ống dẫn	ống dẫn	hoses	1. The radiator hose is leaking. <br>2. Check all the hoses for cracks.
+fuse	f__e	/fjuːz/	[sound:fuse.mp3]	a safety device for electrical circuits	cầu chì	cầu chì	fuses	1. The fuse for the headlights blew out. <br>2. Check the fuse box if the power fails.
+bolt	b__t	/boʊlt/	[sound:bolt.mp3]	a fastener for parts	bu-lông	bu-lông	bolts	1. Tighten the wheel bolts securely. <br>2. The engine bolt came loose.
+nut	n_t	/nʌt/	[sound:nut.mp3]	a fastener for a bolt	đai ốc	đai ốc	nuts	1. Make sure the lug nut is tight. <br>2. He lost a nut while working on the car.
+speed	s___d	/spiːd/	[sound:speed.mp3]	the rate of movement	tốc độ	tốc độ	speeds	1. Reduce your speed in the school zone. <br>2. The speed limit is clearly marked.
+limit	l___t	/ˈlɪmɪt/	[sound:limit.mp3]	the maximum allowed value	giới hạn	giới hạn	limits	1. Do not exceed the speed limit. <br>2. The weight limit for the bridge is low.
+traffic	t_____c	/ˈtræfɪk/	[sound:traffic.mp3]	vehicles moving on a road	giao thông	giao thông	traffics	1. The traffic is heavy this morning. <br>2. Avoid the city center during peak traffic hours.
+congestion	c________n	/kənˈdʒestʃən/	[sound:congestion.mp3]	a situation where roads are blocked	tắc nghẽn	tắc nghẽn	congestions	1. The road congestion is caused by an accident. <br>2. Avoid the congestion by taking a different route.
+accident	a______t	/ˈæksɪdənt/	[sound:accident.mp3]	an unfortunate event on the road	tai nạn	tai nạn	accidents	1. He was involved in a minor accident. <br>2. The accident blocked all lanes.
+collision	c_______n	/kəˈlɪʒən/	[sound:collision.mp3]	the act of two things hitting each other	va chạm	va chạm	collisions	1. The collision caused significant damage. <br>2. Avoid a head-on collision at all costs.

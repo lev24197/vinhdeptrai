@@ -1,0 +1,100 @@
+itinerary	i_______y	/aɪˈtɪnərɛri/	[sound:itinerary.mp3]	A planned route or journey.	Lịch trình	Lịch trình	itineraries	1. Please check your itinerary for any changes. <br>2. The itinerary includes a stop in Paris.
+reservation	r_________n	/ˌrɛzərˈveɪʃən/	[sound:reservation.mp3]	An arrangement to have something held for one's use.	Việc đặt chỗ	Việc đặt chỗ	reservations	1. I made a reservation for two people. <br>2. Confirm your reservation online.
+ticket	t____t	/ˈtɪkɪt/	[sound:ticket.mp3]	A document giving the holder the right to travel.	Vé	Vé	tickets	1. Show your ticket at the boarding gate. <br>2. I lost my return ticket.
+boarding	b______g	/ˈbɔːrdɪŋ/	[sound:boarding.mp3]	The act of getting onto a ship, aircraft, or other vehicle.	Việc lên máy bay	Việc lên máy bay	boardings	1. Boarding will begin in ten minutes. <br>2. The boarding process is delayed.
+passenger	p_______r	/ˈpæsəndʒər/	[sound:passenger.mp3]	A person who is traveling in a vehicle.	Hành khách	Hành khách	passengers	1. Every passenger must wear a seatbelt. <br>2. The passenger list is complete.
+passport	p______t	/ˈpæspɔːrt/	[sound:passport.mp3]	An official document issued by a government for travel.	Hộ chiếu	Hộ chiếu	passports	1. Keep your passport in a safe place. <br>2. Present your passport at immigration.
+visa	v__a	/ˈviːzə/	[sound:visa.mp3]	An official endorsement on a passport permitting entry.	Thị thực	Thị thực	visas	1. Do you need a visa for this country? <br>2. My visa expires next month.
+luggage	l_____e	/ˈlʌɡɪdʒ/	[sound:luggage.mp3]	Suitcases or bags used for traveling.	Hành lý	Hành lý	luggages	1. Check your luggage at the counter. <br>2. The luggage was lost in transit.
+terminal	t______l	/ˈtɜːrmɪnəl/	[sound:terminal.mp3]	A building at an airport where passengers arrive and depart.	Nhà ga	Nhà ga	terminals	1. Our flight departs from terminal two. <br>2. Meet me at the main terminal.
+layover	l_____r	/ˈleɪˌoʊvər/	[sound:layover.mp3]	A period of waiting between two flights.	Thời gian quá cảnh	Thời gian quá cảnh	layovers	1. We have a long layover in Dubai. <br>2. The layover was only one hour.
+fare	f__e	/fɛər/	[sound:fare.mp3]	The money paid for a journey on public transport.	Giá vé	Giá vé	fares	1. The air fare has increased recently. <br>2. Compare the fares before booking.
+confirmation	c__________n	/ˌkɒnfərˈmeɪʃən/	[sound:confirmation.mp3]	A document or statement that confirms something.	Xác nhận	Xác nhận	confirmations	1. I received a confirmation email. <br>2. Print the booking confirmation.
+seat	s__t	/siːt/	[sound:seat.mp3]	A place for a passenger to sit on a plane.	Ghế ngồi	Ghế ngồi	seats	1. I requested a window seat. <br>2. Your seat number is 12A.
+check-in	c______n	/ˈtʃɛk.ɪn/	[sound:check-in.mp3]	The place where passengers register for a flight.	Quầy làm thủ tục	Quầy làm thủ tục	check-ins	1. The check-in counter is now open. <br>2. Complete your check-in online.
+gate	g__e	/ɡeɪt/	[sound:gate.mp3]	The place where passengers board an aircraft.	Cổng ra máy bay	Cổng ra máy bay	gates	1. Go to gate B15 immediately. <br>2. The gate has been changed.
+cancellation	c__________n	/ˌkænsəˈleɪʃən/	[sound:cancellation.mp3]	The act of calling off a planned event or flight.	Việc hủy chuyến	Việc hủy chuyến	cancellations	1. The cancellation was due to bad weather. <br>2. Check the cancellation policy.
+refund	r____d	/ˈriːfʌnd/	[sound:refund.mp3]	A repayment of a sum of money.	Việc hoàn tiền	Việc hoàn tiền	refunds	1. I am requesting a full refund. <br>2. The refund will be processed soon.
+voucher	v_____r	/ˈvaʊtʃər/	[sound:voucher.mp3]	A document that can be used instead of money.	Phiếu ưu đãi/vé	Phiếu ưu đãi/vé	vouchers	1. Use this voucher for a discount. <br>2. The meal voucher is included.
+upgrade	u_____e	/ˈʌpɡreɪd/	[sound:upgrade.mp3]	An act of moving to a higher class of service.	Việc nâng hạng	Việc nâng hạng	upgrades	1. I asked for a seat upgrade. <br>2. Upgrades are subject to availability.
+manifest	m______t	/ˈmænɪfɛst/	[sound:manifest.mp3]	A document listing the passengers on a flight.	Danh sách hành khách	Danh sách hành khách	manifests	1. The pilot checked the passenger manifest. <br>2. The manifest shows 200 people.
+aisle	a___e	/aɪl/	[sound:aisle.mp3]	A passage between rows of seats in a plane.	Lối đi giữa các hàng ghế	Lối đi giữa các hàng ghế	aisles	1. I prefer an aisle seat. <br>2. Keep the aisle clear during takeoff.
+baggage	b_____e	/ˈbæɡɪdʒ/	[sound:baggage.mp3]	Personal belongings packed in suitcases.	Hành lý	Hành lý	baggages	1. Claim your baggage at carousel four. <br>2. Excess baggage fees apply.
+class	c___s	/klæs/	[sound:class.mp3]	A category of travel service (e.g., economy, business).	Hạng vé	Hạng vé	classes	1. I am flying in business class. <br>2. What class is your ticket?
+transit	t_____t	/ˈtrænzɪt/	[sound:transit.mp3]	The act of passing through a place.	Quá cảnh	Quá cảnh	transits	1. We are in transit for six hours. <br>2. The transit area is upstairs.
+connection	c________n	/kəˈnɛkʃən/	[sound:connection.mp3]	A flight that requires a change of planes.	Chuyến bay nối chuyến	Chuyến bay nối chuyến	connections	1. I missed my connection in London. <br>2. Check your connection time.
+schedule	s______e	/ˈskɛdʒuːl/	[sound:schedule.mp3]	A plan for when flights depart and arrive.	Lịch bay	Lịch bay	schedules	1. Check the flight schedule online. <br>2. The schedule is subject to change.
+overbooking	o_________g	/ˌoʊvərˈbʊkɪŋ/	[sound:overbooking.mp3]	The practice of selling more tickets than seats.	Việc đặt quá số lượng vé	Việc đặt quá số lượng vé	overbookings	1. The flight had an overbooking issue. <br>2. Avoid overbooking by confirming early.
+priority	p______y	/praɪˈɔːrɪti/	[sound:priority.mp3]	The right to be dealt with before others.	Quyền ưu tiên	Quyền ưu tiên	priorities	1. I have priority boarding status. <br>2. Priority is given to families.
+insurance	i_______e	/ɪnˈʃʊərəns/	[sound:insurance.mp3]	Protection against financial loss during travel.	Bảo hiểm du lịch	Bảo hiểm du lịch	insurances	1. Did you buy travel insurance? <br>2. The insurance covers cancellations.
+tariff	t____f	/ˈtærɪf/	[sound:tariff.mp3]	A table of rates or charges.	Biểu giá	Biểu giá	tariffs	1. The airline updated its tariff. <br>2. Look at the published tariff.
+booking	b_____g	/ˈbʊkɪŋ/	[sound:booking.mp3]	An act of reserving a seat or room.	Việc đặt vé	Việc đặt vé	bookings	1. My booking is confirmed. <br>2. Manage your booking online.
+agent	a___t	/ˈeɪdʒənt/	[sound:agent.mp3]	A person who sells tickets for travel.	Đại lý/Nhân viên	Đại lý/Nhân viên	agents	1. Ask the travel agent for help. <br>2. The agent printed my boarding pass.
+commission	c________n	/kəˈmɪʃən/	[sound:commission.mp3]	A fee paid to an agent for a sale.	Hoa hồng	Hoa hồng	commissions	1. The agent earns a commission. <br>2. The commission is included in the fare.
+destination	d_________n	/ˌdɛstɪˈneɪʃən/	[sound:destination.mp3]	The place to which someone is going.	Điểm đến	Điểm đến	destinations	1. What is your final destination? <br>2. Many destinations are available.
+departure	d_______e	/dɪˈpɑːrtʃər/	[sound:departure.mp3]	The action of leaving.	Sự khởi hành	Sự khởi hành	departures	1. Check the departure time. <br>2. Departure is from gate 10.
+arrival	a_____l	/əˈraɪvəl/	[sound:arrival.mp3]	The action of arriving.	Sự đến nơi	Sự đến nơi	arrivals	1. The arrival is delayed. <br>2. Wait in the arrival hall.
+delay	d___y	/dɪˈleɪ/	[sound:delay.mp3]	A period of time by which something is late.	Sự chậm trễ	Sự chậm trễ	delays	1. There is a delay in the flight. <br>2. Avoid delays by arriving early.
+cabin	c___n	/ˈkæbɪn/	[sound:cabin.mp3]	The interior of an aircraft.	Khoang máy bay	Khoang máy bay	cabins	1. The cabin crew is ready. <br>2. The cabin temperature is cool.
+cockpit	c_____t	/ˈkɒkpɪt/	[sound:cockpit.mp3]	The compartment for the pilot.	Buồng lái	Buồng lái	cockpits	1. The pilot is in the cockpit. <br>2. The cockpit door is locked.
+crew	c__w	/kruː/	[sound:crew.mp3]	The staff working on the flight.	Phi hành đoàn	Phi hành đoàn	crews	1. The flight crew is very helpful. <br>2. The crew prepared the cabin.
+pilot	p___t	/ˈpaɪlət/	[sound:pilot.mp3]	The person flying the plane.	Phi công	Phi công	pilots	1. The pilot announced the delay. <br>2. The pilot greeted the passengers.
+steward	s_____d	/ˈstjuːərd/	[sound:steward.mp3]	A flight attendant.	Tiếp viên hàng không	Tiếp viên hàng không	stewards	1. The steward served the meal. <br>2. Ask the steward for a blanket.
+runway	r____y	/ˈrʌnweɪ/	[sound:runway.mp3]	The strip of land for takeoff/landing.	Đường băng	Đường băng	runways	1. The plane is on the runway. <br>2. The runway is being cleared.
+hangar	h____r	/ˈhæŋər/	[sound:hangar.mp3]	A building for storing aircraft.	Nhà chứa máy bay	Nhà chứa máy bay	hangars	1. The plane is in the hangar. <br>2. They built a new hangar.
+fuel	f__l	/ˈfjuːəl/	[sound:fuel.mp3]	Energy source for the aircraft.	Nhiên liệu	Nhiên liệu	fuels	1. The plane needs more fuel. <br>2. Fuel costs are rising.
+engine	e____e	/ˈɛndʒɪn/	[sound:engine.mp3]	The machine that powers the plane.	Động cơ	Động cơ	engines	1. The engine was checked. <br>2. There was an engine problem.
+wing	w__g	/wɪŋ/	[sound:wing.mp3]	The part of the plane for flying.	Cánh máy bay	Cánh máy bay	wings	1. The wing is iced over. <br>2. Look out the window at the wing.
+tail	t__l	/teɪl/	[sound:tail.mp3]	The rear part of the plane.	Đuôi máy bay	Đuôi máy bay	tails	1. The tail has the airline logo. <br>2. Check the tail section.
+landing	l_____g	/ˈlændɪŋ/	[sound:landing.mp3]	The act of coming to the ground.	Việc hạ cánh	Việc hạ cánh	landings	1. The landing was very smooth. <br>2. Prepare for landing.
+takeoff	t_____f	/ˈteɪkɒf/	[sound:takeoff.mp3]	The act of leaving the ground.	Việc cất cánh	Việc cất cánh	takeoffs	1. Takeoff is at 8 AM. <br>2. The takeoff was delayed.
+altitude	a______e	/ˈæltɪtuːd/	[sound:altitude.mp3]	The height of the plane.	Độ cao	Độ cao	altitudes	1. We are at cruising altitude. <br>2. The altitude is 30,000 feet.
+turbulence	t________e	/ˈtɜːrbjələns/	[sound:turbulence.mp3]	Violent movement of air.	Sự nhiễu động	Sự nhiễu động	turbulences	1. We are experiencing turbulence. <br>2. The turbulence was brief.
+radar	r___r	/ˈreɪdɑːr/	[sound:radar.mp3]	System for detecting aircraft.	Ra-đa	Ra-đa	radars	1. The plane is on the radar. <br>2. The radar is working well.
+beacon	b____n	/ˈbiːkən/	[sound:beacon.mp3]	A signal light for navigation.	Đèn hiệu	Đèn hiệu	beacons	1. The beacon is visible. <br>2. Follow the beacon lights.
+throttle	t______e	/ˈθrɒtəl/	[sound:throttle.mp3]	Control for engine power.	Bộ điều khiển ga	Bộ điều khiển ga	throttles	1. Adjust the throttle. <br>2. The throttle is jammed.
+flaps	f___s	/flæps/	[sound:flaps.mp3]	Parts of the wing for slowing down.	Cánh tà	Cánh tà	flaps	1. Lower the flaps for landing. <br>2. The flaps were extended.
+gear	g__r	/ɡɪər/	[sound:gear.mp3]	The landing wheels.	Bộ phận hạ cánh	Bộ phận hạ cánh	gears	1. Lower the landing gear. <br>2. The gear is locked.
+tray	t__y	/treɪ/	[sound:tray.mp3]	A table attached to the seat.	Bàn ăn	Bàn ăn	trays	1. Fold up your tray table. <br>2. The tray is broken.
+overhead	o______d	/ˈoʊvərhɛd/	[sound:overhead.mp3]	Storage above the seat.	Ngăn để hành lý	Ngăn để hành lý	overheads	1. Put your bag in the overhead. <br>2. The overhead is full.
+lavatory	l______y	/ˈlævətɔːri/	[sound:lavatory.mp3]	The toilet on a plane.	Nhà vệ sinh	Nhà vệ sinh	lavatories	1. The lavatory is occupied. <br>2. Where is the nearest lavatory?
+galley	g____y	/ˈɡæli/	[sound:galley.mp3]	The kitchen on a plane.	Bếp máy bay	Bếp máy bay	galleys	1. The crew is in the galley. <br>2. The galley is small.
+mask	m__k	/mæsk/	[sound:mask.mp3]	Oxygen equipment.	Mặt nạ dưỡng khí	Mặt nạ dưỡng khí	masks	1. Put on your oxygen mask. <br>2. The mask will drop down.
+vest	v__t	/vɛst/	[sound:vest.mp3]	Life-saving equipment.	Áo phao	Áo phao	vests	1. The life vest is under your seat. <br>2. Put on the vest now.
+belt	b__t	/bɛlt/	[sound:belt.mp3]	Safety strap.	Dây an toàn	Dây an toàn	belts	1. Fasten your seat belt. <br>2. Keep your belt fastened.
+announcement	a__________t	/əˈnaʊnsmənt/	[sound:announcement.mp3]	A message from the crew.	Thông báo	Thông báo	announcements	1. Listen to the announcement. <br>2. The announcement was clear.
+headset	h_____t	/ˈhɛdsɛt/	[sound:headset.mp3]	Audio equipment.	Tai nghe	Tai nghe	headsets	1. Use the provided headset. <br>2. My headset is broken.
+blanket	b_____t	/ˈblæŋkɪt/	[sound:blanket.mp3]	Covering for warmth.	Chăn	Chăn	blankets	1. May I have a blanket? <br>2. The blanket is clean.
+pillow	p____w	/ˈpɪloʊ/	[sound:pillow.mp3]	Support for the head.	Gối	Gối	pillows	1. I need an extra pillow. <br>2. The pillow is soft.
+menu	m__u	/ˈmɛnjuː/	[sound:menu.mp3]	List of food.	Thực đơn	Thực đơn	menus	1. Look at the meal menu. <br>2. The menu has options.
+beverage	b______e	/ˈbɛvərɪdʒ/	[sound:beverage.mp3]	A drink.	Đồ uống	Đồ uống	beverages	1. Would you like a beverage? <br>2. The beverage service is starting.
+snack	s___k	/snæk/	[sound:snack.mp3]	Small meal.	Đồ ăn nhẹ	Đồ ăn nhẹ	snacks	1. The snack is included. <br>2. Buy a snack on board.
+customs	c_____s	/ˈkʌstəmz/	[sound:customs.mp3]	Government agency for goods.	Hải quan	Hải quan	customs	1. Go through customs. <br>2. Declare goods at customs.
+immigration	i_________n	/ˌɪmɪˈɡreɪʃən/	[sound:immigration.mp3]	Control of entry.	Nhập cảnh	Nhập cảnh	immigrations	1. The immigration line is long. <br>2. Show your visa at immigration.
+carousel	c______l	/ˌkærəˈsɛl/	[sound:carousel.mp3]	Baggage belt.	Băng chuyền hành lý	Băng chuyền hành lý	carousels	1. Wait at the baggage carousel. <br>2. Which carousel is ours?
+claim	c___m	/kleɪm/	[sound:claim.mp3]	Request for luggage.	Khu vực nhận hành lý	Khu vực nhận hành lý	claims	1. Go to the baggage claim. <br>2. The claim area is busy.
+porter	p____r	/ˈpɔːrtər/	[sound:porter.mp3]	Person helping with bags.	Người khuân vác	Người khuân vác	porters	1. Hire a porter for your bags. <br>2. The porter is waiting.
+taxi	t__i	/ˈtæksi/	[sound:taxi.mp3]	Ground transport.	Xe taxi	Xe taxi	taxis	1. Take a taxi to the hotel. <br>2. The taxi stand is outside.
+shuttle	s_____e	/ˈʃʌtəl/	[sound:shuttle.mp3]	Airport bus.	Xe trung chuyển	Xe trung chuyển	shuttles	1. The shuttle leaves every hour. <br>2. Board the airport shuttle.
+lounge	l____e	/laʊndʒ/	[sound:lounge.mp3]	Waiting area.	Phòng chờ	Phòng chờ	lounges	1. Wait in the business lounge. <br>2. The lounge has free food.
+kiosk	k___k	/ˈkiːɒsk/	[sound:kiosk.mp3]	Self-service machine.	Ki-ốt tự phục vụ	Ki-ốt tự phục vụ	kiosks	1. Use the check-in kiosk. <br>2. The kiosk is out of order.
+signage	s_____e	/ˈsaɪnɪdʒ/	[sound:signage.mp3]	Airport signs.	Biển báo	Biển báo	signages	1. Follow the airport signage. <br>2. The signage is clear.
+security	s______y	/sɪˈkjʊrɪti/	[sound:security.mp3]	Screening process.	An ninh	An ninh	securities	1. Go through security. <br>2. The security is strict.
+metal	m___l	/ˈmɛtəl/	[sound:metal.mp3]	Material for detectors.	Kim loại	Kim loại	metals	1. Remove all metal items. <br>2. The detector found metal.
+scanner	s_____r	/ˈskænər/	[sound:scanner.mp3]	Machine for bags.	Máy quét	Máy quét	scanners	1. Put your bag in the scanner. <br>2. The scanner is busy.
+badge	b___e	/bædʒ/	[sound:badge.mp3]	ID card.	Thẻ nhân viên	Thẻ nhân viên	badges	1. Show your ID badge. <br>2. The badge is required.
+uniform	u_____m	/ˈjuːnɪfɔːrm/	[sound:uniform.mp3]	Staff clothing.	Đồng phục	Đồng phục	uniforms	1. The staff wears a uniform. <br>2. The uniform is blue.
+announcer	a_______r	/əˈnaʊnsər/	[sound:announcer.mp3]	Person making announcements.	Người phát thanh	Người phát thanh	announcers	1. The announcer spoke clearly. <br>2. The announcer is in the tower.
+monitor	m_____r	/ˈmɒnɪtər/	[sound:monitor.mp3]	Screen for flight info.	Màn hình hiển thị	Màn hình hiển thị	monitors	1. Check the flight monitor. <br>2. The monitor shows delays.
+annex	a___x	/əˈnɛks/	[sound:annex.mp3]	Addition to a building.	Tòa nhà phụ	Tòa nhà phụ	annexes	1. Go to the terminal annex. <br>2. The annex is open.
+concourse	c_______e	/ˈkɒŋkɔːrs/	[sound:concourse.mp3]	Large hall in airport.	Sảnh chờ	Sảnh chờ	concourses	1. Meet at the main concourse. <br>2. The concourse is crowded.
+transfer	t______r	/trænsˈfɜːr/	[sound:transfer.mp3]	Moving between flights.	Việc chuyển chuyến	Việc chuyển chuyến	transfers	1. The transfer desk is here. <br>2. Allow time for transfer.
+bag	b_g	/bæɡ/	[sound:bag.mp3]	Luggage item.	Túi/Hành lý	Túi/Hành lý	bags	1. Check your bag now. <br>2. I have one carry-on bag.
+tag	t_g	/tæɡ/	[sound:tag.mp3]	Label for luggage.	Thẻ hành lý	Thẻ hành lý	tags	1. Attach the luggage tag. <br>2. The tag is missing.
+aisleway	a______y	/ˈaɪlweɪ/	[sound:aisleway.mp3]	A passage between rows of seats in an aircraft.	Lối đi giữa các hàng ghế trên máy bay	Lối đi giữa các hàng ghế trên máy bay	aisleways	1. The flight attendant moved down the aisleway with the cart. <br>2. Please keep the aisleway clear during takeoff.
+armrest	a_____t	/ˈɑːrmrest/	[sound:armrest.mp3]	A support for the arm on the side of a seat.	Chỗ tựa tay trên ghế	Chỗ tựa tay trên ghế	armrests	1. He lowered the armrest to get more comfortable. <br>2. The armrest has a built-in remote control.
+headrest	h______t	/ˈhedrest/	[sound:headrest.mp3]	A part of a seat that supports the head.	Phần tựa đầu trên ghế	Phần tựa đầu trên ghế	headrests	1. Adjust the headrest for better neck support. <br>2. The headrest is covered with a disposable paper.
+bulkhead	b______d	/ˈbʌlkhed/	[sound:bulkhead.mp3]	A partition wall in an aircraft separating sections.	Vách ngăn giữa các khoang máy bay	Vách ngăn giữa các khoang máy bay	bulkheads	1. We requested a seat behind the bulkhead for extra legroom. <br>2. The bulkhead separates economy from business class.
+fuselage	f______e	/ˈfjuːzəlɑːʒ/	[sound:fuselage.mp3]	The main body of an aircraft.	Thân máy bay	Thân máy bay	fuselages	1. The fuselage is made of lightweight composite materials. <br>2. The airline logo is painted on the fuselage.
+pylon	p___n	/ˈpaɪlɒn/	[sound:pylon.mp3]	A structure that attaches an engine to an aircraft wing.	Trụ treo động cơ dưới cánh máy bay	Trụ treo động cơ dưới cánh máy bay	pylons	1. The engine is mounted on the pylon. <br>2. Engineers inspected the pylon for cracks.
+tarmac	t____c	/ˈtɑːrmæk/	[sound:tarmac.mp3]	The surface of an airport runway or apron.	Sân đỗ máy bay/đường băng	Sân đỗ máy bay/đường băng	tarmacs	1. We walked across the tarmac to board the plane. <br>2. The aircraft taxied slowly on the tarmac.
