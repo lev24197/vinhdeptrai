@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 04:46:34",
+    "updated_at":  "2026-11-17 04:58:53",
     "topics":  [
                    {
                        "stt":  1,
@@ -4369,136 +4369,136 @@
                    {
                        "stt":  486,
                        "topic":  "Mất cắp và Trộm cắp (Theft \u0026 Burglary)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/486.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:47",
                        "last_error":  null
                    },
                    {
                        "stt":  487,
                        "topic":  "Hỏng hóc máy móc (Machine Breakdowns)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/487.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:48",
                        "last_error":  null
                    },
                    {
                        "stt":  488,
                        "topic":  "Mất điện (Power Outages)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  99,
                        "file_path":  "output/488.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:48",
                        "last_error":  null
                    },
                    {
                        "stt":  489,
                        "topic":  "Lạc đường (Getting Lost)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/489.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:50",
                        "last_error":  null
                    },
                    {
                        "stt":  490,
                        "topic":  "Thời tiết cực đoan (Extreme Weather)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/490.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:50",
                        "last_error":  null
                    },
                    {
                        "stt":  491,
                        "topic":  "Làm hộ chiếu (Making Passports)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  99,
                        "file_path":  "output/491.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:51",
                        "last_error":  null
                    },
                    {
                        "stt":  492,
                        "topic":  "Xin visa (Applying for Visas)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/492.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:52",
                        "last_error":  null
                    },
                    {
                        "stt":  493,
                        "topic":  "Đăng ký kết hôn (Marriage Registration)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  99,
                        "file_path":  "output/493.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:53",
                        "last_error":  null
                    },
                    {
                        "stt":  494,
                        "topic":  "Khai sinh và Khai tử (Birth \u0026 Death Certificates)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/494.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:53",
                        "last_error":  null
                    },
                    {
                        "stt":  495,
                        "topic":  "Công chứng tài liệu (Document Notarization)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/495.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:55",
                        "last_error":  null
                    },
                    {
                        "stt":  496,
                        "topic":  "Kê khai thuế (Tax Declaration)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/496.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:55",
                        "last_error":  null
                    },
                    {
                        "stt":  497,
                        "topic":  "Gia hạn giấy tờ (Document Renewal)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/497.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:56",
                        "last_error":  null
                    },
                    {
                        "stt":  498,
                        "topic":  "Bảo hiểm xã hội (Social Insurance)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/498.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:57",
                        "last_error":  null
                    },
                    {
                        "stt":  499,
                        "topic":  "Giấy phép lái xe (Driver\u0027s Licenses)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/499.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:58",
                        "last_error":  null
                    },
                    {
                        "stt":  500,
                        "topic":  "Sổ hộ khẩu (Household Registration)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/500.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 04:58",
                        "last_error":  null
                    }
                ]
