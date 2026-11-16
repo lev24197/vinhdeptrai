@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 10:08:55",
+  "updated_at": "2026-11-16 12:11:18",
   "topics": [
     {
       "stt": 1,
@@ -1390,11 +1390,11 @@
     {
       "stt": 155,
       "topic": "Tâm lý học đường (School Psychology)",
-      "status": "failed",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/155.txt",
-      "generated_at": null,
-      "last_error": "Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts!"
+      "generated_at": "2026-11-16 12:10",
+      "last_error": null
     },
     {
       "stt": 156,
@@ -1417,19 +1417,19 @@
     {
       "stt": 158,
       "topic": "Du học và Trao đổi sinh viên (Study Abroad & Exchange)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/158.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts!"
     },
     {
       "stt": 159,
       "topic": "Kỷ luật và Nội quy (Discipline & Rules)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/159.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 12:11",
       "last_error": null
     },
     {

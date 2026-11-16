@@ -1,5 +1,96 @@
 [
   {
+    "time": "2026-11-16 12:11:18",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 159,
+    "message": "Hoàn thành chủ đề #159 (Kỷ luật và Nội quy (Discipline & Rules)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 12:11:18",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 159,
+    "message": "Chủ đề #159: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 12:11:18",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 159,
+    "message": "Chủ đề #159 (Kỷ luật và Nội quy (Discipline & Rules)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 12:10:58",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 159,
+    "message": "Chủ đề #159 (Kỷ luật và Nội quy (Discipline & Rules)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 12:10:58",
+    "level": "ERROR",
+    "step": "FAIL_TOPIC",
+    "stt": 158,
+    "message": "Lỗi khi tạo chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts!"
+  },
+  {
+    "time": "2026-11-16 12:10:58",
+    "level": "ERROR",
+    "step": "INCOMPLETE",
+    "stt": 158,
+    "message": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Sau 2 prompts chỉ đạt 77/100 từ!"
+  },
+  {
+    "time": "2026-11-16 12:10:56",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 158,
+    "message": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Prompt 1 đạt 76/100 từ (còn thiếu 24). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 12:10:31",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 158,
+    "message": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 12:10:31",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 155,
+    "message": "Hoàn thành chủ đề #155 (Tâm lý học đường (School Psychology)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 12:10:31",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 155,
+    "message": "Chủ đề #155: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 12:10:31",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 155,
+    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 12:10:09",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 155,
+    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 12:10:09",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [155, 158, 159]"
+  },
+  {
     "time": "2026-11-16 10:08:55",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",

@@ -1,0 +1,100 @@
+rule	r__e	/ruːl/	[sound:rule.mp3]	An explicit regulation or instruction for conduct.	quy tắc	quy tắc	rules	1. The school rule prohibits cell phones in class. <br>2. You must follow every rule in this manual.
+law	l_w	/lɔː/	[sound:law.mp3]	A binding custom or practice of a community.	luật lệ	luật lệ	laws	1. The law forbids smoking in this area. <br>2. Obeying the law is essential for social order.
+code	c__e	/koʊd/	[sound:code.mp3]	A systematic collection of regulations.	bộ quy tắc	bộ quy tắc	codes	1. The company has a strict code of conduct. <br>2. He violated the moral code of the group.
+fine	f__e	/faɪn/	[sound:fine.mp3]	A sum of money exacted as a penalty.	tiền phạt	tiền phạt	fines	1. The fine for late payment is fifty dollars. <br>2. They had to pay a heavy fine for the violation.
+ban	b_n	/bæn/	[sound:ban.mp3]	An official prohibition of an action or practice.	lệnh cấm	lệnh cấm	bans	1. There is a total ban on littering in the park. <br>2. The ban on plastic bags was enforced yesterday.
+permit	p____t	/ˈpɜːr.mɪt/	[sound:permit.mp3]	An official document giving authorization.	giấy phép	giấy phép	permits	1. You need a permit to enter the restricted zone. <br>2. He showed his permit to the security guard.
+warning	w_____g	/ˈwɔːr.nɪŋ/	[sound:warning.mp3]	A statement indicating a potential penalty.	lời cảnh báo	lời cảnh báo	warnings	1. He received a formal warning for his behavior. <br>2. The yellow card serves as a warning in the game.
+penalty	p_____y	/ˈpen.əl.ti/	[sound:penalty.mp3]	A punishment imposed for breaking a rule.	hình phạt	hình phạt	penalties	1. The penalty for cheating is immediate expulsion. <br>2. He accepted the penalty for his mistake.
+sanction	s______n	/ˈsæŋk.ʃən/	[sound:sanction.mp3]	A threatened penalty for disobeying a law.	sự chế tài	sự chế tài	sanctions	1. Economic sanctions were imposed on the country. <br>2. The teacher applied a sanction for the disruption.
+contract	c______t	/ˈkɑːn.trækt/	[sound:contract.mp3]	A written agreement between parties.	hợp đồng	hợp đồng	contracts	1. The contract outlines all employee obligations. <br>2. He signed the contract without reading the rules.
+policy	p____y	/ˈpɑːl.ə.si/	[sound:policy.mp3]	A course of action adopted by an organization.	chính sách	chính sách	policies	1. The company policy requires formal attire. <br>2. We must adhere to the safety policy.
+protocol	p______l	/ˈproʊ.t̬ə.kɑːl/	[sound:protocol.mp3]	The official procedure or system of rules.	giao thức	giao thức	protocols	1. The security protocol was updated this morning. <br>2. Following the protocol ensures everyone is safe.
+manual	m____l	/ˈmæn.ju.əl/	[sound:manual.mp3]	A book of instructions or rules.	sách hướng dẫn	sách hướng dẫn	manuals	1. The employee manual details all office rules. <br>2. Check the manual for the correct procedure.
+summons	s_____s	/ˈsʌm.ənz/	[sound:summons.mp3]	An order to appear before a judge or official.	giấy triệu tập	giấy triệu tập	summonses	1. She received a court summons yesterday. <br>2. He ignored the summons and faced consequences.
+citation	c______n	/saɪˈteɪ.ʃən/	[sound:citation.mp3]	A summons to appear in court for an offense.	giấy phạt	giấy phạt	citations	1. The officer issued a citation for speeding. <br>2. He had to pay the citation at the office.
+lock	l__k	/lɑːk/	[sound:lock.mp3]	A mechanism for keeping a door secure.	khóa	khóa	locks	1. The lock on the gate is part of the security rules. <br>2. Change the lock if you lose your key.
+badge	b___e	/bædʒ/	[sound:badge.mp3]	A sign of identification worn by an employee.	huy hiệu	huy hiệu	badges	1. You must wear your badge at all times. <br>2. The security badge grants access to the building.
+camera	c____a	/ˈkæm.rə/	[sound:camera.mp3]	An optical instrument for recording evidence.	máy quay	máy quay	cameras	1. The security camera monitors the hallway. <br>2. The camera captured the violation on tape.
+fence	f___e	/fens/	[sound:fence.mp3]	A barrier used to enforce property boundaries.	hàng rào	hàng rào	fences	1. The fence keeps unauthorized people out. <br>2. Do not climb over the security fence.
+gate	g__e	/ɡeɪt/	[sound:gate.mp3]	A hinged barrier used to control entry.	cổng	cổng	gates	1. The gate is locked after working hours. <br>2. Please show your ID at the main gate.
+barrier	b_____r	/ˈbær.i.ɚ/	[sound:barrier.mp3]	An object used to block passage.	rào chắn	rào chắn	barriers	1. The barrier prevents cars from entering. <br>2. He jumped over the security barrier.
+uniform	u_____m	/ˈjuː.nə.fɔːrm/	[sound:uniform.mp3]	Clothing worn to signify membership or role.	đồng phục	đồng phục	uniforms	1. The uniform is mandatory for all students. <br>2. He keeps his uniform clean and pressed.
+checklist	c_______t	/ˈtʃek.lɪst/	[sound:checklist.mp3]	A list of items to be checked for compliance.	danh sách kiểm tra	danh sách kiểm tra	checklists	1. Follow the checklist to ensure safety. <br>2. The supervisor uses a checklist for inspection.
+logbook	l_____k	/ˈlɔːɡ.bʊk/	[sound:logbook.mp3]	A book for recording events or activities.	sổ nhật ký	sổ nhật ký	logbooks	1. Drivers must sign the logbook daily. <br>2. The security guard updated the logbook.
+register	r______r	/ˈredʒ.ɪ.stɚ/	[sound:register.mp3]	An official record of names or events.	sổ đăng ký	sổ đăng ký	registers	1. Please sign the visitor register. <br>2. The register shows who entered the room.
+form	f__m	/fɔːrm/	[sound:form.mp3]	A document with spaces for required information.	biểu mẫu	biểu mẫu	forms	1. Fill out this form to request access. <br>2. He submitted the form to the office.
+signature	s_______e	/ˈsɪɡ.nə.tʃɚ/	[sound:signature.mp3]	A person's name written as a sign of consent.	chữ ký	chữ ký	signatures	1. Your signature is required on the document. <br>2. He verified the signature for authenticity.
+stamp	s___p	/stæmp/	[sound:stamp.mp3]	A mark made to indicate official approval.	con dấu	con dấu	stamps	1. The stamp confirms the document is valid. <br>2. He placed the stamp on the permission slip.
+seal	s__l	/siːl/	[sound:seal.mp3]	A device for making an impression on paper.	ấn triện	ấn triện	seals	1. The official seal prevents tampering. <br>2. The letter was broken, violating the seal.
+document	d______t	/ˈdɑːk.jə.mənt/	[sound:document.mp3]	A paper providing evidence or information.	tài liệu	tài liệu	documents	1. Keep all legal documents in a safe place. <br>2. He studied the document before signing it.
+file	f__e	/faɪl/	[sound:file.mp3]	A folder or box for holding loose papers.	hồ sơ	hồ sơ	files	1. The file contains all disciplinary records. <br>2. Please organize the files by date.
+record	r____d	/ˈrek.ɚd/	[sound:record.mp3]	A piece of evidence about the past.	hồ sơ lưu trữ	hồ sơ lưu trữ	records	1. His record shows no prior violations. <br>2. The company keeps a record of all absences.
+notice	n____e	/ˈnoʊ.t̬ɪs/	[sound:notice.mp3]	A public announcement of rules or news.	thông báo	thông báo	notices	1. The notice states the rules for the library. <br>2. He read the notice on the bulletin board.
+sign	s__n	/saɪn/	[sound:sign.mp3]	A board displaying information or warnings.	biển báo	biển báo	signs	1. The sign prohibits running in the hall. <br>2. Follow the exit sign to leave safely.
+poster	p____r	/ˈpoʊ.stɚ/	[sound:poster.mp3]	A large notice posted in a public place.	áp phích	áp phích	posters	1. The safety poster is on the wall. <br>2. He designed a poster about house rules.
+alarm	a___m	/əˈlɑːrm/	[sound:alarm.mp3]	A device that makes a sound to warn.	chuông báo động	chuông báo động	alarms	1. The alarm sounded when the door opened. <br>2. Test the smoke alarm once a month.
+siren	s___n	/ˈsaɪ.rən/	[sound:siren.mp3]	A device for making a loud warning sound.	còi báo động	còi báo động	sirens	1. The siren signaled the end of the shift. <br>2. He heard the siren from the emergency vehicle.
+whistle	w_____e	/ˈwɪs.əl/	[sound:whistle.mp3]	A small device for making a shrill sound.	còi	còi	whistles	1. The referee blew the whistle for a foul. <br>2. He kept a whistle for safety purposes.
+monitor	m_____r	/ˈmɑː.nə.t̬ɚ/	[sound:monitor.mp3]	A screen displaying security footage.	màn hình giám sát	màn hình giám sát	monitors	1. The security monitor shows the entrance. <br>2. He watched the monitor for suspicious activity.
+scanner	s_____r	/ˈskæn.ɚ/	[sound:scanner.mp3]	A device that reads badges or codes.	máy quét	máy quét	scanners	1. The scanner reads the ID card. <br>2. He passed the scanner at the gate.
+sensor	s____r	/ˈsen.sɚ/	[sound:sensor.mp3]	A device that detects movement or entry.	cảm biến	cảm biến	sensors	1. The motion sensor triggered the light. <br>2. The door sensor is not working.
+detector	d______r	/dɪˈtek.t̬ɚ/	[sound:detector.mp3]	A device used to find hidden objects.	máy dò	máy dò	detectors	1. The metal detector is at the entrance. <br>2. The smoke detector beeped loudly.
+key	k_y	/kiː/	[sound:key.mp3]	A metal tool for opening a lock.	chìa khóa	chìa khóa	keys	1. Keep your key in a safe place. <br>2. He handed the key to the manager.
+pass	p__s	/pæs/	[sound:pass.mp3]	A document allowing entry to a place.	thẻ ra vào	thẻ ra vào	passes	1. You need a hall pass to leave class. <br>2. He showed his visitor pass to the guard.
+card	c__d	/kɑːrd/	[sound:card.mp3]	A plastic piece used for identity.	thẻ	thẻ	cards	1. Swipe your card to open the door. <br>2. He lost his identification card.
+wristband	w_______d	/ˈrɪst.bænd/	[sound:wristband.mp3]	A band worn to show authorization.	vòng tay	vòng tay	wristbands	1. The wristband allows access to the event. <br>2. He showed his wristband to the staff.
+belt	b__t	/belt/	[sound:belt.mp3]	A strip of leather worn for equipment.	thắt lưng	thắt lưng	belts	1. He carries his tools on his utility belt. <br>2. The belt holds his radio securely.
+holster	h_____r	/ˈhoʊl.stɚ/	[sound:holster.mp3]	A holder for a device or tool.	bao đựng	bao đựng	holsters	1. The radio is in the holster. <br>2. He returned the tool to his holster.
+radio	r___o	/ˈreɪ.di.oʊ/	[sound:radio.mp3]	A device for communication.	bộ đàm	bộ đàm	radios	1. Use the radio to call for help. <br>2. He kept the radio on his shoulder.
+flashlight	f________t	/ˈflæʃ.laɪt/	[sound:flashlight.mp3]	A portable electric light.	đèn pin	đèn pin	flashlights	1. He used his flashlight to inspect the area. <br>2. The flashlight is part of the night shift gear.
+baton	b___n	/bəˈtɑːn/	[sound:baton.mp3]	A heavy stick used for defense.	gậy	gậy	batons	1. The guard carries a baton for protection. <br>2. He was trained to use the baton safely.
+shield	s____d	/ʃiːld/	[sound:shield.mp3]	A protective device held in the hand.	khiên	khiên	shields	1. The riot shield provides protection. <br>2. He held the shield firmly in front of him.
+helmet	h____t	/ˈhel.mət/	[sound:helmet.mp3]	Hard hat worn for head protection.	mũ bảo hiểm	mũ bảo hiểm	helmets	1. Safety rules require a helmet on site. <br>2. He put on his helmet before entering.
+vest	v__t	/vest/	[sound:vest.mp3]	A garment worn for protection or visibility.	áo ghi-lê	áo ghi-lê	vests	1. Wear the reflective vest for visibility. <br>2. The bulletproof vest is heavy.
+glove	g___e	/ɡlʌv/	[sound:glove.mp3]	A covering for the hand.	găng tay	găng tay	gloves	1. Safety gloves are required for this task. <br>2. He wore gloves to handle the material.
+mask	m__k	/mæsk/	[sound:mask.mp3]	A covering for the face.	mặt nạ	mặt nạ	masks	1. The mask protects from dust. <br>2. He put on his mask before entering the lab.
+goggles	g_____s	/ˈɡɑː.ɡəlz/	[sound:goggles.mp3]	Protective eyewear.	kính bảo hộ	kính bảo hộ	goggles	1. Wear goggles to protect your eyes. <br>2. He cleaned his goggles after work.
+boot	b__t	/buːt/	[sound:boot.mp3]	Sturdy footwear for safety.	giày ủng	giày ủng	boots	1. Safety boots are mandatory in the warehouse. <br>2. He laced up his boots tightly.
+handcuff	h______f	/ˈhænd.kʌf/	[sound:handcuff.mp3]	A metal ring for securing wrists.	còng tay	còng tay	handcuffs	1. The officer applied the handcuff. <br>2. He kept the handcuff in his pocket.
+chain	c___n	/tʃeɪn/	[sound:chain.mp3]	A series of metal links for security.	xích	xích	chains	1. The gate is secured with a heavy chain. <br>2. He wrapped the chain around the post.
+padlock	p_____k	/ˈpæd.lɑːk/	[sound:padlock.mp3]	A detachable lock.	ổ khóa	ổ khóa	padlocks	1. He put a padlock on his locker. <br>2. The padlock prevents unauthorized access.
+bolt	b__t	/boʊlt/	[sound:bolt.mp3]	A bar that slides to lock a door.	chốt	chốt	bolts	1. Slide the bolt to lock the door. <br>2. The bolt is made of strong steel.
+latch	l___h	/lætʃ/	[sound:latch.mp3]	A metal bar with a catch.	then cửa	then cửa	latches	1. Ensure the latch is fully closed. <br>2. The latch is broken and needs repair.
+barricade	b_______e	/ˈbær.ə.keɪd/	[sound:barricade.mp3]	An improvised barrier.	vật cản	vật cản	barricades	1. The police set up a barricade. <br>2. He moved the barricade to pass.
+bollard	b_____d	/ˈbɑː.lɚd/	[sound:bollard.mp3]	A post used to block vehicles.	cọc chắn	cọc chắn	bollards	1. The bollard prevents cars from driving on the path. <br>2. He parked behind the bollard.
+curfew	c____w	/ˈkɜːr.fjuː/	[sound:curfew.mp3]	A regulation requiring people to be home.	giờ giới nghiêm	giờ giới nghiêm	curfews	1. The curfew starts at ten o'clock. <br>2. He broke the curfew by coming home late.
+deadline	d______e	/ˈded.laɪn/	[sound:deadline.mp3]	The latest time to complete a task.	hạn chót	hạn chót	deadlines	1. The deadline for the report is Friday. <br>2. He met the deadline for the project.
+schedule	s______e	/ˈskedʒ.uːl/	[sound:schedule.mp3]	A plan for activities.	lịch trình	lịch trình	schedules	1. Follow the schedule for the shift. <br>2. He checked the schedule for updates.
+roster	r____r	/ˈrɑː.stɚ/	[sound:roster.mp3]	A list of people and their duties.	bảng phân công	bảng phân công	rosters	1. Check the roster to see your shift. <br>2. He was added to the duty roster.
+shift	s___t	/ʃɪft/	[sound:shift.mp3]	A period of work.	ca làm việc	ca làm việc	shifts	1. His shift ends at midnight. <br>2. He works the morning shift.
+break	b___k	/breɪk/	[sound:break.mp3]	A short period of rest.	giờ nghỉ	giờ nghỉ	breaks	1. You are allowed a fifteen-minute break. <br>2. He returned from his break on time.
+leave	l___e	/liːv/	[sound:leave.mp3]	A period of authorized absence.	kỳ nghỉ phép	kỳ nghỉ phép	leaves	1. He requested leave for a family event. <br>2. The leave must be approved by the boss.
+absence	a_____e	/ˈæb.səns/	[sound:absence.mp3]	The state of being away.	sự vắng mặt	sự vắng mặt	absences	1. Report all absences to the office. <br>2. His absence was noted in the records.
+attendance	a________e	/əˈten.dəns/	[sound:attendance.mp3]	The act of being present.	sự có mặt	sự có mặt	attendances	1. Daily attendance is required. <br>2. He has perfect attendance this year.
+tardy	t___y	/ˈtɑːr.di/	[sound:tardy.mp3]	A person who is late.	người đi muộn	người đi muộn	tardies	1. He received a tardy for being late. <br>2. The teacher recorded his tardy.
+misconduct	m________t	/ˌmɪsˈkɑːn.dʌkt/	[sound:misconduct.mp3]	Unacceptable behavior.	hạnh kiểm xấu	hạnh kiểm xấu	misconducts	1. He was fired for misconduct. <br>2. The investigation focused on his misconduct.
+violation	v_______n	/ˌvaɪ.əˈleɪ.ʃən/	[sound:violation.mp3]	The act of breaking a rule.	sự vi phạm	sự vi phạm	violations	1. This is a serious violation of company policy. <br>2. He received a ticket for the traffic violation.
+infraction	i________n	/ɪnˈfræk.ʃən/	[sound:infraction.mp3]	A minor offense.	sự lỗi nhỏ	sự lỗi nhỏ	infractions	1. He was warned for a minor infraction. <br>2. Repeat infractions will lead to suspension.
+suspension	s________n	/səˈspen.ʃən/	[sound:suspension.mp3]	A temporary removal from a position.	sự đình chỉ	sự đình chỉ	suspensions	1. He faced a three-day suspension. <br>2. The suspension was due to his poor performance.
+expulsion	e_______n	/ɪkˈspʌl.ʃən/	[sound:expulsion.mp3]	The act of forcing someone out.	sự đuổi học/đuổi việc	sự đuổi học/đuổi việc	expulsions	1. The expulsion was final. <br>2. He faced expulsion for the rule break.
+probation	p_______n	/proʊˈbeɪ.ʃən/	[sound:probation.mp3]	A period of testing behavior.	thời gian thử thách	thời gian thử thách	probations	1. He is on probation for three months. <br>2. The probation period is strict.
+reprimand	r_______d	/ˈrep.rə.mænd/	[sound:reprimand.mp3]	A formal expression of disapproval.	sự khiển trách	sự khiển trách	reprimands	1. He received a written reprimand. <br>2. The reprimand was documented in his file.
+censure	c_____e	/ˈsen.ʃɚ/	[sound:censure.mp3]	A severe expression of disapproval.	sự quở trách	sự quở trách	censures	1. The board issued a formal censure. <br>2. He faced the censure of his peers.
+dismissal	d_______l	/dɪˈsmɪs.əl/	[sound:dismissal.mp3]	The act of firing someone.	sự sa thải	sự sa thải	dismissals	1. His dismissal was immediate. <br>2. The dismissal resulted from his behavior.
+appeal	a____l	/əˈpiːl/	[sound:appeal.mp3]	A request to change a decision.	sự kháng cáo	sự kháng cáo	appeals	1. He filed an appeal against the decision. <br>2. The appeal was rejected by the committee.
+complaint	c_______t	/kəmˈpleɪnt/	[sound:complaint.mp3]	A statement that something is unsatisfactory.	lời phàn nàn	lời phàn nàn	complaints	1. He filed a complaint about the noise. <br>2. The complaint is under review.
+grievance	g_______e	/ˈɡriː.vəns/	[sound:grievance.mp3]	A real or imagined wrong as a cause for complaint.	sự bất bình	sự bất bình	grievances	1. He submitted a grievance to the union. <br>2. The grievance process is clearly defined.
+hearing	h_____g	/ˈhɪr.ɪŋ/	[sound:hearing.mp3]	A formal meeting to discuss a case.	phiên điều trần	phiên điều trần	hearings	1. He attended the disciplinary hearing. <br>2. The hearing will decide his future.
+verdict	v_____t	/ˈvɝː.dɪkt/	[sound:verdict.mp3]	A decision on a disputed issue.	phán quyết	phán quyết	verdicts	1. The verdict was against him. <br>2. He waited for the final verdict.
+judgement	j_______t	/ˈdʒʌdʒ.mənt/	[sound:judgement.mp3]	The ability to make considered decisions.	sự phán xét	sự phán xét	judgements	1. His judgement was clouded by anger. <br>2. The committee exercised their judgement.
+authority	a_______y	/əˈθɔːr.ə.t̬i/	[sound:authority.mp3]	The power to enforce rules.	thẩm quyền	thẩm quyền	authorities	1. He has the authority to issue fines. <br>2. The authorities enforced the new law.
+supervisor	s________r	/ˈsuː.pɚ.vaɪ.zɚ/	[sound:supervisor.mp3]	A person who manages others.	người giám sát	người giám sát	supervisors	1. The supervisor checks the work. <br>2. He reported the issue to his supervisor.
+inspector	i_______r	/ɪnˈspek.tɚ/	[sound:inspector.mp3]	A person who examines for compliance.	thanh tra	thanh tra	inspectors	1. The inspector arrived at noon. <br>2. The health inspector checked the kitchen.
+guard	g___d	/ɡɑːrd/	[sound:guard.mp3]	A person who protects a place.	người bảo vệ	người bảo vệ	guards	1. The guard is at the entrance. <br>2. He talked to the security guard.
+officer	o_____r	/ˈɔː.fɪ.sɚ/	[sound:officer.mp3]	A person with police authority.	viên chức	viên chức	officers	1. The officer enforced the law. <br>2. He asked the officer for help.
+witness	w_____s	/ˈwɪt.nəs/	[sound:witness.mp3]	A person who sees a violation.	nhân chứng	nhân chứng	witnesses	1. The witness saw the event clearly. <br>2. He was called as a witness.
+complainant	c_________t	/kəmˈpleɪ.nənt/	[sound:complainant.mp3]	A person who makes a complaint.	người khiếu nại	người khiếu nại	complainants	1. The complainant signed the statement. <br>2. He is the complainant in this case.
+defendant	d_______t	/dɪˈfen.dənt/	[sound:defendant.mp3]	A person accused of a violation.	bị cáo	bị cáo	defendants	1. The defendant appeared in court. <br>2. He is the defendant in the case.
+judge	j___e	/dʒʌdʒ/	[sound:judge.mp3]	A person who decides on a case.	thẩm phán	thẩm phán	judges	1. The judge made a final decision. <br>2. He spoke to the judge about the rules.
+jury	j__y	/ˈdʒʊr.i/	[sound:jury.mp3]	A group that decides a verdict.	bồi thẩm đoàn	bồi thẩm đoàn	juries	1. The jury reached a verdict. <br>2. He presented the evidence to the jury.
