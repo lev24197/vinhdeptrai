@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 05:51:05",
+  "updated_at": "2026-11-16 13:01:53",
   "topics": [
     {
       "stt": 1,
@@ -1453,28 +1453,28 @@
     {
       "stt": 162,
       "topic": "Nghề dịch vụ (Service Jobs)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/162.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 13:00",
       "last_error": null
     },
     {
       "stt": 163,
       "topic": "Lĩnh vực công nghệ (Tech Industry)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/163.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 13:01",
       "last_error": null
     },
     {
       "stt": 164,
       "topic": "Nhân sự và Tuyển dụng (HR & Recruitment)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/164.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 13:01",
       "last_error": null
     },
     {

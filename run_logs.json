@@ -1,5 +1,117 @@
 [
   {
+    "time": "2026-11-16 13:01:53",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 164,
+    "message": "Hoàn thành chủ đề #164 (Nhân sự và Tuyển dụng (HR & Recruitment)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 13:01:53",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 164,
+    "message": "Chủ đề #164: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 13:01:53",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 164,
+    "message": "Chủ đề #164 (Nhân sự và Tuyển dụng (HR & Recruitment)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 13:01:31",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 164,
+    "message": "Chủ đề #164 (Nhân sự và Tuyển dụng (HR & Recruitment)): Prompt 1 đạt 82/100 từ (còn thiếu 18). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 13:01:02",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 164,
+    "message": "Chủ đề #164 (Nhân sự và Tuyển dụng (HR & Recruitment)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 13:01:02",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 163,
+    "message": "Hoàn thành chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 13:01:02",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 163,
+    "message": "Chủ đề #163: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 13:01:02",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 163,
+    "message": "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 13:00:43",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 163,
+    "message": "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Prompt 1 đạt 98/100 từ (còn thiếu 2). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 13:00:18",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 163,
+    "message": "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 13:00:18",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 162,
+    "message": "Hoàn thành chủ đề #162 (Nghề dịch vụ (Service Jobs)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 13:00:18",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 162,
+    "message": "Chủ đề #162: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 13:00:18",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 162,
+    "message": "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 12:59:51",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 162,
+    "message": "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Prompt 1 đạt 99/100 từ (còn thiếu 1). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 12:59:29",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 162,
+    "message": "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 12:59:29",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [162, 163, 164]"
+  },
+  {
     "time": "2026-11-16 12:43:05",
     "level": "ERROR",
     "step": "FAIL_TOPIC",
@@ -1286,117 +1398,5 @@
     "step": "DONE_TOPIC",
     "stt": 130,
     "message": "Hoàn thành chủ đề #130 (Thuốc và Dược phẩm (Medicine & Pharmaceuticals)) với 100 từ."
-  },
-  {
-    "time": "2026-11-15 21:29:03",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 130,
-    "message": "Chủ đề #130: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-15 21:28:56",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_2",
-    "stt": 130,
-    "message": "Chủ đề #130: Bù đắp 11 từ còn thiếu (Đang có: 89/100)..."
-  },
-  {
-    "time": "2026-11-15 21:28:46",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_1",
-    "stt": 130,
-    "message": "Chủ đề #130: Bù đắp 21 từ còn thiếu (Đang có: 79/100)..."
-  },
-  {
-    "time": "2026-11-15 21:28:37",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 130,
-    "message": "Chủ đề #130: Bắt đầu phân diện [Thành phần & Dụng cụ] (25 từ, đã có 57/100)"
-  },
-  {
-    "time": "2026-11-15 21:28:28",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 130,
-    "message": "Chủ đề #130: Bắt đầu phân diện [Chế biến & Thành phẩm] (25 từ, đã có 40/100)"
-  },
-  {
-    "time": "2026-11-15 21:28:18",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 130,
-    "message": "Chủ đề #130: Bắt đầu phân diện [Chuyên sâu & Đặc trưng] (30 từ, đã có 29/100)"
-  },
-  {
-    "time": "2026-11-15 21:28:08",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 130,
-    "message": "Chủ đề #130: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
-  },
-  {
-    "time": "2026-11-15 21:28:08",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 129,
-    "message": "Hoàn thành chủ đề #129 (Phẫu thuật và Điều trị (Surgery & Treatments)) với 100 từ."
-  },
-  {
-    "time": "2026-11-15 21:28:08",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 129,
-    "message": "Chủ đề #129: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-15 21:28:01",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_9",
-    "stt": 129,
-    "message": "Chủ đề #129: Bù đắp 8 từ còn thiếu (Đang có: 92/100)..."
-  },
-  {
-    "time": "2026-11-15 21:27:55",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_8",
-    "stt": 129,
-    "message": "Chủ đề #129: Bù đắp 12 từ còn thiếu (Đang có: 88/100)..."
-  },
-  {
-    "time": "2026-11-15 21:27:46",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_7",
-    "stt": 129,
-    "message": "Chủ đề #129: Bù đắp 12 từ còn thiếu (Đang có: 88/100)..."
-  },
-  {
-    "time": "2026-11-15 21:27:38",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_6",
-    "stt": 129,
-    "message": "Chủ đề #129: Bù đắp 12 từ còn thiếu (Đang có: 88/100)..."
-  },
-  {
-    "time": "2026-11-15 21:27:27",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_5",
-    "stt": 129,
-    "message": "Chủ đề #129: Bù đắp 41 từ còn thiếu (Đang có: 59/100)..."
-  },
-  {
-    "time": "2026-11-15 21:27:16",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_4",
-    "stt": 129,
-    "message": "Chủ đề #129: Bù đắp 42 từ còn thiếu (Đang có: 58/100)..."
-  },
-  {
-    "time": "2026-11-15 21:27:05",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_3",
-    "stt": 129,
-    "message": "Chủ đề #129: Bù đắp 46 từ còn thiếu (Đang có: 54/100)..."
   }
 ]
