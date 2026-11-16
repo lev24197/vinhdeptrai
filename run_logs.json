@@ -1,5 +1,103 @@
 [
   {
+    "time": "2026-11-16 09:58:47",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 154,
+    "message": "Hoàn thành chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 09:58:47",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 154,
+    "message": "Chủ đề #154: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 09:58:47",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 154,
+    "message": "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 09:58:24",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 154,
+    "message": "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Prompt 1 đạt 98/100 từ (còn thiếu 2). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 09:58:02",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 154,
+    "message": "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 09:58:02",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 153,
+    "message": "Hoàn thành chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 09:58:02",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 153,
+    "message": "Chủ đề #153: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 09:58:02",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 153,
+    "message": "Chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 09:57:37",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 153,
+    "message": "Chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 09:57:37",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 152,
+    "message": "Hoàn thành chủ đề #152 (Chương trình giảng dạy (Curriculum)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 09:57:37",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 152,
+    "message": "Chủ đề #152: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 09:57:37",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 152,
+    "message": "Chủ đề #152 (Chương trình giảng dạy (Curriculum)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 09:57:17",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 152,
+    "message": "Chủ đề #152 (Chương trình giảng dạy (Curriculum)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 09:57:17",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [152, 153, 154]"
+  },
+  {
     "time": "2026-11-16 08:38:33",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",

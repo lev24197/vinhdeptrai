@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 08:38:33",
+  "updated_at": "2026-11-16 09:58:47",
   "topics": [
     {
       "stt": 1,
@@ -1363,28 +1363,28 @@
     {
       "stt": 152,
       "topic": "Chương trình giảng dạy (Curriculum)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/152.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 09:57",
       "last_error": null
     },
     {
       "stt": 153,
       "topic": "Các kỳ thi chuẩn hóa (Standardized Tests)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/153.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 09:58",
       "last_error": null
     },
     {
       "stt": 154,
       "topic": "Hoạt động ngoại khóa (Extracurricular Activities)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/154.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 09:58",
       "last_error": null
     },
     {
