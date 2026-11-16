@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 00:59:16",
+    "updated_at":  "2026-11-17 01:11:45",
     "topics":  [
                    {
                        "stt":  1,
@@ -1561,11 +1561,11 @@
                    {
                        "stt":  174,
                        "topic":  "Tiền điện tử và Blockchain (Cryptocurrency \u0026 Blockchain)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/174.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:11",
+                       "last_error":  null
                    },
                    {
                        "stt":  175,

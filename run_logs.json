@@ -1,5 +1,19 @@
 ﻿[
     {
+        "time":  "2026-11-17 01:11:45",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  174,
+        "message":  "Hoàn thành chủ đề #174 - Tiền điện tử và Blockchain (Cryptocurrency \u0026 Blockchain) với 100 từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)."
+    },
+    {
+        "time":  "2026-11-17 01:10:03",
+        "level":  "INFO",
+        "step":  "START_TOPIC",
+        "stt":  174,
+        "message":  "Bắt đầu Pipeline Lai cho chủ đề #174 - Tiền điện tử và Blockchain (Cryptocurrency \u0026 Blockchain)"
+    },
+    {
         "time":  "2026-11-17 00:59:16",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1384,19 +1398,5 @@
         "step":  "TOPUP_BATCH_6",
         "stt":  132,
         "message":  "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:54:20",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_5",
-        "stt":  132,
-        "message":  "Chủ đề #132: Bù đắp 14 từ còn thiếu (Đang có: 86/100)..."
-    },
-    {
-        "time":  "2026-11-15 21:54:12",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_4",
-        "stt":  132,
-        "message":  "Chủ đề #132: Bù đắp 15 từ còn thiếu (Đang có: 85/100)..."
     }
 ]

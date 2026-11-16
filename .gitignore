@@ -1,4 +1,4 @@
 .agents/
 .env
 .env.*
-output/audio/*/*.mp3
+output/audio/
