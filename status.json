@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 04:58:53",
+    "updated_at":  "2026-11-17 05:00:15",
     "topics":  [
                    {
                        "stt":  1,
@@ -3604,10 +3604,10 @@
                    {
                        "stt":  401,
                        "topic":  "Truyền hình cáp (Cable TV)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/401.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:42",
                        "last_error":  null
                    },
                    {
