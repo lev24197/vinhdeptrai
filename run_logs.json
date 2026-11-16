@@ -1,1402 +1,1402 @@
-[
-  {
-    "time": "2026-11-16 13:05:03",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 167,
-    "message": "Hoàn thành chủ đề #167 (Họp hành và Thuyết trình (Meetings & Presentations)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 13:05:03",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 167,
-    "message": "Chủ đề #167: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 13:05:03",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 167,
-    "message": "Chủ đề #167 (Họp hành và Thuyết trình (Meetings & Presentations)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 13:04:44",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 167,
-    "message": "Chủ đề #167 (Họp hành và Thuyết trình (Meetings & Presentations)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 13:04:44",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 166,
-    "message": "Hoàn thành chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 13:04:44",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 166,
-    "message": "Chủ đề #166: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 13:04:44",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 166,
-    "message": "Chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 13:04:19",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 166,
-    "message": "Chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 13:04:19",
-    "level": "ERROR",
-    "step": "FAIL_TOPIC",
-    "stt": 165,
-    "message": "Lỗi khi tạo chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)): Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)) chỉ tạo được 48/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)) chỉ tạo được 48/100 từ sau tối đa 2 prompts!"
-  },
-  {
-    "time": "2026-11-16 13:04:19",
-    "level": "ERROR",
-    "step": "INCOMPLETE",
-    "stt": 165,
-    "message": "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)): Sau 2 prompts chỉ đạt 48/100 từ!"
-  },
-  {
-    "time": "2026-11-16 13:03:59",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 165,
-    "message": "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)): Prompt 1 đạt 20/100 từ (còn thiếu 80). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 13:03:40",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 165,
-    "message": "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups & Fundraising)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 13:03:40",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [165, 166, 167]"
-  },
-  {
-    "time": "2026-11-16 13:01:53",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 164,
-    "message": "Hoàn thành chủ đề #164 (Nhân sự và Tuyển dụng (HR & Recruitment)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 13:01:53",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 164,
-    "message": "Chủ đề #164: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 13:01:53",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 164,
-    "message": "Chủ đề #164 (Nhân sự và Tuyển dụng (HR & Recruitment)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 13:01:31",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 164,
-    "message": "Chủ đề #164 (Nhân sự và Tuyển dụng (HR & Recruitment)): Prompt 1 đạt 82/100 từ (còn thiếu 18). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 13:01:02",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 164,
-    "message": "Chủ đề #164 (Nhân sự và Tuyển dụng (HR & Recruitment)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 13:01:02",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 163,
-    "message": "Hoàn thành chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 13:01:02",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 163,
-    "message": "Chủ đề #163: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 13:01:02",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 163,
-    "message": "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 13:00:43",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 163,
-    "message": "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Prompt 1 đạt 98/100 từ (còn thiếu 2). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 13:00:18",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 163,
-    "message": "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 13:00:18",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 162,
-    "message": "Hoàn thành chủ đề #162 (Nghề dịch vụ (Service Jobs)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 13:00:18",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 162,
-    "message": "Chủ đề #162: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 13:00:18",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 162,
-    "message": "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 12:59:51",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 162,
-    "message": "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Prompt 1 đạt 99/100 từ (còn thiếu 1). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 12:59:29",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 162,
-    "message": "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 12:59:29",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [162, 163, 164]"
-  },
-  {
-    "time": "2026-11-16 12:43:05",
-    "level": "ERROR",
-    "step": "FAIL_TOPIC",
-    "stt": 161,
-    "message": "Lỗi khi tạo chủ đề #161 (Nghề thủ công (Craftsmanship)): Chủ đề #161 (Nghề thủ công (Craftsmanship)) chỉ tạo được 50/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #161 (Nghề thủ công (Craftsmanship)) chỉ tạo được 50/100 từ sau tối đa 2 prompts!"
-  },
-  {
-    "time": "2026-11-16 12:43:05",
-    "level": "ERROR",
-    "step": "INCOMPLETE",
-    "stt": 161,
-    "message": "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Sau 2 prompts chỉ đạt 50/100 từ!"
-  },
-  {
-    "time": "2026-11-16 12:42:42",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 161,
-    "message": "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Prompt 1 đạt 49/100 từ (còn thiếu 51). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 12:42:22",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 161,
-    "message": "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 12:42:22",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 160,
-    "message": "Hoàn thành chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 12:42:22",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 160,
-    "message": "Chủ đề #160: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 12:42:22",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 160,
-    "message": "Chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 12:41:58",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 160,
-    "message": "Chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 12:41:58",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 158,
-    "message": "Hoàn thành chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 12:41:58",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 158,
-    "message": "Chủ đề #158: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 12:41:58",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 158,
-    "message": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 12:41:32",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 158,
-    "message": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 12:41:32",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [158, 160, 161]"
-  },
-  {
-    "time": "2026-11-16 12:11:18",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 159,
-    "message": "Hoàn thành chủ đề #159 (Kỷ luật và Nội quy (Discipline & Rules)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 12:11:18",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 159,
-    "message": "Chủ đề #159: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 12:11:18",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 159,
-    "message": "Chủ đề #159 (Kỷ luật và Nội quy (Discipline & Rules)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 12:10:58",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 159,
-    "message": "Chủ đề #159 (Kỷ luật và Nội quy (Discipline & Rules)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 12:10:58",
-    "level": "ERROR",
-    "step": "FAIL_TOPIC",
-    "stt": 158,
-    "message": "Lỗi khi tạo chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts!"
-  },
-  {
-    "time": "2026-11-16 12:10:58",
-    "level": "ERROR",
-    "step": "INCOMPLETE",
-    "stt": 158,
-    "message": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Sau 2 prompts chỉ đạt 77/100 từ!"
-  },
-  {
-    "time": "2026-11-16 12:10:56",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 158,
-    "message": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Prompt 1 đạt 76/100 từ (còn thiếu 24). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 12:10:31",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 158,
-    "message": "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad & Exchange)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 12:10:31",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 155,
-    "message": "Hoàn thành chủ đề #155 (Tâm lý học đường (School Psychology)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 12:10:31",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 155,
-    "message": "Chủ đề #155: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 12:10:31",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 155,
-    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 12:10:09",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 155,
-    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 12:10:09",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [155, 158, 159]"
-  },
-  {
-    "time": "2026-11-16 10:08:55",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 157,
-    "message": "Hoàn thành chủ đề #157 (Bảng điểm và Đánh giá (Transcripts & Grading)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 10:08:55",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 157,
-    "message": "Chủ đề #157: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 10:08:55",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 157,
-    "message": "Chủ đề #157 (Bảng điểm và Đánh giá (Transcripts & Grading)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 10:08:29",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 157,
-    "message": "Chủ đề #157 (Bảng điểm và Đánh giá (Transcripts & Grading)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 10:08:29",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 156,
-    "message": "Hoàn thành chủ đề #156 (Đồ dùng thủ công (Craft Supplies)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 10:08:29",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 156,
-    "message": "Chủ đề #156: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 10:08:29",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 156,
-    "message": "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 10:08:08",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 156,
-    "message": "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Prompt 1 đạt 95/100 từ (còn thiếu 5). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 10:07:44",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 156,
-    "message": "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 10:07:44",
-    "level": "ERROR",
-    "step": "FAIL_TOPIC",
-    "stt": 155,
-    "message": "Lỗi khi tạo chủ đề #155 (Tâm lý học đường (School Psychology)): Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts!"
-  },
-  {
-    "time": "2026-11-16 10:07:44",
-    "level": "ERROR",
-    "step": "INCOMPLETE",
-    "stt": 155,
-    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Sau 2 prompts chỉ đạt 96/100 từ!"
-  },
-  {
-    "time": "2026-11-16 10:07:21",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 155,
-    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Prompt 1 đạt 96/100 từ (còn thiếu 4). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 10:06:58",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 155,
-    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 10:06:58",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [155, 156, 157]"
-  },
-  {
-    "time": "2026-11-16 09:58:47",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 154,
-    "message": "Hoàn thành chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 09:58:47",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 154,
-    "message": "Chủ đề #154: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 09:58:47",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 154,
-    "message": "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 09:58:24",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 154,
-    "message": "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Prompt 1 đạt 98/100 từ (còn thiếu 2). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 09:58:02",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 154,
-    "message": "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 09:58:02",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 153,
-    "message": "Hoàn thành chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 09:58:02",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 153,
-    "message": "Chủ đề #153: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 09:58:02",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 153,
-    "message": "Chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 09:57:37",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 153,
-    "message": "Chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 09:57:37",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 152,
-    "message": "Hoàn thành chủ đề #152 (Chương trình giảng dạy (Curriculum)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 09:57:37",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 152,
-    "message": "Chủ đề #152: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 09:57:37",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 152,
-    "message": "Chủ đề #152 (Chương trình giảng dạy (Curriculum)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 09:57:17",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 152,
-    "message": "Chủ đề #152 (Chương trình giảng dạy (Curriculum)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 09:57:17",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [152, 153, 154]"
-  },
-  {
-    "time": "2026-11-16 08:38:33",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 151,
-    "message": "Hoàn thành chủ đề #151 (Cơ sở vật chất trường học (School Facilities)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 08:38:33",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 151,
-    "message": "Chủ đề #151: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 08:38:33",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 151,
-    "message": "Chủ đề #151 (Cơ sở vật chất trường học (School Facilities)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 08:38:08",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 151,
-    "message": "Chủ đề #151 (Cơ sở vật chất trường học (School Facilities)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 08:38:08",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 150,
-    "message": "Hoàn thành chủ đề #150 (Thời trang bền vững (Sustainable Fashion)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 08:38:08",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 150,
-    "message": "Chủ đề #150: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 08:38:08",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 150,
-    "message": "Chủ đề #150 (Thời trang bền vững (Sustainable Fashion)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 08:37:41",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 150,
-    "message": "Chủ đề #150 (Thời trang bền vững (Sustainable Fashion)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 08:37:41",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 148,
-    "message": "Hoàn thành chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 08:37:41",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 148,
-    "message": "Chủ đề #148: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 08:37:41",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 148,
-    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 08:37:14",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 148,
-    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 08:37:14",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [148, 150, 151]"
-  },
-  {
-    "time": "2026-11-16 08:01:24",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 149,
-    "message": "Hoàn thành chủ đề #149 (Dịch vụ Spa và Massage (Spa & Massage Services)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 08:01:24",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 149,
-    "message": "Chủ đề #149: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 08:01:24",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 149,
-    "message": "Chủ đề #149 (Dịch vụ Spa và Massage (Spa & Massage Services)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 08:01:05",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 149,
-    "message": "Chủ đề #149 (Dịch vụ Spa và Massage (Spa & Massage Services)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 08:01:05",
-    "level": "ERROR",
-    "step": "FAIL_TOPIC",
-    "stt": 148,
-    "message": "Lỗi khi tạo chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts!"
-  },
-  {
-    "time": "2026-11-16 08:01:05",
-    "level": "ERROR",
-    "step": "INCOMPLETE",
-    "stt": 148,
-    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Sau 2 prompts chỉ đạt 79/100 từ!"
-  },
-  {
-    "time": "2026-11-16 08:00:42",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 148,
-    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Prompt 1 đạt 63/100 từ (còn thiếu 37). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 08:00:15",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 148,
-    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 08:00:15",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 147,
-    "message": "Hoàn thành chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 08:00:15",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 147,
-    "message": "Chủ đề #147: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 08:00:15",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 147,
-    "message": "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 07:59:48",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 147,
-    "message": "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Prompt 1 đạt 72/100 từ (còn thiếu 28). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 07:59:29",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 147,
-    "message": "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 07:59:29",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [147, 148, 149]"
-  },
-  {
-    "time": "2026-11-16 07:30:00",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 146,
-    "message": "Hoàn thành chủ đề #146 (Đồ lót và Đồ ngủ (Underwear & Sleepwear)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 07:30:00",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 146,
-    "message": "Chủ đề #146: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 07:30:00",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 146,
-    "message": "Chủ đề #146 (Đồ lót và Đồ ngủ (Underwear & Sleepwear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 07:29:39",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 146,
-    "message": "Chủ đề #146 (Đồ lót và Đồ ngủ (Underwear & Sleepwear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 07:29:39",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 145,
-    "message": "Hoàn thành chủ đề #145 (Trang sức và Kim hoàn (Jewelry)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 07:29:39",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 145,
-    "message": "Chủ đề #145: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 07:29:39",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 145,
-    "message": "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 07:29:16",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 145,
-    "message": "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Prompt 1 đạt 97/100 từ (còn thiếu 3). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 07:28:57",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 145,
-    "message": "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 07:28:57",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 144,
-    "message": "Hoàn thành chủ đề #144 (Giày dép các loại (Footwear)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 07:28:57",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 144,
-    "message": "Chủ đề #144: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 07:28:57",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 144,
-    "message": "Chủ đề #144 (Giày dép các loại (Footwear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 07:28:36",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 144,
-    "message": "Chủ đề #144 (Giày dép các loại (Footwear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 07:28:36",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [144, 145, 146]"
-  },
-  {
-    "time": "2026-11-16 07:25:06",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 143,
-    "message": "Hoàn thành chủ đề #143 (Thời trang trẻ em (Children's Wear)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 07:25:06",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 143,
-    "message": "Chủ đề #143: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 07:25:06",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 143,
-    "message": "Chủ đề #143 (Thời trang trẻ em (Children's Wear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 07:24:41",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 143,
-    "message": "Chủ đề #143 (Thời trang trẻ em (Children's Wear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 07:24:41",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 142,
-    "message": "Hoàn thành chủ đề #142 (Trang phục nữ (Women's Clothing)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 07:24:41",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 142,
-    "message": "Chủ đề #142: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 07:24:41",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 142,
-    "message": "Chủ đề #142 (Trang phục nữ (Women's Clothing)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 07:24:25",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 142,
-    "message": "Chủ đề #142 (Trang phục nữ (Women's Clothing)): Prompt 1 đạt 43/100 từ (còn thiếu 57). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 07:24:08",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 142,
-    "message": "Chủ đề #142 (Trang phục nữ (Women's Clothing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 07:24:08",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 141,
-    "message": "Hoàn thành chủ đề #141 (Trang phục nam (Men's Clothing)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 07:24:08",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 141,
-    "message": "Chủ đề #141: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 07:24:08",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 141,
-    "message": "Chủ đề #141 (Trang phục nam (Men's Clothing)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 07:23:42",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 141,
-    "message": "Chủ đề #141 (Trang phục nam (Men's Clothing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 07:23:42",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [141, 142, 143]"
-  },
-  {
-    "time": "2026-11-16 04:03:49",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 140,
-    "message": "Hoàn thành chủ đề #140 (Chuyển nhà và Đóng gói (Moving & Packing)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 04:03:49",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 140,
-    "message": "Chủ đề #140: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 04:03:49",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 140,
-    "message": "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving & Packing)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 04:03:28",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 140,
-    "message": "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving & Packing)): Prompt 1 đạt 97/100 từ (còn thiếu 3). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 04:03:08",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 140,
-    "message": "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving & Packing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 04:03:08",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 139,
-    "message": "Hoàn thành chủ đề #139 (Vật liệu lát sàn và tường (Flooring & Wall Materials)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 04:03:08",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 139,
-    "message": "Chủ đề #139: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 04:03:08",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 139,
-    "message": "Chủ đề #139 (Vật liệu lát sàn và tường (Flooring & Wall Materials)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-16 04:02:42",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 139,
-    "message": "Chủ đề #139 (Vật liệu lát sàn và tường (Flooring & Wall Materials)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 04:02:42",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 136,
-    "message": "Hoàn thành chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)) với 100 từ."
-  },
-  {
-    "time": "2026-11-16 04:02:42",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 136,
-    "message": "Chủ đề #136: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-16 04:02:42",
-    "level": "SUCCESS",
-    "step": "PROMPT_2_DONE",
-    "stt": 136,
-    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Hoàn thành 100 từ sau Prompt 2."
-  },
-  {
-    "time": "2026-11-16 04:02:15",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 136,
-    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Prompt 1 đạt 93/100 từ (còn thiếu 7). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-16 04:01:55",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 136,
-    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-16 04:01:55",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [136, 139, 140]"
-  },
-  {
-    "time": "2026-11-15 22:23:01",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 138,
-    "message": "Hoàn thành chủ đề #138 (Các phòng chức năng (Functional Rooms)) với 100 từ."
-  },
-  {
-    "time": "2026-11-15 22:23:01",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 138,
-    "message": "Chủ đề #138: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-15 22:23:01",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 138,
-    "message": "Chủ đề #138 (Các phòng chức năng (Functional Rooms)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-15 22:22:32",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 138,
-    "message": "Chủ đề #138 (Các phòng chức năng (Functional Rooms)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-15 22:22:32",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 137,
-    "message": "Hoàn thành chủ đề #137 (An ninh nhà ở (Home Security)) với 100 từ."
-  },
-  {
-    "time": "2026-11-15 22:22:32",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 137,
-    "message": "Chủ đề #137: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-15 22:22:32",
-    "level": "SUCCESS",
-    "step": "PROMPT_1_DONE",
-    "stt": 137,
-    "message": "Chủ đề #137 (An ninh nhà ở (Home Security)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-  },
-  {
-    "time": "2026-11-15 22:22:07",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 137,
-    "message": "Chủ đề #137 (An ninh nhà ở (Home Security)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-15 22:22:07",
-    "level": "ERROR",
-    "step": "FAIL_TOPIC",
-    "stt": 136,
-    "message": "Lỗi khi tạo chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts!"
-  },
-  {
-    "time": "2026-11-15 22:22:07",
-    "level": "ERROR",
-    "step": "INCOMPLETE",
-    "stt": 136,
-    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Sau 2 prompts chỉ đạt 81/100 từ!"
-  },
-  {
-    "time": "2026-11-15 22:21:44",
-    "level": "INFO",
-    "step": "PROMPT_2_START",
-    "stt": 136,
-    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Prompt 1 đạt 79/100 từ (còn thiếu 21). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-  },
-  {
-    "time": "2026-11-15 22:21:23",
-    "level": "INFO",
-    "step": "PROMPT_1_START",
-    "stt": 136,
-    "message": "Chủ đề #136 (Sân vườn và Ban công (Gardens & Balconies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-  },
-  {
-    "time": "2026-11-15 22:21:23",
-    "level": "INFO",
-    "step": "START_JOB",
-    "stt": null,
-    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [136, 137, 138]"
-  },
-  {
-    "time": "2026-11-15 21:57:12",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 134,
-    "message": "Hoàn thành chủ đề #134 (Kiến trúc nội thất (Interior Design)) với 100 từ."
-  },
-  {
-    "time": "2026-11-15 21:57:12",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 134,
-    "message": "Chủ đề #134: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-15 21:57:06",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_3",
-    "stt": 134,
-    "message": "Chủ đề #134: Bù đắp 1 từ còn thiếu (Đang có: 99/100)..."
-  },
-  {
-    "time": "2026-11-15 21:56:55",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_2",
-    "stt": 134,
-    "message": "Chủ đề #134: Bù đắp 31 từ còn thiếu (Đang có: 69/100)..."
-  },
-  {
-    "time": "2026-11-15 21:56:43",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_1",
-    "stt": 134,
-    "message": "Chủ đề #134: Bù đắp 48 từ còn thiếu (Đang có: 52/100)..."
-  },
-  {
-    "time": "2026-11-15 21:56:35",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 134,
-    "message": "Chủ đề #134: Bắt đầu phân diện [Thành phần & Dụng cụ] (25 từ, đã có 52/100)"
-  },
-  {
-    "time": "2026-11-15 21:56:26",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 134,
-    "message": "Chủ đề #134: Bắt đầu phân diện [Chế biến & Thành phẩm] (25 từ, đã có 52/100)"
-  },
-  {
-    "time": "2026-11-15 21:56:16",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 134,
-    "message": "Chủ đề #134: Bắt đầu phân diện [Chuyên sâu & Đặc trưng] (30 từ, đã có 30/100)"
-  },
-  {
-    "time": "2026-11-15 21:56:06",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 134,
-    "message": "Chủ đề #134: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
-  },
-  {
-    "time": "2026-11-15 21:56:06",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 133,
-    "message": "Hoàn thành chủ đề #133 (Vật dụng dọn dẹp (Cleaning Supplies)) với 100 từ."
-  },
-  {
-    "time": "2026-11-15 21:56:06",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 133,
-    "message": "Chủ đề #133: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-15 21:55:59",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_3",
-    "stt": 133,
-    "message": "Chủ đề #133: Bù đắp 11 từ còn thiếu (Đang có: 89/100)..."
-  },
-  {
-    "time": "2026-11-15 21:55:51",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_2",
-    "stt": 133,
-    "message": "Chủ đề #133: Bù đắp 13 từ còn thiếu (Đang có: 87/100)..."
-  },
-  {
-    "time": "2026-11-15 21:55:40",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_1",
-    "stt": 133,
-    "message": "Chủ đề #133: Bù đắp 26 từ còn thiếu (Đang có: 74/100)..."
-  },
-  {
-    "time": "2026-11-15 21:55:31",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 133,
-    "message": "Chủ đề #133: Bắt đầu phân diện [Thành phần & Dụng cụ] (25 từ, đã có 66/100)"
-  },
-  {
-    "time": "2026-11-15 21:55:23",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 133,
-    "message": "Chủ đề #133: Bắt đầu phân diện [Chế biến & Thành phẩm] (25 từ, đã có 41/100)"
-  },
-  {
-    "time": "2026-11-15 21:55:11",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 133,
-    "message": "Chủ đề #133: Bắt đầu phân diện [Chuyên sâu & Đặc trưng] (30 từ, đã có 30/100)"
-  },
-  {
-    "time": "2026-11-15 21:55:02",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 133,
-    "message": "Chủ đề #133: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
-  },
-  {
-    "time": "2026-11-15 21:55:02",
-    "level": "SUCCESS",
-    "step": "DONE_TOPIC",
-    "stt": 132,
-    "message": "Hoàn thành chủ đề #132 (Hệ thống điện nước (Plumbing & Electrical)) với 100 từ."
-  },
-  {
-    "time": "2026-11-15 21:55:02",
-    "level": "SUCCESS",
-    "step": "COLLECT_DONE",
-    "stt": 132,
-    "message": "Chủ đề #132: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-  },
-  {
-    "time": "2026-11-15 21:54:57",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_10",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 4 từ còn thiếu (Đang có: 96/100)..."
-  },
-  {
-    "time": "2026-11-15 21:54:49",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_9",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 8 từ còn thiếu (Đang có: 92/100)..."
-  },
-  {
-    "time": "2026-11-15 21:54:41",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_8",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
-  },
-  {
-    "time": "2026-11-15 21:54:35",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_7",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
-  },
-  {
-    "time": "2026-11-15 21:54:28",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_6",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
-  },
-  {
-    "time": "2026-11-15 21:54:20",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_5",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 14 từ còn thiếu (Đang có: 86/100)..."
-  },
-  {
-    "time": "2026-11-15 21:54:12",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_4",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 15 từ còn thiếu (Đang có: 85/100)..."
-  },
-  {
-    "time": "2026-11-15 21:54:04",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_3",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 16 từ còn thiếu (Đang có: 84/100)..."
-  },
-  {
-    "time": "2026-11-15 21:53:53",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_2",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 33 từ còn thiếu (Đang có: 67/100)..."
-  },
-  {
-    "time": "2026-11-15 21:53:41",
-    "level": "WARNING",
-    "step": "TOPUP_BATCH_1",
-    "stt": 132,
-    "message": "Chủ đề #132: Bù đắp 36 từ còn thiếu (Đang có: 64/100)..."
-  },
-  {
-    "time": "2026-11-15 21:53:32",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 132,
-    "message": "Chủ đề #132: Bắt đầu phân diện [Thành phần & Dụng cụ] (25 từ, đã có 56/100)"
-  },
-  {
-    "time": "2026-11-15 21:53:22",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 132,
-    "message": "Chủ đề #132: Bắt đầu phân diện [Chế biến & Thành phẩm] (25 từ, đã có 52/100)"
-  },
-  {
-    "time": "2026-11-15 21:53:11",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 132,
-    "message": "Chủ đề #132: Bắt đầu phân diện [Chuyên sâu & Đặc trưng] (30 từ, đã có 29/100)"
-  },
-  {
-    "time": "2026-11-15 21:53:01",
-    "level": "INFO",
-    "step": "FACET_START",
-    "stt": 132,
-    "message": "Chủ đề #132: Bắt đầu phân diện [Cốt lõi & Phổ biến] (30 từ, đã có 0/100)"
-  }
+﻿[
+    {
+        "time":  "2026-11-17 00:59:16",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  173,
+        "message":  "Hoàn thành chủ đề #173 - Thương mại quốc tế (International Trade) với 100 từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)."
+    },
+    {
+        "time":  "2026-11-17 00:57:41",
+        "level":  "INFO",
+        "step":  "START_TOPIC",
+        "stt":  173,
+        "message":  "Bắt đầu Pipeline Lai cho chủ đề #173 - Thương mại quốc tế (International Trade)"
+    },
+    {
+        "time":  "2026-11-17 00:57:41",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  172,
+        "message":  "Hoàn thành chủ đề #172 - Đầu tư bất động sản (Real Estate Investment) với 100 từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)."
+    },
+    {
+        "time":  "2026-11-17 00:56:07",
+        "level":  "INFO",
+        "step":  "START_TOPIC",
+        "stt":  172,
+        "message":  "Bắt đầu Pipeline Lai cho chủ đề #172 - Đầu tư bất động sản (Real Estate Investment)"
+    },
+    {
+        "time":  "2026-11-17 00:56:07",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  171,
+        "message":  "Hoàn thành chủ đề #171 - Thị trường chứng khoán (Stock Market) với 100 từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)."
+    },
+    {
+        "time":  "2026-11-17 00:54:20",
+        "level":  "INFO",
+        "step":  "START_TOPIC",
+        "stt":  171,
+        "message":  "Bắt đầu Pipeline Lai cho chủ đề #171 - Thị trường chứng khoán (Stock Market)"
+    },
+    {
+        "time":  "2026-11-17 00:52:29",
+        "level":  "INFO",
+        "step":  "START_TOPIC",
+        "stt":  171,
+        "message":  "Bắt đầu Pipeline Lai cho chủ đề #171 - Thị trường chứng khoán (Stock Market)"
+    },
+    {
+        "time":  "2026-11-16 13:05:03",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  167,
+        "message":  "Hoàn thành chủ đề #167 (Họp hành và Thuyết trình (Meetings \u0026 Presentations)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 13:05:03",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  167,
+        "message":  "Chủ đề #167: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 13:05:03",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  167,
+        "message":  "Chủ đề #167 (Họp hành và Thuyết trình (Meetings \u0026 Presentations)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 13:04:44",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  167,
+        "message":  "Chủ đề #167 (Họp hành và Thuyết trình (Meetings \u0026 Presentations)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 13:04:44",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  166,
+        "message":  "Hoàn thành chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 13:04:44",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  166,
+        "message":  "Chủ đề #166: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 13:04:44",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  166,
+        "message":  "Chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 13:04:19",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  166,
+        "message":  "Chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 13:04:19",
+        "level":  "ERROR",
+        "step":  "FAIL_TOPIC",
+        "stt":  165,
+        "message":  "Lỗi khi tạo chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)): Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)) chỉ tạo được 48/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)) chỉ tạo được 48/100 từ sau tối đa 2 prompts!"
+    },
+    {
+        "time":  "2026-11-16 13:04:19",
+        "level":  "ERROR",
+        "step":  "INCOMPLETE",
+        "stt":  165,
+        "message":  "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)): Sau 2 prompts chỉ đạt 48/100 từ!"
+    },
+    {
+        "time":  "2026-11-16 13:03:59",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  165,
+        "message":  "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)): Prompt 1 đạt 20/100 từ (còn thiếu 80). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 13:03:40",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  165,
+        "message":  "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 13:03:40",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [165, 166, 167]"
+    },
+    {
+        "time":  "2026-11-16 13:01:53",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  164,
+        "message":  "Hoàn thành chủ đề #164 (Nhân sự và Tuyển dụng (HR \u0026 Recruitment)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 13:01:53",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  164,
+        "message":  "Chủ đề #164: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 13:01:53",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  164,
+        "message":  "Chủ đề #164 (Nhân sự và Tuyển dụng (HR \u0026 Recruitment)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 13:01:31",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  164,
+        "message":  "Chủ đề #164 (Nhân sự và Tuyển dụng (HR \u0026 Recruitment)): Prompt 1 đạt 82/100 từ (còn thiếu 18). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 13:01:02",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  164,
+        "message":  "Chủ đề #164 (Nhân sự và Tuyển dụng (HR \u0026 Recruitment)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 13:01:02",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  163,
+        "message":  "Hoàn thành chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 13:01:02",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  163,
+        "message":  "Chủ đề #163: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 13:01:02",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  163,
+        "message":  "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 13:00:43",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  163,
+        "message":  "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Prompt 1 đạt 98/100 từ (còn thiếu 2). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 13:00:18",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  163,
+        "message":  "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 13:00:18",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  162,
+        "message":  "Hoàn thành chủ đề #162 (Nghề dịch vụ (Service Jobs)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 13:00:18",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  162,
+        "message":  "Chủ đề #162: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 13:00:18",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  162,
+        "message":  "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 12:59:51",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  162,
+        "message":  "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Prompt 1 đạt 99/100 từ (còn thiếu 1). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 12:59:29",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  162,
+        "message":  "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 12:59:29",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [162, 163, 164]"
+    },
+    {
+        "time":  "2026-11-16 12:43:05",
+        "level":  "ERROR",
+        "step":  "FAIL_TOPIC",
+        "stt":  161,
+        "message":  "Lỗi khi tạo chủ đề #161 (Nghề thủ công (Craftsmanship)): Chủ đề #161 (Nghề thủ công (Craftsmanship)) chỉ tạo được 50/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #161 (Nghề thủ công (Craftsmanship)) chỉ tạo được 50/100 từ sau tối đa 2 prompts!"
+    },
+    {
+        "time":  "2026-11-16 12:43:05",
+        "level":  "ERROR",
+        "step":  "INCOMPLETE",
+        "stt":  161,
+        "message":  "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Sau 2 prompts chỉ đạt 50/100 từ!"
+    },
+    {
+        "time":  "2026-11-16 12:42:42",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  161,
+        "message":  "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Prompt 1 đạt 49/100 từ (còn thiếu 51). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 12:42:22",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  161,
+        "message":  "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 12:42:22",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  160,
+        "message":  "Hoàn thành chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 12:42:22",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  160,
+        "message":  "Chủ đề #160: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 12:42:22",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  160,
+        "message":  "Chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 12:41:58",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  160,
+        "message":  "Chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 12:41:58",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  158,
+        "message":  "Hoàn thành chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 12:41:58",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  158,
+        "message":  "Chủ đề #158: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 12:41:58",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  158,
+        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 12:41:32",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  158,
+        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 12:41:32",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [158, 160, 161]"
+    },
+    {
+        "time":  "2026-11-16 12:11:18",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  159,
+        "message":  "Hoàn thành chủ đề #159 (Kỷ luật và Nội quy (Discipline \u0026 Rules)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 12:11:18",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  159,
+        "message":  "Chủ đề #159: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 12:11:18",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  159,
+        "message":  "Chủ đề #159 (Kỷ luật và Nội quy (Discipline \u0026 Rules)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 12:10:58",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  159,
+        "message":  "Chủ đề #159 (Kỷ luật và Nội quy (Discipline \u0026 Rules)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 12:10:58",
+        "level":  "ERROR",
+        "step":  "FAIL_TOPIC",
+        "stt":  158,
+        "message":  "Lỗi khi tạo chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts!"
+    },
+    {
+        "time":  "2026-11-16 12:10:58",
+        "level":  "ERROR",
+        "step":  "INCOMPLETE",
+        "stt":  158,
+        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Sau 2 prompts chỉ đạt 77/100 từ!"
+    },
+    {
+        "time":  "2026-11-16 12:10:56",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  158,
+        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Prompt 1 đạt 76/100 từ (còn thiếu 24). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 12:10:31",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  158,
+        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 12:10:31",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  155,
+        "message":  "Hoàn thành chủ đề #155 (Tâm lý học đường (School Psychology)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 12:10:31",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  155,
+        "message":  "Chủ đề #155: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 12:10:31",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  155,
+        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 12:10:09",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  155,
+        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 12:10:09",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [155, 158, 159]"
+    },
+    {
+        "time":  "2026-11-16 10:08:55",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  157,
+        "message":  "Hoàn thành chủ đề #157 (Bảng điểm và Đánh giá (Transcripts \u0026 Grading)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 10:08:55",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  157,
+        "message":  "Chủ đề #157: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 10:08:55",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  157,
+        "message":  "Chủ đề #157 (Bảng điểm và Đánh giá (Transcripts \u0026 Grading)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 10:08:29",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  157,
+        "message":  "Chủ đề #157 (Bảng điểm và Đánh giá (Transcripts \u0026 Grading)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 10:08:29",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  156,
+        "message":  "Hoàn thành chủ đề #156 (Đồ dùng thủ công (Craft Supplies)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 10:08:29",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  156,
+        "message":  "Chủ đề #156: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 10:08:29",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  156,
+        "message":  "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 10:08:08",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  156,
+        "message":  "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Prompt 1 đạt 95/100 từ (còn thiếu 5). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 10:07:44",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  156,
+        "message":  "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 10:07:44",
+        "level":  "ERROR",
+        "step":  "FAIL_TOPIC",
+        "stt":  155,
+        "message":  "Lỗi khi tạo chủ đề #155 (Tâm lý học đường (School Psychology)): Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts!"
+    },
+    {
+        "time":  "2026-11-16 10:07:44",
+        "level":  "ERROR",
+        "step":  "INCOMPLETE",
+        "stt":  155,
+        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Sau 2 prompts chỉ đạt 96/100 từ!"
+    },
+    {
+        "time":  "2026-11-16 10:07:21",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  155,
+        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Prompt 1 đạt 96/100 từ (còn thiếu 4). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 10:06:58",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  155,
+        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 10:06:58",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [155, 156, 157]"
+    },
+    {
+        "time":  "2026-11-16 09:58:47",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  154,
+        "message":  "Hoàn thành chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 09:58:47",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  154,
+        "message":  "Chủ đề #154: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 09:58:47",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  154,
+        "message":  "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 09:58:24",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  154,
+        "message":  "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Prompt 1 đạt 98/100 từ (còn thiếu 2). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 09:58:02",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  154,
+        "message":  "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 09:58:02",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  153,
+        "message":  "Hoàn thành chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 09:58:02",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  153,
+        "message":  "Chủ đề #153: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 09:58:02",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  153,
+        "message":  "Chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 09:57:37",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  153,
+        "message":  "Chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 09:57:37",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  152,
+        "message":  "Hoàn thành chủ đề #152 (Chương trình giảng dạy (Curriculum)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 09:57:37",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  152,
+        "message":  "Chủ đề #152: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 09:57:37",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  152,
+        "message":  "Chủ đề #152 (Chương trình giảng dạy (Curriculum)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 09:57:17",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  152,
+        "message":  "Chủ đề #152 (Chương trình giảng dạy (Curriculum)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 09:57:17",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [152, 153, 154]"
+    },
+    {
+        "time":  "2026-11-16 08:38:33",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  151,
+        "message":  "Hoàn thành chủ đề #151 (Cơ sở vật chất trường học (School Facilities)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 08:38:33",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  151,
+        "message":  "Chủ đề #151: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 08:38:33",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  151,
+        "message":  "Chủ đề #151 (Cơ sở vật chất trường học (School Facilities)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 08:38:08",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  151,
+        "message":  "Chủ đề #151 (Cơ sở vật chất trường học (School Facilities)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 08:38:08",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  150,
+        "message":  "Hoàn thành chủ đề #150 (Thời trang bền vững (Sustainable Fashion)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 08:38:08",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  150,
+        "message":  "Chủ đề #150: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 08:38:08",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  150,
+        "message":  "Chủ đề #150 (Thời trang bền vững (Sustainable Fashion)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 08:37:41",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  150,
+        "message":  "Chủ đề #150 (Thời trang bền vững (Sustainable Fashion)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 08:37:41",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  148,
+        "message":  "Hoàn thành chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 08:37:41",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  148,
+        "message":  "Chủ đề #148: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 08:37:41",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  148,
+        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 08:37:14",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  148,
+        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 08:37:14",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [148, 150, 151]"
+    },
+    {
+        "time":  "2026-11-16 08:01:24",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  149,
+        "message":  "Hoàn thành chủ đề #149 (Dịch vụ Spa và Massage (Spa \u0026 Massage Services)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 08:01:24",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  149,
+        "message":  "Chủ đề #149: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 08:01:24",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  149,
+        "message":  "Chủ đề #149 (Dịch vụ Spa và Massage (Spa \u0026 Massage Services)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 08:01:05",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  149,
+        "message":  "Chủ đề #149 (Dịch vụ Spa và Massage (Spa \u0026 Massage Services)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 08:01:05",
+        "level":  "ERROR",
+        "step":  "FAIL_TOPIC",
+        "stt":  148,
+        "message":  "Lỗi khi tạo chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts!"
+    },
+    {
+        "time":  "2026-11-16 08:01:05",
+        "level":  "ERROR",
+        "step":  "INCOMPLETE",
+        "stt":  148,
+        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Sau 2 prompts chỉ đạt 79/100 từ!"
+    },
+    {
+        "time":  "2026-11-16 08:00:42",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  148,
+        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Prompt 1 đạt 63/100 từ (còn thiếu 37). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 08:00:15",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  148,
+        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 08:00:15",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  147,
+        "message":  "Hoàn thành chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 08:00:15",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  147,
+        "message":  "Chủ đề #147: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 08:00:15",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  147,
+        "message":  "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 07:59:48",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  147,
+        "message":  "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Prompt 1 đạt 72/100 từ (còn thiếu 28). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 07:59:29",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  147,
+        "message":  "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 07:59:29",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [147, 148, 149]"
+    },
+    {
+        "time":  "2026-11-16 07:30:00",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  146,
+        "message":  "Hoàn thành chủ đề #146 (Đồ lót và Đồ ngủ (Underwear \u0026 Sleepwear)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 07:30:00",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  146,
+        "message":  "Chủ đề #146: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 07:30:00",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  146,
+        "message":  "Chủ đề #146 (Đồ lót và Đồ ngủ (Underwear \u0026 Sleepwear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 07:29:39",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  146,
+        "message":  "Chủ đề #146 (Đồ lót và Đồ ngủ (Underwear \u0026 Sleepwear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 07:29:39",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  145,
+        "message":  "Hoàn thành chủ đề #145 (Trang sức và Kim hoàn (Jewelry)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 07:29:39",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  145,
+        "message":  "Chủ đề #145: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 07:29:39",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  145,
+        "message":  "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 07:29:16",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  145,
+        "message":  "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Prompt 1 đạt 97/100 từ (còn thiếu 3). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 07:28:57",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  145,
+        "message":  "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 07:28:57",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  144,
+        "message":  "Hoàn thành chủ đề #144 (Giày dép các loại (Footwear)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 07:28:57",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  144,
+        "message":  "Chủ đề #144: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 07:28:57",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  144,
+        "message":  "Chủ đề #144 (Giày dép các loại (Footwear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 07:28:36",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  144,
+        "message":  "Chủ đề #144 (Giày dép các loại (Footwear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 07:28:36",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [144, 145, 146]"
+    },
+    {
+        "time":  "2026-11-16 07:25:06",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  143,
+        "message":  "Hoàn thành chủ đề #143 (Thời trang trẻ em (Children\u0027s Wear)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 07:25:06",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  143,
+        "message":  "Chủ đề #143: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 07:25:06",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  143,
+        "message":  "Chủ đề #143 (Thời trang trẻ em (Children\u0027s Wear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 07:24:41",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  143,
+        "message":  "Chủ đề #143 (Thời trang trẻ em (Children\u0027s Wear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 07:24:41",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  142,
+        "message":  "Hoàn thành chủ đề #142 (Trang phục nữ (Women\u0027s Clothing)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 07:24:41",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  142,
+        "message":  "Chủ đề #142: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 07:24:41",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  142,
+        "message":  "Chủ đề #142 (Trang phục nữ (Women\u0027s Clothing)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 07:24:25",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  142,
+        "message":  "Chủ đề #142 (Trang phục nữ (Women\u0027s Clothing)): Prompt 1 đạt 43/100 từ (còn thiếu 57). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 07:24:08",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  142,
+        "message":  "Chủ đề #142 (Trang phục nữ (Women\u0027s Clothing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 07:24:08",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  141,
+        "message":  "Hoàn thành chủ đề #141 (Trang phục nam (Men\u0027s Clothing)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 07:24:08",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  141,
+        "message":  "Chủ đề #141: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 07:24:08",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  141,
+        "message":  "Chủ đề #141 (Trang phục nam (Men\u0027s Clothing)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 07:23:42",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  141,
+        "message":  "Chủ đề #141 (Trang phục nam (Men\u0027s Clothing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 07:23:42",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [141, 142, 143]"
+    },
+    {
+        "time":  "2026-11-16 04:03:49",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  140,
+        "message":  "Hoàn thành chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 04:03:49",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  140,
+        "message":  "Chủ đề #140: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 04:03:49",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  140,
+        "message":  "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 04:03:28",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  140,
+        "message":  "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)): Prompt 1 đạt 97/100 từ (còn thiếu 3). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 04:03:08",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  140,
+        "message":  "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 04:03:08",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  139,
+        "message":  "Hoàn thành chủ đề #139 (Vật liệu lát sàn và tường (Flooring \u0026 Wall Materials)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 04:03:08",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  139,
+        "message":  "Chủ đề #139: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 04:03:08",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  139,
+        "message":  "Chủ đề #139 (Vật liệu lát sàn và tường (Flooring \u0026 Wall Materials)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-16 04:02:42",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  139,
+        "message":  "Chủ đề #139 (Vật liệu lát sàn và tường (Flooring \u0026 Wall Materials)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 04:02:42",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  136,
+        "message":  "Hoàn thành chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-16 04:02:42",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  136,
+        "message":  "Chủ đề #136: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-16 04:02:42",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_2_DONE",
+        "stt":  136,
+        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Hoàn thành 100 từ sau Prompt 2."
+    },
+    {
+        "time":  "2026-11-16 04:02:15",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  136,
+        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Prompt 1 đạt 93/100 từ (còn thiếu 7). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-16 04:01:55",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  136,
+        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-16 04:01:55",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [136, 139, 140]"
+    },
+    {
+        "time":  "2026-11-15 22:23:01",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  138,
+        "message":  "Hoàn thành chủ đề #138 (Các phòng chức năng (Functional Rooms)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-15 22:23:01",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  138,
+        "message":  "Chủ đề #138: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-15 22:23:01",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  138,
+        "message":  "Chủ đề #138 (Các phòng chức năng (Functional Rooms)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-15 22:22:32",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  138,
+        "message":  "Chủ đề #138 (Các phòng chức năng (Functional Rooms)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-15 22:22:32",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  137,
+        "message":  "Hoàn thành chủ đề #137 (An ninh nhà ở (Home Security)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-15 22:22:32",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  137,
+        "message":  "Chủ đề #137: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-15 22:22:32",
+        "level":  "SUCCESS",
+        "step":  "PROMPT_1_DONE",
+        "stt":  137,
+        "message":  "Chủ đề #137 (An ninh nhà ở (Home Security)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+    },
+    {
+        "time":  "2026-11-15 22:22:07",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  137,
+        "message":  "Chủ đề #137 (An ninh nhà ở (Home Security)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-15 22:22:07",
+        "level":  "ERROR",
+        "step":  "FAIL_TOPIC",
+        "stt":  136,
+        "message":  "Lỗi khi tạo chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts!"
+    },
+    {
+        "time":  "2026-11-15 22:22:07",
+        "level":  "ERROR",
+        "step":  "INCOMPLETE",
+        "stt":  136,
+        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Sau 2 prompts chỉ đạt 81/100 từ!"
+    },
+    {
+        "time":  "2026-11-15 22:21:44",
+        "level":  "INFO",
+        "step":  "PROMPT_2_START",
+        "stt":  136,
+        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Prompt 1 đạt 79/100 từ (còn thiếu 21). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+    },
+    {
+        "time":  "2026-11-15 22:21:23",
+        "level":  "INFO",
+        "step":  "PROMPT_1_START",
+        "stt":  136,
+        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+    },
+    {
+        "time":  "2026-11-15 22:21:23",
+        "level":  "INFO",
+        "step":  "START_JOB",
+        "stt":  null,
+        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [136, 137, 138]"
+    },
+    {
+        "time":  "2026-11-15 21:57:12",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  134,
+        "message":  "Hoàn thành chủ đề #134 (Kiến trúc nội thất (Interior Design)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-15 21:57:12",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  134,
+        "message":  "Chủ đề #134: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-15 21:57:06",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_3",
+        "stt":  134,
+        "message":  "Chủ đề #134: Bù đắp 1 từ còn thiếu (Đang có: 99/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:56:55",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_2",
+        "stt":  134,
+        "message":  "Chủ đề #134: Bù đắp 31 từ còn thiếu (Đang có: 69/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:56:43",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_1",
+        "stt":  134,
+        "message":  "Chủ đề #134: Bù đắp 48 từ còn thiếu (Đang có: 52/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:56:35",
+        "level":  "INFO",
+        "step":  "FACET_START",
+        "stt":  134,
+        "message":  "Chủ đề #134: Bắt đầu phân diện [Thành phần \u0026 Dụng cụ] (25 từ, đã có 52/100)"
+    },
+    {
+        "time":  "2026-11-15 21:56:26",
+        "level":  "INFO",
+        "step":  "FACET_START",
+        "stt":  134,
+        "message":  "Chủ đề #134: Bắt đầu phân diện [Chế biến \u0026 Thành phẩm] (25 từ, đã có 52/100)"
+    },
+    {
+        "time":  "2026-11-15 21:56:16",
+        "level":  "INFO",
+        "step":  "FACET_START",
+        "stt":  134,
+        "message":  "Chủ đề #134: Bắt đầu phân diện [Chuyên sâu \u0026 Đặc trưng] (30 từ, đã có 30/100)"
+    },
+    {
+        "time":  "2026-11-15 21:56:06",
+        "level":  "INFO",
+        "step":  "FACET_START",
+        "stt":  134,
+        "message":  "Chủ đề #134: Bắt đầu phân diện [Cốt lõi \u0026 Phổ biến] (30 từ, đã có 0/100)"
+    },
+    {
+        "time":  "2026-11-15 21:56:06",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  133,
+        "message":  "Hoàn thành chủ đề #133 (Vật dụng dọn dẹp (Cleaning Supplies)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-15 21:56:06",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  133,
+        "message":  "Chủ đề #133: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-15 21:55:59",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_3",
+        "stt":  133,
+        "message":  "Chủ đề #133: Bù đắp 11 từ còn thiếu (Đang có: 89/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:55:51",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_2",
+        "stt":  133,
+        "message":  "Chủ đề #133: Bù đắp 13 từ còn thiếu (Đang có: 87/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:55:40",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_1",
+        "stt":  133,
+        "message":  "Chủ đề #133: Bù đắp 26 từ còn thiếu (Đang có: 74/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:55:31",
+        "level":  "INFO",
+        "step":  "FACET_START",
+        "stt":  133,
+        "message":  "Chủ đề #133: Bắt đầu phân diện [Thành phần \u0026 Dụng cụ] (25 từ, đã có 66/100)"
+    },
+    {
+        "time":  "2026-11-15 21:55:23",
+        "level":  "INFO",
+        "step":  "FACET_START",
+        "stt":  133,
+        "message":  "Chủ đề #133: Bắt đầu phân diện [Chế biến \u0026 Thành phẩm] (25 từ, đã có 41/100)"
+    },
+    {
+        "time":  "2026-11-15 21:55:11",
+        "level":  "INFO",
+        "step":  "FACET_START",
+        "stt":  133,
+        "message":  "Chủ đề #133: Bắt đầu phân diện [Chuyên sâu \u0026 Đặc trưng] (30 từ, đã có 30/100)"
+    },
+    {
+        "time":  "2026-11-15 21:55:02",
+        "level":  "INFO",
+        "step":  "FACET_START",
+        "stt":  133,
+        "message":  "Chủ đề #133: Bắt đầu phân diện [Cốt lõi \u0026 Phổ biến] (30 từ, đã có 0/100)"
+    },
+    {
+        "time":  "2026-11-15 21:55:02",
+        "level":  "SUCCESS",
+        "step":  "DONE_TOPIC",
+        "stt":  132,
+        "message":  "Hoàn thành chủ đề #132 (Hệ thống điện nước (Plumbing \u0026 Electrical)) với 100 từ."
+    },
+    {
+        "time":  "2026-11-15 21:55:02",
+        "level":  "SUCCESS",
+        "step":  "COLLECT_DONE",
+        "stt":  132,
+        "message":  "Chủ đề #132: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+    },
+    {
+        "time":  "2026-11-15 21:54:57",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_10",
+        "stt":  132,
+        "message":  "Chủ đề #132: Bù đắp 4 từ còn thiếu (Đang có: 96/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:54:49",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_9",
+        "stt":  132,
+        "message":  "Chủ đề #132: Bù đắp 8 từ còn thiếu (Đang có: 92/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:54:41",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_8",
+        "stt":  132,
+        "message":  "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:54:35",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_7",
+        "stt":  132,
+        "message":  "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:54:28",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_6",
+        "stt":  132,
+        "message":  "Chủ đề #132: Bù đắp 10 từ còn thiếu (Đang có: 90/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:54:20",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_5",
+        "stt":  132,
+        "message":  "Chủ đề #132: Bù đắp 14 từ còn thiếu (Đang có: 86/100)..."
+    },
+    {
+        "time":  "2026-11-15 21:54:12",
+        "level":  "WARNING",
+        "step":  "TOPUP_BATCH_4",
+        "stt":  132,
+        "message":  "Chủ đề #132: Bù đắp 15 từ còn thiếu (Đang có: 85/100)..."
+    }
 ]

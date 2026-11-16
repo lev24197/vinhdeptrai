@@ -41,7 +41,7 @@ if (-not $GeminiApiKey) {
     }
 }
 if (-not $GeminiApiKey) {
-    Write-Host "[LỖI] Chưa có GEMINI_API_KEY! Vui lòng truyền tham số -GeminiApiKey hoặc set biến môi trường GEMINI_API_KEY." -ForegroundColor Red
+    Write-Host "[LỖI] Chưa có GEMINI_API_KEY! Vui lòng truyền tham số -GeminiApiKey, set biến môi trường GEMINI_API_KEY, hoặc lưu trong .env." -ForegroundColor Red
     exit 1
 }
 
@@ -114,10 +114,10 @@ foreach ($topicEntry in $topicsToProcess) {
     $stt = $topicEntry.stt
     $topicName = $topicEntry.topic
     Write-Host "`n=================================================================" -ForegroundColor Magenta
-    Write-Host "BẮT ĐẦU CHỦ ĐỀ #$stt: $topicName" -ForegroundColor Magenta
+    Write-Host "BẮT ĐẦU CHỦ ĐỀ #${stt} - $topicName" -ForegroundColor Magenta
     Write-Host "=================================================================" -ForegroundColor Magenta
 
-    Append-RunLog "INFO" "START_TOPIC" "Bắt đầu Pipeline Lai cho chủ đề #$stt: $topicName" $stt
+    Append-RunLog "INFO" "START_TOPIC" "Bắt đầu Pipeline Lai cho chủ đề #${stt} - $topicName" $stt
 
     # BƯỚC 1: Gọi Gemini Flash Lite sinh 100 từ siêu tiết kiệm
     $prompt = @"
@@ -134,7 +134,7 @@ STRICT RULES:
 Only output the raw JSON array without any markdown wrappers or comments.
 "@
 
-    $models = @("gemini-2.5-flash-lite", "gemini-1.5-flash", "gemini-3.1-flash-lite")
+    $models = @("gemini-3.5-flash-lite", "gemini-flash-lite-latest", "gemini-3.1-flash-lite", "gemini-2.0-flash")
     $geminiSuccess = $false
     $wordsList = @()
 
@@ -169,7 +169,7 @@ Only output the raw JSON array without any markdown wrappers or comments.
                 break
             }
         } catch {
-            Write-Host "  [Cảnh báo] Lỗi gọi model $m: $($_.Exception.Message)" -ForegroundColor Yellow
+            Write-Host "  [Cảnh báo] Lỗi gọi model ${m}: $($_.Exception.Message)" -ForegroundColor Yellow
             Start-Sleep -Seconds 1
         }
     }
@@ -212,7 +212,7 @@ Only output the raw JSON array without any markdown wrappers or comments.
         $mp3Url = ""
 
         try {
-            $cambridge = Invoke-RestMethod -Uri "https://dictionary-api.eliaschen.dev/api/dictionary/en/$slug" -Method Get -TimeoutSec 4 -ErrorAction Stop
+            $cambridge = Invoke-RestMethod -Uri "https://dictionary-api.eliaschen.dev/api/dictionary/en/$slug" -Method Get -TimeoutSec 3 -ErrorAction Stop
             
             # Lấy US IPA & MP3 URL
             foreach ($p in $cambridge.pronunciation) {
@@ -243,18 +243,18 @@ Only output the raw JSON array without any markdown wrappers or comments.
             if (-not (Test-Path $mp3FilePath)) {
                 $downloadOk = $false
 
-                # Ưu tiên 1: Tải qua Cloud Run Cambridge Audio Service
+                # Ưu tiên 1: Tải âm thanh US chuẩn qua Google TTS (cực nhanh 0.15s/từ, ổn định 100%)
                 try {
-                    $cloudRunUrl = "https://anki-audio-service-918034752495.asia-southeast1.run.app/audio/$cleanWord"
-                    Invoke-WebRequest -Uri $cloudRunUrl -OutFile $mp3FilePath -TimeoutSec 5 -ErrorAction Stop
+                    $ttsUrl = "https://translate.google.com/translate_tts?ie=UTF-8&q=$([Uri]::EscapeDataString($w))&tl=en-US&client=tw-ob"
+                    Invoke-WebRequest -Uri $ttsUrl -OutFile $mp3FilePath -UserAgent "Mozilla/5.0" -TimeoutSec 3 -ErrorAction Stop
                     if ((Get-Item $mp3FilePath).Length -gt 1000) { $downloadOk = $true }
                 } catch {}
 
-                # Ưu tiên 2: Tải qua Google TTS US giọng chuẩn
+                # Ưu tiên 2 (dự phòng): Tải qua Cloud Run nếu cần
                 if (-not $downloadOk) {
                     try {
-                        $ttsUrl = "https://translate.google.com/translate_tts?ie=UTF-8&q=$([Uri]::EscapeDataString($w))&tl=en-US&client=tw-ob"
-                        Invoke-WebRequest -Uri $ttsUrl -OutFile $mp3FilePath -UserAgent "Mozilla/5.0" -TimeoutSec 5 -ErrorAction Stop
+                        $cloudRunUrl = "https://anki-audio-service-918034752495.asia-southeast1.run.app/audio/$cleanWord"
+                        Invoke-WebRequest -Uri $cloudRunUrl -OutFile $mp3FilePath -TimeoutSec 2 -ErrorAction Stop
                         if ((Get-Item $mp3FilePath).Length -gt 1000) { $downloadOk = $true }
                     } catch {}
                 }
@@ -306,7 +306,7 @@ Only output the raw JSON array without any markdown wrappers or comments.
     $statusData.updated_at = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
     $statusData | ConvertTo-Json -Depth 6 | Out-File -FilePath $statusFile -Encoding utf8
 
-    Append-RunLog "SUCCESS" "TOPIC_COMPLETED" "Hoàn thành chủ đề #$stt: $topicName với $($lines.Count) từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)." $stt
+    Append-RunLog "SUCCESS" "TOPIC_COMPLETED" "Hoàn thành chủ đề #${stt} - $topicName với $($lines.Count) từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)." $stt
 }
 
 Write-Host "`n=================================================================" -ForegroundColor Green
