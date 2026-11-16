@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 07:30:00",
+  "updated_at": "2026-11-16 08:01:24",
   "topics": [
     {
       "stt": 1,
@@ -1318,28 +1318,28 @@
     {
       "stt": 147,
       "topic": "Mỹ phẩm trang điểm (Makeup Cosmetics)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/147.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 08:00",
       "last_error": null
     },
     {
       "stt": 148,
       "topic": "Dụng cụ làm tóc (Hairdressing Tools)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/148.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts!"
     },
     {
       "stt": 149,
       "topic": "Dịch vụ Spa và Massage (Spa & Massage Services)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/149.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 08:01",
       "last_error": null
     },
     {

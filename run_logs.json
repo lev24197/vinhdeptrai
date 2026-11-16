@@ -1,5 +1,103 @@
 [
   {
+    "time": "2026-11-16 08:01:24",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 149,
+    "message": "Hoàn thành chủ đề #149 (Dịch vụ Spa và Massage (Spa & Massage Services)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 08:01:24",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 149,
+    "message": "Chủ đề #149: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 08:01:24",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 149,
+    "message": "Chủ đề #149 (Dịch vụ Spa và Massage (Spa & Massage Services)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 08:01:05",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 149,
+    "message": "Chủ đề #149 (Dịch vụ Spa và Massage (Spa & Massage Services)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 08:01:05",
+    "level": "ERROR",
+    "step": "FAIL_TOPIC",
+    "stt": 148,
+    "message": "Lỗi khi tạo chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts!"
+  },
+  {
+    "time": "2026-11-16 08:01:05",
+    "level": "ERROR",
+    "step": "INCOMPLETE",
+    "stt": 148,
+    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Sau 2 prompts chỉ đạt 79/100 từ!"
+  },
+  {
+    "time": "2026-11-16 08:00:42",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 148,
+    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Prompt 1 đạt 63/100 từ (còn thiếu 37). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 08:00:15",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 148,
+    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 08:00:15",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 147,
+    "message": "Hoàn thành chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 08:00:15",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 147,
+    "message": "Chủ đề #147: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 08:00:15",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 147,
+    "message": "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 07:59:48",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 147,
+    "message": "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Prompt 1 đạt 72/100 từ (còn thiếu 28). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 07:59:29",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 147,
+    "message": "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 07:59:29",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [147, 148, 149]"
+  },
+  {
     "time": "2026-11-16 07:30:00",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",
