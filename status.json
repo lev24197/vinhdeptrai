@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 02:05:59",
+    "updated_at":  "2026-11-17 02:17:58",
     "topics":  [
                    {
                        "stt":  1,
@@ -2479,137 +2479,137 @@
                    {
                        "stt":  276,
                        "topic":  "Phong trào lao động (Labor Movements)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/276.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:07",
+                       "last_error":  null
                    },
                    {
                        "stt":  277,
                        "topic":  "Dân số học (Demographics)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/277.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:07",
+                       "last_error":  null
                    },
                    {
                        "stt":  278,
                        "topic":  "Phúc lợi xã hội (Social Welfare)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/278.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:08",
+                       "last_error":  null
                    },
                    {
                        "stt":  279,
                        "topic":  "Di sản văn hóa (Cultural Heritages)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/279.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:08",
+                       "last_error":  null
                    },
                    {
                        "stt":  280,
                        "topic":  "Lịch sử cận đại (Modern History)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/280.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:10",
+                       "last_error":  null
                    },
                    {
                        "stt":  281,
                        "topic":  "Các hội chứng tâm lý (Psychological Syndromes)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  98,
                        "file_path":  "output/281.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:10",
+                       "last_error":  null
                    },
                    {
                        "stt":  282,
                        "topic":  "Ngôn ngữ cơ thể (Body Language)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/282.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:11",
+                       "last_error":  null
                    },
                    {
                        "stt":  283,
                        "topic":  "Kỹ năng giao tiếp (Communication Skills)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/283.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:11",
+                       "last_error":  null
                    },
                    {
                        "stt":  284,
                        "topic":  "Trí tuệ cảm xúc (Emotional Intelligence)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/284.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:13",
+                       "last_error":  null
                    },
                    {
                        "stt":  285,
                        "topic":  "Động lực học (Motivation)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/285.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:13",
+                       "last_error":  null
                    },
                    {
                        "stt":  286,
                        "topic":  "Căng thẳng và Trầm cảm (Stress \u0026 Depression)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/286.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:14",
+                       "last_error":  null
                    },
                    {
                        "stt":  287,
                        "topic":  "Phát triển bản thân (Self-Development)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/287.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:14",
+                       "last_error":  null
                    },
                    {
                        "stt":  288,
                        "topic":  "Thói quen và Hành vi (Habits \u0026 Behaviors)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/288.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:16",
+                       "last_error":  null
                    },
                    {
                        "stt":  289,
                        "topic":  "Giấc mơ và Phân tâm học (Dreams \u0026 Psychoanalysis)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/289.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:16",
+                       "last_error":  null
                    },
                    {
                        "stt":  290,
                        "topic":  "Các mối quan hệ lãng mạn (Romantic Relationships)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/290.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 02:17",
+                       "last_error":  null
                    },
                    {
                        "stt":  291,

@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 02:17:58",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  290,
+        "message":  "Hoàn thành chủ đề #290: Các mối quan hệ lãng mạn (Romantic Relationships) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 02:16:24",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  291,
+        "message":  "Khởi chạy luồng xử lý chủ đề #291: Hình học và Không gian (Geometry \u0026 Space)"
+    },
+    {
+        "time":  "2026-11-17 02:16:23",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  290,
+        "message":  "Khởi chạy luồng xử lý chủ đề #290: Các mối quan hệ lãng mạn (Romantic Relationships)"
+    },
+    {
+        "time":  "2026-11-17 02:16:23",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  288,
+        "message":  "Hoàn thành chủ đề #288: Thói quen và Hành vi (Habits \u0026 Behaviors) (100 từ, 87s)"
+    },
+    {
+        "time":  "2026-11-17 02:16:23",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  289,
+        "message":  "Hoàn thành chủ đề #289: Giấc mơ và Phân tâm học (Dreams \u0026 Psychoanalysis) (100 từ, 85s)"
+    },
+    {
+        "time":  "2026-11-17 02:14:57",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  289,
+        "message":  "Khởi chạy luồng xử lý chủ đề #289: Giấc mơ và Phân tâm học (Dreams \u0026 Psychoanalysis)"
+    },
+    {
+        "time":  "2026-11-17 02:14:56",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  288,
+        "message":  "Khởi chạy luồng xử lý chủ đề #288: Thói quen và Hành vi (Habits \u0026 Behaviors)"
+    },
+    {
+        "time":  "2026-11-17 02:14:56",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  286,
+        "message":  "Hoàn thành chủ đề #286: Căng thẳng và Trầm cảm (Stress \u0026 Depression) (100 từ, 96s)"
+    },
+    {
+        "time":  "2026-11-17 02:14:56",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  287,
+        "message":  "Hoàn thành chủ đề #287: Phát triển bản thân (Self-Development) (100 từ, 88s)"
+    },
+    {
+        "time":  "2026-11-17 02:13:28",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  287,
+        "message":  "Khởi chạy luồng xử lý chủ đề #287: Phát triển bản thân (Self-Development)"
+    },
+    {
+        "time":  "2026-11-17 02:13:28",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  285,
+        "message":  "Hoàn thành chủ đề #285: Động lực học (Motivation) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 02:13:20",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  286,
+        "message":  "Khởi chạy luồng xử lý chủ đề #286: Căng thẳng và Trầm cảm (Stress \u0026 Depression)"
+    },
+    {
+        "time":  "2026-11-17 02:13:20",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  284,
+        "message":  "Hoàn thành chủ đề #284: Trí tuệ cảm xúc (Emotional Intelligence) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:11:52",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  285,
+        "message":  "Khởi chạy luồng xử lý chủ đề #285: Động lực học (Motivation)"
+    },
+    {
+        "time":  "2026-11-17 02:11:51",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  284,
+        "message":  "Khởi chạy luồng xử lý chủ đề #284: Trí tuệ cảm xúc (Emotional Intelligence)"
+    },
+    {
+        "time":  "2026-11-17 02:11:51",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  282,
+        "message":  "Hoàn thành chủ đề #282: Ngôn ngữ cơ thể (Body Language) (100 từ, 99s)"
+    },
+    {
+        "time":  "2026-11-17 02:11:51",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  283,
+        "message":  "Hoàn thành chủ đề #283: Kỹ năng giao tiếp (Communication Skills) (100 từ, 88s)"
+    },
+    {
+        "time":  "2026-11-17 02:10:22",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  283,
+        "message":  "Khởi chạy luồng xử lý chủ đề #283: Kỹ năng giao tiếp (Communication Skills)"
+    },
+    {
+        "time":  "2026-11-17 02:10:22",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  281,
+        "message":  "Hoàn thành chủ đề #281: Các hội chứng tâm lý (Psychological Syndromes) (98 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:10:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  282,
+        "message":  "Khởi chạy luồng xử lý chủ đề #282: Ngôn ngữ cơ thể (Body Language)"
+    },
+    {
+        "time":  "2026-11-17 02:10:12",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  280,
+        "message":  "Hoàn thành chủ đề #280: Lịch sử cận đại (Modern History) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:08:56",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  281,
+        "message":  "Khởi chạy luồng xử lý chủ đề #281: Các hội chứng tâm lý (Psychological Syndromes)"
+    },
+    {
+        "time":  "2026-11-17 02:08:56",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  279,
+        "message":  "Hoàn thành chủ đề #279: Di sản văn hóa (Cultural Heritages) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:08:43",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  280,
+        "message":  "Khởi chạy luồng xử lý chủ đề #280: Lịch sử cận đại (Modern History)"
+    },
+    {
+        "time":  "2026-11-17 02:08:43",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  278,
+        "message":  "Hoàn thành chủ đề #278: Phúc lợi xã hội (Social Welfare) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 02:07:30",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  279,
+        "message":  "Khởi chạy luồng xử lý chủ đề #279: Di sản văn hóa (Cultural Heritages)"
+    },
+    {
+        "time":  "2026-11-17 02:07:30",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  277,
+        "message":  "Hoàn thành chủ đề #277: Dân số học (Demographics) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:07:19",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  278,
+        "message":  "Khởi chạy luồng xử lý chủ đề #278: Phúc lợi xã hội (Social Welfare)"
+    },
+    {
+        "time":  "2026-11-17 02:07:19",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  276,
+        "message":  "Hoàn thành chủ đề #276: Phong trào lao động (Labor Movements) (100 từ, 85s)"
+    },
+    {
+        "time":  "2026-11-17 02:06:03",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  277,
+        "message":  "Khởi chạy luồng xử lý chủ đề #277: Dân số học (Demographics)"
+    },
+    {
         "time":  "2026-11-17 02:05:59",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "DONE_TOPIC",
         "stt":  140,
         "message":  "Hoàn thành chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 04:03:49",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  140,
-        "message":  "Chủ đề #140: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 04:03:49",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  140,
-        "message":  "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 04:03:28",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  140,
-        "message":  "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)): Prompt 1 đạt 97/100 từ (còn thiếu 3). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 04:03:08",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  140,
-        "message":  "Chủ đề #140 (Chuyển nhà và Đóng gói (Moving \u0026 Packing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 04:03:08",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  139,
-        "message":  "Hoàn thành chủ đề #139 (Vật liệu lát sàn và tường (Flooring \u0026 Wall Materials)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 04:03:08",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  139,
-        "message":  "Chủ đề #139: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 04:03:08",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  139,
-        "message":  "Chủ đề #139 (Vật liệu lát sàn và tường (Flooring \u0026 Wall Materials)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 04:02:42",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  139,
-        "message":  "Chủ đề #139 (Vật liệu lát sàn và tường (Flooring \u0026 Wall Materials)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 04:02:42",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  136,
-        "message":  "Hoàn thành chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 04:02:42",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  136,
-        "message":  "Chủ đề #136: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 04:02:42",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  136,
-        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 04:02:15",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  136,
-        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Prompt 1 đạt 93/100 từ (còn thiếu 7). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 04:01:55",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  136,
-        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 04:01:55",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [136, 139, 140]"
-    },
-    {
-        "time":  "2026-11-15 22:23:01",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  138,
-        "message":  "Hoàn thành chủ đề #138 (Các phòng chức năng (Functional Rooms)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-15 22:23:01",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  138,
-        "message":  "Chủ đề #138: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-15 22:23:01",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  138,
-        "message":  "Chủ đề #138 (Các phòng chức năng (Functional Rooms)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-15 22:22:32",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  138,
-        "message":  "Chủ đề #138 (Các phòng chức năng (Functional Rooms)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-15 22:22:32",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  137,
-        "message":  "Hoàn thành chủ đề #137 (An ninh nhà ở (Home Security)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-15 22:22:32",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  137,
-        "message":  "Chủ đề #137: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-15 22:22:32",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  137,
-        "message":  "Chủ đề #137 (An ninh nhà ở (Home Security)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-15 22:22:07",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  137,
-        "message":  "Chủ đề #137 (An ninh nhà ở (Home Security)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-15 22:22:07",
-        "level":  "ERROR",
-        "step":  "FAIL_TOPIC",
-        "stt":  136,
-        "message":  "Lỗi khi tạo chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)) chỉ tạo được 81/100 từ sau tối đa 2 prompts!"
-    },
-    {
-        "time":  "2026-11-15 22:22:07",
-        "level":  "ERROR",
-        "step":  "INCOMPLETE",
-        "stt":  136,
-        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Sau 2 prompts chỉ đạt 81/100 từ!"
-    },
-    {
-        "time":  "2026-11-15 22:21:44",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  136,
-        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Prompt 1 đạt 79/100 từ (còn thiếu 21). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-15 22:21:23",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  136,
-        "message":  "Chủ đề #136 (Sân vườn và Ban công (Gardens \u0026 Balconies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-15 22:21:23",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [136, 137, 138]"
-    },
-    {
-        "time":  "2026-11-15 21:57:12",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  134,
-        "message":  "Hoàn thành chủ đề #134 (Kiến trúc nội thất (Interior Design)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-15 21:57:12",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  134,
-        "message":  "Chủ đề #134: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-15 21:57:06",
-        "level":  "WARNING",
-        "step":  "TOPUP_BATCH_3",
-        "stt":  134,
-        "message":  "Chủ đề #134: Bù đắp 1 từ còn thiếu (Đang có: 99/100)..."
     }
 ]
