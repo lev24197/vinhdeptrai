@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 03:49:08",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  410,
+        "message":  "Hoàn thành chủ đề #410: Tin giả và Xác minh (Fake News \u0026 Fact-Checking) (100 từ, 110s)"
+    },
+    {
+        "time":  "2026-11-17 03:48:31",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  411,
+        "message":  "Khởi chạy luồng xử lý chủ đề #411: Tập tạ (Weightlifting)"
+    },
+    {
+        "time":  "2026-11-17 03:48:31",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  409,
+        "message":  "Hoàn thành chủ đề #409: Kiểm duyệt thông tin (Information Censorship) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:47:17",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  410,
+        "message":  "Khởi chạy luồng xử lý chủ đề #410: Tin giả và Xác minh (Fake News \u0026 Fact-Checking)"
+    },
+    {
+        "time":  "2026-11-17 03:47:17",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  408,
+        "message":  "Hoàn thành chủ đề #408: Thông cáo báo chí (Press Releases) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 03:46:58",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  409,
+        "message":  "Khởi chạy luồng xử lý chủ đề #409: Kiểm duyệt thông tin (Information Censorship)"
+    },
+    {
+        "time":  "2026-11-17 03:46:58",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  407,
+        "message":  "Hoàn thành chủ đề #407: Đài phát thanh (Radio Broadcasting) (100 từ, 90s)"
+    },
+    {
+        "time":  "2026-11-17 03:45:42",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  408,
+        "message":  "Khởi chạy luồng xử lý chủ đề #408: Thông cáo báo chí (Press Releases)"
+    },
+    {
+        "time":  "2026-11-17 03:45:42",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  406,
+        "message":  "Hoàn thành chủ đề #406: Tạp chí thời trang (Fashion Magazines) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:45:29",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  407,
+        "message":  "Khởi chạy luồng xử lý chủ đề #407: Đài phát thanh (Radio Broadcasting)"
+    },
+    {
+        "time":  "2026-11-17 03:45:28",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  405,
+        "message":  "Hoàn thành chủ đề #405: Phỏng vấn và Talkshow (Interviews \u0026 Talkshows) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 03:44:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  406,
+        "message":  "Khởi chạy luồng xử lý chủ đề #406: Tạp chí thời trang (Fashion Magazines)"
+    },
+    {
+        "time":  "2026-11-17 03:44:12",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  404,
+        "message":  "Hoàn thành chủ đề #404: Phóng sự điều tra (Investigative Journalism) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:43:53",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  405,
+        "message":  "Khởi chạy luồng xử lý chủ đề #405: Phỏng vấn và Talkshow (Interviews \u0026 Talkshows)"
+    },
+    {
+        "time":  "2026-11-17 03:43:53",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  403,
+        "message":  "Hoàn thành chủ đề #403: Báo điện tử (Online News) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 03:42:43",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  404,
+        "message":  "Khởi chạy luồng xử lý chủ đề #404: Phóng sự điều tra (Investigative Journalism)"
+    },
+    {
+        "time":  "2026-11-17 03:42:43",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  402,
+        "message":  "Hoàn thành chủ đề #402: Báo in (Print Media) (100 từ, 93s)"
+    },
+    {
+        "time":  "2026-11-17 03:42:27",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  403,
+        "message":  "Khởi chạy luồng xử lý chủ đề #403: Báo điện tử (Online News)"
+    },
+    {
+        "time":  "2026-11-17 03:42:26",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  401,
+        "message":  "Hoàn thành chủ đề #401: Truyền hình cáp (Cable TV) (100 từ, 99s)"
+    },
+    {
+        "time":  "2026-11-17 03:41:10",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  402,
+        "message":  "Khởi chạy luồng xử lý chủ đề #402: Báo in (Print Media)"
+    },
+    {
+        "time":  "2026-11-17 03:41:10",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  400,
+        "message":  "Hoàn thành chủ đề #400: Văn hóa học (Cultural Studies) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:40:48",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  401,
+        "message":  "Khởi chạy luồng xử lý chủ đề #401: Truyền hình cáp (Cable TV)"
+    },
+    {
+        "time":  "2026-11-17 03:40:48",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  399,
+        "message":  "Hoàn thành chủ đề #399: Lịch sử nghệ thuật (Art History) (100 từ, 96s)"
+    },
+    {
+        "time":  "2026-11-17 03:39:40",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  400,
+        "message":  "Khởi chạy luồng xử lý chủ đề #400: Văn hóa học (Cultural Studies)"
+    },
+    {
+        "time":  "2026-11-17 03:39:40",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  398,
+        "message":  "Hoàn thành chủ đề #398: Giáo dục học (Pedagogy) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 03:39:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  399,
+        "message":  "Khởi chạy luồng xử lý chủ đề #399: Lịch sử nghệ thuật (Art History)"
+    },
+    {
+        "time":  "2026-11-17 03:39:12",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  397,
+        "message":  "Hoàn thành chủ đề #397: Tâm lý học tội phạm (Criminal Psychology) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:38:14",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  398,
+        "message":  "Khởi chạy luồng xử lý chủ đề #398: Giáo dục học (Pedagogy)"
+    },
+    {
+        "time":  "2026-11-17 03:38:14",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  396,
+        "message":  "Hoàn thành chủ đề #396: Ngôn ngữ học xã hội (Sociolinguistics) (100 từ, 94s)"
+    },
+    {
+        "time":  "2026-11-17 03:37:40",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  397,
+        "message":  "Khởi chạy luồng xử lý chủ đề #397: Tâm lý học tội phạm (Criminal Psychology)"
+    },
+    {
         "time":  "2026-11-17 03:37:35",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "SPAWN_WORKER",
         "stt":  262,
         "message":  "Khởi chạy luồng xử lý chủ đề #262: Quan hệ quốc tế (International Relations)"
-    },
-    {
-        "time":  "2026-11-17 01:55:32",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  260,
-        "message":  "Hoàn thành chủ đề #260: Thiết bị di động thông minh (Smart Devices) (100 từ, 77s)"
-    },
-    {
-        "time":  "2026-11-17 01:54:16",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  261,
-        "message":  "Khởi chạy luồng xử lý chủ đề #261: Hệ thống bầu cử (Electoral Systems)"
-    },
-    {
-        "time":  "2026-11-17 01:54:15",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  260,
-        "message":  "Khởi chạy luồng xử lý chủ đề #260: Thiết bị di động thông minh (Smart Devices)"
-    },
-    {
-        "time":  "2026-11-17 01:54:15",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  258,
-        "message":  "Hoàn thành chủ đề #258: Bản quyền và Sở hữu trí tuệ (Copyright \u0026 IP) (100 từ, 90s)"
-    },
-    {
-        "time":  "2026-11-17 01:54:15",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  259,
-        "message":  "Hoàn thành chủ đề #259: Quyền riêng tư dữ liệu (Data Privacy) (100 từ, 79s)"
-    },
-    {
-        "time":  "2026-11-17 01:52:56",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  259,
-        "message":  "Khởi chạy luồng xử lý chủ đề #259: Quyền riêng tư dữ liệu (Data Privacy)"
-    },
-    {
-        "time":  "2026-11-17 01:52:55",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  257,
-        "message":  "Hoàn thành chủ đề #257: Xử lý khủng giải truyền thông (PR Crisis Management) (99 từ, 80s)"
-    },
-    {
-        "time":  "2026-11-17 01:52:45",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  258,
-        "message":  "Khởi chạy luồng xử lý chủ đề #258: Bản quyền và Sở hữu trí tuệ (Copyright \u0026 IP)"
-    },
-    {
-        "time":  "2026-11-17 01:52:45",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  256,
-        "message":  "Hoàn thành chủ đề #256: Podcast và Stream (Podcasts \u0026 Streaming) (100 từ, 80s)"
-    },
-    {
-        "time":  "2026-11-17 01:51:35",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  257,
-        "message":  "Khởi chạy luồng xử lý chủ đề #257: Xử lý khủng giải truyền thông (PR Crisis Management)"
-    },
-    {
-        "time":  "2026-11-17 01:51:35",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  252,
-        "message":  "Hoàn thành chủ đề #252: Quản lý cộng đồng (Community Management) (100 từ, 91s)"
-    },
-    {
-        "time":  "2026-11-17 01:51:25",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  256,
-        "message":  "Khởi chạy luồng xử lý chủ đề #256: Podcast và Stream (Podcasts \u0026 Streaming)"
-    },
-    {
-        "time":  "2026-11-17 01:51:25",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  255,
-        "message":  "Hoàn thành chủ đề #255: Quảng cáo trực tuyến (Online Advertising) (100 từ, 79s)"
-    },
-    {
-        "time":  "2026-11-17 01:50:05",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  255,
-        "message":  "Khởi chạy luồng xử lý chủ đề #255: Quảng cáo trực tuyến (Online Advertising)"
-    },
-    {
-        "time":  "2026-11-17 01:50:04",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  252,
-        "message":  "Khởi chạy luồng xử lý chủ đề #252: Quản lý cộng đồng (Community Management)"
-    },
-    {
-        "time":  "2026-11-17 01:50:04",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  249,
-        "message":  "Hoàn thành chủ đề #249: Hệ điều hành (Operating Systems) (100 từ, 84s)"
-    },
-    {
-        "time":  "2026-11-17 01:50:04",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  250,
-        "message":  "Hoàn thành chủ đề #250: Thực tế ảo và AR (VR \u0026 AR) (100 từ, 82s)"
-    },
-    {
-        "time":  "2026-11-17 01:48:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  250,
-        "message":  "Khởi chạy luồng xử lý chủ đề #250: Thực tế ảo và AR (VR \u0026 AR)"
-    },
-    {
-        "time":  "2026-11-17 01:48:41",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  249,
-        "message":  "Khởi chạy luồng xử lý chủ đề #249: Hệ điều hành (Operating Systems)"
-    },
-    {
-        "time":  "2026-11-17 01:48:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  247,
-        "message":  "Hoàn thành chủ đề #247: Phần cứng viễn thông (Telecom Hardware) (100 từ, 93s)"
-    },
-    {
-        "time":  "2026-11-17 01:48:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  248,
-        "message":  "Hoàn thành chủ đề #248: Phát triển game (Game Development) (100 từ, 88s)"
-    },
-    {
-        "time":  "2026-11-17 01:47:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  248,
-        "message":  "Khởi chạy luồng xử lý chủ đề #248: Phát triển game (Game Development)"
-    },
-    {
-        "time":  "2026-11-17 01:47:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  246,
-        "message":  "Hoàn thành chủ đề #246: Mạng máy tính (Computer Networks) (100 từ, 80s)"
-    },
-    {
-        "time":  "2026-11-17 01:47:08",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  247,
-        "message":  "Khởi chạy luồng xử lý chủ đề #247: Phần cứng viễn thông (Telecom Hardware)"
-    },
-    {
-        "time":  "2026-11-17 01:47:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  243,
-        "message":  "Hoàn thành chủ đề #243: Cơ sở dữ liệu (Databases) (100 từ, 83s)"
-    },
-    {
-        "time":  "2026-11-17 01:45:52",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  246,
-        "message":  "Khởi chạy luồng xử lý chủ đề #246: Mạng máy tính (Computer Networks)"
-    },
-    {
-        "time":  "2026-11-17 01:45:52",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  241,
-        "message":  "Hoàn thành chủ đề #241: Ngôn ngữ lập trình (Programming Languages) (100 từ, 91s)"
-    },
-    {
-        "time":  "2026-11-17 01:45:45",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  243,
-        "message":  "Khởi chạy luồng xử lý chủ đề #243: Cơ sở dữ liệu (Databases)"
-    },
-    {
-        "time":  "2026-11-17 01:45:45",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  242,
-        "message":  "Hoàn thành chủ đề #242: An ninh mạng (Cybersecurity) (99 từ, 82s)"
-    },
-    {
-        "time":  "2026-11-17 01:44:22",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  242,
-        "message":  "Khởi chạy luồng xử lý chủ đề #242: An ninh mạng (Cybersecurity)"
     }
 ]

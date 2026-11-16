@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 03:37:35",
+    "updated_at":  "2026-11-17 03:49:08",
     "topics":  [
                    {
                        "stt":  1,
@@ -3559,46 +3559,46 @@
                    {
                        "stt":  396,
                        "topic":  "Ngôn ngữ học xã hội (Sociolinguistics)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/396.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:38",
                        "last_error":  null
                    },
                    {
                        "stt":  397,
                        "topic":  "Tâm lý học tội phạm (Criminal Psychology)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/397.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:39",
                        "last_error":  null
                    },
                    {
                        "stt":  398,
                        "topic":  "Giáo dục học (Pedagogy)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/398.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:39",
                        "last_error":  null
                    },
                    {
                        "stt":  399,
                        "topic":  "Lịch sử nghệ thuật (Art History)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/399.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:40",
                        "last_error":  null
                    },
                    {
                        "stt":  400,
                        "topic":  "Văn hóa học (Cultural Studies)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/400.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:41",
                        "last_error":  null
                    },
                    {
@@ -3613,82 +3613,82 @@
                    {
                        "stt":  402,
                        "topic":  "Báo in (Print Media)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/402.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:42",
                        "last_error":  null
                    },
                    {
                        "stt":  403,
                        "topic":  "Báo điện tử (Online News)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/403.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:43",
                        "last_error":  null
                    },
                    {
                        "stt":  404,
                        "topic":  "Phóng sự điều tra (Investigative Journalism)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/404.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:44",
                        "last_error":  null
                    },
                    {
                        "stt":  405,
                        "topic":  "Phỏng vấn và Talkshow (Interviews \u0026 Talkshows)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/405.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:45",
                        "last_error":  null
                    },
                    {
                        "stt":  406,
                        "topic":  "Tạp chí thời trang (Fashion Magazines)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/406.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:45",
                        "last_error":  null
                    },
                    {
                        "stt":  407,
                        "topic":  "Đài phát thanh (Radio Broadcasting)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/407.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:46",
                        "last_error":  null
                    },
                    {
                        "stt":  408,
                        "topic":  "Thông cáo báo chí (Press Releases)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/408.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:47",
                        "last_error":  null
                    },
                    {
                        "stt":  409,
                        "topic":  "Kiểm duyệt thông tin (Information Censorship)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/409.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:48",
                        "last_error":  null
                    },
                    {
                        "stt":  410,
                        "topic":  "Tin giả và Xác minh (Fake News \u0026 Fact-Checking)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/410.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-17 03:49",
                        "last_error":  null
                    },
                    {
