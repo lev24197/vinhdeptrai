@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 04:46:34",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  485,
+        "message":  "Hoàn thành chủ đề #485: Gọi cảnh sát (Calling the Police) (100 từ, 98s)"
+    },
+    {
+        "time":  "2026-11-17 04:45:26",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  486,
+        "message":  "Khởi chạy luồng xử lý chủ đề #486: Mất cắp và Trộm cắp (Theft \u0026 Burglary)"
+    },
+    {
+        "time":  "2026-11-17 04:45:26",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  484,
+        "message":  "Hoàn thành chủ đề #484: Cấp cứu y tế (Medical Emergencies) (100 từ, 98s)"
+    },
+    {
+        "time":  "2026-11-17 04:44:55",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  485,
+        "message":  "Khởi chạy luồng xử lý chủ đề #485: Gọi cảnh sát (Calling the Police)"
+    },
+    {
+        "time":  "2026-11-17 04:44:55",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  483,
+        "message":  "Hoàn thành chủ đề #483: Sơ tán khẩn cấp (Emergency Evacuation) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 04:43:48",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  484,
+        "message":  "Khởi chạy luồng xử lý chủ đề #484: Cấp cứu y tế (Medical Emergencies)"
+    },
+    {
+        "time":  "2026-11-17 04:43:48",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  482,
+        "message":  "Hoàn thành chủ đề #482: Hỏa hoạn (Fires) (100 từ, 126s)"
+    },
+    {
+        "time":  "2026-11-17 04:43:20",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  483,
+        "message":  "Khởi chạy luồng xử lý chủ đề #483: Sơ tán khẩn cấp (Emergency Evacuation)"
+    },
+    {
+        "time":  "2026-11-17 04:43:19",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  481,
+        "message":  "Hoàn thành chủ đề #481: Tai nạn giao thông (Traffic Accidents) (100 từ, 105s)"
+    },
+    {
+        "time":  "2026-11-17 04:41:42",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  482,
+        "message":  "Khởi chạy luồng xử lý chủ đề #482: Hỏa hoạn (Fires)"
+    },
+    {
+        "time":  "2026-11-17 04:41:42",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  480,
+        "message":  "Hoàn thành chủ đề #480: Phí giao dịch (Transaction Fees) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 04:41:35",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  481,
+        "message":  "Khởi chạy luồng xử lý chủ đề #481: Tai nạn giao thông (Traffic Accidents)"
+    },
+    {
+        "time":  "2026-11-17 04:41:35",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  479,
+        "message":  "Hoàn thành chủ đề #479: Biên lai và Hóa đơn (Receipts \u0026 Invoices) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 04:40:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  480,
+        "message":  "Khởi chạy luồng xử lý chủ đề #480: Phí giao dịch (Transaction Fees)"
+    },
+    {
+        "time":  "2026-11-17 04:40:12",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  478,
+        "message":  "Hoàn thành chủ đề #478: Chi nhánh ngân hàng (Bank Branches) (100 từ, 80s)"
+    },
+    {
+        "time":  "2026-11-17 04:40:08",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  479,
+        "message":  "Khởi chạy luồng xử lý chủ đề #479: Biên lai và Hóa đơn (Receipts \u0026 Invoices)"
+    },
+    {
+        "time":  "2026-11-17 04:40:08",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  477,
+        "message":  "Hoàn thành chủ đề #477: Ngân hàng số (Digital Banking) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 04:38:52",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  478,
+        "message":  "Khởi chạy luồng xử lý chủ đề #478: Chi nhánh ngân hàng (Bank Branches)"
+    },
+    {
+        "time":  "2026-11-17 04:38:52",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  476,
+        "message":  "Hoàn thành chủ đề #476: Lãi suất (Interest Rates) (100 từ, 93s)"
+    },
+    {
+        "time":  "2026-11-17 04:38:36",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  477,
+        "message":  "Khởi chạy luồng xử lý chủ đề #477: Ngân hàng số (Digital Banking)"
+    },
+    {
+        "time":  "2026-11-17 04:38:36",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  475,
+        "message":  "Hoàn thành chủ đề #475: Khoản vay và Thế chấp (Loans \u0026 Mortgages) (100 từ, 99s)"
+    },
+    {
+        "time":  "2026-11-17 04:37:19",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  476,
+        "message":  "Khởi chạy luồng xử lý chủ đề #476: Lãi suất (Interest Rates)"
+    },
+    {
+        "time":  "2026-11-17 04:37:19",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  474,
+        "message":  "Hoàn thành chủ đề #474: Rút tiền ATM (ATM Withdrawals) (99 từ, 99s)"
+    },
+    {
+        "time":  "2026-11-17 04:36:57",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  475,
+        "message":  "Khởi chạy luồng xử lý chủ đề #475: Khoản vay và Thế chấp (Loans \u0026 Mortgages)"
+    },
+    {
+        "time":  "2026-11-17 04:36:57",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  473,
+        "message":  "Hoàn thành chủ đề #473: Chuyển khoản (Bank Transfers) (100 từ, 98s)"
+    },
+    {
+        "time":  "2026-11-17 04:35:41",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  474,
+        "message":  "Khởi chạy luồng xử lý chủ đề #474: Rút tiền ATM (ATM Withdrawals)"
+    },
+    {
+        "time":  "2026-11-17 04:35:41",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  472,
+        "message":  "Hoàn thành chủ đề #472: Thẻ tín dụng (Credit Cards) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 04:35:19",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  473,
+        "message":  "Khởi chạy luồng xử lý chủ đề #473: Chuyển khoản (Bank Transfers)"
+    },
+    {
+        "time":  "2026-11-17 04:35:19",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  471,
+        "message":  "Hoàn thành chủ đề #471: Tài khoản tiết kiệm (Savings Accounts) (100 từ, 97s)"
+    },
+    {
+        "time":  "2026-11-17 04:34:08",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  472,
+        "message":  "Khởi chạy luồng xử lý chủ đề #472: Thẻ tín dụng (Credit Cards)"
+    },
+    {
         "time":  "2026-11-17 04:34:04",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "SPAWN_WORKER",
         "stt":  337,
         "message":  "Khởi chạy luồng xử lý chủ đề #337: Móng và Kết cấu (Foundations \u0026 Structures)"
-    },
-    {
-        "time":  "2026-11-17 02:52:10",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  335,
-        "message":  "Hoàn thành chủ đề #335: Nhà chọc trời (Skyscrapers) (100 từ, 80s)"
-    },
-    {
-        "time":  "2026-11-17 02:51:30",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  336,
-        "message":  "Khởi chạy luồng xử lý chủ đề #336: Vật liệu cách âm cách nhiệt (Insulation Materials)"
-    },
-    {
-        "time":  "2026-11-17 02:51:30",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  334,
-        "message":  "Hoàn thành chủ đề #334: Cầu đường (Bridges \u0026 Roads) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 02:50:50",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  335,
-        "message":  "Khởi chạy luồng xử lý chủ đề #335: Nhà chọc trời (Skyscrapers)"
-    },
-    {
-        "time":  "2026-11-17 02:50:50",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  333,
-        "message":  "Hoàn thành chủ đề #333: Công cụ xây dựng (Construction Tools) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 02:50:00",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  334,
-        "message":  "Khởi chạy luồng xử lý chủ đề #334: Cầu đường (Bridges \u0026 Roads)"
-    },
-    {
-        "time":  "2026-11-17 02:50:00",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  332,
-        "message":  "Hoàn thành chủ đề #332: Kiến trúc hiện đại (Modern Architecture) (100 từ, 90s)"
-    },
-    {
-        "time":  "2026-11-17 02:49:14",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  333,
-        "message":  "Khởi chạy luồng xử lý chủ đề #333: Công cụ xây dựng (Construction Tools)"
-    },
-    {
-        "time":  "2026-11-17 02:49:14",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  331,
-        "message":  "Hoàn thành chủ đề #331: Kiến trúc cổ điển (Classical Architecture) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:48:31",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  332,
-        "message":  "Khởi chạy luồng xử lý chủ đề #332: Kiến trúc hiện đại (Modern Architecture)"
-    },
-    {
-        "time":  "2026-11-17 02:48:31",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  330,
-        "message":  "Hoàn thành chủ đề #330: Sưu tầm đồ vật (Collecting Hobbies) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 02:47:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  331,
-        "message":  "Khởi chạy luồng xử lý chủ đề #331: Kiến trúc cổ điển (Classical Architecture)"
-    },
-    {
-        "time":  "2026-11-17 02:47:42",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  329,
-        "message":  "Hoàn thành chủ đề #329: Phong thủy (Feng Shui) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 02:47:04",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  330,
-        "message":  "Khởi chạy luồng xử lý chủ đề #330: Sưu tầm đồ vật (Collecting Hobbies)"
-    },
-    {
-        "time":  "2026-11-17 02:47:04",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  328,
-        "message":  "Hoàn thành chủ đề #328: Nghệ thuật giao tiếp (Art of Conversation) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 02:46:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  329,
-        "message":  "Khởi chạy luồng xử lý chủ đề #329: Phong thủy (Feng Shui)"
-    },
-    {
-        "time":  "2026-11-17 02:46:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  327,
-        "message":  "Hoàn thành chủ đề #327: Quản lý thời gian (Time Management) (100 từ, 101s)"
-    },
-    {
-        "time":  "2026-11-17 02:45:35",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  328,
-        "message":  "Khởi chạy luồng xử lý chủ đề #328: Nghệ thuật giao tiếp (Art of Conversation)"
-    },
-    {
-        "time":  "2026-11-17 02:45:35",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  326,
-        "message":  "Hoàn thành chủ đề #326: Cân bằng công việc và cuộc sống (Work-Life Balance) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 02:44:31",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  327,
-        "message":  "Khởi chạy luồng xử lý chủ đề #327: Quản lý thời gian (Time Management)"
-    },
-    {
-        "time":  "2026-11-17 02:44:31",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  325,
-        "message":  "Hoàn thành chủ đề #325: Sống xanh (Green Living) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:44:08",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  326,
-        "message":  "Khởi chạy luồng xử lý chủ đề #326: Cân bằng công việc và cuộc sống (Work-Life Balance)"
-    },
-    {
-        "time":  "2026-11-17 02:44:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  324,
-        "message":  "Hoàn thành chủ đề #324: Thói quen buổi sáng (Morning Routines) (100 từ, 116s)"
-    },
-    {
-        "time":  "2026-11-17 02:42:58",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  325,
-        "message":  "Khởi chạy luồng xử lý chủ đề #325: Sống xanh (Green Living)"
-    },
-    {
-        "time":  "2026-11-17 02:42:58",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  323,
-        "message":  "Hoàn thành chủ đề #323: Du mục kỹ thuật số (Digital Nomad) (100 từ, 111s)"
-    },
-    {
-        "time":  "2026-11-17 02:42:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  324,
-        "message":  "Khởi chạy luồng xử lý chủ đề #324: Thói quen buổi sáng (Morning Routines)"
-    },
-    {
-        "time":  "2026-11-17 02:42:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  322,
-        "message":  "Hoàn thành chủ đề #322: Ăn chay và Thuần chay (Vegetarian \u0026 Vegan) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:41:08",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  323,
-        "message":  "Khởi chạy luồng xử lý chủ đề #323: Du mục kỹ thuật số (Digital Nomad)"
-    },
-    {
-        "time":  "2026-11-17 02:41:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  321,
-        "message":  "Hoàn thành chủ đề #321: Sống tối giản (Minimalism) (99 từ, 88s)"
-    },
-    {
-        "time":  "2026-11-17 02:40:39",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  322,
-        "message":  "Khởi chạy luồng xử lý chủ đề #322: Ăn chay và Thuần chay (Vegetarian \u0026 Vegan)"
     }
 ]
