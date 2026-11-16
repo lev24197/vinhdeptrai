@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 03:03:16",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  350,
+        "message":  "Hoàn thành chủ đề #350: Quản lý rừng (Forest Management) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:02:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  351,
+        "message":  "Khởi chạy luồng xử lý chủ đề #351: Thành ngữ và Tục ngữ (Idioms \u0026 Proverbs)"
+    },
+    {
+        "time":  "2026-11-17 03:02:12",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  349,
+        "message":  "Hoàn thành chủ đề #349: Khí thải carbon (Carbon Emissions) (100 từ, 78s)"
+    },
+    {
+        "time":  "2026-11-17 03:01:46",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  350,
+        "message":  "Khởi chạy luồng xử lý chủ đề #350: Quản lý rừng (Forest Management)"
+    },
+    {
+        "time":  "2026-11-17 03:01:46",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  348,
+        "message":  "Hoàn thành chủ đề #348: Xử lý nước thải (Wastewater Treatment) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:00:54",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  349,
+        "message":  "Khởi chạy luồng xử lý chủ đề #349: Khí thải carbon (Carbon Emissions)"
+    },
+    {
+        "time":  "2026-11-17 03:00:54",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  347,
+        "message":  "Hoàn thành chủ đề #347: Tái chế nhựa (Plastic Recycling) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:00:14",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  348,
+        "message":  "Khởi chạy luồng xử lý chủ đề #348: Xử lý nước thải (Wastewater Treatment)"
+    },
+    {
+        "time":  "2026-11-17 03:00:14",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  346,
+        "message":  "Hoàn thành chủ đề #346: Khai thác mỏ (Mining) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:59:24",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  347,
+        "message":  "Khởi chạy luồng xử lý chủ đề #347: Tái chế nhựa (Plastic Recycling)"
+    },
+    {
+        "time":  "2026-11-17 02:59:24",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  345,
+        "message":  "Hoàn thành chủ đề #345: Thủy điện (Hydroelectricity) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:58:44",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  346,
+        "message":  "Khởi chạy luồng xử lý chủ đề #346: Khai thác mỏ (Mining)"
+    },
+    {
+        "time":  "2026-11-17 02:58:44",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  344,
+        "message":  "Hoàn thành chủ đề #344: Năng lượng gió (Wind Power) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:57:58",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  345,
+        "message":  "Khởi chạy luồng xử lý chủ đề #345: Thủy điện (Hydroelectricity)"
+    },
+    {
+        "time":  "2026-11-17 02:57:58",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  343,
+        "message":  "Hoàn thành chủ đề #343: Năng lượng mặt trời (Solar Power) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:57:15",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  344,
+        "message":  "Khởi chạy luồng xử lý chủ đề #344: Năng lượng gió (Wind Power)"
+    },
+    {
+        "time":  "2026-11-17 02:57:15",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  342,
+        "message":  "Hoàn thành chủ đề #342: Năng lượng hạt nhân (Nuclear Energy) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:56:31",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  343,
+        "message":  "Khởi chạy luồng xử lý chủ đề #343: Năng lượng mặt trời (Solar Power)"
+    },
+    {
+        "time":  "2026-11-17 02:56:31",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  341,
+        "message":  "Hoàn thành chủ đề #341: Dầu mỏ và Khí đốt (Oil \u0026 Gas) (100 từ, 90s)"
+    },
+    {
+        "time":  "2026-11-17 02:55:48",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  342,
+        "message":  "Khởi chạy luồng xử lý chủ đề #342: Năng lượng hạt nhân (Nuclear Energy)"
+    },
+    {
+        "time":  "2026-11-17 02:55:48",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  340,
+        "message":  "Hoàn thành chủ đề #340: Quy hoạch đô thị (Urban Planning) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:55:02",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  341,
+        "message":  "Khởi chạy luồng xử lý chủ đề #341: Dầu mỏ và Khí đốt (Oil \u0026 Gas)"
+    },
+    {
+        "time":  "2026-11-17 02:55:02",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  339,
+        "message":  "Hoàn thành chủ đề #339: Kỹ thuật dân dụng (Civil Engineering) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 02:54:19",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  340,
+        "message":  "Khởi chạy luồng xử lý chủ đề #340: Quy hoạch đô thị (Urban Planning)"
+    },
+    {
+        "time":  "2026-11-17 02:54:19",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  338,
+        "message":  "Hoàn thành chủ đề #338: Thầu xây dựng (Construction Contracting) (100 từ, 80s)"
+    },
+    {
+        "time":  "2026-11-17 02:53:38",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  339,
+        "message":  "Khởi chạy luồng xử lý chủ đề #339: Kỹ thuật dân dụng (Civil Engineering)"
+    },
+    {
+        "time":  "2026-11-17 02:53:38",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  337,
+        "message":  "Hoàn thành chủ đề #337: Móng và Kết cấu (Foundations \u0026 Structures) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 02:52:58",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  338,
+        "message":  "Khởi chạy luồng xử lý chủ đề #338: Thầu xây dựng (Construction Contracting)"
+    },
+    {
+        "time":  "2026-11-17 02:52:58",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  336,
+        "message":  "Hoàn thành chủ đề #336: Vật liệu cách âm cách nhiệt (Insulation Materials) (100 từ, 88s)"
+    },
+    {
+        "time":  "2026-11-17 02:52:15",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  337,
+        "message":  "Khởi chạy luồng xử lý chủ đề #337: Móng và Kết cấu (Foundations \u0026 Structures)"
+    },
+    {
         "time":  "2026-11-17 02:52:10",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "DONE_TOPIC",
         "stt":  163,
         "message":  "Hoàn thành chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 13:01:02",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  163,
-        "message":  "Chủ đề #163: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 13:01:02",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  163,
-        "message":  "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 13:00:43",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  163,
-        "message":  "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Prompt 1 đạt 98/100 từ (còn thiếu 2). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 13:00:18",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  163,
-        "message":  "Chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 13:00:18",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  162,
-        "message":  "Hoàn thành chủ đề #162 (Nghề dịch vụ (Service Jobs)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 13:00:18",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  162,
-        "message":  "Chủ đề #162: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 13:00:18",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  162,
-        "message":  "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 12:59:51",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  162,
-        "message":  "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Prompt 1 đạt 99/100 từ (còn thiếu 1). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 12:59:29",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  162,
-        "message":  "Chủ đề #162 (Nghề dịch vụ (Service Jobs)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 12:59:29",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [162, 163, 164]"
-    },
-    {
-        "time":  "2026-11-16 12:43:05",
-        "level":  "ERROR",
-        "step":  "FAIL_TOPIC",
-        "stt":  161,
-        "message":  "Lỗi khi tạo chủ đề #161 (Nghề thủ công (Craftsmanship)): Chủ đề #161 (Nghề thủ công (Craftsmanship)) chỉ tạo được 50/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #161 (Nghề thủ công (Craftsmanship)) chỉ tạo được 50/100 từ sau tối đa 2 prompts!"
-    },
-    {
-        "time":  "2026-11-16 12:43:05",
-        "level":  "ERROR",
-        "step":  "INCOMPLETE",
-        "stt":  161,
-        "message":  "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Sau 2 prompts chỉ đạt 50/100 từ!"
-    },
-    {
-        "time":  "2026-11-16 12:42:42",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  161,
-        "message":  "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Prompt 1 đạt 49/100 từ (còn thiếu 51). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 12:42:22",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  161,
-        "message":  "Chủ đề #161 (Nghề thủ công (Craftsmanship)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 12:42:22",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  160,
-        "message":  "Hoàn thành chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 12:42:22",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  160,
-        "message":  "Chủ đề #160: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 12:42:22",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  160,
-        "message":  "Chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 12:41:58",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  160,
-        "message":  "Chủ đề #160 (Nghiên cứu sinh và Hậu đại học (Postgraduate Studies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 12:41:58",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  158,
-        "message":  "Hoàn thành chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 12:41:58",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  158,
-        "message":  "Chủ đề #158: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 12:41:58",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  158,
-        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 12:41:32",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  158,
-        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 12:41:32",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [158, 160, 161]"
-    },
-    {
-        "time":  "2026-11-16 12:11:18",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  159,
-        "message":  "Hoàn thành chủ đề #159 (Kỷ luật và Nội quy (Discipline \u0026 Rules)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 12:11:18",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  159,
-        "message":  "Chủ đề #159: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 12:11:18",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  159,
-        "message":  "Chủ đề #159 (Kỷ luật và Nội quy (Discipline \u0026 Rules)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 12:10:58",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  159,
-        "message":  "Chủ đề #159 (Kỷ luật và Nội quy (Discipline \u0026 Rules)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 12:10:58",
-        "level":  "ERROR",
-        "step":  "FAIL_TOPIC",
-        "stt":  158,
-        "message":  "Lỗi khi tạo chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)) chỉ tạo được 77/100 từ sau tối đa 2 prompts!"
-    },
-    {
-        "time":  "2026-11-16 12:10:58",
-        "level":  "ERROR",
-        "step":  "INCOMPLETE",
-        "stt":  158,
-        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Sau 2 prompts chỉ đạt 77/100 từ!"
-    },
-    {
-        "time":  "2026-11-16 12:10:56",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  158,
-        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Prompt 1 đạt 76/100 từ (còn thiếu 24). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
     }
 ]
