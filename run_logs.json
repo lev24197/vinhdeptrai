@@ -1,5 +1,103 @@
 [
   {
+    "time": "2026-11-16 07:30:00",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 146,
+    "message": "Hoàn thành chủ đề #146 (Đồ lót và Đồ ngủ (Underwear & Sleepwear)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 07:30:00",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 146,
+    "message": "Chủ đề #146: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 07:30:00",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 146,
+    "message": "Chủ đề #146 (Đồ lót và Đồ ngủ (Underwear & Sleepwear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 07:29:39",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 146,
+    "message": "Chủ đề #146 (Đồ lót và Đồ ngủ (Underwear & Sleepwear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 07:29:39",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 145,
+    "message": "Hoàn thành chủ đề #145 (Trang sức và Kim hoàn (Jewelry)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 07:29:39",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 145,
+    "message": "Chủ đề #145: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 07:29:39",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 145,
+    "message": "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 07:29:16",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 145,
+    "message": "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Prompt 1 đạt 97/100 từ (còn thiếu 3). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 07:28:57",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 145,
+    "message": "Chủ đề #145 (Trang sức và Kim hoàn (Jewelry)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 07:28:57",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 144,
+    "message": "Hoàn thành chủ đề #144 (Giày dép các loại (Footwear)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 07:28:57",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 144,
+    "message": "Chủ đề #144: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 07:28:57",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 144,
+    "message": "Chủ đề #144 (Giày dép các loại (Footwear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 07:28:36",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 144,
+    "message": "Chủ đề #144 (Giày dép các loại (Footwear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 07:28:36",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [144, 145, 146]"
+  },
+  {
     "time": "2026-11-16 07:25:06",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",

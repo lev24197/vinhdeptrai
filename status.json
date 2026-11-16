@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 07:25:06",
+  "updated_at": "2026-11-16 07:30:00",
   "topics": [
     {
       "stt": 1,
@@ -1291,28 +1291,28 @@
     {
       "stt": 144,
       "topic": "Giày dép các loại (Footwear)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/144.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 07:28",
       "last_error": null
     },
     {
       "stt": 145,
       "topic": "Trang sức và Kim hoàn (Jewelry)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/145.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 07:29",
       "last_error": null
     },
     {
       "stt": 146,
       "topic": "Đồ lót và Đồ ngủ (Underwear & Sleepwear)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/146.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 07:30",
       "last_error": null
     },
     {
