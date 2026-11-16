@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 02:52:10",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  335,
+        "message":  "Hoàn thành chủ đề #335: Nhà chọc trời (Skyscrapers) (100 từ, 80s)"
+    },
+    {
+        "time":  "2026-11-17 02:51:30",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  336,
+        "message":  "Khởi chạy luồng xử lý chủ đề #336: Vật liệu cách âm cách nhiệt (Insulation Materials)"
+    },
+    {
+        "time":  "2026-11-17 02:51:30",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  334,
+        "message":  "Hoàn thành chủ đề #334: Cầu đường (Bridges \u0026 Roads) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:50:50",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  335,
+        "message":  "Khởi chạy luồng xử lý chủ đề #335: Nhà chọc trời (Skyscrapers)"
+    },
+    {
+        "time":  "2026-11-17 02:50:50",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  333,
+        "message":  "Hoàn thành chủ đề #333: Công cụ xây dựng (Construction Tools) (100 từ, 96s)"
+    },
+    {
+        "time":  "2026-11-17 02:50:00",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  334,
+        "message":  "Khởi chạy luồng xử lý chủ đề #334: Cầu đường (Bridges \u0026 Roads)"
+    },
+    {
+        "time":  "2026-11-17 02:50:00",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  332,
+        "message":  "Hoàn thành chủ đề #332: Kiến trúc hiện đại (Modern Architecture) (100 từ, 90s)"
+    },
+    {
+        "time":  "2026-11-17 02:49:14",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  333,
+        "message":  "Khởi chạy luồng xử lý chủ đề #333: Công cụ xây dựng (Construction Tools)"
+    },
+    {
+        "time":  "2026-11-17 02:49:14",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  331,
+        "message":  "Hoàn thành chủ đề #331: Kiến trúc cổ điển (Classical Architecture) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:48:31",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  332,
+        "message":  "Khởi chạy luồng xử lý chủ đề #332: Kiến trúc hiện đại (Modern Architecture)"
+    },
+    {
+        "time":  "2026-11-17 02:48:31",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  330,
+        "message":  "Hoàn thành chủ đề #330: Sưu tầm đồ vật (Collecting Hobbies) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:47:42",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  331,
+        "message":  "Khởi chạy luồng xử lý chủ đề #331: Kiến trúc cổ điển (Classical Architecture)"
+    },
+    {
+        "time":  "2026-11-17 02:47:42",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  329,
+        "message":  "Hoàn thành chủ đề #329: Phong thủy (Feng Shui) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:47:04",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  330,
+        "message":  "Khởi chạy luồng xử lý chủ đề #330: Sưu tầm đồ vật (Collecting Hobbies)"
+    },
+    {
+        "time":  "2026-11-17 02:47:04",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  328,
+        "message":  "Hoàn thành chủ đề #328: Nghệ thuật giao tiếp (Art of Conversation) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:46:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  329,
+        "message":  "Khởi chạy luồng xử lý chủ đề #329: Phong thủy (Feng Shui)"
+    },
+    {
+        "time":  "2026-11-17 02:46:12",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  327,
+        "message":  "Hoàn thành chủ đề #327: Quản lý thời gian (Time Management) (100 từ, 101s)"
+    },
+    {
+        "time":  "2026-11-17 02:45:35",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  328,
+        "message":  "Khởi chạy luồng xử lý chủ đề #328: Nghệ thuật giao tiếp (Art of Conversation)"
+    },
+    {
+        "time":  "2026-11-17 02:45:35",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  326,
+        "message":  "Hoàn thành chủ đề #326: Cân bằng công việc và cuộc sống (Work-Life Balance) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:44:31",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  327,
+        "message":  "Khởi chạy luồng xử lý chủ đề #327: Quản lý thời gian (Time Management)"
+    },
+    {
+        "time":  "2026-11-17 02:44:31",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  325,
+        "message":  "Hoàn thành chủ đề #325: Sống xanh (Green Living) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:44:08",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  326,
+        "message":  "Khởi chạy luồng xử lý chủ đề #326: Cân bằng công việc và cuộc sống (Work-Life Balance)"
+    },
+    {
+        "time":  "2026-11-17 02:44:08",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  324,
+        "message":  "Hoàn thành chủ đề #324: Thói quen buổi sáng (Morning Routines) (100 từ, 116s)"
+    },
+    {
+        "time":  "2026-11-17 02:42:58",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  325,
+        "message":  "Khởi chạy luồng xử lý chủ đề #325: Sống xanh (Green Living)"
+    },
+    {
+        "time":  "2026-11-17 02:42:58",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  323,
+        "message":  "Hoàn thành chủ đề #323: Du mục kỹ thuật số (Digital Nomad) (100 từ, 111s)"
+    },
+    {
+        "time":  "2026-11-17 02:42:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  324,
+        "message":  "Khởi chạy luồng xử lý chủ đề #324: Thói quen buổi sáng (Morning Routines)"
+    },
+    {
+        "time":  "2026-11-17 02:42:12",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  322,
+        "message":  "Hoàn thành chủ đề #322: Ăn chay và Thuần chay (Vegetarian \u0026 Vegan) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:41:08",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  323,
+        "message":  "Khởi chạy luồng xử lý chủ đề #323: Du mục kỹ thuật số (Digital Nomad)"
+    },
+    {
+        "time":  "2026-11-17 02:41:08",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  321,
+        "message":  "Hoàn thành chủ đề #321: Sống tối giản (Minimalism) (99 từ, 88s)"
+    },
+    {
+        "time":  "2026-11-17 02:40:39",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  322,
+        "message":  "Khởi chạy luồng xử lý chủ đề #322: Ăn chay và Thuần chay (Vegetarian \u0026 Vegan)"
+    },
+    {
         "time":  "2026-11-17 02:40:35",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "PROMPT_2_START",
         "stt":  158,
         "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Prompt 1 đạt 76/100 từ (còn thiếu 24). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 12:10:31",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  158,
-        "message":  "Chủ đề #158 (Du học và Trao đổi sinh viên (Study Abroad \u0026 Exchange)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 12:10:31",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  155,
-        "message":  "Hoàn thành chủ đề #155 (Tâm lý học đường (School Psychology)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 12:10:31",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  155,
-        "message":  "Chủ đề #155: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 12:10:31",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  155,
-        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 12:10:09",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  155,
-        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 12:10:09",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [155, 158, 159]"
-    },
-    {
-        "time":  "2026-11-16 10:08:55",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  157,
-        "message":  "Hoàn thành chủ đề #157 (Bảng điểm và Đánh giá (Transcripts \u0026 Grading)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 10:08:55",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  157,
-        "message":  "Chủ đề #157: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 10:08:55",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  157,
-        "message":  "Chủ đề #157 (Bảng điểm và Đánh giá (Transcripts \u0026 Grading)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 10:08:29",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  157,
-        "message":  "Chủ đề #157 (Bảng điểm và Đánh giá (Transcripts \u0026 Grading)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 10:08:29",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  156,
-        "message":  "Hoàn thành chủ đề #156 (Đồ dùng thủ công (Craft Supplies)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 10:08:29",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  156,
-        "message":  "Chủ đề #156: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 10:08:29",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  156,
-        "message":  "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 10:08:08",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  156,
-        "message":  "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Prompt 1 đạt 95/100 từ (còn thiếu 5). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 10:07:44",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  156,
-        "message":  "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 10:07:44",
-        "level":  "ERROR",
-        "step":  "FAIL_TOPIC",
-        "stt":  155,
-        "message":  "Lỗi khi tạo chủ đề #155 (Tâm lý học đường (School Psychology)): Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts!"
-    },
-    {
-        "time":  "2026-11-16 10:07:44",
-        "level":  "ERROR",
-        "step":  "INCOMPLETE",
-        "stt":  155,
-        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Sau 2 prompts chỉ đạt 96/100 từ!"
-    },
-    {
-        "time":  "2026-11-16 10:07:21",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  155,
-        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Prompt 1 đạt 96/100 từ (còn thiếu 4). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 10:06:58",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  155,
-        "message":  "Chủ đề #155 (Tâm lý học đường (School Psychology)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 10:06:58",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [155, 156, 157]"
-    },
-    {
-        "time":  "2026-11-16 09:58:47",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  154,
-        "message":  "Hoàn thành chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 09:58:47",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  154,
-        "message":  "Chủ đề #154: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 09:58:47",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  154,
-        "message":  "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 09:58:24",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  154,
-        "message":  "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Prompt 1 đạt 98/100 từ (còn thiếu 2). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 09:58:02",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  154,
-        "message":  "Chủ đề #154 (Hoạt động ngoại khóa (Extracurricular Activities)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 09:58:02",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  153,
-        "message":  "Hoàn thành chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 09:58:02",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  153,
-        "message":  "Chủ đề #153: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 09:58:02",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  153,
-        "message":  "Chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 09:57:37",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  153,
-        "message":  "Chủ đề #153 (Các kỳ thi chuẩn hóa (Standardized Tests)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 09:57:37",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  152,
-        "message":  "Hoàn thành chủ đề #152 (Chương trình giảng dạy (Curriculum)) với 100 từ."
     }
 ]
