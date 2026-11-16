@@ -1,5 +1,96 @@
 [
   {
+    "time": "2026-11-16 08:38:33",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 151,
+    "message": "Hoàn thành chủ đề #151 (Cơ sở vật chất trường học (School Facilities)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 08:38:33",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 151,
+    "message": "Chủ đề #151: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 08:38:33",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 151,
+    "message": "Chủ đề #151 (Cơ sở vật chất trường học (School Facilities)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 08:38:08",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 151,
+    "message": "Chủ đề #151 (Cơ sở vật chất trường học (School Facilities)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 08:38:08",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 150,
+    "message": "Hoàn thành chủ đề #150 (Thời trang bền vững (Sustainable Fashion)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 08:38:08",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 150,
+    "message": "Chủ đề #150: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 08:38:08",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 150,
+    "message": "Chủ đề #150 (Thời trang bền vững (Sustainable Fashion)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 08:37:41",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 150,
+    "message": "Chủ đề #150 (Thời trang bền vững (Sustainable Fashion)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 08:37:41",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 148,
+    "message": "Hoàn thành chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 08:37:41",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 148,
+    "message": "Chủ đề #148: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 08:37:41",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 148,
+    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 08:37:14",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 148,
+    "message": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 08:37:14",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [148, 150, 151]"
+  },
+  {
     "time": "2026-11-16 08:01:24",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",

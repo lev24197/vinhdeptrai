@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 08:01:24",
+  "updated_at": "2026-11-16 08:38:33",
   "topics": [
     {
       "stt": 1,
@@ -1327,11 +1327,11 @@
     {
       "stt": 148,
       "topic": "Dụng cụ làm tóc (Hairdressing Tools)",
-      "status": "failed",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/148.txt",
-      "generated_at": null,
-      "last_error": "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts!"
+      "generated_at": "2026-11-16 08:37",
+      "last_error": null
     },
     {
       "stt": 149,
@@ -1345,19 +1345,19 @@
     {
       "stt": 150,
       "topic": "Thời trang bền vững (Sustainable Fashion)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/150.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 08:38",
       "last_error": null
     },
     {
       "stt": 151,
       "topic": "Cơ sở vật chất trường học (School Facilities)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/151.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 08:38",
       "last_error": null
     },
     {
