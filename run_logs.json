@@ -1,5 +1,103 @@
 [
   {
+    "time": "2026-11-16 10:08:55",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 157,
+    "message": "Hoàn thành chủ đề #157 (Bảng điểm và Đánh giá (Transcripts & Grading)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 10:08:55",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 157,
+    "message": "Chủ đề #157: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 10:08:55",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 157,
+    "message": "Chủ đề #157 (Bảng điểm và Đánh giá (Transcripts & Grading)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 10:08:29",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 157,
+    "message": "Chủ đề #157 (Bảng điểm và Đánh giá (Transcripts & Grading)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 10:08:29",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 156,
+    "message": "Hoàn thành chủ đề #156 (Đồ dùng thủ công (Craft Supplies)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 10:08:29",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 156,
+    "message": "Chủ đề #156: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 10:08:29",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 156,
+    "message": "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 10:08:08",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 156,
+    "message": "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Prompt 1 đạt 95/100 từ (còn thiếu 5). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 10:07:44",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 156,
+    "message": "Chủ đề #156 (Đồ dùng thủ công (Craft Supplies)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 10:07:44",
+    "level": "ERROR",
+    "step": "FAIL_TOPIC",
+    "stt": 155,
+    "message": "Lỗi khi tạo chủ đề #155 (Tâm lý học đường (School Psychology)): Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts!"
+  },
+  {
+    "time": "2026-11-16 10:07:44",
+    "level": "ERROR",
+    "step": "INCOMPLETE",
+    "stt": 155,
+    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Sau 2 prompts chỉ đạt 96/100 từ!"
+  },
+  {
+    "time": "2026-11-16 10:07:21",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 155,
+    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Prompt 1 đạt 96/100 từ (còn thiếu 4). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 10:06:58",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 155,
+    "message": "Chủ đề #155 (Tâm lý học đường (School Psychology)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 10:06:58",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [155, 156, 157]"
+  },
+  {
     "time": "2026-11-16 09:58:47",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 09:58:47",
+  "updated_at": "2026-11-16 10:08:55",
   "topics": [
     {
       "stt": 1,
@@ -1390,28 +1390,28 @@
     {
       "stt": 155,
       "topic": "Tâm lý học đường (School Psychology)",
-      "status": "pending",
+      "status": "failed",
       "word_count": 0,
       "file_path": "output/155.txt",
       "generated_at": null,
-      "last_error": null
+      "last_error": "Chủ đề #155 (Tâm lý học đường (School Psychology)) chỉ tạo được 96/100 từ sau tối đa 2 prompts!"
     },
     {
       "stt": 156,
       "topic": "Đồ dùng thủ công (Craft Supplies)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/156.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 10:08",
       "last_error": null
     },
     {
       "stt": 157,
       "topic": "Bảng điểm và Đánh giá (Transcripts & Grading)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/157.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 10:08",
       "last_error": null
     },
     {
