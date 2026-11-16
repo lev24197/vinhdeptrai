@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 02:40:35",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  320,
+        "message":  "Hoàn thành chủ đề #320: Chìa khóa và Ổ khóa (Keys \u0026 Locks) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:39:39",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  321,
+        "message":  "Khởi chạy luồng xử lý chủ đề #321: Sống tối giản (Minimalism)"
+    },
+    {
+        "time":  "2026-11-17 02:39:39",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  319,
+        "message":  "Hoàn thành chủ đề #319: Phụ kiện điện thoại (Mobile Accessories) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:39:02",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  320,
+        "message":  "Khởi chạy luồng xử lý chủ đề #320: Chìa khóa và Ổ khóa (Keys \u0026 Locks)"
+    },
+    {
+        "time":  "2026-11-17 02:39:02",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  318,
+        "message":  "Hoàn thành chủ đề #318: Đồ bảo hộ lao động (Personal Protective Equipment) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 02:38:13",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  319,
+        "message":  "Khởi chạy luồng xử lý chủ đề #319: Phụ kiện điện thoại (Mobile Accessories)"
+    },
+    {
+        "time":  "2026-11-17 02:38:13",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  317,
+        "message":  "Hoàn thành chủ đề #317: Túi xách và Ba lô (Bags \u0026 Backpacks) (100 từ, 90s)"
+    },
+    {
+        "time":  "2026-11-17 02:37:36",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  318,
+        "message":  "Khởi chạy luồng xử lý chủ đề #318: Đồ bảo hộ lao động (Personal Protective Equipment)"
+    },
+    {
+        "time":  "2026-11-17 02:37:36",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  316,
+        "message":  "Hoàn thành chủ đề #316: Pin và Sạc (Batteries \u0026 Chargers) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:36:43",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  317,
+        "message":  "Khởi chạy luồng xử lý chủ đề #317: Túi xách và Ba lô (Bags \u0026 Backpacks)"
+    },
+    {
+        "time":  "2026-11-17 02:36:43",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  315,
+        "message":  "Hoàn thành chủ đề #315: Dụng cụ cắt gọt (Cutting Tools) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:36:03",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  316,
+        "message":  "Khởi chạy luồng xử lý chủ đề #316: Pin và Sạc (Batteries \u0026 Chargers)"
+    },
+    {
+        "time":  "2026-11-17 02:36:03",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  314,
+        "message":  "Hoàn thành chủ đề #314: Đồ nhựa dùng một lần (Disposable Plastics) (98 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:35:11",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  315,
+        "message":  "Khởi chạy luồng xử lý chủ đề #315: Dụng cụ cắt gọt (Cutting Tools)"
+    },
+    {
+        "time":  "2026-11-17 02:35:11",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  313,
+        "message":  "Hoàn thành chủ đề #313: Thiết bị giặt ủi (Laundry Appliances) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:34:31",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  314,
+        "message":  "Khởi chạy luồng xử lý chủ đề #314: Đồ nhựa dùng một lần (Disposable Plastics)"
+    },
+    {
+        "time":  "2026-11-17 02:34:31",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  312,
+        "message":  "Hoàn thành chủ đề #312: Văn phòng phẩm cao cấp (Premium Stationery) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:33:38",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  313,
+        "message":  "Khởi chạy luồng xử lý chủ đề #313: Thiết bị giặt ủi (Laundry Appliances)"
+    },
+    {
+        "time":  "2026-11-17 02:33:38",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  311,
+        "message":  "Hoàn thành chủ đề #311: Dụng cụ may vá (Sewing Tools) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 02:33:01",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  312,
+        "message":  "Khởi chạy luồng xử lý chủ đề #312: Văn phòng phẩm cao cấp (Premium Stationery)"
+    },
+    {
+        "time":  "2026-11-17 02:33:01",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  310,
+        "message":  "Hoàn thành chủ đề #310: Bản đồ học (Cartography) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:32:03",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  311,
+        "message":  "Khởi chạy luồng xử lý chủ đề #311: Dụng cụ may vá (Sewing Tools)"
+    },
+    {
+        "time":  "2026-11-17 02:32:03",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  309,
+        "message":  "Hoàn thành chủ đề #309: Khí quyển (Atmosphere) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 02:31:29",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  310,
+        "message":  "Khởi chạy luồng xử lý chủ đề #310: Bản đồ học (Cartography)"
+    },
+    {
+        "time":  "2026-11-17 02:31:29",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  308,
+        "message":  "Hoàn thành chủ đề #308: Hải dương học (Oceanography) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 02:30:33",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  309,
+        "message":  "Khởi chạy luồng xử lý chủ đề #309: Khí quyển (Atmosphere)"
+    },
+    {
+        "time":  "2026-11-17 02:30:33",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  307,
+        "message":  "Hoàn thành chủ đề #307: Núi lửa và Động đất (Volcanoes \u0026 Earthquakes) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 02:29:56",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  308,
+        "message":  "Khởi chạy luồng xử lý chủ đề #308: Hải dương học (Oceanography)"
+    },
+    {
+        "time":  "2026-11-17 02:29:56",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  306,
+        "message":  "Hoàn thành chủ đề #306: Lớp vỏ trái đất (Earth\u0027s Crust) (100 từ, 84s)"
+    },
+    {
+        "time":  "2026-11-17 02:29:10",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  307,
+        "message":  "Khởi chạy luồng xử lý chủ đề #307: Núi lửa và Động đất (Volcanoes \u0026 Earthquakes)"
+    },
+    {
         "time":  "2026-11-17 02:29:06",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "DONE_TOPIC",
         "stt":  152,
         "message":  "Hoàn thành chủ đề #152 (Chương trình giảng dạy (Curriculum)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 09:57:37",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  152,
-        "message":  "Chủ đề #152: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 09:57:37",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  152,
-        "message":  "Chủ đề #152 (Chương trình giảng dạy (Curriculum)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 09:57:17",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  152,
-        "message":  "Chủ đề #152 (Chương trình giảng dạy (Curriculum)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 09:57:17",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [152, 153, 154]"
-    },
-    {
-        "time":  "2026-11-16 08:38:33",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  151,
-        "message":  "Hoàn thành chủ đề #151 (Cơ sở vật chất trường học (School Facilities)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 08:38:33",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  151,
-        "message":  "Chủ đề #151: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 08:38:33",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  151,
-        "message":  "Chủ đề #151 (Cơ sở vật chất trường học (School Facilities)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 08:38:08",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  151,
-        "message":  "Chủ đề #151 (Cơ sở vật chất trường học (School Facilities)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 08:38:08",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  150,
-        "message":  "Hoàn thành chủ đề #150 (Thời trang bền vững (Sustainable Fashion)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 08:38:08",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  150,
-        "message":  "Chủ đề #150: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 08:38:08",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  150,
-        "message":  "Chủ đề #150 (Thời trang bền vững (Sustainable Fashion)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 08:37:41",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  150,
-        "message":  "Chủ đề #150 (Thời trang bền vững (Sustainable Fashion)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 08:37:41",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  148,
-        "message":  "Hoàn thành chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 08:37:41",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  148,
-        "message":  "Chủ đề #148: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 08:37:41",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  148,
-        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 08:37:14",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  148,
-        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 08:37:14",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [148, 150, 151]"
-    },
-    {
-        "time":  "2026-11-16 08:01:24",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  149,
-        "message":  "Hoàn thành chủ đề #149 (Dịch vụ Spa và Massage (Spa \u0026 Massage Services)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 08:01:24",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  149,
-        "message":  "Chủ đề #149: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 08:01:24",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  149,
-        "message":  "Chủ đề #149 (Dịch vụ Spa và Massage (Spa \u0026 Massage Services)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 08:01:05",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  149,
-        "message":  "Chủ đề #149 (Dịch vụ Spa và Massage (Spa \u0026 Massage Services)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 08:01:05",
-        "level":  "ERROR",
-        "step":  "FAIL_TOPIC",
-        "stt":  148,
-        "message":  "Lỗi khi tạo chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)) chỉ tạo được 79/100 từ sau tối đa 2 prompts!"
-    },
-    {
-        "time":  "2026-11-16 08:01:05",
-        "level":  "ERROR",
-        "step":  "INCOMPLETE",
-        "stt":  148,
-        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Sau 2 prompts chỉ đạt 79/100 từ!"
-    },
-    {
-        "time":  "2026-11-16 08:00:42",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  148,
-        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Prompt 1 đạt 63/100 từ (còn thiếu 37). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 08:00:15",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  148,
-        "message":  "Chủ đề #148 (Dụng cụ làm tóc (Hairdressing Tools)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 08:00:15",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  147,
-        "message":  "Hoàn thành chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 08:00:15",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  147,
-        "message":  "Chủ đề #147: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 08:00:15",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  147,
-        "message":  "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 07:59:48",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  147,
-        "message":  "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Prompt 1 đạt 72/100 từ (còn thiếu 28). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 07:59:29",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  147,
-        "message":  "Chủ đề #147 (Mỹ phẩm trang điểm (Makeup Cosmetics)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
     }
 ]
