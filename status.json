@@ -1,5 +1,5 @@
 ﻿{
-    "updated_at":  "2026-11-17 01:44:17",
+    "updated_at":  "2026-11-17 01:55:32",
     "topics":  [
                    {
                        "stt":  1,
@@ -2164,29 +2164,29 @@
                    {
                        "stt":  241,
                        "topic":  "Ngôn ngữ lập trình (Programming Languages)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/241.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:45",
+                       "last_error":  null
                    },
                    {
                        "stt":  242,
                        "topic":  "An ninh mạng (Cybersecurity)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  99,
                        "file_path":  "output/242.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:45",
+                       "last_error":  null
                    },
                    {
                        "stt":  243,
                        "topic":  "Cơ sở dữ liệu (Databases)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/243.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:47",
+                       "last_error":  null
                    },
                    {
                        "stt":  244,
@@ -2209,47 +2209,47 @@
                    {
                        "stt":  246,
                        "topic":  "Mạng máy tính (Computer Networks)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/246.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 67/100 từ cho chủ đề #246"
+                       "generated_at":  "2026-11-17 01:47",
+                       "last_error":  null
                    },
                    {
                        "stt":  247,
                        "topic":  "Phần cứng viễn thông (Telecom Hardware)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/247.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 99/100 từ cho chủ đề #247"
+                       "generated_at":  "2026-11-17 01:48",
+                       "last_error":  null
                    },
                    {
                        "stt":  248,
                        "topic":  "Phát triển game (Game Development)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/248.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 94/100 từ cho chủ đề #248"
+                       "generated_at":  "2026-11-17 01:48",
+                       "last_error":  null
                    },
                    {
                        "stt":  249,
                        "topic":  "Hệ điều hành (Operating Systems)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/249.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 89/100 từ cho chủ đề #249"
+                       "generated_at":  "2026-11-17 01:50",
+                       "last_error":  null
                    },
                    {
                        "stt":  250,
                        "topic":  "Thực tế ảo và AR (VR \u0026 AR)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/250.txt",
-                       "generated_at":  null,
-                       "last_error":  "Chỉ thu thập được 97/100 từ cho chủ đề #250"
+                       "generated_at":  "2026-11-17 01:50",
+                       "last_error":  null
                    },
                    {
                        "stt":  251,
@@ -2263,11 +2263,11 @@
                    {
                        "stt":  252,
                        "topic":  "Quản lý cộng đồng (Community Management)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/252.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:51",
+                       "last_error":  null
                    },
                    {
                        "stt":  253,
@@ -2290,56 +2290,56 @@
                    {
                        "stt":  255,
                        "topic":  "Quảng cáo trực tuyến (Online Advertising)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/255.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:51",
+                       "last_error":  null
                    },
                    {
                        "stt":  256,
                        "topic":  "Podcast và Stream (Podcasts \u0026 Streaming)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/256.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:52",
+                       "last_error":  null
                    },
                    {
                        "stt":  257,
                        "topic":  "Xử lý khủng giải truyền thông (PR Crisis Management)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  99,
                        "file_path":  "output/257.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:52",
+                       "last_error":  null
                    },
                    {
                        "stt":  258,
                        "topic":  "Bản quyền và Sở hữu trí tuệ (Copyright \u0026 IP)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/258.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:54",
+                       "last_error":  null
                    },
                    {
                        "stt":  259,
                        "topic":  "Quyền riêng tư dữ liệu (Data Privacy)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/259.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:54",
+                       "last_error":  null
                    },
                    {
                        "stt":  260,
                        "topic":  "Thiết bị di động thông minh (Smart Devices)",
-                       "status":  "failed",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/260.txt",
-                       "generated_at":  null,
-                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
+                       "generated_at":  "2026-11-17 01:55",
+                       "last_error":  null
                    },
                    {
                        "stt":  261,
