@@ -1,5 +1,5 @@
 {
-    "updated_at":  "2026-11-16 13:42:31",
+    "updated_at":  "2026-11-16 13:59:02",
     "topics":  [
                    {
                        "stt":  1,
@@ -1759,163 +1759,163 @@
                    {
                        "stt":  196,
                        "topic":  "Tham quan bảo tàng (Museum Tours)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/196.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:42",
                        "last_error":  null
                    },
                    {
                        "stt":  197,
                        "topic":  "Lễ hội văn hóa địa phương (Local Cultural Festivals)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/197.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:42",
                        "last_error":  null
                    },
                    {
                        "stt":  198,
                        "topic":  "Đại lý du lịch (Travel Agencies)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/198.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Chỉ thu thập được 38/100 từ cho chủ đề #198"
                    },
                    {
                        "stt":  199,
                        "topic":  "Đồ dùng sinh tồn (Survival Gear)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/199.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
                    },
                    {
                        "stt":  200,
                        "topic":  "Hướng dẫn viên và Tour (Tour Guides \u0026 Tours)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/200.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:44",
                        "last_error":  null
                    },
                    {
                        "stt":  201,
                        "topic":  "Điêu khắc và Gốm sứ (Sculpture \u0026 Ceramics)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/201.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:44",
                        "last_error":  null
                    },
                    {
                        "stt":  202,
                        "topic":  "Trường phái hội họa (Art Movements)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/202.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:45",
                        "last_error":  null
                    },
                    {
                        "stt":  203,
                        "topic":  "Dụng cụ vẽ tranh (Painting Materials)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/203.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Chỉ thu thập được 11/100 từ cho chủ đề #203"
                    },
                    {
                        "stt":  204,
                        "topic":  "Đồ họa máy tính (Computer Graphics)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/204.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
                    },
                    {
                        "stt":  205,
                        "topic":  "Truyền hình thực tế (Reality TV)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/205.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Chỉ thu thập được 63/100 từ cho chủ đề #205"
                    },
                    {
                        "stt":  206,
                        "topic":  "Kịch bản và Sản xuất phim (Screenwriting \u0026 Production)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/206.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
                    },
                    {
                        "stt":  207,
                        "topic":  "Thể loại âm nhạc (Music Genres)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/207.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
                    },
                    {
                        "stt":  208,
                        "topic":  "Thu âm và Studio (Recording \u0026 Studios)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/208.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:51",
                        "last_error":  null
                    },
                    {
                        "stt":  209,
                        "topic":  "Các điệu nhảy và Khiêu vũ (Dances \u0026 Choreography)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/209.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:52",
                        "last_error":  null
                    },
                    {
                        "stt":  210,
                        "topic":  "Ma thuật và Ảo thuật (Magic \u0026 Illusions)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/210.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:51",
                        "last_error":  null
                    },
                    {
                        "stt":  211,
                        "topic":  "Thể thao dưới nước (Water Sports)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/211.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Lỗi gọi Gemini API qua tất cả các model fallback"
                    },
                    {
                        "stt":  212,
                        "topic":  "Thể thao mùa đông (Winter Sports)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/212.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:52",
                        "last_error":  null
                    },
                    {
                        "stt":  213,
                        "topic":  "Võ thuật (Martial Arts)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/213.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:53",
                        "last_error":  null
                    },
                    {
@@ -1930,46 +1930,46 @@
                    {
                        "stt":  215,
                        "topic":  "Yoga và Thiền định (Yoga \u0026 Meditation)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/215.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:53",
                        "last_error":  null
                    },
                    {
                        "stt":  216,
                        "topic":  "Trọng tài và Luật chơi (Referees \u0026 Rules)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/216.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:55",
                        "last_error":  null
                    },
                    {
                        "stt":  217,
                        "topic":  "Giải đấu thế giới (World Tournaments)",
-                       "status":  "pending",
+                       "status":  "failed",
                        "word_count":  0,
                        "file_path":  "output/217.txt",
                        "generated_at":  null,
-                       "last_error":  null
+                       "last_error":  "Chỉ thu thập được 97/100 từ cho chủ đề #217"
                    },
                    {
                        "stt":  218,
                        "topic":  "Chấn thương thể thao (Sports Injuries)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/218.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:56",
                        "last_error":  null
                    },
                    {
                        "stt":  219,
                        "topic":  "Khán đài và Cổ động viên (Stadiums \u0026 Fans)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/219.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:57",
                        "last_error":  null
                    },
                    {
@@ -1993,10 +1993,10 @@
                    {
                        "stt":  222,
                        "topic":  "Vật lý lượng tử (Quantum Physics)",
-                       "status":  "pending",
-                       "word_count":  0,
+                       "status":  "completed",
+                       "word_count":  100,
                        "file_path":  "output/222.txt",
-                       "generated_at":  null,
+                       "generated_at":  "2026-11-16 13:59",
                        "last_error":  null
                    },
                    {
