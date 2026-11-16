@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 03:14:22",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  365,
+        "message":  "Hoàn thành chủ đề #365: Thất nghiệp (Unemployment) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 03:13:53",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  366,
+        "message":  "Khởi chạy luồng xử lý chủ đề #366: Nợ công (Public Debt)"
+    },
+    {
+        "time":  "2026-11-17 03:13:53",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  364,
+        "message":  "Hoàn thành chủ đề #364: Tỷ giá hối đoái (Exchange Rates) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:12:58",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  365,
+        "message":  "Khởi chạy luồng xử lý chủ đề #365: Thất nghiệp (Unemployment)"
+    },
+    {
+        "time":  "2026-11-17 03:12:58",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  363,
+        "message":  "Hoàn thành chủ đề #363: Tổng sản phẩm quốc nội (GDP) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 03:12:24",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  364,
+        "message":  "Khởi chạy luồng xử lý chủ đề #364: Tỷ giá hối đoái (Exchange Rates)"
+    },
+    {
+        "time":  "2026-11-17 03:12:24",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  362,
+        "message":  "Hoàn thành chủ đề #362: Khủng hoảng kinh tế (Economic Crises) (100 từ, 96s)"
+    },
+    {
+        "time":  "2026-11-17 03:11:23",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  363,
+        "message":  "Khởi chạy luồng xử lý chủ đề #363: Tổng sản phẩm quốc nội (GDP)"
+    },
+    {
+        "time":  "2026-11-17 03:11:23",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  361,
+        "message":  "Hoàn thành chủ đề #361: Lạm phát (Inflation) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:10:48",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  362,
+        "message":  "Khởi chạy luồng xử lý chủ đề #362: Khủng hoảng kinh tế (Economic Crises)"
+    },
+    {
+        "time":  "2026-11-17 03:10:48",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  360,
+        "message":  "Hoàn thành chủ đề #360: Viết sáng tạo (Creative Writing) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:09:53",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  361,
+        "message":  "Khởi chạy luồng xử lý chủ đề #361: Lạm phát (Inflation)"
+    },
+    {
+        "time":  "2026-11-17 03:09:53",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  359,
+        "message":  "Hoàn thành chủ đề #359: Giao tiếp phi ngôn ngữ (Non-verbal Communication) (99 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 03:09:16",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  360,
+        "message":  "Khởi chạy luồng xử lý chủ đề #360: Viết sáng tạo (Creative Writing)"
+    },
+    {
+        "time":  "2026-11-17 03:09:16",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  358,
+        "message":  "Hoàn thành chủ đề #358: Giọng điệu và Ngữ điệu (Accents \u0026 Intonation) (100 từ, 80s)"
+    },
+    {
+        "time":  "2026-11-17 03:08:18",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  359,
+        "message":  "Khởi chạy luồng xử lý chủ đề #359: Giao tiếp phi ngôn ngữ (Non-verbal Communication)"
+    },
+    {
+        "time":  "2026-11-17 03:08:18",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  357,
+        "message":  "Hoàn thành chủ đề #357: Ngôn ngữ ký hiệu (Sign Language) (100 từ, 96s)"
+    },
+    {
+        "time":  "2026-11-17 03:07:55",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  358,
+        "message":  "Khởi chạy luồng xử lý chủ đề #358: Giọng điệu và Ngữ điệu (Accents \u0026 Intonation)"
+    },
+    {
+        "time":  "2026-11-17 03:07:55",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  356,
+        "message":  "Hoàn thành chủ đề #356: Biện luận và Tranh biện (Debate \u0026 Argumentation) (99 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 03:06:42",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  357,
+        "message":  "Khởi chạy luồng xử lý chủ đề #357: Ngôn ngữ ký hiệu (Sign Language)"
+    },
+    {
+        "time":  "2026-11-17 03:06:42",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  355,
+        "message":  "Hoàn thành chủ đề #355: Dịch thuật và Phiên dịch (Translation \u0026 Interpreting) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:06:29",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  356,
+        "message":  "Khởi chạy luồng xử lý chủ đề #356: Biện luận và Tranh biện (Debate \u0026 Argumentation)"
+    },
+    {
+        "time":  "2026-11-17 03:06:29",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  354,
+        "message":  "Hoàn thành chủ đề #354: Ngữ âm học (Phonetics) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:05:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  355,
+        "message":  "Khởi chạy luồng xử lý chủ đề #355: Dịch thuật và Phiên dịch (Translation \u0026 Interpreting)"
+    },
+    {
+        "time":  "2026-11-17 03:05:12",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  353,
+        "message":  "Hoàn thành chủ đề #353: Ngữ pháp tiếng Anh (English Grammar) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:04:56",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  354,
+        "message":  "Khởi chạy luồng xử lý chủ đề #354: Ngữ âm học (Phonetics)"
+    },
+    {
+        "time":  "2026-11-17 03:04:56",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  352,
+        "message":  "Hoàn thành chủ đề #352: Từ lóng (Slang) (100 từ, 96s)"
+    },
+    {
+        "time":  "2026-11-17 03:03:43",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  353,
+        "message":  "Khởi chạy luồng xử lý chủ đề #353: Ngữ pháp tiếng Anh (English Grammar)"
+    },
+    {
+        "time":  "2026-11-17 03:03:43",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  351,
+        "message":  "Hoàn thành chủ đề #351: Thành ngữ và Tục ngữ (Idioms \u0026 Proverbs) (100 từ, 91s)"
+    },
+    {
+        "time":  "2026-11-17 03:03:21",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  352,
+        "message":  "Khởi chạy luồng xử lý chủ đề #352: Từ lóng (Slang)"
+    },
+    {
         "time":  "2026-11-17 03:03:16",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "SPAWN_WORKER",
         "stt":  177,
         "message":  "Khởi chạy luồng xử lý chủ đề #177: Quản lý rủi ro (Risk Management)"
-    },
-    {
-        "time":  "2026-11-17 01:21:26",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  176,
-        "message":  "Khởi chạy luồng xử lý chủ đề #176: Kế toán kiểm toán (Auditing \u0026 Accounting)"
-    },
-    {
-        "time":  "2026-11-17 01:15:59",
-        "level":  "INFO",
-        "step":  "START_TOPIC",
-        "stt":  176,
-        "message":  "Bắt đầu Pipeline Lai cho chủ đề #176 - Kế toán kiểm toán (Auditing \u0026 Accounting)"
-    },
-    {
-        "time":  "2026-11-17 01:11:45",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  174,
-        "message":  "Hoàn thành chủ đề #174 - Tiền điện tử và Blockchain (Cryptocurrency \u0026 Blockchain) với 100 từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)."
-    },
-    {
-        "time":  "2026-11-17 01:10:03",
-        "level":  "INFO",
-        "step":  "START_TOPIC",
-        "stt":  174,
-        "message":  "Bắt đầu Pipeline Lai cho chủ đề #174 - Tiền điện tử và Blockchain (Cryptocurrency \u0026 Blockchain)"
-    },
-    {
-        "time":  "2026-11-17 00:59:16",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  173,
-        "message":  "Hoàn thành chủ đề #173 - Thương mại quốc tế (International Trade) với 100 từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)."
-    },
-    {
-        "time":  "2026-11-17 00:57:41",
-        "level":  "INFO",
-        "step":  "START_TOPIC",
-        "stt":  173,
-        "message":  "Bắt đầu Pipeline Lai cho chủ đề #173 - Thương mại quốc tế (International Trade)"
-    },
-    {
-        "time":  "2026-11-17 00:57:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  172,
-        "message":  "Hoàn thành chủ đề #172 - Đầu tư bất động sản (Real Estate Investment) với 100 từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)."
-    },
-    {
-        "time":  "2026-11-17 00:56:07",
-        "level":  "INFO",
-        "step":  "START_TOPIC",
-        "stt":  172,
-        "message":  "Bắt đầu Pipeline Lai cho chủ đề #172 - Đầu tư bất động sản (Real Estate Investment)"
-    },
-    {
-        "time":  "2026-11-17 00:56:07",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  171,
-        "message":  "Hoàn thành chủ đề #171 - Thị trường chứng khoán (Stock Market) với 100 từ (Cột 8: Từ đồng nghĩa, Kèm âm thanh MP3)."
-    },
-    {
-        "time":  "2026-11-17 00:54:20",
-        "level":  "INFO",
-        "step":  "START_TOPIC",
-        "stt":  171,
-        "message":  "Bắt đầu Pipeline Lai cho chủ đề #171 - Thị trường chứng khoán (Stock Market)"
-    },
-    {
-        "time":  "2026-11-17 00:52:29",
-        "level":  "INFO",
-        "step":  "START_TOPIC",
-        "stt":  171,
-        "message":  "Bắt đầu Pipeline Lai cho chủ đề #171 - Thị trường chứng khoán (Stock Market)"
-    },
-    {
-        "time":  "2026-11-16 13:05:03",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  167,
-        "message":  "Hoàn thành chủ đề #167 (Họp hành và Thuyết trình (Meetings \u0026 Presentations)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 13:05:03",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  167,
-        "message":  "Chủ đề #167: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 13:05:03",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  167,
-        "message":  "Chủ đề #167 (Họp hành và Thuyết trình (Meetings \u0026 Presentations)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 13:04:44",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  167,
-        "message":  "Chủ đề #167 (Họp hành và Thuyết trình (Meetings \u0026 Presentations)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 13:04:44",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  166,
-        "message":  "Hoàn thành chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 13:04:44",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  166,
-        "message":  "Chủ đề #166: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 13:04:44",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_1_DONE",
-        "stt":  166,
-        "message":  "Chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
-    },
-    {
-        "time":  "2026-11-16 13:04:19",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  166,
-        "message":  "Chủ đề #166 (Kỹ năng mềm văn phòng (Office Soft Skills)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 13:04:19",
-        "level":  "ERROR",
-        "step":  "FAIL_TOPIC",
-        "stt":  165,
-        "message":  "Lỗi khi tạo chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)): Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)) chỉ tạo được 48/100 từ sau tối đa 2 prompts! | ValueError: Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)) chỉ tạo được 48/100 từ sau tối đa 2 prompts!"
-    },
-    {
-        "time":  "2026-11-16 13:04:19",
-        "level":  "ERROR",
-        "step":  "INCOMPLETE",
-        "stt":  165,
-        "message":  "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)): Sau 2 prompts chỉ đạt 48/100 từ!"
-    },
-    {
-        "time":  "2026-11-16 13:03:59",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  165,
-        "message":  "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)): Prompt 1 đạt 20/100 từ (còn thiếu 80). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 13:03:40",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  165,
-        "message":  "Chủ đề #165 (Khởi nghiệp và Vốn gọi (Startups \u0026 Fundraising)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 13:03:40",
-        "level":  "INFO",
-        "step":  "START_JOB",
-        "stt":  null,
-        "message":  "Bắt đầu tiến trình tạo 3 chủ đề: [165, 166, 167]"
-    },
-    {
-        "time":  "2026-11-16 13:01:53",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  164,
-        "message":  "Hoàn thành chủ đề #164 (Nhân sự và Tuyển dụng (HR \u0026 Recruitment)) với 100 từ."
-    },
-    {
-        "time":  "2026-11-16 13:01:53",
-        "level":  "SUCCESS",
-        "step":  "COLLECT_DONE",
-        "stt":  164,
-        "message":  "Chủ đề #164: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
-    },
-    {
-        "time":  "2026-11-16 13:01:53",
-        "level":  "SUCCESS",
-        "step":  "PROMPT_2_DONE",
-        "stt":  164,
-        "message":  "Chủ đề #164 (Nhân sự và Tuyển dụng (HR \u0026 Recruitment)): Hoàn thành 100 từ sau Prompt 2."
-    },
-    {
-        "time":  "2026-11-16 13:01:31",
-        "level":  "INFO",
-        "step":  "PROMPT_2_START",
-        "stt":  164,
-        "message":  "Chủ đề #164 (Nhân sự và Tuyển dụng (HR \u0026 Recruitment)): Prompt 1 đạt 82/100 từ (còn thiếu 18). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
-    },
-    {
-        "time":  "2026-11-16 13:01:02",
-        "level":  "INFO",
-        "step":  "PROMPT_1_START",
-        "stt":  164,
-        "message":  "Chủ đề #164 (Nhân sự và Tuyển dụng (HR \u0026 Recruitment)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
-    },
-    {
-        "time":  "2026-11-16 13:01:02",
-        "level":  "SUCCESS",
-        "step":  "DONE_TOPIC",
-        "stt":  163,
-        "message":  "Hoàn thành chủ đề #163 (Lĩnh vực công nghệ (Tech Industry)) với 100 từ."
     }
 ]
