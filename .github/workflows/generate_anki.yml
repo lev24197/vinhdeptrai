@@ -1,9 +1,9 @@
 name: Auto Generate Anki Topics
 
 on:
-  schedule:
-    # Tự động chạy hàng giờ tại phút thứ 15 (tránh nghẽn đầu giờ)
-    - cron: '15 * * * *'
+  # schedule:
+  #   # Tạm dừng chạy tự động theo yêu cầu để tránh tiêu tốn token/chi phí
+  #   - cron: '15 * * * *'
   workflow_dispatch:
     inputs:
       batch_size:
