@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 03:37:35",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  395,
+        "message":  "Hoàn thành chủ đề #395: Khảo cổ học (Archaeology) (100 từ, 113s)"
+    },
+    {
+        "time":  "2026-11-17 03:36:40",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  396,
+        "message":  "Khởi chạy luồng xử lý chủ đề #396: Ngôn ngữ học xã hội (Sociolinguistics)"
+    },
+    {
+        "time":  "2026-11-17 03:36:40",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  394,
+        "message":  "Hoàn thành chủ đề #394: Tôn giáo học (Religious Studies) (100 từ, 90s)"
+    },
+    {
+        "time":  "2026-11-17 03:35:42",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  395,
+        "message":  "Khởi chạy luồng xử lý chủ đề #395: Khảo cổ học (Archaeology)"
+    },
+    {
+        "time":  "2026-11-17 03:35:42",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  393,
+        "message":  "Hoàn thành chủ đề #393: Triết học (Philosophy) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:35:11",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  394,
+        "message":  "Khởi chạy luồng xử lý chủ đề #394: Tôn giáo học (Religious Studies)"
+    },
+    {
+        "time":  "2026-11-17 03:35:11",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  392,
+        "message":  "Hoàn thành chủ đề #392: Xã hội học (Sociology) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:34:09",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  393,
+        "message":  "Khởi chạy luồng xử lý chủ đề #393: Triết học (Philosophy)"
+    },
+    {
+        "time":  "2026-11-17 03:34:09",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  391,
+        "message":  "Hoàn thành chủ đề #391: Nhân chủng học (Anthropology) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:33:41",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  392,
+        "message":  "Khởi chạy luồng xử lý chủ đề #392: Xã hội học (Sociology)"
+    },
+    {
+        "time":  "2026-11-17 03:33:41",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  390,
+        "message":  "Hoàn thành chủ đề #390: Thiết kế thời trang (Fashion Design) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:32:40",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  391,
+        "message":  "Khởi chạy luồng xử lý chủ đề #391: Nhân chủng học (Anthropology)"
+    },
+    {
+        "time":  "2026-11-17 03:32:40",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  389,
+        "message":  "Hoàn thành chủ đề #389: Viết nhật ký (Journaling) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:32:09",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  390,
+        "message":  "Khởi chạy luồng xử lý chủ đề #390: Thiết kế thời trang (Fashion Design)"
+    },
+    {
+        "time":  "2026-11-17 03:32:09",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  388,
+        "message":  "Hoàn thành chủ đề #388: Đọc sách hư cấu (Reading Fiction) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:31:10",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  389,
+        "message":  "Khởi chạy luồng xử lý chủ đề #389: Viết nhật ký (Journaling)"
+    },
+    {
+        "time":  "2026-11-17 03:31:10",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  387,
+        "message":  "Hoàn thành chủ đề #387: Bay flycam (Drone Flying) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:30:36",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  388,
+        "message":  "Khởi chạy luồng xử lý chủ đề #388: Đọc sách hư cấu (Reading Fiction)"
+    },
+    {
+        "time":  "2026-11-17 03:30:36",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  386,
+        "message":  "Hoàn thành chủ đề #386: Nhiếp ảnh phong cảnh (Landscape Photography) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:29:38",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  387,
+        "message":  "Khởi chạy luồng xử lý chủ đề #387: Bay flycam (Drone Flying)"
+    },
+    {
+        "time":  "2026-11-17 03:29:38",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  385,
+        "message":  "Hoàn thành chủ đề #385: Nướng BBQ (BBQ Grilling) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 03:29:07",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  386,
+        "message":  "Khởi chạy luồng xử lý chủ đề #386: Nhiếp ảnh phong cảnh (Landscape Photography)"
+    },
+    {
+        "time":  "2026-11-17 03:29:07",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  384,
+        "message":  "Hoàn thành chủ đề #384: Làm vườn mộc (Woodworking) (99 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:28:08",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  385,
+        "message":  "Khởi chạy luồng xử lý chủ đề #385: Nướng BBQ (BBQ Grilling)"
+    },
+    {
+        "time":  "2026-11-17 03:28:08",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  383,
+        "message":  "Hoàn thành chủ đề #383: Chơi cờ vua (Chess) (100 từ, 98s)"
+    },
+    {
+        "time":  "2026-11-17 03:27:34",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  384,
+        "message":  "Khởi chạy luồng xử lý chủ đề #384: Làm vườn mộc (Woodworking)"
+    },
+    {
+        "time":  "2026-11-17 03:27:34",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  382,
+        "message":  "Hoàn thành chủ đề #382: Đan lát và Thêu thùa (Knitting \u0026 Embroidery) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 03:26:30",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  383,
+        "message":  "Khởi chạy luồng xử lý chủ đề #383: Chơi cờ vua (Chess)"
+    },
+    {
+        "time":  "2026-11-17 03:26:30",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  381,
+        "message":  "Hoàn thành chủ đề #381: Câu cá (Fishing) (100 từ, 118s)"
+    },
+    {
+        "time":  "2026-11-17 03:26:02",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  382,
+        "message":  "Khởi chạy luồng xử lý chủ đề #382: Đan lát và Thêu thùa (Knitting \u0026 Embroidery)"
+    },
+    {
         "time":  "2026-11-17 03:25:57",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "SPAWN_WORKER",
         "stt":  242,
         "message":  "Khởi chạy luồng xử lý chủ đề #242: An ninh mạng (Cybersecurity)"
-    },
-    {
-        "time":  "2026-11-17 01:44:21",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  241,
-        "message":  "Khởi chạy luồng xử lý chủ đề #241: Ngôn ngữ lập trình (Programming Languages)"
-    },
-    {
-        "time":  "2026-11-17 01:44:17",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  240,
-        "message":  "Hoàn thành chủ đề #240: Hiện tượng quang học tự nhiên (Natural Optical Phenomena) (100 từ, 82s)"
-    },
-    {
-        "time":  "2026-11-17 01:44:17",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  239,
-        "message":  "Hoàn thành chủ đề #239: Bảo tồn động vật hoang dã (Wildlife Conservation) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 01:42:55",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  240,
-        "message":  "Khởi chạy luồng xử lý chủ đề #240: Hiện tượng quang học tự nhiên (Natural Optical Phenomena)"
-    },
-    {
-        "time":  "2026-11-17 01:42:55",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  237,
-        "message":  "Hoàn thành chủ đề #237: Biến đổi khí hậu (Climate Change) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 01:42:48",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  239,
-        "message":  "Khởi chạy luồng xử lý chủ đề #239: Bảo tồn động vật hoang dã (Wildlife Conservation)"
-    },
-    {
-        "time":  "2026-11-17 01:42:48",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  235,
-        "message":  "Hoàn thành chủ đề #235: Các loại nấm (Fungi \u0026 Mushrooms) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 01:41:22",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  237,
-        "message":  "Khởi chạy luồng xử lý chủ đề #237: Biến đổi khí hậu (Climate Change)"
-    },
-    {
-        "time":  "2026-11-17 01:41:22",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  230,
-        "message":  "Hoàn thành chủ đề #230: Khoa học dữ liệu (Data Science) (100 từ, 94s)"
-    },
-    {
-        "time":  "2026-11-17 01:41:18",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  235,
-        "message":  "Khởi chạy luồng xử lý chủ đề #235: Các loại nấm (Fungi \u0026 Mushrooms)"
-    },
-    {
-        "time":  "2026-11-17 01:41:18",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  232,
-        "message":  "Hoàn thành chủ đề #232: Chim và Bò sát (Birds \u0026 Reptiles) (100 từ, 79s)"
-    },
-    {
-        "time":  "2026-11-17 01:39:59",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  232,
-        "message":  "Khởi chạy luồng xử lý chủ đề #232: Chim và Bò sát (Birds \u0026 Reptiles)"
-    },
-    {
-        "time":  "2026-11-17 01:39:59",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  227,
-        "message":  "Hoàn thành chủ đề #227: Kỹ thuật hàng không (Aerospace Engineering) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 01:39:48",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  230,
-        "message":  "Khởi chạy luồng xử lý chủ đề #230: Khoa học dữ liệu (Data Science)"
-    },
-    {
-        "time":  "2026-11-17 01:39:48",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  226,
-        "message":  "Hoàn thành chủ đề #226: Trí tuệ nhân tạo (AI \u0026 Machine Learning) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 01:38:29",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  227,
-        "message":  "Khởi chạy luồng xử lý chủ đề #227: Kỹ thuật hàng không (Aerospace Engineering)"
-    },
-    {
-        "time":  "2026-11-17 01:38:29",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  225,
-        "message":  "Hoàn thành chủ đề #225: Giải phẫu học (Anatomy) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 01:38:22",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  226,
-        "message":  "Khởi chạy luồng xử lý chủ đề #226: Trí tuệ nhân tạo (AI \u0026 Machine Learning)"
-    },
-    {
-        "time":  "2026-11-17 01:38:22",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  223,
-        "message":  "Hoàn thành chủ đề #223: Bảng tuần hoàn hóa học (Periodic Table) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 01:37:03",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  225,
-        "message":  "Khởi chạy luồng xử lý chủ đề #225: Giải phẫu học (Anatomy)"
-    },
-    {
-        "time":  "2026-11-17 01:37:03",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  221,
-        "message":  "Hoàn thành chủ đề #221: Nghiên cứu vũ trụ (Space Exploration) (99 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 01:36:52",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  223,
-        "message":  "Khởi chạy luồng xử lý chủ đề #223: Bảng tuần hoàn hóa học (Periodic Table)"
-    },
-    {
-        "time":  "2026-11-17 01:36:52",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  217,
-        "message":  "Hoàn thành chủ đề #217: Giải đấu thế giới (World Tournaments) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 01:35:33",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  221,
-        "message":  "Khởi chạy luồng xử lý chủ đề #221: Nghiên cứu vũ trụ (Space Exploration)"
-    },
-    {
-        "time":  "2026-11-17 01:35:33",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  214,
-        "message":  "Hoàn thành chủ đề #214: Điền kinh (Athletics) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 01:35:26",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  217,
-        "message":  "Khởi chạy luồng xử lý chủ đề #217: Giải đấu thế giới (World Tournaments)"
-    },
-    {
-        "time":  "2026-11-17 01:35:26",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  211,
-        "message":  "Hoàn thành chủ đề #211: Thể thao dưới nước (Water Sports) (100 từ, 93s)"
-    },
-    {
-        "time":  "2026-11-17 01:33:57",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  214,
-        "message":  "Khởi chạy luồng xử lý chủ đề #214: Điền kinh (Athletics)"
-    },
-    {
-        "time":  "2026-11-17 01:33:57",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  207,
-        "message":  "Hoàn thành chủ đề #207: Thể loại âm nhạc (Music Genres) (100 từ, 91s)"
-    },
-    {
-        "time":  "2026-11-17 01:33:53",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  211,
-        "message":  "Khởi chạy luồng xử lý chủ đề #211: Thể thao dưới nước (Water Sports)"
     }
 ]
