@@ -1,5 +1,103 @@
 [
   {
+    "time": "2026-11-16 07:25:06",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 143,
+    "message": "Hoàn thành chủ đề #143 (Thời trang trẻ em (Children's Wear)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 07:25:06",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 143,
+    "message": "Chủ đề #143: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 07:25:06",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 143,
+    "message": "Chủ đề #143 (Thời trang trẻ em (Children's Wear)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 07:24:41",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 143,
+    "message": "Chủ đề #143 (Thời trang trẻ em (Children's Wear)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 07:24:41",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 142,
+    "message": "Hoàn thành chủ đề #142 (Trang phục nữ (Women's Clothing)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 07:24:41",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 142,
+    "message": "Chủ đề #142: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 07:24:41",
+    "level": "SUCCESS",
+    "step": "PROMPT_2_DONE",
+    "stt": 142,
+    "message": "Chủ đề #142 (Trang phục nữ (Women's Clothing)): Hoàn thành 100 từ sau Prompt 2."
+  },
+  {
+    "time": "2026-11-16 07:24:25",
+    "level": "INFO",
+    "step": "PROMPT_2_START",
+    "stt": 142,
+    "message": "Chủ đề #142 (Trang phục nữ (Women's Clothing)): Prompt 1 đạt 43/100 từ (còn thiếu 57). Bắt đầu Prompt 2 bổ sung để hoàn thành 100 từ..."
+  },
+  {
+    "time": "2026-11-16 07:24:08",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 142,
+    "message": "Chủ đề #142 (Trang phục nữ (Women's Clothing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 07:24:08",
+    "level": "SUCCESS",
+    "step": "DONE_TOPIC",
+    "stt": 141,
+    "message": "Hoàn thành chủ đề #141 (Trang phục nam (Men's Clothing)) với 100 từ."
+  },
+  {
+    "time": "2026-11-16 07:24:08",
+    "level": "SUCCESS",
+    "step": "COLLECT_DONE",
+    "stt": 141,
+    "message": "Chủ đề #141: Hoàn tất đủ chính xác 100 từ chuẩn chủ đề."
+  },
+  {
+    "time": "2026-11-16 07:24:08",
+    "level": "SUCCESS",
+    "step": "PROMPT_1_DONE",
+    "stt": 141,
+    "message": "Chủ đề #141 (Trang phục nam (Men's Clothing)): Hoàn tất đủ 100 từ ngay sau Prompt 1 duy nhất!"
+  },
+  {
+    "time": "2026-11-16 07:23:42",
+    "level": "INFO",
+    "step": "PROMPT_1_START",
+    "stt": 141,
+    "message": "Chủ đề #141 (Trang phục nam (Men's Clothing)): Bắt đầu Prompt 1 yêu cầu trực tiếp 105 danh từ chuẩn chủ đề..."
+  },
+  {
+    "time": "2026-11-16 07:23:42",
+    "level": "INFO",
+    "step": "START_JOB",
+    "stt": null,
+    "message": "Bắt đầu tiến trình tạo 3 chủ đề: [141, 142, 143]"
+  },
+  {
     "time": "2026-11-16 04:03:49",
     "level": "SUCCESS",
     "step": "DONE_TOPIC",

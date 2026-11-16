@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 04:03:49",
+  "updated_at": "2026-11-16 07:25:06",
   "topics": [
     {
       "stt": 1,
@@ -1264,28 +1264,28 @@
     {
       "stt": 141,
       "topic": "Trang phục nam (Men's Clothing)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/141.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 07:24",
       "last_error": null
     },
     {
       "stt": 142,
       "topic": "Trang phục nữ (Women's Clothing)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/142.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 07:24",
       "last_error": null
     },
     {
       "stt": 143,
       "topic": "Thời trang trẻ em (Children's Wear)",
-      "status": "pending",
-      "word_count": 0,
+      "status": "completed",
+      "word_count": 100,
       "file_path": "output/143.txt",
-      "generated_at": null,
+      "generated_at": "2026-11-16 07:25",
       "last_error": null
     },
     {
