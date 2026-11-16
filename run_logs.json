@@ -1,5 +1,215 @@
 ﻿[
     {
+        "time":  "2026-11-17 04:34:04",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  470,
+        "message":  "Hoàn thành chủ đề #470: Tiền boa (Tipping) (100 từ, 99s)"
+    },
+    {
+        "time":  "2026-11-17 04:33:42",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  471,
+        "message":  "Khởi chạy luồng xử lý chủ đề #471: Tài khoản tiết kiệm (Savings Accounts)"
+    },
+    {
+        "time":  "2026-11-17 04:33:42",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  469,
+        "message":  "Hoàn thành chủ đề #469: Món chính (Main Courses) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 04:32:26",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  470,
+        "message":  "Khởi chạy luồng xử lý chủ đề #470: Tiền boa (Tipping)"
+    },
+    {
+        "time":  "2026-11-17 04:32:26",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  468,
+        "message":  "Hoàn thành chủ đề #468: Món khai vị (Appetizers) (100 từ, 101s)"
+    },
+    {
+        "time":  "2026-11-17 04:32:06",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  469,
+        "message":  "Khởi chạy luồng xử lý chủ đề #469: Món chính (Main Courses)"
+    },
+    {
+        "time":  "2026-11-17 04:32:06",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  467,
+        "message":  "Hoàn thành chủ đề #467: Đánh giá nhà hàng (Restaurant Reviews) (100 từ, 92s)"
+    },
+    {
+        "time":  "2026-11-17 04:30:44",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  468,
+        "message":  "Khởi chạy luồng xử lý chủ đề #468: Món khai vị (Appetizers)"
+    },
+    {
+        "time":  "2026-11-17 04:30:44",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  466,
+        "message":  "Hoàn thành chủ đề #466: Giao đồ ăn (Food Delivery) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 04:30:34",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  467,
+        "message":  "Khởi chạy luồng xử lý chủ đề #467: Đánh giá nhà hàng (Restaurant Reviews)"
+    },
+    {
+        "time":  "2026-11-17 04:30:34",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  465,
+        "message":  "Hoàn thành chủ đề #465: Nhà hàng cao cấp (Fine Dining) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 04:29:18",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  466,
+        "message":  "Khởi chạy luồng xử lý chủ đề #466: Giao đồ ăn (Food Delivery)"
+    },
+    {
+        "time":  "2026-11-17 04:29:18",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  464,
+        "message":  "Hoàn thành chủ đề #464: Thức ăn nhanh (Fast Food) (100 từ, 84s)"
+    },
+    {
+        "time":  "2026-11-17 04:29:07",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  465,
+        "message":  "Khởi chạy luồng xử lý chủ đề #465: Nhà hàng cao cấp (Fine Dining)"
+    },
+    {
+        "time":  "2026-11-17 04:29:07",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  463,
+        "message":  "Hoàn thành chủ đề #463: Thực đơn và Gọi món (Menus \u0026 Ordering) (100 từ, 86s)"
+    },
+    {
+        "time":  "2026-11-17 04:27:54",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  464,
+        "message":  "Khởi chạy luồng xử lý chủ đề #464: Thức ăn nhanh (Fast Food)"
+    },
+    {
+        "time":  "2026-11-17 04:27:54",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  462,
+        "message":  "Hoàn thành chủ đề #462: Nhân viên phục vụ (Waitstaff) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 04:27:41",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  463,
+        "message":  "Khởi chạy luồng xử lý chủ đề #463: Thực đơn và Gọi món (Menus \u0026 Ordering)"
+    },
+    {
+        "time":  "2026-11-17 04:27:41",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  461,
+        "message":  "Hoàn thành chủ đề #461: Đầu bếp và Phụ bếp (Chefs \u0026 Cooks) (100 từ, 89s)"
+    },
+    {
+        "time":  "2026-11-17 04:26:24",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  462,
+        "message":  "Khởi chạy luồng xử lý chủ đề #462: Nhân viên phục vụ (Waitstaff)"
+    },
+    {
+        "time":  "2026-11-17 04:26:24",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  460,
+        "message":  "Hoàn thành chủ đề #460: Bày tỏ sự thất vọng (Expressing Disappointment) (100 từ, 95s)"
+    },
+    {
+        "time":  "2026-11-17 04:26:11",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  461,
+        "message":  "Khởi chạy luồng xử lý chủ đề #461: Đầu bếp và Phụ bếp (Chefs \u0026 Cooks)"
+    },
+    {
+        "time":  "2026-11-17 04:26:11",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  459,
+        "message":  "Hoàn thành chủ đề #459: Đàm phán (Negotiation Phrases) (100 từ, 98s)"
+    },
+    {
+        "time":  "2026-11-17 04:24:49",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  460,
+        "message":  "Khởi chạy luồng xử lý chủ đề #460: Bày tỏ sự thất vọng (Expressing Disappointment)"
+    },
+    {
+        "time":  "2026-11-17 04:24:49",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  458,
+        "message":  "Hoàn thành chủ đề #458: Khen ngợi (Compliments) (100 từ, 83s)"
+    },
+    {
+        "time":  "2026-11-17 04:24:33",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  459,
+        "message":  "Khởi chạy luồng xử lý chủ đề #459: Đàm phán (Negotiation Phrases)"
+    },
+    {
+        "time":  "2026-11-17 04:24:33",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  457,
+        "message":  "Hoàn thành chủ đề #457: Khích lệ và Động viên (Encouragement) (100 từ, 80s)"
+    },
+    {
+        "time":  "2026-11-17 04:23:25",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  458,
+        "message":  "Khởi chạy luồng xử lý chủ đề #458: Khen ngợi (Compliments)"
+    },
+    {
+        "time":  "2026-11-17 04:23:25",
+        "level":  "SUCCESS",
+        "step":  "TOPIC_COMPLETED",
+        "stt":  456,
+        "message":  "Hoàn thành chủ đề #456: Xin lỗi chân thành (Sincere Apologies) (100 từ, 82s)"
+    },
+    {
+        "time":  "2026-11-17 04:23:12",
+        "level":  "INFO",
+        "step":  "SPAWN_WORKER",
+        "stt":  457,
+        "message":  "Khởi chạy luồng xử lý chủ đề #457: Khích lệ và Động viên (Encouragement)"
+    },
+    {
         "time":  "2026-11-17 04:23:08",
         "level":  "SUCCESS",
         "step":  "TOPIC_COMPLETED",
@@ -1888,215 +2098,5 @@
         "step":  "SPAWN_WORKER",
         "stt":  322,
         "message":  "Khởi chạy luồng xử lý chủ đề #322: Ăn chay và Thuần chay (Vegetarian \u0026 Vegan)"
-    },
-    {
-        "time":  "2026-11-17 02:40:35",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  320,
-        "message":  "Hoàn thành chủ đề #320: Chìa khóa và Ổ khóa (Keys \u0026 Locks) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:39:39",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  321,
-        "message":  "Khởi chạy luồng xử lý chủ đề #321: Sống tối giản (Minimalism)"
-    },
-    {
-        "time":  "2026-11-17 02:39:39",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  319,
-        "message":  "Hoàn thành chủ đề #319: Phụ kiện điện thoại (Mobile Accessories) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 02:39:02",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  320,
-        "message":  "Khởi chạy luồng xử lý chủ đề #320: Chìa khóa và Ổ khóa (Keys \u0026 Locks)"
-    },
-    {
-        "time":  "2026-11-17 02:39:02",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  318,
-        "message":  "Hoàn thành chủ đề #318: Đồ bảo hộ lao động (Personal Protective Equipment) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 02:38:13",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  319,
-        "message":  "Khởi chạy luồng xử lý chủ đề #319: Phụ kiện điện thoại (Mobile Accessories)"
-    },
-    {
-        "time":  "2026-11-17 02:38:13",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  317,
-        "message":  "Hoàn thành chủ đề #317: Túi xách và Ba lô (Bags \u0026 Backpacks) (100 từ, 90s)"
-    },
-    {
-        "time":  "2026-11-17 02:37:36",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  318,
-        "message":  "Khởi chạy luồng xử lý chủ đề #318: Đồ bảo hộ lao động (Personal Protective Equipment)"
-    },
-    {
-        "time":  "2026-11-17 02:37:36",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  316,
-        "message":  "Hoàn thành chủ đề #316: Pin và Sạc (Batteries \u0026 Chargers) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:36:43",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  317,
-        "message":  "Khởi chạy luồng xử lý chủ đề #317: Túi xách và Ba lô (Bags \u0026 Backpacks)"
-    },
-    {
-        "time":  "2026-11-17 02:36:43",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  315,
-        "message":  "Hoàn thành chủ đề #315: Dụng cụ cắt gọt (Cutting Tools) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:36:03",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  316,
-        "message":  "Khởi chạy luồng xử lý chủ đề #316: Pin và Sạc (Batteries \u0026 Chargers)"
-    },
-    {
-        "time":  "2026-11-17 02:36:03",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  314,
-        "message":  "Hoàn thành chủ đề #314: Đồ nhựa dùng một lần (Disposable Plastics) (98 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:35:11",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  315,
-        "message":  "Khởi chạy luồng xử lý chủ đề #315: Dụng cụ cắt gọt (Cutting Tools)"
-    },
-    {
-        "time":  "2026-11-17 02:35:11",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  313,
-        "message":  "Hoàn thành chủ đề #313: Thiết bị giặt ủi (Laundry Appliances) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:34:31",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  314,
-        "message":  "Khởi chạy luồng xử lý chủ đề #314: Đồ nhựa dùng một lần (Disposable Plastics)"
-    },
-    {
-        "time":  "2026-11-17 02:34:31",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  312,
-        "message":  "Hoàn thành chủ đề #312: Văn phòng phẩm cao cấp (Premium Stationery) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 02:33:38",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  313,
-        "message":  "Khởi chạy luồng xử lý chủ đề #313: Thiết bị giặt ủi (Laundry Appliances)"
-    },
-    {
-        "time":  "2026-11-17 02:33:38",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  311,
-        "message":  "Hoàn thành chủ đề #311: Dụng cụ may vá (Sewing Tools) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 02:33:01",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  312,
-        "message":  "Khởi chạy luồng xử lý chủ đề #312: Văn phòng phẩm cao cấp (Premium Stationery)"
-    },
-    {
-        "time":  "2026-11-17 02:33:01",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  310,
-        "message":  "Hoàn thành chủ đề #310: Bản đồ học (Cartography) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:32:03",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  311,
-        "message":  "Khởi chạy luồng xử lý chủ đề #311: Dụng cụ may vá (Sewing Tools)"
-    },
-    {
-        "time":  "2026-11-17 02:32:03",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  309,
-        "message":  "Hoàn thành chủ đề #309: Khí quyển (Atmosphere) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 02:31:29",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  310,
-        "message":  "Khởi chạy luồng xử lý chủ đề #310: Bản đồ học (Cartography)"
-    },
-    {
-        "time":  "2026-11-17 02:31:29",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  308,
-        "message":  "Hoàn thành chủ đề #308: Hải dương học (Oceanography) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 02:30:33",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  309,
-        "message":  "Khởi chạy luồng xử lý chủ đề #309: Khí quyển (Atmosphere)"
-    },
-    {
-        "time":  "2026-11-17 02:30:33",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  307,
-        "message":  "Hoàn thành chủ đề #307: Núi lửa và Động đất (Volcanoes \u0026 Earthquakes) (100 từ, 83s)"
-    },
-    {
-        "time":  "2026-11-17 02:29:56",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  308,
-        "message":  "Khởi chạy luồng xử lý chủ đề #308: Hải dương học (Oceanography)"
-    },
-    {
-        "time":  "2026-11-17 02:29:56",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  306,
-        "message":  "Hoàn thành chủ đề #306: Lớp vỏ trái đất (Earth\u0027s Crust) (100 từ, 84s)"
-    },
-    {
-        "time":  "2026-11-17 02:29:10",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  307,
-        "message":  "Khởi chạy luồng xử lý chủ đề #307: Núi lửa và Động đất (Volcanoes \u0026 Earthquakes)"
     }
 ]
