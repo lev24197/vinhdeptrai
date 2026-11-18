@@ -1,1 +1,8 @@
 .agents/
+.env
+.env.*
+output/audio/
+.venv/
+anki_backup_safe/
+__pycache__/
+*.pyc
