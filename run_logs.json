@@ -1,2102 +1,2102 @@
-﻿[
-    {
-        "time":  "2026-11-17 04:58:53",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  500,
-        "message":  "Hoàn thành chủ đề #500: Sổ hộ khẩu (Household Registration) (100 từ, 94s)"
-    },
-    {
-        "time":  "2026-11-17 04:58:32",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  499,
-        "message":  "Hoàn thành chủ đề #499: Giấy phép lái xe (Driver\u0027s Licenses) (100 từ, 101s)"
-    },
-    {
-        "time":  "2026-11-17 04:57:19",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  500,
-        "message":  "Khởi chạy luồng xử lý chủ đề #500: Sổ hộ khẩu (Household Registration)"
-    },
-    {
-        "time":  "2026-11-17 04:57:19",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  498,
-        "message":  "Hoàn thành chủ đề #498: Bảo hiểm xã hội (Social Insurance) (100 từ, 105s)"
-    },
-    {
-        "time":  "2026-11-17 04:56:51",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  499,
-        "message":  "Khởi chạy luồng xử lý chủ đề #499: Giấy phép lái xe (Driver\u0027s Licenses)"
-    },
-    {
-        "time":  "2026-11-17 04:56:51",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  497,
-        "message":  "Hoàn thành chủ đề #497: Gia hạn giấy tờ (Document Renewal) (100 từ, 99s)"
-    },
-    {
-        "time":  "2026-11-17 04:55:34",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  498,
-        "message":  "Khởi chạy luồng xử lý chủ đề #498: Bảo hiểm xã hội (Social Insurance)"
-    },
-    {
-        "time":  "2026-11-17 04:55:34",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  496,
-        "message":  "Hoàn thành chủ đề #496: Kê khai thuế (Tax Declaration) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 04:55:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  497,
-        "message":  "Khởi chạy luồng xử lý chủ đề #497: Gia hạn giấy tờ (Document Renewal)"
-    },
-    {
-        "time":  "2026-11-17 04:55:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  495,
-        "message":  "Hoàn thành chủ đề #495: Công chứng tài liệu (Document Notarization) (100 từ, 101s)"
-    },
-    {
-        "time":  "2026-11-17 04:53:58",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  496,
-        "message":  "Khởi chạy luồng xử lý chủ đề #496: Kê khai thuế (Tax Declaration)"
-    },
-    {
-        "time":  "2026-11-17 04:53:58",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  494,
-        "message":  "Hoàn thành chủ đề #494: Khai sinh và Khai tử (Birth \u0026 Death Certificates) (100 từ, 104s)"
-    },
-    {
-        "time":  "2026-11-17 04:53:30",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  495,
-        "message":  "Khởi chạy luồng xử lý chủ đề #495: Công chứng tài liệu (Document Notarization)"
-    },
-    {
-        "time":  "2026-11-17 04:53:30",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  493,
-        "message":  "Hoàn thành chủ đề #493: Đăng ký kết hôn (Marriage Registration) (99 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:52:14",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  494,
-        "message":  "Khởi chạy luồng xử lý chủ đề #494: Khai sinh và Khai tử (Birth \u0026 Death Certificates)"
-    },
-    {
-        "time":  "2026-11-17 04:52:14",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  492,
-        "message":  "Hoàn thành chủ đề #492: Xin visa (Applying for Visas) (100 từ, 102s)"
-    },
-    {
-        "time":  "2026-11-17 04:51:58",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  493,
-        "message":  "Khởi chạy luồng xử lý chủ đề #493: Đăng ký kết hôn (Marriage Registration)"
-    },
-    {
-        "time":  "2026-11-17 04:51:57",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  491,
-        "message":  "Hoàn thành chủ đề #491: Làm hộ chiếu (Making Passports) (99 từ, 110s)"
-    },
-    {
-        "time":  "2026-11-17 04:50:32",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  492,
-        "message":  "Khởi chạy luồng xử lý chủ đề #492: Xin visa (Applying for Visas)"
-    },
-    {
-        "time":  "2026-11-17 04:50:32",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  490,
-        "message":  "Hoàn thành chủ đề #490: Thời tiết cực đoan (Extreme Weather) (100 từ, 101s)"
-    },
-    {
-        "time":  "2026-11-17 04:50:07",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  491,
-        "message":  "Khởi chạy luồng xử lý chủ đề #491: Làm hộ chiếu (Making Passports)"
-    },
-    {
-        "time":  "2026-11-17 04:50:07",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  489,
-        "message":  "Hoàn thành chủ đề #489: Lạc đường (Getting Lost) (100 từ, 104s)"
-    },
-    {
-        "time":  "2026-11-17 04:48:51",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  490,
-        "message":  "Khởi chạy luồng xử lý chủ đề #490: Thời tiết cực đoan (Extreme Weather)"
-    },
-    {
-        "time":  "2026-11-17 04:48:51",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  488,
-        "message":  "Hoàn thành chủ đề #488: Mất điện (Power Outages) (99 từ, 105s)"
-    },
-    {
-        "time":  "2026-11-17 04:48:22",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  489,
-        "message":  "Khởi chạy luồng xử lý chủ đề #489: Lạc đường (Getting Lost)"
-    },
-    {
-        "time":  "2026-11-17 04:48:22",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  487,
-        "message":  "Hoàn thành chủ đề #487: Hỏng hóc máy móc (Machine Breakdowns) (100 từ, 105s)"
-    },
-    {
-        "time":  "2026-11-17 04:47:06",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  488,
-        "message":  "Khởi chạy luồng xử lý chủ đề #488: Mất điện (Power Outages)"
-    },
-    {
-        "time":  "2026-11-17 04:47:06",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  486,
-        "message":  "Hoàn thành chủ đề #486: Mất cắp và Trộm cắp (Theft \u0026 Burglary) (100 từ, 100s)"
-    },
-    {
-        "time":  "2026-11-17 04:46:38",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  487,
-        "message":  "Khởi chạy luồng xử lý chủ đề #487: Hỏng hóc máy móc (Machine Breakdowns)"
-    },
-    {
-        "time":  "2026-11-17 04:46:34",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  485,
-        "message":  "Hoàn thành chủ đề #485: Gọi cảnh sát (Calling the Police) (100 từ, 98s)"
-    },
-    {
-        "time":  "2026-11-17 04:45:26",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  486,
-        "message":  "Khởi chạy luồng xử lý chủ đề #486: Mất cắp và Trộm cắp (Theft \u0026 Burglary)"
-    },
-    {
-        "time":  "2026-11-17 04:45:26",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  484,
-        "message":  "Hoàn thành chủ đề #484: Cấp cứu y tế (Medical Emergencies) (100 từ, 98s)"
-    },
-    {
-        "time":  "2026-11-17 04:44:55",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  485,
-        "message":  "Khởi chạy luồng xử lý chủ đề #485: Gọi cảnh sát (Calling the Police)"
-    },
-    {
-        "time":  "2026-11-17 04:44:55",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  483,
-        "message":  "Hoàn thành chủ đề #483: Sơ tán khẩn cấp (Emergency Evacuation) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 04:43:48",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  484,
-        "message":  "Khởi chạy luồng xử lý chủ đề #484: Cấp cứu y tế (Medical Emergencies)"
-    },
-    {
-        "time":  "2026-11-17 04:43:48",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  482,
-        "message":  "Hoàn thành chủ đề #482: Hỏa hoạn (Fires) (100 từ, 126s)"
-    },
-    {
-        "time":  "2026-11-17 04:43:20",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  483,
-        "message":  "Khởi chạy luồng xử lý chủ đề #483: Sơ tán khẩn cấp (Emergency Evacuation)"
-    },
-    {
-        "time":  "2026-11-17 04:43:19",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  481,
-        "message":  "Hoàn thành chủ đề #481: Tai nạn giao thông (Traffic Accidents) (100 từ, 105s)"
-    },
-    {
-        "time":  "2026-11-17 04:41:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  482,
-        "message":  "Khởi chạy luồng xử lý chủ đề #482: Hỏa hoạn (Fires)"
-    },
-    {
-        "time":  "2026-11-17 04:41:42",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  480,
-        "message":  "Hoàn thành chủ đề #480: Phí giao dịch (Transaction Fees) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:41:35",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  481,
-        "message":  "Khởi chạy luồng xử lý chủ đề #481: Tai nạn giao thông (Traffic Accidents)"
-    },
-    {
-        "time":  "2026-11-17 04:41:35",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  479,
-        "message":  "Hoàn thành chủ đề #479: Biên lai và Hóa đơn (Receipts \u0026 Invoices) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:40:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  480,
-        "message":  "Khởi chạy luồng xử lý chủ đề #480: Phí giao dịch (Transaction Fees)"
-    },
-    {
-        "time":  "2026-11-17 04:40:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  478,
-        "message":  "Hoàn thành chủ đề #478: Chi nhánh ngân hàng (Bank Branches) (100 từ, 80s)"
-    },
-    {
-        "time":  "2026-11-17 04:40:08",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  479,
-        "message":  "Khởi chạy luồng xử lý chủ đề #479: Biên lai và Hóa đơn (Receipts \u0026 Invoices)"
-    },
-    {
-        "time":  "2026-11-17 04:40:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  477,
-        "message":  "Hoàn thành chủ đề #477: Ngân hàng số (Digital Banking) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:38:52",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  478,
-        "message":  "Khởi chạy luồng xử lý chủ đề #478: Chi nhánh ngân hàng (Bank Branches)"
-    },
-    {
-        "time":  "2026-11-17 04:38:52",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  476,
-        "message":  "Hoàn thành chủ đề #476: Lãi suất (Interest Rates) (100 từ, 93s)"
-    },
-    {
-        "time":  "2026-11-17 04:38:36",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  477,
-        "message":  "Khởi chạy luồng xử lý chủ đề #477: Ngân hàng số (Digital Banking)"
-    },
-    {
-        "time":  "2026-11-17 04:38:36",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  475,
-        "message":  "Hoàn thành chủ đề #475: Khoản vay và Thế chấp (Loans \u0026 Mortgages) (100 từ, 99s)"
-    },
-    {
-        "time":  "2026-11-17 04:37:19",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  476,
-        "message":  "Khởi chạy luồng xử lý chủ đề #476: Lãi suất (Interest Rates)"
-    },
-    {
-        "time":  "2026-11-17 04:37:19",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  474,
-        "message":  "Hoàn thành chủ đề #474: Rút tiền ATM (ATM Withdrawals) (99 từ, 99s)"
-    },
-    {
-        "time":  "2026-11-17 04:36:57",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  475,
-        "message":  "Khởi chạy luồng xử lý chủ đề #475: Khoản vay và Thế chấp (Loans \u0026 Mortgages)"
-    },
-    {
-        "time":  "2026-11-17 04:36:57",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  473,
-        "message":  "Hoàn thành chủ đề #473: Chuyển khoản (Bank Transfers) (100 từ, 98s)"
-    },
-    {
-        "time":  "2026-11-17 04:35:41",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  474,
-        "message":  "Khởi chạy luồng xử lý chủ đề #474: Rút tiền ATM (ATM Withdrawals)"
-    },
-    {
-        "time":  "2026-11-17 04:35:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  472,
-        "message":  "Hoàn thành chủ đề #472: Thẻ tín dụng (Credit Cards) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:35:19",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  473,
-        "message":  "Khởi chạy luồng xử lý chủ đề #473: Chuyển khoản (Bank Transfers)"
-    },
-    {
-        "time":  "2026-11-17 04:35:19",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  471,
-        "message":  "Hoàn thành chủ đề #471: Tài khoản tiết kiệm (Savings Accounts) (100 từ, 97s)"
-    },
-    {
-        "time":  "2026-11-17 04:34:08",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  472,
-        "message":  "Khởi chạy luồng xử lý chủ đề #472: Thẻ tín dụng (Credit Cards)"
-    },
-    {
-        "time":  "2026-11-17 04:34:04",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  470,
-        "message":  "Hoàn thành chủ đề #470: Tiền boa (Tipping) (100 từ, 99s)"
-    },
-    {
-        "time":  "2026-11-17 04:33:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  471,
-        "message":  "Khởi chạy luồng xử lý chủ đề #471: Tài khoản tiết kiệm (Savings Accounts)"
-    },
-    {
-        "time":  "2026-11-17 04:33:42",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  469,
-        "message":  "Hoàn thành chủ đề #469: Món chính (Main Courses) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 04:32:26",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  470,
-        "message":  "Khởi chạy luồng xử lý chủ đề #470: Tiền boa (Tipping)"
-    },
-    {
-        "time":  "2026-11-17 04:32:26",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  468,
-        "message":  "Hoàn thành chủ đề #468: Món khai vị (Appetizers) (100 từ, 101s)"
-    },
-    {
-        "time":  "2026-11-17 04:32:06",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  469,
-        "message":  "Khởi chạy luồng xử lý chủ đề #469: Món chính (Main Courses)"
-    },
-    {
-        "time":  "2026-11-17 04:32:06",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  467,
-        "message":  "Hoàn thành chủ đề #467: Đánh giá nhà hàng (Restaurant Reviews) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:30:44",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  468,
-        "message":  "Khởi chạy luồng xử lý chủ đề #468: Món khai vị (Appetizers)"
-    },
-    {
-        "time":  "2026-11-17 04:30:44",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  466,
-        "message":  "Hoàn thành chủ đề #466: Giao đồ ăn (Food Delivery) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:30:34",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  467,
-        "message":  "Khởi chạy luồng xử lý chủ đề #467: Đánh giá nhà hàng (Restaurant Reviews)"
-    },
-    {
-        "time":  "2026-11-17 04:30:34",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  465,
-        "message":  "Hoàn thành chủ đề #465: Nhà hàng cao cấp (Fine Dining) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:29:18",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  466,
-        "message":  "Khởi chạy luồng xử lý chủ đề #466: Giao đồ ăn (Food Delivery)"
-    },
-    {
-        "time":  "2026-11-17 04:29:18",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  464,
-        "message":  "Hoàn thành chủ đề #464: Thức ăn nhanh (Fast Food) (100 từ, 84s)"
-    },
-    {
-        "time":  "2026-11-17 04:29:07",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  465,
-        "message":  "Khởi chạy luồng xử lý chủ đề #465: Nhà hàng cao cấp (Fine Dining)"
-    },
-    {
-        "time":  "2026-11-17 04:29:07",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  463,
-        "message":  "Hoàn thành chủ đề #463: Thực đơn và Gọi món (Menus \u0026 Ordering) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:27:54",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  464,
-        "message":  "Khởi chạy luồng xử lý chủ đề #464: Thức ăn nhanh (Fast Food)"
-    },
-    {
-        "time":  "2026-11-17 04:27:54",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  462,
-        "message":  "Hoàn thành chủ đề #462: Nhân viên phục vụ (Waitstaff) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:27:41",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  463,
-        "message":  "Khởi chạy luồng xử lý chủ đề #463: Thực đơn và Gọi món (Menus \u0026 Ordering)"
-    },
-    {
-        "time":  "2026-11-17 04:27:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  461,
-        "message":  "Hoàn thành chủ đề #461: Đầu bếp và Phụ bếp (Chefs \u0026 Cooks) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:26:24",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  462,
-        "message":  "Khởi chạy luồng xử lý chủ đề #462: Nhân viên phục vụ (Waitstaff)"
-    },
-    {
-        "time":  "2026-11-17 04:26:24",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  460,
-        "message":  "Hoàn thành chủ đề #460: Bày tỏ sự thất vọng (Expressing Disappointment) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 04:26:11",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  461,
-        "message":  "Khởi chạy luồng xử lý chủ đề #461: Đầu bếp và Phụ bếp (Chefs \u0026 Cooks)"
-    },
-    {
-        "time":  "2026-11-17 04:26:11",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  459,
-        "message":  "Hoàn thành chủ đề #459: Đàm phán (Negotiation Phrases) (100 từ, 98s)"
-    },
-    {
-        "time":  "2026-11-17 04:24:49",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  460,
-        "message":  "Khởi chạy luồng xử lý chủ đề #460: Bày tỏ sự thất vọng (Expressing Disappointment)"
-    },
-    {
-        "time":  "2026-11-17 04:24:49",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  458,
-        "message":  "Hoàn thành chủ đề #458: Khen ngợi (Compliments) (100 từ, 83s)"
-    },
-    {
-        "time":  "2026-11-17 04:24:33",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  459,
-        "message":  "Khởi chạy luồng xử lý chủ đề #459: Đàm phán (Negotiation Phrases)"
-    },
-    {
-        "time":  "2026-11-17 04:24:33",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  457,
-        "message":  "Hoàn thành chủ đề #457: Khích lệ và Động viên (Encouragement) (100 từ, 80s)"
-    },
-    {
-        "time":  "2026-11-17 04:23:25",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  458,
-        "message":  "Khởi chạy luồng xử lý chủ đề #458: Khen ngợi (Compliments)"
-    },
-    {
-        "time":  "2026-11-17 04:23:25",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  456,
-        "message":  "Hoàn thành chủ đề #456: Xin lỗi chân thành (Sincere Apologies) (100 từ, 82s)"
-    },
-    {
-        "time":  "2026-11-17 04:23:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  457,
-        "message":  "Khởi chạy luồng xử lý chủ đề #457: Khích lệ và Động viên (Encouragement)"
-    },
-    {
-        "time":  "2026-11-17 04:23:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  455,
-        "message":  "Hoàn thành chủ đề #455: Gửi lời cảm ơn (Expressing Gratitude) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:22:04",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  456,
-        "message":  "Khởi chạy luồng xử lý chủ đề #456: Xin lỗi chân thành (Sincere Apologies)"
-    },
-    {
-        "time":  "2026-11-17 04:22:04",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  454,
-        "message":  "Hoàn thành chủ đề #454: Phàn nàn và Khiếu nại (Complaints) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:21:35",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  455,
-        "message":  "Khởi chạy luồng xử lý chủ đề #455: Gửi lời cảm ơn (Expressing Gratitude)"
-    },
-    {
-        "time":  "2026-11-17 04:21:35",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  453,
-        "message":  "Hoàn thành chủ đề #453: Đưa ra lời khuyên (Giving Advice) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:20:31",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  454,
-        "message":  "Khởi chạy luồng xử lý chủ đề #454: Phàn nàn và Khiếu nại (Complaints)"
-    },
-    {
-        "time":  "2026-11-17 04:20:31",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  452,
-        "message":  "Hoàn thành chủ đề #452: Bày tỏ sự từ chối (Refusal \u0026 Rejection) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:20:03",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  453,
-        "message":  "Khởi chạy luồng xử lý chủ đề #453: Đưa ra lời khuyên (Giving Advice)"
-    },
-    {
-        "time":  "2026-11-17 04:20:03",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  451,
-        "message":  "Hoàn thành chủ đề #451: Thể hiện sự đồng tình (Expressing Agreement) (99 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:19:02",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  452,
-        "message":  "Khởi chạy luồng xử lý chủ đề #452: Bày tỏ sự từ chối (Refusal \u0026 Rejection)"
-    },
-    {
-        "time":  "2026-11-17 04:19:02",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  450,
-        "message":  "Hoàn thành chủ đề #450: Chữ ký số (Digital Signatures) (100 từ, 83s)"
-    },
-    {
-        "time":  "2026-11-17 04:18:30",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  451,
-        "message":  "Khởi chạy luồng xử lý chủ đề #451: Thể hiện sự đồng tình (Expressing Agreement)"
-    },
-    {
-        "time":  "2026-11-17 04:18:30",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  449,
-        "message":  "Hoàn thành chủ đề #449: Sao lưu dữ liệu (Data Backup) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:17:38",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  450,
-        "message":  "Khởi chạy luồng xử lý chủ đề #450: Chữ ký số (Digital Signatures)"
-    },
-    {
-        "time":  "2026-11-17 04:17:38",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  448,
-        "message":  "Hoàn thành chủ đề #448: Phần mềm diệt virus (Antivirus Software) (100 từ, 83s)"
-    },
-    {
-        "time":  "2026-11-17 04:17:04",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  449,
-        "message":  "Khởi chạy luồng xử lý chủ đề #449: Sao lưu dữ liệu (Data Backup)"
-    },
-    {
-        "time":  "2026-11-17 04:17:04",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  447,
-        "message":  "Hoàn thành chủ đề #447: Bảo mật mật khẩu (Password Security) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:16:14",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  448,
-        "message":  "Khởi chạy luồng xử lý chủ đề #448: Phần mềm diệt virus (Antivirus Software)"
-    },
-    {
-        "time":  "2026-11-17 04:16:14",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  446,
-        "message":  "Hoàn thành chủ đề #446: Chỉnh sửa video (Video Editing) (100 từ, 93s)"
-    },
-    {
-        "time":  "2026-11-17 04:15:37",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  447,
-        "message":  "Khởi chạy luồng xử lý chủ đề #447: Bảo mật mật khẩu (Password Security)"
-    },
-    {
-        "time":  "2026-11-17 04:15:37",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  445,
-        "message":  "Hoàn thành chủ đề #445: Thiết kế đồ họa (Graphic Design Tools) (100 từ, 87s)"
-    },
-    {
-        "time":  "2026-11-17 04:14:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  446,
-        "message":  "Khởi chạy luồng xử lý chủ đề #446: Chỉnh sửa video (Video Editing)"
-    },
-    {
-        "time":  "2026-11-17 04:14:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  444,
-        "message":  "Hoàn thành chủ đề #444: Lưu trữ đám mây (Cloud Storage) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:14:10",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  445,
-        "message":  "Khởi chạy luồng xử lý chủ đề #445: Thiết kế đồ họa (Graphic Design Tools)"
-    },
-    {
-        "time":  "2026-11-17 04:14:10",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  443,
-        "message":  "Hoàn thành chủ đề #443: Nền tảng họp trực tuyến (Video Conferencing) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:13:15",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  444,
-        "message":  "Khởi chạy luồng xử lý chủ đề #444: Lưu trữ đám mây (Cloud Storage)"
-    },
-    {
-        "time":  "2026-11-17 04:13:15",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  442,
-        "message":  "Hoàn thành chủ đề #442: Công cụ quản lý dự án (Project Management Tools) (100 từ, 87s)"
-    },
-    {
-        "time":  "2026-11-17 04:12:41",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  443,
-        "message":  "Khởi chạy luồng xử lý chủ đề #443: Nền tảng họp trực tuyến (Video Conferencing)"
-    },
-    {
-        "time":  "2026-11-17 04:12:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  441,
-        "message":  "Hoàn thành chủ đề #441: Phần mềm văn phòng (Office Suites) (100 từ, 88s)"
-    },
-    {
-        "time":  "2026-11-17 04:11:48",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  442,
-        "message":  "Khởi chạy luồng xử lý chủ đề #442: Công cụ quản lý dự án (Project Management Tools)"
-    },
-    {
-        "time":  "2026-11-17 04:11:43",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  440,
-        "message":  "Hoàn thành chủ đề #440: Chuyến đi đáng nhớ (Memorable Trip) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 04:11:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  441,
-        "message":  "Khởi chạy luồng xử lý chủ đề #441: Phần mềm văn phòng (Office Suites)"
-    },
-    {
-        "time":  "2026-11-17 04:11:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  439,
-        "message":  "Hoàn thành chủ đề #439: Khởi nghiệp thất bại (Startup Failure) (100 từ, 102s)"
-    },
-    {
-        "time":  "2026-11-17 04:10:08",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  440,
-        "message":  "Khởi chạy luồng xử lý chủ đề #440: Chuyến đi đáng nhớ (Memorable Trip)"
-    },
-    {
-        "time":  "2026-11-17 04:10:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  438,
-        "message":  "Hoàn thành chủ đề #438: Nghỉ hưu (Retirement) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:09:30",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  439,
-        "message":  "Khởi chạy luồng xử lý chủ đề #439: Khởi nghiệp thất bại (Startup Failure)"
-    },
-    {
-        "time":  "2026-11-17 04:09:30",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  437,
-        "message":  "Hoàn thành chủ đề #437: Tốt nghiệp (Graduation) (100 từ, 93s)"
-    },
-    {
-        "time":  "2026-11-17 04:08:41",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  438,
-        "message":  "Khởi chạy luồng xử lý chủ đề #438: Nghỉ hưu (Retirement)"
-    },
-    {
-        "time":  "2026-11-17 04:08:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  436,
-        "message":  "Hoàn thành chủ đề #436: Mất người thân (Losing a Loved One) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:07:58",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  437,
-        "message":  "Khởi chạy luồng xử lý chủ đề #437: Tốt nghiệp (Graduation)"
-    },
-    {
-        "time":  "2026-11-17 04:07:58",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  435,
-        "message":  "Hoàn thành chủ đề #435: Sinh con (Having a Baby) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 04:07:11",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  436,
-        "message":  "Khởi chạy luồng xử lý chủ đề #436: Mất người thân (Losing a Loved One)"
-    },
-    {
-        "time":  "2026-11-17 04:07:11",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  434,
-        "message":  "Hoàn thành chủ đề #434: Kết hôn (Getting Married) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:06:25",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  435,
-        "message":  "Khởi chạy luồng xử lý chủ đề #435: Sinh con (Having a Baby)"
-    },
-    {
-        "time":  "2026-11-17 04:06:25",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  433,
-        "message":  "Hoàn thành chủ đề #433: Mua nhà lần đầu (Buying First Home) (100 từ, 90s)"
-    },
-    {
-        "time":  "2026-11-17 04:05:45",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  434,
-        "message":  "Khởi chạy luồng xử lý chủ đề #434: Kết hôn (Getting Married)"
-    },
-    {
-        "time":  "2026-11-17 04:05:45",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  432,
-        "message":  "Hoàn thành chủ đề #432: Chuyển đến thành phố mới (Moving to a New City) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:04:56",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  433,
-        "message":  "Khởi chạy luồng xử lý chủ đề #433: Mua nhà lần đầu (Buying First Home)"
-    },
-    {
-        "time":  "2026-11-17 04:04:56",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  431,
-        "message":  "Hoàn thành chủ đề #431: Chuyển việc (Changing Jobs) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 04:04:15",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  432,
-        "message":  "Khởi chạy luồng xử lý chủ đề #432: Chuyển đến thành phố mới (Moving to a New City)"
-    },
-    {
-        "time":  "2026-11-17 04:04:15",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  430,
-        "message":  "Hoàn thành chủ đề #430: Sự đúng giờ (Punctuality) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:03:29",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  431,
-        "message":  "Khởi chạy luồng xử lý chủ đề #431: Chuyển việc (Changing Jobs)"
-    },
-    {
-        "time":  "2026-11-17 04:03:29",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  429,
-        "message":  "Hoàn thành chủ đề #429: Nghi thức dự tiệc (Party Etiquette) (98 từ, 68s)"
-    },
-    {
-        "time":  "2026-11-17 04:02:46",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  430,
-        "message":  "Khởi chạy luồng xử lý chủ đề #430: Sự đúng giờ (Punctuality)"
-    },
-    {
-        "time":  "2026-11-17 04:02:46",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  428,
-        "message":  "Hoàn thành chủ đề #428: Giao tiếp qua email (Email Etiquette) (100 từ, 93s)"
-    },
-    {
-        "time":  "2026-11-17 04:02:21",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  429,
-        "message":  "Khởi chạy luồng xử lý chủ đề #429: Nghi thức dự tiệc (Party Etiquette)"
-    },
-    {
-        "time":  "2026-11-17 04:02:21",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  427,
-        "message":  "Hoàn thành chủ đề #427: Trang phục dạ hội (Dress Codes) (99 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 04:01:13",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  428,
-        "message":  "Khởi chạy luồng xử lý chủ đề #428: Giao tiếp qua email (Email Etiquette)"
-    },
-    {
-        "time":  "2026-11-17 04:01:13",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  426,
-        "message":  "Hoàn thành chủ đề #426: Văn hóa tặng quà (Gift-giving Culture) (100 từ, 91s)"
-    },
-    {
-        "time":  "2026-11-17 04:00:51",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  427,
-        "message":  "Khởi chạy luồng xử lý chủ đề #427: Trang phục dạ hội (Dress Codes)"
-    },
-    {
-        "time":  "2026-11-17 04:00:47",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  425,
-        "message":  "Hoàn thành chủ đề #425: Văn hóa tiền bối - hậu bối (Seniority Culture) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:59:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  426,
-        "message":  "Khởi chạy luồng xử lý chủ đề #426: Văn hóa tặng quà (Gift-giving Culture)"
-    },
-    {
-        "time":  "2026-11-17 03:59:42",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  424,
-        "message":  "Hoàn thành chủ đề #424: Cách chào hỏi (Greetings) (99 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 03:59:17",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  425,
-        "message":  "Khởi chạy luồng xử lý chủ đề #425: Văn hóa tiền bối - hậu bối (Seniority Culture)"
-    },
-    {
-        "time":  "2026-11-17 03:59:17",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  423,
-        "message":  "Hoàn thành chủ đề #423: Nghi thức ngoại giao (Diplomatic Protocol) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:58:07",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  424,
-        "message":  "Khởi chạy luồng xử lý chủ đề #424: Cách chào hỏi (Greetings)"
-    },
-    {
-        "time":  "2026-11-17 03:58:07",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  422,
-        "message":  "Hoàn thành chủ đề #422: Giao tiếp kinh doanh (Business Etiquette) (99 từ, 83s)"
-    },
-    {
-        "time":  "2026-11-17 03:57:44",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  423,
-        "message":  "Khởi chạy luồng xử lý chủ đề #423: Nghi thức ngoại giao (Diplomatic Protocol)"
-    },
-    {
-        "time":  "2026-11-17 03:57:44",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  421,
-        "message":  "Hoàn thành chủ đề #421: Nghi thức bàn ăn (Dining Etiquette) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 03:56:43",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  422,
-        "message":  "Khởi chạy luồng xử lý chủ đề #422: Giao tiếp kinh doanh (Business Etiquette)"
-    },
-    {
-        "time":  "2026-11-17 03:56:43",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  420,
-        "message":  "Hoàn thành chủ đề #420: Thiết bị đo lường sức khỏe (Fitness Trackers) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 03:56:09",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  421,
-        "message":  "Khởi chạy luồng xử lý chủ đề #421: Nghi thức bàn ăn (Dining Etiquette)"
-    },
-    {
-        "time":  "2026-11-17 03:56:09",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  419,
-        "message":  "Hoàn thành chủ đề #419: Trang phục thể thao (Activewear) (100 từ, 87s)"
-    },
-    {
-        "time":  "2026-11-17 03:55:17",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  420,
-        "message":  "Khởi chạy luồng xử lý chủ đề #420: Thiết bị đo lường sức khỏe (Fitness Trackers)"
-    },
-    {
-        "time":  "2026-11-17 03:55:17",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  418,
-        "message":  "Hoàn thành chủ đề #418: Tập luyện cường độ cao (HIIT) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:54:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  419,
-        "message":  "Khởi chạy luồng xử lý chủ đề #419: Trang phục thể thao (Activewear)"
-    },
-    {
-        "time":  "2026-11-17 03:54:42",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  417,
-        "message":  "Hoàn thành chủ đề #417: Leo núi trong nhà (Indoor Climbing) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 03:53:47",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  418,
-        "message":  "Khởi chạy luồng xử lý chủ đề #418: Tập luyện cường độ cao (HIIT)"
-    },
-    {
-        "time":  "2026-11-17 03:53:47",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  416,
-        "message":  "Hoàn thành chủ đề #416: Đạp xe (Cycling) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:53:07",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  417,
-        "message":  "Khởi chạy luồng xử lý chủ đề #417: Leo núi trong nhà (Indoor Climbing)"
-    },
-    {
-        "time":  "2026-11-17 03:53:07",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  415,
-        "message":  "Hoàn thành chủ đề #415: Chạy bộ và Marathon (Running \u0026 Marathon) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:52:17",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  416,
-        "message":  "Khởi chạy luồng xử lý chủ đề #416: Đạp xe (Cycling)"
-    },
-    {
-        "time":  "2026-11-17 03:52:17",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  414,
-        "message":  "Hoàn thành chủ đề #414: Thể dục dụng cụ (Gymnastics) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:51:34",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  415,
-        "message":  "Khởi chạy luồng xử lý chủ đề #415: Chạy bộ và Marathon (Running \u0026 Marathon)"
-    },
-    {
-        "time":  "2026-11-17 03:51:34",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  413,
-        "message":  "Hoàn thành chủ đề #413: Pilates (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:50:48",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  414,
-        "message":  "Khởi chạy luồng xử lý chủ đề #414: Thể dục dụng cụ (Gymnastics)"
-    },
-    {
-        "time":  "2026-11-17 03:50:48",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  412,
-        "message":  "Hoàn thành chủ đề #412: Cardio và Đốt mỡ (Cardio \u0026 Fat Burn) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 03:50:05",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  413,
-        "message":  "Khởi chạy luồng xử lý chủ đề #413: Pilates"
-    },
-    {
-        "time":  "2026-11-17 03:50:05",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  411,
-        "message":  "Hoàn thành chủ đề #411: Tập tạ (Weightlifting) (100 từ, 94s)"
-    },
-    {
-        "time":  "2026-11-17 03:49:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  412,
-        "message":  "Khởi chạy luồng xử lý chủ đề #412: Cardio và Đốt mỡ (Cardio \u0026 Fat Burn)"
-    },
-    {
-        "time":  "2026-11-17 03:49:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  410,
-        "message":  "Hoàn thành chủ đề #410: Tin giả và Xác minh (Fake News \u0026 Fact-Checking) (100 từ, 110s)"
-    },
-    {
-        "time":  "2026-11-17 03:48:31",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  411,
-        "message":  "Khởi chạy luồng xử lý chủ đề #411: Tập tạ (Weightlifting)"
-    },
-    {
-        "time":  "2026-11-17 03:48:31",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  409,
-        "message":  "Hoàn thành chủ đề #409: Kiểm duyệt thông tin (Information Censorship) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:47:17",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  410,
-        "message":  "Khởi chạy luồng xử lý chủ đề #410: Tin giả và Xác minh (Fake News \u0026 Fact-Checking)"
-    },
-    {
-        "time":  "2026-11-17 03:47:17",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  408,
-        "message":  "Hoàn thành chủ đề #408: Thông cáo báo chí (Press Releases) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 03:46:58",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  409,
-        "message":  "Khởi chạy luồng xử lý chủ đề #409: Kiểm duyệt thông tin (Information Censorship)"
-    },
-    {
-        "time":  "2026-11-17 03:46:58",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  407,
-        "message":  "Hoàn thành chủ đề #407: Đài phát thanh (Radio Broadcasting) (100 từ, 90s)"
-    },
-    {
-        "time":  "2026-11-17 03:45:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  408,
-        "message":  "Khởi chạy luồng xử lý chủ đề #408: Thông cáo báo chí (Press Releases)"
-    },
-    {
-        "time":  "2026-11-17 03:45:42",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  406,
-        "message":  "Hoàn thành chủ đề #406: Tạp chí thời trang (Fashion Magazines) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:45:29",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  407,
-        "message":  "Khởi chạy luồng xử lý chủ đề #407: Đài phát thanh (Radio Broadcasting)"
-    },
-    {
-        "time":  "2026-11-17 03:45:28",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  405,
-        "message":  "Hoàn thành chủ đề #405: Phỏng vấn và Talkshow (Interviews \u0026 Talkshows) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 03:44:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  406,
-        "message":  "Khởi chạy luồng xử lý chủ đề #406: Tạp chí thời trang (Fashion Magazines)"
-    },
-    {
-        "time":  "2026-11-17 03:44:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  404,
-        "message":  "Hoàn thành chủ đề #404: Phóng sự điều tra (Investigative Journalism) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:43:53",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  405,
-        "message":  "Khởi chạy luồng xử lý chủ đề #405: Phỏng vấn và Talkshow (Interviews \u0026 Talkshows)"
-    },
-    {
-        "time":  "2026-11-17 03:43:53",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  403,
-        "message":  "Hoàn thành chủ đề #403: Báo điện tử (Online News) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 03:42:43",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  404,
-        "message":  "Khởi chạy luồng xử lý chủ đề #404: Phóng sự điều tra (Investigative Journalism)"
-    },
-    {
-        "time":  "2026-11-17 03:42:43",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  402,
-        "message":  "Hoàn thành chủ đề #402: Báo in (Print Media) (100 từ, 93s)"
-    },
-    {
-        "time":  "2026-11-17 03:42:27",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  403,
-        "message":  "Khởi chạy luồng xử lý chủ đề #403: Báo điện tử (Online News)"
-    },
-    {
-        "time":  "2026-11-17 03:42:26",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  401,
-        "message":  "Hoàn thành chủ đề #401: Truyền hình cáp (Cable TV) (100 từ, 99s)"
-    },
-    {
-        "time":  "2026-11-17 03:41:10",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  402,
-        "message":  "Khởi chạy luồng xử lý chủ đề #402: Báo in (Print Media)"
-    },
-    {
-        "time":  "2026-11-17 03:41:10",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  400,
-        "message":  "Hoàn thành chủ đề #400: Văn hóa học (Cultural Studies) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:40:48",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  401,
-        "message":  "Khởi chạy luồng xử lý chủ đề #401: Truyền hình cáp (Cable TV)"
-    },
-    {
-        "time":  "2026-11-17 03:40:48",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  399,
-        "message":  "Hoàn thành chủ đề #399: Lịch sử nghệ thuật (Art History) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 03:39:40",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  400,
-        "message":  "Khởi chạy luồng xử lý chủ đề #400: Văn hóa học (Cultural Studies)"
-    },
-    {
-        "time":  "2026-11-17 03:39:40",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  398,
-        "message":  "Hoàn thành chủ đề #398: Giáo dục học (Pedagogy) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 03:39:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  399,
-        "message":  "Khởi chạy luồng xử lý chủ đề #399: Lịch sử nghệ thuật (Art History)"
-    },
-    {
-        "time":  "2026-11-17 03:39:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  397,
-        "message":  "Hoàn thành chủ đề #397: Tâm lý học tội phạm (Criminal Psychology) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:38:14",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  398,
-        "message":  "Khởi chạy luồng xử lý chủ đề #398: Giáo dục học (Pedagogy)"
-    },
-    {
-        "time":  "2026-11-17 03:38:14",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  396,
-        "message":  "Hoàn thành chủ đề #396: Ngôn ngữ học xã hội (Sociolinguistics) (100 từ, 94s)"
-    },
-    {
-        "time":  "2026-11-17 03:37:40",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  397,
-        "message":  "Khởi chạy luồng xử lý chủ đề #397: Tâm lý học tội phạm (Criminal Psychology)"
-    },
-    {
-        "time":  "2026-11-17 03:37:35",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  395,
-        "message":  "Hoàn thành chủ đề #395: Khảo cổ học (Archaeology) (100 từ, 113s)"
-    },
-    {
-        "time":  "2026-11-17 03:36:40",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  396,
-        "message":  "Khởi chạy luồng xử lý chủ đề #396: Ngôn ngữ học xã hội (Sociolinguistics)"
-    },
-    {
-        "time":  "2026-11-17 03:36:40",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  394,
-        "message":  "Hoàn thành chủ đề #394: Tôn giáo học (Religious Studies) (100 từ, 90s)"
-    },
-    {
-        "time":  "2026-11-17 03:35:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  395,
-        "message":  "Khởi chạy luồng xử lý chủ đề #395: Khảo cổ học (Archaeology)"
-    },
-    {
-        "time":  "2026-11-17 03:35:42",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  393,
-        "message":  "Hoàn thành chủ đề #393: Triết học (Philosophy) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:35:11",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  394,
-        "message":  "Khởi chạy luồng xử lý chủ đề #394: Tôn giáo học (Religious Studies)"
-    },
-    {
-        "time":  "2026-11-17 03:35:11",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  392,
-        "message":  "Hoàn thành chủ đề #392: Xã hội học (Sociology) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:34:09",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  393,
-        "message":  "Khởi chạy luồng xử lý chủ đề #393: Triết học (Philosophy)"
-    },
-    {
-        "time":  "2026-11-17 03:34:09",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  391,
-        "message":  "Hoàn thành chủ đề #391: Nhân chủng học (Anthropology) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:33:41",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  392,
-        "message":  "Khởi chạy luồng xử lý chủ đề #392: Xã hội học (Sociology)"
-    },
-    {
-        "time":  "2026-11-17 03:33:41",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  390,
-        "message":  "Hoàn thành chủ đề #390: Thiết kế thời trang (Fashion Design) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:32:40",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  391,
-        "message":  "Khởi chạy luồng xử lý chủ đề #391: Nhân chủng học (Anthropology)"
-    },
-    {
-        "time":  "2026-11-17 03:32:40",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  389,
-        "message":  "Hoàn thành chủ đề #389: Viết nhật ký (Journaling) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:32:09",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  390,
-        "message":  "Khởi chạy luồng xử lý chủ đề #390: Thiết kế thời trang (Fashion Design)"
-    },
-    {
-        "time":  "2026-11-17 03:32:09",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  388,
-        "message":  "Hoàn thành chủ đề #388: Đọc sách hư cấu (Reading Fiction) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:31:10",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  389,
-        "message":  "Khởi chạy luồng xử lý chủ đề #389: Viết nhật ký (Journaling)"
-    },
-    {
-        "time":  "2026-11-17 03:31:10",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  387,
-        "message":  "Hoàn thành chủ đề #387: Bay flycam (Drone Flying) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:30:36",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  388,
-        "message":  "Khởi chạy luồng xử lý chủ đề #388: Đọc sách hư cấu (Reading Fiction)"
-    },
-    {
-        "time":  "2026-11-17 03:30:36",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  386,
-        "message":  "Hoàn thành chủ đề #386: Nhiếp ảnh phong cảnh (Landscape Photography) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:29:38",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  387,
-        "message":  "Khởi chạy luồng xử lý chủ đề #387: Bay flycam (Drone Flying)"
-    },
-    {
-        "time":  "2026-11-17 03:29:38",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  385,
-        "message":  "Hoàn thành chủ đề #385: Nướng BBQ (BBQ Grilling) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:29:07",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  386,
-        "message":  "Khởi chạy luồng xử lý chủ đề #386: Nhiếp ảnh phong cảnh (Landscape Photography)"
-    },
-    {
-        "time":  "2026-11-17 03:29:07",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  384,
-        "message":  "Hoàn thành chủ đề #384: Làm vườn mộc (Woodworking) (99 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:28:08",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  385,
-        "message":  "Khởi chạy luồng xử lý chủ đề #385: Nướng BBQ (BBQ Grilling)"
-    },
-    {
-        "time":  "2026-11-17 03:28:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  383,
-        "message":  "Hoàn thành chủ đề #383: Chơi cờ vua (Chess) (100 từ, 98s)"
-    },
-    {
-        "time":  "2026-11-17 03:27:34",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  384,
-        "message":  "Khởi chạy luồng xử lý chủ đề #384: Làm vườn mộc (Woodworking)"
-    },
-    {
-        "time":  "2026-11-17 03:27:34",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  382,
-        "message":  "Hoàn thành chủ đề #382: Đan lát và Thêu thùa (Knitting \u0026 Embroidery) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:26:30",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  383,
-        "message":  "Khởi chạy luồng xử lý chủ đề #383: Chơi cờ vua (Chess)"
-    },
-    {
-        "time":  "2026-11-17 03:26:30",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  381,
-        "message":  "Hoàn thành chủ đề #381: Câu cá (Fishing) (100 từ, 118s)"
-    },
-    {
-        "time":  "2026-11-17 03:26:02",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  382,
-        "message":  "Khởi chạy luồng xử lý chủ đề #382: Đan lát và Thêu thùa (Knitting \u0026 Embroidery)"
-    },
-    {
-        "time":  "2026-11-17 03:25:57",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  380,
-        "message":  "Hoàn thành chủ đề #380: Tình nguyện viên (Volunteers) (100 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 03:24:32",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  381,
-        "message":  "Khởi chạy luồng xử lý chủ đề #381: Câu cá (Fishing)"
-    },
-    {
-        "time":  "2026-11-17 03:24:31",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  380,
-        "message":  "Khởi chạy luồng xử lý chủ đề #380: Tình nguyện viên (Volunteers)"
-    },
-    {
-        "time":  "2026-11-17 03:24:31",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  378,
-        "message":  "Hoàn thành chủ đề #378: Phân biệt chủng tộc (Racism) (100 từ, 93s)"
-    },
-    {
-        "time":  "2026-11-17 03:24:30",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  379,
-        "message":  "Hoàn thành chủ đề #379: Hỗ trợ cộng đồng (Community Support) (98 từ, 82s)"
-    },
-    {
-        "time":  "2026-11-17 03:23:08",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  379,
-        "message":  "Khởi chạy luồng xử lý chủ đề #379: Hỗ trợ cộng đồng (Community Support)"
-    },
-    {
-        "time":  "2026-11-17 03:23:08",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  377,
-        "message":  "Hoàn thành chủ đề #377: Bình đẳng giới (Gender Equality) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:22:58",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  378,
-        "message":  "Khởi chạy luồng xử lý chủ đề #378: Phân biệt chủng tộc (Racism)"
-    },
-    {
-        "time":  "2026-11-17 03:22:58",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  376,
-        "message":  "Hoàn thành chủ đề #376: Bạo lực gia đình (Domestic Violence) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 03:21:36",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  377,
-        "message":  "Khởi chạy luồng xử lý chủ đề #377: Bình đẳng giới (Gender Equality)"
-    },
-    {
-        "time":  "2026-11-17 03:21:36",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  375,
-        "message":  "Hoàn thành chủ đề #375: Trẻ em mồ côi (Orphans) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:21:22",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  376,
-        "message":  "Khởi chạy luồng xử lý chủ đề #376: Bạo lực gia đình (Domestic Violence)"
-    },
-    {
-        "time":  "2026-11-17 03:21:22",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  374,
-        "message":  "Hoàn thành chủ đề #374: Người cao tuổi và Viện dưỡng lão (Elderly \u0026 Nursing Homes) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:20:06",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  375,
-        "message":  "Khởi chạy luồng xử lý chủ đề #375: Trẻ em mồ côi (Orphans)"
-    },
-    {
-        "time":  "2026-11-17 03:20:06",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  373,
-        "message":  "Hoàn thành chủ đề #373: Hôn nhân và Gia đình (Marriage \u0026 Family) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:19:50",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  374,
-        "message":  "Khởi chạy luồng xử lý chủ đề #374: Người cao tuổi và Viện dưỡng lão (Elderly \u0026 Nursing Homes)"
-    },
-    {
-        "time":  "2026-11-17 03:19:50",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  372,
-        "message":  "Hoàn thành chủ đề #372: Xung đột thế hệ (Generation Gap) (99 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 03:18:37",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  373,
-        "message":  "Khởi chạy luồng xử lý chủ đề #373: Hôn nhân và Gia đình (Marriage \u0026 Family)"
-    },
-    {
-        "time":  "2026-11-17 03:18:37",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  371,
-        "message":  "Hoàn thành chủ đề #371: Nuôi dạy con cái (Parenting) (100 từ, 62s)"
-    },
-    {
-        "time":  "2026-11-17 03:18:23",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  372,
-        "message":  "Khởi chạy luồng xử lý chủ đề #372: Xung đột thế hệ (Generation Gap)"
-    },
-    {
-        "time":  "2026-11-17 03:18:23",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  370,
-        "message":  "Hoàn thành chủ đề #370: Chu kỳ kinh tế (Economic Cycles) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:17:34",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  371,
-        "message":  "Khởi chạy luồng xử lý chủ đề #371: Nuôi dạy con cái (Parenting)"
-    },
-    {
-        "time":  "2026-11-17 03:17:34",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  369,
-        "message":  "Hoàn thành chủ đề #369: Tài chính công (Public Finance) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 03:16:54",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  370,
-        "message":  "Khởi chạy luồng xử lý chủ đề #370: Chu kỳ kinh tế (Economic Cycles)"
-    },
-    {
-        "time":  "2026-11-17 03:16:54",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  368,
-        "message":  "Hoàn thành chủ đề #368: Kinh tế vi mô (Microeconomics) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:15:59",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  369,
-        "message":  "Khởi chạy luồng xử lý chủ đề #369: Tài chính công (Public Finance)"
-    },
-    {
-        "time":  "2026-11-17 03:15:59",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  367,
-        "message":  "Hoàn thành chủ đề #367: Toàn cầu hóa (Globalization) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:15:21",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  368,
-        "message":  "Khởi chạy luồng xử lý chủ đề #368: Kinh tế vi mô (Microeconomics)"
-    },
-    {
-        "time":  "2026-11-17 03:15:21",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  366,
-        "message":  "Hoàn thành chủ đề #366: Nợ công (Public Debt) (100 từ, 88s)"
-    },
-    {
-        "time":  "2026-11-17 03:14:26",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  367,
-        "message":  "Khởi chạy luồng xử lý chủ đề #367: Toàn cầu hóa (Globalization)"
-    },
-    {
-        "time":  "2026-11-17 03:14:22",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  365,
-        "message":  "Hoàn thành chủ đề #365: Thất nghiệp (Unemployment) (100 từ, 83s)"
-    },
-    {
-        "time":  "2026-11-17 03:13:53",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  366,
-        "message":  "Khởi chạy luồng xử lý chủ đề #366: Nợ công (Public Debt)"
-    },
-    {
-        "time":  "2026-11-17 03:13:53",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  364,
-        "message":  "Hoàn thành chủ đề #364: Tỷ giá hối đoái (Exchange Rates) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:12:58",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  365,
-        "message":  "Khởi chạy luồng xử lý chủ đề #365: Thất nghiệp (Unemployment)"
-    },
-    {
-        "time":  "2026-11-17 03:12:58",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  363,
-        "message":  "Hoàn thành chủ đề #363: Tổng sản phẩm quốc nội (GDP) (100 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 03:12:24",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  364,
-        "message":  "Khởi chạy luồng xử lý chủ đề #364: Tỷ giá hối đoái (Exchange Rates)"
-    },
-    {
-        "time":  "2026-11-17 03:12:24",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  362,
-        "message":  "Hoàn thành chủ đề #362: Khủng hoảng kinh tế (Economic Crises) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 03:11:23",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  363,
-        "message":  "Khởi chạy luồng xử lý chủ đề #363: Tổng sản phẩm quốc nội (GDP)"
-    },
-    {
-        "time":  "2026-11-17 03:11:23",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  361,
-        "message":  "Hoàn thành chủ đề #361: Lạm phát (Inflation) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:10:48",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  362,
-        "message":  "Khởi chạy luồng xử lý chủ đề #362: Khủng hoảng kinh tế (Economic Crises)"
-    },
-    {
-        "time":  "2026-11-17 03:10:48",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  360,
-        "message":  "Hoàn thành chủ đề #360: Viết sáng tạo (Creative Writing) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:09:53",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  361,
-        "message":  "Khởi chạy luồng xử lý chủ đề #361: Lạm phát (Inflation)"
-    },
-    {
-        "time":  "2026-11-17 03:09:53",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  359,
-        "message":  "Hoàn thành chủ đề #359: Giao tiếp phi ngôn ngữ (Non-verbal Communication) (99 từ, 95s)"
-    },
-    {
-        "time":  "2026-11-17 03:09:16",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  360,
-        "message":  "Khởi chạy luồng xử lý chủ đề #360: Viết sáng tạo (Creative Writing)"
-    },
-    {
-        "time":  "2026-11-17 03:09:16",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  358,
-        "message":  "Hoàn thành chủ đề #358: Giọng điệu và Ngữ điệu (Accents \u0026 Intonation) (100 từ, 80s)"
-    },
-    {
-        "time":  "2026-11-17 03:08:18",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  359,
-        "message":  "Khởi chạy luồng xử lý chủ đề #359: Giao tiếp phi ngôn ngữ (Non-verbal Communication)"
-    },
-    {
-        "time":  "2026-11-17 03:08:18",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  357,
-        "message":  "Hoàn thành chủ đề #357: Ngôn ngữ ký hiệu (Sign Language) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 03:07:55",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  358,
-        "message":  "Khởi chạy luồng xử lý chủ đề #358: Giọng điệu và Ngữ điệu (Accents \u0026 Intonation)"
-    },
-    {
-        "time":  "2026-11-17 03:07:55",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  356,
-        "message":  "Hoàn thành chủ đề #356: Biện luận và Tranh biện (Debate \u0026 Argumentation) (99 từ, 86s)"
-    },
-    {
-        "time":  "2026-11-17 03:06:42",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  357,
-        "message":  "Khởi chạy luồng xử lý chủ đề #357: Ngôn ngữ ký hiệu (Sign Language)"
-    },
-    {
-        "time":  "2026-11-17 03:06:42",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  355,
-        "message":  "Hoàn thành chủ đề #355: Dịch thuật và Phiên dịch (Translation \u0026 Interpreting) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:06:29",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  356,
-        "message":  "Khởi chạy luồng xử lý chủ đề #356: Biện luận và Tranh biện (Debate \u0026 Argumentation)"
-    },
-    {
-        "time":  "2026-11-17 03:06:29",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  354,
-        "message":  "Hoàn thành chủ đề #354: Ngữ âm học (Phonetics) (100 từ, 92s)"
-    },
-    {
-        "time":  "2026-11-17 03:05:12",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  355,
-        "message":  "Khởi chạy luồng xử lý chủ đề #355: Dịch thuật và Phiên dịch (Translation \u0026 Interpreting)"
-    },
-    {
-        "time":  "2026-11-17 03:05:12",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  353,
-        "message":  "Hoàn thành chủ đề #353: Ngữ pháp tiếng Anh (English Grammar) (100 từ, 89s)"
-    },
-    {
-        "time":  "2026-11-17 03:04:56",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  354,
-        "message":  "Khởi chạy luồng xử lý chủ đề #354: Ngữ âm học (Phonetics)"
-    },
-    {
-        "time":  "2026-11-17 03:04:56",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  352,
-        "message":  "Hoàn thành chủ đề #352: Từ lóng (Slang) (100 từ, 96s)"
-    },
-    {
-        "time":  "2026-11-17 03:03:43",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  353,
-        "message":  "Khởi chạy luồng xử lý chủ đề #353: Ngữ pháp tiếng Anh (English Grammar)"
-    },
-    {
-        "time":  "2026-11-17 03:03:43",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  351,
-        "message":  "Hoàn thành chủ đề #351: Thành ngữ và Tục ngữ (Idioms \u0026 Proverbs) (100 từ, 91s)"
-    },
-    {
-        "time":  "2026-11-17 03:03:21",
-        "level":  "INFO",
-        "step":  "SPAWN_WORKER",
-        "stt":  352,
-        "message":  "Khởi chạy luồng xử lý chủ đề #352: Từ lóng (Slang)"
-    },
-    {
-        "time":  "2026-11-17 03:03:16",
-        "level":  "SUCCESS",
-        "step":  "TOPIC_COMPLETED",
-        "stt":  350,
-        "message":  "Hoàn thành chủ đề #350: Quản lý rừng (Forest Management) (100 từ, 89s)"
-    }
+[
+  {
+    "time": "2026-11-17 04:58:53",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 500,
+    "message": "Hoàn thành chủ đề #500: Sổ hộ khẩu (Household Registration) (100 từ, 94s)"
+  },
+  {
+    "time": "2026-11-17 04:58:32",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 499,
+    "message": "Hoàn thành chủ đề #499: Giấy phép lái xe (Driver's Licenses) (100 từ, 101s)"
+  },
+  {
+    "time": "2026-11-17 04:57:19",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 500,
+    "message": "Khởi chạy luồng xử lý chủ đề #500: Sổ hộ khẩu (Household Registration)"
+  },
+  {
+    "time": "2026-11-17 04:57:19",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 498,
+    "message": "Hoàn thành chủ đề #498: Bảo hiểm xã hội (Social Insurance) (100 từ, 105s)"
+  },
+  {
+    "time": "2026-11-17 04:56:51",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 499,
+    "message": "Khởi chạy luồng xử lý chủ đề #499: Giấy phép lái xe (Driver's Licenses)"
+  },
+  {
+    "time": "2026-11-17 04:56:51",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 497,
+    "message": "Hoàn thành chủ đề #497: Gia hạn giấy tờ (Document Renewal) (100 từ, 99s)"
+  },
+  {
+    "time": "2026-11-17 04:55:34",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 498,
+    "message": "Khởi chạy luồng xử lý chủ đề #498: Bảo hiểm xã hội (Social Insurance)"
+  },
+  {
+    "time": "2026-11-17 04:55:34",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 496,
+    "message": "Hoàn thành chủ đề #496: Kê khai thuế (Tax Declaration) (100 từ, 96s)"
+  },
+  {
+    "time": "2026-11-17 04:55:12",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 497,
+    "message": "Khởi chạy luồng xử lý chủ đề #497: Gia hạn giấy tờ (Document Renewal)"
+  },
+  {
+    "time": "2026-11-17 04:55:12",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 495,
+    "message": "Hoàn thành chủ đề #495: Công chứng tài liệu (Document Notarization) (100 từ, 101s)"
+  },
+  {
+    "time": "2026-11-17 04:53:58",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 496,
+    "message": "Khởi chạy luồng xử lý chủ đề #496: Kê khai thuế (Tax Declaration)"
+  },
+  {
+    "time": "2026-11-17 04:53:58",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 494,
+    "message": "Hoàn thành chủ đề #494: Khai sinh và Khai tử (Birth & Death Certificates) (100 từ, 104s)"
+  },
+  {
+    "time": "2026-11-17 04:53:30",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 495,
+    "message": "Khởi chạy luồng xử lý chủ đề #495: Công chứng tài liệu (Document Notarization)"
+  },
+  {
+    "time": "2026-11-17 04:53:30",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 493,
+    "message": "Hoàn thành chủ đề #493: Đăng ký kết hôn (Marriage Registration) (99 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:52:14",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 494,
+    "message": "Khởi chạy luồng xử lý chủ đề #494: Khai sinh và Khai tử (Birth & Death Certificates)"
+  },
+  {
+    "time": "2026-11-17 04:52:14",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 492,
+    "message": "Hoàn thành chủ đề #492: Xin visa (Applying for Visas) (100 từ, 102s)"
+  },
+  {
+    "time": "2026-11-17 04:51:58",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 493,
+    "message": "Khởi chạy luồng xử lý chủ đề #493: Đăng ký kết hôn (Marriage Registration)"
+  },
+  {
+    "time": "2026-11-17 04:51:57",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 491,
+    "message": "Hoàn thành chủ đề #491: Làm hộ chiếu (Making Passports) (99 từ, 110s)"
+  },
+  {
+    "time": "2026-11-17 04:50:32",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 492,
+    "message": "Khởi chạy luồng xử lý chủ đề #492: Xin visa (Applying for Visas)"
+  },
+  {
+    "time": "2026-11-17 04:50:32",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 490,
+    "message": "Hoàn thành chủ đề #490: Thời tiết cực đoan (Extreme Weather) (100 từ, 101s)"
+  },
+  {
+    "time": "2026-11-17 04:50:07",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 491,
+    "message": "Khởi chạy luồng xử lý chủ đề #491: Làm hộ chiếu (Making Passports)"
+  },
+  {
+    "time": "2026-11-17 04:50:07",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 489,
+    "message": "Hoàn thành chủ đề #489: Lạc đường (Getting Lost) (100 từ, 104s)"
+  },
+  {
+    "time": "2026-11-17 04:48:51",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 490,
+    "message": "Khởi chạy luồng xử lý chủ đề #490: Thời tiết cực đoan (Extreme Weather)"
+  },
+  {
+    "time": "2026-11-17 04:48:51",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 488,
+    "message": "Hoàn thành chủ đề #488: Mất điện (Power Outages) (99 từ, 105s)"
+  },
+  {
+    "time": "2026-11-17 04:48:22",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 489,
+    "message": "Khởi chạy luồng xử lý chủ đề #489: Lạc đường (Getting Lost)"
+  },
+  {
+    "time": "2026-11-17 04:48:22",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 487,
+    "message": "Hoàn thành chủ đề #487: Hỏng hóc máy móc (Machine Breakdowns) (100 từ, 105s)"
+  },
+  {
+    "time": "2026-11-17 04:47:06",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 488,
+    "message": "Khởi chạy luồng xử lý chủ đề #488: Mất điện (Power Outages)"
+  },
+  {
+    "time": "2026-11-17 04:47:06",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 486,
+    "message": "Hoàn thành chủ đề #486: Mất cắp và Trộm cắp (Theft & Burglary) (100 từ, 100s)"
+  },
+  {
+    "time": "2026-11-17 04:46:38",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 487,
+    "message": "Khởi chạy luồng xử lý chủ đề #487: Hỏng hóc máy móc (Machine Breakdowns)"
+  },
+  {
+    "time": "2026-11-17 04:46:34",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 485,
+    "message": "Hoàn thành chủ đề #485: Gọi cảnh sát (Calling the Police) (100 từ, 98s)"
+  },
+  {
+    "time": "2026-11-17 04:45:26",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 486,
+    "message": "Khởi chạy luồng xử lý chủ đề #486: Mất cắp và Trộm cắp (Theft & Burglary)"
+  },
+  {
+    "time": "2026-11-17 04:45:26",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 484,
+    "message": "Hoàn thành chủ đề #484: Cấp cứu y tế (Medical Emergencies) (100 từ, 98s)"
+  },
+  {
+    "time": "2026-11-17 04:44:55",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 485,
+    "message": "Khởi chạy luồng xử lý chủ đề #485: Gọi cảnh sát (Calling the Police)"
+  },
+  {
+    "time": "2026-11-17 04:44:55",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 483,
+    "message": "Hoàn thành chủ đề #483: Sơ tán khẩn cấp (Emergency Evacuation) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 04:43:48",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 484,
+    "message": "Khởi chạy luồng xử lý chủ đề #484: Cấp cứu y tế (Medical Emergencies)"
+  },
+  {
+    "time": "2026-11-17 04:43:48",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 482,
+    "message": "Hoàn thành chủ đề #482: Hỏa hoạn (Fires) (100 từ, 126s)"
+  },
+  {
+    "time": "2026-11-17 04:43:20",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 483,
+    "message": "Khởi chạy luồng xử lý chủ đề #483: Sơ tán khẩn cấp (Emergency Evacuation)"
+  },
+  {
+    "time": "2026-11-17 04:43:19",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 481,
+    "message": "Hoàn thành chủ đề #481: Tai nạn giao thông (Traffic Accidents) (100 từ, 105s)"
+  },
+  {
+    "time": "2026-11-17 04:41:42",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 482,
+    "message": "Khởi chạy luồng xử lý chủ đề #482: Hỏa hoạn (Fires)"
+  },
+  {
+    "time": "2026-11-17 04:41:42",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 480,
+    "message": "Hoàn thành chủ đề #480: Phí giao dịch (Transaction Fees) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:41:35",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 481,
+    "message": "Khởi chạy luồng xử lý chủ đề #481: Tai nạn giao thông (Traffic Accidents)"
+  },
+  {
+    "time": "2026-11-17 04:41:35",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 479,
+    "message": "Hoàn thành chủ đề #479: Biên lai và Hóa đơn (Receipts & Invoices) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:40:12",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 480,
+    "message": "Khởi chạy luồng xử lý chủ đề #480: Phí giao dịch (Transaction Fees)"
+  },
+  {
+    "time": "2026-11-17 04:40:12",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 478,
+    "message": "Hoàn thành chủ đề #478: Chi nhánh ngân hàng (Bank Branches) (100 từ, 80s)"
+  },
+  {
+    "time": "2026-11-17 04:40:08",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 479,
+    "message": "Khởi chạy luồng xử lý chủ đề #479: Biên lai và Hóa đơn (Receipts & Invoices)"
+  },
+  {
+    "time": "2026-11-17 04:40:08",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 477,
+    "message": "Hoàn thành chủ đề #477: Ngân hàng số (Digital Banking) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:38:52",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 478,
+    "message": "Khởi chạy luồng xử lý chủ đề #478: Chi nhánh ngân hàng (Bank Branches)"
+  },
+  {
+    "time": "2026-11-17 04:38:52",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 476,
+    "message": "Hoàn thành chủ đề #476: Lãi suất (Interest Rates) (100 từ, 93s)"
+  },
+  {
+    "time": "2026-11-17 04:38:36",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 477,
+    "message": "Khởi chạy luồng xử lý chủ đề #477: Ngân hàng số (Digital Banking)"
+  },
+  {
+    "time": "2026-11-17 04:38:36",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 475,
+    "message": "Hoàn thành chủ đề #475: Khoản vay và Thế chấp (Loans & Mortgages) (100 từ, 99s)"
+  },
+  {
+    "time": "2026-11-17 04:37:19",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 476,
+    "message": "Khởi chạy luồng xử lý chủ đề #476: Lãi suất (Interest Rates)"
+  },
+  {
+    "time": "2026-11-17 04:37:19",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 474,
+    "message": "Hoàn thành chủ đề #474: Rút tiền ATM (ATM Withdrawals) (99 từ, 99s)"
+  },
+  {
+    "time": "2026-11-17 04:36:57",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 475,
+    "message": "Khởi chạy luồng xử lý chủ đề #475: Khoản vay và Thế chấp (Loans & Mortgages)"
+  },
+  {
+    "time": "2026-11-17 04:36:57",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 473,
+    "message": "Hoàn thành chủ đề #473: Chuyển khoản (Bank Transfers) (100 từ, 98s)"
+  },
+  {
+    "time": "2026-11-17 04:35:41",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 474,
+    "message": "Khởi chạy luồng xử lý chủ đề #474: Rút tiền ATM (ATM Withdrawals)"
+  },
+  {
+    "time": "2026-11-17 04:35:41",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 472,
+    "message": "Hoàn thành chủ đề #472: Thẻ tín dụng (Credit Cards) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:35:19",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 473,
+    "message": "Khởi chạy luồng xử lý chủ đề #473: Chuyển khoản (Bank Transfers)"
+  },
+  {
+    "time": "2026-11-17 04:35:19",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 471,
+    "message": "Hoàn thành chủ đề #471: Tài khoản tiết kiệm (Savings Accounts) (100 từ, 97s)"
+  },
+  {
+    "time": "2026-11-17 04:34:08",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 472,
+    "message": "Khởi chạy luồng xử lý chủ đề #472: Thẻ tín dụng (Credit Cards)"
+  },
+  {
+    "time": "2026-11-17 04:34:04",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 470,
+    "message": "Hoàn thành chủ đề #470: Tiền boa (Tipping) (100 từ, 99s)"
+  },
+  {
+    "time": "2026-11-17 04:33:42",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 471,
+    "message": "Khởi chạy luồng xử lý chủ đề #471: Tài khoản tiết kiệm (Savings Accounts)"
+  },
+  {
+    "time": "2026-11-17 04:33:42",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 469,
+    "message": "Hoàn thành chủ đề #469: Món chính (Main Courses) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 04:32:26",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 470,
+    "message": "Khởi chạy luồng xử lý chủ đề #470: Tiền boa (Tipping)"
+  },
+  {
+    "time": "2026-11-17 04:32:26",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 468,
+    "message": "Hoàn thành chủ đề #468: Món khai vị (Appetizers) (100 từ, 101s)"
+  },
+  {
+    "time": "2026-11-17 04:32:06",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 469,
+    "message": "Khởi chạy luồng xử lý chủ đề #469: Món chính (Main Courses)"
+  },
+  {
+    "time": "2026-11-17 04:32:06",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 467,
+    "message": "Hoàn thành chủ đề #467: Đánh giá nhà hàng (Restaurant Reviews) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:30:44",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 468,
+    "message": "Khởi chạy luồng xử lý chủ đề #468: Món khai vị (Appetizers)"
+  },
+  {
+    "time": "2026-11-17 04:30:44",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 466,
+    "message": "Hoàn thành chủ đề #466: Giao đồ ăn (Food Delivery) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:30:34",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 467,
+    "message": "Khởi chạy luồng xử lý chủ đề #467: Đánh giá nhà hàng (Restaurant Reviews)"
+  },
+  {
+    "time": "2026-11-17 04:30:34",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 465,
+    "message": "Hoàn thành chủ đề #465: Nhà hàng cao cấp (Fine Dining) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:29:18",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 466,
+    "message": "Khởi chạy luồng xử lý chủ đề #466: Giao đồ ăn (Food Delivery)"
+  },
+  {
+    "time": "2026-11-17 04:29:18",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 464,
+    "message": "Hoàn thành chủ đề #464: Thức ăn nhanh (Fast Food) (100 từ, 84s)"
+  },
+  {
+    "time": "2026-11-17 04:29:07",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 465,
+    "message": "Khởi chạy luồng xử lý chủ đề #465: Nhà hàng cao cấp (Fine Dining)"
+  },
+  {
+    "time": "2026-11-17 04:29:07",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 463,
+    "message": "Hoàn thành chủ đề #463: Thực đơn và Gọi món (Menus & Ordering) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:27:54",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 464,
+    "message": "Khởi chạy luồng xử lý chủ đề #464: Thức ăn nhanh (Fast Food)"
+  },
+  {
+    "time": "2026-11-17 04:27:54",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 462,
+    "message": "Hoàn thành chủ đề #462: Nhân viên phục vụ (Waitstaff) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:27:41",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 463,
+    "message": "Khởi chạy luồng xử lý chủ đề #463: Thực đơn và Gọi món (Menus & Ordering)"
+  },
+  {
+    "time": "2026-11-17 04:27:41",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 461,
+    "message": "Hoàn thành chủ đề #461: Đầu bếp và Phụ bếp (Chefs & Cooks) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:26:24",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 462,
+    "message": "Khởi chạy luồng xử lý chủ đề #462: Nhân viên phục vụ (Waitstaff)"
+  },
+  {
+    "time": "2026-11-17 04:26:24",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 460,
+    "message": "Hoàn thành chủ đề #460: Bày tỏ sự thất vọng (Expressing Disappointment) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 04:26:11",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 461,
+    "message": "Khởi chạy luồng xử lý chủ đề #461: Đầu bếp và Phụ bếp (Chefs & Cooks)"
+  },
+  {
+    "time": "2026-11-17 04:26:11",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 459,
+    "message": "Hoàn thành chủ đề #459: Đàm phán (Negotiation Phrases) (100 từ, 98s)"
+  },
+  {
+    "time": "2026-11-17 04:24:49",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 460,
+    "message": "Khởi chạy luồng xử lý chủ đề #460: Bày tỏ sự thất vọng (Expressing Disappointment)"
+  },
+  {
+    "time": "2026-11-17 04:24:49",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 458,
+    "message": "Hoàn thành chủ đề #458: Khen ngợi (Compliments) (100 từ, 83s)"
+  },
+  {
+    "time": "2026-11-17 04:24:33",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 459,
+    "message": "Khởi chạy luồng xử lý chủ đề #459: Đàm phán (Negotiation Phrases)"
+  },
+  {
+    "time": "2026-11-17 04:24:33",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 457,
+    "message": "Hoàn thành chủ đề #457: Khích lệ và Động viên (Encouragement) (100 từ, 80s)"
+  },
+  {
+    "time": "2026-11-17 04:23:25",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 458,
+    "message": "Khởi chạy luồng xử lý chủ đề #458: Khen ngợi (Compliments)"
+  },
+  {
+    "time": "2026-11-17 04:23:25",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 456,
+    "message": "Hoàn thành chủ đề #456: Xin lỗi chân thành (Sincere Apologies) (100 từ, 82s)"
+  },
+  {
+    "time": "2026-11-17 04:23:12",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 457,
+    "message": "Khởi chạy luồng xử lý chủ đề #457: Khích lệ và Động viên (Encouragement)"
+  },
+  {
+    "time": "2026-11-17 04:23:08",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 455,
+    "message": "Hoàn thành chủ đề #455: Gửi lời cảm ơn (Expressing Gratitude) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:22:04",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 456,
+    "message": "Khởi chạy luồng xử lý chủ đề #456: Xin lỗi chân thành (Sincere Apologies)"
+  },
+  {
+    "time": "2026-11-17 04:22:04",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 454,
+    "message": "Hoàn thành chủ đề #454: Phàn nàn và Khiếu nại (Complaints) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:21:35",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 455,
+    "message": "Khởi chạy luồng xử lý chủ đề #455: Gửi lời cảm ơn (Expressing Gratitude)"
+  },
+  {
+    "time": "2026-11-17 04:21:35",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 453,
+    "message": "Hoàn thành chủ đề #453: Đưa ra lời khuyên (Giving Advice) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:20:31",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 454,
+    "message": "Khởi chạy luồng xử lý chủ đề #454: Phàn nàn và Khiếu nại (Complaints)"
+  },
+  {
+    "time": "2026-11-17 04:20:31",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 452,
+    "message": "Hoàn thành chủ đề #452: Bày tỏ sự từ chối (Refusal & Rejection) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:20:03",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 453,
+    "message": "Khởi chạy luồng xử lý chủ đề #453: Đưa ra lời khuyên (Giving Advice)"
+  },
+  {
+    "time": "2026-11-17 04:20:03",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 451,
+    "message": "Hoàn thành chủ đề #451: Thể hiện sự đồng tình (Expressing Agreement) (99 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:19:02",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 452,
+    "message": "Khởi chạy luồng xử lý chủ đề #452: Bày tỏ sự từ chối (Refusal & Rejection)"
+  },
+  {
+    "time": "2026-11-17 04:19:02",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 450,
+    "message": "Hoàn thành chủ đề #450: Chữ ký số (Digital Signatures) (100 từ, 83s)"
+  },
+  {
+    "time": "2026-11-17 04:18:30",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 451,
+    "message": "Khởi chạy luồng xử lý chủ đề #451: Thể hiện sự đồng tình (Expressing Agreement)"
+  },
+  {
+    "time": "2026-11-17 04:18:30",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 449,
+    "message": "Hoàn thành chủ đề #449: Sao lưu dữ liệu (Data Backup) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:17:38",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 450,
+    "message": "Khởi chạy luồng xử lý chủ đề #450: Chữ ký số (Digital Signatures)"
+  },
+  {
+    "time": "2026-11-17 04:17:38",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 448,
+    "message": "Hoàn thành chủ đề #448: Phần mềm diệt virus (Antivirus Software) (100 từ, 83s)"
+  },
+  {
+    "time": "2026-11-17 04:17:04",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 449,
+    "message": "Khởi chạy luồng xử lý chủ đề #449: Sao lưu dữ liệu (Data Backup)"
+  },
+  {
+    "time": "2026-11-17 04:17:04",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 447,
+    "message": "Hoàn thành chủ đề #447: Bảo mật mật khẩu (Password Security) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:16:14",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 448,
+    "message": "Khởi chạy luồng xử lý chủ đề #448: Phần mềm diệt virus (Antivirus Software)"
+  },
+  {
+    "time": "2026-11-17 04:16:14",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 446,
+    "message": "Hoàn thành chủ đề #446: Chỉnh sửa video (Video Editing) (100 từ, 93s)"
+  },
+  {
+    "time": "2026-11-17 04:15:37",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 447,
+    "message": "Khởi chạy luồng xử lý chủ đề #447: Bảo mật mật khẩu (Password Security)"
+  },
+  {
+    "time": "2026-11-17 04:15:37",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 445,
+    "message": "Hoàn thành chủ đề #445: Thiết kế đồ họa (Graphic Design Tools) (100 từ, 87s)"
+  },
+  {
+    "time": "2026-11-17 04:14:42",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 446,
+    "message": "Khởi chạy luồng xử lý chủ đề #446: Chỉnh sửa video (Video Editing)"
+  },
+  {
+    "time": "2026-11-17 04:14:41",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 444,
+    "message": "Hoàn thành chủ đề #444: Lưu trữ đám mây (Cloud Storage) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:14:10",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 445,
+    "message": "Khởi chạy luồng xử lý chủ đề #445: Thiết kế đồ họa (Graphic Design Tools)"
+  },
+  {
+    "time": "2026-11-17 04:14:10",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 443,
+    "message": "Hoàn thành chủ đề #443: Nền tảng họp trực tuyến (Video Conferencing) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:13:15",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 444,
+    "message": "Khởi chạy luồng xử lý chủ đề #444: Lưu trữ đám mây (Cloud Storage)"
+  },
+  {
+    "time": "2026-11-17 04:13:15",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 442,
+    "message": "Hoàn thành chủ đề #442: Công cụ quản lý dự án (Project Management Tools) (100 từ, 87s)"
+  },
+  {
+    "time": "2026-11-17 04:12:41",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 443,
+    "message": "Khởi chạy luồng xử lý chủ đề #443: Nền tảng họp trực tuyến (Video Conferencing)"
+  },
+  {
+    "time": "2026-11-17 04:12:41",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 441,
+    "message": "Hoàn thành chủ đề #441: Phần mềm văn phòng (Office Suites) (100 từ, 88s)"
+  },
+  {
+    "time": "2026-11-17 04:11:48",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 442,
+    "message": "Khởi chạy luồng xử lý chủ đề #442: Công cụ quản lý dự án (Project Management Tools)"
+  },
+  {
+    "time": "2026-11-17 04:11:43",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 440,
+    "message": "Hoàn thành chủ đề #440: Chuyến đi đáng nhớ (Memorable Trip) (100 từ, 96s)"
+  },
+  {
+    "time": "2026-11-17 04:11:12",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 441,
+    "message": "Khởi chạy luồng xử lý chủ đề #441: Phần mềm văn phòng (Office Suites)"
+  },
+  {
+    "time": "2026-11-17 04:11:12",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 439,
+    "message": "Hoàn thành chủ đề #439: Khởi nghiệp thất bại (Startup Failure) (100 từ, 102s)"
+  },
+  {
+    "time": "2026-11-17 04:10:08",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 440,
+    "message": "Khởi chạy luồng xử lý chủ đề #440: Chuyến đi đáng nhớ (Memorable Trip)"
+  },
+  {
+    "time": "2026-11-17 04:10:08",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 438,
+    "message": "Hoàn thành chủ đề #438: Nghỉ hưu (Retirement) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:09:30",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 439,
+    "message": "Khởi chạy luồng xử lý chủ đề #439: Khởi nghiệp thất bại (Startup Failure)"
+  },
+  {
+    "time": "2026-11-17 04:09:30",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 437,
+    "message": "Hoàn thành chủ đề #437: Tốt nghiệp (Graduation) (100 từ, 93s)"
+  },
+  {
+    "time": "2026-11-17 04:08:41",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 438,
+    "message": "Khởi chạy luồng xử lý chủ đề #438: Nghỉ hưu (Retirement)"
+  },
+  {
+    "time": "2026-11-17 04:08:41",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 436,
+    "message": "Hoàn thành chủ đề #436: Mất người thân (Losing a Loved One) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:07:58",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 437,
+    "message": "Khởi chạy luồng xử lý chủ đề #437: Tốt nghiệp (Graduation)"
+  },
+  {
+    "time": "2026-11-17 04:07:58",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 435,
+    "message": "Hoàn thành chủ đề #435: Sinh con (Having a Baby) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 04:07:11",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 436,
+    "message": "Khởi chạy luồng xử lý chủ đề #436: Mất người thân (Losing a Loved One)"
+  },
+  {
+    "time": "2026-11-17 04:07:11",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 434,
+    "message": "Hoàn thành chủ đề #434: Kết hôn (Getting Married) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:06:25",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 435,
+    "message": "Khởi chạy luồng xử lý chủ đề #435: Sinh con (Having a Baby)"
+  },
+  {
+    "time": "2026-11-17 04:06:25",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 433,
+    "message": "Hoàn thành chủ đề #433: Mua nhà lần đầu (Buying First Home) (100 từ, 90s)"
+  },
+  {
+    "time": "2026-11-17 04:05:45",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 434,
+    "message": "Khởi chạy luồng xử lý chủ đề #434: Kết hôn (Getting Married)"
+  },
+  {
+    "time": "2026-11-17 04:05:45",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 432,
+    "message": "Hoàn thành chủ đề #432: Chuyển đến thành phố mới (Moving to a New City) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:04:56",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 433,
+    "message": "Khởi chạy luồng xử lý chủ đề #433: Mua nhà lần đầu (Buying First Home)"
+  },
+  {
+    "time": "2026-11-17 04:04:56",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 431,
+    "message": "Hoàn thành chủ đề #431: Chuyển việc (Changing Jobs) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 04:04:15",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 432,
+    "message": "Khởi chạy luồng xử lý chủ đề #432: Chuyển đến thành phố mới (Moving to a New City)"
+  },
+  {
+    "time": "2026-11-17 04:04:15",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 430,
+    "message": "Hoàn thành chủ đề #430: Sự đúng giờ (Punctuality) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:03:29",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 431,
+    "message": "Khởi chạy luồng xử lý chủ đề #431: Chuyển việc (Changing Jobs)"
+  },
+  {
+    "time": "2026-11-17 04:03:29",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 429,
+    "message": "Hoàn thành chủ đề #429: Nghi thức dự tiệc (Party Etiquette) (98 từ, 68s)"
+  },
+  {
+    "time": "2026-11-17 04:02:46",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 430,
+    "message": "Khởi chạy luồng xử lý chủ đề #430: Sự đúng giờ (Punctuality)"
+  },
+  {
+    "time": "2026-11-17 04:02:46",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 428,
+    "message": "Hoàn thành chủ đề #428: Giao tiếp qua email (Email Etiquette) (100 từ, 93s)"
+  },
+  {
+    "time": "2026-11-17 04:02:21",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 429,
+    "message": "Khởi chạy luồng xử lý chủ đề #429: Nghi thức dự tiệc (Party Etiquette)"
+  },
+  {
+    "time": "2026-11-17 04:02:21",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 427,
+    "message": "Hoàn thành chủ đề #427: Trang phục dạ hội (Dress Codes) (99 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 04:01:13",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 428,
+    "message": "Khởi chạy luồng xử lý chủ đề #428: Giao tiếp qua email (Email Etiquette)"
+  },
+  {
+    "time": "2026-11-17 04:01:13",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 426,
+    "message": "Hoàn thành chủ đề #426: Văn hóa tặng quà (Gift-giving Culture) (100 từ, 91s)"
+  },
+  {
+    "time": "2026-11-17 04:00:51",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 427,
+    "message": "Khởi chạy luồng xử lý chủ đề #427: Trang phục dạ hội (Dress Codes)"
+  },
+  {
+    "time": "2026-11-17 04:00:47",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 425,
+    "message": "Hoàn thành chủ đề #425: Văn hóa tiền bối - hậu bối (Seniority Culture) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:59:42",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 426,
+    "message": "Khởi chạy luồng xử lý chủ đề #426: Văn hóa tặng quà (Gift-giving Culture)"
+  },
+  {
+    "time": "2026-11-17 03:59:42",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 424,
+    "message": "Hoàn thành chủ đề #424: Cách chào hỏi (Greetings) (99 từ, 96s)"
+  },
+  {
+    "time": "2026-11-17 03:59:17",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 425,
+    "message": "Khởi chạy luồng xử lý chủ đề #425: Văn hóa tiền bối - hậu bối (Seniority Culture)"
+  },
+  {
+    "time": "2026-11-17 03:59:17",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 423,
+    "message": "Hoàn thành chủ đề #423: Nghi thức ngoại giao (Diplomatic Protocol) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:58:07",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 424,
+    "message": "Khởi chạy luồng xử lý chủ đề #424: Cách chào hỏi (Greetings)"
+  },
+  {
+    "time": "2026-11-17 03:58:07",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 422,
+    "message": "Hoàn thành chủ đề #422: Giao tiếp kinh doanh (Business Etiquette) (99 từ, 83s)"
+  },
+  {
+    "time": "2026-11-17 03:57:44",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 423,
+    "message": "Khởi chạy luồng xử lý chủ đề #423: Nghi thức ngoại giao (Diplomatic Protocol)"
+  },
+  {
+    "time": "2026-11-17 03:57:44",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 421,
+    "message": "Hoàn thành chủ đề #421: Nghi thức bàn ăn (Dining Etiquette) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 03:56:43",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 422,
+    "message": "Khởi chạy luồng xử lý chủ đề #422: Giao tiếp kinh doanh (Business Etiquette)"
+  },
+  {
+    "time": "2026-11-17 03:56:43",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 420,
+    "message": "Hoàn thành chủ đề #420: Thiết bị đo lường sức khỏe (Fitness Trackers) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 03:56:09",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 421,
+    "message": "Khởi chạy luồng xử lý chủ đề #421: Nghi thức bàn ăn (Dining Etiquette)"
+  },
+  {
+    "time": "2026-11-17 03:56:09",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 419,
+    "message": "Hoàn thành chủ đề #419: Trang phục thể thao (Activewear) (100 từ, 87s)"
+  },
+  {
+    "time": "2026-11-17 03:55:17",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 420,
+    "message": "Khởi chạy luồng xử lý chủ đề #420: Thiết bị đo lường sức khỏe (Fitness Trackers)"
+  },
+  {
+    "time": "2026-11-17 03:55:17",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 418,
+    "message": "Hoàn thành chủ đề #418: Tập luyện cường độ cao (HIIT) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:54:42",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 419,
+    "message": "Khởi chạy luồng xử lý chủ đề #419: Trang phục thể thao (Activewear)"
+  },
+  {
+    "time": "2026-11-17 03:54:42",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 417,
+    "message": "Hoàn thành chủ đề #417: Leo núi trong nhà (Indoor Climbing) (100 từ, 96s)"
+  },
+  {
+    "time": "2026-11-17 03:53:47",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 418,
+    "message": "Khởi chạy luồng xử lý chủ đề #418: Tập luyện cường độ cao (HIIT)"
+  },
+  {
+    "time": "2026-11-17 03:53:47",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 416,
+    "message": "Hoàn thành chủ đề #416: Đạp xe (Cycling) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:53:07",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 417,
+    "message": "Khởi chạy luồng xử lý chủ đề #417: Leo núi trong nhà (Indoor Climbing)"
+  },
+  {
+    "time": "2026-11-17 03:53:07",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 415,
+    "message": "Hoàn thành chủ đề #415: Chạy bộ và Marathon (Running & Marathon) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:52:17",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 416,
+    "message": "Khởi chạy luồng xử lý chủ đề #416: Đạp xe (Cycling)"
+  },
+  {
+    "time": "2026-11-17 03:52:17",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 414,
+    "message": "Hoàn thành chủ đề #414: Thể dục dụng cụ (Gymnastics) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:51:34",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 415,
+    "message": "Khởi chạy luồng xử lý chủ đề #415: Chạy bộ và Marathon (Running & Marathon)"
+  },
+  {
+    "time": "2026-11-17 03:51:34",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 413,
+    "message": "Hoàn thành chủ đề #413: Pilates (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:50:48",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 414,
+    "message": "Khởi chạy luồng xử lý chủ đề #414: Thể dục dụng cụ (Gymnastics)"
+  },
+  {
+    "time": "2026-11-17 03:50:48",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 412,
+    "message": "Hoàn thành chủ đề #412: Cardio và Đốt mỡ (Cardio & Fat Burn) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 03:50:05",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 413,
+    "message": "Khởi chạy luồng xử lý chủ đề #413: Pilates"
+  },
+  {
+    "time": "2026-11-17 03:50:05",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 411,
+    "message": "Hoàn thành chủ đề #411: Tập tạ (Weightlifting) (100 từ, 94s)"
+  },
+  {
+    "time": "2026-11-17 03:49:12",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 412,
+    "message": "Khởi chạy luồng xử lý chủ đề #412: Cardio và Đốt mỡ (Cardio & Fat Burn)"
+  },
+  {
+    "time": "2026-11-17 03:49:08",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 410,
+    "message": "Hoàn thành chủ đề #410: Tin giả và Xác minh (Fake News & Fact-Checking) (100 từ, 110s)"
+  },
+  {
+    "time": "2026-11-17 03:48:31",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 411,
+    "message": "Khởi chạy luồng xử lý chủ đề #411: Tập tạ (Weightlifting)"
+  },
+  {
+    "time": "2026-11-17 03:48:31",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 409,
+    "message": "Hoàn thành chủ đề #409: Kiểm duyệt thông tin (Information Censorship) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:47:17",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 410,
+    "message": "Khởi chạy luồng xử lý chủ đề #410: Tin giả và Xác minh (Fake News & Fact-Checking)"
+  },
+  {
+    "time": "2026-11-17 03:47:17",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 408,
+    "message": "Hoàn thành chủ đề #408: Thông cáo báo chí (Press Releases) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 03:46:58",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 409,
+    "message": "Khởi chạy luồng xử lý chủ đề #409: Kiểm duyệt thông tin (Information Censorship)"
+  },
+  {
+    "time": "2026-11-17 03:46:58",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 407,
+    "message": "Hoàn thành chủ đề #407: Đài phát thanh (Radio Broadcasting) (100 từ, 90s)"
+  },
+  {
+    "time": "2026-11-17 03:45:42",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 408,
+    "message": "Khởi chạy luồng xử lý chủ đề #408: Thông cáo báo chí (Press Releases)"
+  },
+  {
+    "time": "2026-11-17 03:45:42",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 406,
+    "message": "Hoàn thành chủ đề #406: Tạp chí thời trang (Fashion Magazines) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:45:29",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 407,
+    "message": "Khởi chạy luồng xử lý chủ đề #407: Đài phát thanh (Radio Broadcasting)"
+  },
+  {
+    "time": "2026-11-17 03:45:28",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 405,
+    "message": "Hoàn thành chủ đề #405: Phỏng vấn và Talkshow (Interviews & Talkshows) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 03:44:12",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 406,
+    "message": "Khởi chạy luồng xử lý chủ đề #406: Tạp chí thời trang (Fashion Magazines)"
+  },
+  {
+    "time": "2026-11-17 03:44:12",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 404,
+    "message": "Hoàn thành chủ đề #404: Phóng sự điều tra (Investigative Journalism) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:43:53",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 405,
+    "message": "Khởi chạy luồng xử lý chủ đề #405: Phỏng vấn và Talkshow (Interviews & Talkshows)"
+  },
+  {
+    "time": "2026-11-17 03:43:53",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 403,
+    "message": "Hoàn thành chủ đề #403: Báo điện tử (Online News) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 03:42:43",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 404,
+    "message": "Khởi chạy luồng xử lý chủ đề #404: Phóng sự điều tra (Investigative Journalism)"
+  },
+  {
+    "time": "2026-11-17 03:42:43",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 402,
+    "message": "Hoàn thành chủ đề #402: Báo in (Print Media) (100 từ, 93s)"
+  },
+  {
+    "time": "2026-11-17 03:42:27",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 403,
+    "message": "Khởi chạy luồng xử lý chủ đề #403: Báo điện tử (Online News)"
+  },
+  {
+    "time": "2026-11-17 03:42:26",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 401,
+    "message": "Hoàn thành chủ đề #401: Truyền hình cáp (Cable TV) (100 từ, 99s)"
+  },
+  {
+    "time": "2026-11-17 03:41:10",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 402,
+    "message": "Khởi chạy luồng xử lý chủ đề #402: Báo in (Print Media)"
+  },
+  {
+    "time": "2026-11-17 03:41:10",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 400,
+    "message": "Hoàn thành chủ đề #400: Văn hóa học (Cultural Studies) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:40:48",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 401,
+    "message": "Khởi chạy luồng xử lý chủ đề #401: Truyền hình cáp (Cable TV)"
+  },
+  {
+    "time": "2026-11-17 03:40:48",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 399,
+    "message": "Hoàn thành chủ đề #399: Lịch sử nghệ thuật (Art History) (100 từ, 96s)"
+  },
+  {
+    "time": "2026-11-17 03:39:40",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 400,
+    "message": "Khởi chạy luồng xử lý chủ đề #400: Văn hóa học (Cultural Studies)"
+  },
+  {
+    "time": "2026-11-17 03:39:40",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 398,
+    "message": "Hoàn thành chủ đề #398: Giáo dục học (Pedagogy) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 03:39:12",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 399,
+    "message": "Khởi chạy luồng xử lý chủ đề #399: Lịch sử nghệ thuật (Art History)"
+  },
+  {
+    "time": "2026-11-17 03:39:12",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 397,
+    "message": "Hoàn thành chủ đề #397: Tâm lý học tội phạm (Criminal Psychology) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:38:14",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 398,
+    "message": "Khởi chạy luồng xử lý chủ đề #398: Giáo dục học (Pedagogy)"
+  },
+  {
+    "time": "2026-11-17 03:38:14",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 396,
+    "message": "Hoàn thành chủ đề #396: Ngôn ngữ học xã hội (Sociolinguistics) (100 từ, 94s)"
+  },
+  {
+    "time": "2026-11-17 03:37:40",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 397,
+    "message": "Khởi chạy luồng xử lý chủ đề #397: Tâm lý học tội phạm (Criminal Psychology)"
+  },
+  {
+    "time": "2026-11-17 03:37:35",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 395,
+    "message": "Hoàn thành chủ đề #395: Khảo cổ học (Archaeology) (100 từ, 113s)"
+  },
+  {
+    "time": "2026-11-17 03:36:40",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 396,
+    "message": "Khởi chạy luồng xử lý chủ đề #396: Ngôn ngữ học xã hội (Sociolinguistics)"
+  },
+  {
+    "time": "2026-11-17 03:36:40",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 394,
+    "message": "Hoàn thành chủ đề #394: Tôn giáo học (Religious Studies) (100 từ, 90s)"
+  },
+  {
+    "time": "2026-11-17 03:35:42",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 395,
+    "message": "Khởi chạy luồng xử lý chủ đề #395: Khảo cổ học (Archaeology)"
+  },
+  {
+    "time": "2026-11-17 03:35:42",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 393,
+    "message": "Hoàn thành chủ đề #393: Triết học (Philosophy) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:35:11",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 394,
+    "message": "Khởi chạy luồng xử lý chủ đề #394: Tôn giáo học (Religious Studies)"
+  },
+  {
+    "time": "2026-11-17 03:35:11",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 392,
+    "message": "Hoàn thành chủ đề #392: Xã hội học (Sociology) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:34:09",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 393,
+    "message": "Khởi chạy luồng xử lý chủ đề #393: Triết học (Philosophy)"
+  },
+  {
+    "time": "2026-11-17 03:34:09",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 391,
+    "message": "Hoàn thành chủ đề #391: Nhân chủng học (Anthropology) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:33:41",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 392,
+    "message": "Khởi chạy luồng xử lý chủ đề #392: Xã hội học (Sociology)"
+  },
+  {
+    "time": "2026-11-17 03:33:41",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 390,
+    "message": "Hoàn thành chủ đề #390: Thiết kế thời trang (Fashion Design) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:32:40",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 391,
+    "message": "Khởi chạy luồng xử lý chủ đề #391: Nhân chủng học (Anthropology)"
+  },
+  {
+    "time": "2026-11-17 03:32:40",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 389,
+    "message": "Hoàn thành chủ đề #389: Viết nhật ký (Journaling) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:32:09",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 390,
+    "message": "Khởi chạy luồng xử lý chủ đề #390: Thiết kế thời trang (Fashion Design)"
+  },
+  {
+    "time": "2026-11-17 03:32:09",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 388,
+    "message": "Hoàn thành chủ đề #388: Đọc sách hư cấu (Reading Fiction) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:31:10",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 389,
+    "message": "Khởi chạy luồng xử lý chủ đề #389: Viết nhật ký (Journaling)"
+  },
+  {
+    "time": "2026-11-17 03:31:10",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 387,
+    "message": "Hoàn thành chủ đề #387: Bay flycam (Drone Flying) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:30:36",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 388,
+    "message": "Khởi chạy luồng xử lý chủ đề #388: Đọc sách hư cấu (Reading Fiction)"
+  },
+  {
+    "time": "2026-11-17 03:30:36",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 386,
+    "message": "Hoàn thành chủ đề #386: Nhiếp ảnh phong cảnh (Landscape Photography) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:29:38",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 387,
+    "message": "Khởi chạy luồng xử lý chủ đề #387: Bay flycam (Drone Flying)"
+  },
+  {
+    "time": "2026-11-17 03:29:38",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 385,
+    "message": "Hoàn thành chủ đề #385: Nướng BBQ (BBQ Grilling) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:29:07",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 386,
+    "message": "Khởi chạy luồng xử lý chủ đề #386: Nhiếp ảnh phong cảnh (Landscape Photography)"
+  },
+  {
+    "time": "2026-11-17 03:29:07",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 384,
+    "message": "Hoàn thành chủ đề #384: Làm vườn mộc (Woodworking) (99 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:28:08",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 385,
+    "message": "Khởi chạy luồng xử lý chủ đề #385: Nướng BBQ (BBQ Grilling)"
+  },
+  {
+    "time": "2026-11-17 03:28:08",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 383,
+    "message": "Hoàn thành chủ đề #383: Chơi cờ vua (Chess) (100 từ, 98s)"
+  },
+  {
+    "time": "2026-11-17 03:27:34",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 384,
+    "message": "Khởi chạy luồng xử lý chủ đề #384: Làm vườn mộc (Woodworking)"
+  },
+  {
+    "time": "2026-11-17 03:27:34",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 382,
+    "message": "Hoàn thành chủ đề #382: Đan lát và Thêu thùa (Knitting & Embroidery) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:26:30",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 383,
+    "message": "Khởi chạy luồng xử lý chủ đề #383: Chơi cờ vua (Chess)"
+  },
+  {
+    "time": "2026-11-17 03:26:30",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 381,
+    "message": "Hoàn thành chủ đề #381: Câu cá (Fishing) (100 từ, 118s)"
+  },
+  {
+    "time": "2026-11-17 03:26:02",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 382,
+    "message": "Khởi chạy luồng xử lý chủ đề #382: Đan lát và Thêu thùa (Knitting & Embroidery)"
+  },
+  {
+    "time": "2026-11-17 03:25:57",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 380,
+    "message": "Hoàn thành chủ đề #380: Tình nguyện viên (Volunteers) (100 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 03:24:32",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 381,
+    "message": "Khởi chạy luồng xử lý chủ đề #381: Câu cá (Fishing)"
+  },
+  {
+    "time": "2026-11-17 03:24:31",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 380,
+    "message": "Khởi chạy luồng xử lý chủ đề #380: Tình nguyện viên (Volunteers)"
+  },
+  {
+    "time": "2026-11-17 03:24:31",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 378,
+    "message": "Hoàn thành chủ đề #378: Phân biệt chủng tộc (Racism) (100 từ, 93s)"
+  },
+  {
+    "time": "2026-11-17 03:24:30",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 379,
+    "message": "Hoàn thành chủ đề #379: Hỗ trợ cộng đồng (Community Support) (98 từ, 82s)"
+  },
+  {
+    "time": "2026-11-17 03:23:08",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 379,
+    "message": "Khởi chạy luồng xử lý chủ đề #379: Hỗ trợ cộng đồng (Community Support)"
+  },
+  {
+    "time": "2026-11-17 03:23:08",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 377,
+    "message": "Hoàn thành chủ đề #377: Bình đẳng giới (Gender Equality) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:22:58",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 378,
+    "message": "Khởi chạy luồng xử lý chủ đề #378: Phân biệt chủng tộc (Racism)"
+  },
+  {
+    "time": "2026-11-17 03:22:58",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 376,
+    "message": "Hoàn thành chủ đề #376: Bạo lực gia đình (Domestic Violence) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 03:21:36",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 377,
+    "message": "Khởi chạy luồng xử lý chủ đề #377: Bình đẳng giới (Gender Equality)"
+  },
+  {
+    "time": "2026-11-17 03:21:36",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 375,
+    "message": "Hoàn thành chủ đề #375: Trẻ em mồ côi (Orphans) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:21:22",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 376,
+    "message": "Khởi chạy luồng xử lý chủ đề #376: Bạo lực gia đình (Domestic Violence)"
+  },
+  {
+    "time": "2026-11-17 03:21:22",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 374,
+    "message": "Hoàn thành chủ đề #374: Người cao tuổi và Viện dưỡng lão (Elderly & Nursing Homes) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:20:06",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 375,
+    "message": "Khởi chạy luồng xử lý chủ đề #375: Trẻ em mồ côi (Orphans)"
+  },
+  {
+    "time": "2026-11-17 03:20:06",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 373,
+    "message": "Hoàn thành chủ đề #373: Hôn nhân và Gia đình (Marriage & Family) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:19:50",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 374,
+    "message": "Khởi chạy luồng xử lý chủ đề #374: Người cao tuổi và Viện dưỡng lão (Elderly & Nursing Homes)"
+  },
+  {
+    "time": "2026-11-17 03:19:50",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 372,
+    "message": "Hoàn thành chủ đề #372: Xung đột thế hệ (Generation Gap) (99 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 03:18:37",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 373,
+    "message": "Khởi chạy luồng xử lý chủ đề #373: Hôn nhân và Gia đình (Marriage & Family)"
+  },
+  {
+    "time": "2026-11-17 03:18:37",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 371,
+    "message": "Hoàn thành chủ đề #371: Nuôi dạy con cái (Parenting) (100 từ, 62s)"
+  },
+  {
+    "time": "2026-11-17 03:18:23",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 372,
+    "message": "Khởi chạy luồng xử lý chủ đề #372: Xung đột thế hệ (Generation Gap)"
+  },
+  {
+    "time": "2026-11-17 03:18:23",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 370,
+    "message": "Hoàn thành chủ đề #370: Chu kỳ kinh tế (Economic Cycles) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:17:34",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 371,
+    "message": "Khởi chạy luồng xử lý chủ đề #371: Nuôi dạy con cái (Parenting)"
+  },
+  {
+    "time": "2026-11-17 03:17:34",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 369,
+    "message": "Hoàn thành chủ đề #369: Tài chính công (Public Finance) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 03:16:54",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 370,
+    "message": "Khởi chạy luồng xử lý chủ đề #370: Chu kỳ kinh tế (Economic Cycles)"
+  },
+  {
+    "time": "2026-11-17 03:16:54",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 368,
+    "message": "Hoàn thành chủ đề #368: Kinh tế vi mô (Microeconomics) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:15:59",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 369,
+    "message": "Khởi chạy luồng xử lý chủ đề #369: Tài chính công (Public Finance)"
+  },
+  {
+    "time": "2026-11-17 03:15:59",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 367,
+    "message": "Hoàn thành chủ đề #367: Toàn cầu hóa (Globalization) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:15:21",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 368,
+    "message": "Khởi chạy luồng xử lý chủ đề #368: Kinh tế vi mô (Microeconomics)"
+  },
+  {
+    "time": "2026-11-17 03:15:21",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 366,
+    "message": "Hoàn thành chủ đề #366: Nợ công (Public Debt) (100 từ, 88s)"
+  },
+  {
+    "time": "2026-11-17 03:14:26",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 367,
+    "message": "Khởi chạy luồng xử lý chủ đề #367: Toàn cầu hóa (Globalization)"
+  },
+  {
+    "time": "2026-11-17 03:14:22",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 365,
+    "message": "Hoàn thành chủ đề #365: Thất nghiệp (Unemployment) (100 từ, 83s)"
+  },
+  {
+    "time": "2026-11-17 03:13:53",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 366,
+    "message": "Khởi chạy luồng xử lý chủ đề #366: Nợ công (Public Debt)"
+  },
+  {
+    "time": "2026-11-17 03:13:53",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 364,
+    "message": "Hoàn thành chủ đề #364: Tỷ giá hối đoái (Exchange Rates) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:12:58",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 365,
+    "message": "Khởi chạy luồng xử lý chủ đề #365: Thất nghiệp (Unemployment)"
+  },
+  {
+    "time": "2026-11-17 03:12:58",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 363,
+    "message": "Hoàn thành chủ đề #363: Tổng sản phẩm quốc nội (GDP) (100 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 03:12:24",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 364,
+    "message": "Khởi chạy luồng xử lý chủ đề #364: Tỷ giá hối đoái (Exchange Rates)"
+  },
+  {
+    "time": "2026-11-17 03:12:24",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 362,
+    "message": "Hoàn thành chủ đề #362: Khủng hoảng kinh tế (Economic Crises) (100 từ, 96s)"
+  },
+  {
+    "time": "2026-11-17 03:11:23",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 363,
+    "message": "Khởi chạy luồng xử lý chủ đề #363: Tổng sản phẩm quốc nội (GDP)"
+  },
+  {
+    "time": "2026-11-17 03:11:23",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 361,
+    "message": "Hoàn thành chủ đề #361: Lạm phát (Inflation) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:10:48",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 362,
+    "message": "Khởi chạy luồng xử lý chủ đề #362: Khủng hoảng kinh tế (Economic Crises)"
+  },
+  {
+    "time": "2026-11-17 03:10:48",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 360,
+    "message": "Hoàn thành chủ đề #360: Viết sáng tạo (Creative Writing) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:09:53",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 361,
+    "message": "Khởi chạy luồng xử lý chủ đề #361: Lạm phát (Inflation)"
+  },
+  {
+    "time": "2026-11-17 03:09:53",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 359,
+    "message": "Hoàn thành chủ đề #359: Giao tiếp phi ngôn ngữ (Non-verbal Communication) (99 từ, 95s)"
+  },
+  {
+    "time": "2026-11-17 03:09:16",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 360,
+    "message": "Khởi chạy luồng xử lý chủ đề #360: Viết sáng tạo (Creative Writing)"
+  },
+  {
+    "time": "2026-11-17 03:09:16",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 358,
+    "message": "Hoàn thành chủ đề #358: Giọng điệu và Ngữ điệu (Accents & Intonation) (100 từ, 80s)"
+  },
+  {
+    "time": "2026-11-17 03:08:18",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 359,
+    "message": "Khởi chạy luồng xử lý chủ đề #359: Giao tiếp phi ngôn ngữ (Non-verbal Communication)"
+  },
+  {
+    "time": "2026-11-17 03:08:18",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 357,
+    "message": "Hoàn thành chủ đề #357: Ngôn ngữ ký hiệu (Sign Language) (100 từ, 96s)"
+  },
+  {
+    "time": "2026-11-17 03:07:55",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 358,
+    "message": "Khởi chạy luồng xử lý chủ đề #358: Giọng điệu và Ngữ điệu (Accents & Intonation)"
+  },
+  {
+    "time": "2026-11-17 03:07:55",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 356,
+    "message": "Hoàn thành chủ đề #356: Biện luận và Tranh biện (Debate & Argumentation) (99 từ, 86s)"
+  },
+  {
+    "time": "2026-11-17 03:06:42",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 357,
+    "message": "Khởi chạy luồng xử lý chủ đề #357: Ngôn ngữ ký hiệu (Sign Language)"
+  },
+  {
+    "time": "2026-11-17 03:06:42",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 355,
+    "message": "Hoàn thành chủ đề #355: Dịch thuật và Phiên dịch (Translation & Interpreting) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:06:29",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 356,
+    "message": "Khởi chạy luồng xử lý chủ đề #356: Biện luận và Tranh biện (Debate & Argumentation)"
+  },
+  {
+    "time": "2026-11-17 03:06:29",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 354,
+    "message": "Hoàn thành chủ đề #354: Ngữ âm học (Phonetics) (100 từ, 92s)"
+  },
+  {
+    "time": "2026-11-17 03:05:12",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 355,
+    "message": "Khởi chạy luồng xử lý chủ đề #355: Dịch thuật và Phiên dịch (Translation & Interpreting)"
+  },
+  {
+    "time": "2026-11-17 03:05:12",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 353,
+    "message": "Hoàn thành chủ đề #353: Ngữ pháp tiếng Anh (English Grammar) (100 từ, 89s)"
+  },
+  {
+    "time": "2026-11-17 03:04:56",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 354,
+    "message": "Khởi chạy luồng xử lý chủ đề #354: Ngữ âm học (Phonetics)"
+  },
+  {
+    "time": "2026-11-17 03:04:56",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 352,
+    "message": "Hoàn thành chủ đề #352: Từ lóng (Slang) (100 từ, 96s)"
+  },
+  {
+    "time": "2026-11-17 03:03:43",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 353,
+    "message": "Khởi chạy luồng xử lý chủ đề #353: Ngữ pháp tiếng Anh (English Grammar)"
+  },
+  {
+    "time": "2026-11-17 03:03:43",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 351,
+    "message": "Hoàn thành chủ đề #351: Thành ngữ và Tục ngữ (Idioms & Proverbs) (100 từ, 91s)"
+  },
+  {
+    "time": "2026-11-17 03:03:21",
+    "level": "INFO",
+    "step": "SPAWN_WORKER",
+    "stt": 352,
+    "message": "Khởi chạy luồng xử lý chủ đề #352: Từ lóng (Slang)"
+  },
+  {
+    "time": "2026-11-17 03:03:16",
+    "level": "SUCCESS",
+    "step": "TOPIC_COMPLETED",
+    "stt": 350,
+    "message": "Hoàn thành chủ đề #350: Quản lý rừng (Forest Management) (100 từ, 89s)"
+  }
 ]
