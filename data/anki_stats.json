@@ -1,14 +1,14 @@
 {
   "deck_name": "Thử thách mỗi ngày 100 từ vựng",
-  "updated_at": "2026-11-23 16:54:35",
+  "updated_at": "2026-11-24 05:17:39",
   "summary": {
-    "streak_days": 48,
+    "streak_days": 49,
     "days_studied_past_30": 29,
-    "total_reviews_past_30": 21322,
-    "avg_reviews_day": 735,
+    "total_reviews_past_30": 20883,
+    "avg_reviews_day": 720,
     "total_deck_cards": 12300,
-    "total_all_time_reviews": 28371,
-    "total_collection_reviews": 36206
+    "total_all_time_reviews": 29391,
+    "total_collection_reviews": 37226
   },
   "today": {
     "cards_studied": 0,
@@ -24,166 +24,158 @@
     "relearn": 0
   },
   "card_counts": {
-    "new": 4224,
-    "new_pct": 34.34,
-    "learning": 30,
-    "learning_pct": 0.24,
+    "new": 4222,
+    "new_pct": 34.33,
+    "learning": 0,
+    "learning_pct": 0.0,
     "relearning": 0,
-    "young": 2578,
-    "young_pct": 20.96,
-    "mature": 5468,
-    "mature_pct": 44.46,
+    "young": 2030,
+    "young_pct": 16.5,
+    "mature": 6048,
+    "mature_pct": 49.17,
     "suspended": 0,
     "buried": 0,
     "total": 12300
   },
   "future_due": {
-    "due_tomorrow": 281,
-    "total_future_30": 3524,
-    "avg_reviews_day": 114,
-    "daily_load": 311,
+    "due_tomorrow": 385,
+    "total_future_30": 3063,
+    "avg_reviews_day": 99,
+    "daily_load": 385,
     "days": [
       {
         "day": 0,
-        "count": 924
-      },
-      {
-        "day": 1,
         "count": 281
       },
       {
+        "day": 1,
+        "count": 385
+      },
+      {
         "day": 2,
-        "count": 318
+        "count": 313
       },
       {
         "day": 3,
-        "count": 276
+        "count": 220
       },
       {
         "day": 4,
-        "count": 184
+        "count": 174
       },
       {
         "day": 5,
-        "count": 160
+        "count": 159
       },
       {
         "day": 6,
-        "count": 138
+        "count": 126
       },
       {
         "day": 7,
-        "count": 118
+        "count": 86
       },
       {
         "day": 8,
-        "count": 62
+        "count": 75
       },
       {
         "day": 9,
-        "count": 50
+        "count": 66
       },
       {
         "day": 10,
-        "count": 49
+        "count": 66
       },
       {
         "day": 11,
-        "count": 42
+        "count": 64
       },
       {
         "day": 12,
-        "count": 42
+        "count": 55
       },
       {
         "day": 13,
-        "count": 41
+        "count": 53
       },
       {
         "day": 14,
-        "count": 37
-      },
-      {
-        "day": 15,
-        "count": 42
-      },
-      {
-        "day": 16,
-        "count": 44
-      },
-      {
-        "day": 17,
-        "count": 42
-      },
-      {
-        "day": 18,
-        "count": 39
-      },
-      {
-        "day": 19,
-        "count": 43
-      },
-      {
-        "day": 20,
-        "count": 40
-      },
-      {
-        "day": 21,
-        "count": 47
-      },
-      {
-        "day": 22,
-        "count": 41
-      },
-      {
-        "day": 23,
-        "count": 47
-      },
-      {
-        "day": 24,
         "count": 50
       },
       {
+        "day": 15,
+        "count": 50
+      },
+      {
+        "day": 16,
+        "count": 51
+      },
+      {
+        "day": 17,
+        "count": 44
+      },
+      {
+        "day": 18,
+        "count": 52
+      },
+      {
+        "day": 19,
+        "count": 42
+      },
+      {
+        "day": 20,
+        "count": 50
+      },
+      {
+        "day": 21,
+        "count": 49
+      },
+      {
+        "day": 22,
+        "count": 47
+      },
+      {
+        "day": 23,
+        "count": 53
+      },
+      {
+        "day": 24,
+        "count": 49
+      },
+      {
         "day": 25,
-        "count": 46
+        "count": 57
       },
       {
         "day": 26,
-        "count": 56
+        "count": 64
       },
       {
         "day": 27,
-        "count": 63
-      },
-      {
-        "day": 28,
         "count": 61
       },
       {
+        "day": 28,
+        "count": 70
+      },
+      {
         "day": 29,
-        "count": 67
+        "count": 76
       },
       {
         "day": 30,
-        "count": 74
+        "count": 75
       }
     ]
   },
   "reviews_history": {
     "days_studied_30": 29,
-    "total_reviews_30": 21322,
-    "avg_reviews_day": 710.7,
+    "total_reviews_30": 20883,
+    "avg_reviews_day": 696.1,
     "daily": [
       {
         "day_offset": -29,
-        "date": "2026-10-25",
-        "total": 1459,
-        "mature": 0,
-        "young": 1373,
-        "relearn": 86
-      },
-      {
-        "day_offset": -28,
         "date": "2026-10-26",
         "total": 177,
         "mature": 0,
@@ -191,7 +183,7 @@
         "relearn": 2
       },
       {
-        "day_offset": -27,
+        "day_offset": -28,
         "date": "2026-10-27",
         "total": 1433,
         "mature": 0,
@@ -199,7 +191,7 @@
         "relearn": 166
       },
       {
-        "day_offset": -26,
+        "day_offset": -27,
         "date": "2026-10-28",
         "total": 359,
         "mature": 0,
@@ -207,7 +199,7 @@
         "relearn": 1
       },
       {
-        "day_offset": -25,
+        "day_offset": -26,
         "date": "2026-10-29",
         "total": 185,
         "mature": 0,
@@ -215,7 +207,7 @@
         "relearn": 8
       },
       {
-        "day_offset": -24,
+        "day_offset": -25,
         "date": "2026-10-30",
         "total": 512,
         "mature": 0,
@@ -223,7 +215,7 @@
         "relearn": 31
       },
       {
-        "day_offset": -23,
+        "day_offset": -24,
         "date": "2026-10-31",
         "total": 1489,
         "mature": 9,
@@ -231,7 +223,7 @@
         "relearn": 142
       },
       {
-        "day_offset": -22,
+        "day_offset": -23,
         "date": "2026-11-01",
         "total": 1201,
         "mature": 10,
@@ -239,7 +231,7 @@
         "relearn": 20
       },
       {
-        "day_offset": -21,
+        "day_offset": -22,
         "date": "2026-11-02",
         "total": 1178,
         "mature": 8,
@@ -247,7 +239,7 @@
         "relearn": 38
       },
       {
-        "day_offset": -20,
+        "day_offset": -21,
         "date": "2026-11-03",
         "total": 34,
         "mature": 0,
@@ -255,7 +247,7 @@
         "relearn": 2
       },
       {
-        "day_offset": -19,
+        "day_offset": -20,
         "date": "2026-11-04",
         "total": 1067,
         "mature": 7,
@@ -263,7 +255,7 @@
         "relearn": 175
       },
       {
-        "day_offset": -18,
+        "day_offset": -19,
         "date": "2026-11-05",
         "total": 1389,
         "mature": 12,
@@ -271,7 +263,7 @@
         "relearn": 430
       },
       {
-        "day_offset": -17,
+        "day_offset": -18,
         "date": "2026-11-06",
         "total": 60,
         "mature": 1,
@@ -279,7 +271,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -16,
+        "day_offset": -17,
         "date": "2026-11-07",
         "total": 26,
         "mature": 0,
@@ -287,7 +279,7 @@
         "relearn": 3
       },
       {
-        "day_offset": -15,
+        "day_offset": -16,
         "date": "2026-11-08",
         "total": 10,
         "mature": 0,
@@ -295,7 +287,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -14,
+        "day_offset": -15,
         "date": "2026-11-09",
         "total": 1792,
         "mature": 22,
@@ -303,7 +295,7 @@
         "relearn": 139
       },
       {
-        "day_offset": -13,
+        "day_offset": -14,
         "date": "2026-11-10",
         "total": 34,
         "mature": 4,
@@ -311,7 +303,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -12,
+        "day_offset": -13,
         "date": "2026-11-11",
         "total": 1179,
         "mature": 5,
@@ -319,7 +311,7 @@
         "relearn": 49
       },
       {
-        "day_offset": -11,
+        "day_offset": -12,
         "date": "2026-11-12",
         "total": 206,
         "mature": 0,
@@ -327,7 +319,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -10,
+        "day_offset": -11,
         "date": "2026-11-13",
         "total": 945,
         "mature": 9,
@@ -335,7 +327,7 @@
         "relearn": 36
       },
       {
-        "day_offset": -9,
+        "day_offset": -10,
         "date": "2026-11-14",
         "total": 896,
         "mature": 3,
@@ -343,7 +335,7 @@
         "relearn": 86
       },
       {
-        "day_offset": -8,
+        "day_offset": -9,
         "date": "2026-11-15",
         "total": 1300,
         "mature": 4,
@@ -351,7 +343,7 @@
         "relearn": 60
       },
       {
-        "day_offset": -7,
+        "day_offset": -8,
         "date": "2026-11-16",
         "total": 834,
         "mature": 1,
@@ -359,7 +351,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -6,
+        "day_offset": -7,
         "date": "2026-11-17",
         "total": 411,
         "mature": 0,
@@ -367,7 +359,7 @@
         "relearn": 8
       },
       {
-        "day_offset": -5,
+        "day_offset": -6,
         "date": "2026-11-18",
         "total": 994,
         "mature": 5,
@@ -375,7 +367,7 @@
         "relearn": 197
       },
       {
-        "day_offset": -4,
+        "day_offset": -5,
         "date": "2026-11-19",
         "total": 1117,
         "mature": 8,
@@ -383,7 +375,7 @@
         "relearn": 245
       },
       {
-        "day_offset": -3,
+        "day_offset": -4,
         "date": "2026-11-20",
         "total": 359,
         "mature": 0,
@@ -391,7 +383,7 @@
         "relearn": 3
       },
       {
-        "day_offset": -2,
+        "day_offset": -3,
         "date": "2026-11-21",
         "total": 34,
         "mature": 0,
@@ -399,7 +391,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -1,
+        "day_offset": -2,
         "date": "2026-11-22",
         "total": 642,
         "mature": 10,
@@ -407,8 +399,16 @@
         "relearn": 27
       },
       {
-        "day_offset": 0,
+        "day_offset": -1,
         "date": "2026-11-23",
+        "total": 1020,
+        "mature": 12,
+        "young": 920,
+        "relearn": 88
+      },
+      {
+        "day_offset": 0,
+        "date": "2026-11-24",
         "total": 0,
         "mature": 0,
         "young": 0,
@@ -417,53 +417,53 @@
     ]
   },
   "intervals": {
-    "median_months": 2.0,
-    "median_days": 60,
+    "median_months": 2.07,
+    "median_days": 62,
     "bins": {
-      "1-5 ngày": 494,
-      "6-10 ngày": 1507,
-      "11-20 ngày": 577,
-      "21-30 ngày": 146,
-      "1-2 tháng": 1438,
-      "2-3 tháng": 3725,
-      "3-6 tháng": 139,
-      "6-12 tháng": 20,
+      "1-5 ngày": 349,
+      "6-10 ngày": 1062,
+      "11-20 ngày": 619,
+      "21-30 ngày": 161,
+      "1-2 tháng": 1569,
+      "2-3 tháng": 4150,
+      "3-6 tháng": 147,
+      "6-12 tháng": 21,
       "> 1 năm": 0
     }
   },
   "stability": {
-    "median_months": 2.01,
-    "median_days": 60.3,
+    "median_months": 2.19,
+    "median_days": 65.6,
     "bins": {
-      "0-10 ngày": 2180,
-      "11-30 ngày": 552,
-      "1-2 tháng": 1097,
-      "2-3 tháng": 4113,
-      "3-6 tháng": 118,
-      "6-12 tháng": 16,
+      "0-10 ngày": 1570,
+      "11-30 ngày": 597,
+      "1-2 tháng": 1182,
+      "2-3 tháng": 4588,
+      "3-6 tháng": 124,
+      "6-12 tháng": 17,
       "> 1 năm": 0
     }
   },
   "difficulty": {
     "median_pct": 0,
     "bins": {
-      "0-20%": 6192,
-      "21-40%": 340,
-      "41-60%": 334,
-      "61-80%": 308,
-      "81-100%": 902
+      "0-20%": 6251,
+      "21-40%": 318,
+      "41-60%": 320,
+      "61-80%": 311,
+      "81-100%": 878
     }
   },
   "retrievability": {
-    "average_pct": 94.3,
-    "estimated_knowledge_cards": 7614,
-    "estimated_knowledge_notes": 2538,
+    "average_pct": 95.6,
+    "estimated_knowledge_cards": 7724,
+    "estimated_knowledge_notes": 2575,
     "bins": {
-      "0-70%": 88,
-      "71-80%": 131,
-      "81-90%": 607,
-      "91-95%": 2829,
-      "96-100%": 4421
+      "0-70%": 19,
+      "71-80%": 49,
+      "81-90%": 316,
+      "91-95%": 2692,
+      "96-100%": 5002
     }
   },
   "retention": {
@@ -474,28 +474,28 @@
       "count": 0
     },
     "yesterday": {
-      "young": "91.6%",
+      "young": "95.7%",
       "mature": "100.0%",
-      "total": "91.8%",
-      "count": 595
+      "total": "95.8%",
+      "count": 924
     },
     "last_week": {
-      "young": "85.2%",
-      "mature": "95.8%",
-      "total": "85.3%",
-      "count": 2120
+      "young": "88.9%",
+      "mature": "97.1%",
+      "total": "89.0%",
+      "count": 2966
     },
     "last_month": {
-      "young": "88.0%",
-      "mature": "96.6%",
-      "total": "88.1%",
-      "count": 9563
+      "young": "88.6%",
+      "mature": "96.9%",
+      "total": "88.7%",
+      "count": 10336
     },
     "last_year": {
-      "young": "88.7%",
-      "mature": "96.6%",
-      "total": "88.8%",
-      "count": 11236
+      "young": "89.3%",
+      "mature": "96.9%",
+      "total": "89.4%",
+      "count": 12160
     }
   },
   "hourly_breakdown": [
@@ -556,8 +556,8 @@
     },
     {
       "hour": 11,
-      "count": 412,
-      "pass_rate": 59.7
+      "count": 544,
+      "pass_rate": 66.0
     },
     {
       "hour": 12,
@@ -596,8 +596,8 @@
     },
     {
       "hour": 19,
-      "count": 538,
-      "pass_rate": 73.6
+      "count": 561,
+      "pass_rate": 73.4
     },
     {
       "hour": 20,
@@ -611,33 +611,33 @@
     },
     {
       "hour": 22,
-      "count": 7171,
-      "pass_rate": 64.8
+      "count": 7528,
+      "pass_rate": 66.1
     },
     {
       "hour": 23,
-      "count": 4969,
-      "pass_rate": 72.6
+      "count": 5477,
+      "pass_rate": 74.9
     }
   ],
   "answer_buttons": {
     "learning": {
-      "again": 6448,
+      "again": 6454,
       "hard": 193,
       "good": 433,
-      "easy": 7967
+      "easy": 7969
     },
     "young": {
-      "again": 1252,
+      "again": 1291,
       "hard": 10,
       "good": 25,
-      "easy": 9831
+      "easy": 10704
     },
     "mature": {
       "again": 4,
       "hard": 0,
       "good": 0,
-      "easy": 114
+      "easy": 126
     }
   },
   "cards_added": {
@@ -646,152 +646,152 @@
     "daily": [
       {
         "day_offset": -29,
-        "date": "2026-10-25",
-        "count": 0
-      },
-      {
-        "day_offset": -28,
         "date": "2026-10-26",
         "count": 0
       },
       {
-        "day_offset": -27,
+        "day_offset": -28,
         "date": "2026-10-27",
         "count": 300
       },
       {
-        "day_offset": -26,
+        "day_offset": -27,
         "date": "2026-10-28",
         "count": 7200
       },
       {
-        "day_offset": -25,
+        "day_offset": -26,
         "date": "2026-10-29",
         "count": 0
       },
       {
-        "day_offset": -24,
+        "day_offset": -25,
         "date": "2026-10-30",
         "count": 0
       },
       {
-        "day_offset": -23,
+        "day_offset": -24,
         "date": "2026-10-31",
         "count": 0
       },
       {
-        "day_offset": -22,
+        "day_offset": -23,
         "date": "2026-11-01",
         "count": 300
       },
       {
-        "day_offset": -21,
+        "day_offset": -22,
         "date": "2026-11-02",
         "count": 0
       },
       {
-        "day_offset": -20,
+        "day_offset": -21,
         "date": "2026-11-03",
         "count": 0
       },
       {
-        "day_offset": -19,
+        "day_offset": -20,
         "date": "2026-11-04",
         "count": 0
       },
       {
-        "day_offset": -18,
+        "day_offset": -19,
         "date": "2026-11-05",
         "count": 0
       },
       {
-        "day_offset": -17,
+        "day_offset": -18,
         "date": "2026-11-06",
         "count": 0
       },
       {
-        "day_offset": -16,
+        "day_offset": -17,
         "date": "2026-11-07",
         "count": 0
       },
       {
-        "day_offset": -15,
+        "day_offset": -16,
         "date": "2026-11-08",
         "count": 0
       },
       {
-        "day_offset": -14,
+        "day_offset": -15,
         "date": "2026-11-09",
         "count": 0
       },
       {
-        "day_offset": -13,
+        "day_offset": -14,
         "date": "2026-11-10",
         "count": 0
       },
       {
-        "day_offset": -12,
+        "day_offset": -13,
         "date": "2026-11-11",
         "count": 0
       },
       {
-        "day_offset": -11,
+        "day_offset": -12,
         "date": "2026-11-12",
         "count": 0
       },
       {
-        "day_offset": -10,
+        "day_offset": -11,
         "date": "2026-11-13",
         "count": 0
       },
       {
-        "day_offset": -9,
+        "day_offset": -10,
         "date": "2026-11-14",
         "count": 0
       },
       {
-        "day_offset": -8,
+        "day_offset": -9,
         "date": "2026-11-15",
         "count": 0
       },
       {
-        "day_offset": -7,
+        "day_offset": -8,
         "date": "2026-11-16",
         "count": 0
       },
       {
-        "day_offset": -6,
+        "day_offset": -7,
         "date": "2026-11-17",
         "count": 0
       },
       {
-        "day_offset": -5,
+        "day_offset": -6,
         "date": "2026-11-18",
         "count": 0
       },
       {
-        "day_offset": -4,
+        "day_offset": -5,
         "date": "2026-11-19",
         "count": 0
       },
       {
-        "day_offset": -3,
+        "day_offset": -4,
         "date": "2026-11-20",
         "count": 0
       },
       {
-        "day_offset": -2,
+        "day_offset": -3,
         "date": "2026-11-21",
         "count": 0
       },
       {
-        "day_offset": -1,
+        "day_offset": -2,
         "date": "2026-11-22",
         "count": 0
       },
       {
-        "day_offset": 0,
+        "day_offset": -1,
         "date": "2026-11-23",
+        "count": 0
+      },
+      {
+        "day_offset": 0,
+        "date": "2026-11-24",
         "count": 0
       }
     ]
@@ -988,6 +988,10 @@
     {
       "date": "2026-11-22",
       "count": 642
+    },
+    {
+      "date": "2026-11-23",
+      "count": 1020
     }
   ],
   "subdecks": [
@@ -1010,7 +1014,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 2,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1021,7 +1025,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 4,
+      "due": 2,
       "progress_pct": 100.0
     },
     {
@@ -1032,7 +1036,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 3,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1043,7 +1047,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 5,
+      "due": 2,
       "progress_pct": 100.0
     },
     {
@@ -1065,7 +1069,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 8,
+      "due": 5,
       "progress_pct": 100.0
     },
     {
@@ -1076,7 +1080,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 5,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1098,7 +1102,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 4,
+      "due": 1,
       "progress_pct": 100.0
     },
     {
@@ -1109,7 +1113,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 10,
+      "due": 7,
       "progress_pct": 100.0
     },
     {
@@ -1118,10 +1122,10 @@
       "name": "L. Pháp luật và Các loại tội phạm",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 14,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 2,
+      "progress_pct": 100.0
     },
     {
       "stt": 13,
@@ -1131,7 +1135,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 12,
+      "due": 4,
       "progress_pct": 100.0
     },
     {
@@ -1142,7 +1146,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 9,
+      "due": 4,
       "progress_pct": 100.0
     },
     {
@@ -1153,7 +1157,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 24,
+      "due": 19,
       "progress_pct": 100.0
     },
     {
@@ -1162,10 +1166,10 @@
       "name": "P. Dụng cụ và Trang thiết bị y tế",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 33,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 23,
+      "progress_pct": 100.0
     },
     {
       "stt": 17,
@@ -1175,7 +1179,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 32,
+      "due": 7,
       "progress_pct": 100.0
     },
     {
@@ -1184,10 +1188,10 @@
       "name": "R. Các giai đoạn trong cuộc đời",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 12,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 1,
+      "progress_pct": 100.0
     },
     {
       "stt": 19,
@@ -1195,10 +1199,10 @@
       "name": "S. Vật dụng và Thiết bị nhà bếp",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 7,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 6,
+      "progress_pct": 100.0
     },
     {
       "stt": 20,
@@ -1206,10 +1210,10 @@
       "name": "T. Phòng ngủ và Giấc ngủ",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 43,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 13,
+      "progress_pct": 100.0
     },
     {
       "stt": 21,
@@ -1217,10 +1221,10 @@
       "name": "U. Sự kiện, Lễ hội và Tiệc tùng",
       "total": 300,
       "new": 0,
-      "learning": 2,
-      "review": 298,
-      "due": 125,
-      "progress_pct": 99.3
+      "learning": 0,
+      "review": 300,
+      "due": 10,
+      "progress_pct": 100.0
     },
     {
       "stt": 22,
@@ -1228,10 +1232,10 @@
       "name": "V. Các môn Thể thao đồng đội",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 133,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 50,
+      "progress_pct": 100.0
     },
     {
       "stt": 23,
@@ -1239,10 +1243,10 @@
       "name": "W. Dụng cụ tập thể hình",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 106,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 32,
+      "progress_pct": 100.0
     },
     {
       "stt": 24,
@@ -1252,7 +1256,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 129,
+      "due": 36,
       "progress_pct": 100.0
     },
     {
@@ -1261,10 +1265,10 @@
       "name": "Y. Các loại hình nghệ thuật biểu diễn",
       "total": 300,
       "new": 0,
-      "learning": 9,
-      "review": 291,
-      "due": 103,
-      "progress_pct": 97.0
+      "learning": 0,
+      "review": 300,
+      "due": 28,
+      "progress_pct": 100.0
     },
     {
       "stt": 26,
@@ -1272,10 +1276,10 @@
       "name": "Z. Địa lý tự nhiên và Địa hình",
       "total": 300,
       "new": 57,
-      "learning": 8,
-      "review": 235,
-      "due": 43,
-      "progress_pct": 78.3
+      "learning": 0,
+      "review": 243,
+      "due": 26,
+      "progress_pct": 81.0
     },
     {
       "stt": 27,
@@ -1283,21 +1287,21 @@
       "name": "ZA. Trường đại học và Đời sống sinh viên",
       "total": 300,
       "new": 0,
-      "learning": 4,
-      "review": 296,
-      "due": 34,
-      "progress_pct": 98.7
+      "learning": 0,
+      "review": 300,
+      "due": 0,
+      "progress_pct": 100.0
     },
     {
       "stt": 28,
       "did": 1793157885078,
       "name": "ZB. Các loại nhạc cụ",
       "total": 300,
-      "new": 267,
+      "new": 265,
       "learning": 0,
-      "review": 33,
-      "due": 21,
-      "progress_pct": 11.0
+      "review": 35,
+      "due": 0,
+      "progress_pct": 11.7
     },
     {
       "stt": 29,
