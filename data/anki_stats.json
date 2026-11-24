@@ -1,14 +1,14 @@
 {
   "deck_name": "Thử thách mỗi ngày 100 từ vựng",
-  "updated_at": "2026-11-24 05:17:39",
+  "updated_at": "2026-11-24 18:42:29",
   "summary": {
     "streak_days": 49,
     "days_studied_past_30": 29,
-    "total_reviews_past_30": 20883,
-    "avg_reviews_day": 720,
+    "total_reviews_past_30": 20974,
+    "avg_reviews_day": 723,
     "total_deck_cards": 12300,
-    "total_all_time_reviews": 29391,
-    "total_collection_reviews": 37226
+    "total_all_time_reviews": 29482,
+    "total_collection_reviews": 37317
   },
   "today": {
     "cards_studied": 0,
@@ -24,13 +24,13 @@
     "relearn": 0
   },
   "card_counts": {
-    "new": 4222,
-    "new_pct": 34.33,
-    "learning": 0,
-    "learning_pct": 0.0,
+    "new": 4156,
+    "new_pct": 33.79,
+    "learning": 28,
+    "learning_pct": 0.23,
     "relearning": 0,
-    "young": 2030,
-    "young_pct": 16.5,
+    "young": 2068,
+    "young_pct": 16.81,
     "mature": 6048,
     "mature_pct": 49.17,
     "suspended": 0,
@@ -38,10 +38,10 @@
     "total": 12300
   },
   "future_due": {
-    "due_tomorrow": 385,
-    "total_future_30": 3063,
-    "avg_reviews_day": 99,
-    "daily_load": 385,
+    "due_tomorrow": 408,
+    "total_future_30": 3101,
+    "avg_reviews_day": 100,
+    "daily_load": 436,
     "days": [
       {
         "day": 0,
@@ -49,7 +49,7 @@
       },
       {
         "day": 1,
-        "count": 385
+        "count": 408
       },
       {
         "day": 2,
@@ -65,23 +65,23 @@
       },
       {
         "day": 5,
-        "count": 159
+        "count": 160
       },
       {
         "day": 6,
-        "count": 126
+        "count": 127
       },
       {
         "day": 7,
-        "count": 86
+        "count": 92
       },
       {
         "day": 8,
-        "count": 75
+        "count": 80
       },
       {
         "day": 9,
-        "count": 66
+        "count": 68
       },
       {
         "day": 10,
@@ -171,8 +171,8 @@
   },
   "reviews_history": {
     "days_studied_30": 29,
-    "total_reviews_30": 20883,
-    "avg_reviews_day": 696.1,
+    "total_reviews_30": 20974,
+    "avg_reviews_day": 699.1,
     "daily": [
       {
         "day_offset": -29,
@@ -401,9 +401,9 @@
       {
         "day_offset": -1,
         "date": "2026-11-23",
-        "total": 1020,
+        "total": 1111,
         "mature": 12,
-        "young": 920,
+        "young": 1011,
         "relearn": 88
       },
       {
@@ -420,8 +420,8 @@
     "median_months": 2.07,
     "median_days": 62,
     "bins": {
-      "1-5 ngày": 349,
-      "6-10 ngày": 1062,
+      "1-5 ngày": 372,
+      "6-10 ngày": 1077,
       "11-20 ngày": 619,
       "21-30 ngày": 161,
       "1-2 tháng": 1569,
@@ -432,10 +432,10 @@
     }
   },
   "stability": {
-    "median_months": 2.19,
-    "median_days": 65.6,
+    "median_months": 2.14,
+    "median_days": 64.2,
     "bins": {
-      "0-10 ngày": 1570,
+      "0-10 ngày": 1636,
       "11-30 ngày": 597,
       "1-2 tháng": 1182,
       "2-3 tháng": 4588,
@@ -447,23 +447,23 @@
   "difficulty": {
     "median_pct": 0,
     "bins": {
-      "0-20%": 6251,
+      "0-20%": 6266,
       "21-40%": 318,
-      "41-60%": 320,
-      "61-80%": 311,
-      "81-100%": 878
+      "41-60%": 341,
+      "61-80%": 339,
+      "81-100%": 880
     }
   },
   "retrievability": {
-    "average_pct": 95.6,
-    "estimated_knowledge_cards": 7724,
-    "estimated_knowledge_notes": 2575,
+    "average_pct": 95.2,
+    "estimated_knowledge_cards": 7752,
+    "estimated_knowledge_notes": 2584,
     "bins": {
-      "0-70%": 19,
-      "71-80%": 49,
-      "81-90%": 316,
-      "91-95%": 2692,
-      "96-100%": 5002
+      "0-70%": 49,
+      "71-80%": 59,
+      "81-90%": 485,
+      "91-95%": 2635,
+      "96-100%": 4916
     }
   },
   "retention": {
@@ -489,7 +489,7 @@
       "young": "88.6%",
       "mature": "96.9%",
       "total": "88.7%",
-      "count": 10336
+      "count": 10106
     },
     "last_year": {
       "young": "89.3%",
@@ -511,8 +511,8 @@
     },
     {
       "hour": 2,
-      "count": 0,
-      "pass_rate": 0.0
+      "count": 91,
+      "pass_rate": 41.8
     },
     {
       "hour": 3,
@@ -622,10 +622,10 @@
   ],
   "answer_buttons": {
     "learning": {
-      "again": 6454,
+      "again": 6507,
       "hard": 193,
       "good": 433,
-      "easy": 7969
+      "easy": 8007
     },
     "young": {
       "again": 1291,
@@ -991,7 +991,7 @@
     },
     {
       "date": "2026-11-23",
-      "count": 1020
+      "count": 1111
     }
   ],
   "subdecks": [
@@ -1297,33 +1297,33 @@
       "did": 1793157885078,
       "name": "ZB. Các loại nhạc cụ",
       "total": 300,
-      "new": 265,
-      "learning": 0,
-      "review": 35,
+      "new": 232,
+      "learning": 4,
+      "review": 64,
       "due": 0,
-      "progress_pct": 11.7
+      "progress_pct": 21.3
     },
     {
       "stt": 29,
       "did": 1793157904616,
       "name": "ZC. Thuật ngữ âm nhạc và Bản nhạc",
       "total": 300,
-      "new": 300,
-      "learning": 0,
-      "review": 0,
+      "new": 281,
+      "learning": 18,
+      "review": 1,
       "due": 0,
-      "progress_pct": 0.0
+      "progress_pct": 0.3
     },
     {
       "stt": 30,
       "did": 1793157945332,
       "name": "ZD. Trò chơi điện tử trên PC và Mobile",
       "total": 300,
-      "new": 300,
-      "learning": 0,
-      "review": 0,
+      "new": 286,
+      "learning": 6,
+      "review": 8,
       "due": 0,
-      "progress_pct": 0.0
+      "progress_pct": 2.7
     },
     {
       "stt": 31,
