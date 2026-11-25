@@ -1,6 +1,6 @@
 {
   "deck_name": "Thử thách mỗi ngày 100 từ vựng",
-  "updated_at": "2026-11-25 06:40:43",
+  "updated_at": "2026-11-25 17:36:02",
   "summary": {
     "streak_days": 50,
     "days_studied_past_30": 29,
@@ -455,15 +455,15 @@
     }
   },
   "retrievability": {
-    "average_pct": 95.4,
-    "estimated_knowledge_cards": 8070,
-    "estimated_knowledge_notes": 2690,
+    "average_pct": 95.1,
+    "estimated_knowledge_cards": 8043,
+    "estimated_knowledge_notes": 2681,
     "bins": {
-      "0-70%": 55,
-      "71-80%": 52,
-      "81-90%": 488,
-      "91-95%": 2614,
-      "96-100%": 5251
+      "0-70%": 62,
+      "71-80%": 112,
+      "81-90%": 471,
+      "91-95%": 2746,
+      "96-100%": 5069
     }
   },
   "retention": {
@@ -480,10 +480,10 @@
       "count": 281
     },
     "last_week": {
-      "young": "89.7%",
+      "young": "90.0%",
       "mature": "97.5%",
-      "total": "89.8%",
-      "count": 3245
+      "total": "90.1%",
+      "count": 3164
     },
     "last_month": {
       "young": "88.6%",
