@@ -1,151 +1,151 @@
 {
   "deck_name": "Thử thách mỗi ngày 100 từ vựng",
-  "updated_at": "2026-11-27 17:12:46",
+  "updated_at": "2026-11-28 02:42:49",
   "summary": {
     "streak_days": 53,
     "days_studied_past_30": 30,
-    "total_reviews_past_30": 21426,
-    "avg_reviews_day": 714,
+    "total_reviews_past_30": 22355,
+    "avg_reviews_day": 745,
     "total_deck_cards": 12300,
-    "total_all_time_reviews": 31903,
-    "total_collection_reviews": 39767
+    "total_all_time_reviews": 32832,
+    "total_collection_reviews": 40703
   },
   "today": {
-    "cards_studied": 242,
-    "time_minutes": 11.73,
-    "seconds_per_card": 2.91,
-    "again_count": 44,
-    "again_pct": 18.18,
-    "hard_count": 0,
-    "good_count": 0,
-    "easy_count": 198,
-    "learn": 182,
-    "review": 38,
-    "relearn": 22
+    "cards_studied": 1171,
+    "time_minutes": 90.46,
+    "seconds_per_card": 4.64,
+    "again_count": 255,
+    "again_pct": 21.78,
+    "hard_count": 1,
+    "good_count": 17,
+    "easy_count": 898,
+    "learn": 800,
+    "review": 313,
+    "relearn": 58
   },
   "card_counts": {
-    "new": 3319,
-    "new_pct": 26.98,
-    "learning": 7,
-    "learning_pct": 0.06,
+    "new": 2880,
+    "new_pct": 23.41,
+    "learning": 17,
+    "learning_pct": 0.14,
     "relearning": 0,
-    "young": 2343,
-    "young_pct": 19.05,
-    "mature": 6631,
-    "mature_pct": 53.91,
+    "young": 2621,
+    "young_pct": 21.31,
+    "mature": 6782,
+    "mature_pct": 55.14,
     "suspended": 0,
     "buried": 0,
     "total": 12300
   },
   "future_due": {
-    "due_tomorrow": 256,
-    "total_future_30": 3628,
-    "avg_reviews_day": 117,
-    "daily_load": 263,
+    "due_tomorrow": 257,
+    "total_future_30": 3912,
+    "avg_reviews_day": 126,
+    "daily_load": 274,
     "days": [
       {
         "day": 0,
-        "count": 275
+        "count": 0
       },
       {
         "day": 1,
-        "count": 256
+        "count": 257
       },
       {
         "day": 2,
-        "count": 277
+        "count": 409
       },
       {
         "day": 3,
-        "count": 250
+        "count": 272
       },
       {
         "day": 4,
-        "count": 235
+        "count": 254
       },
       {
         "day": 5,
-        "count": 234
+        "count": 238
       },
       {
         "day": 6,
-        "count": 222
+        "count": 297
       },
       {
         "day": 7,
-        "count": 202
+        "count": 267
       },
       {
         "day": 8,
-        "count": 167
+        "count": 231
       },
       {
         "day": 9,
-        "count": 118
+        "count": 189
       },
       {
         "day": 10,
-        "count": 106
+        "count": 160
       },
       {
         "day": 11,
-        "count": 71
+        "count": 74
       },
       {
         "day": 12,
-        "count": 60
-      },
-      {
-        "day": 13,
-        "count": 56
-      },
-      {
-        "day": 14,
-        "count": 53
-      },
-      {
-        "day": 15,
-        "count": 57
-      },
-      {
-        "day": 16,
-        "count": 53
-      },
-      {
-        "day": 17,
-        "count": 58
-      },
-      {
-        "day": 18,
-        "count": 52
-      },
-      {
-        "day": 19,
-        "count": 51
-      },
-      {
-        "day": 20,
         "count": 61
       },
       {
+        "day": 13,
+        "count": 60
+      },
+      {
+        "day": 14,
+        "count": 63
+      },
+      {
+        "day": 15,
+        "count": 63
+      },
+      {
+        "day": 16,
+        "count": 57
+      },
+      {
+        "day": 17,
+        "count": 63
+      },
+      {
+        "day": 18,
+        "count": 54
+      },
+      {
+        "day": 19,
+        "count": 53
+      },
+      {
+        "day": 20,
+        "count": 63
+      },
+      {
         "day": 21,
-        "count": 50
+        "count": 53
       },
       {
         "day": 22,
-        "count": 63
+        "count": 64
       },
       {
         "day": 23,
-        "count": 65
+        "count": 68
       },
       {
         "day": 24,
-        "count": 63
+        "count": 65
       },
       {
         "day": 25,
-        "count": 71
+        "count": 72
       },
       {
         "day": 26,
@@ -161,18 +161,18 @@
       },
       {
         "day": 29,
-        "count": 76
+        "count": 77
       },
       {
         "day": 30,
-        "count": 89
+        "count": 91
       }
     ]
   },
   "reviews_history": {
     "days_studied_30": 30,
-    "total_reviews_30": 21426,
-    "avg_reviews_day": 714.2,
+    "total_reviews_30": 22355,
+    "avg_reviews_day": 745.2,
     "daily": [
       {
         "day_offset": -29,
@@ -409,69 +409,69 @@
       {
         "day_offset": 0,
         "date": "2026-11-27",
-        "total": 242,
-        "mature": 0,
-        "young": 220,
-        "relearn": 22
+        "total": 1171,
+        "mature": 7,
+        "young": 1106,
+        "relearn": 58
       }
     ]
   },
   "intervals": {
-    "median_months": 2.07,
-    "median_days": 62,
+    "median_months": 2.03,
+    "median_days": 61,
     "bins": {
-      "1-5 ngày": 372,
-      "6-10 ngày": 1366,
-      "11-20 ngày": 605,
-      "21-30 ngày": 175,
-      "1-2 tháng": 1747,
-      "2-3 tháng": 4526,
-      "3-6 tháng": 157,
-      "6-12 tháng": 26,
+      "1-5 ngày": 445,
+      "6-10 ngày": 1559,
+      "11-20 ngày": 617,
+      "21-30 ngày": 184,
+      "1-2 tháng": 1800,
+      "2-3 tháng": 4610,
+      "3-6 tháng": 160,
+      "6-12 tháng": 28,
       "> 1 năm": 0
     }
   },
   "stability": {
-    "median_months": 2.08,
-    "median_days": 62.4,
+    "median_months": 2.01,
+    "median_days": 60.3,
     "bins": {
-      "0-10 ngày": 1883,
-      "11-30 ngày": 617,
-      "1-2 tháng": 1343,
-      "2-3 tháng": 4982,
-      "3-6 tháng": 134,
-      "6-12 tháng": 22,
+      "0-10 ngày": 2160,
+      "11-30 ngày": 636,
+      "1-2 tháng": 1383,
+      "2-3 tháng": 5079,
+      "3-6 tháng": 138,
+      "6-12 tháng": 24,
       "> 1 năm": 0
     }
   },
   "difficulty": {
     "median_pct": 0,
     "bins": {
-      "0-20%": 6997,
-      "21-40%": 349,
-      "41-60%": 397,
-      "61-80%": 319,
-      "81-100%": 919
+      "0-20%": 7329,
+      "21-40%": 352,
+      "41-60%": 460,
+      "61-80%": 339,
+      "81-100%": 940
     }
   },
   "retrievability": {
-    "average_pct": 95.5,
-    "estimated_knowledge_cards": 8579,
-    "estimated_knowledge_notes": 2860,
+    "average_pct": 95.7,
+    "estimated_knowledge_cards": 9019,
+    "estimated_knowledge_notes": 3006,
     "bins": {
-      "0-70%": 32,
-      "71-80%": 48,
-      "81-90%": 261,
-      "91-95%": 2967,
-      "96-100%": 5673
+      "0-70%": 20,
+      "71-80%": 44,
+      "81-90%": 272,
+      "91-95%": 3029,
+      "96-100%": 6055
     }
   },
   "retention": {
     "today": {
-      "young": "71.1%",
-      "mature": "N/A",
-      "total": "71.1%",
-      "count": 38
+      "young": "90.8%",
+      "mature": "100.0%",
+      "total": "91.1%",
+      "count": 313
     },
     "yesterday": {
       "young": "93.1%",
@@ -483,19 +483,19 @@
       "young": "94.1%",
       "mature": "100.0%",
       "total": "94.2%",
-      "count": 2735
+      "count": 2938
     },
     "last_month": {
-      "young": "89.0%",
-      "mature": "97.4%",
-      "total": "89.1%",
-      "count": 10060
+      "young": "89.1%",
+      "mature": "97.5%",
+      "total": "89.3%",
+      "count": 10277
     },
     "last_year": {
-      "young": "89.7%",
-      "mature": "97.4%",
-      "total": "89.8%",
-      "count": 13304
+      "young": "89.8%",
+      "mature": "97.5%",
+      "total": "89.9%",
+      "count": 13579
     }
   },
   "hourly_breakdown": [
@@ -566,7 +566,7 @@
     },
     {
       "hour": 13,
-      "count": 502,
+      "count": 519,
       "pass_rate": 75.9
     },
     {
@@ -576,13 +576,13 @@
     },
     {
       "hour": 15,
-      "count": 202,
-      "pass_rate": 57.9
+      "count": 286,
+      "pass_rate": 66.8
     },
     {
       "hour": 16,
-      "count": 399,
-      "pass_rate": 85.0
+      "count": 723,
+      "pass_rate": 88.8
     },
     {
       "hour": 17,
@@ -601,18 +601,18 @@
     },
     {
       "hour": 20,
-      "count": 1362,
-      "pass_rate": 63.6
+      "count": 1444,
+      "pass_rate": 62.1
     },
     {
       "hour": 21,
-      "count": 3754,
-      "pass_rate": 72.5
+      "count": 4079,
+      "pass_rate": 72.8
     },
     {
       "hour": 22,
-      "count": 7948,
-      "pass_rate": 67.3
+      "count": 8045,
+      "pass_rate": 67.1
     },
     {
       "hour": 23,
@@ -622,22 +622,22 @@
   ],
   "answer_buttons": {
     "learning": {
-      "again": 6824,
+      "again": 7005,
       "hard": 194,
-      "good": 434,
-      "easy": 8871
+      "good": 448,
+      "easy": 9294
     },
     "young": {
-      "again": 1356,
-      "hard": 10,
-      "good": 25,
-      "easy": 11762
+      "again": 1373,
+      "hard": 11,
+      "good": 27,
+      "easy": 12010
     },
     "mature": {
       "again": 4,
       "hard": 0,
       "good": 0,
-      "easy": 147
+      "easy": 154
     }
   },
   "cards_added": {
@@ -1007,7 +1007,7 @@
     },
     {
       "date": "2026-11-27",
-      "count": 242
+      "count": 1171
     }
   ],
   "subdecks": [
@@ -1019,7 +1019,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 2,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1030,7 +1030,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 2,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1041,7 +1041,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 2,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1063,7 +1063,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 3,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1085,7 +1085,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 3,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1107,7 +1107,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 1,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1129,7 +1129,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 6,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1140,7 +1140,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 7,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1151,7 +1151,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 1,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1162,7 +1162,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 5,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1173,7 +1173,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 5,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1184,7 +1184,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 6,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1195,7 +1195,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 4,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1206,7 +1206,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 4,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1217,7 +1217,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 4,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1228,7 +1228,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 5,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1239,7 +1239,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 5,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1250,7 +1250,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 3,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1261,7 +1261,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 18,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1272,7 +1272,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 8,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1281,10 +1281,10 @@
       "name": "Y. Các loại hình nghệ thuật biểu diễn",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 21,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 0,
+      "progress_pct": 100.0
     },
     {
       "stt": 26,
@@ -1294,7 +1294,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 70,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1305,7 +1305,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 45,
+      "due": 0,
       "progress_pct": 100.0
     },
     {
@@ -1314,10 +1314,10 @@
       "name": "ZB. Các loại nhạc cụ",
       "total": 300,
       "new": 0,
-      "learning": 1,
-      "review": 299,
-      "due": 3,
-      "progress_pct": 99.7
+      "learning": 0,
+      "review": 300,
+      "due": 0,
+      "progress_pct": 100.0
     },
     {
       "stt": 29,
@@ -1327,7 +1327,7 @@
       "new": 253,
       "learning": 0,
       "review": 47,
-      "due": 7,
+      "due": 0,
       "progress_pct": 15.7
     },
     {
@@ -1335,55 +1335,55 @@
       "did": 1793157945332,
       "name": "ZD. Trò chơi điện tử trên PC và Mobile",
       "total": 300,
-      "new": 75,
+      "new": 0,
       "learning": 0,
-      "review": 225,
-      "due": 3,
-      "progress_pct": 75.0
+      "review": 300,
+      "due": 0,
+      "progress_pct": 100.0
     },
     {
       "stt": 31,
       "did": 1793157962947,
       "name": "ZE. Khóa luận và Nghiên cứu khoa học",
       "total": 300,
-      "new": 12,
-      "learning": 4,
-      "review": 284,
-      "due": 32,
-      "progress_pct": 94.7
+      "new": 0,
+      "learning": 0,
+      "review": 300,
+      "due": 0,
+      "progress_pct": 100.0
     },
     {
       "stt": 32,
       "did": 1793157981347,
       "name": "ZF. Văn phòng phẩm và Dụng cụ học tập",
       "total": 300,
-      "new": 279,
-      "learning": 1,
-      "review": 20,
+      "new": 0,
+      "learning": 0,
+      "review": 300,
       "due": 0,
-      "progress_pct": 6.7
+      "progress_pct": 100.0
     },
     {
       "stt": 33,
       "did": 1793157998104,
       "name": "ZG. Các kỳ thi ngôn ngữ và Chứng chỉ",
       "total": 300,
-      "new": 300,
-      "learning": 0,
-      "review": 0,
+      "new": 244,
+      "learning": 5,
+      "review": 51,
       "due": 0,
-      "progress_pct": 0.0
+      "progress_pct": 17.0
     },
     {
       "stt": 34,
       "did": 1793158019425,
       "name": "ZH. Câu lạc bộ và Các ban chuyên môn sinh viên",
       "total": 300,
-      "new": 300,
-      "learning": 0,
-      "review": 0,
+      "new": 283,
+      "learning": 12,
+      "review": 5,
       "due": 0,
-      "progress_pct": 0.0
+      "progress_pct": 1.7
     },
     {
       "stt": 35,
