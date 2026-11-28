@@ -1,27 +1,27 @@
 {
   "deck_name": "Thử thách mỗi ngày 100 từ vựng",
-  "updated_at": "2026-11-28 02:42:49",
+  "updated_at": "2026-11-28 16:31:59",
   "summary": {
     "streak_days": 53,
-    "days_studied_past_30": 30,
-    "total_reviews_past_30": 22355,
-    "avg_reviews_day": 745,
+    "days_studied_past_30": 29,
+    "total_reviews_past_30": 22170,
+    "avg_reviews_day": 764,
     "total_deck_cards": 12300,
     "total_all_time_reviews": 32832,
     "total_collection_reviews": 40703
   },
   "today": {
-    "cards_studied": 1171,
-    "time_minutes": 90.46,
-    "seconds_per_card": 4.64,
-    "again_count": 255,
-    "again_pct": 21.78,
-    "hard_count": 1,
-    "good_count": 17,
-    "easy_count": 898,
-    "learn": 800,
-    "review": 313,
-    "relearn": 58
+    "cards_studied": 0,
+    "time_minutes": 0.0,
+    "seconds_per_card": 0.0,
+    "again_count": 0,
+    "again_pct": 0.0,
+    "hard_count": 0,
+    "good_count": 0,
+    "easy_count": 0,
+    "learn": 0,
+    "review": 0,
+    "relearn": 0
   },
   "card_counts": {
     "new": 2880,
@@ -38,66 +38,66 @@
     "total": 12300
   },
   "future_due": {
-    "due_tomorrow": 257,
-    "total_future_30": 3912,
-    "avg_reviews_day": 126,
-    "daily_load": 274,
+    "due_tomorrow": 409,
+    "total_future_30": 3997,
+    "avg_reviews_day": 129,
+    "daily_load": 426,
     "days": [
       {
         "day": 0,
-        "count": 0
-      },
-      {
-        "day": 1,
         "count": 257
       },
       {
-        "day": 2,
+        "day": 1,
         "count": 409
       },
       {
-        "day": 3,
+        "day": 2,
         "count": 272
       },
       {
-        "day": 4,
+        "day": 3,
         "count": 254
       },
       {
-        "day": 5,
+        "day": 4,
         "count": 238
       },
       {
-        "day": 6,
+        "day": 5,
         "count": 297
       },
       {
-        "day": 7,
+        "day": 6,
         "count": 267
       },
       {
-        "day": 8,
+        "day": 7,
         "count": 231
       },
       {
-        "day": 9,
+        "day": 8,
         "count": 189
       },
       {
-        "day": 10,
+        "day": 9,
         "count": 160
       },
       {
-        "day": 11,
+        "day": 10,
         "count": 74
       },
       {
-        "day": 12,
+        "day": 11,
         "count": 61
       },
       {
-        "day": 13,
+        "day": 12,
         "count": 60
+      },
+      {
+        "day": 13,
+        "count": 63
       },
       {
         "day": 14,
@@ -105,85 +105,77 @@
       },
       {
         "day": 15,
-        "count": 63
-      },
-      {
-        "day": 16,
         "count": 57
       },
       {
-        "day": 17,
+        "day": 16,
         "count": 63
       },
       {
-        "day": 18,
+        "day": 17,
         "count": 54
       },
       {
-        "day": 19,
+        "day": 18,
         "count": 53
       },
       {
-        "day": 20,
+        "day": 19,
         "count": 63
       },
       {
-        "day": 21,
+        "day": 20,
         "count": 53
       },
       {
-        "day": 22,
+        "day": 21,
         "count": 64
       },
       {
-        "day": 23,
+        "day": 22,
         "count": 68
       },
       {
-        "day": 24,
+        "day": 23,
         "count": 65
       },
       {
-        "day": 25,
+        "day": 24,
         "count": 72
       },
       {
-        "day": 26,
+        "day": 25,
         "count": 78
       },
       {
-        "day": 27,
+        "day": 26,
         "count": 75
       },
       {
-        "day": 28,
+        "day": 27,
         "count": 84
       },
       {
-        "day": 29,
+        "day": 28,
         "count": 77
       },
       {
-        "day": 30,
+        "day": 29,
         "count": 91
+      },
+      {
+        "day": 30,
+        "count": 85
       }
     ]
   },
   "reviews_history": {
-    "days_studied_30": 30,
-    "total_reviews_30": 22355,
-    "avg_reviews_day": 745.2,
+    "days_studied_30": 29,
+    "total_reviews_30": 22170,
+    "avg_reviews_day": 739.0,
     "daily": [
       {
         "day_offset": -29,
-        "date": "2026-10-29",
-        "total": 185,
-        "mature": 0,
-        "young": 177,
-        "relearn": 8
-      },
-      {
-        "day_offset": -28,
         "date": "2026-10-30",
         "total": 512,
         "mature": 0,
@@ -191,7 +183,7 @@
         "relearn": 31
       },
       {
-        "day_offset": -27,
+        "day_offset": -28,
         "date": "2026-10-31",
         "total": 1489,
         "mature": 9,
@@ -199,7 +191,7 @@
         "relearn": 142
       },
       {
-        "day_offset": -26,
+        "day_offset": -27,
         "date": "2026-11-01",
         "total": 1201,
         "mature": 10,
@@ -207,7 +199,7 @@
         "relearn": 20
       },
       {
-        "day_offset": -25,
+        "day_offset": -26,
         "date": "2026-11-02",
         "total": 1178,
         "mature": 8,
@@ -215,7 +207,7 @@
         "relearn": 38
       },
       {
-        "day_offset": -24,
+        "day_offset": -25,
         "date": "2026-11-03",
         "total": 34,
         "mature": 0,
@@ -223,7 +215,7 @@
         "relearn": 2
       },
       {
-        "day_offset": -23,
+        "day_offset": -24,
         "date": "2026-11-04",
         "total": 1067,
         "mature": 7,
@@ -231,7 +223,7 @@
         "relearn": 175
       },
       {
-        "day_offset": -22,
+        "day_offset": -23,
         "date": "2026-11-05",
         "total": 1389,
         "mature": 12,
@@ -239,7 +231,7 @@
         "relearn": 430
       },
       {
-        "day_offset": -21,
+        "day_offset": -22,
         "date": "2026-11-06",
         "total": 60,
         "mature": 1,
@@ -247,7 +239,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -20,
+        "day_offset": -21,
         "date": "2026-11-07",
         "total": 26,
         "mature": 0,
@@ -255,7 +247,7 @@
         "relearn": 3
       },
       {
-        "day_offset": -19,
+        "day_offset": -20,
         "date": "2026-11-08",
         "total": 10,
         "mature": 0,
@@ -263,7 +255,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -18,
+        "day_offset": -19,
         "date": "2026-11-09",
         "total": 1792,
         "mature": 22,
@@ -271,7 +263,7 @@
         "relearn": 139
       },
       {
-        "day_offset": -17,
+        "day_offset": -18,
         "date": "2026-11-10",
         "total": 34,
         "mature": 4,
@@ -279,7 +271,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -16,
+        "day_offset": -17,
         "date": "2026-11-11",
         "total": 1179,
         "mature": 5,
@@ -287,7 +279,7 @@
         "relearn": 49
       },
       {
-        "day_offset": -15,
+        "day_offset": -16,
         "date": "2026-11-12",
         "total": 206,
         "mature": 0,
@@ -295,7 +287,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -14,
+        "day_offset": -15,
         "date": "2026-11-13",
         "total": 945,
         "mature": 9,
@@ -303,7 +295,7 @@
         "relearn": 36
       },
       {
-        "day_offset": -13,
+        "day_offset": -14,
         "date": "2026-11-14",
         "total": 896,
         "mature": 3,
@@ -311,7 +303,7 @@
         "relearn": 86
       },
       {
-        "day_offset": -12,
+        "day_offset": -13,
         "date": "2026-11-15",
         "total": 1300,
         "mature": 4,
@@ -319,7 +311,7 @@
         "relearn": 60
       },
       {
-        "day_offset": -11,
+        "day_offset": -12,
         "date": "2026-11-16",
         "total": 834,
         "mature": 1,
@@ -327,7 +319,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -10,
+        "day_offset": -11,
         "date": "2026-11-17",
         "total": 411,
         "mature": 0,
@@ -335,7 +327,7 @@
         "relearn": 8
       },
       {
-        "day_offset": -9,
+        "day_offset": -10,
         "date": "2026-11-18",
         "total": 994,
         "mature": 5,
@@ -343,7 +335,7 @@
         "relearn": 197
       },
       {
-        "day_offset": -8,
+        "day_offset": -9,
         "date": "2026-11-19",
         "total": 1117,
         "mature": 8,
@@ -351,7 +343,7 @@
         "relearn": 245
       },
       {
-        "day_offset": -7,
+        "day_offset": -8,
         "date": "2026-11-20",
         "total": 359,
         "mature": 0,
@@ -359,7 +351,7 @@
         "relearn": 3
       },
       {
-        "day_offset": -6,
+        "day_offset": -7,
         "date": "2026-11-21",
         "total": 34,
         "mature": 0,
@@ -367,7 +359,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -5,
+        "day_offset": -6,
         "date": "2026-11-22",
         "total": 642,
         "mature": 10,
@@ -375,7 +367,7 @@
         "relearn": 27
       },
       {
-        "day_offset": -4,
+        "day_offset": -5,
         "date": "2026-11-23",
         "total": 1111,
         "mature": 12,
@@ -383,7 +375,7 @@
         "relearn": 88
       },
       {
-        "day_offset": -3,
+        "day_offset": -4,
         "date": "2026-11-24",
         "total": 899,
         "mature": 5,
@@ -391,7 +383,7 @@
         "relearn": 5
       },
       {
-        "day_offset": -2,
+        "day_offset": -3,
         "date": "2026-11-25",
         "total": 618,
         "mature": 1,
@@ -399,7 +391,7 @@
         "relearn": 0
       },
       {
-        "day_offset": -1,
+        "day_offset": -2,
         "date": "2026-11-26",
         "total": 662,
         "mature": 15,
@@ -407,12 +399,20 @@
         "relearn": 67
       },
       {
-        "day_offset": 0,
+        "day_offset": -1,
         "date": "2026-11-27",
         "total": 1171,
         "mature": 7,
         "young": 1106,
         "relearn": 58
+      },
+      {
+        "day_offset": 0,
+        "date": "2026-11-28",
+        "total": 0,
+        "mature": 0,
+        "young": 0,
+        "relearn": 0
       }
     ]
   },
@@ -455,29 +455,29 @@
     }
   },
   "retrievability": {
-    "average_pct": 95.7,
-    "estimated_knowledge_cards": 9019,
-    "estimated_knowledge_notes": 3006,
+    "average_pct": 95.3,
+    "estimated_knowledge_cards": 8975,
+    "estimated_knowledge_notes": 2992,
     "bins": {
-      "0-70%": 20,
-      "71-80%": 44,
-      "81-90%": 272,
-      "91-95%": 3029,
-      "96-100%": 6055
+      "0-70%": 44,
+      "71-80%": 87,
+      "81-90%": 418,
+      "91-95%": 3239,
+      "96-100%": 5632
     }
   },
   "retention": {
     "today": {
+      "young": "N/A",
+      "mature": "N/A",
+      "total": "N/A",
+      "count": 0
+    },
+    "yesterday": {
       "young": "90.8%",
       "mature": "100.0%",
       "total": "91.1%",
       "count": 313
-    },
-    "yesterday": {
-      "young": "93.1%",
-      "mature": "100.0%",
-      "total": "93.3%",
-      "count": 595
     },
     "last_week": {
       "young": "94.1%",
@@ -488,8 +488,8 @@
     "last_month": {
       "young": "89.1%",
       "mature": "97.5%",
-      "total": "89.3%",
-      "count": 10277
+      "total": "89.2%",
+      "count": 10217
     },
     "last_year": {
       "young": "89.8%",
@@ -646,152 +646,152 @@
     "daily": [
       {
         "day_offset": -29,
-        "date": "2026-10-29",
-        "count": 0
-      },
-      {
-        "day_offset": -28,
         "date": "2026-10-30",
         "count": 0
       },
       {
-        "day_offset": -27,
+        "day_offset": -28,
         "date": "2026-10-31",
         "count": 0
       },
       {
-        "day_offset": -26,
+        "day_offset": -27,
         "date": "2026-11-01",
         "count": 300
       },
       {
-        "day_offset": -25,
+        "day_offset": -26,
         "date": "2026-11-02",
         "count": 0
       },
       {
-        "day_offset": -24,
+        "day_offset": -25,
         "date": "2026-11-03",
         "count": 0
       },
       {
-        "day_offset": -23,
+        "day_offset": -24,
         "date": "2026-11-04",
         "count": 0
       },
       {
-        "day_offset": -22,
+        "day_offset": -23,
         "date": "2026-11-05",
         "count": 0
       },
       {
-        "day_offset": -21,
+        "day_offset": -22,
         "date": "2026-11-06",
         "count": 0
       },
       {
-        "day_offset": -20,
+        "day_offset": -21,
         "date": "2026-11-07",
         "count": 0
       },
       {
-        "day_offset": -19,
+        "day_offset": -20,
         "date": "2026-11-08",
         "count": 0
       },
       {
-        "day_offset": -18,
+        "day_offset": -19,
         "date": "2026-11-09",
         "count": 0
       },
       {
-        "day_offset": -17,
+        "day_offset": -18,
         "date": "2026-11-10",
         "count": 0
       },
       {
-        "day_offset": -16,
+        "day_offset": -17,
         "date": "2026-11-11",
         "count": 0
       },
       {
-        "day_offset": -15,
+        "day_offset": -16,
         "date": "2026-11-12",
         "count": 0
       },
       {
-        "day_offset": -14,
+        "day_offset": -15,
         "date": "2026-11-13",
         "count": 0
       },
       {
-        "day_offset": -13,
+        "day_offset": -14,
         "date": "2026-11-14",
         "count": 0
       },
       {
-        "day_offset": -12,
+        "day_offset": -13,
         "date": "2026-11-15",
         "count": 0
       },
       {
-        "day_offset": -11,
+        "day_offset": -12,
         "date": "2026-11-16",
         "count": 0
       },
       {
-        "day_offset": -10,
+        "day_offset": -11,
         "date": "2026-11-17",
         "count": 0
       },
       {
-        "day_offset": -9,
+        "day_offset": -10,
         "date": "2026-11-18",
         "count": 0
       },
       {
-        "day_offset": -8,
+        "day_offset": -9,
         "date": "2026-11-19",
         "count": 0
       },
       {
-        "day_offset": -7,
+        "day_offset": -8,
         "date": "2026-11-20",
         "count": 0
       },
       {
-        "day_offset": -6,
+        "day_offset": -7,
         "date": "2026-11-21",
         "count": 0
       },
       {
-        "day_offset": -5,
+        "day_offset": -6,
         "date": "2026-11-22",
         "count": 0
       },
       {
-        "day_offset": -4,
+        "day_offset": -5,
         "date": "2026-11-23",
         "count": 0
       },
       {
-        "day_offset": -3,
+        "day_offset": -4,
         "date": "2026-11-24",
         "count": 0
       },
       {
-        "day_offset": -2,
+        "day_offset": -3,
         "date": "2026-11-25",
         "count": 0
       },
       {
-        "day_offset": -1,
+        "day_offset": -2,
         "date": "2026-11-26",
         "count": 0
       },
       {
-        "day_offset": 0,
+        "day_offset": -1,
         "date": "2026-11-27",
+        "count": 0
+      },
+      {
+        "day_offset": 0,
+        "date": "2026-11-28",
         "count": 0
       }
     ]
@@ -1030,7 +1030,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 2,
       "progress_pct": 100.0
     },
     {
@@ -1041,7 +1041,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 2,
       "progress_pct": 100.0
     },
     {
@@ -1074,7 +1074,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 2,
       "progress_pct": 100.0
     },
     {
@@ -1085,7 +1085,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 1,
       "progress_pct": 100.0
     },
     {
@@ -1096,7 +1096,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 4,
       "progress_pct": 100.0
     },
     {
@@ -1107,7 +1107,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 2,
       "progress_pct": 100.0
     },
     {
@@ -1129,7 +1129,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 5,
       "progress_pct": 100.0
     },
     {
@@ -1140,7 +1140,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 7,
       "progress_pct": 100.0
     },
     {
@@ -1151,7 +1151,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 3,
       "progress_pct": 100.0
     },
     {
@@ -1162,7 +1162,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 3,
       "progress_pct": 100.0
     },
     {
@@ -1173,7 +1173,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 8,
       "progress_pct": 100.0
     },
     {
@@ -1184,7 +1184,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 10,
       "progress_pct": 100.0
     },
     {
@@ -1195,7 +1195,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 6,
       "progress_pct": 100.0
     },
     {
@@ -1206,7 +1206,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 9,
       "progress_pct": 100.0
     },
     {
@@ -1217,7 +1217,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 1,
       "progress_pct": 100.0
     },
     {
@@ -1228,7 +1228,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 13,
       "progress_pct": 100.0
     },
     {
@@ -1239,7 +1239,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 6,
       "progress_pct": 100.0
     },
     {
@@ -1250,7 +1250,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 10,
       "progress_pct": 100.0
     },
     {
@@ -1261,7 +1261,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 14,
       "progress_pct": 100.0
     },
     {
@@ -1272,7 +1272,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 20,
       "progress_pct": 100.0
     },
     {
@@ -1283,7 +1283,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 25,
       "progress_pct": 100.0
     },
     {
@@ -1294,7 +1294,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 28,
       "progress_pct": 100.0
     },
     {
@@ -1305,7 +1305,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 46,
       "progress_pct": 100.0
     },
     {
@@ -1316,7 +1316,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 10,
       "progress_pct": 100.0
     },
     {
@@ -1327,7 +1327,7 @@
       "new": 253,
       "learning": 0,
       "review": 47,
-      "due": 0,
+      "due": 15,
       "progress_pct": 15.7
     },
     {
@@ -1338,7 +1338,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 2,
       "progress_pct": 100.0
     },
     {
@@ -1349,7 +1349,7 @@
       "new": 0,
       "learning": 0,
       "review": 300,
-      "due": 0,
+      "due": 3,
       "progress_pct": 100.0
     },
     {
